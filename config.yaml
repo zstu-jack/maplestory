@@ -2,21 +2,29 @@
 #Flag types: (0 = nothing, 1 = event, 2 = new, 3 = hot)
 #Recommended to use only up to 15 worlds
 worlds:
-    #Properties for Scania 0
+    # 小睡1区配置
   - flag: 0
-    server_message: Welcome to Scania!
-    event_message: Scania!
-    why_am_i_recommended: Welcome to Scania!
+    server_message: 欢迎来到小睡冒险岛!
+    event_message: 小睡1区!
+    why_am_i_recommended: 欢迎来到小睡冒险岛!
+    # 频道数
     channels: 3
+    # 经验倍率
     exp_rate: 10
+    # 金币倍率
     meso_rate: 10
+    # 掉落倍率
     drop_rate: 10
-    boss_drop_rate: 10                      #NOTE: Boss drop rate OVERRIDES common drop rate, for bosses-only.
-    quest_rate: 5                           #Multiplier for Exp & Meso gains when completing a quest. Only available when USE_QUEST_RATE is true. Stacks with server Exp & Meso rates.
-    fishing_rate: 10                        #Multiplier for success likelihood on meso thrown during fishing.
-    travel_rate: 10                         #Means of transportation rides/departs using 1/N of the default time.
+    # boss掉落倍率，会覆盖上面的倍率
+    boss_drop_rate: 10
+    # 完成任务的经验和金币倍率，只有USE_QUEST_RATE设置为true时生效
+    quest_rate: 10
+    # 钓鱼时金币掉落的概率
+    fishing_rate: 10
+    # 旅行花费的时间，1/N，N=配置的值
+    travel_rate: 10
 
-    #Properties for Bera 1
+    # 下面都是其他大区配置，WORLDS设置大于1时生效
   - flag: 0
     server_message: Welcome to Bera!
     event_message: Bera!
@@ -158,39 +166,53 @@ worlds:
 
 
 server:
-    #Thread Tracker Configuration
-    USE_THREAD_TRACKER: false        #[SEVERE] This deadlock auditing thing will bloat the memory as fast as the time frame one takes to lose track of a raindrop on a tempesting day. Only for debugging purposes.
+    # 是否开启线程跟踪器，这会让内存消耗大幅度暴增，仅调试使用
+    USE_THREAD_TRACKER: false
 
-    #Database Configuration
-    DB_URL: "jdbc:mysql://localhost:3306/heavenms"
+    # 数据库配置，ip=localhost，端口=3306，字符集=gbk，用户名=root，密码=，是否开启线程池=false
+    DB_URL: "jdbc:mysql://localhost:3306/heavenms?useUnicode=true&characterEncoding=gbk"
     DB_USER: "root"
     DB_PASS: ""
-    DB_CONNECTION_POOL: true        #Installs a connection pool to hub DB connections. Set false to default.
+    # 个人可不用开启线程池，联机可开启，默认10个，账号创建越多，线程池越大，最大无上限
+    DB_CONNECTION_POOL: false
 
-    #Login Configuration
-    WORLDS: 1                           #Initial number of worlds on the server.
-    WLDLIST_SIZE: 21                    #Max possible worlds on the server.
-    CHANNEL_SIZE: 20                    #Max possible channels per world (which is 20, based on the channel list on login phase).
-    CHANNEL_LOAD: 100                   #Max players per channel (limit actually used to calculate the World server capacity).
-    CHANNEL_LOCKS: 20                   #Total number of structure management locks each channel has.
+    # 大区数量
+    WORLDS: 1
+    # 最多多少大区
+    WLDLIST_SIZE: 21
+    # 最多多少频道
+    CHANNEL_SIZE: 20
+    # 一个频道最多多少人
+    CHANNEL_LOAD: 100
+    # 每个频道锁数量
+    CHANNEL_LOCKS: 20
 
-    RESPAWN_INTERVAL: 10000             #10 seconds, 10000.
-    PURGING_INTERVAL: 300000            #5 minutes, 300000.
-    RANKING_INTERVAL: 3600000           #60 minutes, 3600000.
-    COUPON_INTERVAL: 3600000            #60 minutes, 3600000.
-    UPDATE_INTERVAL: 777                #Dictates the frequency on which the "centralized server time" is updated.
+    # 怪物刷新间隔，默认10s
+    RESPAWN_INTERVAL: 10000
+    # 清除所有等待的任务间隔，避免任务一直不执行死锁、内存泄漏等，默认300s = 5min
+    PURGING_INTERVAL: 300000
+    # 排名刷新间隔，默认3600s = 1h
+    RANKING_INTERVAL: 3600000
+    # 现金券相关的刷新间隔，默认3600s = 1h
+    COUPON_INTERVAL: 3600000
+    # 通用的服务器刷新时间
+    UPDATE_INTERVAL: 777
 
-    ENABLE_PIC: true               #Pick true/false to enable or disable Pic. Delete character requires PIC available.
-    ENABLE_PIN: true               #Pick true/false to enable or disable Pin.
+    # 安全机制，删除角色，登录什么的密码校验
+    ENABLE_PIC: true
+    ENABLE_PIN: true
+    # 不校验PIN或PIC仍允许客户端运行N分钟
+    BYPASS_PIC_EXPIRATION: 20
+    BYPASS_PIN_EXPIRATION: 15
 
-    BYPASS_PIC_EXPIRATION: 20           #Enables PIC bypass, which will remain active for that account by that client machine for N minutes. Set 0 to disable.
-    BYPASS_PIN_EXPIRATION: 15           #Enables PIN bypass, which will remain active for that account by that client machine for N minutes. Set 0 to disable.
-
-    AUTOMATIC_REGISTER: true        #Automatically register players when they login with a nonexistent username.
-    BCRYPT_MIGRATION: true          #Performs a migration from old SHA-1 and SHA-512 password to bcrypt.
-    COLLECTIVE_CHARSLOT: false      #Available character slots are contabilized globally rather than per world server.
-    DETERRED_MULTICLIENT: false     #Enables detection of multi-client and suspicious remote IP on the login system.
-    #Besides blocking logging in with several client sessions on the same machine, this also blocks suspicious login attempts for players that tries to login on an account using several diferent remote addresses.
+    # 如果用户不存在就自动注册用户
+    AUTOMATIC_REGISTER: true
+    # 是否开启新版加密机制，这个不要动
+    BCRYPT_MIGRATION: true
+    # 仓库全大区通用，而不是一个大区
+    COLLECTIVE_CHARSLOT: false
+    # 是否允许多开，检查异地登录的ip
+    DETERRED_MULTICLIENT: false
 
     #Multiclient Coordinator Configuration
     MAX_ALLOWED_ACCOUNT_HWID: 10        #Allows up to N concurrent HWID's for an account. HWID's remains linked to an account longer the more times it's used to login.
@@ -237,6 +259,7 @@ server:
     USE_AUTOBAN_LOG: true               #Log autoban related messages. Still logs even with USE_AUTOBAN disabled.
     USE_AUTOSAVE: true                  #Enables server autosaving feature (saves characters to DB each 1 hour).
     USE_SERVER_AUTOASSIGNER: false       #HeavenMS-builtin autoassigner, uses algorithm based on distributing AP accordingly with required secondary stat on equipments.
+    # 是否刷新排名升降
     USE_REFRESH_RANK_MOVE: true
     USE_ENFORCE_ADMIN_ACCOUNT: false    #Forces accounts having GM characters to be treated as a "GM account" by the client (localhost). Some of the GM account perks is the ability to FLY, but unable to TRADE.
     USE_ENFORCE_NOVICE_EXPRATE: false    #Hardsets experience rate 1x for beginners level 10 or under. Ideal for roaming on novice areas without caring too much about losing some stats.
@@ -259,7 +282,8 @@ server:
     USE_BUFF_EVERLASTING: false         #Every applied buff on players holds expiration time so high it'd be considered permanent. Suggestion thanks to Vcoc.
     USE_MULTIPLE_SAME_EQUIP_DROP: true  #Enables multiple drops by mobs of the same equipment, number of possible drops based on the quantities provided at the drop data.
     USE_BANISHABLE_TOWN_SCROLL: false    #Enables town scrolls to act as if it's a "player banish", rendering the antibanish scroll effect available.
-    USE_ENABLE_FULL_RESPAWN: false       #At respawn task, always respawn missing mobs when they're available. Spawn count doesn't depend on how many players are currently there.
+    # 是否按最大数量刷新，刷新怪物的数量是否按地图人数决定，最大6人
+    USE_ENABLE_FULL_RESPAWN: false
     USE_ENABLE_CHAT_LOG: false          #Write in-game chat to log
     USE_REBIRTH_SYSTEM: false           #Flag to enable/disable rebirth system
     USE_MAP_OWNERSHIP_SYSTEM: false      #Flag to enable/disable map ownership system
