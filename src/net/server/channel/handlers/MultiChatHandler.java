@@ -47,7 +47,7 @@ public final class MultiChatHandler extends AbstractMaplePacketHandler {
         for (int i = 0; i < numRecipients; i++) {
             recipients[i] = slea.readInt();
         }
-        String chattext = slea.readMapleAsciiString();
+        String chattext = slea.readMapleGbkString();
         if (chattext.length() > Byte.MAX_VALUE && !player.isGM()) {
         	AutobanFactory.PACKET_EDIT.alert(c.getPlayer(), c.getPlayer().getName() + " tried to packet edit chats.");
         	FilePrinter.printError(FilePrinter.EXPLOITS + c.getPlayer().getName() + ".txt", c.getPlayer().getName() + " tried to send text with length of " + chattext.length());

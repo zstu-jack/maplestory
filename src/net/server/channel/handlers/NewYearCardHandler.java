@@ -56,12 +56,12 @@ public final class NewYearCardHandler extends AbstractMaplePacketHandler {
                 int status = getValidNewYearCardStatus(itemid, player, slot);
                 if(status == 0) {
                     if(player.canHold(4300000, 1)) {
-                        String receiver = slea.readMapleAsciiString();  //[04 00 54 65 73 74] -> sReceiverName (person to send to) 
+                        String receiver = slea.readMapleGbkString();  //[04 00 54 65 73 74] -> sReceiverName (person to send to)
 
                         int receiverid = getReceiverId(receiver, c.getWorld());
                         if(receiverid != -1) {
                             if(receiverid != c.getPlayer().getId()) {
-                                String message = slea.readMapleAsciiString();   //[06 00 4C 65 74 74 65 72] -> sContent (message)  
+                                String message = slea.readMapleGbkString();   //[06 00 4C 65 74 74 65 72] -> sContent (message)
 
                                 NewYearCardRecord newyear = new NewYearCardRecord(player.getId(), player.getName(), receiverid, receiver, message);
                                 NewYearCardRecord.saveNewYearCard(newyear);

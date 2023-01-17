@@ -21,6 +21,8 @@
 */
 package tools;
 
+import java.nio.charset.Charset;
+
 public class StringUtil {
 	/**
 	 * Gets a string padded from the left to <code>length</code> by
@@ -51,7 +53,7 @@ public class StringUtil {
 	 */
 	public static String getRightPaddedStr(String in, char padchar, int length) {
 		StringBuilder builder = new StringBuilder(in);
-		for (int x = in.length(); x < length; x++) {
+		for (int x = in.getBytes(Charset.forName("GBK")).length; x < length; x++) {
 			builder.append(padchar);
 		}
 		return builder.toString();

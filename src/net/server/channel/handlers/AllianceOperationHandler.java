@@ -86,7 +86,7 @@ public final class AllianceOperationHandler extends AbstractMaplePacketHandler {
                 break;
             }
             case 0x03: // Send Invite
-                String guildName = slea.readMapleAsciiString();
+                String guildName = slea.readMapleGbkString();
                 
                 if (alliance.getGuilds().size() == alliance.getCapacity()) {
                     chr.dropMessage(5, "Your alliance cannot comport any more guilds at the moment.");
@@ -172,7 +172,7 @@ public final class AllianceOperationHandler extends AbstractMaplePacketHandler {
             case 0x08:
                 String ranks[] = new String[5];
                 for (int i = 0; i < 5; i++) {
-                    ranks[i] = slea.readMapleAsciiString();
+                    ranks[i] = slea.readMapleGbkString();
                 }
                 Server.getInstance().setAllianceRanks(alliance.getId(), ranks);
                 Server.getInstance().allianceMessage(alliance.getId(), MaplePacketCreator.changeAllianceRankTitle(alliance.getId(), ranks), -1, -1);
@@ -188,7 +188,7 @@ public final class AllianceOperationHandler extends AbstractMaplePacketHandler {
                 break;
             }
             case 0x0A:
-                String notice = slea.readMapleAsciiString();
+                String notice = slea.readMapleGbkString();
                 Server.getInstance().setAllianceNotice(alliance.getId(), notice);
                 Server.getInstance().allianceMessage(alliance.getId(), MaplePacketCreator.allianceNotice(alliance.getId(), notice), -1, -1);
                 

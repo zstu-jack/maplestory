@@ -76,7 +76,7 @@ public final class ChangeMapHandler extends AbstractMaplePacketHandler {
 			try {
 				slea.readByte(); // 1 = from dying 0 = regular portals
 				int targetid = slea.readInt();
-				String startwp = slea.readMapleAsciiString();
+				String startwp = slea.readMapleGbkString();
 				MaplePortal portal = chr.getMap().getPortal(startwp);
 				slea.readByte();
 				boolean wheel = slea.readShort() > 0;

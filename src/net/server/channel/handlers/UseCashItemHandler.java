@@ -126,7 +126,7 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
                     player.dropMessage(1, "You cannot teleport between continents with this teleport rock.");
                 }
             } else {
-                String name = slea.readMapleAsciiString();
+                String name = slea.readMapleGbkString();
                 MapleCharacter victim = c.getChannelServer().getPlayerStorage().getCharacterByName(name);
                 
                 if (victim != null) {
@@ -269,14 +269,14 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
             switch ((itemId / 1000) % 10) {
                 case 1: // Megaphone
                     if (player.getLevel() > 9) {
-                        player.getClient().getChannelServer().broadcastPacket(MaplePacketCreator.serverNotice(2, medal + player.getName() + " : " + slea.readMapleAsciiString()));
+                        player.getClient().getChannelServer().broadcastPacket(MaplePacketCreator.serverNotice(2, medal + player.getName() + " : " + slea.readMapleGbkString()));
                     } else {
                         player.dropMessage(1, "You may not use this until you're level 10.");
                         return;
                     }
                     break;
                 case 2: // Super megaphone
-                    Server.getInstance().broadcastMessage(c.getWorld(), MaplePacketCreator.serverNotice(3, c.getChannel(), medal + player.getName() + " : " + slea.readMapleAsciiString(), (slea.readByte() != 0)));
+                    Server.getInstance().broadcastMessage(c.getWorld(), MaplePacketCreator.serverNotice(3, c.getChannel(), medal + player.getName() + " : " + slea.readMapleGbkString(), (slea.readByte() != 0)));
                     break;
                 case 5: // Maple TV
                     int tvType = itemId % 10;
@@ -294,13 +294,13 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
                             slea.readByte();
                         }
                         if (tvType != 4) {
-                            victim = c.getChannelServer().getPlayerStorage().getCharacterByName(slea.readMapleAsciiString());
+                            victim = c.getChannelServer().getPlayerStorage().getCharacterByName(slea.readMapleGbkString());
                         }
                     }
                     List<String> messages = new LinkedList<>();
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < 5; i++) {
-                        String message = slea.readMapleAsciiString();
+                        String message = slea.readMapleGbkString();
                         if (megassenger) {
                             builder.append(" ").append(message);
                         }
@@ -319,7 +319,7 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
                     
                     break;
                 case 6: //item megaphone
-                    String msg = medal + player.getName() + " : " + slea.readMapleAsciiString();
+                    String msg = medal + player.getName() + " : " + slea.readMapleGbkString();
                     whisper = slea.readByte() == 1;
                     Item item = null;
                     if (slea.readByte() == 1) { //item
@@ -341,7 +341,7 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
                     }
                     String[] msg2 = new String[lines];
                     for (int i = 0; i < lines; i++) {
-                        msg2[i] = medal + player.getName() + " : " + slea.readMapleAsciiString();
+                        msg2[i] = medal + player.getName() + " : " + slea.readMapleGbkString();
                     }
                     whisper = slea.readByte() == 1;
                     Server.getInstance().broadcastMessage(c.getWorld(), MaplePacketCreator.getMultiMegaphone(msg2, c.getChannel(), whisper));
@@ -349,7 +349,7 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
             }
             remove(c, position, itemId);
         } else if (itemType == 508) {   // thanks tmskdl12 for graduation banner; thanks ratency for first pointing lack of Kite handling
-            MapleKite kite = new MapleKite(player, slea.readMapleAsciiString(), itemId);
+            MapleKite kite = new MapleKite(player, slea.readMapleGbkString(), itemId);
             
             if (!GameConstants.isFreeMarketRoom(player.getMapId())) {
                 player.getMap().spawnKite(kite);
@@ -358,8 +358,8 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
                 c.announce(MaplePacketCreator.sendCannotSpawnKite());
             }
         } else if (itemType == 509) {
-            String sendTo = slea.readMapleAsciiString();
-            String msg = slea.readMapleAsciiString();
+            String sendTo = slea.readMapleGbkString();
+            String msg = slea.readMapleGbkString();
             try {
                 player.sendNote(sendTo, msg, (byte) 0);
             } catch (SQLException e) {
@@ -375,7 +375,7 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
                     ii.getItemEffect(ii.getStateChangeItem(itemId)).applyTo(mChar);
                 }
             }
-            player.getMap().startMapEffect(ii.getMsg(itemId).replaceFirst("%s", player.getName()).replaceFirst("%s", slea.readMapleAsciiString()), itemId);
+            player.getMap().startMapEffect(ii.getMsg(itemId).replaceFirst("%s", player.getName()).replaceFirst("%s", slea.readMapleGbkString()), itemId);
             remove(c, position, itemId);
         } else if (itemType == 517) {
             MaplePet pet = player.getPet(0);
@@ -383,7 +383,7 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
                 c.announce(MaplePacketCreator.enableActions());
                 return;
             }
-            String newName = slea.readMapleAsciiString();
+            String newName = slea.readMapleGbkString();
             pet.setName(newName);
             pet.saveToDb();
             
@@ -437,14 +437,14 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
                 return;
             }
             
-            player.setChalkboard(slea.readMapleAsciiString());
+            player.setChalkboard(slea.readMapleGbkString());
             player.getMap().broadcastMessage(MaplePacketCreator.useChalkboard(player, false));
             player.getClient().announce(MaplePacketCreator.enableActions());
             //remove(c, position, itemId);  thanks Conrad for noticing chalkboards shouldn't be depleted upon use
         } else if (itemType == 539) {
             List<String> strLines = new LinkedList<>();
             for (int i = 0; i < 4; i++) {
-                strLines.add(slea.readMapleAsciiString());
+                strLines.add(slea.readMapleGbkString());
             }
             
             final int world = c.getWorld();
@@ -473,7 +473,7 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
                 return;
             }
             
-            String name = slea.readMapleAsciiString();
+            String name = slea.readMapleGbkString();
             int face = slea.readInt();
             int hair = slea.readInt();
             int haircolor = slea.readInt();

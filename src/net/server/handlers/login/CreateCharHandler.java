@@ -51,7 +51,7 @@ public final class CreateCharHandler extends AbstractMaplePacketHandler {
 
 	@Override
 	public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
-                String name = slea.readMapleAsciiString();
+                String name = slea.readMapleGbkString();
                 int job = slea.readInt();
 		int face = slea.readInt();
 

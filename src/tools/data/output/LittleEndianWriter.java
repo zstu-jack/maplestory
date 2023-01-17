@@ -82,7 +82,7 @@ public interface LittleEndianWriter {
      *
      * @param s The ASCII string to write.
      */
-    void writeAsciiString(String s);
+    void writeGbkString(String s);
 
     /**
      * Writes a null-terminated ASCII string to the sequence.

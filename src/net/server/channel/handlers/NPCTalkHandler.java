@@ -40,18 +40,20 @@ public final class NPCTalkHandler extends AbstractMaplePacketHandler {
             c.announce(MaplePacketCreator.enableActions());
             return;
         }
-        
-        if(currentServerTime() - c.getPlayer().getNpcCooldown() < YamlConfig.config.server.BLOCK_NPC_RACE_CONDT) {
+
+        if (currentServerTime() - c.getPlayer().getNpcCooldown() < YamlConfig.config.server.BLOCK_NPC_RACE_CONDT) {
             c.announce(MaplePacketCreator.enableActions());
             return;
         }
-        
+
         int oid = slea.readInt();
         MapleMapObject obj = c.getPlayer().getMap().getMapObject(oid);
         if (obj instanceof MapleNPC) {
             MapleNPC npc = (MapleNPC) obj;
-            if(YamlConfig.config.server.USE_DEBUG == true) c.getPlayer().dropMessage(5, "Talking to NPC " + npc.getId());
-            
+            if (YamlConfig.config.server.USE_DEBUG) {
+                c.getPlayer().dropMessage(5, "´ò¿ªµÄNPC: " + npc.getId());
+            }
+
             if (npc.getId() == 9010009) {   //is duey
                 DueyProcessor.dueySendTalk(c, false);
             } else {
@@ -59,7 +61,7 @@ public final class NPCTalkHandler extends AbstractMaplePacketHandler {
                     c.announce(MaplePacketCreator.enableActions());
                     return;
                 }
-                
+
                 // Custom handling to reduce the amount of scripts needed.
                 if (npc.getId() >= 9100100 && npc.getId() <= 9100200) {
                     NPCScriptManager.getInstance().start(c, npc.getId(), "gachapon", null);
@@ -75,7 +77,7 @@ public final class NPCTalkHandler extends AbstractMaplePacketHandler {
                             c.announce(MaplePacketCreator.enableActions());
                             return;
                         }
-                        
+
                         npc.sendShop(c);
                     }
                 }
@@ -83,7 +85,7 @@ public final class NPCTalkHandler extends AbstractMaplePacketHandler {
         } else if (obj instanceof MaplePlayerNPC) {
             MaplePlayerNPC pnpc = (MaplePlayerNPC) obj;
             NPCScriptManager nsm = NPCScriptManager.getInstance();
-            
+
             if (pnpc.getScriptId() < 9977777 && !nsm.isNpcScriptAvailable(c, "" + pnpc.getScriptId())) {
                 nsm.start(c, pnpc.getScriptId(), "rank_user", null);
             } else {

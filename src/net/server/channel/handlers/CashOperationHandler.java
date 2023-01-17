@@ -102,8 +102,8 @@ public final class CashOperationHandler extends AbstractMaplePacketHandler {
                 } else if (action == 0x04) {//TODO check for gender
                     int birthday = slea.readInt();
                     CashItem cItem = CashItemFactory.getItem(slea.readInt());
-                    Map<String, String> recipient = MapleCharacter.getCharacterFromDatabase(slea.readMapleAsciiString());
-                    String message = slea.readMapleAsciiString();
+                    Map<String, String> recipient = MapleCharacter.getCharacterFromDatabase(slea.readMapleGbkString());
+                    String message = slea.readMapleGbkString();
                     if (!canBuy(chr, cItem, cs.getCash(4)) || message.length() < 1 || message.length() > 73) {
                         c.enableCSActions();
                         return;
@@ -301,8 +301,8 @@ public final class CashOperationHandler extends AbstractMaplePacketHandler {
                     if (checkBirthday(c, birthday)) {
                         int toCharge = slea.readInt();
                         int SN = slea.readInt();
-                        String recipientName = slea.readMapleAsciiString();
-                        String text = slea.readMapleAsciiString();
+                        String recipientName = slea.readMapleGbkString();
+                        String text = slea.readMapleGbkString();
                         CashItem itemRing = CashItemFactory.getItem(SN);
                         MapleCharacter partner = c.getChannelServer().getPlayerStorage().getCharacterByName(recipientName);
                         if (partner == null) {
@@ -372,9 +372,9 @@ public final class CashOperationHandler extends AbstractMaplePacketHandler {
                         slea.skip(3); //0s
                         int snID = slea.readInt();
                         CashItem itemRing = CashItemFactory.getItem(snID);
-                        String sentTo = slea.readMapleAsciiString();
+                        String sentTo = slea.readMapleGbkString();
                         int available = slea.readShort() - 1;
-                        String text = slea.readAsciiString(available);
+                        String text = slea.readGbkString(available);
                         slea.readByte();
                         MapleCharacter partner = c.getChannelServer().getPlayerStorage().getCharacterByName(sentTo);
                         if (partner == null) {
@@ -411,8 +411,8 @@ public final class CashOperationHandler extends AbstractMaplePacketHandler {
                         return;
                     }
                     if(cItem.getSN() == 50600000 && YamlConfig.config.server.ALLOW_CASHSHOP_NAME_CHANGE) {
-                        slea.readMapleAsciiString(); //old name
-                        String newName = slea.readMapleAsciiString();
+                        slea.readMapleGbkString(); //old name
+                        String newName = slea.readMapleGbkString();
                         if(!MapleCharacter.canCreateChar(newName) || chr.getLevel() < 10) { //(longest ban duration isn't tracked currently)
                             c.announce(MaplePacketCreator.showCashShopMessage((byte)0));
                             c.enableCSActions();

@@ -35,7 +35,7 @@ import tools.data.input.SeekableLittleEndianAccessor;
 public final class GeneralChatHandler extends AbstractMaplePacketHandler {    
 	@Override
         public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
-                String s = slea.readMapleAsciiString();
+                String s = slea.readMapleGbkString();
                 MapleCharacter chr = c.getPlayer();
                 if(chr.getAutobanManager().getLastSpam(7) + 200 > currentServerTime()) {
                         c.announce(MaplePacketCreator.enableActions());

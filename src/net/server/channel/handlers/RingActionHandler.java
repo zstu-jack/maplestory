@@ -303,7 +303,7 @@ public final class RingActionHandler extends AbstractMaplePacketHandler {
         byte slot;
         switch(mode) {
             case 0: // Send Proposal
-                sendEngageProposal(c, slea.readMapleAsciiString(), slea.readInt());
+                sendEngageProposal(c, slea.readMapleGbkString(), slea.readInt());
                 break;
                 
             case 1: // Cancel Proposal
@@ -314,7 +314,7 @@ public final class RingActionHandler extends AbstractMaplePacketHandler {
                 
             case 2: // Accept/Deny Proposal
                 final boolean accepted = slea.readByte() > 0;
-                name = slea.readMapleAsciiString();
+                name = slea.readMapleGbkString();
                 final int id = slea.readInt();
                 
                 final MapleCharacter source = c.getWorldServer().getPlayerStorage().getCharacterByName(name);
@@ -372,7 +372,7 @@ public final class RingActionHandler extends AbstractMaplePacketHandler {
                 break;
                 
             case 5: // Invite %s to Wedding
-                name = slea.readMapleAsciiString();
+                name = slea.readMapleGbkString();
                 int marriageId = slea.readInt();
                 slot = slea.readByte(); // this is an int
                 
@@ -483,7 +483,7 @@ public final class RingActionHandler extends AbstractMaplePacketHandler {
 
                             String wishlistItems = "";
                             for (int i = 0; i < amount; i++) {
-                                String s = slea.readMapleAsciiString();
+                                String s = slea.readMapleGbkString();
                                 wishlistItems += (s + "\r\n");
                             }
 

@@ -43,7 +43,7 @@ public class UseMapleLifeHandler extends AbstractMaplePacketHandler {
         }
         player.setLastUsedCashItem(timeNow);
         
-        String name = slea.readMapleAsciiString();
+        String name = slea.readMapleGbkString();
         if(MapleCharacter.canCreateChar(name)) {
             c.announce(MaplePacketCreator.sendMapleLifeCharacterInfo());
         } else {

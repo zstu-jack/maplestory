@@ -36,11 +36,11 @@ public class CharSelectedWithPicHandler extends AbstractMaplePacketHandler {
     
     @Override
     public void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
-        String pic = slea.readMapleAsciiString();
+        String pic = slea.readMapleGbkString();
         int charId = slea.readInt();
         
-        String macs = slea.readMapleAsciiString();
-        String hwid = slea.readMapleAsciiString();
+        String macs = slea.readMapleGbkString();
+        String hwid = slea.readMapleGbkString();
         
         if (!hwid.matches("[0-9A-F]{12}_[0-9A-F]{8}")) {
             c.announce(MaplePacketCreator.getAfterLoginError(17));

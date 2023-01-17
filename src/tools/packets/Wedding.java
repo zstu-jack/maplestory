@@ -290,8 +290,8 @@ public class Wedding extends MaplePacketCreator {
             mplew.writeInt(1112803); // Engagement Ring's Outcome (doesn't matter for engagement)
             mplew.writeInt(1112803); // Engagement Ring's Outcome (doesn't matter for engagement)
         }
-        mplew.writeAsciiString(StringUtil.getRightPaddedStr(chr.getGender() == 0 ? chr.getName() : MapleCharacter.getNameById(chr.getPartnerId()), '\0', 13));
-        mplew.writeAsciiString(StringUtil.getRightPaddedStr(chr.getGender() == 0 ? MapleCharacter.getNameById(chr.getPartnerId()) : chr.getName(), '\0', 13));
+        mplew.writeGbkString(StringUtil.getRightPaddedStr(chr.getGender() == 0 ? chr.getName() : MapleCharacter.getNameById(chr.getPartnerId()), '\0', 13));
+        mplew.writeGbkString(StringUtil.getRightPaddedStr(chr.getGender() == 0 ? MapleCharacter.getNameById(chr.getPartnerId()) : chr.getName(), '\0', 13));
         
         return mplew.getPacket();
     }

@@ -82,8 +82,8 @@ public class BuddylistModifyHandler extends AbstractMaplePacketHandler {
         MapleCharacter player = c.getPlayer();
         BuddyList buddylist = player.getBuddylist();
         if (mode == 1) { // add
-            String addName = slea.readMapleAsciiString();
-            String group = slea.readMapleAsciiString();
+            String addName = slea.readMapleGbkString();
+            String group = slea.readMapleGbkString();
             if (group.length() > 16 || addName.length() < 4 || addName.length() > 13) {
                 return; //hax.
             }

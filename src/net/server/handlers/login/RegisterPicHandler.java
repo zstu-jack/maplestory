@@ -39,8 +39,8 @@ public final class RegisterPicHandler extends AbstractMaplePacketHandler {
         slea.readByte();
         int charId = slea.readInt();
         
-        String macs = slea.readMapleAsciiString();
-        String hwid = slea.readMapleAsciiString();
+        String macs = slea.readMapleGbkString();
+        String hwid = slea.readMapleGbkString();
         
         if (!hwid.matches("[0-9A-F]{12}_[0-9A-F]{8}")) {
             c.announce(MaplePacketCreator.getAfterLoginError(17));
@@ -68,7 +68,7 @@ public final class RegisterPicHandler extends AbstractMaplePacketHandler {
             return;
         }
 		
-        String pic = slea.readMapleAsciiString();
+        String pic = slea.readMapleGbkString();
         if (c.getPic() == null || c.getPic().equals("")) {
             c.setPic(pic);
             

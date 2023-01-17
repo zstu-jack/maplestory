@@ -54,7 +54,7 @@ public final class FamilyUseHandler extends AbstractMaplePacketHandler {
         c.announce(MaplePacketCreator.getFamilyInfo(entry));
         MapleCharacter victim;
         if(type == MapleFamilyEntitlement.FAMILY_REUINION || type == MapleFamilyEntitlement.SUMMON_FAMILY) {
-            victim = c.getChannelServer().getPlayerStorage().getCharacterByName(slea.readMapleAsciiString());
+            victim = c.getChannelServer().getPlayerStorage().getCharacterByName(slea.readMapleGbkString());
             if(victim != null && victim != c.getPlayer()) {
                 if(victim.getFamily() == c.getPlayer().getFamily()) {
                     MapleMap targetMap = victim.getMap();

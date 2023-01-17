@@ -42,7 +42,7 @@ public final class PetChatHandler extends AbstractMaplePacketHandler {
         if ((pet < 0 || pet > 3) || (act < 0 || act > 9)) {
         	return;
         }
-        String text = slea.readMapleAsciiString();
+        String text = slea.readMapleGbkString();
         if (text.length() > Byte.MAX_VALUE) {
         	AutobanFactory.PACKET_EDIT.alert(c.getPlayer(), c.getPlayer().getName() + " tried to packet edit with pets.");
         	FilePrinter.printError(FilePrinter.EXPLOITS + c.getPlayer().getName() + ".txt", c.getPlayer().getName() + " tried to send text with length of " + text.length());

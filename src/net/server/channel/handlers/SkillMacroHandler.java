@@ -32,7 +32,7 @@ public final class SkillMacroHandler extends AbstractMaplePacketHandler {
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
         int num = slea.readByte();
         for (int i = 0; i < num; i++) {
-            String name = slea.readMapleAsciiString();
+            String name = slea.readMapleGbkString();
             int shout = slea.readByte();
             int skill1 = slea.readInt();
             int skill2 = slea.readInt();

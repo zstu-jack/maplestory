@@ -36,7 +36,7 @@ public final class DenyGuildRequestHandler extends AbstractMaplePacketHandler {
     @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
         slea.readByte();
-        MapleCharacter cfrom = c.getWorldServer().getPlayerStorage().getCharacterByName(slea.readMapleAsciiString());
+        MapleCharacter cfrom = c.getWorldServer().getPlayerStorage().getCharacterByName(slea.readMapleGbkString());
         if (cfrom != null) {
             MapleGuild.answerInvitation(c.getPlayer().getId(), c.getPlayer().getName(), cfrom.getGuildId(), false);
         }

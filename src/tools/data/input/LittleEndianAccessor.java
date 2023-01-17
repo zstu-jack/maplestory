@@ -37,9 +37,9 @@ public interface LittleEndianAccessor {
     byte[] read(int num);
     float readFloat();
     double readDouble();
-    String readAsciiString(int n);
-    String readNullTerminatedAsciiString();
-    String readMapleAsciiString();
+    String readGbkString(int n);
+    String readNullTerminatedGbkString();
+    String readMapleGbkString();
     long getBytesRead();
     long available();
 }

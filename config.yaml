@@ -170,9 +170,9 @@ server:
     USE_THREAD_TRACKER: false
 
     # 数据库配置，ip=localhost，端口=3306，字符集=gbk，用户名=root，密码=，是否开启线程池=false
-    DB_URL: "jdbc:mysql://localhost:3306/heavenms?useUnicode=true&characterEncoding=gbk"
+    DB_URL: "jdbc:mysql://192.168.2.41:3306/napms?useUnicode=true&characterEncoding=gbk"
     DB_USER: "root"
-    DB_PASS: ""
+    DB_PASS: "Nap_123456"
     # 个人可不用开启线程池，联机可开启，默认10个，账号创建越多，线程池越大，最大无上限
     DB_CONNECTION_POOL: false
 
@@ -199,8 +199,8 @@ server:
     UPDATE_INTERVAL: 777
 
     # 安全机制，删除角色，登录什么的密码校验
-    ENABLE_PIC: true
-    ENABLE_PIN: true
+    ENABLE_PIC: false
+    ENABLE_PIN: false
     # 不校验PIN或PIC仍允许客户端运行N分钟
     BYPASS_PIC_EXPIRATION: 20
     BYPASS_PIN_EXPIRATION: 15
@@ -219,19 +219,23 @@ server:
     MAX_ACCOUNT_LOGIN_ATTEMPT: 15       #After N tries on an account, login on that account gets disabled for a short period.
     LOGIN_ATTEMPT_DURATION: 120         #Period in seconds the login attempt remains registered on the system.
 
-    #Ip Configuration
-    HOST: 127.0.0.1
-    LOCALSERVER: true
+    # 配置服务器ip
+    HOST: 192.168.2.8
+    # 是否为本地服务，如果是127.0.0.1就选true，其他为falsed
+    LOCALSERVER: false
+    # 这个配置暂时没有作用
     GMSERVER: false
 
     #Other configuration
     SHUTDOWNHOOK: true
 
-    #Server Flags
-    USE_CUSTOM_KEYSET: false             #Enables auto-setup of the HeavenMS's custom keybindings when creating characters.
-    USE_DEBUG: false                    #Will enable some text prints on the client, oriented for debugging purposes.
+    # 创建角色后，是否允许自定义键位
+    USE_CUSTOM_KEYSET: false
+    # 开启debug模式
+    USE_DEBUG: false
     USE_DEBUG_SHOW_INFO_EQPEXP: false   #Prints on the cmd all equip exp gain info.
-    USE_DEBUG_SHOW_RCVD_PACKET: false   #Prints on the cmd all received packet ids.
+    # 是否打印从客户端接受到的包id
+    USE_DEBUG_SHOW_RCVD_PACKET: true   #Prints on the cmd all received packet ids.
     USE_DEBUG_SHOW_RCVD_MVLIFE: false   #Prints on the cmd all received move life content.
     USE_DEBUG_SHOW_PACKET: false
     USE_SUPPLY_RATE_COUPONS: true       #Allows rate coupons to be sold through the Cash Shop.
@@ -327,8 +331,8 @@ server:
     EXP_SPLIT_COMMON_MOD: 0.8
     PARTY_BONUS_EXP_RATE: 1.0            #Rate for the party exp bonus reward.
 
-    #Miscellaneous Configuration
-    TIMEZONE: GMT-3
+    # 时区，中国是东八区
+    TIMEZONE: GMT+8
     USE_DISPLAY_NUMBERS_WITH_COMMA: true          #Enforce comma on displayed strings (use this when USE_UNITPRICE_WITH_COMMA is active and you still want to display comma-separated values).
     USE_UNITPRICE_WITH_COMMA: true                #Set this accordingly with the layout of the unitPrices on Item.wz XML's, whether it's using commas or dots to represent fractions.
     MAX_MONITORED_BUFFSTATS: 5                 #Limits accounting for "dormant" buff effects, that should take place when stronger stat buffs expires.
@@ -350,6 +354,7 @@ server:
 
     #Map Monitor Configuration
     ITEM_EXPIRE_CHECK: 10000        # (10 * 10000) Interval between item expiring tasks on maps, which checks and makes disappear expired items.
+    # 地图最大允许存在的掉落物
     ITEM_LIMIT_ON_MAP: 200              #Max number of items allowed on a map.
     MAP_VISITED_SIZE: 5                 #Max length for last mapids visited by a player. This is used to recover and update drops on these maps accordingly with player actions.
     MAP_DAMAGE_OVERTIME_INTERVAL: 5000  #Interval in milliseconds between map environment damage (e.g. El Nath and Aqua Road surrondings).
@@ -468,8 +473,8 @@ server:
     WEDDING_GIFT_LIMIT: 1               #Max number of gifts per person to same wishlist on marriage instances.
     WEDDING_BLESSER_SHOWFX: true    #Pops bubble sprite effect on players blessing the couple. Setting this false shows the blessing effect on the couple instead.
 
-    #Buyback Configuration
-    USE_BUYBACK_WITH_MESOS: true    #Enables usage of either mesos or NX for the buyback fee.
+    # 是否用金币买活，否则用点券
+    USE_BUYBACK_WITH_MESOS: true
     BUYBACK_FEE: 77.70               #Sets the base amount needed to buyback (level 30 or under will use the base value).
     BUYBACK_LEVEL_STACK_FEE: 85.47   #Sets the level-stacking portion of the amount needed to buyback (fee will sum up linearly until level 120, when it reaches the peak).
     BUYBACK_MESO_MULTIPLIER: 1000       #Sets a multiplier for the fee when using meso as the charge unit.

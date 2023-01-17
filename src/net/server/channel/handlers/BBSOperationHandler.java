@@ -52,8 +52,8 @@ public final class BBSOperationHandler extends AbstractMaplePacketHandler {
                     localthreadid = slea.readInt();
                 }
                 boolean bNotice = slea.readByte() == 1;
-                String title = correctLength(slea.readMapleAsciiString(), 25);
-                String text = correctLength(slea.readMapleAsciiString(), 600);
+                String title = correctLength(slea.readMapleGbkString(), 25);
+                String text = correctLength(slea.readMapleGbkString(), 600);
                 int icon = slea.readInt();
                 if (icon >= 0x64 && icon <= 0x6a) {
                     if (!c.getPlayer().haveItemWithId(5290000 + icon - 0x64, false)) {
@@ -82,7 +82,7 @@ public final class BBSOperationHandler extends AbstractMaplePacketHandler {
                 break;
             case 4: // reply
                 localthreadid = slea.readInt();
-                text = correctLength(slea.readMapleAsciiString(), 25);
+                text = correctLength(slea.readMapleGbkString(), 25);
                 newBBSReply(c, localthreadid, text);
                 break;
             case 5: // delete reply

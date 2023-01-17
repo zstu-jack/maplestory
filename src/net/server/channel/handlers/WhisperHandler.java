@@ -48,8 +48,8 @@ public final class WhisperHandler extends AbstractMaplePacketHandler {
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
         byte mode = slea.readByte();
         if (mode == 6) { // whisper
-            String recipient = slea.readMapleAsciiString();
-            String text = slea.readMapleAsciiString();
+            String recipient = slea.readMapleGbkString();
+            String text = slea.readMapleGbkString();
             MapleCharacter player = c.getChannelServer().getPlayerStorage().getCharacterByName(recipient);
             if (c.getPlayer().getAutobanManager().getLastSpam(7) + 200 > currentServerTime()) {
                 return;
@@ -88,7 +88,7 @@ public final class WhisperHandler extends AbstractMaplePacketHandler {
             }
 			c.getPlayer().getAutobanManager().spam(7);
         } else if (mode == 5) { // - /find
-            String recipient = slea.readMapleAsciiString();
+            String recipient = slea.readMapleGbkString();
             MapleCharacter victim = c.getWorldServer().getPlayerStorage().getCharacterByName(recipient);
             if (victim != null && c.getPlayer().gmLevel() >= victim.gmLevel()) {
                 if (victim.getCashShop().isOpened()) {  // in CashShop
@@ -130,7 +130,7 @@ public final class WhisperHandler extends AbstractMaplePacketHandler {
         } else if (mode == 0x44) {
             //Buddy find, thanks to Atoot
             
-            String recipient = slea.readMapleAsciiString();
+            String recipient = slea.readMapleGbkString();
             MapleCharacter player = c.getWorldServer().getPlayerStorage().getCharacterByName(recipient);
             if (player != null && c.getPlayer().gmLevel() >= player.gmLevel()) {
                 if (player.getCashShop().isOpened()) {  // in CashShop

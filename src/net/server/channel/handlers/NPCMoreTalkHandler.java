@@ -38,7 +38,7 @@ public final class NPCMoreTalkHandler extends AbstractMaplePacketHandler {
         byte action = slea.readByte(); // 00 = end chat, 01 == follow
         if (lastMsg == 2) {
             if (action != 0) {
-                String returnText = slea.readMapleAsciiString();
+                String returnText = slea.readMapleGbkString();
                 if (c.getQM() != null) {
                     c.getQM().setGetText(returnText);
                     if (c.getQM().isStart()) {

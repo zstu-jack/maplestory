@@ -35,7 +35,7 @@ public class BuyBackCommand extends Command {
     @Override
     public void execute(MapleClient c, String[] params) {
         if (params.length < 1) {
-            c.getPlayer().yellowMessage("Syntax: @buyback <info|now>");
+            c.getPlayer().yellowMessage("Ê¾Àý: @buyback <info|now>");
             return;
         }
         

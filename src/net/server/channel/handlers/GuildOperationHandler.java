@@ -69,7 +69,7 @@ public final class GuildOperationHandler extends AbstractMaplePacketHandler {
                     mc.dropMessage(1, "You do not have " + GameConstants.numberWithCommas(YamlConfig.config.server.CREATE_GUILD_COST) + " mesos to create a Guild.");
                     return;
                 }
-                String guildName = slea.readMapleAsciiString();
+                String guildName = slea.readMapleGbkString();
                 if (!isGuildNameAcceptable(guildName)) {
                     mc.dropMessage(1, "The Guild name you have chosen is not accepted.");
                     return;
@@ -105,7 +105,7 @@ public final class GuildOperationHandler extends AbstractMaplePacketHandler {
                     return;
                 }
                 
-                String targetName = slea.readMapleAsciiString();
+                String targetName = slea.readMapleGbkString();
                 MapleGuildResponse mgr = MapleGuild.sendInvitation(c, targetName);
                 if (mgr != null) {
                     c.announce(mgr.getPacket(targetName));
@@ -150,7 +150,7 @@ public final class GuildOperationHandler extends AbstractMaplePacketHandler {
                 break;
             case 0x07:
                 cid = slea.readInt();
-                String name = slea.readMapleAsciiString();
+                String name = slea.readMapleGbkString();
                 if (cid != mc.getId() || !name.equals(mc.getName()) || mc.getGuildId() <= 0) {
                     System.out.println("[Hack] " + mc.getName() + " tried to quit guild under the name \"" + name + "\" and current guild id of " + mc.getGuildId() + ".");
                     return;
@@ -173,7 +173,7 @@ public final class GuildOperationHandler extends AbstractMaplePacketHandler {
                 allianceId = mc.getGuild().getAllianceId();
                 
                 cid = slea.readInt();
-                name = slea.readMapleAsciiString();
+                name = slea.readMapleGbkString();
                 if (mc.getGuildRank() > 2 || mc.getGuildId() <= 0) {
                     System.out.println("[Hack] " + mc.getName() + " is trying to expel without rank 1 or 2.");
                     return;
@@ -189,7 +189,7 @@ public final class GuildOperationHandler extends AbstractMaplePacketHandler {
                 }
                 String ranks[] = new String[5];
                 for (int i = 0; i < 5; i++) {
-                    ranks[i] = slea.readMapleAsciiString();
+                    ranks[i] = slea.readMapleGbkString();
                 }
                 
                 Server.getInstance().changeRankTitle(mc.getGuildId(), ranks);
@@ -235,7 +235,7 @@ public final class GuildOperationHandler extends AbstractMaplePacketHandler {
                     if(mc.getGuildId() <= 0) System.out.println("[Hack] " + mc.getName() + " tried to change guild notice while not in a guild.");
                     return;
                 }
-                String notice = slea.readMapleAsciiString();
+                String notice = slea.readMapleGbkString();
                 if (notice.length() > 100) {
                     return;
                 }

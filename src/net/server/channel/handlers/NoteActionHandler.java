@@ -37,8 +37,8 @@ public final class NoteActionHandler extends AbstractMaplePacketHandler {
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
         int action = slea.readByte();
         if (action == 0 && c.getPlayer().getCashShop().getAvailableNotes() > 0) {
-            String charname = slea.readMapleAsciiString();
-            String message = slea.readMapleAsciiString();
+            String charname = slea.readMapleGbkString();
+            String message = slea.readMapleGbkString();
             try {
                 if (c.getPlayer().getCashShop().isOpened())
                     c.announce(MaplePacketCreator.showCashInventory(c));

@@ -119,8 +119,9 @@ public class GenericLittleEndianWriter implements LittleEndianWriter {
      * @param s The ASCII string to write.
      */
     @Override
-    public void writeAsciiString(String s) {
-        write(s.getBytes(ASCII));
+    public void writeGbkString(String s) {
+//        write(s.getBytes(ASCII));
+        write(s.getBytes(Charset.forName("GBK")));
     }
 
     /**
@@ -130,8 +131,9 @@ public class GenericLittleEndianWriter implements LittleEndianWriter {
      */
     @Override
     public void writeMapleAsciiString(String s) {
-        writeShort((short) s.length());
-        writeAsciiString(s);
+        byte[] bytes = s.getBytes(Charset.forName("GBK"));
+        writeShort(bytes.length);
+        writeGbkString(s);
     }
 
     /**
@@ -141,7 +143,7 @@ public class GenericLittleEndianWriter implements LittleEndianWriter {
      */
     @Override
     public void writeNullTerminatedAsciiString(String s) {
-        writeAsciiString(s);
+        writeGbkString(s);
         write(0);
     }
 

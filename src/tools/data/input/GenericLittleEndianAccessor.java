@@ -23,6 +23,7 @@ package tools.data.input;
 
 import java.awt.Point;
 import java.io.ByteArrayOutputStream;
+import java.nio.charset.Charset;
 
 /**
  * Provides a generic interface to a Little Endian stream of bytes.
@@ -128,12 +129,17 @@ public class GenericLittleEndianAccessor implements LittleEndianAccessor {
      * @param n Number of characters to read.
      * @return The string read.
      */
-    public final String readAsciiString(int n) {
-        char ret[] = new char[n];
-        for (int x = 0; x < n; x++) {
-            ret[x] = (char) readByte();
+    public final String readGbkString(int n) {
+//        char ret[] = new char[n];
+//        for (int x = 0; x < n; x++) {
+//            ret[x] = (char) readByte();
+//        }
+//        return String.valueOf(ret);
+        byte[] bytes = new byte[n];
+        for (int i = 0; i < n; i++) {
+            bytes[i] = readByte();
         }
-        return String.valueOf(ret);
+        return new String(bytes, Charset.forName("GBK"));
     }
 
     /**
@@ -141,7 +147,7 @@ public class GenericLittleEndianAccessor implements LittleEndianAccessor {
      *
      * @return The string read.
      */
-    public final String readNullTerminatedAsciiString() {
+    public final String readNullTerminatedGbkString() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         byte b;
         while (true) {
@@ -151,12 +157,13 @@ public class GenericLittleEndianAccessor implements LittleEndianAccessor {
             }
             baos.write(b);
         }
-        byte[] buf = baos.toByteArray();
-        char[] chrBuf = new char[buf.length];
-        for (int x = 0; x < buf.length; x++) {
-            chrBuf[x] = (char) buf[x];
-        }
-        return String.valueOf(chrBuf);
+//        byte[] buf = baos.toByteArray();
+//        char[] chrBuf = new char[buf.length];
+//        for (int x = 0; x < buf.length; x++) {
+//            chrBuf[x] = (char) buf[x];
+//        }
+//        return String.valueOf(chrBuf);
+        return new String(baos.toByteArray(), Charset.forName("GBK"));
     }
 
     /**
@@ -177,8 +184,8 @@ public class GenericLittleEndianAccessor implements LittleEndianAccessor {
      * @return The string read.
      */
     @Override
-    public String readMapleAsciiString() {
-        return readAsciiString(readShort());
+    public String readMapleGbkString() {
+        return readGbkString(readShort());
     }
 
     /**

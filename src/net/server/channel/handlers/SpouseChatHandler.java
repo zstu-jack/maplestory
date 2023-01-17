@@ -32,8 +32,8 @@ import tools.data.input.SeekableLittleEndianAccessor;
 public final class SpouseChatHandler extends AbstractMaplePacketHandler {
     @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
-        slea.readMapleAsciiString();//recipient
-        String msg = slea.readMapleAsciiString();
+        slea.readMapleGbkString();//recipient
+        String msg = slea.readMapleGbkString();
         
         int partnerId = c.getPlayer().getPartnerId();
         if (partnerId > 0) { // yay marriage

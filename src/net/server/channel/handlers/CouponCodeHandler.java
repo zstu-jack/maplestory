@@ -186,7 +186,7 @@ public final class CouponCodeHandler extends AbstractMaplePacketHandler {
     @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
         slea.skip(2);
-        String code = slea.readMapleAsciiString();
+        String code = slea.readMapleGbkString();
         
         if (c.tryacquireClient()) {
             try {

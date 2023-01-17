@@ -33,7 +33,7 @@ public final class ChangeMapSpecialHandler extends AbstractMaplePacketHandler {
     @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
             slea.readByte();
-            String startwp = slea.readMapleAsciiString();
+            String startwp = slea.readMapleGbkString();
             slea.readShort();
             MaplePortal portal = c.getPlayer().getMap().getPortal(startwp);
             if (portal == null || c.getPlayer().portalDelay() > currentServerTime() || c.getPlayer().getBlockedPortals().contains(portal.getScriptName())) {

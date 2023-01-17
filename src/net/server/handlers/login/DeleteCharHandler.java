@@ -39,7 +39,7 @@ public final class DeleteCharHandler extends AbstractMaplePacketHandler {
 
     @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
-        String pic = slea.readMapleAsciiString();
+        String pic = slea.readMapleGbkString();
         int cid = slea.readInt();
         if (c.checkPic(pic)) {
         	//check for family, guild leader, pending marriage, world transfer

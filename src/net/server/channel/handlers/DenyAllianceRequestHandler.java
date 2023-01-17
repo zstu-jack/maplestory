@@ -33,8 +33,8 @@ public final class DenyAllianceRequestHandler extends AbstractMaplePacketHandler
     @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
         slea.readByte();
-        String inviterName = slea.readMapleAsciiString();
-        String guildName = slea.readMapleAsciiString();
+        String inviterName = slea.readMapleGbkString();
+        String guildName = slea.readMapleGbkString();
         
         MapleCharacter chr = c.getWorldServer().getPlayerStorage().getCharacterByName(inviterName);
         if (chr != null) {

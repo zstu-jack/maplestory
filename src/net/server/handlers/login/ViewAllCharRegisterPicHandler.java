@@ -40,8 +40,8 @@ public final class ViewAllCharRegisterPicHandler extends AbstractMaplePacketHand
         int charId = slea.readInt();
         slea.readInt(); // please don't let the client choose which world they should login
         
-        String mac = slea.readMapleAsciiString();
-        String hwid = slea.readMapleAsciiString();
+        String mac = slea.readMapleGbkString();
+        String hwid = slea.readMapleGbkString();
         
         if (!hwid.matches("[0-9A-F]{12}_[0-9A-F]{8}")) {
             c.announce(MaplePacketCreator.getAfterLoginError(17));
@@ -79,7 +79,7 @@ public final class ViewAllCharRegisterPicHandler extends AbstractMaplePacketHand
         int channel = Randomizer.rand(1, server.getWorld(c.getWorld()).getChannelsSize());
         c.setChannel(channel);
         
-        String pic = slea.readMapleAsciiString();
+        String pic = slea.readMapleGbkString();
         c.setPic(pic);
         
         String[] socket = server.getInetSocket(c.getWorld(), channel);

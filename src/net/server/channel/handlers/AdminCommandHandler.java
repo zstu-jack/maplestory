@@ -79,10 +79,10 @@ public final class AdminCommandHandler extends AbstractMaplePacketHandler {
             	c.getPlayer().yellowMessage("Please use !ban <IGN> <Reason>");
             	break;
             case 0x04: // /block <name> <duration (in days)> <HACK/BOT/AD/HARASS/CURSE/SCAM/MISCONDUCT/SELL/ICASH/TEMP/GM/IPROGRAM/MEGAPHONE>
-            	victim = slea.readMapleAsciiString();
+            	victim = slea.readMapleGbkString();
                 int type = slea.readByte(); //reason
                 int duration = slea.readInt();
-                String description = slea.readMapleAsciiString();
+                String description = slea.readMapleGbkString();
                 String reason = c.getPlayer().getName() + " used /ban to ban";
                 target = c.getChannelServer().getPlayerStorage().getCharacterByName(victim);
                 if (target != null) {
@@ -120,7 +120,7 @@ public final class AdminCommandHandler extends AbstractMaplePacketHandler {
                 }
                 break;
             case 0x12: // Send
-                victim = slea.readMapleAsciiString();
+                victim = slea.readMapleGbkString();
                 int mapId = slea.readInt();
                 c.getChannelServer().getPlayerStorage().getCharacterByName(victim).changeMap(c.getChannelServer().getMapFactory().getMap(mapId));
                 break;
@@ -157,8 +157,8 @@ public final class AdminCommandHandler extends AbstractMaplePacketHandler {
                 }
                 break;
             case 0x1E: // Warn
-                victim = slea.readMapleAsciiString();
-                String message = slea.readMapleAsciiString();
+                victim = slea.readMapleGbkString();
+                String message = slea.readMapleGbkString();
                 target = c.getChannelServer().getPlayerStorage().getCharacterByName(victim);
                 if (target != null) {
                     target.getClient().announce(MaplePacketCreator.serverNotice(1, message));

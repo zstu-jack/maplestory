@@ -74,7 +74,7 @@ public final class PartyOperationHandler extends AbstractMaplePacketHandler {
                 break;
             }
             case 4: { // invite
-                String name = slea.readMapleAsciiString();
+                String name = slea.readMapleGbkString();
                 MapleCharacter invited = world.getPlayerStorage().getCharacterByName(name);
                 if (invited != null) {
                     if(invited.getLevel() < 10 && (!YamlConfig.config.server.USE_PARTY_FOR_STARTERS || player.getLevel() >= 10)) { //min requirement is level 10

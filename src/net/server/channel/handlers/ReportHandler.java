@@ -42,9 +42,9 @@ import client.MapleClient;
 public final class ReportHandler extends AbstractMaplePacketHandler {
 	public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
 		int type = slea.readByte(); //01 = Conversation claim 00 = illegal program
-		String victim = slea.readMapleAsciiString();
+		String victim = slea.readMapleGbkString();
 		int reason = slea.readByte();
-		String description = slea.readMapleAsciiString();
+		String description = slea.readMapleGbkString();
 		if (type == 0) {
 			if (c.getPlayer().getPossibleReports() > 0) {
 				if (c.getPlayer().getMeso() > 299) {
@@ -61,7 +61,7 @@ public final class ReportHandler extends AbstractMaplePacketHandler {
 			Server.getInstance().broadcastGMMessage(c.getWorld(), MaplePacketCreator.serverNotice(6, victim + " was reported for: " + description));
 			addReport(c.getPlayer().getId(), MapleCharacter.getIdByName(victim), 0, description, null);
 		} else if (type == 1) {
-			String chatlog = slea.readMapleAsciiString();
+			String chatlog = slea.readMapleGbkString();
 			if (chatlog == null) {
 				return;
 			}

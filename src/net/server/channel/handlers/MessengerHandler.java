@@ -84,7 +84,7 @@ public final class MessengerHandler extends AbstractMaplePacketHandler {
                         if (messenger == null) {
                             c.announce(MaplePacketCreator.messengerChat(player.getName() + " : This Maple Messenger is currently unavailable. Please quit this chat."));
                         } else if (messenger.getMembers().size() < 3) {
-                            input = slea.readMapleAsciiString();
+                            input = slea.readMapleGbkString();
                             MapleCharacter target = c.getChannelServer().getPlayerStorage().getCharacterByName(input);
                             if (target != null) {
                                 if (target.getMessenger() == null) {
@@ -109,13 +109,13 @@ public final class MessengerHandler extends AbstractMaplePacketHandler {
                         }
                         break;
                     case 0x05:
-                        String targeted = slea.readMapleAsciiString();
+                        String targeted = slea.readMapleGbkString();
                         world.declineChat(targeted, player);
                         break;
                     case 0x06:
                         if (messenger != null) {
                             MapleMessengerCharacter messengerplayer = new MapleMessengerCharacter(player, player.getMessengerPosition());
-                            input = slea.readMapleAsciiString();
+                            input = slea.readMapleGbkString();
                             world.messengerChat(messenger, input, messengerplayer.getName());
                         }
                         break;

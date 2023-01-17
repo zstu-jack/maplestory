@@ -82,8 +82,8 @@ public final class LoginPasswordHandler implements MaplePacketHandler {
             return;
         }
         
-        String login = slea.readMapleAsciiString();
-        String pwd = slea.readMapleAsciiString();
+        String login = slea.readMapleGbkString();
+        String pwd = slea.readMapleGbkString();
         c.setAccountName(login);
         
         slea.skip(6);   // localhost masked the initial part with zeroes...
@@ -100,8 +100,8 @@ public final class LoginPasswordHandler implements MaplePacketHandler {
                 ps = con.prepareStatement("INSERT INTO accounts (name, password, birthday, tempban) VALUES (?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS); //Jayd: Added birthday, tempban
                 ps.setString(1, login);
                 ps.setString(2, YamlConfig.config.server.BCRYPT_MIGRATION ? BCrypt.hashpw(pwd, BCrypt.gensalt(12)) : hashpwSHA512(pwd));
-                ps.setString(3, "2018-06-20"); //Jayd's idea: was added to solve the MySQL 5.7 strict checking (birthday)
-                ps.setString(4, "2018-06-20"); //Jayd's idea: was added to solve the MySQL 5.7 strict checking (tempban)
+                ps.setString(3, "2023-01-01"); //Jayd's idea: was added to solve the MySQL 5.7 strict checking (birthday)
+                ps.setString(4, "2023-01-01"); //Jayd's idea: was added to solve the MySQL 5.7 strict checking (tempban)
                 ps.executeUpdate();
                 
                 ResultSet rs = ps.getGeneratedKeys();

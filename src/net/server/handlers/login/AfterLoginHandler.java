@@ -43,14 +43,14 @@ public final class AfterLoginHandler extends AbstractMaplePacketHandler {
                 c.announce(MaplePacketCreator.requestPin());
             }
         } else if (c2 == 1 && c3 == 0) {
-            String pin = slea.readMapleAsciiString();
+            String pin = slea.readMapleGbkString();
             if (c.checkPin(pin)) {
                 c.announce(MaplePacketCreator.pinAccepted());
             } else {
                 c.announce(MaplePacketCreator.requestPinAfterFailure());
             }
         } else if (c2 == 2 && c3 == 0) {
-            String pin = slea.readMapleAsciiString();
+            String pin = slea.readMapleGbkString();
             if (c.checkPin(pin)) {
                 c.announce(MaplePacketCreator.registerPin());
             } else {

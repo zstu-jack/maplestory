@@ -41,7 +41,7 @@ public final class FamilyAddHandler extends AbstractMaplePacketHandler {
         if(!YamlConfig.config.server.USE_FAMILY_SYSTEM) {
             return;
         }
-        String toAdd = slea.readMapleAsciiString();
+        String toAdd = slea.readMapleGbkString();
         MapleCharacter addChr = c.getChannelServer().getPlayerStorage().getCharacterByName(toAdd);
         MapleCharacter chr = c.getPlayer();
         if(addChr == null) {

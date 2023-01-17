@@ -75,7 +75,7 @@ public class BuybackProcessor {
             
             MapleMap map = chr.getMap();
             map.broadcastMessage(MaplePacketCreator.playSound("Buyback/" + jobString));
-            map.broadcastMessage(MaplePacketCreator.earnTitleMessage(chr.getName() + " just bought back into the game!"));
+            map.broadcastMessage(MaplePacketCreator.earnTitleMessage(chr.getName() + " 刚刚买活回到游戏！"));
 
             chr.announce(MaplePacketCreator.showBuybackEffect());
             map.broadcastMessage(chr, MaplePacketCreator.showForeignBuybackEffect(chr.getId()), false);

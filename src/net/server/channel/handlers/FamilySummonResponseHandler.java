@@ -19,7 +19,7 @@ public class FamilySummonResponseHandler extends AbstractMaplePacketHandler {
     @Override
     public void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
         if(!YamlConfig.config.server.USE_FAMILY_SYSTEM) return;
-        slea.readMapleAsciiString(); //family name
+        slea.readMapleGbkString(); //family name
         boolean accept = slea.readByte() != 0;
         MapleInviteResult inviteResult = MapleInviteCoordinator.answerInvite(InviteType.FAMILY_SUMMON, c.getPlayer().getId(), c.getPlayer(), accept);
         if(inviteResult.result == InviteResult.NOT_FOUND) return;

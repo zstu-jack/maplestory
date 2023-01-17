@@ -60,8 +60,8 @@ public final class ViewAllCharSelectedHandler extends AbstractMaplePacketHandler
         int charId = slea.readInt();
         slea.readInt(); // please don't let the client choose which world they should login
         
-        String macs = slea.readMapleAsciiString();
-        String hwid = slea.readMapleAsciiString();
+        String macs = slea.readMapleGbkString();
+        String hwid = slea.readMapleGbkString();
         
         if (!hwid.matches("[0-9A-F]{12}_[0-9A-F]{8}")) {
             c.announce(MaplePacketCreator.getAfterLoginError(17));

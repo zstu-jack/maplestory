@@ -35,7 +35,7 @@ public final class DenyPartyRequestHandler extends AbstractMaplePacketHandler {
     @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
         slea.readByte();
-        String[] cname = slea.readMapleAsciiString().split("PS: ");
+        String[] cname = slea.readMapleGbkString().split("PS: ");
         
         MapleCharacter cfrom = c.getChannelServer().getPlayerStorage().getCharacterByName(cname[cname.length - 1]);
         if (cfrom != null) {

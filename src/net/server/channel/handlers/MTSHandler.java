@@ -68,7 +68,7 @@ public final class MTSHandler extends AbstractMaplePacketHandler {
                 } else {
                     stars = slea.readShort();
                 }
-                slea.readMapleAsciiString(); //another useless thing (owner)
+                slea.readMapleGbkString(); //another useless thing (owner)
                 if (itemtype == 1) {
                     slea.skip(32);
                 } else {
@@ -231,7 +231,7 @@ public final class MTSHandler extends AbstractMaplePacketHandler {
                 slea.readInt();
                 slea.readInt();
                 slea.readShort();
-                slea.readMapleAsciiString();
+                slea.readMapleGbkString();
             } else if (op == 5) { //change page
                 int tab = slea.readInt();
                 int type = slea.readInt();
@@ -255,7 +255,7 @@ public final class MTSHandler extends AbstractMaplePacketHandler {
                 int type = slea.readInt();
                 slea.readInt();
                 int ci = slea.readInt();
-                String search = slea.readMapleAsciiString();
+                String search = slea.readMapleGbkString();
                 c.getPlayer().setSearch(search);
                 c.getPlayer().changeTab(tab);
                 c.getPlayer().changeType(type);
