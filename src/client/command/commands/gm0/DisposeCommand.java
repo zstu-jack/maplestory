@@ -31,7 +31,7 @@ import tools.MaplePacketCreator;
 
 public class DisposeCommand extends Command {
     {
-        setDescription("");
+        setDescription("解卡指令，客户端异常时可以解卡");
     }
     
     @Override
@@ -40,6 +40,6 @@ public class DisposeCommand extends Command {
         QuestScriptManager.getInstance().dispose(c);
         c.announce(MaplePacketCreator.enableActions());
         c.removeClickedNPC();
-        c.getPlayer().message("You've been disposed.");
+        c.getPlayer().message("解卡成功");
     }
 }

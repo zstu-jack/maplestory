@@ -25,6 +25,7 @@ package client.command.commands.gm0;
 
 import client.MapleClient;
 import client.command.Command;
+import net.server.Server;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -33,13 +34,18 @@ import java.util.TimeZone;
 
 public class TimeCommand extends Command {
     {
-        setDescription("");
+        setDescription("显示服务器时间");
     }
     
     @Override
     public void execute(MapleClient client, String[] params) {
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         dateFormat.setTimeZone(TimeZone.getDefault());
-        client.getPlayer().yellowMessage("HeavenMS Server Time: " + dateFormat.format(new Date()));
+        long milliseconds = System.currentTimeMillis() - Server.uptime;
+        int seconds = (int) (milliseconds / 1000) % 60 ;
+        int minutes = (int) ((milliseconds / (1000*60)) % 60);
+        int hours   = (int) ((milliseconds / (1000*60*60)) % 24);
+        int days    = (int) ((milliseconds / (1000*60*60*24)));
+        client.getPlayer().yellowMessage("NapMS 服务器时间: " + dateFormat.format(new Date()) + "，服务已运行 " + days + " 天 " + hours + " 时 " + minutes + " 分 " + seconds + " 秒。");
     }
 }

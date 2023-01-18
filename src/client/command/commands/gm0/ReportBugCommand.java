@@ -32,7 +32,7 @@ import tools.MaplePacketCreator;
 
 public class ReportBugCommand extends Command {
     {
-        setDescription("");
+        setDescription("给GM反馈BUG");
     }
 
     @Override
@@ -40,14 +40,14 @@ public class ReportBugCommand extends Command {
         MapleCharacter player = c.getPlayer();
 
         if (params.length < 1) {
-            player.dropMessage(5, "Message too short and not sent. Please do @bug <bug>");
+            player.dropMessage(5, "你反馈的消息太短了，请重新编辑后 @bug <bug> 进行发送");
             return;
         }
         String message = player.getLastCommandMessage();
         Server.getInstance().broadcastGMMessage(c.getWorld(), MaplePacketCreator.sendYellowTip("[Bug]:" + MapleCharacter.makeMapleReadable(player.getName()) + ": " + message));
         Server.getInstance().broadcastGMMessage(c.getWorld(), MaplePacketCreator.serverNotice(1, message));
         FilePrinter.printError(FilePrinter.COMMAND_BUG, MapleCharacter.makeMapleReadable(player.getName()) + ": " + message);
-        player.dropMessage(5, "Your bug '" + message + "' was submitted successfully to our developers. Thank you!");
+        player.dropMessage(5, "你的bug '" + message + "' 已经成功提交给管理员，感谢你的反馈！");
 
     }
 }

@@ -29,7 +29,7 @@ import config.YamlConfig;
 
 public class DropLimitCommand extends Command {
     {
-        setDescription("");
+        setDescription("查看服务器最大掉落物数量");
     }
     
     @Override

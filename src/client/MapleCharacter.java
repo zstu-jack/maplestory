@@ -6324,7 +6324,7 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
     }
 
     public boolean isGM() {
-        return gmLevel > 1;
+        return gmLevel > 2;
     }
 
     public boolean isHidden() {
@@ -10536,7 +10536,7 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
     }
 
     public void showAllEquipFeatures() {
-        String showMsg = "";
+        StringBuilder showMsg = new StringBuilder();
 
         for (Item item : getInventory(MapleInventoryType.EQUIPPED).list()) {
             Equip nEquip = (Equip) item;
@@ -10545,11 +10545,11 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
                 continue;
             }
 
-            showMsg += nEquip.showEquipFeatures(client);
+            showMsg.append(nEquip.showEquipFeatures(client));
         }
 
-        if (!showMsg.isEmpty()) {
-            this.showHint("#ePLAYER EQUIPMENTS:#n\r\n\r\n" + showMsg, 400);
+        if (showMsg.length() > 0) {
+            this.showHint("#e人物装备: #n\r\n\r\n" + showMsg, 400);
         }
     }
 

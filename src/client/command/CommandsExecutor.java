@@ -51,9 +51,9 @@ public class CommandsExecutor {
         return instance;
     }
 
-    // GM指令
-    private static final char USER_HEADING = '@';
     // 普通指令
+    private static final char USER_HEADING = '@';
+    // GM指令
     private static final char GM_HEADING = '!';
 
     public static boolean isCommand(MapleClient client, String content) {
@@ -99,7 +99,7 @@ public class CommandsExecutor {
             client.getPlayer().yellowMessage("监狱里不允许使用指令");
             return;
         }
-        final String splitRegex = "[ ]";
+        final String splitRegex = " ";
         String[] splitedMessage = message.substring(1).split(splitRegex, 2);
         if (splitedMessage.length < 2) {
             splitedMessage = new String[]{splitedMessage[0], ""};
@@ -181,23 +181,18 @@ public class CommandsExecutor {
     }
 
     private void registerLv0Commands() {
-        levelCommandsCursor = new Pair<>((List<String>) new ArrayList<String>(), (List<String>) new ArrayList<String>());
+        levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
 
         addCommand(new String[]{"help", "commands"}, HelpCommand.class);
         addCommand("droplimit", DropLimitCommand.class);
         addCommand("time", TimeCommand.class);
-        addCommand("credits", StaffCommand.class);
         addCommand("buyback", BuyBackCommand.class);
-        addCommand("uptime", UptimeCommand.class);
         addCommand("gacha", GachaCommand.class);
         addCommand("dispose", DisposeCommand.class);
-        addCommand("changel", ChangeLanguageCommand.class);
         addCommand("equiplv", EquipLvCommand.class);
-        addCommand("showrates", ShowRatesCommand.class);
-        addCommand("rates", RatesCommand.class);
+        addCommand("rates", ShowRatesCommand.class);
         addCommand("online", OnlineCommand.class);
-        addCommand("gm", GmCommand.class);
-        addCommand("reportbug", ReportBugCommand.class);
+        addCommand("bug", ReportBugCommand.class);
         addCommand("points", ReadPointsCommand.class);
         addCommand("joinevent", JoinEventCommand.class);
         addCommand("leaveevent", LeaveEventCommand.class);
@@ -211,13 +206,14 @@ public class CommandsExecutor {
         addCommand("mylawn", MapOwnerClaimCommand.class);
         addCommand("bosshp", BossHpCommand.class);
         addCommand("mobhp", MobHpCommand.class);
+        addCommand("map", MapIdCommand.class);
 
         commandsNameDesc.add(levelCommandsCursor);
     }
 
 
     private void registerLv1Commands() {
-        levelCommandsCursor = new Pair<>((List<String>) new ArrayList<String>(), (List<String>) new ArrayList<String>());
+        levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
 
         addCommand("whatdropsfrom", 1, WhatDropsFromCommand.class);
         addCommand("whodrops", 1, WhoDropsCommand.class);
@@ -229,7 +225,7 @@ public class CommandsExecutor {
 
 
     private void registerLv2Commands() {
-        levelCommandsCursor = new Pair<>((List<String>) new ArrayList<String>(), (List<String>) new ArrayList<String>());
+        levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
 
         addCommand("recharge", 2, RechargeCommand.class);
         addCommand("whereami", 2, WhereaMiCommand.class);
@@ -272,7 +268,7 @@ public class CommandsExecutor {
     }
 
     private void registerLv3Commands() {
-        levelCommandsCursor = new Pair<>((List<String>) new ArrayList<String>(), (List<String>) new ArrayList<String>());
+        levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
 
         addCommand("debuff", 3, DebuffCommand.class);
         addCommand("fly", 3, FlyCommand.class);
@@ -338,7 +334,7 @@ public class CommandsExecutor {
     }
 
     private void registerLv4Commands() {
-        levelCommandsCursor = new Pair<>((List<String>) new ArrayList<String>(), (List<String>) new ArrayList<String>());
+        levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
 
         addCommand("servermessage", 4, ServerMessageCommand.class);
         addCommand("proitem", 4, ProItemCommand.class);
@@ -369,7 +365,7 @@ public class CommandsExecutor {
     }
 
     private void registerLv5Commands() {
-        levelCommandsCursor = new Pair<>((List<String>) new ArrayList<String>(), (List<String>) new ArrayList<String>());
+        levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
 
         addCommand("debug", 5, DebugCommand.class);
         addCommand("set", 5, SetCommand.class);
@@ -382,7 +378,7 @@ public class CommandsExecutor {
     }
 
     private void registerLv6Commands() {
-        levelCommandsCursor = new Pair<>((List<String>) new ArrayList<String>(), (List<String>) new ArrayList<String>());
+        levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
 
         addCommand("setgmlevel", 6, SetGmLevelCommand.class);
         addCommand("warpworld", 6, WarpWorldCommand.class);

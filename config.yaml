@@ -232,7 +232,7 @@ server:
     # 创建角色后，是否允许自定义键位
     USE_CUSTOM_KEYSET: false
     # 开启debug模式
-    USE_DEBUG: false
+    USE_DEBUG: true
     USE_DEBUG_SHOW_INFO_EQPEXP: false   #Prints on the cmd all equip exp gain info.
     # 是否打印从客户端接受到的包id
     USE_DEBUG_SHOW_RCVD_PACKET: true   #Prints on the cmd all received packet ids.
@@ -266,7 +266,8 @@ server:
     # 是否刷新排名升降
     USE_REFRESH_RANK_MOVE: true
     USE_ENFORCE_ADMIN_ACCOUNT: false    #Forces accounts having GM characters to be treated as a "GM account" by the client (localhost). Some of the GM account perks is the ability to FLY, but unable to TRADE.
-    USE_ENFORCE_NOVICE_EXPRATE: false    #Hardsets experience rate 1x for beginners level 10 or under. Ideal for roaming on novice areas without caring too much about losing some stats.
+    # 新手倍率恒定1倍，避免还没转职就十几级了
+    USE_ENFORCE_NOVICE_EXPRATE: true
     USE_ENFORCE_HPMP_SWAP: false        #Forces players to reuse stats (via AP Resetting) located on HP/MP pool only inside the HP/MP stats.
     USE_ENFORCE_MOB_LEVEL_RANGE: true   #Players N levels below the killed mob will gain no experience from defeating it.
     USE_ENFORCE_JOB_LEVEL_RANGE: false  #Caps the player level on the minimum required to advance their current jobs.

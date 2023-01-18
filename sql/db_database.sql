@@ -2,10 +2,10 @@
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
--- 创建库heavenms，设置编码为GBK
-DROP DATABASE IF EXISTS `heavenms`;
-CREATE DATABASE `heavenms` DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;
-USE `heavenms`;
+-- 创建库napms，设置编码为GBK
+DROP DATABASE IF EXISTS `napms`;
+CREATE DATABASE `napms` DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;
+USE `napms`;
 
 -- 将默认charset全部设置成GBK
 CREATE TABLE IF NOT EXISTS `accounts` (

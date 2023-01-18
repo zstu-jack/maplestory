@@ -28,7 +28,7 @@ import client.command.Command;
 
 public class HelpCommand extends Command {
     {
-        setDescription("");
+        setDescription("帮助指令，输出所有可用指令列表");
     }
 
     @Override

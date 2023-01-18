@@ -195,7 +195,7 @@ public class MapleServerHandler extends IoHandlerAdapter {
 
         if (YamlConfig.config.server.USE_DEBUG_SHOW_RCVD_PACKET && !ignoredDebugRecvPackets.contains(packetId)) {
             // 对应RecvOpcode类
-            System.out.println("接收到数据包: " + String.format("ox%02X", packetId));
+            System.out.println("接收到数据包: " + String.format("0x%02X", packetId));
         }
         final MaplePacketHandler packetHandler = processor.getHandler(packetId);
         if (packetHandler != null && packetHandler.validateState(client)) {

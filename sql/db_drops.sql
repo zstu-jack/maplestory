@@ -1,6 +1,6 @@
 -- 第二个执行他，下一个执行：db_shopupdate.sql
 
-USE `heavenms`;
+USE `napms`;
 
   INSERT IGNORE INTO temp_data (`dropperid`, `itemid`, `minimum_quantity`, `maximum_quantity`, `questid`, `chance`) VALUES
   #-- copy+paste inside here as many drop data as possible from the spider (drop generator) files --
