@@ -235,7 +235,7 @@ server:
     USE_DEBUG: false
     USE_DEBUG_SHOW_INFO_EQPEXP: false   #Prints on the cmd all equip exp gain info.
     # 是否打印从客户端接受到的包id
-    USE_DEBUG_SHOW_RCVD_PACKET: true   #Prints on the cmd all received packet ids.
+    USE_DEBUG_SHOW_RCVD_PACKET: false   #Prints on the cmd all received packet ids.
     USE_DEBUG_SHOW_RCVD_MVLIFE: false   #Prints on the cmd all received move life content.
     USE_DEBUG_SHOW_PACKET: false
     USE_SUPPLY_RATE_COUPONS: true       #Allows rate coupons to be sold through the Cash Shop.
