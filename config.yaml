@@ -8,7 +8,7 @@ worlds:
     event_message: 小睡1区!
     why_am_i_recommended: 欢迎来到小睡冒险岛!
     # 频道数
-    channels: 3
+    channels: 5
     # 经验倍率
     exp_rate: 10
     # 金币倍率
