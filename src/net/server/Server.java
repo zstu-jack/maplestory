@@ -953,8 +953,8 @@ public class Server {
         }
         
         System.out.println("Listening on port 8484\r\n\r\n");
-        
-        System.out.println("HeavenMS is now online.\r\n");
+        System.out.println("HeavenMS-Nap is now online.\r\n");
+        System.out.println("·¢²¼°æ±¾: 1.23.0109\r\n");
         online = true;
         
         MapleSkillbookInformationProvider.getInstance();
