@@ -954,7 +954,7 @@ public class Server {
         
         System.out.println("Listening on port 8484\r\n\r\n");
         System.out.println("HeavenMS-Nap is now online.\r\n");
-        System.out.println("发布版本: 1.23.0109\r\n");
+        System.out.println("发布版本: 1.23.0119\r\n");
         online = true;
         
         MapleSkillbookInformationProvider.getInstance();
