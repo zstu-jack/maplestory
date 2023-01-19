@@ -864,7 +864,7 @@ public class Server {
     }
     
     public void init() {
-        System.out.println("HeavenMS v" + ServerConstants.VERSION + " starting up.\r\n");
+        System.out.println("HeavenMS-Nap v" + ServerConstants.VERSION + " starting up.\r\n");
         
         if(YamlConfig.config.server.SHUTDOWNHOOK)
             Runtime.getRuntime().addShutdownHook(new Thread(shutdown(false)));
