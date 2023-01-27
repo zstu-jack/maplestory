@@ -4,7 +4,6 @@
 # build files
 
 /build/
-/dist/
 /nbproject/
 
 tools
