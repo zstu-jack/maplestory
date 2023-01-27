@@ -45,7 +45,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0)
-            qm.sendNext("你好吗，" + (qm.getPlayer().getGender() == 0 ? "小哥哥" : "小姐姐") + " 我是罗杰，一个可以教可爱的冒险家们很多有用信息的人。");
+            qm.sendNext("你好吗，" + (qm.getPlayer().getGender() == 0 ? "小哥哥" : "小姐姐") + "我是罗杰，一个可以教可爱的冒险家们很多有用信息的人。");
         else if (status == 1)
             qm.sendNextPrev("你问我是谁让我来做这些的？\r\n是我自己！我想这样做，只是对你们这些新来的冒险家友好一些。");
         else if (status == 2)
