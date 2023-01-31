@@ -13,8 +13,7 @@
 选择2：https://pan.baidu.com/s/17z3pBKu3jz5AOJmB9eFzqQ  提取码：f5zc  
 如果想联机也参考上面视频
 
-## 进展
-修改说明在docs-change-changelog.txt中  
+## 进展 
 支持中文：50%  
 服务端脚本汉化：0%  
 支持sqlite单机：0%  
@@ -22,7 +21,9 @@
 bug暂不考虑修复，大家可以自行参与解决一下
 
 ## 文档
-[文档](docs/course/目录.md)
+[修改说明](docs/change/changelog.txt)  
+
+[文档](docs/course/目录.md)  
 
 ## 参考
 感谢B站UP [@asotI1O](https://space.bilibili.com/19606926) 提供的搭建教程：  
