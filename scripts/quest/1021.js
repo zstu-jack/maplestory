@@ -34,16 +34,16 @@ function start(mode, type, selection) {
     if (mode == -1) {
         qm.dispose();
     } else {
-        if(mode == 0 && type > 0) {
+        if (mode == 0 && type > 0) {
             qm.dispose();
             return;
         }
-        
+
         if (mode == 1)
             status++;
         else
             status--;
-        
+
         if (status == 0)
             qm.sendNext("你好吗，" + (qm.getPlayer().getGender() == 0 ? "小哥哥" : "小姐姐") + "我是罗杰，一个可以教可爱的冒险家们很多有用信息的人。");
         else if (status == 1)
@@ -54,11 +54,9 @@ function start(mode, type, selection) {
             if (qm.getPlayer().getHp() >= 50) {
                 qm.getPlayer().updateHp(25);
             }
-            
             if (!qm.haveItem(2010007)) {
                 qm.gainItem(2010007, 1);
             }
-            
             qm.forceStartQuest();
             qm.sendNext("被吓到了吗？如果你的血条变成了0，那么你就遇到麻烦了。现在，我会给你一个 #r罗杰的苹果#k。请立刻使用它，然后你就会恢复健康。打开物品界面，然后双击使用。嘿，有一个更加简单打开物品界面的方法，那就是按下 #bI#k 键。");
         } else if (status == 4) {
@@ -74,36 +72,36 @@ function end(mode, type, selection) {
     if (mode == -1) {
         qm.dispose();
     } else {
-        if(mode == 0 && type > 0) {
+        if (mode == 0 && type > 0) {
             qm.dispose();
             return;
         }
-        
-        if (mode == 1)
+        if (mode == 1) {
             status++;
-        else
+        } else {
             status--;
-        
-        if (status == 0)
+        }
+        if (status == 0) {
             if (qm.c.getPlayer().getHp() < 50) {
                 qm.sendNext("嘿，你的血条还没有完全恢复，你确定你已经使用了我给你的所有的苹果吗？");
                 qm.dispose();
-            } else
+            } else {
                 qm.sendNext("使用物品是如此的简单，对吧？你可以设置 #b快捷键#k 在右下角的快捷栏里。哈哈，你是不是第一次听说？\r\n如果你是一个新手，你应该不知道的是，血条通常会随着时间的流逝自动恢复。好的，虽然花费了一些时间，但是这个新手们必须学会的一些知识。");
-        else if (status == 1)
+            }
+        } else if (status == 1) {
             qm.sendNextPrev("好吧，现在你学到了很多，我将给你一份礼物。这是你在冒险岛世界旅行的必备物品，所以谢谢我吧！记住，请在紧急情况下使用！");
-        else if (status == 2)
+        } else if (status == 2) {
             qm.sendPrev("好吧，这就是我能教你的全部了。我知道这很难过，但是时候说再见了。保重，祝你好运，我的朋友！\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v2010000# 3 #t2010000#\r\n#v2010009# 3 #t2010009#\r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 10 经验");
-        else if (status == 3) {
-            if(qm.isQuestCompleted(1021))
-                qm.dropMessage(1,"未知的错误");
-            else if(qm.canHold(2010000) && qm.canHold(2010009)){
+        } else if (status == 3) {
+            if (qm.isQuestCompleted(1021)) {
+                qm.dropMessage(1, "未知的错误");
+            } else if (qm.canHold(2010000) && qm.canHold(2010009)) {
                 qm.gainExp(10);
                 qm.gainItem(2010000, 3);
                 qm.gainItem(2010009, 3);
                 qm.forceCompleteQuest();
-            }else
-                qm.dropMessage(1,"你的背包满了");
+            } else
+                qm.dropMessage(1, "你的背包满了");
             qm.dispose();
         }
     }

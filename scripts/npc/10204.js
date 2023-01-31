@@ -22,21 +22,22 @@
 var status = -1;
 
 function start() {
-    cm.sendNext("Pirates are blessed with outstanding dexterity and power, utilizing their guns for long-range attacks while using their power on melee combat situations. Gunslingers use elemental-based bullets for added damage, while Infighters transform to a different being for maximum effect.");
+    cm.sendNext("海盗拥有出众的灵活性和力量，在近战战斗中利用他们的枪进行远程攻击。枪手使用基于元素的子弹来增加伤害，而步兵则转换成不同的存在以获得最大效果。");
 }
 
 function action(mode, type, selection) {
     status++;
-    if (mode != 1){
-        if(mode == 0)
-           cm.sendNext("If you wish to experience what it's like to be a Pirate, come see me again.");
+    if (mode != 1) {
+        if (mode == 0) {
+            cm.sendNext("如果你想体验当海盗的感觉，再次与我对话。");
+        }
         cm.dispose();
         return;
     }
     if (status == 0) {
-        cm.sendYesNo("Would you like to experience what it's like to be a Pirate?");
-    } else if (status == 1){
-	cm.lockUI();
+        cm.sendYesNo("你想体验一下当海盗的感觉吗？");
+    } else if (status == 1) {
+        cm.lockUI();
         cm.warp(1020500, 0);
         cm.dispose();
     }
