@@ -6,7 +6,7 @@ import client.command.Command;
 
 public class ReadPointsCommand extends Command {
     {
-        setDescription("");
+        setDescription("查询奖励点数和投票点数，暂时没发现有什么用");
     }
 
     @Override

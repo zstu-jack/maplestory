@@ -28,7 +28,7 @@ import client.MapleClient;
 
 public class EquipLvCommand extends Command {
     {
-        setDescription("");
+        setDescription("显示装备等级");
     }
 
     @Override

@@ -31,37 +31,74 @@ import server.maps.FieldLimit;
 
 public class JoinEventCommand extends Command {
     {
-        setDescription("");
+        setDescription("参加或离开活动");
     }
 
     @Override
     public void execute(MapleClient c, String[] params) {
+        if (params.length == 0) {
+            MapleCharacter player = c.getPlayer();
+            player.yellowMessage("输入: @event <join/leave> 加入或离开活动");
+            return;
+        }
+        if ("join".equals(params[0])) {
+            join(c);
+        } else if ("leave".equals(params[0])) {
+            leave(c);
+        }
+    }
+
+    private void join(MapleClient c) {
         MapleCharacter player = c.getPlayer();
-        if(!FieldLimit.CANNOTMIGRATE.check(player.getMap().getFieldLimit())) {
+        if (!FieldLimit.CANNOTMIGRATE.check(player.getMap().getFieldLimit())) {
             MapleEvent event = c.getChannelServer().getEvent();
-            if(event != null) {
-                if(event.getMapId() != player.getMapId()) {
-                    if(event.getLimit() > 0) {
-                        player.saveLocation("EVENT");
+            if (null == event) {
+                return;
+            }
+            if (event.getMapId() == player.getMapId()) {
+                player.dropMessage(5, "你已经在活动中了");
+                return;
+            }
 
-                        if(event.getMapId() == 109080000 || event.getMapId() == 109060001)
-                            player.setTeam(event.getLimit() % 2);
+            if (event.getLimit() > 0) {
+                player.saveLocation("EVENT");
 
-                        event.minusLimit();
-
-                        player.saveLocationOnWarp();
-                        player.changeMap(event.getMapId());
-                    } else {
-                        player.dropMessage(5, "The limit of players for the event has already been reached.");
-                    }
-                } else {
-                    player.dropMessage(5, "You are already in the event.");
+                if (event.getMapId() == 109080000 || event.getMapId() == 109060001) {
+                    player.setTeam(event.getLimit() % 2);
                 }
+
+                event.minusLimit();
+
+                player.saveLocationOnWarp();
+                player.changeMap(event.getMapId());
             } else {
-                player.dropMessage(5, "There is currently no event in progress.");
+                player.dropMessage(5, "已达到活动的玩家限制");
             }
         } else {
-            player.dropMessage(5, "You are currently in a map where you can't join an event.");
+            player.dropMessage(5, "您当前所处的地图无法加入活动");
+        }
+    }
+
+    private void leave(MapleClient c) {
+        MapleCharacter player = c.getPlayer();
+        int returnMap = player.getSavedLocation("EVENT");
+        if (returnMap != -1) {
+            if (player.getOla() != null) {
+                player.getOla().resetTimes();
+                player.setOla(null);
+            }
+            if (player.getFitness() != null) {
+                player.getFitness().resetTimes();
+                player.setFitness(null);
+            }
+
+            player.saveLocationOnWarp();
+            player.changeMap(returnMap);
+            if (c.getChannelServer().getEvent() != null) {
+                c.getChannelServer().getEvent().addLimit();
+            }
+        } else {
+            player.dropMessage(5, "你没有参加活动");
         }
     }
 }

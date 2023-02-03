@@ -23,19 +23,22 @@
 */
 package client.command.commands.gm0;
 
+import client.MapleCharacter;
 import client.command.Command;
 import client.MapleClient;
 
 public class ToggleExpCommand extends Command {
     {
-        setDescription("");
+        setDescription("切换是否获取经验");
     }
 
     @Override
     public void execute(MapleClient c, String[] params) {
         if (c.tryacquireClient()) {
+            MapleCharacter player = c.getPlayer();
             try {
-                c.getPlayer().toggleExpGain();  // Vcoc's idea
+                player.toggleExpGain();  // Vcoc's idea
+                player.dropMessage(5, "已切换" + (player.isAllowExpGain() ? "" : "不") + "获取经验");
             } finally {
                 c.releaseClient();
             }

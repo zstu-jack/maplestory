@@ -34,7 +34,7 @@ import tools.Pair;
 
 public class RanksCommand extends Command {
     {
-        setDescription("");
+        setDescription("²é¿´ÅÅÃû");
     }
 
     @Override

@@ -906,6 +906,10 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
         allowExpGain = !allowExpGain;
     }
 
+    public boolean isAllowExpGain() {
+        return allowExpGain;
+    }
+
     public void setClient(MapleClient c) {
         this.client = c;
     }

@@ -29,19 +29,29 @@ import client.MapleClient;
 import net.server.Server;
 import net.server.channel.Channel;
 
+import java.util.List;
+
 public class OnlineCommand extends Command {
     {
-        setDescription("");
+        setDescription("查询在线人数，人物所在位置");
     }
 
     @Override
     public void execute(MapleClient c, String[] params) {
         MapleCharacter player = c.getPlayer();
-        for (Channel ch : Server.getInstance().getChannelsFromWorld(player.getWorld())) {
-            player.yellowMessage("Players in Channel " + ch.getId() + ":");
+        List<Channel> channels = Server.getInstance().getChannelsFromWorld(player.getWorld());
+
+        if (params.length == 0) {
+            player.message("当前在线人数: " + channels.parallelStream().mapToInt(ch -> ch.getPlayerStorage().getAllCharacters().size()).sum());
+            player.yellowMessage("输入 @online <人物姓名/人物id> 查询人物位置");
+            return;
+        }
+        String param = params[0].trim();
+        for (Channel ch : channels) {
             for (MapleCharacter chr : ch.getPlayerStorage().getAllCharacters()) {
-                if (!chr.isGM()) {
-                    player.message(" >> " + MapleCharacter.makeMapleReadable(chr.getName()) + " is at " + chr.getMap().getMapName() + ".");
+                if (!chr.isGM() && (param.equals(chr.getName()) || param.equals(String.valueOf(chr.getId())))) {
+                    player.message("ID: " + chr.getId() + "(" + chr.getName() + ")" + "，正处于地图: " + chr.getMap().getMapName());
+                    break;
                 }
             }
         }

@@ -194,14 +194,9 @@ public class CommandsExecutor {
         addCommand("online", OnlineCommand.class);
         addCommand("bug", ReportBugCommand.class);
         addCommand("points", ReadPointsCommand.class);
-        addCommand("joinevent", JoinEventCommand.class);
-        addCommand("leaveevent", LeaveEventCommand.class);
+        addCommand("event", JoinEventCommand.class);
         addCommand("ranks", RanksCommand.class);
-        addCommand("str", StatStrCommand.class);
-        addCommand("dex", StatDexCommand.class);
-        addCommand("int", StatIntCommand.class);
-        addCommand("luk", StatLukCommand.class);
-        addCommand("enableauth", EnableAuthCommand.class);
+        addCommand("autoadd", AutoAddCommand.class);
         addCommand("toggleexp", ToggleExpCommand.class);
         addCommand("mylawn", MapOwnerClaimCommand.class);
         addCommand("bosshp", BossHpCommand.class);

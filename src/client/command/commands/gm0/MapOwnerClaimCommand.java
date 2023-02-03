@@ -31,7 +31,7 @@ import server.maps.MapleMap;
 
 public class MapOwnerClaimCommand extends Command {
     {
-        setDescription("");
+        setDescription("宣称地图所有权");
     }
 
     @Override
@@ -39,34 +39,33 @@ public class MapOwnerClaimCommand extends Command {
         if (c.tryacquireClient()) {
             try {
                 MapleCharacter chr = c.getPlayer();
-                
-                if (YamlConfig.config.server.USE_MAP_OWNERSHIP_SYSTEM) {
-                    if (chr.getEventInstance() == null) {
-                        MapleMap map = chr.getMap();
-                        if (map.countBosses() == 0) {   // thanks Conrad for suggesting bosses prevent map leasing
-                            MapleMap ownedMap = chr.getOwnedMap();  // thanks Conrad for suggesting not unlease a map as soon as player exits it
-                            if (ownedMap != null) {
-                                ownedMap.unclaimOwnership(chr);
+                if (!YamlConfig.config.server.USE_MAP_OWNERSHIP_SYSTEM) {
+                    chr.dropMessage(5, "该功能不可用");
+                    return;
+                }
+                if (null != chr.getEventInstance()) {
+                    chr.dropMessage(5, "你无法获得地图所有权");
+                    return;
+                }
 
-                                if (map == ownedMap) {
-                                    chr.dropMessage(5, "This lawn is now free real estate.");
-                                    return;
-                                }
-                            }
+                MapleMap map = chr.getMap();
+                if (map.countBosses() > 0) {
+                    chr.dropMessage(5, "地图正被BOSS围攻");
+                    return;
+                }
+                MapleMap ownedMap = chr.getOwnedMap();
+                if (ownedMap != null) {
+                    ownedMap.unclaimOwnership(chr);
 
-                            if (map.claimOwnership(chr)) {
-                                chr.dropMessage(5, "You have leased this lawn for a while, until you leave here or after 1 minute of inactivity.");
-                            } else {
-                                chr.dropMessage(5, "This lawn has already been leased by a player.");
-                            }
-                        } else {
-                            chr.dropMessage(5, "This lawn is currently under a boss siege.");
-                        }
-                    } else {
-                        chr.dropMessage(5, "This lawn cannot be leased.");
+                    if (map == ownedMap) {
+                        chr.dropMessage(5, "已释放该地图所有权");
+                        return;
                     }
+                }
+                if (map.claimOwnership(chr)) {
+                    chr.dropMessage(5, "你已拥有该地图的所有权，直到你离开或者1分钟不活动后释放");
                 } else {
-                    chr.dropMessage(5, "Feature unavailable.");
+                    chr.dropMessage(5, "该地图已被其他玩家拥有");
                 }
             } finally {
                 c.releaseClient();
