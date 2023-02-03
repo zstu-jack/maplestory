@@ -170,9 +170,9 @@ server:
     USE_THREAD_TRACKER: false
 
     # 数据库配置，ip=localhost，端口=3306，字符集=gbk，用户名=root，密码=，是否开启线程池=false
-    DB_URL: "jdbc:mysql://192.168.2.41:3306/napms?useUnicode=true&characterEncoding=gbk"
+    DB_URL: "jdbc:mysql://127.0.0.1:3306/napms?useUnicode=true&characterEncoding=gbk"
     DB_USER: "root"
-    DB_PASS: "Nap_123456"
+    DB_PASS: "root"
     # 个人可不用开启线程池，联机可开启，默认10个，账号创建越多，线程池越大，最大无上限
     DB_CONNECTION_POOL: false
 
@@ -214,8 +214,8 @@ server:
     # 是否允许多开，检查异地登录的ip
     DETERRED_MULTICLIENT: false
 
-    #Multiclient Coordinator Configuration
-    MAX_ALLOWED_ACCOUNT_HWID: 10        #Allows up to N concurrent HWID's for an account. HWID's remains linked to an account longer the more times it's used to login.
+    # 一个账号最多能支持的机器码登录
+    MAX_ALLOWED_ACCOUNT_HWID: 10
     MAX_ACCOUNT_LOGIN_ATTEMPT: 15       #After N tries on an account, login on that account gets disabled for a short period.
     LOGIN_ATTEMPT_DURATION: 120         #Period in seconds the login attempt remains registered on the system.
 
@@ -291,7 +291,8 @@ server:
     USE_ENABLE_FULL_RESPAWN: false
     USE_ENABLE_CHAT_LOG: false          #Write in-game chat to log
     USE_REBIRTH_SYSTEM: false           #Flag to enable/disable rebirth system
-    USE_MAP_OWNERSHIP_SYSTEM: false      #Flag to enable/disable map ownership system
+    # 是否开启地图所有权系统
+    USE_MAP_OWNERSHIP_SYSTEM: false
     USE_FISHING_SYSTEM: false            #Flag to enable/disable custom fishing system
     USE_NPCS_SCRIPTABLE: true           #Flag to enable/disable serverside predefined script NPCs.
 

@@ -199,8 +199,6 @@ public class CommandsExecutor {
         addCommand("autoadd", AutoAddCommand.class);
         addCommand("toggleexp", ToggleExpCommand.class);
         addCommand("mylawn", MapOwnerClaimCommand.class);
-        addCommand("bosshp", BossHpCommand.class);
-        addCommand("mobhp", MobHpCommand.class);
         addCommand("map", MapIdCommand.class);
 
         commandsNameDesc.add(levelCommandsCursor);
@@ -210,6 +208,8 @@ public class CommandsExecutor {
     private void registerLv1Commands() {
         levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
 
+        addCommand("bosshp", 1, BossHpCommand.class);
+        addCommand("mobhp", 1, MobHpCommand.class);
         addCommand("whatdropsfrom", 1, WhatDropsFromCommand.class);
         addCommand("whodrops", 1, WhoDropsCommand.class);
         addCommand("buffme", 1, BuffMeCommand.class);
