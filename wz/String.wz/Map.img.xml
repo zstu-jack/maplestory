@@ -16,7 +16,7 @@
     </imgdir>
     <imgdir name="1000000">
       <string name="streetName" value="Rainbow Street"/>
-      <string name="mapName" value="Amherst"/>
+      <string name="mapName" value="彩虹村西郊平原"/>
       <string name="mapDesc" value="A town located on the east side of Maple Island. Contains shops that sell weapons, armors, and general goods."/>
     </imgdir>
     <imgdir name="1000001">
@@ -115,7 +115,7 @@
     </imgdir>
     <imgdir name="60000">
       <string name="streetName" value="Maple Road"/>
-      <string name="mapName" value="Southperry"/>
+      <string name="mapName" value="南港"/>
       <string name="mapDesc" value="An harbor down south. It&apos;s the place where you can travel to a much bigger island."/>
       <string name="help0" value="#e[To Enter the Event]#n\n\n  If there&apos;s a notice posted in #b#ein blue#n#k saying that we&apos;re accepting participants for an event, click on #e[Paul]#n and choose #e[Yeah, let&apos;s go!]#n to enter.\n  If you have already clicked on [Paul] when the event starts, then just click on [Yeah, let&apos;s go!] to enter.\n\n  Please read the event notice before entering.\n  Once the event starts, participants will be accepted as #efirst come, first serve#n until the event is full.\n\n#eYou can&apos;t enter an event more than once within 24 hours.#n\n\n  You won&apos;t be able to enter the event if you don&apos;t have any free slots available on your etc. inventory to receive an &apos;Event Trophy,&apos; so make sure to leave a slot available.\n If you already have a #bSecret Scroll#k, please discard it before entering the event..\n\n#r  If you change channels or enter the #bCash Shop#k during the event, you&apos;ll automatically be disqualified from the event."/>
     </imgdir>
@@ -157,7 +157,7 @@
   <imgdir name="victoria">
     <imgdir name="100000000">
       <string name="streetName" value="Victoria Road"/>
-      <string name="mapName" value="Henesys"/>
+      <string name="mapName" value="射手村"/>
       <string name="mapDesc" value="It&apos;s a bowman town on a wide prairie, and you can choose to become a bowman here."/>
     </imgdir>
     <imgdir name="100000001">
@@ -338,7 +338,7 @@
     </imgdir>
     <imgdir name="101000000">
       <string name="streetName" value="Victoria Road"/>
-      <string name="mapName" value="Ellinia"/>
+      <string name="mapName" value="魔法密林"/>
       <string name="mapDesc" value="It&apos;s a magician town surrounded by the forest, and you can choose to become a magician here."/>
     </imgdir>
     <imgdir name="101000001">
@@ -559,7 +559,7 @@
     </imgdir>
     <imgdir name="102000000">
       <string name="streetName" value="Victoria Road"/>
-      <string name="mapName" value="Perion"/>
+      <string name="mapName" value="勇士部落"/>
       <string name="mapDesc" value="It&apos;s a warrior town located at the high mountainous area, and you can choose to become a warrior here."/>
     </imgdir>
     <imgdir name="102000001">
@@ -652,7 +652,7 @@
     </imgdir>
     <imgdir name="103000000">
       <string name="streetName" value="Victoria Road"/>
-      <string name="mapName" value="Kerning City"/>
+      <string name="mapName" value="废弃都市"/>
       <string name="mapDesc" value="It&apos;s a thief town in the middle of the city where the sun sets. You can choose to become a thief here."/>
     </imgdir>
     <imgdir name="103000001">
@@ -817,7 +817,7 @@
     </imgdir>
     <imgdir name="104000000">
       <string name="streetName" value="Victoria Road"/>
-      <string name="mapName" value="Lith Harbor"/>
+      <string name="mapName" value="明珠港"/>
       <string name="mapDesc" value="The port city in Victoria Island. Enables one to travel to different cities."/>
       <string name="help0" value="#e[How to Participate in this Event]#n\n\n  There will be a notice popping up, written in #b#eBlue#n#. When that happens, click on #e[Jean]#n and click on #e[Alright, let&apos;s go.]#n to enter.\n If you have already clicked on [Jean] before the notice popped up, all you need to do is click on [Alright, let&apos;s go.] to enter.\n\n  Please check the Event notice first before entering the event.\n  Once the event notice is up, we&apos;ll be gathering up the event participants on a #eFirst-come, First-serve#n order.\n\n  You may not participate in more than ONE event for every 24 hrs.\n  You won&apos;t be able to participate in this event if you do not have the necessary free spots available for &apos;Participation Reward&apos;, so please make sure to leave a free etc. slot open before joining the event.\n  If you possess the Scroll of Darkness, then you&apos;ll need to throw it away before participating.\n\n#r  During the event, if you happen to change the channel or use the Cash Shop while at the Event map, you won&apos;t be able to return to the event, thereby getting disqualified from the event, so please be careful on that."/>
       <string name="help1" value="#e[ Monster Attack ]#n\n\n#e#rA BIG MONSTER ALERT!!!#k#n\n\n A force of evil that had been sealed up for ages have recently been let loose, and the evil monsters that have soaked up the force are planning to attack any town of their choice! This is when we all need to gather up and unite as one in defeating the monsters that may endanger the lives of mnay in the area. \nThese monsters are controlled by the force of evil, and are all very powerful.\n\nThe #e#bForce of Evil#k#n that can be collected by defeating all the monsters attacking the village should be taken to the #e#bMaple Administrator#k#n.\nAfter sealing up the monstrous force through spells, the #e#bforce of evil#k#n can then be taken to #e#bNPC The Rememberer#k#n.\nAlright, now please head over to the town where the monsters have attacked, and please save the town from getting totally demolished by these evil monsters!"/>
@@ -904,7 +904,7 @@
     </imgdir>
     <imgdir name="105040300">
       <string name="streetName" value="Dungeon"/>
-      <string name="mapName" value="Sleepywood"/>
+      <string name="mapName" value="林中之城"/>
     </imgdir>
     <imgdir name="105040301">
       <string name="streetName" value="Dungeon"/>
@@ -1641,7 +1641,7 @@
     </imgdir>
     <imgdir name="120000000">
       <string name="streetName" value="Victoria Road"/>
-      <string name="mapName" value="Nautilus Harbor"/>
+      <string name="mapName" value="诺特勒斯号码头"/>
       <string name="mapDesc" value="The harbor where Nautilus is at anchor. One will be able to become a dauntless pirate here. "/>
     </imgdir>
     <imgdir name="120000100">

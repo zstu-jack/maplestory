@@ -27,8 +27,10 @@ import client.MapleCharacter;
 import client.command.Command;
 import client.MapleClient;
 import constants.game.GameConstants;
+
 import java.util.ArrayList;
 import java.util.Collections;
+
 import server.maps.MaplePortal;
 import server.maps.FieldLimit;
 import server.maps.MapleMap;
@@ -42,16 +44,16 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class GotoCommand extends Command {
-    
+
     {
-        setDescription("");
-        
+        setDescription("移动到指定地图");
+
         List<Entry<String, Integer>> towns = new ArrayList<>(GameConstants.GOTO_TOWNS.entrySet());
         sortGotoEntries(towns);
-        
+
         try {
             // thanks shavit for noticing goto areas getting loaded from wz needlessly only for the name retrieval
-            
+
             for (Map.Entry<String, Integer> e : towns) {
                 GOTO_TOWNS_INFO += ("'" + e.getKey() + "' - #b" + (MapleMapFactory.loadPlaceName(e.getValue())) + "#k\r\n");
             }
@@ -63,21 +65,20 @@ public class GotoCommand extends Command {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            
-            GOTO_TOWNS_INFO = "(none)";
-            GOTO_AREAS_INFO = "(none)";
+
+            GOTO_TOWNS_INFO = "(未知)";
+            GOTO_AREAS_INFO = "(未知)";
         }
-        
+
     }
-    
+
     public static String GOTO_TOWNS_INFO = "";
     public static String GOTO_AREAS_INFO = "";
-    
+
     private static void sortGotoEntries(List<Entry<String, Integer>> listEntries) {
         Collections.sort(listEntries, new Comparator<Entry<String, Integer>>() {
             @Override
-            public int compare(Entry<String, Integer> e1, Entry<String, Integer> e2)
-            {
+            public int compare(Entry<String, Integer> e1, Entry<String, Integer> e2) {
                 return e1.getValue().compareTo(e2.getValue());
             }
         });
@@ -86,24 +87,24 @@ public class GotoCommand extends Command {
     @Override
     public void execute(MapleClient c, String[] params) {
         MapleCharacter player = c.getPlayer();
-        if (params.length < 1){
-            String sendStr = "Syntax: #b@goto <map name>#k. Available areas:\r\n\r\n#rTowns:#k\r\n" + GOTO_TOWNS_INFO;
+        if (params.length < 1) {
+            String sendStr = "输入: #b@goto <地图名/id>#k。可到达的地图:\r\n\r\n#r城镇:#k\r\n" + GOTO_TOWNS_INFO;
             if (player.isGM()) {
-                sendStr += ("\r\n#rAreas:#k\r\n" + GOTO_AREAS_INFO);
+                sendStr += ("\r\n#r区域:#k\r\n" + GOTO_AREAS_INFO);
             }
-            
+
             player.getAbstractPlayerInteraction().npcTalk(9000020, sendStr);
             return;
         }
-        
+
         if (!player.isAlive()) {
-            player.dropMessage(1, "This command cannot be used when you're dead.");
+            player.dropMessage(1, "死亡时不能使用该指令");
             return;
         }
 
         if (!player.isGM()) {
             if (player.getEventInstance() != null || MapleMiniDungeonInfo.isDungeonMap(player.getMapId()) || FieldLimit.CANNOTMIGRATE.check(player.getMap().getFieldLimit())) {
-                player.dropMessage(1, "This command can not be used in this map.");
+                player.dropMessage(1, "你所处的位置不能使用该指令");
                 return;
             }
         }
@@ -115,21 +116,31 @@ public class GotoCommand extends Command {
         } else {
             gotomaps = GameConstants.GOTO_TOWNS;
         }
-        
+
         if (gotomaps.containsKey(params[0])) {
             MapleMap target = c.getChannelServer().getMapFactory().getMap(gotomaps.get(params[0]));
-            
+
             // expedition issue with this command detected thanks to Masterrulax
             MaplePortal targetPortal = target.getRandomPlayerSpawnpoint();
             player.saveLocationOnWarp();
             player.changeMap(target, targetPortal);
+        } else if (gotomaps.containsValue(Integer.valueOf(params[0]))) {
+            for (Integer value : gotomaps.values()) {
+                if (value.equals(Integer.valueOf(params[0]))) {
+                    MapleMap target = c.getChannelServer().getMapFactory().getMap(value);
+                    MaplePortal targetPortal = target.getRandomPlayerSpawnpoint();
+                    player.saveLocationOnWarp();
+                    player.changeMap(target, targetPortal);
+                    break;
+                }
+            }
         } else {
             // detailed info on goto available areas suggested thanks to Vcoc
-            String sendStr = "Area '#r" + params[0] + "#k' is not available. Available areas:\r\n\r\n#rTowns:#k" + GOTO_TOWNS_INFO;
+            String sendStr = "你输入的地图 '#r" + params[0] + "#k' 无效。 可到达的地图:\r\n\r\n#r城镇:#k" + GOTO_TOWNS_INFO;
             if (player.isGM()) {
-                sendStr += ("\r\n#rAreas:#k\r\n" + GOTO_AREAS_INFO);
+                sendStr += ("\r\n#r区域:#k\r\n" + GOTO_AREAS_INFO);
             }
-            
+
             player.getAbstractPlayerInteraction().npcTalk(9000020, sendStr);
         }
     }

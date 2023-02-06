@@ -36,6 +36,7 @@ import client.inventory.Item;
 import client.processor.action.BuybackProcessor;
 import net.AbstractMaplePacketHandler;
 import net.server.Server;
+import scripting.npc.NPCScriptManager;
 import server.MTSItemInfo;
 import server.maps.FieldLimit;
 import server.maps.MapleMiniDungeonInfo;
@@ -54,6 +55,7 @@ public final class EnterMTSHandler extends AbstractMaplePacketHandler {
             c.announce(MaplePacketCreator.enableActions());
         } else {
             if (!YamlConfig.config.server.USE_MTS) {
+                openCenterScript(c);
                 c.announce(MaplePacketCreator.enableActions());
                 return;
             }
@@ -283,5 +285,14 @@ public final class EnterMTSHandler extends AbstractMaplePacketHandler {
             e.printStackTrace();
         }
         return items;
+    }
+
+    /**
+     * 打开菜单中心脚本
+     *
+     * @param c 客户端
+     */
+    private void openCenterScript(MapleClient c) {
+        NPCScriptManager.getInstance().start(c, 9900001, null);
     }
 }
