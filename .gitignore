@@ -5,7 +5,7 @@
 /nbproject/
 *.onetoc2
 
-tools/*.iml
+tools/*/*.iml
 out
 heaven-ms-nap.iml
 src/META-INF
