@@ -1,15 +1,11 @@
 ﻿logs
 .idea/
 
-# build files
-
 /build/
 /nbproject/
-
-tools
-
-/out
 *.onetoc2
 
+tools/*.iml
+out
 heaven-ms-nap.iml
 src/META-INF
