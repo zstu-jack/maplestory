@@ -46,13 +46,13 @@ var towns = Array(
 // 练级
 var exps = Array(
     Array("射手训练场1", 104040000, 0),
-    Array("蘑菇城", 106020000, 0)
+    Array("射手训练场2", 104040001, 0)
 );
 
 // 野外BOSS
 var wilds = Array(
     Array("蜗牛王", 104000400, 0),
-    Array("蘑菇城", 106020000, 0)
+    Array("树妖王", 101030404, 0)
 );
 
 function start() {
@@ -63,62 +63,62 @@ function start() {
 function action(mode, type, selection) {
     if (mode === -1) {
         cm.dispose();
+        return;
+    }
+    if (status >= 0 && mode === 0) {
+        cm.dispose();
+        return;
+    }
+    if (mode === 1) {
+        status++;
     } else {
-        if (status >= 0 && mode === 0) {
-            cm.dispose();
-            return;
-        }
-        if (mode === 1) {
-            status++;
+        status--;
+    }
+    if (status === 0) {
+        var text = "#e#k小睡冒险岛传送服务#k\r\n\r\n #L0##e#d城镇地图传送#l \r\n #L1#练级地图传送#l \r\n #L2#野外BOSS传送#l \r\n";
+        cm.sendSimple(text);
+    } else if (status === 1) {
+        typeIdx = selection;
+        var i = 0;
+        if (selection === 0) {
+            sText = "#b";
+            for (i = 0; i < towns.length; i++) {
+                sText += "#L" + i + "#" + towns[i][0] + "\r\n";
+            }
+            cm.sendSimple(sText);
+        } else if (selection === 1) {
+            sText = "#b";
+            for (i = 0; i < exps.length; i++) {
+                sText += "#L" + i + "#" + exps[i][0] + "\r\n";
+            }
+            cm.sendSimple(sText);
+        } else if (selection === 2) {
+            sText = "#b";
+            for (i = 0; i < wilds.length; i++) {
+                sText += "#L" + i + "#" + wilds[i][0] + "\r\n";
+            }
+            cm.sendSimple(sText);
         } else {
-            status--;
+            cm.dispose();
         }
-        if (status === 0) {
-            var text = "#e#k小睡冒险岛传送服务#k\r\n\r\n #L0##e#d城镇地图传送#l \r\n #L1#练级地图传送#l \r\n #L2#野外BOSS传送#l \r\n";
-            cm.sendSimple(text);
-        } else if (status === 1) {
-            typeIdx = selection;
-            var i = 0;
-            if (selection === 0) {
-                sText = "#b";
-                for (i = 0; i < towns.length; i++) {
-                    sText += "#L" + i + "#" + towns[i][0] + "\r\n";
-                }
-                cm.sendSimple(sText);
-            } else if (selection === 1) {
-                sText = "#b";
-                for (i = 0; i < exps.length; i++) {
-                    sText += "#L" + i + "#" + exps[i][0] + "\r\n";
-                }
-                cm.sendSimple(sText);
-            } else if (selection === 2) {
-                sText = "#b";
-                for (i = 0; i < wilds.length; i++) {
-                    sText += "#L" + i + "#" + wilds[i][0] + "\r\n";
-                }
-                cm.sendSimple(sText);
-            } else {
-                cm.dispose();
-            }
-        } else if (status === 2) {
-            mapIdx = selection;
-            var cost;
-            var mapId;
-            if (typeIdx === 0) {
-                cost = towns[mapIdx][2];
-                mapId = towns[mapIdx][1];
-            } else if (typeIdx === 1) {
-                cost = exps[mapIdx][2];
-                mapId = exps[mapIdx][1];
-            } else if (typeIdx === 2) {
-                cost = wilds[mapIdx][2];
-                mapId = wilds[mapIdx][1];
-            }
-            if (cm.getMeso() >= cost) {
-                cm.gainMeso(-cost);
-                cm.message("本次传送花费: " + cost + " 金币");
-                cm.warp(mapId);
-            }
+    } else if (status === 2) {
+        mapIdx = selection;
+        var cost;
+        var mapId;
+        if (typeIdx === 0) {
+            cost = towns[mapIdx][2];
+            mapId = towns[mapIdx][1];
+        } else if (typeIdx === 1) {
+            cost = exps[mapIdx][2];
+            mapId = exps[mapIdx][1];
+        } else if (typeIdx === 2) {
+            cost = wilds[mapIdx][2];
+            mapId = wilds[mapIdx][1];
+        }
+        if (cm.getMeso() >= cost) {
+            cm.gainMeso(-cost);
+            cm.message("本次传送花费: " + cost + " 金币");
+            cm.warp(mapId);
         }
     }
 }
