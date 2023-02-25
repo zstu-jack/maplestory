@@ -930,12 +930,10 @@ public class Server {
             System.exit(0);
         }
         
-        System.out.println();
-        
         if(YamlConfig.config.server.USE_FAMILY_SYSTEM) {
             timeToTake = System.currentTimeMillis();
             MapleFamily.loadAllFamilies();
-            System.out.println("Families loaded in " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " seconds\r\n");
+            System.out.println("Families loaded in " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " seconds");
         }
         
         System.out.println();
@@ -952,9 +950,10 @@ public class Server {
             ex.printStackTrace();
         }
         
-        System.out.println("Listening on port 8484\r\n\r\n");
-        System.out.println("HeavenMS-Nap is now online.\r\n");
-        System.out.println("发布版本: 1.23.0119\r\n");
+        System.out.println("Listening on port 8484");
+        System.out.println("HeavenMS-Nap is now online.");
+        System.out.println();
+        System.out.println("发布版本: 1.23.00225");
         online = true;
         
         MapleSkillbookInformationProvider.getInstance();
