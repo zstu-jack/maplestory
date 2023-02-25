@@ -170,9 +170,9 @@ server:
     USE_THREAD_TRACKER: false
 
     # 数据库配置，ip=localhost，端口=3306，字符集=gbk，用户名=root，密码=，是否开启线程池=false
-    DB_URL: "jdbc:mysql://127.0.0.1:3306/napms?useUnicode=true&characterEncoding=gbk"
+    DB_URL: "jdbc:mysql://192.168.2.41:3306/napms?useUnicode=true&characterEncoding=gbk"
     DB_USER: "root"
-    DB_PASS: "root"
+    DB_PASS: "Nap_123456"
     # 个人可不用开启线程池，联机可开启，默认10个，账号创建越多，线程池越大，最大无上限
     DB_CONNECTION_POOL: false
 

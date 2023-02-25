@@ -5,7 +5,7 @@ var selectedMap = -1;
 var mesos;
 
 function start() {
-    cm.sendNext("Hello, I drive the Regular Cab. If you want to go from town to town safely and fast, then ride our cab. We'll glady take you to your destination with an affordable price.");
+    cm.sendNext("你好，我们是城镇巴士，如果你想安全、快速的从一座城市到达另一座城市，乘坐巴士是你最好的选择。我们很乐意以实惠的价格带您到达目的地。");
 }
 
 function action(mode, type, selection) {
@@ -16,7 +16,7 @@ function action(mode, type, selection) {
             cm.dispose();
             return;
         } else if (status >= 2 && mode == 0) {
-            cm.sendNext("There's a lot to see in this town, too. Come back and find us when you need to go to a different town.");
+            cm.sendNext("这座城市也有很多可看的，当你需要去另一个城镇时，回来找我们。");
             cm.dispose();
             return;
         }
@@ -27,13 +27,13 @@ function action(mode, type, selection) {
         if (status == 1) {
             var selStr = "";
             if (cm.getJobId() == 0)
-                selStr += "We have a special 90% discount for beginners.";
-            selStr += "Choose your destination, for fees will change from place to place.#b";
+                selStr += "我们对新人打9折";
+            selStr += "选择您的目的地，费用会因地点而异。#b";
             for (var i = 0; i < maps.length; i++)
-                selStr += "\r\n#L" + i + "##m" + maps[i] + "# (" + (cm.getJobId() == 0 ? cost[i] / 10 : cost[i]) + " mesos)#l";
+                selStr += "\r\n#L" + i + "##m" + maps[i] + "# (" + (cm.getJobId() == 0 ? cost[i] / 10 : cost[i]) + " 金币)#l";
             cm.sendSimple(selStr);
         } else if (status == 2) {
-            cm.sendYesNo("You don't have anything else to do here, huh? Do you really want to go to #b#m" + maps[selection] + "##k? It'll cost you #b"+ (cm.getJobId() == 0 ? cost[selection] / 10 : cost[selection]) + " mesos#k.");
+            cm.sendYesNo("你在这里没有别的事可做，是吗？你真的想去 #b#m" + maps[selection] + "##k？此次旅程将花费 #b"+ (cm.getJobId() == 0 ? cost[selection] / 10 : cost[selection]) + " 金币#k.");
             selectedMap = selection;
         } else if (status == 3) {
             if (cm.getJobId() == 0) {
@@ -43,7 +43,7 @@ function action(mode, type, selection) {
             }
             
             if (cm.getMeso() < mesos) {
-                cm.sendNext("You don't have enough mesos. Sorry to say this, but without them, you won't be able to ride the cab.");
+                cm.sendNext("你没有足够的金币。很抱歉这么说，但如果没有他们，你将无法乘坐出租车。");
                 cm.dispose();
                 return;
             }
