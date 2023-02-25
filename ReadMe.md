@@ -8,17 +8,20 @@
 注意，整个项目的编码格式换成了GBK，请不要用UTF-8进行编码!!!  
 注意，整个项目的编码格式换成了GBK，请不要用UTF-8进行编码!!!  
 
+一些教程视频：https://www.bilibili.com/video/BV133411o7Nj  
+
 ## 客户端下载
 选择1：https://pan.baidu.com/s/1GAgyysoRqKsfv-ODvnGkfA  提取码：ysn1  
 选择2：https://pan.baidu.com/s/17z3pBKu3jz5AOJmB9eFzqQ  提取码：f5zc  
 如果想联机也参考上面视频
 
 ## 进展 
-支持中文：50%  
-服务端脚本汉化：0%  
-支持sqlite单机：0%  
+支持中文：80%  
+服务端脚本汉化：5%  
+完善拍卖行脚本：10%  
+支持sqlite数据库：0%  
 
-bug暂不考虑修复，大家可以自行参与解决一下
+bug看情况修复，大家有发现了反馈
 
 ## 文档
 [修改说明](docs/change/changelog.txt)  
