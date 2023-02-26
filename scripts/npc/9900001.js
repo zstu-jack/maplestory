@@ -5,7 +5,6 @@ function start() {
 
 function action(mode, type, selection) {
     if (status >= 0 && mode === 0) {
-        cm.sendOk("¸ĞĞ»ÄãµÄ¹âÁÙ£¡");
         cm.dispose();
         return;
     }

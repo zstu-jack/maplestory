@@ -46,13 +46,23 @@ var towns = Array(
 // 练级
 var exps = Array(
     Array("射手训练场1", 104040000, 0),
-    Array("射手训练场2", 104040001, 0)
+    Array("射手训练场2", 104040001, 0),
+    Array("test", 211040401, 0)
 );
 
 // 野外BOSS
 var wilds = Array(
     Array("蜗牛王", 104000400, 0),
-    Array("树妖王", 101030404, 0)
+    Array("树妖王", 101030404, 0),
+    Array("多尔", 107000300, 0),
+    Array("蘑菇王", 100000005, 0),
+    Array("test", 211040401, 0)
+);
+
+// npc
+var npcs = Array(
+    Array("汉斯", 101000003, 0),
+    Array("test", 211040401, 0)
 );
 
 function start() {
@@ -75,7 +85,8 @@ function action(mode, type, selection) {
         status--;
     }
     if (status === 0) {
-        var text = "#e#k小睡冒险岛传送服务#k\r\n\r\n #L0##e#d城镇地图传送#l \r\n #L1#练级地图传送#l \r\n #L2#野外BOSS传送#l \r\n";
+        var text = "#e#k小睡冒险岛传送服务#k\r\n\r\n #L0##e#d城镇地图传送#l \r\n #L1#练级地图传送#l \r\n #L2#野外BOSS传送#l \r\n ";
+        text += "#L3#NPC传送#l"
         cm.sendSimple(text);
     } else if (status === 1) {
         typeIdx = selection;
@@ -98,6 +109,12 @@ function action(mode, type, selection) {
                 sText += "#L" + i + "#" + wilds[i][0] + "\r\n";
             }
             cm.sendSimple(sText);
+        } else if (selection === 3) {
+            sText = "#b";
+            for (i = 0; i < npcs.length; i++) {
+                sText += "#L" + i + "#" + npcs[i][0] + "\r\n";
+            }
+            cm.sendSimple(sText);
         } else {
             cm.dispose();
         }
@@ -114,6 +131,9 @@ function action(mode, type, selection) {
         } else if (typeIdx === 2) {
             cost = wilds[mapIdx][2];
             mapId = wilds[mapIdx][1];
+        } else if (typeIdx === 3) {
+            cost = npcs[mapIdx][2];
+            mapId = npcs[mapIdx][1];
         }
         if (cm.getMeso() >= cost) {
             cm.gainMeso(-cost);

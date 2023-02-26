@@ -3240,7 +3240,7 @@
   </imgdir>
   <imgdir name="2002">
     <string name="name" value="Maya of Henesys"/>
-    <string name="parent" value="Maya and the Weird Medicine"/>
+    <string name="parent" value="玛亚和奇怪的药"/>
     <string name="0" value="I hear that #p1012101# is very sick..."/>
     <string name="1" value="I met this girl named Maya at the old, raggedy townstreet of Henesys. She&apos;s been suffering from illness for a long time, so she doesn&apos;t look too well to even live a normal life. #bWeird Medicine#k... what a strange name, and she said she&apos;ll get a little bit better by taking that... I better go to Lith Harbor and see this guy Teo..."/>
     <string name="2" value="Maya wanted me to go see Teo of Lith Harbor, so I did just that. He promised to give me the Weird Medicine only after I get him a Sparkling Rock."/>
@@ -3425,7 +3425,7 @@
     <int name="order" value="3"/>
   </imgdir>
   <imgdir name="2017">
-    <string name="name" value="Arwen and the Glass Shoe"/>
+    <string name="name" value="艾温的玻璃鞋"/>
     <null name="parent"/>
     <string name="0" value="I heard that Arwen the fairy from Ellinia has lost something..."/>
     <string name="1" value="Arwen the fairy from Ellinia told me that a couple of days ago, on the way to Perion, she was attacked by a monster covered in flame, and lost her very precious #bglass shoe#k in the process. Fairies love glimmering, shiny objects to the point of obsession, so obviously she wants it back badly ... I better hunt some monsters around Perion, and hopefully I can find it there."/>
@@ -12442,7 +12442,7 @@ Can proceed to the &quot;The Secrets Behind the Ring?&quot; quest.
     <int name="area" value="50"/>
   </imgdir>
   <imgdir name="3247">
-    <string name="name" value="Rightful Donation Culture"/>
+    <string name="name" value="正确的捐赠文化"/>
     <string name="0" value="I should go to #b#m220000000##k and listen in on #b#p2041022##k&apos;s problem."/>
     <string name="1" value="#b#m220000000##k #b#p2041022##k&apos;s problem was more difficult than I imagined.  It&apos;s hard enough finding a #b#t04021005##k, but to freely donate it to the king of #b#m220000000##k!?  But if it&apos;s true that every great adventurer must learn to generously donate, maybe I need to consider donating as well. \nPlus, according to #b#p2041022##k, the king is a very generous person so it will probably be used to help those in need... This is stressful.\n\n"/>
     <string name="2" value="I don&apos;t know if I made the right decision, but I gave away #b#t04021005##k to #b#p2041022##k.  I feel like I&apos;ve somewhat wasted it but I guess it does feel good to know that I&apos;ve helped someone in need.  Overall, it was a good experience."/>
@@ -19331,7 +19331,7 @@ Able to proceed to &apos;Merry-go-round in Kampung&apos; as next quest.
     <string name="parent" value="Soul in the Dark"/>
   </imgdir>
   <imgdir name="8065">
-    <string name="name" value="The Ghost Whereabout"/>
+    <string name="name" value="幽灵在哪里"/>
     <string name="parent" value="Freed From Darkness"/>
     <int name="order" value="1"/>
     <string name="0" value="#b#p1012109##k of #b#p1012109##k&apos;s book should be ready by now. I should go talk to him."/>
