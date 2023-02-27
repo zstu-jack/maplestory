@@ -3,10 +3,20 @@ var imaps = [104000000, 102000000, 100000000, 101000000, 103000000, 120000000, 1
 var maps = [102000000, 100000000, 101000000, 103000000, 120000000];
 var cost = [1000, 1000, 800, 1000, 800];
 var townText = [
-    ["你所处的地方叫南港，让我来跟你介绍更多关于 #b南港#k 的信息。这里是你乘坐飞船抵达金银岛的第一站，也是大多新人离开彩虹岛后，进行冒险旅程的起点。", "这是一个安静的小镇，背后有广阔的水域，这要归功于港口位于岛的西端。这里的大多数人都是渔民，或者曾经是渔民，所以他们看起来很吓人，但如果你与他们交谈，他们会对你很友好。", "小镇周围是一片美丽的大草原。那里的大多数怪物都是弱小而温和的，非常适合新人。如果你还没有选择职业，这里是提升你等级的好地方。"],
+    ["你所处的地方叫明珠港，让我来跟你介绍更多关于 #b明珠港#k 的信息。这里是你乘坐飞船抵达金银岛的第一站，也是大多新人离开彩虹岛后，进行冒险旅程的起点。", "这是一个安静的小镇，背后有广阔的水域，这要归功于港口位于岛的西端。这里的大多数人都是渔民，或者曾经是渔民，所以他们看起来很吓人，但如果你与他们交谈，他们会对你很友好。", "小镇周围是一片美丽的大草原。那里的大多数怪物都是弱小而温和的，非常适合新人。如果你还没有选择职业，这里是提升你等级的好地方。"],
+
     ["让我来告诉你更多关于 #b勇士部落#k 的信息。是一个坐落于金银岛最北部，被岩石山脉环绕的勇士小镇。那你气氛不太友好，只有强者才能在那生存。", "在高地周围，你能看到十分细小的树木和满是野猪跑的地方，还有生活在岛任何地方的猴子。那儿还有深谷，一旦你踏入，你会发现一条巨龙，他的力量绝对和他的体型相匹配。你最好不要去那，如果要去你就要非常小心！", "如果你想变成一名 #b战士#k，你可以去找勇士部落找 #r武术教官#k。如果你已经达到10级或者更高，再加上一个很好的力量属性，他可能会让你成为一名战士。如果不是，最好继续训练自己，直到达到这个水平。"],
-    ["让我来告诉你更多关于 #b魔法密林#k 的信息。是一个坐落于金银岛远东，到处都是高大神秘树木的魔法师小镇。你也会在那里发现一些精灵。他们一般都不喜欢人类，所以你最好站在他们的一边，保持安静。", "在森林附近，你会发现绿色史莱姆、行走的蘑菇、猴子和僵尸猴子都居住在那。深入森林，你会看到女巫拿着扫帚在空中飞行。一句警告：除非你真的很强壮，否则我建议你不要靠近它们。", "如果你想成为一名 #b魔法师#k，找到 #r汉斯#k。只要你的等级达到8级，并且智力属性满足条件，他就会让你成为一名魔法师。如果你还不满足条件，可能需要更多的狩猎，并训练自己才能到达那里。"],
-    ["Alright I'll explain to you more about #bHenesys#k. It's a bowman-town located at the southernmost part of the island, made on a flatland in the midst of a deep forest and prairies. The weather's just right, and everything is plentiful around that town, perfect for living. Go check it out.", "Around the prairie you'll find weak monsters such as snails, mushrooms, and pigs. According to what I hear, though, in the deepest part of the Pig Park, which is connected to the town somewhere, you'll find a humongous, powerful mushroom called Mushmom every now and then.", "If you want to be a #bBowman#k, you need to go see #rAthena Pierce#k at Henesys. With a level at or above 10 and a decent amount of DEX, she may make you be one afterall. If not, go train yourself, make yourself stronger, then try again."], ["Alright I'll explain to you more about #bKerning City#k. It's a thief-town located at the northwest part of Victoria Island, and there are buildings up there that have just this strange feeling around them. It's mostly covered in black clouds, but if you can go up to a really high place, you'll be able to see a very beautiful sunset there.", "From Kerning City, you can go into several dungeons. You can go to a swamp where alligators and snakes are abound, or hit the subway full of ghosts and bats. At the deepest part of the underground, you'll find Lace, who is just as big and dangerous as a dragon.", "If you want to be a #bThief#k, seek #rDark Lord#k, the heart of darkness of Kerning City. He may well make you a thief if you're at or above level 10 with a good amount of DEX. If not, go hunt and train yourself to reach there."], ["Here's a little information on #b#m120000000##k. It's a submarine that's currently parked in between Ellinia and Henesys in Victoria Island. That submarine serves as home to numerous pirates. You can have just as beautiful a view of the ocean there as you do here in Lith Harbor.", "#m120000000# is parked in between Henesys and Ellinia, so if you step out just a bit, you'll be able to enjoy the view of both towns. All the pirates you'll meet in town are very gregarious and friendly as well.", "If you are serious about becoming a #bPirate#k, then you better meet the captain of #m120000000#, #r#p1090000##k. If you are over Level 10 with 20 DEX, then she may let you become one. If you aren't up to that level, then you'll need to train harder to get there!"], ["Alright I'll explain to you more about #bSleepywood#k. It's a forest town located at the southeast side of Victoria Island. It's pretty much in between Henesys and the ant-tunnel dungeon. There's a hotel there, so you can rest up after a long day at the dungeon ... it's a quiet town in general.", "In front of the hotel there's an old buddhist monk by the name of #rChrishrama#k. Nobody knows a thing about that monk. Apparently he collects materials from the travelers and create something, but I am not too sure about the details. If you have any business going around that area, please check that out for me.", "From Sleepywood, head east and you'll find the ant tunnel connected to the deepest part of the Victoria Island. Lots of nasty, powerful monsters abound so if you walk in thinking it's a walk in the park, you'll be coming out as a corpse. You need to fully prepare yourself for a rough ride before going in.", "And this is what I hear ... apparently, at Sleepywood there's a secret entrance leading you to an unknown place. Apparently, once you move in deep, you'll find a stack of black rocks that actually move around. I want to see that for myself in the near future ..."]];
+
+    ["让我来告诉你更多关于#b射手村#k的信息。这是一个位于岛屿最南端的小镇，建立在草原中的平原上。 那里天气不错，小镇周围的一切都十分和平，非常适合长期居住。", "周围有许多弱小的怪物，例如蜗牛蘑菇仔啥的。 不过据说在某处难以让人寻找到的地方，有一只巨大的蘑菇王，相当可怕。", "如果你想成为 #b弓箭手#k,并且等级到达10级以上，你可以去射手村找 #r赫丽娜#k 看看. "],
+
+    ["让我来告诉你更多关于 #b魔法密林#k的信息。是一个坐落于金银岛远东，到处都是高大神秘树木的魔法师小镇。你也会在那里发现一些精灵。他们一般都不喜欢人类，所以你最好站在他们的一边，保持安静。", "在森林附近，你会发现绿色史莱姆、行走的蘑菇、猴子和僵尸猴子都居住在那。深入森林，你会看到女巫拿着扫帚在空中飞行。一句警告：除非你真的很强壮，否则我建议你不要靠近它们。", "如果你想成为一名 #b魔法师#k，找到 #r汉斯#k。只要你的等级达到8级，并且智力属性满足条件，他就会让你成为一名魔法师。如果你还不满足条件，可能需要更多的狩猎，并训练自己才能到达那里。"],
+
+    ["好吧，我可以向你解释更多关于#b废弃都市的消息#k. 这是一个位于岛屿北部的盗贼小镇，那里的建筑周围有一种奇怪的感觉。大部分都被乌云覆盖，但如果你能登上一个非常高的地方，你就能在那里看到非常美丽的日落。", "从废弃都市，你可以进入几个地方探险。你可以去鳄鱼和蛇出没的沼泽地，或者撞上充满鬼魂和蝙蝠的地铁。在地下最深处，你会发现一个恐怖的生物，他和龙一样大，一样危险。", "如果你想成为#b飞侠#k, 就去寻找 #b达鲁克#k,他那里是废弃都市的中心。如果你达到或超过10级，并且拥有大量的DEX，他很可能会让你成为小偷。如果没有，就去打猎，训练自己到达那里。"],
+
+    ["这里有一点关于#b诺特勒斯号码头#k的信息。这是一艘潜艇，目前停泊在小岛的东南方向。这艘潜艇是众多海盗的家园。你可以在那里看到和在明珠港一样美丽的海洋景色。", "你在城里遇到的所有海盗都很合群，也很友好。", "如果你真的想成为一名#b海盗#k，那么你最好见见船长#r凯琳#k。如果你超过了10级，20DEX，那么她可能会让你成为一名海盗。"], 
+
+    ["危险！别去！这不是你这个新手能去到的地方！推荐你还是去其他城市转职锻炼后再去#b林中之城#k吧！那里太危险太危险了，就连经验丰富的老冒险家都不敢轻易涉足。","什么？你还是想去？那我就告诉你吧，那里有非常恐怖的石头人和蚂蚁，有着可怕到极点的牛魔王，甚至在那地底深处，还有一只怎么杀都杀不死的巨大#r蝙蝠魔#k……","你真的想去送死我也不会带你去的，还是听我一句劝吧，先去其他地方转职，把自己训练的足够强大了，再去探索#r林中之城#k吧。"]
+];
 var selectedMap = -1;
 var town = false;
 
@@ -43,9 +53,9 @@ function action(mode, type, selection) {
             }
             cm.sendSimple(text);
         } else if (selection == 1) {
-            var selStr = cm.getJobId() == 0 ? "There's a special 90% discount for all beginners. Alright, where would you want to go?#b" : "Oh you aren't a beginner, huh? Then I'm afraid I may have to charge you full price. Where would you like to go?#b";
+            var selStr = cm.getJobId() == 0 ? "你是新手所以你有90%的折扣\r\n请问你想去哪??#b" : "哦，你不是一个新手，是吧？我怕我可能会向您收取全价。你想去哪？#b";
             for (var i = 0; i < maps.length; i++) {
-                selStr += "\r\n#L" + i + "##m" + maps[i] + "# (" + (cost[i] / (cm.getJobId() == 0 ? 10 : 1)) + " mesos)#l";
+                selStr += "\r\n#L" + i + "##m" + maps[i] + "# (" + (cost[i] / (cm.getJobId() == 0 ? 10 : 1)) + " 金币)#l";
             }
             cm.sendSimple(selStr);
         }
@@ -60,10 +70,10 @@ function action(mode, type, selection) {
         }
     } else if (status == 3) {
         selectedMap = selection;
-        cm.sendYesNo("I guess you don't need to be here. Do you really want to move to #b#m" + maps[selection] + "##k? Well it'll cost you #b" + (cost[selection] / (cm.getJobId() == 0 ? 10 : 1)) + " mesos#k. What do you think?");
+        cm.sendYesNo("我猜你不想待这里。你真的想要移动到 #b#m" + maps[selection] + "##k? 我将相你收取 #b" + (cost[selection] / (cm.getJobId() == 0 ? 10 : 1)) + " 金币#k. 你怎么看??");
     } else if (status == 4) {
         if (cm.getMeso() < (cost[selectedMap] / (cm.getJobId() == 0 ? 10 : 1))) {
-            cm.sendNext("You don't have enough mesos. With your abilities, you should have more than that!");
+            cm.sendNext("你没有足够的金币我不能帮助你!!");
         } else {
             cm.gainMeso(-(cost[selectedMap] / (cm.getJobId() == 0 ? 10 : 1)));
             cm.warp(maps[selectedMap]);
