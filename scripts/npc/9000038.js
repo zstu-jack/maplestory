@@ -45,7 +45,7 @@ var itemQty_lv2 = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 60, 60, 60, 60, 60,
 var itemSet_lv1 = [1122004, 1012078, 1432008, 1432009, 1032040, 1032009, 1102166, 2070001, 2040002, 2040310, 2040400, 2040600, 2040825, 2040902, 2010000, 2010001, 2010002, 2010003, 2010004, 2020001, 2020002, 2020003, 2022020, 2022022, 4010000, 4010001, 4010002, 4010003, 4010004, 4010005, 4010006, 4010007, 4003000];
 var itemQty_lv1 = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 2, 2, 2, 2, 2, 2, 2, 2, 2];
 
-var levels = ["#m970030001#", "#m970030002#", "#m970030003#", "#m970030004#", "#m970030005#", "Final stage"];
+var levels = ["#m970030001#", "#m970030002#", "#m970030003#", "#m970030004#", "#m970030005#", "最终BOSS"];
 
 function start() {
         status = -1;
@@ -66,7 +66,7 @@ function action(mode, type, selection) {
                         status--;
 
                 if (status == 0) {
-                        var sendStr = "The #bBoss Rush Party Quest#k rewards players accordingly to how far the team went on the boss huntings. Take note that each player #bcan only claim a reward if they leave through a portal inside a Resting Spot#k. Challenging stronger bosses will require the team to commit to more fightings until the next Resting Spot is reached, or until the final boss is defeated.\r\n\r\nThe possible rewards for those leaving in the selected Resting Spot are depicted here:\r\n\r\n#b";
+                        var sendStr = "#b连续挑战BOSS副本#k会根据团队在boss狩猎中的表现来奖励玩家。请注意，每位玩家#b只有通过休息点#k内的出口离开时才能获得奖励。挑战更强的BOSS需要团队投入更多的战斗，直到到达下一个休息点，或者直到最终BOSS被击败。\r\n\r\n在所选休息点离开的人可能获得的奖励如下：\r\n\r\n#b";
                         for(var i = 0; i < 6; i++) {
                             sendStr += "#L" + i + "#" + levels[i] + "#l\r\n";
                         }
@@ -95,7 +95,7 @@ function action(mode, type, selection) {
                                 lvQty = itemQty_lv6;
                         }
                         
-                        var sendStr = "The following items are being awarded at #b" + levels[selection] + "#k:\r\n\r\n";
+                        var sendStr = "以下奖励将在 #b" + levels[selection] + "#k:\r\n\r\n";
                         for(var i = 0; i < lvTarget.length; i++) {
                             sendStr += "  #L" + i + "# #i" + lvTarget[i] + "#  #t" + lvTarget[i] + "#";
                             if(lvQty[i] > 1) sendStr += " (" + lvQty[i] + ")";
