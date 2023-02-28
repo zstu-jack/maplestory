@@ -62,7 +62,7 @@ function setEventRequirements() {
         reqStr += "\r\n    All members of the same guild";
         
         reqStr += "\r\n    时间限制: ";
-        reqStr += eventTime + " minutes";
+        reqStr += eventTime + " 分钟";
         
         em.setProperty("party", reqStr);
 }

@@ -57,7 +57,7 @@ function setEventRequirements() {
         else reqStr += minLevel;
         
         reqStr += "\r\n    时间限制: ";
-        reqStr += eventTime + " minutes";
+        reqStr += eventTime + " 分钟";
         
         em.setProperty("party", reqStr);
 }

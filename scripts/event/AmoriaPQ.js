@@ -62,7 +62,7 @@ function setEventRequirements() {
         if(onlyMarriedPlayers) reqStr += "\r\n    All married";
         
         reqStr += "\r\n    时间限制: ";
-        reqStr += eventTime + " minutes";
+        reqStr += eventTime + " 分钟";
         
         em.setProperty("party", reqStr);
 }
