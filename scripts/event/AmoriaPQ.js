@@ -50,18 +50,18 @@ function setLobbyRange() {
 function setEventRequirements() {
         var reqStr = "";
         
-        reqStr += "\r\n    Number of players: ";
+        reqStr += "\r\n    组队人数限制: ";
         if(maxPlayers - minPlayers >= 1) reqStr += minPlayers + " ~ " + maxPlayers;
         else reqStr += minPlayers;
         
-        reqStr += "\r\n    Level range: ";
+        reqStr += "\r\n    等级限制: ";
         if(maxLevel - minLevel >= 1) reqStr += minLevel + " ~ " + maxLevel;
         else reqStr += minLevel;
         
-        reqStr += "\r\n    At least 1 of both genders";
+        reqStr += "\r\n    男女中至少有1人";
         if(onlyMarriedPlayers) reqStr += "\r\n    All married";
         
-        reqStr += "\r\n    Time limit: ";
+        reqStr += "\r\n    时间限制: ";
         reqStr += eventTime + " minutes";
         
         em.setProperty("party", reqStr);

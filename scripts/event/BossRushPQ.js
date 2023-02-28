@@ -49,16 +49,16 @@ function setLobbyRange() {
 function setEventRequirements() {
         var reqStr = "";
         
-        reqStr += "\r\n    Number of players: ";
+        reqStr += "\r\n    组队人数限制: ";
         if(maxPlayers - minPlayers >= 1) reqStr += minPlayers + " ~ " + maxPlayers;
         else reqStr += minPlayers;
         
-        reqStr += "\r\n    Level range: ";
+        reqStr += "\r\n    等级限制: ";
         if(maxLevel - minLevel >= 1) reqStr += minLevel + " ~ " + maxLevel;
         else reqStr += minLevel;
         
-        reqStr += "\r\n    Time limit: ";
-        reqStr += eventTime + " minutes";
+        reqStr += "\r\n    时间限制: ";
+        reqStr += eventTime + " 分钟";
         
         em.setProperty("party", reqStr);
 }
