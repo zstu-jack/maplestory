@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exe4j version="9.0" transformSequenceNumber="3">
+  <directoryPresets config="E:/LocalGit/GitHub/heaven-ms-nap/dist" />
+  <application name="Server083" distributionSourceDir="C:/Users/CN/Desktop" />
+  <executable name="Server083" wrapperType="embed" redirectStderr="false" executableMode="console" />
+  <java mainClass="net.server.Server" vmParameters="-Xms128m -Xmx2048m -XX:+UseG1GC" minVersion="1.8" maxVersion="1.8">
+    <searchSequence>
+      <directory location="./jre" />
+      <registry />
+      <envVar name="JAVA_HOME" />
+      <envVar name="JDK_HOME" />
+    </searchSequence>
+    <classPath>
+      <archive location="E:/LocalGit/GitHub/heaven-ms-nap/dist/heaven-ms-nap.jar" failOnError="false" />
+    </classPath>
+  </java>
+</exe4j>
