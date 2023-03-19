@@ -173,7 +173,7 @@ public final class Channel {
             
             services = new ServicesManager(ChannelServices.OVERALL);
             
-            System.out.println("    Channel " + getId() + ": Listening on port " + port);
+            System.out.println("    ÆµµÀ " + getId() + ": ¼àÌý¶Ë¿Ú " + port);
         } catch (Exception e) {
             e.printStackTrace();
         }

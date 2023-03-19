@@ -2093,7 +2093,7 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
                                 int nxGain = mapitem.getItemId() == 4031865 ? 100 : 250;
                                 this.getCashShop().gainCash(1, nxGain);
 
-                                showHint("You have earned #e#b" + nxGain + " NX#k#n. (" + this.getCashShop().getCash(1) + " NX)", 300);
+                                showHint("你获得了 #e#b" + nxGain + " 点券#k#n. (共获得" + this.getCashShop().getCash(1) + " 点券)", 300);
 
                                 this.getMap().pickItemDrop(pickupPacket, mapitem);
                             } else if (MapleInventoryManipulator.addFromDrop(client, mItem, true)) {
@@ -2143,7 +2143,7 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
                         int nxGain = mapitem.getItemId() == 4031865 ? 100 : 250;
                         this.getCashShop().gainCash(1, nxGain);
 
-                        showHint("You have earned #e#b" + nxGain + " NX#k#n. (" + this.getCashShop().getCash(1) + " NX)", 300);
+                        showHint("你获得了 #e#b" + nxGain + " 点券#k#n. (共获得" + this.getCashShop().getCash(1) + " 点券)", 300);
                     } else if (applyConsumeOnPickup(mItem.getItemId())) {
                     } else if (MapleInventoryManipulator.addFromDrop(client, mItem, true)) {
                         if (mItem.getItemId() == 4031868) {
