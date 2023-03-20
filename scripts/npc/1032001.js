@@ -38,28 +38,28 @@ function start() {
     if (parseInt(cm.getJobId() / 100) == jobType && cm.canSpawnPlayerNpc(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()))) {
         spawnPnpc = true;
         
-        var sendStr = "You have walked a long way to reach the power, wisdom and courage you hold today, haven't you? What do you say about having right now #ra NPC on the Hall of Fame holding the current image of your character#k? Do you like it?";
+        var sendStr = "你已经走了很长的路才能获得今天的力量、智慧和勇气。现在你可以获得 #r用你当前的照片作为名人堂的一名NPC#k，你愿意尝试一下吗？";
         if(spawnPnpcFee > 0) {
-            sendStr += " I can do it for you, for the fee of #b " + cm.numberWithCommas(spawnPnpcFee) + " mesos.#k";
+            sendStr += " 如果你愿意花费 #b " + cm.numberWithCommas(spawnPnpcFee) + " 金币，我就能帮你完成。#k";
         }
         
         cm.sendYesNo(sendStr);
     } else {
         if (cm.getJobId() == 0) {
             actionx["1stJob"] = true;
-            cm.sendNext("Want to be a #rmagician#k? There are some standards to meet. because we can't just accept EVERYONE in... #bYour level should be at least 8#k, with getting " + cm.getFirstJobStatRequirement(jobType) + " as your top priority. Let's see.");   // thanks Vcoc for noticing a need to state and check requirements on first job adv starting message
+            cm.sendNext("你想成为一名 #r魔法师#k 吗？不是每一个人都可以成为魔法师，在此之前有一些标准需要满足。首先，你至少要达到 #b8级#k。其次，你的属性点 " + cm.getFirstJobStatRequirement(jobType) + " 也是必要的。");   // thanks Vcoc for noticing a need to state and check requirements on first job adv starting message
         } else if (cm.getLevel() >= 30 && cm.getJobId() == 200) {
             actionx["2ndJob"] = true;
             if (cm.haveItem(4031012))
-                cm.sendNext("I see you have done well. I will allow you to take the next step on your long road.");
+                cm.sendNext("我看你做得很好。我将允许你在漫长的道路上迈出下一步。");
             else if (cm.haveItem(4031009)){
-                cm.sendOk("Go and see the #b#p1072001##k.");
+                cm.sendOk("去找 #b#p1072001##k 进行下一步把。");
                 cm.dispose();
             } else
-                cm.sendNext("The progress you have made is astonishing.");
+                cm.sendNext("你所取得的进步是惊人的。");
         } else if (actionx["3thJobI"] || (cm.getPlayer().gotPartyQuestItem("JB3") && cm.getLevel() >= 70 && cm.getJobId() % 10 == 0 && parseInt(cm.getJobId() / 100) == 2 && !cm.getPlayer().gotPartyQuestItem("JBP"))){
             actionx["3thJobI"] = true;
-            cm.sendNext("There you are. A few days ago, #b#p2020009##k of Ossyria talked to me about you. I see that you are interested in making the leap to the enlightened of the third job advancement for magicians. To archieve that goal, I will have to test your strength in order to see whether you are worthy of the advancement. There is an opening in the middle of a deep forest of evil in Victoria Island, where it'll lead you to a secret passage. Once inside, you'll face a clone of myself. Your task is to defeat him and bring #b#t4031059##k back with you.");
+            cm.sendNext("几天前，冰封雪域的 #b#p2020009##k 向我提到过你。我看到你对魔法师第三次转职感兴趣。To archieve that goal, I will have to test your strength in order to see whether you are worthy of the advancement. There is an opening in the middle of a deep forest of evil in Victoria Island, where it'll lead you to a secret passage. Once inside, you'll face a clone of myself. Your task is to defeat him and bring #b#t4031059##k back with you.");
         } else if (cm.getPlayer().gotPartyQuestItem("JBP") && !cm.haveItem(4031059)){
             cm.sendNext("Please, bring me the #b#t4031059##k from my clone. You can find him inside a hole in space which is deep in a forest of evil.");
             cm.dispose();
@@ -67,7 +67,7 @@ function start() {
             actionx["3thJobC"] = true;
             cm.sendNext("Nice work. You have defeated my clone and brought #b#t4031059##k back safely. You have now proven yourself worthy of the 3rd job advancement from the physical standpoint. Now you should give this necklace to #b#p2020011##k in Ossyria to take on the second part of the test. Good luck. You'll need it.");
         } else {
-            cm.sendOk("You have chosen wisely.");
+            cm.sendOk("明智的选择");
             cm.dispose();
         }
     }
@@ -89,7 +89,7 @@ function action(mode, type, selection) {
         if(spawnPnpc) {
             if(mode > 0) {
                 if(cm.getMeso() < spawnPnpcFee) {
-                    cm.sendOk("Sorry, you don't have enough mesos to purchase your place on the Hall of Fame.");
+                    cm.sendOk("对不起，你没有足够的金币来购买你在名人堂的位置。");
                     cm.dispose();
                     return;
                 }

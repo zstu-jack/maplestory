@@ -6684,19 +6684,19 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
             return;
         }
         if (level == 5) {
-            yellowMessage("Aww, you're level 5, how cute!");
+            yellowMessage("你已经达到5级了，恭喜！");
         } else if (level == 10) {
-            yellowMessage("Henesys Party Quest is now open to you! Head over to Henesys, find some friends, and try it out!");
+            yellowMessage("射手村组队任务已经对你开放，抵达射手村，找一些伙伴一起尝试一下吧！");
         } else if (level == 15) {
-            yellowMessage("Half-way to your 2nd job advancement, nice work!");
+            yellowMessage("距离第二次转职已经完成了一半，干得漂亮！");
         } else if (level == 20) {
-            yellowMessage("You can almost Kerning Party Quest!");
+            yellowMessage("你可以参加废都的组队任务了，去试试吧！");
         } else if (level == 25) {
-            yellowMessage("You seem to be improving, but you are still not ready to move on to the next step.");
+            yellowMessage("你似乎在进步，但还没有准备好进入下一步。");
         } else if (level == 30) {
-            yellowMessage("You have finally reached level 30! Try job advancing, after that try the Mushroom Castle!");
+            yellowMessage("你已经到达30级了，赶快去进行二转把，接着就可以领取蘑菇城任务了。");
         } else if (level == 35) {
-            yellowMessage("Hey did you hear about this mall that opened in Kerning? Try visiting the Kerning Mall.");
+            yellowMessage("你听说过废都商场吗，去看看吧！");
         } else if (level == 40) {
             yellowMessage("Do @rates to see what all your rates are!");
         } else if (level == 45) {

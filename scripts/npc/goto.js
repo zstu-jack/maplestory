@@ -47,7 +47,7 @@ var towns = Array(
 var exps = Array(
     Array("射手训练场1", 104040000, 0),
     Array("射手训练场2", 104040001, 0),
-    Array("test", 1010300, 0)
+    Array("test", 200000000, 0)
 );
 
 // 野外BOSS
