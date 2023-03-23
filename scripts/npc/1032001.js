@@ -149,7 +149,7 @@ function action(mode, type, selection) {
     } else if (actionx["2ndJob"]) {
         if (status == 0) {
             if (cm.haveItem(4031012))
-                cm.sendSimple("当你做好了选择，点击 [我已经选定了我职业] 选项。#b\r\n#L0#请向我展示 法师(火/毒) 相关的知识\r\n#L1#请向我展示 法师(冰/雷) 相关的知识\r\n#L2#请向我展示 牧师 相关的知识\r\n#L3#我已经选定了我职业！");
+                cm.sendSimple("当你做好了选择，点击 [我已经选定了我职业] 选项。#b\r\n#L0#请向我展示 巫师(火/毒) 相关的知识\r\n#L1#请向我展示 巫师(冰/雷) 相关的知识\r\n#L2#请向我展示 牧师 相关的知识\r\n#L3#我已经选定了我职业！");
             else {
                 cm.sendNext("明智的选择，你看起来很强大，但我需要看看你是否真的足够强大，能够通过测试。这不是一个困难的测试，所以你会做得很好。现在，带着我信，请确保不会丢失！");
                 if (!cm.isQuestStarted(100006)) cm.startQuest(100006);
@@ -159,24 +159,24 @@ function action(mode, type, selection) {
                 if (cm.canHold(4031009)) {
                     if (!cm.haveItem(4031009))
                         cm.gainItem(4031009, 1);
-                    cm.sendNextPrev("Please get this letter to #b#p1072001##k who's around #b#m101020000##k near Ellinia. He is taking care of the job of an instructor in place of me. Give him the letter and he'll test you in place of me. Best of luck to you.");
+                    cm.sendNextPrev("请把这封信带给 #b#p1072001##k ，他在魔法密林附近的 #b#m101020000##k。他代替我担任本次考核的导师。把信交给他，他会代替我测试你。祝你好运。");
                 } else {
-                    cm.sendNext("Please, make some space in your inventory.");
+                    cm.sendNext("确保你的背包存在空槽");
                     cm.dispose();
                 }
             } else {
                 if (selection < 3) {
                     if (selection == 0) {
-                        cm.sendNext("Magicians that master #rFire/Poison-based magic#k.\r\n\r\n#bWizards#k are a active class that deal magical, elemental damage. These abilities grants them a significant advantage against enemies weak to their element. With their skills #rMeditation#k and #rSlow#k, #bWizards#k can increase their magic attack and reduce the opponent's mobility. #bFire/Poison Wizards#k contains a powerful flame arrow attack and poison attack.");    //f/p mage
+                        cm.sendNext("关于 #r火/毒#k 巫师。\r\n\r\n这是一个主动释放魔法，造成元素伤害的职业。这些能力使他们在对抗对自己不利的敌人时具有显著优势。通过他们的技能 #r精神力#k and #r缓速术#k，#b巫师#k 能够提升他们的魔法攻击，并降低对手的机动性。#b火/毒巫师#k 拥有强大的火焰箭攻击和毒药攻击。");    //f/p mage
                     } else if (selection == 1) {
-                        cm.sendNext("Magicians that master #rIce/Lightning-based magic#k.\r\n\r\n#bWizards#k are a active class that deal magical, elemental damage. These abilities grants them a significant advantage against enemies weak to their element. With their skills #rMeditation#k and #rSlow#k, #bWizards#k can increase their magic attack and reduce the opponent's mobility. #bIce/Lightning Wizards#k have a freezing ice attack and a striking lightning attack.");    //i/l mage
+                        cm.sendNext("关于 #r冰/雷#k 巫师。\r\n\r\n这是一个主动释放魔法，造成元素伤害的职业。这些能力使他们在对抗对自己不利的敌人时具有显著优势。通过他们的技能 #r精神力#k and #r缓速术#k，#b巫师#k 能够提升他们的魔法攻击，并降低对手的机动性。#b冰/雷巫师#k 有冰冻的冰攻击和惊人的闪电攻击。");    //i/l mage
                     } else {
-                        cm.sendNext("Magicians that master #rHoly magic#k.\r\n\r\n#bClerics#k are a powerful supportive class, bound to be accepted into any Party. That's because the have the power to #rHeal#k themselves and others in their party. Using #rBless#k, #bClerics#k can buff the attributes and reduce the amount of damage taken. This class is on worth going for if you find it hard to survive. #bClerics#k are especially effective against undead monsters.");    //cleric
+                        cm.sendNext("关于 #r牧师#k。\r\n\r\n#b牧师#k 是一个强大的辅助类职业，一定会被所有队伍所接受。因为他们能为自己和队友提供强大的 #r治愈#k 能力。使用 #r祝福#k 技能，#b牧师#k 可以增强属性并减少受到的伤害。如果你觉得很难生存，这种类型的职业就非常适合你。#b牧师#k 特别克制不死怪物。");    //cleric
                     }
 
                     status -= 2;
                 } else
-                    cm.sendSimple("Now... have you made up your mind? Please choose the job you'd like to select for your 2nd job advancement. #b\r\n#L0#Wizard (Fire / Poison)\r\n#L1#Wizard (Ice / Lighting)\r\n#L2#Cleric");
+                    cm.sendSimple("现在，你有自己的主意了吗？请选择2转的职业: #b\r\n#L0#巫师(火/毒)\r\n#L1#巫师(冰/雷)\r\n#L2#牧师");
             }
         } else if (status == 2) {
             if (cm.haveItem(4031009)) {
@@ -184,12 +184,12 @@ function action(mode, type, selection) {
                 return;
             }
             job += selection * 10;
-            cm.sendYesNo("So you want to make the second job advancement as the " + (job == 210 ? "#bWizard (Fire / Poison)#k" : job == 220 ? "#bWizard (Ice / Lighting)#k" : "#bCleric#k") + "? You know you won't be able to choose a different job for the 2nd job advancement once you make your desicion here, right?");
+            cm.sendYesNo("你选择的2转职业为: " + (job == 210 ? "#b巫师(火/毒)#k" : job == 220 ? "#b巫师(冰/雷)#k" : "#b牧师#k") + "。你已经清楚了，一旦决定了转职，就无法再选择其他职业了，对吗？");
         } else if (status == 3) {
             if (cm.haveItem(4031012))
                 cm.gainItem(4031012, -1);
             cm.completeQuest(100008);
-            cm.sendNext("Alright, you're the " + (job == 210 ? "#bWizard (Fire / Poison)#k" : job == 220 ? "#bWizard (Ice / Lighting)#k" : "#bCleric#k") + " from here on out. Mages and wizards are the intelligent bunch with incredible magical prowess, able to pierce the mind and the psychological structure of the monsters with ease... please train yourself each and everyday. I'll help you become even stronger than you already are.");
+            cm.sendNext("好的，现在你已经是一名 " + (job == 210 ? "#b巫师(火/毒)#k" : job == 220 ? "#b巫师(冰/雷)#k" : "#b牧师#k") + " 了。巫师和牧师是一群聪明的人，他们拥有令人难以置信的魔法能力，能够轻而易举地刺穿怪物的思想和心理结构。继续锻炼自己，我会帮助你变得比现在更强大。");
             if (cm.getJobId() != job)
                 cm.changeJobById(job);
         } else if (status == 4)
