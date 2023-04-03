@@ -1,30 +1,7 @@
 /*
-	This file is part of the OdinMS Maple Story Server
-    Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
-		       Matthias Butz <matze@odinms.de>
-		       Jan Christian Meyer <vimes@odinms.de>
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as
-    published by the Free Software Foundation version 3 as published by
-    the Free Software Foundation. You may not use, modify or distribute
-    this program under any other version of the GNU Affero General Public
-    License.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-/* Grendel the Really Old
-	Magician Job Advancement
-	Victoria Road : Magic Library (101000003)
-
-	Custom Quest 100006, 100008, 100100, 100101
-*/
+NPC-汉斯
+位置-101000003
+ */
 
 status = -1;
 actionx = {"1stJob": false, "2ndjob": false, "3thJobI": false, "3thJobC": false};
@@ -131,13 +108,13 @@ function action(mode, type, selection) {
                     cm.gainItem(1372043, 1);
                     cm.resetStats();
                 }
-                cm.sendNext("现在，你是我们的一份子了。前路漫漫，但只要保持耐心，你很快就能达到更高的水平。好了，说了这么多，让我传授一些我的能力把。");
+                cm.sendNext("从此刻开始，你已经是我们的一份子了。前路漫漫，但只要保持耐心，你很快就能达到更高的水平。好了，说了这么多，让我传授你一些我的能力把。HAAAHHH!!!(一串咒语)");
             } else {
                 cm.sendNext("确保你的背包腾出一些空间后，再来和我对话吧");
                 cm.dispose();
             }
         } else if (status == 2)
-            cm.sendNextPrev("你现在变得更强了。此外，您的每一个库存都增加了插槽。确切地说，整整一排。赶快查看一下吧。\n另外，我给了你一些 #b技能点#k，当你打开右下角的 #b技能#k 菜单，它会展示你能学习并使用的所有技能。值得注意的是: 你无法一下子把它全部加满。还有一些技能，你必须先学会一些技能才能获得。");
+            cm.sendNextPrev("你现在变得更强了。此外，你的每一个背包都增加了插槽。确切地说，整整一排。赶快查看一下吧。\n另外，我给了你一些 #b技能点#k，当你打开右下角的 #b技能#k 菜单，它会展示你能学习并使用的所有技能。值得注意的是: 你无法一下子把它全部加满。还有一些技能，你必须先学会一些技能才能获得。");
         else if (status == 3)
             cm.sendNextPrev("请记住，技能不是全部。作为一名魔法师，你的属性必须和你的技能相匹配。魔法师们通常把智力作为主属性，运气作为副属性。如果你觉得加点很麻烦，也可以使用 #b自动分配#k");
         else if (status == 4)
@@ -149,7 +126,7 @@ function action(mode, type, selection) {
     } else if (actionx["2ndJob"]) {
         if (status == 0) {
             if (cm.haveItem(4031012))
-                cm.sendSimple("当你做好了选择，点击 [我已经选定了我职业] 选项。#b\r\n#L0#请向我展示 巫师(火/毒) 相关的知识\r\n#L1#请向我展示 巫师(冰/雷) 相关的知识\r\n#L2#请向我展示 牧师 相关的知识\r\n#L3#我已经选定了我职业！");
+                cm.sendSimple("当你做好了选择，点击 [我已经选定了我职业] 选项。#b\r\n#L0#请向我介绍 巫师(火/毒) 相关的知识\r\n#L1#请向我介绍 巫师(冰/雷) 相关的知识\r\n#L2#请向我介绍 牧师 相关的知识\r\n#L3#我已经选定了我职业！");
             else {
                 cm.sendNext("明智的选择，你看起来很强大，但我需要看看你是否真的足够强大，能够通过测试。这不是一个困难的测试，所以你会做得很好。现在，带着我信，请确保不会丢失！");
                 if (!cm.isQuestStarted(100006)) cm.startQuest(100006);
@@ -193,11 +170,11 @@ function action(mode, type, selection) {
             if (cm.getJobId() != job)
                 cm.changeJobById(job);
         } else if (status == 4)
-            cm.sendNextPrev("I have just given you a book that gives you the list of skills you can acquire as a " + (job == 210 ? "#bWizard (Fire / Poison)#k" : job == 220 ? "#bWizard (Ice / Lighting)#k" : "#bCleric#k") + ". Also your etc inventory has expanded by adding another row to it. Your max HP and MP have increased, too. Go check and see for it yourself.");
+            cm.sendNextPrev("我给了你一本关于 " + (job == 210 ? "#b巫师(火/毒)#k" : job == 220 ? "#b巫师(冰/雷)#k" : "#b牧师#k") + " 需要的技能书，你的背包其他栏必须有位置存放它。你的HP和MP的最大值已经提升，检查一下你自己的状态把。");
         else if (status == 5)
-            cm.sendNextPrev("I have also given you a little bit of #bSP#k. Open the #bSkill Menu#k located at the bottomleft corner. you'll be able to boost up the newer acquired 2nd level skills. A word of warning, though. You can't boost them up all at once. Some of the skills are only available after you have learned other skills. Make sure you remember that.");
+            cm.sendNextPrev("我给了你一些 #b技能点#k，打开左下角的 #b技能菜单#k，你将能够提升新获得的2转技能。不过，还是要提醒一下。你不可能一下子把它们都提高，有些技能只有在你学习了其他技能后才能使用，一定要记住这一点。");
         else if (status == 6)
-            cm.sendNextPrev((job == 210 ? "Wizard (Fire / Poison)" : job == 220 ? "Wizard (Ice / Lighting)" : "Cleric") + " need to be strong. But remember that you can't abuse that power and use it on a weakling. Please use your enormous power the right way, because... for you to use that the right way, that is much harden than just getting stronger. Please find me after you have advanced much further. I'll be waiting for you.");
+            cm.sendNextPrev("成为一名" + (job == 210 ? "#b巫师(火/毒)#k" : job == 220 ? "#b巫师(冰/雷)#k" : "#b牧师#k") + " 需要变得更强。但请记住，你不能滥用这种权力，把它用在弱者身上。请以正确的方式使用你的巨大力量，因为对你来说，用正确的方式，这比变得更强壮要硬得多。请在你取得更大进步后找到我，我会等你的。");
     } else if (actionx["3thJobI"]) {
         if (status == 0) {
             if (cm.getPlayer().gotPartyQuestItem("JB3")) {
@@ -205,7 +182,7 @@ function action(mode, type, selection) {
                 cm.getPlayer().removePartyQuestItem("JB3");
                 cm.getPlayer().setPartyQuestItemObtained("JBP");
             }
-            cm.sendNextPrev("Since he is a clone of myself, you can expect a tough battle ahead. He uses a number of special attacking skills unlike any you have ever seen, and it is your task to successfully take him one on one. There is a time limit in the secret passage, so it is crucial that you defeat him within the time limit. I wish you the best of luck, and I hope you bring the #b#t4031059##k with you.");
+            cm.sendNextPrev("既然他是我的克隆人，你可以预料到前方会有一场艰苦的战斗。他使用了许多你从未见过的特殊攻击技能，你的任务是成功地一对一地击败他。秘密通道有时间限制，所以在时间限制内击败他是至关重要的。祝你好运，我希望你能把 #b#t4031059##k 带回来");
         }
     } else if (actionx["3thJobC"]) {
         cm.getPlayer().removePartyQuestItem("JBP");

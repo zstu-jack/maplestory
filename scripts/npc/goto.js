@@ -62,6 +62,10 @@ var wilds = Array(
 // npc
 var npcs = Array(
     Array("汉斯", 101000003, 0),
+    Array("赫丽娜", 100000201, 0),
+    Array("武术教练", 102000003, 0),
+    Array("达克鲁", 103000003, 0),
+    Array("凯琳", 120000101, 0),
     Array("test", 211040401, 0)
 );
 

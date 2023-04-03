@@ -1,6 +1,3 @@
 Meditation - 2101001 - 精神力
 Slow - 2101003 - 缓速术
 Bless - 2301004 - 祝福
-Clerics - 牧师
-Fire/Poison - 火/毒
-Ice/Lightning - 冰/雷
