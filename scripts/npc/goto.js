@@ -66,6 +66,7 @@ var npcs = Array(
     Array("武术教练", 102000003, 0),
     Array("达克鲁", 103000003, 0),
     Array("凯琳", 120000101, 0),
+    Array("三转教官", 211000001, 0),
     Array("test", 211040401, 0)
 );
 
@@ -90,7 +91,7 @@ function action(mode, type, selection) {
     }
     if (status === 0) {
         var text = "#e#k小睡冒险岛传送服务#k\r\n\r\n #L0##e#d城镇地图传送#l \r\n #L1#练级地图传送#l \r\n #L2#野外BOSS传送#l \r\n ";
-        text += "#L3#NPC传送#l"
+        text += "#L3#NPC传送#l";
         cm.sendSimple(text);
     } else if (status === 1) {
         typeIdx = selection;

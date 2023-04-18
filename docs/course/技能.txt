@@ -1,3 +1,5 @@
 Meditation - 2101001 - 精神力
 Slow - 2101003 - 缓速术
 Bless - 2301004 - 祝福
+Arrow Bomb - 3101005 - 爆炸箭
+Iron Arrow - 3201005 - 穿透箭

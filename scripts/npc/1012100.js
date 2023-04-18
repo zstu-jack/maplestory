@@ -133,47 +133,47 @@ function action(mode, type, selection) {
                 if (cm.canHold(4031010)) {
                     if (!cm.haveItem(4031010))
                         cm.gainItem(4031010, 1);
-                    cm.sendNextPrev("Please get this letter to #b#p1072002##k who's around #b#m106010000##k near Henesys. She is taking care of the job of an instructor in place of me. Give her the letter and she'll test you in place of me. Best of luck to you.");
+                    cm.sendNextPrev("请把这封信带给 #b#p1072002##k 他在射手村附近的 #b#m106010000##k。她代替我担任本次任务的教官。把信交给她，她会代替我测试你。祝你好运。");
                     cm.dispose();
                 } else {
-                    cm.sendNext("Please, make some space in your inventory.");
+                    cm.sendNext("确保你的背包存在空槽");
                     cm.dispose();
                 }
             } else {
                 if (selection < 3) {
                     if (selection == 0) {    //hunter
-                        cm.sendNext("Archers that master #rBows#k.\r\n\r\n#bHunters#k have a higher damage/minute output in early levels, with attacks having a faster pace but slightly weaker than Crossbowmans. #bHunters#k get #rArrow Bomb#k, a slightly weaker attack that can cause up to 6 enemies to get stunned.");
+                        cm.sendNext("关于 #r猎人#。\r\n\r\n#b猎人#k 在早期阶段的伤害/分钟输出更高，攻击速度更快，但略弱于弩手。 #b猎人#k 能使用 #r爆炸箭#k，一种稍弱的攻击，可以导致多达6个敌人被眩晕。");
                     } else if (selection == 1) {    //crossbowman
-                        cm.sendNext("Archers that master #rCrossbows#k.\r\n\r\n#bCrossbowmans'#k attack power grows higher the higher level you are, when compared to Hunters. #bCrossbowmans#k get #rIron Arrow#k, a stronger attack that does not home on enemies but can go through walls.");
+                        cm.sendNext("关于 #r弩手#。\r\n\r\n#b弩手# 与猎人相比，等级越高，越能获得更高的攻击力。 #b弩手#k 能使用 #r穿透箭#k，一种更强的攻击，不会追踪敌人，但可以穿过墙壁。");
                     }
 
                     status -= 2;
                 } else
-                    cm.sendSimple("Now... have you made up your mind? Please choose the job you'd like to select for your 2nd job advancement. #b\r\n#L0#Hunter\r\n#L1#Crossbowman");
+                    cm.sendSimple("现在，你有自己的主意了吗？请选择2转的职业: #b\r\n#L0#猎人\r\n#L1#弩手");
             }
         } else if (status == 2) {
             job += selection * 10;
-            cm.sendYesNo("So you want to make the second job advancement as the " + (job == 310 ? "#bHunter#k" : "#bCrossbowman#k") + "? You know you won't be able to choose a different job for the 2nd job advancement once you make your desicion here, right?");
+            cm.sendYesNo("你选择的2转职业为: " + (job == 310 ? "#b猎人#k" : "#b弩手#k") + "。你已经清楚了，一旦决定了转职，就无法再选择其他职业了，对吗？");
         } else if (status == 3) {
             if (cm.haveItem(4031012))
                 cm.gainItem(4031012, -1);
 
-            cm.sendNext("Alright, you're the " + (job == 310 ? "#bHunter#k" : "#bCrossbowman#k") + " from here on out. " + (job == 310 ? "#bHunter#k" : "#bCrossbowman#k") + "s are the intelligent bunch with incredible vision, able to pierce the arrow through the heart of the monsters with ease... please train yourself each and everyday. I'll help you become even stronger than you already are.");
+            cm.sendNext("好的，现在你已经是一名 " + (job == 310 ? "#b猎人#k" : "#b弩手#k") + "。" + (job == 310 ? "#b猎人#k" : "#b弩手#k") + " 是一群有着令人难以置信的视力的聪明人吗？他们能够轻而易举地将箭穿过怪物的心脏。请每天训练自己。我会帮助你变得比现在更强大。");
             if (cm.getJobId() != job)
                 cm.changeJobById(job);
         } else if (status == 4)
-            cm.sendNextPrev("I have just given you a book that gives you the list of skills you can acquire as a " + (job == 310 ? "hunter" : "crossbowman") + ". Also your etc inventory has expanded by adding another row to it. Your max HP and MP have increased, too. Go check and see for it yourself.");
+            cm.sendNextPrev("我给了你一本关于 " + (job == 310 ? "#b猎人#k" : "#b弩手#k") + "需要的技能书，你的背包其他栏必须有位置存放它。你的HP和MP的最大值已经提升，检查一下你自己的状态把。");
         else if (status == 5)
-            cm.sendNextPrev("I have also given you a little bit of #bSP#k. Open the #bSkill Menu#k located at the bottomleft corner. you'll be able to boost up the newer acquired 2nd level skills. A word of warning, though. You can't boost them up all at once. Some of the skills are only available after you have learned other skills. Make sure yo remember that.");
+            cm.sendNextPrev("我给了你一些 #b技能点#k，打开左下角的 #b技能菜单#k，你将能够提升新获得的2转技能。不过，还是要提醒一下。你不可能一下子把它们都提高，有些技能只有在你学习了其他技能后才能使用，一定要记住这一点。");
         else if (status == 6)
-            cm.sendNextPrev((job == 310 ? "Hunter" : "Crossbowman") + " need to be strong. But remember that you can't abuse that power and use it on a weakling. Please use your enormous power the right way, because... for you to use that the right way, that is much harden than just getting stronger. Please find me after you have advanced much further. I'll be waiting for you.");
+            cm.sendNextPrev((job == 310 ? "#b猎人#k" : "#b弩手#k") + " 需要变得更强。但请记住，你不能滥用这种权力，把它用在弱者身上。请以正确的方式使用你的巨大力量，因为对你来说，用正确的方式，这比变得更强壮要硬得多。请在你取得更大进步后找到我，我会等你的。");
     } else if (actionx["3thJobI"]) {
         if (status == 0) {
             if (cm.getPlayer().gotPartyQuestItem("JB3")) {
                 cm.getPlayer().removePartyQuestItem("JB3");
                 cm.getPlayer().setPartyQuestItemObtained("JBP");
             }
-            cm.sendNextPrev("Since she is a clone of myself, you can expect a tough battle ahead. He uses a number of special attacking skills unlike any you have ever seen, and it is your task to successfully take him one on one. There is a time limit in the secret passage, so it is crucial that you defeat him within the time limit. I wish you the best of luck, and I hope you bring the #b#t4031059##k with you.");
+            cm.sendNextPrev("既然他是我的克隆人，你可以预料到前方会有一场艰苦的战斗。他使用了许多你从未见过的特殊攻击技能，你的任务是成功地一对一地击败他。秘密通道有时间限制，所以在时间限制内击败他是至关重要的。祝你好运，我希望你能把 #b#t4031059##k 带回来");
         }
     } else if (actionx["3thJobC"]) {
         cm.getPlayer().removePartyQuestItem("JBP");
