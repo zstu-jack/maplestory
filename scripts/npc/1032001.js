@@ -136,7 +136,7 @@ function action(mode, type, selection) {
                 if (cm.canHold(4031009)) {
                     if (!cm.haveItem(4031009))
                         cm.gainItem(4031009, 1);
-                    cm.sendNextPrev("请把这封信带给 #b#p1072001##k ，他在魔法密林附近的 #b#m101020000##k。他代替我担任本次考核的导师。把信交给他，他会代替我测试你。祝你好运。");
+                    cm.sendNextPrev("请把这封信带给 #b#p1072001##k，他在魔法密林附近的 #b#m101020000##k。他代替我担任本次考核的导师。把信交给他，他会代替我测试你。祝你好运。");
                 } else {
                     cm.sendNext("确保你的背包存在空槽");
                     cm.dispose();

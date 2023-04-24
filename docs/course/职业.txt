@@ -1,6 +1,10 @@
-Bowman - 弓箭手
-Hunter - 猎人
-Crossbowman - 弩手
-Clerics - 牧师
-Fire/Poison - 火/毒
-Ice/Lightning - 冰/雷
+Bowman - 弓箭手 - 300
+Hunter - 猎人 - 310
+Crossbowman - 弩手 - 320
+Cleric - 牧师 - 230
+Fire/Poison - 火/毒 - 210
+Ice/Lightning - 冰/雷 - 220
+Warrior - 战士 - 100
+Fighter - 剑客 - 110
+Page - 准骑士 - 120
+Spearman - 枪战士 - 130
