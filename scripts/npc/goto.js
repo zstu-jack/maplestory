@@ -67,7 +67,7 @@ var npcs = Array(
     Array("达克鲁", 103000003, 0),
     Array("凯琳", 120000101, 0),
     Array("三转教官", 211000001, 0),
-    Array("test", 211040401, 0)
+    Array("test", 220010900, 0)
 );
 
 function start() {
