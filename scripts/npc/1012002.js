@@ -43,8 +43,8 @@ var equip;
 
 function start() {
     cm.getPlayer().setCS(true);
-    var selStr = "Hello. I am Vicious, retired Sniper. However, I used to be the top student of Athena Pierce. Though I no longer hunt, I can make some archer items that will be useful for you...#b"
-    var options = ["Create a bow","Create a crossbow","Make a glove","Upgrade a glove","Create materials","Create Arrows"];
+    var selStr = "你好，我是比休斯, 曾经我也是个射手，虽然我现在已经不再打猎,但我可以做一些弓箭手的必要品来帮助你……#b"
+    var options = ["打造一个弓","打造一个弩","做一个弓箭手手套","升级弓箭手手套","合成材料","打造箭头"];
     for (var i = 0; i < options.length; i++)
         selStr += "\r\n#L" + i + "# " + options[i] + "#l";
     cm.sendSimple(selStr);
@@ -58,32 +58,32 @@ function action(mode, type, selection) {
     }
     if (status == 0) {
         if (selection == 0) { //bow refine
-            var selStr = "I may have been a Sniper, but bows and crossbows aren't too much different. Anyway, which would you like to make?#b";
+            var selStr = "弓箭手射出的弓箭威力无穷，你听过后羿射日的故事么？最近天气这么热，天下第一的后羿在哪里？快点把太阳射下来！好吧，你想做些什么？#b";
             items = [1452002,1452003,1452001,1452000,1452005,1452006,1452007];
             for (var i = 0; i < items.length; i++)
                 selStr += "\r\n#L" + i + "##t" + items[i] + "##k - Bowman Lv. " + (10 + (i * 5)) + "#l#b";
         }else if (selection == 1) { //xbow refine
-            var selStr = "I was a Sniper. Crossbows are my specialty. Which would you like me to make for you?#b";
+            var selStr = "打造弩我也很擅长，你想要做哪一把弩？#b";
             items = [1462001,1462002,1462003,1462000,1462004,1462005,1462006,1462007];
             for (var i = 0; i < items.length; i++)
                 selStr += "\r\n#L" + i + "##t" + items[i] + "##k - Bowman Lv. " + (10 + (i * 5)) + "#l#b";
         }else if (selection == 2) { //glove refine
-            var selStr = "Okay, so which glove do you want me to make?#b";
+            var selStr = "好吧，你想做哪一种手套？#b";
             items = [1082012,1082013,1082016,1082048,1082068,1082071,1082084,1082089];
             for (var i = 0; i < items.length; i++)
                 selStr += "\r\n#L" + i + "##t" + items[i] + "##k - Bowman Lv. " + (15 + (i * 5) > 40 ? ((i-1) * 10) : 15 + (i * 5)) + "#l#b";
         }else if (selection == 3) { //glove upgrade
-            var selStr = "Upgrade a glove? That shouldn't be too difficult. Which did you have in mind?#b";
+            var selStr = "你想要升级你的手套吗？找我就对了！#b";
             items = [1082015,1082014,1082017,1082018,1082049,1082050,1082069,1082070,1082072,1082073,1082085,1082083,1082090,1082091];
             for (var i = 0, x = 0; i < items.length; i++, x += (i+1) % 2 == 0 ? 1 : 0)
                 selStr += "\r\n#L" + i + "##t" + items[i] + "##k" + "##k - Bowman Lv. " + (20 + (x * 5) > 40 ? ((x-1) * 10) : 20 + (x * 5)) + "#l#b";
         }else if (selection == 4) { //material refine
-            var selStr = "Materials? I know of a few materials that I can make for you...#b";
-            var materials = ["Make Processed Wood with Tree Branch","Make Processed Wood with Firewood","Make Screws (packs of 15)"];
+            var selStr = "我可以帮你合成一些材料，#b";
+            var materials = ["用树枝制作加工过的木材","用木块制作加工过的木材","做螺丝钉(15个)"];
             for (var i = 0; i < materials.length; i++)
                 selStr += "\r\n#L" + i + "# " + materials[i] + "#l";
         }else if (selection == 5) { //arrow refine
-            var selStr = "Arrows? Not a problem at all.#b";
+            var selStr = "你想要做一些箭头么，没问题！#b";
             items = [2060000,2061000,2060001,2061001,2060002,2061002];
             for (var i = 0; i < items.length; i++)
                 selStr += "\r\n#L" + i + "##t" + items[i] + "##l";
@@ -101,7 +101,7 @@ function action(mode, type, selection) {
         mats = matSet[selection];
         matQty = matQtySet[selection];
         cost = 0;
-        cm.sendGetNumber("So, you want me to make some #t" + item + "#s? In that case, how many do you want me to make?",1,1,100)
+        cm.sendGetNumber("你想要制作一些#t" + item + "#? 那样的话，你想要制作多少个？",1,1,100)
     }else if (status == 2) {
         if (selectedType != 4)
             selectedItem = selection;
@@ -134,25 +134,25 @@ function action(mode, type, selection) {
             matQty = matQtySet[selectedItem];
             cost = costSet[selectedItem];
         }
-        var prompt = "You want me to make ";
+        var prompt = "你想做一些";
         if (qty == 1)
-            prompt += "a #t" + item + "#?";
+            prompt += "#t" + item + "#?";
         else
             prompt += qty + " #t" + item + "#?";
-        prompt += " In that case, I'm going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+        prompt += " 那样的话, 我将需要一些特殊物品来制作。不过，首先要确保你有足够的库存空间!#b";
         if (mats instanceof Array)
             for(var i = 0; i < mats.length; i++)
                 prompt += "\r\n#i" + mats[i] + "# " + (matQty[i] * qty) + " #t" + mats[i] + "#";
         else
             prompt += "\r\n#i" + mats + "# " + (matQty * qty) + " #t" + mats + "#";
         if (cost > 0)
-            prompt += "\r\n#i4031138# " + (cost * qty) + " meso";
+            prompt += "\r\n#i4031138# " + (cost * qty) + " 金币";
         cm.sendYesNo(prompt);
     }else if (status == 3) {
         var complete = true;
         
         if (cm.getMeso() < (cost * qty)) {
-            cm.sendOk("Sorry, but this is how I make my living. No meso, no item.");
+            cm.sendOk("恐怕你负担不起这个费用。");
             cm.dispose();
             return;
         }
@@ -165,7 +165,7 @@ function action(mode, type, selection) {
                 complete = false;
         }	
         if (!complete)
-            cm.sendOk("Surely you, of all people, would understand the value of having quality items? I can't do that without the items I require.");
+            cm.sendOk("你如果不能给我带来这些材料，我无法帮你制作，毕竟巧妇难为无米之炊嘛。");
         else {
             var recvItem = item, recvQty;
             
@@ -187,9 +187,9 @@ function action(mode, type, selection) {
                 cm.gainMeso(-(cost * qty));
                 
                 cm.gainItem(recvItem, recvQty);
-                cm.sendOk("A perfect item, as usual. Come and see me if you need anything else.");
+                cm.sendOk("啧啧啧，你看看，我的技艺是如此的鬼斧神工!如果你还想做些什么，请继续找我哦！");
             }else {
-                cm.sendOk("Please make sure you have room in your inventory, and talk to me again.");
+                cm.sendOk("你的物品栏满啦！");
             }
         }
         cm.dispose();
