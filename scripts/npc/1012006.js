@@ -27,31 +27,31 @@
 var status = 0;
 
 function start() {
-    cm.sendSimple("Do you have any business with me?\r\n#L0##bPlease tell me about this place.#l\r\n#L1#I'm here through a word from Mar the Fairy...#k#l");
+    cm.sendSimple("你和我有生意吗?\r\n#L0##b请告诉我这个地方的情况.#l\r\n#L1#我是通过精灵玛尔的话来到这里的...#k#l");
 }
 
 function action(mode, type, selection) {
     if (mode == -1) {
         cm.dispose();
     } else if (mode == 0) {
-        cm.sendNext("Hmmm ... too busy to do it right now? If you feel like doing it, though, come back and find me.");
+        cm.sendNext("太忙了，现在不是时候？如果你想了解的话，回来找我。");
         cm.dispose();
     } else {
         status++;
         if (status == 1) {
             if (selection == 0) {
                 if (cm.haveItem(4031035)) {
-                    cm.sendNext("Get that letter, jump over obstacles with your pet, and take that letter to my brother Trainer Frod. Give him the letter and something good is going to happen to your pet.");
+                    cm.sendNext("收到那封信，带着你的宠物跳过障碍物，把那封信交给我弟弟的教练弗罗德。把信给他，你的宠物就会有好事情发生。");
                     cm.dispose();
                 } else
-                    cm.sendYesNo("This is the road where you can go take a walk with your pet. You can just walk around with it, or you can train your pet to go through the obstacles here. If you aren't too close with your pet yet, that may present a problem and he will not follow your command as much... So, what do you think? Wanna train your pet?");
+                    cm.sendYesNo("这是你可以和宠物一起散步的路。你可以带着它到处走，或者训练你的宠物穿过障碍物。如果你还没有和你的宠物太近，那可能会出现问题，他也不会像你一样听从你的命令…那么，你觉得呢？想训练你的宠物吗?");
             } else {
-                cm.sendOk("Hey, are you sure you've met #bMar the Fairy#k? Don't lie to me if you've never met her before because it's obvious. That wasn't even a good lie!!");
+                cm.sendOk("嘿，你确定你见过仙女马尔吗？如果你以前从未见过她，不要骗我，因为这很明显。那甚至不是一个好的谎言!!");
                 cm.dispose();
             }
         } else if (status == 2) {
             cm.gainItem(4031035, 1);
-            cm.sendNext("Ok, here's the letter. He wouldn't know I sent you if you just went there straight, so go through the obstacles with your pet, go to the very top, and then talk to Trainer Frod to give him the letter. It won't be hard if you pay attention to your pet while going through obstacles. Good luck!");
+            cm.sendNext("好的，这是信。如果你直接去的话，他不会知道我派你去的，所以和你的宠物一起穿过障碍物，到最上面去，然后和训练师弗罗德谈谈，把信给他。如果你在遇到障碍的时候注意你的宠物，那就不难了。祝你好运!");
             cm.dispose();
         }
     }
