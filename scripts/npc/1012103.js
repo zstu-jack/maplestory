@@ -49,7 +49,7 @@ function action(mode, type, selection) {
     } else {
         status++;
         if (status == 0) 
-            cm.sendSimple("I'm the head of this hair salon. If you have a #b#t5150001##k or a #b#t5151001##k allow me to take care of your hairdo. Please choose the one you want.\r\n#L1#Haircut: #i5150001##t5150001##l\r\n#L2#Dye your hair: #i5151001##t5151001##l");
+            cm.sendSimple("您好，我是这间美发店的老板. 如果你有 #b#t5150001##k 或者有 #b#t5151001##k 请允许我把你的头发护理。请选择一个你想要的.\\r\\n#L1#使用 #i5150001##t5150001##l\\r\\n#L2#使用 #i5151001##t5151001##l");
         else if (status == 1) {
             if (selection == 1) {
                 beauty = 1;
@@ -60,47 +60,47 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getGender() == 1)
                     for(var i = 0; i < fhair_v.length; i++)
                         pushIfItemExists(hairnew, fhair_v[i] + parseInt(cm.getPlayer().getHair() % 10));
-                cm.sendStyle("I can totally change up your hairstyle and make it look so good. Why don't you change it up a bit? If you have #b#t5150001##k I'll change it for you. Choose the one to your liking~.", hairnew);
+                cm.sendStyle("我可以改变你的发型，让它看起来很酷。要不要试一试?如果你有#b#t5150001##k，我将为您更改。请选择一个你喜欢的~。", hairnew);
             } else if (selection == 2) {
                 beauty = 2;
                 haircolor = Array();
                 var current = parseInt(cm.getPlayer().getHair()/10)*10;
                 for(var i = 0; i < 8; i++)
                     pushIfItemExists(haircolor, current + i);
-                cm.sendStyle("I can totally change your haircolor and make it look so good. Why don't you change it up a bit? With #b#t51051001##k I'll change it for you. Choose the one to your liking.", haircolor);
+                cm.sendStyle("我可以改变你的发色，让它看起来很漂亮。要不要试一试?你如果有#b#t51051001##k我可以帮你换一下。请选择一个你喜欢的。", haircolor);
             }
         } else if (status == 2){
             cm.dispose();
             if (beauty == 1){
                 if (cm.haveItem(5420002)){  // thanks MedicOP for noticing uncoded functionality for Hair Membership coupons
                     cm.setHair(hairnew[selection]);
-                    cm.sendOk("Enjoy your new and improved hairstyle!");
+                    cm.sendOk("这发型很不错，适合你!");
                 } else if (cm.haveItem(5150001)){
                     cm.gainItem(5150001, -1);
                     cm.setHair(hairnew[selection]);
-                    cm.sendOk("Enjoy your new and improved hairstyle!");
+                    cm.sendOk("这发型很不错，非常适合你!");
                 } else
-                    cm.sendOk("Hmmm...it looks like you don't have our designated coupon...I'm afraid I can't give you a haircut without it. I'm sorry...");
+                    cm.sendOk("嗯…你好像不是我们的VIP客户，没有VIP美发券，我不能给你理发。很抱歉……");
             }
             if (beauty == 2){
                 if (cm.haveItem(5151001)){
                     cm.gainItem(5151001, -1);
                     cm.setHair(haircolor[selection]);
-                    cm.sendOk("Enjoy your new and improved haircolor!");
+                    cm.sendOk("这发色，美呆了!");
                 } else
-                    cm.sendOk("Hmmm...it looks like you don't have our designated coupon...I'm afraid I can't dye your hair without it. I'm sorry...");
+                    cm.sendOk("嗯…你好像不是我们的VIP客户，……没有VIP变色卡，我不能给你染头发。我很抱歉……");
             }
             if (beauty == 0){
                 if (selection == 0 && cm.getMeso() >= hairprice) {
                     cm.gainMeso(-hairprice);
                     cm.gainItem(5150001, 1);
-                    cm.sendOk("Enjoy!");
+                    cm.sendOk("怎么样？看起来还不错吧？");
                 } else if (selection == 1 && cm.getMeso() >= haircolorprice) {
                     cm.gainMeso(-haircolorprice);
                     cm.gainItem(5151001, 1);
-                    cm.sendOk("Enjoy!");
+                    cm.sendOk("怎么样？看起来还不错吧？");
                 } else
-                    cm.sendOk("You don't have enough mesos to buy a coupon!");
+                    cm.sendOk("哎呀，你的钱不够了!");
             }
         }
     }
