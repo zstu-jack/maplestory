@@ -53,7 +53,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            cm.sendSimple("I'm Brittany the assistant. If you have #b#t5150000##k, #b#t5150010##k or #b#t5151000##k by any chance, then how about letting me change your hairdo?\r\n#L0#Haircut: #i5150000##t5150000##l\r\n#L1#Haircut: #i5150010##t5150010##l\r\n#L2#Dye your hair: #i5151000##t5151000##l");
+            cm.sendSimple("嗨，我是#p1012104# 如果你有 #b#t5150000##k 或者 #b#t5151000##k, 我就可以免费帮你弄好看的头发。 \r\n#L0#使用: #i5150000##t5150000##l\r\n#L1#使用: #i5151000##t5151000##l");
         } else if (status == 1) {
             if (selection == 0) {
                 beauty = 3;
@@ -66,7 +66,7 @@ function action(mode, type, selection) {
                     for(var i = 0; i < fhair_r.length; i++)
                         pushIfItemExists(hairnew, fhair_r[i] + parseInt(cm.getPlayer().getHair() % 10));
                 }
-                cm.sendYesNo("If you use the REG coupon your hair will change RANDOMLY with a chance to obtain a new experimental style that even you didn't think was possible. Are you going to use #b#t5150000##k and really change your hairstyle?");
+                cm.sendYesNo("如果你使用普通理发券，你的发型会随机变化，有机会获得一种夸张的新实验风格。你打算用#b#t5150000##k来改变你的发型吗？");
             } else if (selection == 1) {
                 beauty = 1;
                 hairnew = Array();
@@ -78,14 +78,14 @@ function action(mode, type, selection) {
                     for(var i = 0; i < fhair_e.length; i++)
                         pushIfItemExists(hairnew, fhair_e[i] + parseInt(cm.getPlayer().getHair() % 10));
                 }
-                cm.sendYesNo("If you use the EXP coupon your hair will change RANDOMLY with a chance to obtain a new experimental style that even you didn't think was possible. Are you going to use #b#t5150010##k and really change your hairstyle?");
+                cm.sendYesNo("如果你使用随机发型染色券，你的头发颜色会随机变化，有机会获得一种新的发色，让你觉得充满惊喜。你想用#b#t5150010###k来改变你的发色吗？");
             } else if (selection == 2) {
                 beauty = 2;
                 haircolor = Array();
                 var current = parseInt(cm.getPlayer().getHair()/10)*10;
                 for(var i = 0; i < 8; i++)
                     pushIfItemExists(haircolor, current + i);
-                cm.sendYesNo("If you use a regular coupon your hair will change RANDOMLY. Do you still want to use #b#t5151000##k and change it up?");
+                cm.sendYesNo("如果你使用普通理发券，你的头发会随机变化。是否仍要使用#b#t5151000##k并进行更改？");
             }
         }
         else if (status == 2){
@@ -94,37 +94,37 @@ function action(mode, type, selection) {
                 if (cm.haveItem(5150010) == true){
                     cm.gainItem(5150010, -1);
                     cm.setHair(hairnew[Math.floor(Math.random() * hairnew.length)]);
-                    cm.sendOk("Enjoy your new and improved hairstyle!");
+                    cm.sendOk("新发型换好了，还满意吧!");
                 } else {
-                    cm.sendOk("Hmmm...it looks like you don't have our designated coupon...I'm afraid I can't give you a haircut without it. I'm sorry...");
+                    cm.sendOk("嗯…看起来你没有我们的理发券。。。没有它，恐怕我不能给你理发。对不起。。。");
                 }
             } else if (beauty == 2){
                 if (cm.haveItem(5151000) == true){
                     cm.gainItem(5151000, -1);
                     cm.setHair(haircolor[Math.floor(Math.random() * haircolor.length)]);
-                    cm.sendOk("Enjoy your new and improved haircolor!");
+                    cm.sendOk("感受你的新发色吧，还满意吧！");
                 } else {
-                    cm.sendOk("Hmmm...it looks like you don't have our designated coupon...I'm afraid I can't dye your hair without it. I'm sorry...");
+                    cm.sendOk("嗯…看起来你没有我们指定的染色券。。。恐怕没有它我不能给你染发。对不起。。。");
                 }
             } else if (beauty == 3){
                 if (cm.haveItem(5150000) == true){
                     cm.gainItem(5150000, -1);
                     cm.setHair(hairnew[Math.floor(Math.random() * hairnew.length)]);
-                    cm.sendOk("Enjoy your new and improved hairstyle!");
+                    cm.sendOk("新发型真是美爆了！");
                 } else {
-                    cm.sendOk("Hmmm...it looks like you don't have our designated coupon...I'm afraid I can't give you a haircut without it. I'm sorry...");
+                    cm.sendOk("嗯…看起来你没有我们的理发券。。。没有它，恐怕我不能给你理发。对不起。。。");
                 }
             } else if (beauty == 0){
                 if (selection == 0 && cm.getMeso() >= hairprice) {
                     cm.gainMeso(-hairprice);
                     cm.gainItem(5150010, 1);
-                    cm.sendOk("Enjoy!");
+                    cm.sendOk("享受它吧!嘻嘻。");
                 } else if (selection == 1 && cm.getMeso() >= haircolorprice) {
                     cm.gainMeso(-haircolorprice);
                     cm.gainItem(5151000, 1);
-                    cm.sendOk("Enjoy!");
+                    cm.sendOk("享受它吧!嘻嘻。");
                 } else {
-                    cm.sendOk("You don't have enough mesos to buy a coupon!");
+                    cm.sendOk("你没有足够的金币来购买优惠券！");
                 }
             }
         }
