@@ -31,7 +31,7 @@
 var status = -1;
 
 function start() {
-    cm.sendSimple("Hold up! Access to this area is limited due to remodeling. I can only allow people who meet certain conditions to enter here.#b\n\r\n#L0#I'm helping #eBlake#n right now.#l\r\n#L1#I'm a #rVIP#b at this shopping Center!#l");
+    cm.sendSimple("前方正在维修无法通行，目前仅允许满足条件的人通过。#b\n\r\n#L0#我正在协助 #eBlake#n 。#l\r\n#L1#我是废都广场 #rVIP#b !#l");
 }
 
 function action(mode, type, selection) {
@@ -49,22 +49,22 @@ function action(mode, type, selection) {
     		if (cm.isQuestStarted(2286) || cm.isQuestStarted(2287) || cm.isQuestStarted(2288)) {
         		var em = cm.getEventManager("RockSpirit");
                         if (!em.startInstance(cm.getPlayer())) {
-                            cm.sendOk("Uh... It looks like the rooms ahead are a bit crowded right now. Please wait around here for a bit, ok?");
+                            cm.sendOk("战斗已经开始，请稍后进入。");
                         }
     			cm.dispose();
     			return;
     		} else {
-    			cm.sendOk("I did not hear anything from Blake that you are assisting him.");  
+    			cm.sendOk("Blake可没说过你正在协助他.");  
        		}
     	} else {
     		if (cm.isQuestCompleted(2290)) {
                         if(cm.getPlayer().getLevel() > 50) {
-                                cm.sendOk("The VIP area is available only for players #rlevel 50 or below#k.");
+                                cm.sendOk("VIP区域仅面向 #r50级或以下#k 的角色开放.");
                         } else {
-                                cm.sendOk("The VIP area only gets available after handing over #r#t4032521#s#k from the #b'Admission to the VIP Zone'#k quest.");
+                                cm.sendOk("VIP区域仅面向完成了“进入VIP区域”任务，并持有 #r#t4032521#s#k的人开放.");
                         }
                 } else {
-                        cm.sendOk("#rVIP#k? Yeah that is funny #rMr. VIP#k, now get lost before I call security."); 
+                        cm.sendOk("#rVIP#k？你看起来并不像是 #rVIP贵宾#k 啊，在我叫保安之前，从这儿离开。"); 
                 }
     	}
     	cm.dispose();
