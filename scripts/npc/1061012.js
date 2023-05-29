@@ -5,64 +5,64 @@
 */
 
 function start() {
-    if (cm.getQuestStatus(6107) == 1 || cm.getQuestStatus(6108) == 1) {
-	var ret = checkJob();
-	if (ret == -1) {
-	    cm.sendOk("Please form a party and talk to me again.");
-	} else if (ret == 0) {
-	    cm.sendOk("Please make sure that your party is a size of 2.");
-	} else if (ret == 1) {
-	    cm.sendOk("One of your party member's job is not eligible for entering the other world.");
-	} else if (ret == 2) {
-	    cm.sendOk("One of your party member's level is not eligible for entering the other world.");
+	if (cm.getQuestStatus(6107) == 1 || cm.getQuestStatus(6108) == 1) {
+		var ret = checkJob();
+		if (ret == -1) {
+			cm.sendOk("请在组队后与我交谈.");
+		} else if (ret == 0) {
+			cm.sendOk("请确认队伍由2人组成.");
+		} else if (ret == 1) {
+			cm.sendOk("你的组队成员里有某人职业不符，无法进入异世界.");
+		} else if (ret == 2) {
+			cm.sendOk("你的组队成员里有某人职业不符，无法进入异世界.");
+		} else {
+			var em = cm.getEventManager("s4aWorld");
+			if (em == null) {
+				cm.sendOk("因为未知的原因进入失败,请稍后重试.");
+			} else if (em.getProperty("started").equals("true")) {
+				cm.sendOk("已经有人先行一步在异世界中尝试挑战蝙蝠怪了.");
+			} else {
+				var eli = em.getEligibleParty(cm.getParty());
+				if (eli.size() > 0) {
+					if (!em.startInstance(cm.getParty(), cm.getPlayer().getMap(), 1)) {
+						cm.sendOk("您的队伍已在挑战地图中登记.");
+					}
+				} else {
+					cm.sendOk("您还无法开始这个组队任务.因为组队人数不对,或是组队成员中存在不符合资格的成员,又或者是尚有组队成员没有进入此地图.如果缺少组队成员,请尝试使用组队搜索功能.");
+				}
+			}
+		}
 	} else {
-	    var em = cm.getEventManager("s4aWorld");
-	    if (em == null) {
-		cm.sendOk("You're not allowed to enter with unknown reason. Try again." );
-	    } else if (em.getProperty("started").equals("true")) {
-		cm.sendOk("Someone else is already attempting to defeat the Jr.Balrog in another world." );
-	    } else {
-                var eli = em.getEligibleParty(cm.getParty());
-                if(eli.size() > 0) {
-                    if(!em.startInstance(cm.getParty(), cm.getPlayer().getMap(), 1)) {
-                        cm.sendOk("A party in your name is already registered in this instance.");
-                    }
-                } else {
-                    cm.sendOk("You cannot start this party quest yet, because either your party is not in the range size, some of your party members are not eligible to attempt it or they are not in this map. If you're having trouble finding party members, try Party Search.");
-                }
-	    }
+		cm.sendOk("因为未知的原因,无法进入异世界.");
 	}
-    } else {
-        cm.sendOk("You're not allowed to enter the other world with unknown reason.");
-    }
-    
-    cm.dispose();
+
+	cm.dispose();
 }
 
 function action(mode, type, selection) {
 }
 
 function checkJob() {
-    var party = cm.getParty();
+	var party = cm.getParty();
 
-    if (party == null) {
-	return -1;
-    }
-    //    if (party.getMembers().size() != 2) {
-    //	return 0;
-    //    }
-    var it = party.getMembers().iterator();
-
-    while (it.hasNext()) {
-	var cPlayer = it.next();
-
-	if (cPlayer.getJobId() == 312 || cPlayer.getJobId() == 322 || cPlayer.getJobId() == 900) {
-	    if (cPlayer.getLevel() < 120) {
-		return 2;
-	    }
-	} else {
-	    return 1;
+	if (party == null) {
+		return -1;
 	}
-    }
-    return 3;
+	//    if (party.getMembers().size() != 2) {
+	//	return 0;
+	//    }
+	var it = party.getMembers().iterator();
+
+	while (it.hasNext()) {
+		var cPlayer = it.next();
+
+		if (cPlayer.getJobId() == 312 || cPlayer.getJobId() == 322 || cPlayer.getJobId() == 900) {
+			if (cPlayer.getLevel() < 120) {
+				return 2;
+			}
+		} else {
+			return 1;
+		}
+	}
+	return 3;
 }
