@@ -100,7 +100,7 @@ function action(mode, type, selection) {
 				cm.gainItem(5380000, -1);
 				cm.evolvePet(i, after);
                                 
-				cm.sendOk("进化成功了! 它曾经是 #i" + id + "# #t" + id + "#, 现在进化成了 #i" + after + "# #t" + after + "#!");
+				cm.sendOk("进化成功了! 它之前是 #i" + id + "# #t" + id + "#, 现在进化成了 #i" + after + "# #t" + after + "#!");
 				cm.dispose();
 			}
 		} else if (status == 2) {
