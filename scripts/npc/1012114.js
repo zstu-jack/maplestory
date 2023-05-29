@@ -36,24 +36,24 @@ function action(mode, type, selection) {
                     
                 if (status == 0) {
                         if (cm.isEventLeader()) {
-                                cm.sendSimple("Growl! I am Growlie, always ready to protect this place. What brought you here?\r\n#b#L0# Please tell me what this place is all about.#l\r\n#L1# I have brought #t4001101#.#l\r\n#L2# I would like to leave this place.#l");
+                                cm.sendSimple("我是小老虎，你怎么来的？\r\n#b#L0# 我想知道这里的一切。#l\r\n#L1# 我给你带来了 #t4001101#.#l\r\n#L2# 我要离开这里。#l");
                         } else {
-                                cm.sendSimple("Growl! I am Growlie, always ready to protect this place. What brought you here?\r\n#b#L0# Please tell me what this place is all about.#l\r\n#L2# I would like to leave this place.#l");
+                                cm.sendSimple("我是小老虎，你怎么来的？\r\n#b#L0# 查看说明。#l\r\n#L2# 我要离开这里。#l");
                         }
                 } else if (status == 1) {
                         if (chosen == -1)
                                 chosen = selection;
                         if (chosen == 0) {
-                                cm.sendNext("This place can be best described as the prime spot where you can taste the delicious rice cakes made by Moon Bunny every full moon.");
+                                cm.sendNext("每个满月都能在这里品尝到月妙兔制作的美味年糕。");
                         } else if (chosen == 1) {
                                 if (cm.haveItem(4001101, 10)) {
-                                        cm.sendNext("Oh... isn't this rice cake made by Moon Bunny? Please hand me the rice cake. Mmmm ... these seems delicious. Please come see me next time for more #b#t4001101##k. Have a safe trip home!");
+                                        cm.sendNext("请把年糕递给我。嗯。。。这看起来很美味。下次再来找我了解更多#b#t4001101##k。祝你回家旅途平安！");
                                 } else {
-                                        cm.sendOk("I advise you to check and make sure that you have indeed gathered up #b10 #t4001101#s#k.");
+                                        cm.sendOk("建议你再检查一下背包，是否有 #b10 #t4001101#s#k.");
                                         cm.dispose();
                                 }
                         } else if (chosen == 2) {
-                                cm.sendYesNo("Are you sure you want to leave?");
+                                cm.sendYesNo("你确定要离开这里吗？");
                         }
                         else {
                                 cm.dispose();
@@ -61,7 +61,7 @@ function action(mode, type, selection) {
                         }
                 } else if (status == 2) {
                         if (chosen == 0) {
-                                cm.sendNextPrev("Gather up the primrose seeds from the primrose leaves all over this area, and plant the seeds at the footing near the crescent moon to see the primrose bloom. There are 6 types of primroses, and all of them require different footings. It is imperative that the footing fits the seed of the flower.");
+                                cm.sendNextPrev("从这片区域的报春花叶子上采集报春花种子，将种子种植在新月附近的平台处，即可看到报春花绽放。报春花有6种类型，它们都需要对应的平台。平台对了，花朵的种子才能开出花来。");
                         } else if (chosen == 1) {
                                 cm.gainItem(4001101, -10);
 
@@ -77,17 +77,17 @@ function action(mode, type, selection) {
                                 if (mode == 1) {
                                         cm.warp(910010300);
                                 } else {
-                                        cm.sendOk("You better collect some delicious rice cakes for me then, because time is running out, Growl!");
+                                        cm.sendOk("快收集一些美味的年糕，时间不多了。。。");
                                 }
                                 cm.dispose();
                         }
                 } else if (status == 3) {
                         if (chosen == 0) {
-                                cm.sendNextPrev("When the flowers of primrose blooms, the full moon will rise, and that's when the Moon Bunnies will appear and start pounding the mill. Your task is to fight off the monsters to make sure that Moon Bunny can concentrate on making the best rice cake possible.");
+                                cm.sendNextPrev("当报春花盛开时，满月就会升起，这时月妙兔就会出现并开始敲打制作年糕。你的任务是阻止怪物骚扰月妙兔，确保它能够集中精力制作年糕。");
                         }
                 } else if (status == 4) {
                         if (chosen == 0) {
-                                cm.sendNextPrev("I would like for you and your party members to cooperate and get me 10 rice cakes. I strongly advise you to get me the rice cakes within the allotted time.");
+                                cm.sendNextPrev("我希望你和你的同伴合作，给我10个年糕。注意倒计时，超过时间你回被强制传送离开。");
                         }
                 } else {
                         cm.dispose();
