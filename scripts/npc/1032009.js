@@ -31,14 +31,14 @@ function start() {
 
 function action(mode, type, selection) {
     if (status == 0) {
-        cm.sendYesNo("Do you wish to leave the boat?");
+        cm.sendYesNo("还没到站呢，确定要离开飞船吗？");
         status++;
     } else {
         if (mode < 1) {
             cm.dispose();
         } else {
             if (status == 1) {
-                cm.sendNext ("Alright, see you next time. Take care.");
+                cm.sendNext ("好吧，下次再见。");
                 status++;
             } else if (status == 2) {
                 cm.warp(101000300, 0);// back to orbis

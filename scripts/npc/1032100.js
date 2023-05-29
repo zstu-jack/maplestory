@@ -46,7 +46,7 @@ function action(mode, type, selection) {
             cm.dispose();
             return;
         } else if (status == 2 && mode == 0) {
-            cm.sendNext("It's not easy making " + item + ". Please get the materials ready.");
+            cm.sendNext("制造" + item + "可不容易. 请先准备好材料吧。");
             cm.dispose();
             return;
         }
@@ -55,25 +55,25 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            if (cm.getLevel() >= 40) {
-                cm.sendNext("Yeah... I am the master alchemist of the fairies. But the fairies are not supposed to be in contact with a human being for a long period of time... A strong person like you will be fine, though. If you get me the materials, I'll make you a special item.");
+            if (cm.getLevel() >= 4) {
+                cm.sendNext("是啊...我是仙女炼金大师。仙女不应该同一个玩家长时间的接触......。如果你得到了我的资料，我会送你一个特殊的道具。");
             } else {
-                cm.sendOk("I can make rare, valuable items but unfortunately I can't make it to a stranger like you.");
+                cm.sendOk("我可以做出稀有且贵重物品，但是，我不能送给陌生人。");
                 cm.dispose();
             }
         } else if (status == 1) {
-            cm.sendSimple("What do you want to make?#b\r\n#L0#Moon Rock#l\r\n#L1#Star Rock#l\r\n#L2#Black Feather#l");
+            cm.sendSimple("你想要做什么#b\\r\\n#L0#月石#l\\r\\n#L1#星石#l\\r\\n#L2#黑羽毛#l");
         } else if (status == 2) {
             selected = selection;
             if (selection == 0) {
-                item = "Moon Rock";
-                cm.sendYesNo("So you want to make a Moon Rock? To do that you need to refine one of each of these: #bBronze Plate#k, #bSteel Plate#k,\r\n#bMithril Plate#k, #bAdamantium Plate#k, #bSilver Plate#k, #bOrihalcon Plate#k and #bGold Plate#k. Throw in 10,000 mesos and I'll make it for you.");
+                item = "月石";
+                cm.sendYesNo("你想要做" + item + "? 那么你需要的材料有: #b#t4011000##k, #b#t4011001##k,\r\n#b#t4011002##k, #b#t4011003##k, #b#t4011004##k, #b#t4011005##k, 和 #b#t4011006##k. 然后还有 10,000 金币");
             } else if (selection == 1) {
-                item = "Star Rock";
-                cm.sendYesNo("So you want to make a Star Rock? To do that you need to refine one of each of these: #bGarnet#k, #bAmethyst#k, #bAquaMarine#k, #bEmerald#k, #bOpal#k, #bSapphire#k, #bTopaz#k, #bDiamond#k and #bBlack Crystal#k. Throw in 15,000 mesos and I'll make it for you.");
+                item = "星石";
+                cm.sendYesNo("你想要做" + item + "? 那么你需要的材料有: #b#t4021000##k, #b#t4021001##k, #b#t4021002##k, #b#t4021003##k, #b#t4021004##k, #b#t4021005##k, #b#t4021006##k, #b#t4021007##k 和 #b#t4021008##k. 然后还有 15,000 金币");
             } else if (selection == 2) {
-                item = "Black Feather";
-                cm.sendYesNo("So you want to make a Black Feather? To do that you need #b1 Flaming Feather#k, #b1 Moon Rock#k and #b1 Black Crystal#k. Throw in 30,000 mesos and I'll make it for you. Oh yeah, this piece of feather is a very special item, so if you drop it by any chance, it'll disappear, as well as you won't be able to give it away to someone else.");
+                item = "黑羽毛";
+                cm.sendYesNo("你想要做" + item + "? 那么你需要的材料有: #b1 #t4001006##k, #b1 #t4001007##k 和 #b1 #t4001008##k. 然后还有 30,000 金币");
             }
         } else if (status == 3) {
             if (selected == 0) {
@@ -83,9 +83,9 @@ function action(mode, type, selection) {
                         cm.gainItem(i,-1);
                     }
                     cm.gainItem(4011007, 1);
-                    cm.sendNext("Ok here, take " + item + ". It's well-made, probably because I'm using good materials. If you need my help down the road, feel free to come back.");
+                    cm.sendNext("来, 拿好你的 " + item + "。 我可是用了非常高级的材料帮你做好的。快感谢我吧。");
                 } else {
-                    cm.sendNext("Are you sure you have enough mesos? Please check and see if you have the refined #bBronze Plate#k, #bSteel Plate#k,\r\n#bMithril Plate#k, #bAdamantium Plate#k, #bSilver Plate#k, #bOrihalcon Plate#k and #bGold Plate#k, one of each.");
+                    cm.sendNext("看看你的钱包，是不是瘪了？钱不够。或者是：\r\n#r#t4011000##k\r\n#r#t4011001##k \r\n#r#t4011002##k \r\n#r#t4021003##k \r\n#r#t4011003##k \r\n#r#t4011005##k \r\n#r#t4011006##k\r\n其中的某一个材料不够。");
                 }
             } else if (selected == 1) {
                 if (cm.haveItem(4021000) && cm.haveItem(4021001) && cm.haveItem(4021002) && cm.haveItem(4021003) && cm.haveItem(4021004) && cm.haveItem(4021005) && cm.haveItem(4021006) && cm.haveItem(4021007) && cm.haveItem(4021008) && cm.getMeso() >= 15000) {
@@ -94,9 +94,9 @@ function action(mode, type, selection) {
                         cm.gainItem(j,-1);
                     }
                     cm.gainItem(4021009, 1);
-                    cm.sendNext("Ok here, take " + item + ". It's well-made, probably because I'm using good materials. If you need my help down the road, feel free to come back.");
+                    cm.sendNext("来, 拿好你的 " + item + "。 我可是用了非常高级的材料帮你做好的。快感谢我吧。");
                 } else {
-                    cm.sendNext("Are you sure you have enough mesos? Please check and see if you have the refined #bGarnet#k, #bAmethyst#k, #bAquaMarine#k, #bEmerald#k, #bOpal#k, #bSapphire#k, #bTopaz#k, #bDiamond#k and #bBlack Crystal#k, one of each.");
+                    cm.sendNext("看看你的钱包，是不是瘪了？或者再仔细检查下材料是否备齐。");
                 }
             } else if (selected == 2) {
                 if (cm.haveItem(4001006) && cm.haveItem(4011007) && cm.haveItem(4021008) && cm.getMeso() >= 30000) {
@@ -105,9 +105,9 @@ function action(mode, type, selection) {
                         cm.gainItem(k,-1);
                     }
                     cm.gainItem(4031042, 1);
-                    cm.sendNext("Ok here, take " + item + ". It's well-made, probably because I'm using good materials. If you need my help down the road, feel free to come back.");
+                    cm.sendNext("制作好了，拿好 " + item + "快感谢我吧。");
                 } else {
-                    cm.sendNext("Are you sure you have enough mesos? Please check and see if you have the refined #bGarnet#k, #bAmethyst#k, #bAquaMarine#k, #bEmerald#k, #bOpal#k, #bSapphire#k, #bTopaz#k, #bDiamond#k and #bBlack Crystal#k, one of each.");
+                    cm.sendNext("看看你的钱包，是不是瘪了？或者再仔细检查下材料是否备齐。");
                 }
             }
             cm.dispose();
