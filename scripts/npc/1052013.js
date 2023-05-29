@@ -54,21 +54,21 @@ function action(mode, type, selection) {
                                     
                                         if(cm.isEventLeader()) {
                                                 if(cm.haveItem(4001007, couponsNeeded)) {
-                                                        cm.sendNext("Your team collected all the needed coupons, good work!");
+                                                        cm.sendNext("你们收集到了足够多的通行证，干得漂亮！");
                                                         cm.gainItem(4001007, couponsNeeded);
                                                         eim.clearPQ();
 
                                                         cm.dispose();
                                                         return;
                                                 } else {
-                                                        cm.sendYesNo("Your team must collect #r" + couponsNeeded + "#k coupons to complete this instance. Talk to me when you have the right amount in hands... Or you want to #bquit now#k? Note that if you quit now #ryour team will be forced to quit#k as well.");
+                                                        cm.sendYesNo("你们需要收集 #r" + couponsNeeded + "#k 张通行证来完成本关卡。得到足够的数量后再来和我说话...或者你是想#b现在离开#k吗? 请注意，如果现在离开的话，#r你的队伍成员也会一起退出地图#k。");
                                                 }
                                         } else {
-                                                cm.sendYesNo("Your team must collect #r" + couponsNeeded + "#k coupons to complete this instance. Let your leader talk to me with the right amount in hands... Or you want to #bquit now#k? Note that if you quit now your team #rmay become undermanned#k to further continue this instance.");
+                                                cm.sendYesNo("你们需要收集 #r" + couponsNeeded + "#k 张通行证来完成本关卡，让你的队长来和我说话...或者你是想#b现在离开#k吗? 请注意，如果现在离开的话，队伍将#r无法满足人数需求通过此关卡#k。");
                                         }
                                 } else {
                                         if(!eim.giveEventReward(cm.getPlayer())) {
-                                                cm.sendOk("Please make a room on your ETC inventory to receive the prize.");
+                                                cm.sendOk("请确认其它栏有足够的空间以获得奖励。");
                                                 cm.dispose();
                                         } else {
                                                 cm.warp(193000000);
@@ -82,7 +82,7 @@ function action(mode, type, selection) {
                 } else {
                         var levels = ["#m190000000#", "#m191000000#", "#m192000000#", "#m195000000#", "#m196000000#", "#m197000000#"];
                         if (status == 0) {
-                                var sendStr = "Premium Road is a place of multiple areas with monsters of most various types gathered together, an ideal place for grinding EXP and erasers for the #p1052014#. Select the area you are willing to face:\r\n\r\n#b";
+                                var sendStr = "奔腾路由多个容纳了多种多样的怪物的区域组成，能够作为从#p1052014#处获取经验与橡皮的理想场所，请选择你想要进入的区域:\r\n\r\n#b";
                                 for(var i = 0; i < 6; i++) {
                                     sendStr += "#L" + i + "#" + levels[i] + "#l\r\n";
                                 }
@@ -93,7 +93,7 @@ function action(mode, type, selection) {
                             
                                 em = cm.getEventManager("CafePQ_" + pqArea);
                                 if(em == null) {
-                                        cm.sendOk("The CafePQ_" + pqArea + "has encountered an error.");
+                                        cm.sendOk("网吧组队任务在 " + pqArea + " 发生了错误。");
                                         cm.dispose();
                                         return;
                                 } else if(cm.isUsingOldPqNpcStyle()) {
@@ -102,34 +102,34 @@ function action(mode, type, selection) {
                                         return;
                                 }
 
-                                cm.sendSimple("#e#b<Party Quest: Premium Road - " + levels[selection] + ">\r\n#k#n" + em.getProperty("party") + "\r\n\r\nThe #p1052014# operates differently than the common ones. They do not use mesos or gachapon tickets, rather #rERASERS#k, that can be obtained by completing the missions held on the Premium Road. To go there, you must find partners and attend to a Party Quest. When teamed up and ready, have your #bparty leader#k talk to me.#b\r\n#L0#I want to participate in the party quest.\r\n#L1#I would like to " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "disable" : "enable") + " Party Search.\r\n#L2#I would like to hear more details.");
+                                cm.sendSimple("#e#b<组队任务：奔腾路 - " + levels[selection] + ">\r\n#k#n" + em.getProperty("party") + "\r\n\r\n #p1052014# 的运行方式与众不同。并不依赖金币或百宝券运行，而是花费#r橡皮#k, 它们可以通过完成奔腾路的任务来获得。想要进入此处冒险，需要寻找队友执行组队任务。建立队伍后，请让你们的 #b队长#k 与我对话。#b\r\n#L0#我想执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "停止" : "开始") + " 组队搜索。\r\n#L2#我想了解更多细节。");
                         } else if (status == 2) {
                                 if (selection == 0) {
                                         if (cm.getParty() == null) {
-                                                cm.sendOk("You can participate in the party quest only if you are in a party.");
+                                                cm.sendOk("请在组成队伍后再尝试挑战。");
                                                 cm.dispose();
                                         } else if(!cm.isLeader()) {
-                                                cm.sendOk("Your party leader must talk to me to start this party quest.");
+                                                cm.sendOk("只有队长可以开启组队任务，请让队长来与我对话。");
                                                 cm.dispose();
                                         } else {
                                                 var eli = em.getEligibleParty(cm.getParty());
                                                 if(eli.size() > 0) {
                                                         if(!em.startInstance(cm.getParty(), cm.getPlayer().getMap(), 1)) {
-                                                                cm.sendOk("Another party has already entered the #rParty Quest#k in this channel. Please try another channel, or wait for the current party to finish.");
+                                                                cm.sendOk("本频道已经有队伍正在进行组队任务，请等待其完成组队任务或切换至其他频道。");
                                                         }
                                                 }
                                                 else {
-                                                        cm.sendOk("You cannot start this party quest yet, because either your party is not in the range size, some of your party members are not eligible to attempt it or they are not in this map. If you're having trouble finding party members, try Party Search.");
+                                                        cm.sendOk("您还无法开始这个组队任务.因为组队人数不对,或是组队成员中存在不符合资格的成员,又或者是尚有组队成员没有进入此地图.如果缺少组队成员,请尝试使用组队搜索功能.");
                                                 }
 
                                                 cm.dispose();
                                         }
                                 } else if (selection == 1) {
                                         var psState = cm.getPlayer().toggleRecvPartySearchInvite();
-                                        cm.sendOk("Your Party Search status is now: #b" + (psState ? "enabled" : "disabled") + "#k. Talk to me whenever you want to change it back.");
+                                        cm.sendOk("现在团队搜索状态为: #b" + (psState ? "开启" : "关闭") + "#k. 你想更改的时候就跟我说。");
                                         cm.dispose();
                                 } else {
-                                        cm.sendOk("#e#b<Party Quest: Premium Road>#k#n\r\nOn the maps ahead, you will face many common-leveled mobs to face on. Grind all the required coupons from them and give it to me. All members will then receive a eraser, corresponding with the level faced. Insert on the machine #bmany of the same eraser or multiple different ones#k to have a better chance on greater prizes.");
+                                        cm.sendOk("#e#b<组队任务：奔腾路>#k#n\r\n进入地图后，队员们将面对大量相应等级的怪物，从它们身上收集到所有的通行证交给我。与关卡对应地，每位成员都可以收到一枚橡皮。在自动售货机处可以使用#b相同的橡皮或是多枚不同的橡皮#k来交换更好的奖励。");
                                         cm.dispose();
                                 }
                         }
