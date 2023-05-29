@@ -38,7 +38,7 @@ var vipcost = 999;
 var iwantreg = 0;
 
 function start() {
-    cm.sendNext("迎来到林中之城旅馆。我们永远尽心为您提供最好的服务。如果您疲于狩猎，在这里休息一下如何？");
+    cm.sendNext("欢迎来到林中之城旅馆。我们永远尽心为您提供最好的服务。如果您疲于狩猎，在这里休息一下如何？");
 }
 
 function action(mode, type, selection) {
