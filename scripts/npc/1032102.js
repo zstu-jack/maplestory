@@ -25,7 +25,7 @@ function action(mode, type, selection) {
 		cm.dispose();
 	} else {
 		if (mode == 0 && type > 0) {
-			cm.sendOk("Alright, see you next time.");
+			cm.sendOk("好吧，下次再见！");
 			cm.dispose();
 			return;
 		}
@@ -35,24 +35,24 @@ function action(mode, type, selection) {
 			status--;
                     
 		if (status == 0) {
-			cm.sendYesNo("I am Mar the Fairy. If you have a dragon at level 15 or higher and a rock of evolution, I can evolve your dragon. If you are lucky, you may even get a black one! Would you like me to do so?");
+			cm.sendYesNo("我是精灵——玛尔。如果你有一条15级或更高级别的宝贝龙宠物和一块进化之石，我可以进化你的宝贝龙。如果幸运的话，甚至可以进化得到黑龙！你想让我这么做吗？");
 		} else if (status == 1) {
 			if (cm.haveItem(5000028, 1)) {
 				cm.gainItem(5000028, -1);
 				cm.gainItem(5000029, 1);
-				cm.sendOk("I don't know how you got that egg, but it has hatched, apparently!");
+				cm.sendOk("你是怎么得到这个蛋的，它已经孵化了！");
 				cm.dispose();
 			} else if (cm.getPlayer().getPet(0) == null) {
-				cm.sendOk("Make sure your pet is equipped on slot 1.");
+				cm.sendOk("确保你的宠物装备在插槽第一格。");
 				cm.dispose();
 			} else if (cm.getPlayer().getPet(0).getItemId() < 5000029 || cm.getPlayer().getPet(0).getItemId() > 5000033 || !cm.haveItem(5380000,1)) {
-				cm.sendOk("You do not meet the requirements. You need #i5380000##t5380000#, as well as either one of #d#i5000029##t5000029##k, #g#i5000030##t5000030##k, #r#i5000031##t5000031##k, #b#i5000032##t5000032##k, or #e#i5000033##t5000033##n equipped on slot 1. Please come back when you do.");
+				cm.sendOk("我可能没办法帮助你. 你必须给我 #i5380000##t5380000#, 如果你的宠物是以下之一： #d#i5000029##t5000029##k, #g#i5000030##t5000030##k, #r#i5000031##t5000031##k, #b#i5000032##t5000032##k, 或者 #e#i5000033##t5000033##n 只要等级达到15级，我就可以帮你升级哟.");
 				cm.dispose();
 			} else if (cm.getPlayer().getPet(0).getLevel() < 15) {
-				cm.sendOk("Your pet must be level 15 or above to evolve.");
+				cm.sendOk("你的宠物必须达到15级或以上才能进化。");
 				cm.dispose();
 			} else if (cm.haveItem(5000029,2) || cm.haveItem(5000030,2) || cm.haveItem(5000031,2) || cm.haveItem(5000032,2) || cm.haveItem(5000033,2)) {
-				cm.sendSimple("You have a dragon which isn't out, and as well as a dragon which is out. I can remove one for you. Remember that the data for the dragon I am removing will be lost.\r\n#r#L0#Remove my CASH first slot.#l#k\r\n#b#L1#Remove the first dragon in my inventory.#l#k\r\n#g#L2#No thanks.#l#k");
+				cm.sendSimple("我正在删除宝贝龙的数据 #r#L0#删除我的特殊栏第一格#l#k #b#L1#移除库存中的第一条龙#l#k #g#L2#不，谢谢#l#k");
 			} else {
                                 var i;
                             
@@ -63,7 +63,7 @@ function action(mode, type, selection) {
                                     }
                                 }
                                 if(i == 3) {
-                                    cm.sendOk("You either don't have a pet dragon ready to evolve or you lack #b#t5380000##k.");
+                                    cm.sendOk("你没有待进化的宝贝龙，要么缺少#b#t5380000##k.");
                                     cm.dispose();
                                     return;
                                 }
@@ -75,7 +75,7 @@ function action(mode, type, selection) {
 				//var fullness = cm.getPlayer().getPet(i).getFullness();
 				//MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
 				if (id < 5000029 || id > 5000033) {
-					cm.sendOk("Something wrong, try again.");
+					cm.sendOk("错误，请重试。");
 					cm.dispose();
 				}
 				var rand = 1 + Math.floor(Math.random() * 10);
@@ -89,7 +89,7 @@ function action(mode, type, selection) {
 				} else if (rand == 10) {
 					after = 5000033;
 				} else {
-					cm.sendOk("Something wrong. Try again.");
+					cm.sendOk("错误，请重试。");
 					cm.dispose();
 				}
 				
@@ -100,13 +100,13 @@ function action(mode, type, selection) {
 				cm.gainItem(5380000, -1);
 				cm.evolvePet(i, after);
                                 
-				cm.sendOk("Your dragon has now evolved!! It used to be a #i" + id + "# #t" + id + "#, and now it's a #i" + after + "# #t" + after + "#!");
+				cm.sendOk("进化成功了! 它曾经是 #i" + id + "# #t" + id + "#, 现在进化成了 #i" + after + "# #t" + after + "#!");
 				cm.dispose();
 			}
 		} else if (status == 2) {
 			if (selection == 0) {
 				MapleInventoryManipulator.removeFromSlot(cm.getClient(), MapleInventoryType.CASH, 1, 1, true);
-				cm.sendOk("Your cash first slot is removed.");
+				cm.sendOk("您的特殊栏第一格已删除");
 			} else if (selection == 1) {
 				if (cm.haveItem(5000029, 2)) {
 					cm.gainItem(5000029, -1);
@@ -119,9 +119,9 @@ function action(mode, type, selection) {
 				} else if (cm.haveItem(5000033, 2)) {
 					cm.gainItem(5000033, -1);
 				}
-				cm.sendOk("The first dragon in your inventory is removed.");
+				cm.sendOk("移除成功。");
 			} else if (selection == 2) {
-				cm.sendOk("Okay, come back next time.");
+				cm.sendOk("好的，期待下次见面。");
 			}
 			cm.dispose();
 		}
