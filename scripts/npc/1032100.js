@@ -55,7 +55,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            if (cm.getLevel() >= 4) {
+            if (cm.getLevel() >= 40) {
                 cm.sendNext("是啊...我是仙女炼金大师。仙女不应该同一个玩家长时间的接触......。如果你得到了我的资料，我会送你一个特殊的道具。");
             } else {
                 cm.sendOk("我可以做出稀有且贵重物品，但是，我不能送给陌生人。");
