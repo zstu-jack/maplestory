@@ -15,7 +15,7 @@ function action(mode, type, selection) {
 	status--;
     }
     if (status == 0) {
-	cm.sendYesNo("ÄãÈ·¶¨ÏëÒªÀë¿ªÂğ?ÌôÕ½½«´ÓĞÂ¿ªÊ¼!");
+	cm.sendYesNo("ä½ ç¡®å®šæƒ³è¦ç¦»å¼€å—?æŒ‘æˆ˜å°†ä»æ–°å¼€å§‹!");
     } else if (status == 1) {
 	cm.warp(541020700);
 	if (cm.getPlayerCount(541020800) == 0) {
