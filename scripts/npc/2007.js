@@ -5,11 +5,11 @@ function start() {
 
 function action(mode, type, selection) {
     if (mode == -1) {
-        cm.sendNext("ÏíÊÜÄãµÄÂÃ³Ì");
+        cm.sendNext("ç¥ä½ æ—…é€”æ„‰å¿«ã€‚");
         cm.dispose();
     } else {
         if (status == 0 && mode == 0) {
-            cm.sendNext("ÏíÊÜÄãµÄÂÃ³Ì");
+            cm.sendNext("ç¥ä½ æ—…é€”æ„‰å¿«ã€‚");
             cm.dispose();
         }
         if (mode == 1) {
@@ -18,7 +18,7 @@ function action(mode, type, selection) {
             status--;
         }
         if (status == 0) {
-            cm.sendYesNo("ÄãÏëÌø¹ı½Ì³ÌÖ±½ÓÈ¥ Lith Harbor Âğ£¿");
+            cm.sendYesNo("ä½ æƒ³ç›´æ¥è·³è¿‡æ•™ç¨‹ç›´æ¥å‰å¾€ #bæ˜ç æ¸¯#k å—ï¼Ÿ");
         } else if (status == 1) {
             cm.warp(104000000, 0);
             cm.dispose();
