@@ -33,7 +33,7 @@ function start() {
         status = -1;
         dList = cm.getDriedPets();
         if(dList.size() == 0) {
-                cm.playerMessage(5, "You currently do not own a pet that needs to be treated with Water of Life.");
+                cm.playerMessage(5, "你没有死亡的宠物需要复活。");
                 cm.dispose();
                 return;
         }
@@ -55,10 +55,10 @@ function action(mode, type, selection) {
                         status--;
     
                 if (status == 0) {
-                        cm.sendYesNo("I am Mar the Fairy. You have the #bWater of Life#k... With this, I can bring a doll back to life with my magic. What do you think? Do you want to use this item and reawaken your pet ...?");
+                        cm.sendYesNo("我是妖精玛丽。 你带来了#b生命水#... 有了这个道具, 我就能够让娃娃恢复生命。 怎么样？ 确定使用道具来让复活娃娃吗？");
                         
                 } else if (status == 1) {
-                        var talkStr = "So which pet you want to reawaken? Please choose the pet you'd most like to reawaken...\r\n\r\n";
+                        var talkStr = "要复活哪一只宠物? 请选择你想要复活的宠物...\r\n\r\n";
                         
                         var listStr = "";
                         var i = 0;
@@ -67,7 +67,7 @@ function action(mode, type, selection) {
                         while (dIter.hasNext()){
                             var dPet = dIter.next();
                             
-                            listStr += "#b#L" + i + "# " + dPet.getName() + " #k - Lv " + dPet.getLevel() + " Closeness " + dPet.getCloseness();
+                            listStr += "#b#L" + i + "# " + dPet.getName() + " #k - Lv " + dPet.getLevel() + " 亲密度 " + dPet.getCloseness();
                             listStr += "#l\r\n";
                             
                             i++;
@@ -78,7 +78,7 @@ function action(mode, type, selection) {
                         var sPet = dList.get(selection);
                         
                         if(sPet != null) {
-                            cm.sendNext("Your doll has now reawaken as your pet! However, my magic isn't perfect, so I can't promise an eternal life for your pet... Please take care of that pet before the Water of Life dries. Well then, good bye...");
+                            cm.sendNext("你的娃娃已经变回宠物了! 但是我的魔法也不是万能的。所以我不能保证它永远活着...在生命水完全消退之前，一定要疼爱它呀...那么，再见吧...");
                             
                             var it = cm.getPlayer().getInventory(MapleInventoryType.CASH).getItem(sPet.getPosition());
                             it.setExpiration(Date.now() + (1000 * 60 * 60 * 24 * 90));
@@ -86,7 +86,7 @@ function action(mode, type, selection) {
                             
                             cm.gainItem(5180000, -1);
                         } else {
-                            cm.sendNext("Oh, well then. Good bye...");
+                            cm.sendNext("再见...");
                         }
                     
                         cm.dispose();
