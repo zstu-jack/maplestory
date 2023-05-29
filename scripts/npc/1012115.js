@@ -2,12 +2,12 @@ function start() {
     var status = cm.getQuestStatus(20706);
     
     if (status == 0) {
-        cm.sendNext("It looks like there's nothing suspicious in the area.");
+        cm.sendNext("它看起来像有什么可疑的地方.");
     } else if (status == 1) {
         cm.forceCompleteQuest(20706);
-        cm.sendNext("You have spotted the shadow! Better report to #p1103001#.");
+        cm.sendNext("你已经发现的影子！最好是报告给 #p1103001#.");
     } else if (status == 2) {
-        cm.sendNext("The shadow has already been spotted. Better report to #p1103001#.");
+        cm.sendNext("阴影已经被发现。最好反馈给 #p1103001#.");
     }
     cm.dispose();
 }

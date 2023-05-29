@@ -149,7 +149,7 @@ function action(mode, type, selection) {
 
                     status -= 2;
                 } else
-                    cm.sendSimple("Now... have you made up your mind? Please choose the job you'd like to select for your 2nd job advancement. #b\r\n#L0#剑客\r\n#L1#准骑士\r\n#L2#枪战士");
+                    cm.sendSimple("你下定决心了吗？请选择你的二转职业。 #b\r\n#L0#剑客\r\n#L1#准骑士\r\n#L2#枪战士");
             }
         } else if (status == 2) {
             if (cm.haveItem(4031008)) {
@@ -157,30 +157,30 @@ function action(mode, type, selection) {
                 return;
             }
             job += selection * 10;
-            cm.sendYesNo("So you want to make the second job advancement as the " + (job == 110 ? "#b剑客#k" : job == 120 ? "#b准骑士#k" : "#b枪战士#k") + "? You know you won't be able to choose a different job for the 2nd job advancement once you make your desicion here, right? Are you sure about this?");
+            cm.sendYesNo("你选择的二转职业是 " + (job == 110 ? "#b剑客#k" : job == 120 ? "#b准骑士#k" : "#b枪战士#k") + "? 一旦你在这里做出决定，你必须以此为生，精于此道。不可更改职业了。");
         } else if (status == 3) {
             if (cm.haveItem(4031012))
                 cm.gainItem(4031012, -1);
             cm.completeQuest(100005);
 
-            if (job == 110) cm.sendNext("Alright, you have now become the #b剑客#k. A 剑客 strives to become the strongest of the strong, and never stops fighting. Don't ever lose that will to fight, and push forward 24/7. I'll help you become even stronger than you already are.");
-            else if (job == 120) cm.sendNext("Alright, you have now become a #b准骑士#k! 准骑士s have high intelligence and bravery, which I hope you'll employ throughout your journey to the right path. I'll help you become much stronger than you already are.");
-            else cm.sendNext("Alright, you have now become the #b枪战士#k. The 枪战士 use the power of darkness to take out the enemies, always in shadows... Please believe in yourself and your awesome power as you go in your journey. I'll help you become much stronger than you are right now.");
+            if (job == 110) cm.sendNext("很好，你即将成为 #b剑客#k. A 剑客 努力成为强者中的强者，永不停止战斗。永远不要失去战斗的意志，勇往直前。我会帮助你变得比现在更强大。");
+            else if (job == 120) cm.sendNext("很好，你即将成为 #b准骑士#k! 准骑士拥有高度的智慧和勇气，我希望你在通往正确道路的整个旅程中都能运用这些智慧和勇气。我会帮助你变得比现在更强大。");
+            else cm.sendNext("很好，你即将成为 #b枪战士#k. 枪战士用黑暗的力量消灭敌人，总是在阴影中涅槃重生。。。在你的旅程中，请相信你强大的力量。我会帮助你变得比现在更强大。");
             if (cm.getJobId() != job)
                 cm.changeJobById(job);
         } else if (status == 4)
-            cm.sendNextPrev("I have just given you a book that gives you the list of skills you can acquire as a " + (job == 110 ? "剑客" : job == 120 ? "准骑士" : "枪战士") + ". Also your etc inventory has expanded by adding another row to it. Your max HP and MP have increased, too. Go check and see for it yourself.");
+            cm.sendNextPrev("这本书，里面列出了你作为一名 " + (job == 110 ? "剑客" : job == 120 ? "准骑士" : "枪战士") + ". 此外，你的技能库存增加了一行。你的HP和MP也增加了。你自己去看看。");
         else if (status == 5)
-            cm.sendNextPrev("I have also given you a little bit of #bSP#k. Open the #bSkill Menu#k located at the bottomleft corner. you'll be able to boost up the newer acquired 2nd level skills. A word of warning, though. You can't boost them up all at once. Some of the skills are only available after you have learned other skills. Make sure yo remember that.");
+            cm.sendNextPrev("我也给了你一点#b技能点#k。打开#b技能菜单#k。你将能够提升二级技能。提醒一下，你不可能一下子把它们都提高。有些技能只有在你学习了其他技能后才能使用。一定要记住这一点。");
         else if (status == 6)
-            cm.sendNextPrev((job == 110 ? "剑客" : job == 120 ? "准骑士" : "枪战士") + " need to be strong. But remember that you can't abuse that power and use it on a weakling. Please use your enormous power the right way, because... for you to use that the right way, that is much harden than just getting stronger. Please find me after you have advanced much further. I'll be waiting for you.");
+            cm.sendNextPrev((job == 110 ? "剑客" : job == 120 ? "准骑士" : "枪战士") + " 想要变得更强的话。请记住，你不能滥用这种能力，记得你是一名正义的剑客，要以正确的方式使用你的巨大力量，因为。。。对你来说，坚守初心比变得更强壮要重要得多。请在你取得更大进步后找我。我会等你的。");
     } else if (actionx["3thJobI"]) {
         if (status == 0) {
             if (cm.getPlayer().gotPartyQuestItem("JB3")) {
                 cm.getPlayer().removePartyQuestItem("JB3");
                 cm.getPlayer().setPartyQuestItemObtained("JBP");
             }
-            cm.sendNextPrev("My the other self is quite strong. He uses many special skills and you should fight with him 1 on 1. However, people cannot stay long in the secret passage, so it is important to beat him ASAP. Well... Good luck I will look forward to you bringing #b#t4031059##k to me.");
+            cm.sendNextPrev("另一个自我也相当厉害。他会使用许多特殊技能，你应该和他一对一对抗。注意，你不能在秘密通道里呆太久，所以尽快打败他很重要。好祝你好运，我期待着你把#b#t4031059###k带给我。");
         }
     } else if (actionx["3thJobC"]) {
         cm.getPlayer().removePartyQuestItem("JBP");
