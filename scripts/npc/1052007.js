@@ -12,7 +12,7 @@ function start() {
 }
 
 function action(mode, type, selection) {
-    em = cm.getEventManager("µØÌú");
+    em = cm.getEventManager("Subway");
     
     if (mode == -1) {
     	cm.dispose();
