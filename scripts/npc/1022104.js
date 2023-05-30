@@ -33,7 +33,7 @@ function action(mode, type, selection) {
 	if (selection < 0 || selection >= num) {
 		cm.dispose();
 	} else if (cm.getPlayerCount(map + selection) >= maxp) {
-		cm.sendNext("训练场已经满了！");
+		cm.sendNext("训练场人数已满。");
 		status = -1;
 	} else {
 		cm.warp(map + selection, 0);
