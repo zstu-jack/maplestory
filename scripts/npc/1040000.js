@@ -42,9 +42,9 @@ function action(mode, type, selection) {
                         if(cm.isQuestStarted(28177) && !cm.haveItem(4032479)) {
                                 if(cm.canHold(4032479)) {
                                         cm.gainItem(4032479, 1);
-                                        cm.sendOk("Huh, are you looking for me? Chief Stan sent you here, right? But hey, I am not the suspect you seek. If I have some proof? Here, take this and return it to #b#p1012003##k.");
+                                        cm.sendOk("啊，你在找我吗？斯坦警长派你来的，对吧？但是，我不是你要找的嫌疑犯。不信的话，给你看证据，请取下这个并将其返回到#b#p1012003##k。");
                                 } else {
-                                        cm.sendOk("Hey, make a slot available before talking to me.");
+                                        cm.sendOk("嘿，在和我说话之前，先确保其他栏有空位。");
                                 }
                         } else {
                                 cm.sendOk("Zzzzzz...");

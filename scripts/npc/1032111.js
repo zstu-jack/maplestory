@@ -27,16 +27,16 @@ function action(mode, type, selection){
 			if(!cm.hasItem(4032142)){
 				if(cm.canHold(4032142)){
 					cm.gainItem(4032142, 1);
-					cm.sendOk("You bottled up some of the clear tree sap.  #i4032142#");
+					cm.sendOk("你装了一些清澈的树液。 #i4032142#");
 				}
 				else
-					cm.sendOk("Make sure you have a free spot in your ETC inventory.");
+					cm.sendOk("请确定你的#r其他栏#k有多余的空格");
 			}
 			else
-				cm.sendOk("A never ending flow of sap is coming from this small tree stump.");
+				cm.sendOk("树液正源源不断的从这个小树桩中流出。");
 		}
 		else
-			cm.sendOk("A never ending flow of sap is coming from this small tree stump.");
+			cm.sendOk("树液正源源不断的从这个小树桩中流出。");
 	}
 	else if(status == 1){
 		cm.dispose();
