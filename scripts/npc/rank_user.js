@@ -44,7 +44,7 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        var pnpc = cm.getPlayerNPCByScriptid(cm.getNpc());
+                        var pnpc = cm.getPlayerNPCByScriptId(cm.getNpc());
                         
                         if(pnpc != null) {
                             var branchJobName = GameConstants.getJobName(pnpc.getJob());

@@ -330,7 +330,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
         return !YamlConfig.config.server.PLAYERNPC_AUTODEPLOY && chr.getLevel() >= chr.getMaxClassLevel() && !chr.isGM() && MaplePlayerNPC.canSpawnPlayerNpc(chr.getName(), mapid);
     }
 
-    public MaplePlayerNPC getPlayerNPCByScriptid(int scriptId) {
+    public MaplePlayerNPC getPlayerNPCByScriptId(int scriptId) {
         for (MapleMapObject pnpcObj : getPlayer().getMap().getMapObjectsInRange(new Point(0, 0), Double.POSITIVE_INFINITY, Arrays.asList(MapleMapObjectType.PLAYER_NPC))) {
             MaplePlayerNPC pn = (MaplePlayerNPC) pnpcObj;
 

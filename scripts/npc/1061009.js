@@ -57,10 +57,10 @@ function start() {
         
         var em = cm.getEventManager("3rdJob_" + js);
         if (em == null)
-            cm.sendOk("æŠ±æ­‰ï¼Œ(" + js + ") 3è½¬é¢„çƒ­æ´»åŠ¨å°šæœªå¼€å¯ã€‚");
+            cm.sendOk("±§Ç¸£¬(" + js + ") 3×ªÔ¤ÈÈ»î¶¯ÉĞÎ´¿ªÆô¡£");
         else {
             if (!em.startInstance(cm.getPlayer())) {
-                cm.sendOk("ä¸åˆ†èº«çš„æˆ˜æ–—æ­£åœ¨è¿›è¡Œä¸­ã€‚è¯·ç­‰å¾…å†…åœºç©å®¶ç¦»å¼€åå†å°è¯•è¿›å…¥ã€‚");
+                cm.sendOk("Óë·ÖÉíµÄÕ½¶·ÕıÔÚ½øĞĞÖĞ¡£ÇëµÈ´ıÄÚ³¡Íæ¼ÒÀë¿ªºóÔÙ³¢ÊÔ½øÈë¡£");
             }
             
             cm.dispose();

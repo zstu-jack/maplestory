@@ -49,8 +49,8 @@ function action(mode, type, selection) {
     else
         cm.dispose();
     if (status == 0 && mode == 1) {
-        var selStr = "å—¯....ä½ å¥½,æˆ‘æ˜¯è¾›å¾·çš„å¾’å¼Ÿ,æˆ‘æ²¡æœ‰ä»–é‚£ä¹ˆå‰å®³,åªèƒ½åˆ¶ä½œä¸€ä¸‹ç¨å¾®ç®€å•ä¸€äº›çš„ç‰©å“.#b"
-        var options = new Array("åˆ¶ä½œæ‰‹å¥—","å‡çº§æ‰‹å¥—","åˆ¶ä½œææ–™");
+        var selStr = "àÅ....ÄãºÃ,ÎÒÊÇĞÁµÂµÄÍ½µÜ,ÎÒÃ»ÓĞËûÄÇÃ´À÷º¦,Ö»ÄÜÖÆ×÷Ò»ÏÂÉÔÎ¢¼òµ¥Ò»Ğ©µÄÎïÆ·.#b"
+        var options = new Array("ÖÆ×÷ÊÖÌ×","Éı¼¶ÊÖÌ×","ÖÆ×÷²ÄÁÏ");
         for (var i = 0; i < options.length; i++){
             selStr += "\r\n#L" + i + "# " + options[i] + "#l";
         }
@@ -60,9 +60,9 @@ function action(mode, type, selection) {
     else if (status == 1 && mode == 1) {
         selectedType = selection;
         if (selectedType == 0){ //glove refine
-            var selStr = "å¥½çš„,ä½ æƒ³åšå“ªç§?#b";
-            var items = new Array ("è…•ç”²#k - æˆ˜å£« ç­‰çº§. 10#b","é’¢åˆ¶çŸ­æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 15#b","çš®æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 20#b","ç™½çº¹çŸ­æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 25#b",
-            "é’é“œæœºå™¨æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 30#b","é“åˆ¶è½»ä¾¿æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 35#b","é’¢é“æŒ‡èŠ‚æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 40#b","é’¢é“åˆé‡‘æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 50#b","é’é“œæˆ˜æ–—æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 60#b");
+            var selStr = "ºÃµÄ,ÄãÏë×öÄÄÖÖ?#b";
+            var items = new Array ("Íó¼×#k - Õ½Ê¿ µÈ¼¶. 10#b","¸ÖÖÆ¶ÌÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 15#b","Æ¤ÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 20#b","°×ÎÆ¶ÌÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 25#b",
+            "ÇàÍ­»úÆ÷ÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 30#b","ÌúÖÆÇá±ãÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 35#b","¸ÖÌúÖ¸½ÚÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 40#b","¸ÖÌúºÏ½ğÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 50#b","ÇàÍ­Õ½¶·ÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 60#b");
             for (var i = 0; i < items.length; i++){
                 selStr += "\r\n#L" + i + "# " + items[i] + "#l";
             }
@@ -70,10 +70,10 @@ function action(mode, type, selection) {
             equip = true;
         }
         else if (selectedType == 1){ //glove upgrade
-            var selStr = "å‡çº§ä¸€å‰¯æ‰‹å¥—?è¿™ä¸éš¾,åªè¦ä½ æœ‰ææ–™.#b";
-            var crystals = new Array ("é’¢åˆ¶æœºå™¨æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 30#b","ç´«çŸ¿æœºå™¨æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 30#b","é»„è½»ä¾¿æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 35#b","é»‘è½»ä¾¿æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 35#b",
-            "æœ±çŸ¿æŒ‡èŠ‚æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 40#b","é»‘æŒ‡èŠ‚æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 40#b","é”‚çŸ¿åˆé‡‘æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 50#b","é»„é‡‘åˆé‡‘æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 50#b",
-            "è“æˆ˜æ–—æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 60#b","é»‘æˆ˜æ–—æ‰‹å¥—#k - æˆ˜å£« ç­‰çº§. 60#b");
+            var selStr = "Éı¼¶Ò»¸±ÊÖÌ×?Õâ²»ÄÑ,Ö»ÒªÄãÓĞ²ÄÁÏ.#b";
+            var crystals = new Array ("¸ÖÖÆ»úÆ÷ÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 30#b","×Ï¿ó»úÆ÷ÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 30#b","»ÆÇá±ãÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 35#b","ºÚÇá±ãÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 35#b",
+            "Öì¿óÖ¸½ÚÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 40#b","ºÚÖ¸½ÚÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 40#b","ï®¿óºÏ½ğÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 50#b","»Æ½ğºÏ½ğÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 50#b",
+            "À¶Õ½¶·ÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 60#b","ºÚÕ½¶·ÊÖÌ×#k - Õ½Ê¿ µÈ¼¶. 60#b");
             for (var i = 0; i < crystals.length; i++){
                 selStr += "\r\n#L" + i + "# " + crystals[i] + "#l";
             }
@@ -81,8 +81,8 @@ function action(mode, type, selection) {
             equip = true;
         }
         else if (selectedType == 2){ //material refine
-            var selStr = "åŠ å·¥ææ–™ï¼Ÿæˆ‘åªèƒ½åšè¿™äº›....b";
-            var materials = new Array ("ç”¨æ ‘æåŠ å·¥æˆä¸ºæœ¨æ","ç”¨æœ¨å—åŠ å·¥æˆä¸ºæœ¨æ","èºä¸é’‰(15ä¸ª)");
+            var selStr = "¼Ó¹¤²ÄÁÏ£¿ÎÒÖ»ÄÜ×öÕâĞ©....b";
+            var materials = new Array ("ÓÃÊ÷Ö¦¼Ó¹¤³ÉÎªÄ¾²Ä","ÓÃÄ¾¿é¼Ó¹¤³ÉÎªÄ¾²Ä","ÂİË¿¶¤(15¸ö)");
             for (var i = 0; i < materials.length; i++){
                 selStr += "\r\n#L" + i + "# " + materials[i] + "#l";
             }
@@ -105,7 +105,7 @@ function action(mode, type, selection) {
             cost = costSet[selectedItem];
         }
 		
-        var prompt = "å“¦,åš #t" + item + "#? æ²¡é—®é¢˜,ä½ æƒ³åšå¤šå°‘ä¸ª?";
+        var prompt = "Å¶,×ö #t" + item + "#? Ã»ÎÊÌâ,ÄãÏë×ö¶àÉÙ¸ö?";
 		
         cm.sendGetNumber(prompt,1,1,100)
     }
@@ -141,13 +141,13 @@ function action(mode, type, selection) {
             cost = costSet[selectedItem];
         }
 		
-        var prompt = "ä½ æƒ³åˆ¶ä½œ ";
+        var prompt = "ÄãÏëÖÆ×÷ ";
         if (qty == 1)
             prompt += " #t" + item + "#?";
         else
-            prompt += qty + "ä¸ª #t" + item + "#?";
+            prompt += qty + "¸ö #t" + item + "#?";
 			
-        prompt += " æ²¡é—®é¢˜,ä¸è¿‡æˆ‘éœ€è¦ä»¥ä¸‹è¿™äº›ææ–™#b";
+        prompt += " Ã»ÎÊÌâ,²»¹ıÎÒĞèÒªÒÔÏÂÕâĞ©²ÄÁÏ#b";
 		
         if (mats instanceof Array){
             for(var i = 0; i < mats.length; i++){
@@ -159,7 +159,7 @@ function action(mode, type, selection) {
         }
 		
         if (cost > 0)
-            prompt += "\r\n#i4031138# " + cost * qty + " é‡‘å¸";
+            prompt += "\r\n#i4031138# " + cost * qty + " ½ğ±Ò";
 		
         cm.sendYesNo(prompt);
     }
@@ -173,13 +173,13 @@ function action(mode, type, selection) {
             recvQty = qty;
 		
         if(!cm.canHold(recvItem, recvQty)) {
-            cm.sendOk("ä½ çš„èƒŒåŒ…æ»¡äº†.");
+            cm.sendOk("ÄãµÄ±³°üÂúÁË.");
             cm.dispose();
             return;
         }
         else if (cm.getMeso() < cost * qty)
         {
-            cm.sendOk("æˆ‘è™½ç„¶åªæ˜¯ä¸ªå­¦å¾’,ä½†æˆ‘ä¹Ÿè¦åƒé¥­çš„.");
+            cm.sendOk("ÎÒËäÈ»Ö»ÊÇ¸öÑ§Í½,µ«ÎÒÒ²Òª³Ô·¹µÄ.");
             cm.dispose();
             return;
         }
@@ -195,7 +195,7 @@ function action(mode, type, selection) {
         }
 			
         if (!complete)
-            cm.sendOk("è™½ç„¶æˆ‘è¿˜æ˜¯ä¸ªå­¦å¾’ï¼Œä½†æˆ‘çŸ¥é“åˆ¶ä½œç‰©å“æ˜¯ä¸èƒ½ç”¨å…¶ä»–é“å…·ä»£æ›¿çš„ï¼Œä½ èƒ½æŠŠè¦æ±‚çš„é“å…·éƒ½å¸¦æ¥å—ï¼Ÿå¦‚æœæ²¡æœ‰çš„è¯ï¼Œæˆ‘æ— æ³•å¸®ä½ åˆ¶ä½œã€‚");
+            cm.sendOk("ËäÈ»ÎÒ»¹ÊÇ¸öÑ§Í½£¬µ«ÎÒÖªµÀÖÆ×÷ÎïÆ·ÊÇ²»ÄÜÓÃÆäËûµÀ¾ß´úÌæµÄ£¬ÄãÄÜ°ÑÒªÇóµÄµÀ¾ß¶¼´øÀ´Âğ£¿Èç¹ûÃ»ÓĞµÄ»°£¬ÎÒÎŞ·¨°ïÄãÖÆ×÷¡£");
         else {
             if (mats instanceof Array) {
                 for (var i = 0; i < mats.length; i++){
@@ -209,7 +209,7 @@ function action(mode, type, selection) {
                 cm.gainMeso(-cost * qty);
 				
             cm.gainItem(recvItem, recvQty);
-            cm.sendOk("çœ‹èµ·æ¥æ€ä¹ˆæ ·?å¦‚æœè¿˜éœ€è¦åˆ¶ä½œ,éšæ—¶è¿‡æ¥æ‰¾æˆ‘.");
+            cm.sendOk("¿´ÆğÀ´ÔõÃ´Ñù?Èç¹û»¹ĞèÒªÖÆ×÷,ËæÊ±¹ıÀ´ÕÒÎÒ.");
         }
         cm.dispose();
     }

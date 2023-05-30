@@ -33,7 +33,7 @@ function start() {
         status = -1;
         dList = cm.getDriedPets();
         if(dList.size() == 0) {
-                cm.playerMessage(5, "ä½ æ²¡æœ‰æ­»äº¡çš„å® ç‰©éœ€è¦å¤æ´»ã€‚");
+                cm.playerMessage(5, "ÄãÃ»ÓĞËÀÍöµÄ³èÎïĞèÒª¸´»î¡£");
                 cm.dispose();
                 return;
         }
@@ -55,10 +55,10 @@ function action(mode, type, selection) {
                         status--;
     
                 if (status == 0) {
-                        cm.sendYesNo("æˆ‘æ˜¯å¦–ç²¾ç›ä¸½ã€‚ ä½ å¸¦æ¥äº†#bç”Ÿå‘½æ°´#... æœ‰äº†è¿™ä¸ªé“å…·, æˆ‘å°±èƒ½å¤Ÿè®©å¨ƒå¨ƒæ¢å¤ç”Ÿå‘½ã€‚ æ€ä¹ˆæ ·ï¼Ÿ ç¡®å®šä½¿ç”¨é“å…·æ¥è®©å¤æ´»å¨ƒå¨ƒå—ï¼Ÿ");
+                        cm.sendYesNo("ÎÒÊÇÑı¾«ÂêÀö¡£ Äã´øÀ´ÁË#bÉúÃüË®#... ÓĞÁËÕâ¸öµÀ¾ß, ÎÒ¾ÍÄÜ¹»ÈÃÍŞÍŞ»Ö¸´ÉúÃü¡£ ÔõÃ´Ñù£¿ È·¶¨Ê¹ÓÃµÀ¾ßÀ´ÈÃ¸´»îÍŞÍŞÂğ£¿");
                         
                 } else if (status == 1) {
-                        var talkStr = "è¦å¤æ´»å“ªä¸€åªå® ç‰©? è¯·é€‰æ‹©ä½ æƒ³è¦å¤æ´»çš„å® ç‰©...\r\n\r\n";
+                        var talkStr = "Òª¸´»îÄÄÒ»Ö»³èÎï? ÇëÑ¡ÔñÄãÏëÒª¸´»îµÄ³èÎï...\r\n\r\n";
                         
                         var listStr = "";
                         var i = 0;
@@ -67,7 +67,7 @@ function action(mode, type, selection) {
                         while (dIter.hasNext()){
                             var dPet = dIter.next();
                             
-                            listStr += "#b#L" + i + "# " + dPet.getName() + " #k - Lv " + dPet.getLevel() + " äº²å¯†åº¦ " + dPet.getCloseness();
+                            listStr += "#b#L" + i + "# " + dPet.getName() + " #k - Lv " + dPet.getLevel() + " Ç×ÃÜ¶È " + dPet.getCloseness();
                             listStr += "#l\r\n";
                             
                             i++;
@@ -78,7 +78,7 @@ function action(mode, type, selection) {
                         var sPet = dList.get(selection);
                         
                         if(sPet != null) {
-                            cm.sendNext("ä½ çš„å¨ƒå¨ƒå·²ç»å˜å›å® ç‰©äº†! ä½†æ˜¯æˆ‘çš„é­”æ³•ä¹Ÿä¸æ˜¯ä¸‡èƒ½çš„ã€‚æ‰€ä»¥æˆ‘ä¸èƒ½ä¿è¯å®ƒæ°¸è¿œæ´»ç€...åœ¨ç”Ÿå‘½æ°´å®Œå…¨æ¶ˆé€€ä¹‹å‰ï¼Œä¸€å®šè¦ç–¼çˆ±å®ƒå‘€...é‚£ä¹ˆï¼Œå†è§å§...");
+                            cm.sendNext("ÄãµÄÍŞÍŞÒÑ¾­±ä»Ø³èÎïÁË! µ«ÊÇÎÒµÄÄ§·¨Ò²²»ÊÇÍòÄÜµÄ¡£ËùÒÔÎÒ²»ÄÜ±£Ö¤ËüÓÀÔ¶»î×Å...ÔÚÉúÃüË®ÍêÈ«ÏûÍËÖ®Ç°£¬Ò»¶¨ÒªÌÛ°®ËüÑ½...ÄÇÃ´£¬ÔÙ¼û°É...");
                             
                             var it = cm.getPlayer().getInventory(MapleInventoryType.CASH).getItem(sPet.getPosition());
                             it.setExpiration(Date.now() + (1000 * 60 * 60 * 24 * 90));
@@ -86,7 +86,7 @@ function action(mode, type, selection) {
                             
                             cm.gainItem(5180000, -1);
                         } else {
-                            cm.sendNext("å†è§...");
+                            cm.sendNext("ÔÙ¼û...");
                         }
                     
                         cm.dispose();

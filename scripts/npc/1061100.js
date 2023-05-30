@@ -38,7 +38,7 @@ var vipcost = 999;
 var iwantreg = 0;
 
 function start() {
-    cm.sendNext("欢迎来到林中之城旅馆。我们永远尽心为您提供最好的服务。如果您疲于狩猎，在这里休息一下如何？");
+    cm.sendNext("��ӭ��������֮���ùݡ�������Զ����Ϊ���ṩ��õķ��������ƣ�����ԣ���������Ϣһ����Σ�");
 }
 
 function action(mode, type, selection) {
@@ -46,19 +46,19 @@ function action(mode, type, selection) {
         cm.dispose();
     else {
         if (mode == 0 && status == 2) {
-            cm.sendNext("我们有两种服务，请选择您想要的服务。");
+            cm.sendNext("���������ַ�����ѡ������Ҫ�ķ���");
             cm.dispose();
             return;
         }
         status++;
         if (status == 1) {
-            cm.sendSimple("我们提供两种房间，请您挑选.\r\n#b#L0#普通桑拿房 (" + regcost + " 金币 )#l\r\n#L1#高级桑拿房 (" + vipcost + " 金币 )#l");
+            cm.sendSimple("�����ṩ���ַ��䣬������ѡ.\r\n#b#L0#��ͨɣ�÷� (" + regcost + " ��� )#l\r\n#L1#�߼�ɣ�÷� (" + vipcost + " ��� )#l");
             iwantreg = 1;
         } else if (status == 2) {
             if (selection == 0)
-                cm.sendYesNo("您选择了普通桑拿房，您的HP和MP会回复得很快，您也可以在里面购买商品，您确定要进入吗？");
+                cm.sendYesNo("��ѡ������ͨɣ�÷�������HP��MP��ظ��úܿ죬��Ҳ���������湺����Ʒ����ȷ��Ҫ������");
             else if (selection == 1) {
-                cm.sendYesNo("您选择了高级桑拿房，您的HP和MP会比一般桑拿室回复得更快，也可以在里面找到特殊的物品，您确定要进入吗？");
+                cm.sendYesNo("��ѡ���˸߼�ɣ�÷�������HP��MP���һ��ɣ���һظ��ø��죬Ҳ�����������ҵ��������Ʒ����ȷ��Ҫ������");
 		iwantreg = 0;
             }
         } else if (status == 3) {
@@ -67,13 +67,13 @@ function action(mode, type, selection) {
                     cm.warp(105040401);
                     cm.gainMeso(-regcost);
                 } else
-                    cm.sendNext("很抱歉，看起来您似乎没有足够的金币。您至少要有 " + regcost + " 金币才能使用普通桑拿房.");
+                    cm.sendNext("�ܱ�Ǹ�����������ƺ�û���㹻�Ľ�ҡ�������Ҫ�� " + regcost + " ��Ҳ���ʹ����ͨɣ�÷�.");
             } else {
                 if (cm.getMeso() >= vipcost) {
                     cm.warp(105040402);
                     cm.gainMeso(-vipcost);
                 } else
-                    cm.sendNext("很抱歉，看起来您似乎没有足够的金币。您至少要有 " + vipcost + " 金币才能使用高级桑拿房.");
+                    cm.sendNext("�ܱ�Ǹ�����������ƺ�û���㹻�Ľ�ҡ�������Ҫ�� " + vipcost + " ��Ҳ���ʹ�ø߼�ɣ�÷�.");
             }
             cm.dispose();
         }

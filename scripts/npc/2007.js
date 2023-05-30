@@ -5,11 +5,11 @@ function start() {
 
 function action(mode, type, selection) {
     if (mode == -1) {
-        cm.sendNext("ç¥ä½ æ—…é€”æ„‰å¿«ã€‚");
+        cm.sendNext("×£ÄãÂÃÍ¾Óä¿ì¡£");
         cm.dispose();
     } else {
         if (status == 0 && mode == 0) {
-            cm.sendNext("ç¥ä½ æ—…é€”æ„‰å¿«ã€‚");
+            cm.sendNext("×£ÄãÂÃÍ¾Óä¿ì¡£");
             cm.dispose();
         }
         if (mode == 1) {
@@ -18,7 +18,7 @@ function action(mode, type, selection) {
             status--;
         }
         if (status == 0) {
-            cm.sendYesNo("ä½ æƒ³ç›´æ¥è·³è¿‡æ•™ç¨‹ç›´æ¥å‰å¾€ #bæ˜ç æ¸¯#k å—ï¼Ÿ");
+            cm.sendYesNo("ÄãÏëÖ±½ÓÌø¹ı½Ì³ÌÖ±½ÓÇ°Íù #bÃ÷Öé¸Û#k Âğ£¿");
         } else if (status == 1) {
             cm.warp(104000000, 0);
             cm.dispose();
