@@ -20,26 +20,26 @@ function action(mode, type, selection) {
 	} else if (cm.getMapId() == 910330001) {
 		var itemid = 4001321;
 		if (!cm.canHold(itemid)) {
-			cm.sendOk("Please make room for 1 ETC slot.");
+			cm.sendOk("请在其它栏留出至少1格空间。");
 		} else {
 			cm.gainItem(itemid,1);
 			cm.warp(910320000, 0);
 		}
 		cm.dispose();
 	} else if (cm.getMapId() >= 910320100 && cm.getMapId() <= 910320304) {
-		cm.sendYesNo("Would you like to exit this place?");
+		cm.sendYesNo("你想要离开这里吗？");
 		status = 99;
 	} else {
-		cm.sendSimple("My name is Mr.Lim.\r\n#b#e#L1#Enter the Dusty Platform.#l#n\r\n#L2#Head towards Train 999.#l\r\n#L3#Receive a medal of <Honorary Employee>.#l#k");
+		cm.sendSimple("我是林车长。\r\n#b#e#L1#进入积满灰尘的站台。#l#n\r\n#L2#前往999次列车平台。#l\r\n#L3#领取<荣誉乘务员勋章>。#l#k");
 	}
     } else if (status == 2) {
 		section = selection;
 		if (selection == 1) {
 			if (cm.getPlayer().getLevel() < 25 || cm.getPlayer().getLevel() > 30 || !cm.isLeader()) {
-				cm.sendOk("You must be in the Level Range 25-30 and be the party leader.");
+				cm.sendOk("组成队伍后，由队长进行对话。需要所有队员等级在25~30区间内.");
 			} else {
 				if (!cm.start_PyramidSubway(-1)) {
-					cm.sendOk("The Dusty Platform is currently full at the moment.");
+					cm.sendOk("积满灰尘的站台目前满员了。");
 				}
 			}
 			//todo
@@ -48,10 +48,10 @@ function action(mode, type, selection) {
 				if (cm.bonus_PyramidSubway(-1)) {
 					cm.gainItem(4001321, -1);
 				} else {
-					cm.sendOk("The Train 999 is currently full at the moment");
+					cm.sendOk("999次列车平台目前满员了。");
 				}
 			} else {
-				cm.sendOk("You do not have the Boarding Pass.");
+				cm.sendOk("你没有999次列车车票。");
 			}
 		} else if (selection == 3) {
 			var record = cm.getQuestRecord(7662);
@@ -62,13 +62,13 @@ function action(mode, type, selection) {
 			}
 			var mons = parseInt(data);
 			if (mons < 10000) {
-				cm.sendOk("Please defeat at least 10,000 monsters in the Station and look for me again. Kills : " + mons);
+				cm.sendOk("请击败 10,000 只站台内的怪物再来与我对话。击杀数： " + mons);
 			} else if (cm.canHold(1142141) && !cm.haveItem(1142141)){
 				cm.gainItem(1142141,1);
 				cm.startQuest(29931);
 				cm.completeQuest(29931);
 			} else {
-				cm.sendOk("Please make room.");
+				cm.sendOk("你的背包空间不足。");
 			}
 		}
 		cm.dispose();
