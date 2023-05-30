@@ -79,13 +79,13 @@ function action(mode, type, selection) {
                     
                 if(status == 0) {
                         hasCoin = cm.haveItem(coinId);
-                        cm.sendNext("This is the vending machine of the Internet Cafe. Place your erasers or #t" + coinId + "# earned throughout the quests to redeem a prize. You can place #bany amount of erasers#k, however take note that placing #rdifferent erasers#k and #rbigger shots of any of them#k will improve the reward possibilities!");
+                        cm.sendNext("这是网吧的自动售货机。 放置橡皮擦或者 #t" + coinId + "# 在整个任务中获得的橡皮擦以兑换奖品. 你可以放置 #b任意数量的橡皮擦#k, however take note that placing #r不同的橡皮擦#k 和 #r他们中任何一个的大镜头#k 将提高奖励的可能性!");
                 } else if(status == 1) {
                         var sendStr;
                         currentTier = getRewardTier();
                         
-                        if(currentTier >= 0) sendStr = "With the items you have currently placed, you can retrieve a #r" + levels[currentTier] + "#k prize. Place erasers:";
-                        else sendStr = "You have placed no erasers yet. Place erasers:";
+                        if(currentTier >= 0) sendStr = "使用当前放置的项目，可以检索 #r" + levels[currentTier] + "#k 奖，放置橡皮擦:";
+                        else sendStr = "你还没有放置橡皮擦。 放置橡皮擦:";
                         
                         var listStr = "";
                         for(var i = 0; i < tickets.length; i++) {
@@ -104,7 +104,7 @@ function action(mode, type, selection) {
                 } else if(status == 2) {
                         if(selection == getRewardIndex(hasCoin)) {
                                 if(currentTier < 0) {
-                                        cm.sendPrev("You have set no erasers. Insert at least one to claim a prize.");
+                                        cm.sendPrev("你还没有放置橡皮擦. 至少放置一个即可领取奖品。");
                                         advance = false;
                                 } else {
                                         givePrize();
@@ -119,9 +119,9 @@ function action(mode, type, selection) {
                                 curItemSel = selection;
                             
                                 if(curItemQty > 0) {
-                                        cm.sendGetText("How many of #b#t" + tickSel + "##k do you want to insert on the machine? (#r" + curItemQty + "#k available)#k");
+                                        cm.sendGetText("有多少 #b#t" + tickSel + "##k 在电脑中替换? (可获得#r" + curItemQty + "#k )#k");
                                 } else {
-                                        cm.sendPrev("You have got #rnone#k of #b#t" + tickSel + "##k to insert on the machine. Click '#rBack#k' to return to the main interface.");
+                                        cm.sendPrev("你还没有 #r无#k 在 #b#t" + tickSel + "##k 放置在机器中. 点击 '#r返回#k' 回到主界面。");
                                         advance = false;
                                 }
                         }
@@ -133,17 +133,17 @@ function action(mode, type, selection) {
                                 if(isNaN(placedQty) || placedQty < 0) throw true;
 
                                 if(placedQty > curItemQty) {
-                                        cm.sendPrev("You cannot insert the given amount of erasers (#r" + curItemQty + "#k available). Click '#rBack#k' to return to the main interface.");
+                                        cm.sendPrev("不能放置指定数量的橡皮擦 (获得#r" + curItemQty + "#k ). 点击 '#r返回#k'回到主界面。");
                                         advance = false;
                                 } else {
                                         if(curItemSel < tickets.length) tickets[curItemSel] = placedQty;
                                         else coins = placedQty;
                                     
-                                        cm.sendPrev("Operation succeeded. Click '#rBack#k' to return to the main interface.");
+                                        cm.sendPrev("操作成功。点击 '#r返回#k'回到主界面。");
                                         advance = false;
                                 }
                         } catch(err) {
-                                cm.sendPrev("You must enter a positive number of erasers to insert. Click '#rBack#k' to return to the main interface.");
+                                cm.sendPrev("您必须输入一个正数的橡皮擦才能放置。 点击 '#r返回#k'回到主界面。");
                                 advance = false;
                         }
                         
@@ -212,7 +212,7 @@ function givePrize() {
         }
         
         if(!hasRewardSlot(lvTarget, lvQty)) {
-                cm.sendOk("Check for an available space on your inventory before retrieving a prize.");
+                cm.sendOk("在取回奖品之前，请检查库存中的可用空间。");
         } else {
                 var rnd = Math.floor(Math.random() * lvTarget.length);
                 
