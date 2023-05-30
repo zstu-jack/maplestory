@@ -21,7 +21,12 @@
 */
 package provider;
 
+import java.util.List;
+import java.util.Map;
+
 public interface MapleDataProvider {
     MapleData getData(String path);
     MapleDataDirectoryEntry getRoot();
+
+    Map<String, List<String>> getMapNpc();
 }

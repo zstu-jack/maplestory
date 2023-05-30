@@ -31,6 +31,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
 import provider.MapleData;
 import provider.MapleDataProvider;
 import provider.MapleDataProviderFactory;
@@ -132,6 +134,15 @@ public class MapleMapFactory {
         } else {
             map.addMapObject(myLife);
         }
+    }
+
+    public static String getNpcMap(String npcId) {
+        for (Map.Entry<String, List<String>> entry : mapSource.getMapNpc().entrySet()) {
+            if (entry.getValue().contains(npcId)) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
 
     public static MapleMap loadMapFromWz(int mapid, int world, int channel, EventInstanceManager event) {

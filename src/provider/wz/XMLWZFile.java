@@ -25,9 +25,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import provider.MapleData;
 import provider.MapleDataDirectoryEntry;
 import provider.MapleDataProvider;
+import provider.MapleDataTool;
 
 public class XMLWZFile implements MapleDataProvider {
     private File root;
@@ -76,6 +82,65 @@ public class XMLWZFile implements MapleDataProvider {
             }
         }
         return domMapleData;
+    }
+
+    public Map<String, List<String>> getMapNpc() {
+        Map<String, List<String>> mapNpcRelation = new HashMap<>();
+        File mapWz = new File("wz/Map.wz/Map");
+        if (!mapWz.exists()) {
+            return mapNpcRelation;
+        }
+        File[] listPaths = mapWz.listFiles();
+        if (null == listPaths) {
+            return mapNpcRelation;
+        }
+
+        FileInputStream fis = null;
+        try {
+            for (File path : listPaths) {
+                if (!path.exists()) {
+                    continue;
+                }
+                if (!path.isDirectory()) {
+                    continue;
+                }
+                File[] listFiles = path.listFiles();
+                if (null == listFiles) {
+                    continue;
+                }
+                for (File file : listFiles) {
+                    if (!file.isFile()) {
+                        continue;
+                    }
+                    String fileName = file.getName();
+                    fis = new FileInputStream(file);
+                    XMLDomMapleData mapleData = new XMLDomMapleData(fis, path);
+                    List<String> npcList = new ArrayList<>();
+                    MapleData lifeData = mapleData.getChildByPath("life");
+                    if (null == lifeData) {
+                        continue;
+                    }
+                    for (MapleData life : lifeData) {
+                        life.getName();
+                        npcList.add(MapleDataTool.getString(life.getChildByPath("id")));
+                    }
+                    mapNpcRelation.put(fileName.substring(0, fileName.length() - 8), npcList);
+                    fis.close();
+                }
+            }
+        } catch (Exception ignore) {
+
+        } finally {
+            try {
+                if (null != fis) {
+                    fis.close();
+
+                }
+            } catch (IOException ignore) {
+
+            }
+        }
+        return mapNpcRelation;
     }
 
     @Override

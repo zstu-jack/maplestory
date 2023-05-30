@@ -102,6 +102,11 @@ public class MapleMapManager {
 
         return (map != null) ? map : loadMapFromWz(mapid, true);
     }
+
+    public MapleMap getMapByNpcId(String npcId) {
+        String mapId = MapleMapFactory.getNpcMap(npcId);
+        return null == mapId || "".equals(mapId) ? null : getMap(Integer.parseInt(mapId));
+    }
     
     public MapleMap getDisposableMap(int mapid) {
         return loadMapFromWz(mapid, false);

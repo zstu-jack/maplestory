@@ -26,6 +26,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import provider.MapleData;
 import provider.MapleDataDirectoryEntry;
 import provider.MapleDataFileEntry;
@@ -150,5 +154,10 @@ public class WZFile implements MapleDataProvider {
     @Override
     public MapleDataDirectoryEntry getRoot() {
         return root;
+    }
+
+    @Override
+    public Map<String, List<String>> getMapNpc() {
+        return new HashMap<>();
     }
 }
