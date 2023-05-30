@@ -36,61 +36,61 @@ jobType = 5;
 var advQuest = 0;
 function start() {
     if (cm.isQuestStarted(6330)) {
-        if (cm.getEventInstance() != null) {    // missing script for skill test found thanks to Jadeâ„¢
+        if (cm.getEventInstance() != null) {    // missing script for skill test found thanks to Jadeâ„?
             advQuest = 5;                       // string visibility thanks to iPunchEm & Glvelturall
-            cm.sendNext("Not bad at all. Let's discuss this outside!");
+            cm.sendNext("×öµÃ²»´í£¬ÎÒÃÇÈ¥ÍâÃæÁÄ¡£");
         } else if (cm.getQuestProgressInt(6330, 6331) == 0) {
             advQuest = 1;
-            cm.sendNext("You're ready, right? Now try to withstand my attacks for 2 minutes. I won't go easy on you. Good luck, because you will need it.");
+            cm.sendNext("Äã×öºÃ×¼±¸ÁË°É£¿´ÓÏÖÔÚÆğµÄ2·ÖÖÓÄÚ£¬ÄãÒªÅ¬Á¦µÖÓùÎÒµÄ¹¥»÷...ÎÒ¿É²»»áÁôÊÖ¡£×£ÄãºÃÔË£¬ÒòÎª½ÓÏÂÀ´µÄÊ±¼äÀï£¬ÔËÆø¶ÔÄã¶øÑÔÖÁ¹ØÖØÒª¡£");
         } else {
             advQuest = 3;
             cm.teachSkill(5121003, 0, 10, -1);
             cm.forceCompleteQuest(6330);
             
-            cm.sendNext("Congratulations. You have managed to pass my test. I'll teach you a new skill called \"Super Transformation\".\r\n\r\n  #s5121003#    #b#q5121003##k");
+            cm.sendNext("×£ºØÄãÍ¨¹ıÁË²âÊÔ¡£½ÓÏÂÀ´£¬ÎÒ»á´«ÊÚÄãÒ»¸öĞÂµÄ¼¼ÄÜ£¬Ëü½Ğ×ö \"³¬¼¶±äÉí\".\r\n\r\n  #s5121003#    #b#q5121003##k");
         }
     } else if (cm.isQuestStarted(6370)) {
         if (cm.getEventInstance() != null) {
             advQuest = 6;
-            cm.sendNext("Not bad at all. Let's discuss this outside!");
+            cm.sendNext("×öµÃ²»´í£¬ÎÒÃÇÈ¥ÍâÃæÁÄ¡£");
         } else if (cm.getQuestProgressInt(6370, 6371) == 0) {
             advQuest = 2;
-            cm.sendNext("You're ready, right? Now try to withstand my attacks for 2 minutes. I won't go easy on you. Good luck, because you will need it.");
+            cm.sendNext("Äã×öºÃ×¼±¸ÁË°É£¿´ÓÏÖÔÚÆğµÄ2·ÖÖÓÄÚ£¬ÄãÒªÅ¬Á¦µÖÓùÎÒµÄ¹¥»÷...ÎÒ¿É²»»áÁôÊÖ¡£×£ÄãºÃÔË£¬ÒòÎª½ÓÏÂÀ´µÄÊ±¼äÀï£¬ÔËÆø¶ÔÄã¶øÑÔÖÁ¹ØÖØÒª¡£");
         } else {
             advQuest = 4;
             cm.teachSkill(5221006, 0, 10, -1);
             cm.forceCompleteQuest(6370);
             
-            cm.sendNext("Congratulations. You have managed to pass my test. I'll teach you a new skill called \"Battleship\".\r\n\r\n  #s5221006#    #b#q5221006##k");
+            cm.sendNext("×£ºØÄãÍ¨¹ıÁË²âÊÔ¡£½ÓÏÂÀ´£¬ÎÒ»á´«ÊÚÄãÒ»¸öĞÂµÄ¼¼ÄÜ£¬Ëü½Ğ×ö \"Îä×°\".\r\n\r\n  #s5221006#    #b#q5221006##k");
         }
     } else if (parseInt(cm.getJobId() / 100) == jobType && cm.canSpawnPlayerNpc(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()))) {
         spawnPnpc = true;
         
-        var sendStr = "You have walked a long way to reach the power, wisdom and courage you hold today, haven't you? What do you say about having right now #ra NPC on the Hall of Fame holding the current image of your character#k? Do you like it?";
+        var sendStr = "ÄãÀú¾­Ç§ĞÁÍò¿à²Å»ñµÃÁË½ñÌìµÄ³É¾Í¡£ÏëÒª #r½«ÄãµÄĞÎÏó¼ÓÈëÃûÈËÌÃ#k Âğ£¿";
         if(spawnPnpcFee > 0) {
-            sendStr += " I can do it for you, for the fee of #b " + cm.numberWithCommas(spawnPnpcFee) + " mesos.#k";
+            sendStr += "Ö»Òª»¨·Ñ #b " + cm.numberWithCommas(spawnPnpcFee) + " ½ğ±Ò#k£¬ÎÒ¾ÍÄÜÎªÄã×öµ½¡£";
         }
         
         cm.sendYesNo(sendStr);
     } else {
         if (cm.getJobId() == 0) {
             actionx["1stJob"] = true;
-            cm.sendNext("Want to be a #rpirate#k? There are some standards to meet. because we can't just accept EVERYONE in... #bYour level should be at least 10, with " + cm.getFirstJobStatRequirement(jobType) + " minimum#k. Let's see.");   // thanks Vcoc for noticing a need to state and check requirements on first job adv starting message
+            cm.sendNext("Ïë²»Ïë³ÉÎªÒ»Ãû#rº£µÁ#k£¿µ«ÕâÊÇÓĞÇ°ÌáµÄ£¬²¢²»ÊÇËæ±ãÃ¿Ò»¸öÈË¶¼ÄÜ³ÉÎªº£µÁ¡£#bÄãµÄµÈ¼¶ÖÁÉÙĞèÒªµ½´ï10¼¶£¬²¢ÇÒÓµÓĞ " + cm.getFirstJobStatRequirement(jobType) + " ²ÅĞĞ#k¡£ÈÃÎÒ¿´¿´ÄãÊÇ²»ÊÇÂú×ã±ê×¼¡£");   // thanks Vcoc for noticing a need to state and check requirements on first job adv starting message
         } else if (cm.getLevel() >= 30 && cm.getJobId() == 500) {
             actionx["2ndJob"] = true;
             if (cm.isQuestCompleted(2191) || cm.isQuestCompleted(2192))
-                cm.sendNext("I see you have done well. I will allow you to take the next step on your long road.");
+                cm.sendNext("ÄãÍê³ÉµÃºÜºÃ£¬ÎÒ¿´µ½ÁË¡£ÎÒ½«ÔÊĞíÄãÔÚº£µÁÖ®Â·ÉÏ¸ü½øÒ»²½¡£");
             else
-                cm.sendNext("The progress you have made is astonishing.");
+                cm.sendNext("ÄãµÄ½øÕ¹Ê®·Ö¾ªÈË¡£");
         } else if (actionx["3thJobI"] || (cm.getPlayer().gotPartyQuestItem("JB3") && cm.getLevel() >= 70 && cm.getJobId() % 10 == 0 && parseInt(cm.getJobId() / 100) == 5 && !cm.getPlayer().gotPartyQuestItem("JBP"))){
             actionx["3thJobI"] = true;
-            cm.sendNext("There you are. A few days ago, #b#p2020013##k of Ossyria talked to me about you. I see that you are interested in making the leap to the world of the third job advancement for pirates. To archieve that goal, I will have to test your strength in order to see whether you are worthy of the advancement. There is an opening in the middle of a cave on Victoria Island, where it'll lead you to a secret passage. Once inside, you'll face a clone of myself. Your task is to defeat him and bring #b#t4031059##k back with you.");
+            cm.sendNext("¼¸ÌìÇ°£¬ÉñÃØµºµÄ #b#p2020013##k ºÍÎÒÌáÆğ¹ıÄã¡£ÎÒ¿´µ½Äã¶Ôº£µÁµÄµÚ3´Î×ªÖ°ºÜ¸ĞĞËÈ¤£¬ÎªÁË´ïµ½Õâ¸öÄ¿±ê£¬ÎÒ»á¶ÔÄãµÄÄÜÁ¦½øĞĞÒ»¸ö²âÊÔ£¬¿´¿´Äã¹»²»¹»¸ñ×ªÖ°¡£ÔÚ½ğÒøµºµÄÂìÒÏ¶´ÀïÓĞÒ»¸öÈë¿Ú£¬Ëü»á°ÑÄã´øµ½Ò»¸öÃØÃÜÍ¨µÀ¡£½øÈëÄÇÀïÊ±£¬Äã»áÓöµ½ÎÒµÄÒ»¸ö·ÖÉí¡£´ò°ÜËı£¬°Ñ #b#t4031059##k ´ø»ØÀ´¸øÎÒ¡£");
         } else if (cm.getPlayer().gotPartyQuestItem("JBP") && !cm.haveItem(4031059)){
-            cm.sendNext("Please, bring me the #b#t4031059##k.");
+            cm.sendNext("»ñµÃ #b#t4031059##k ºó£¬ÔÙÀ´ºÍÎÒ¶Ô»°¡£");
             cm.dispose();
         } else if (cm.haveItem(4031059) && cm.getPlayer().gotPartyQuestItem("JBP")){
             actionx["3thJobC"] = true;
-            cm.sendNext("Nice work. You have defeated my clone and brought #b#t4031059##k back safely. You have now proven yourself worthy of the 3rd job advancement from the physical standpoint. Now you should give this necklace to #b#p2020013##k in Ossyria to take on the second part of the test. Good luck. You'll need it.");
+            cm.sendNext("¸ÉµÃÆ¯ÁÁ£¡ÄãÒÑ¾­´ò°ÜÁËÎÒµÄ·ÖÉí£¬²¢°Ñ #b#t4031059##k °²È«µØ´øÁË»ØÀ´¡£ÔÚÎäÁ¦·½Ãæ£¬ÄãÒÑ¾­Ö¤Ã÷ÁËÄãÓµÓĞ3×ªµÄÊµÁ¦¡£ÏÖÔÚÄãĞèÒª°ÑÕâ´®ÏîÁ´´ø¸øÉñÃØµºµÄ #b#p2020013##k ¼ÌĞøÏÂÒ»²½µÄ²âÊÔ¡£×£ÄãºÃÔË£¡");
         } else {
             cm.sendOk("You have chosen wisely.");
             cm.dispose();
@@ -115,13 +115,13 @@ function action(mode, type, selection) {
             if (advQuest < 3) {
                 var em = cm.getEventManager(advQuest == 1 ? "4jship" : "4jsuper");
                 if(!em.startInstance(cm.getPlayer())) {
-                    cm.sendOk("Someone is already challenging the test. Please try again later.");
+                    cm.sendOk("ÒÑ¾­ÓĞÈËÈë³¡½ÓÊÜ²âÊÔ£¬ÇëÉÔºóÔÙÊÔ¡£");
                 }
             } else if (advQuest < 5) {
                 if (advQuest == 3) {
-                    cm.sendOk("It is similar to that of 'Transformation', but it's much more powerful than that. Keep training, and hope to see you around.");
+                    cm.sendOk("Õâ¸ö¼¼ÄÜºÍ '³¬ÈË±äĞÎ' ÓĞÒ»µãµãÏàËÆ£¬µ«ÍşÁ¦Ô¶³¬ºóÕß¡£ÔÙ½ÓÔÙÀ÷£¬ÆÚ´ıÓëÄãÔÙ»á¡£");
                 } else {
-                    cm.sendOk("Unlike most of the other skills you used as a Pirate, this one definitely is different. You can actually ride the 'Battleship' and attack enemies with it. Your DEF level will increase for the time you're on board, so that'll help you tremendously in combat situations. May you become the best Gunslinger out there...");
+                    cm.sendOk("Õâ¸ö¼¼ÄÜ²»Í¬ÓÚÆäËüµÄº£µÁ¼¼ÄÜ£¬ÊÇÍêÈ«ÁíÀàµÄÒ»Ö§¡£Ê¹ÓÃºó£¬Äã¿ÉÒÔ³Ë×ø 'Õ½½¢' À´¹¥»÷µĞÈË¡£ÁíÍâÔÚµÇ´¬ÆÚ¼ä£¬ÄãµÄ·ÀÓùµÈ¼¶Ò²»áÌá¸ß¡£×£Äã³ÉÎª×î°ôµÄ»ğÇ¹ÊÖ£¨´¬³¤£©¡£");
                 }
             } else {
                 if (advQuest < 6) {
@@ -137,16 +137,16 @@ function action(mode, type, selection) {
         } else if(spawnPnpc) {
             if(mode > 0) {
                 if(cm.getMeso() < spawnPnpcFee) {
-                    cm.sendOk("Sorry, you don't have enough mesos to purchase your place on the Hall of Fame.");
+                    cm.sendOk("±§Ç¸£¬ÄãÃ»ÓĞ×ã¹»µÄ½ğ±Ò¡£");
                     cm.dispose();
                     return;
                 }
                 
                 if(Packages.server.life.MaplePlayerNPC.spawnPlayerNPC(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()), cm.getPlayer())) {
-                    cm.sendOk("There you go! Hope you will like it.");
+                    cm.sendOk("¿ìÈ¥¿´¿´°É£¬Ï£ÍûÄã»áÏ²»¶¡£");
                     cm.gainMeso(-spawnPnpcFee);
                 } else {
-                    cm.sendOk("Sorry, the Hall of Fame is currently full...");
+                    cm.sendOk("±§Ç¸£¬ÃûÈËÌÃÒÑ¾­ÂúÔ±ÁË¡£");
                 }
             }
             
@@ -155,7 +155,7 @@ function action(mode, type, selection) {
         } else {
             if (mode != 1 || status == 7 && type != 1 || (actionx["1stJob"] && status == 4) || (cm.haveItem(4031008) && status == 2) || (actionx["3thJobI"] && status == 1)){
                 if (mode == 0 && status == 2 && type == 1)
-                    cm.sendOk("You know there is no other choice...");
+                    cm.sendOk("ÄãÖªµÀ£¬±ğÎŞÑ¡ÔñÁË...");
                 if (!(mode == 0 && type != 1)){
                     cm.dispose();
                     return;
@@ -167,9 +167,9 @@ function action(mode, type, selection) {
     if (actionx["1stJob"]){
         if (status == 0) {
             if (cm.getLevel() >= 10 && cm.canGetFirstJob(jobType)) {
-                cm.sendYesNo("Oh...! You look like someone that can definitely be a part of us... all you need is a little slang, and... yeah... so, what do you think? Wanna be the Pirate?");
+                cm.sendYesNo("Å¶£¬Äã¿´ÆğÀ´¿ÉÒÔ³ÉÎªÎÒÃÇµÄÒ»Ô±£¬ËäÈ»»¹ÓĞµãÈ±·¦¶ÍÁ¶...ÄãÈ·¶¨Òª³ÉÎªº£µÁÂğ?");
             } else {
-                cm.sendOk("Train a bit more until you reach the base requirements and I can show you the way of the #rPirate#k.");
+                cm.sendOk("È¥½øĞĞÑµÁ·°É£¬µ½Ê±ºòÎÒ¿ÉÒÔ¸æËßÄãÈçºÎ³ÉÎª #rº£µÁ#k.");
                 cm.dispose();
             }
         } else if (status == 1){
@@ -181,23 +181,23 @@ function action(mode, type, selection) {
                     cm.gainItem(2330000, 1000);
                     cm.resetStats();
                 }
-                cm.sendNext("Alright, from here out, you are a part of us! You'll be living the life of a wanderer at ..., but just be patient as soon, you'll be living the high life. Alright, it ain't much, but I'll give you some of my abilities... HAAAHHH!!!");
+                cm.sendNext("ºÃµÄ£¬´Ó½ñÌì¿ªÊ¼£¬Äã³ÉÎªÁËÎÒÃÇµÄÒ»Ô±¡£¹ıÉÏËÄº£Îª¼ÒµÄÉú»î£¬µ«Èç¹ûÄãÓĞÄÍĞÄ£¬×ÜÄÜ¹ıÉÏºÃÈÕ×Ó¡£ÄÇÃ´£¬ÎÒ»á´«ÊÚÄãÒ»Ğ©¼¼ÄÜ¡£¡£¡£¡£");
             } else {
-                cm.sendNext("Make some room in your inventory and talk back to me.");
+                cm.sendNext("¸øÄãµÄ±³°üÌÚ³öµãÎ»ÖÃ£¬È»ºóÔÙÀ´ÕÒÎÒ¶Ô»°¡£");
                 cm.dispose();
             }
         } else if (status == 2) 
-            cm.sendNextPrev("You've gotten much stronger now. Plus every single one of your inventories have added slots. A whole row, to be exact. Go see for it yourself. I just gave you a little bit of #bSP#k. When you open up the #bSkill#k menu on the lower left corner of the screen, there are skills you can learn by using SP's. One warning, though: You can't raise it all together all at once. There are also skills you can acquire only after having learned a couple of skills first.");
+            cm.sendNextPrev("ÄãÏÖÔÚ±ÈÖ®Ç°Ç¿×³¶àÁË£¬ÎÒ°ÑĞÂÊÖº£µÁÊ¹ÓÃµÄÎäÆ÷ËÍ¸øÄãÁË£¬Ò²¸øÄãµÄ±³°üÔö¼ÓÁËÒ»ĞĞ£¬Çë¼ì²éÒ»ÏÂ¡£³ı´ËÖ®Íâ£¬ÎÒ½Ì¸øÁËÄãÒ»Ğ©¼¼ÄÜ¡£Äã¿ÉÒÔ´ò¿ªÆÁÄ»ÓÒÏÂ½ÇµÄ #b¼¼ÄÜ#k ²Ëµ¥²é¿´, Äã¿ÉÒÔÊ¹ÓÃ¸Õ»ñµÃµÄSPÑ§Ï°¼¼ÄÜ£¬²»¹ıÒª×¢Òâ£ºÓĞÒ»Ğ©¼¼ÄÜĞèÒªÑ§»áÇ°ÖÃ¼¼ÄÜºó²Å¿ÉÒÔÑ§Ï°¡£");
         else if (status == 3)
-            cm.sendNextPrev("Now a reminder. Once you have chosen, you cannot change up your mind and try to pick another path. Go now, and live as a proud Pirate.");
+            cm.sendNextPrev("ÓĞÒ»µãÒªÌáĞÑÄã£¬Ò»µ©Äã×ö³öÁËÑ¡Ôñ£¬½«²»¿É±ä¸ü¡£×÷ÎªÒ»Ãûº£µÁ£¬¹âÈÙµØÔ¶º½°É¡£");
         else
             cm.dispose();
     } else if(actionx["2ndJob"]){
         if (status == 0){
             if (cm.isQuestCompleted(2191) || cm.isQuestCompleted(2192))
-                cm.sendSimple("Alright, when you have made your decision, click on [I'll choose my occupation] at the bottom.#b\r\n#L0#Please explain to me what being the Brawler is all about.\r\n#L1#Please explain to me what being the Gunslinger is all about.\r\n#L3#I'll choose my occupation!");
+                cm.sendSimple("ºÃµÄ¡£µ±Äã×ö³öÁË¾ö¶¨£¬¾Íµã»÷µ×²¿µÄ [ÎÒÏÖÔÚÒªÑ¡ÔñÎÒµÄ¶ş×ªÖ°Òµ]¡£#b\r\n#L0#ÇëÏòÎÒ½âÊÍÊ²Ã´ÊÇÈ­ÊÖ¡£\r\n#L1#ÇëÏòÎÒ½âÊÍÊ²Ã´ÊÇ»ğÇ¹ÊÖ¡£\r\n#L3#ÎÒÒªÑ¡ÔñÎÒµÄ¶ş×ªÖ°Òµ£¡");
             else
-                cm.sendNext("Good decision. You look strong, but I need to see if you really are strong enough to pass the test, it's not a difficult test, so you'll do just fine.");
+                cm.sendNext("²»´íµÄ¾ö¶¨¡£Äã¿´ÆğÀ´ºÜÇ¿´ó£¬µ«ÈÔĞèÒªÍ¨¹ı²âÊÔÀ´Ö¤Ã÷ÓĞÏà·ûµÄÊµÁ¦¡£Ëü¶ÔÄãÀ´ËµÓ¦¸Ã²¢²»À§ÄÑ£¬·ÅÇáËÉ¡£");
         } else if (status == 1){
             if (!cm.isQuestCompleted(2191) && !cm.isQuestCompleted(2192)){
                 // Pirate works differently from the other jobs. It warps you directly in.
@@ -206,7 +206,7 @@ function action(mode, type, selection) {
             } else {
                 if (selection < 3) {
                     if(selection == 0) {    //brawler
-                        cm.sendNext("Pirates that master #rKnuckles#k.\r\n\r\n#bBrawlers#k are melee, close-ranged fist fighters who deal lots of damage and have high HP. Armed with #rCorkscrew Blow#k, one can deal massive damage to multiple targets at once. #rOak Barrel#k permits one to scout or disguise themselves in middle of difficult fights, enabling a possible escaping route in front of danger.");
+                        cm.sendNext("È­ÊÖÉÃ³¤Ê¹ÓÃ #rÈ­¼×#k.\r\n\r\n#bÈ­ÊÖ#k ÊÇÊ¹ÓÃÈ­Êõ½üÉíÕ½¶·µÄ¶·Ê¿£¬ÓµÓĞ¸ßHP²¢ÇÒÄÜÔì³É´óÁ¿ÉËº¦¡£×°±¸#r¹á¹Ç»÷#kºó£¬Äã¿ÉÒÔÒ»´ÎĞÔ¶Ô¶à¸ö¹ÖÎïÔì³É´óÁ¿ÉËº¦¡£#rÏğÄ¾Î±×°#k ÄÜ°ïÖúÄã¹æ±Ü¸ßÄÑ¶ÈµÄÕ½¶·¡£");
                     } else if(selection == 1) {    //gunslinger
                         cm.sendNext("Pirates that master #rGuns#k.\r\n\r\n#bGunslingers#k are faster and ranged attackers. With the #rWings#k skill, Gunslingers can hover in the air, allowing for a longer, more sustained jump than a regular jump. #rBlank Shot#k allows to deal Stun status to multiple targets nearby.");
                     }
