@@ -140,7 +140,7 @@ function action(mode, type, selection) {
                 cm.dispose();
             }
         } else if (status == 2)
-            cm.sendNextPrev("你现在比之前强壮多了，我已经送给你了新手飞侠的必备武器与暗器，也给你的背包加了一列，你自己去看看。我教给你了一些技能。你可以打开屏幕右下角的 #b技能#k 菜单查看, 你可以使用SP学习技能，不过要注意：有一些技能需要学会前置技能后才可以学习。");
+            cm.sendNextPrev("你现在比之前强壮多了，我把新手飞侠的必备武器与暗器送给你，也给你的背包加了一行，请检查一下。除此之外，我教给你了一些技能。你可以打开屏幕右下角的 #b技能#k 菜单查看, 你可以使用SP学习技能，不过要注意：有一些技能需要学会前置技能后才可以学习。");
         else if (status == 3)
             cm.sendNextPrev("有一点要提醒你，一旦你做出了选择，将不可变更。");
         else
@@ -193,7 +193,7 @@ function action(mode, type, selection) {
             if (cm.getJobId() != job)
                 cm.changeJobById(job);
         } else if (status == 4)
-            cm.sendNextPrev("我刚刚赋予了你作为一个 " + (job == 410 ? "刺客" : "侠客") + "应该掌握的技能。此外，你的背包中其他栏也扩展了一行。你的最大生命值、最大魔力值也得到了增加。");
+            cm.sendNextPrev("我刚刚赋予了你作为一个 " + (job == 410 ? "刺客" : "侠客") + "应该掌握的技能。此外，你背包的其他栏也扩展了一行。你的最大生命值、最大魔力值也得到了增加。");
         else if (status == 5)
             cm.sendNextPrev("我同时也为你提升了1点的 #bSP#k。请打开右下角的 #b技能菜单#k 进行查看。你可以用它来提升你的二转技能等级。但需要提醒你一下，你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
         else if (status == 6)
@@ -204,7 +204,7 @@ function action(mode, type, selection) {
                 cm.getPlayer().removePartyQuestItem("JB3");
                 cm.getPlayer().setPartyQuestItemObtained("JBP");
             }
-            cm.sendNextPrev("他是我的分身, 你可以想象这会是一场艰难的战斗. 你得在规定时间内战胜他.打倒他，把 #b#t4031059##k 带回来给我.");
+            cm.sendNextPrev("他是我的分身, 你可以想象这会是一场艰难的战斗. 你得在规定时间内战胜他。打倒他，把 #b#t4031059##k 带回来给我。");
         }
     } else if (actionx["3thJobC"]) {
         cm.getPlayer().removePartyQuestItem("JBP");
