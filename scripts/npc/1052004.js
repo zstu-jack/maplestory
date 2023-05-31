@@ -50,7 +50,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            cm.sendSimple("我是黛玛院长. 如果你有 #b#t5152001##k 任何机会，那么怎么样让我帮整形? \r\n\#L1#购买 #b#t5152001##k\r\n\#L2#使用 #b#t5152001##k#l\r\n");
+            cm.sendSimple("你好，欢迎来到射手村整形医院。想要让你的脸焕然一新吗？只要一张 #b#t5152001##k，你就可以享受高质量的美容服务，拥有梦寐以求的容貌。\r\n#L2#改变脸型：#i5152001##t5152001##l");
         } else if (status == 1) {
             if (selection == 2) {
                 facenew = Array();
@@ -62,7 +62,7 @@ function action(mode, type, selection) {
                     for(var i = 0; i < fface_v.length; i++)
                         pushIfItemExists(facenew, fface_v[i] + cm.getPlayer().getFace()% 1000 - (cm.getPlayer().getFace()% 100));
                 }
-                cm.sendStyle("让我看看。。。我完全可以把你整容成另外一张脸。想试试吗？提供 #b#t5152001##k,给我一些时间，会让你满意的。", facenew);
+                cm.sendStyle("让我瞧瞧...如果有一张#b#t5152001##k的话，我可以让你的脸焕然一新。选择你想要的效果吧。", facenew);
             }
         }
         else if (status == 2){
@@ -70,7 +70,7 @@ function action(mode, type, selection) {
             if (cm.haveItem(5152001) == true){
                 cm.gainItem(5152001, -1);
                 cm.setFace(facenew[selection]);
-                cm.sendOk("换脸成功!");
+                cm.sendOk("好了，让朋友们赞叹你的新脸型吧！");
             } else
                 cm.sendOk("您貌似没有#b#t5152001##k.");
         }

@@ -50,7 +50,7 @@ function start() {
     }
 	
     thicketAroundTheBeach3.spawnMonsterOnGroundBelow(mano, new Packages.java.awt.Point(279, -496));
-    thicketAroundTheBeach3.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "A cool breeze was felt when Mano appeared."));
+    thicketAroundTheBeach3.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "随着一阵寒意，红蜗牛王出现了。"));
     em.schedule("start", 3 * 60 *60 * 1000);
 }
 

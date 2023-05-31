@@ -54,7 +54,7 @@ function start() {
     var posY = 1125;
     posX =  Math.floor((Math.random() * 600) - 300);
     leviathansCanyon.spawnMonsterOnGroundBelow(leviathan, new Packages.java.awt.Point(posX, posY));
-    leviathansCanyon.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "Leviathan emerges from the canyon and the cold icy wind blows."));
+    leviathansCanyon.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "大海兽从峡谷中现身，凛风随之而来。"));
 	em.schedule("start", 3 * 60 *60 * 1000);
 }
 

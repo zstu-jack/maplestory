@@ -56,7 +56,7 @@ function start() {
     var posY = 1030;
     posX =  Math.floor((Math.random() * 1400) - 700);
     lostTime2.spawnMonsterOnGroundBelow(timer3, new Packages.java.awt.Point(posX, posY));
-    lostTime2.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "Tick-Tock Tick-Tock! Timer makes it's presence known."));
+    lostTime2.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "嘀嗒，嘀嗒。闹钟的计时声响起，提莫出现了。"));
 	em.schedule("start", 3 * 60 * 60 * 1000);
 }
 

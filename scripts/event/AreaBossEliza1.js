@@ -54,7 +54,7 @@ function start() {
 	}
 	
     stairwayToTheSky2.spawnMonsterOnGroundBelow(eliza, new Packages.java.awt.Point(208, 83));
-    stairwayToTheSky2.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "Eliza has appeared with a black whirlwind."));
+    stairwayToTheSky2.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "随着一阵黑色的旋风，艾利杰现身了。"));
 	em.schedule("start", 3 * 60 *60 * 1000);
 }
 

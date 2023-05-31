@@ -36,9 +36,9 @@ function action(mode, type, selection) {
                     
                 if (status == 0) {
                         if (cm.isEventLeader()) {
-                                cm.sendSimple("我是小老虎，你怎么来的？\r\n#b#L0# 我想知道这里的一切。#l\r\n#L1# 我给你带来了 #t4001101#.#l\r\n#L2# 我要离开这里。#l");
+                                cm.sendSimple("我是兴儿，你怎么来的？\r\n#b#L0# 我想知道这里的一切。#l\r\n#L1# 我给你带来了 #t4001101#.#l\r\n#L2# 我要离开这里。#l");
                         } else {
-                                cm.sendSimple("我是小老虎，你怎么来的？\r\n#b#L0# 查看说明。#l\r\n#L2# 我要离开这里。#l");
+                                cm.sendSimple("我是兴儿，你怎么来的？\r\n#b#L0# 查看说明。#l\r\n#L2# 我要离开这里。#l");
                         }
                 } else if (status == 1) {
                         if (chosen == -1)
@@ -61,7 +61,7 @@ function action(mode, type, selection) {
                         }
                 } else if (status == 2) {
                         if (chosen == 0) {
-                                cm.sendNextPrev("从这片区域的报春花叶子上采集报春花种子，将种子种植在新月附近的平台处，即可看到报春花绽放。报春花有6种类型，它们都需要对应的平台。平台对了，花朵的种子才能开出花来。");
+                                cm.sendNextPrev("从这片区域的迎月花叶子上采集迎月花种子，将种子种植在新月附近的平台处，即可看到迎月花绽放。迎月花有6种类型，它们都需要对应的平台。在对应平台种下种子，迎月花才会开放。");
                         } else if (chosen == 1) {
                                 cm.gainItem(4001101, -10);
 
@@ -83,7 +83,7 @@ function action(mode, type, selection) {
                         }
                 } else if (status == 3) {
                         if (chosen == 0) {
-                                cm.sendNextPrev("当报春花盛开时，满月就会升起，这时月妙兔就会出现并开始敲打制作年糕。你的任务是阻止怪物骚扰月妙兔，确保它能够集中精力制作年糕。");
+                                cm.sendNextPrev("当迎月花盛开时，满月就会升起，这时月妙兔就会出现并开始敲打制作年糕。你的任务是阻止怪物骚扰月妙兔，确保它能够集中精力制作年糕。");
                         }
                 } else if (status == 4) {
                         if (chosen == 0) {

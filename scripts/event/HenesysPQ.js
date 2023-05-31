@@ -145,7 +145,7 @@ function scheduledTimeout(eim) {
 }
 
 function bunnyDefeated(eim) {
-        eim.dropMessage(5, "Due to your failure to protect the Moon Bunny, you have been transported to the Exile Map.");
+        eim.dropMessage(5, "保护月妙任务失败，被传送出任务地图。");
         end(eim);
 }
 
@@ -250,7 +250,7 @@ function friendlyItemDrop(eim, mob) {
                 var cakes = eim.getIntProperty("bunnyCake") + 1;
                 eim.setIntProperty("bunnyCake", cakes);
                 
-                mob.getMap().broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "The Moon Bunny made rice cake number " + cakes + "."));
+                mob.getMap().broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "月妙制作了" + cakes + "块年糕。"));
         }
 }
 
@@ -258,7 +258,7 @@ function friendlyDamaged(eim, mob) {
         if (mob.getId() == 9300061) {
                 var bunnyDamage = eim.getIntProperty("bunnyDamaged") + 1;
                 if (bunnyDamage > 5) {
-                        broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "The Moon Bunny is feeling sick. Please protect it so it can make delicious rice cakes."));
+                        broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "月妙受伤了，请保护它制作更多美味的年糕。"));
                         eim.setIntProperty("bunnyDamaged", 0);
                 }
         }

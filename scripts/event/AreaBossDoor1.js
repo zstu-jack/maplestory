@@ -40,7 +40,7 @@ function cancelSchedule() {
 function start() {
     var bossMobid = 9400610;
     var bossMapid = 677000003;
-    var bossMsg = "Amdusias has appeared!";
+    var bossMsg = "ºÚ°µ¶À½ÇÊŞ³öÏÖÁË£¡";
     var bossPos = new Packages.java.awt.Point(467, 0);
     
     var map = em.getChannelServer().getMapFactory().getMap(bossMapid);

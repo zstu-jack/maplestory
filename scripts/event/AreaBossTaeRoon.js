@@ -55,7 +55,7 @@ function start() {
     var posY = 390;
     posX =  Math.floor((Math.random() * 700) - 800);
     territoryOfWanderingBear.spawnMonsterOnGroundBelow(taeRoon, new Packages.java.awt.Point(posX, posY));
-    territoryOfWanderingBear.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "Tae Roon has appeared with a soft whistling sound."));
+    territoryOfWanderingBear.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "随着一声奇异的哨声，肯德熊出现了。"));
 	em.schedule("start", 3 * 60 * 60 * 1000);
 }
 

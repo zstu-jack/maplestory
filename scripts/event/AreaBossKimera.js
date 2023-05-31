@@ -55,7 +55,7 @@ function start() {
     var posY = 180;
     posX =  (Math.floor(Math.random() * 900) - 900);
     labSecretBasementPath.spawnMonsterOnGroundBelow(chimera, new Packages.java.awt.Point(posX, posY));
-    labSecretBasementPath.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "Kimera has appeared out of the darkness of the underground with a glitter in her eyes."));
+    labSecretBasementPath.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "吉米拉从地下的阴影中现身了，她的双目闪烁着奇异的光芒。"));
 	em.schedule("start", 3 * 60 *60 * 1000);
 }
 

@@ -52,7 +52,7 @@ function start() {
 	}
 	
     theForestOfEvil1.spawnMonsterOnGroundBelow(faust1, new Packages.java.awt.Point(456, 278));
-    theForestOfEvil1.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "Faust appeared amidst the blue fog."));
+    theForestOfEvil1.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "浮士德从迷雾中现身了。"));
 	em.schedule("start", 3 * 60 *60 * 1000);
 }
 

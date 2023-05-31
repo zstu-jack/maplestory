@@ -32,7 +32,7 @@ function action(mode, type, selection) {
 		else
 			status--;
 		if (status == 0) {
-			cm.sendSimple("Hahaha... it takes a lot of style and flair for someone to pay attention to his or her hairsyle in a desert. Someone like you...If you have #bAriant hair style coupon(VIP)#k or #bAriant hair color coupon(VIP)#k, I'll give your hair a fresh new look. \r\n#L0#Haircut: #i5150027##t5150027##l\r\n#L1#Dye your hair: #i5151022##t5151022##l");
+			cm.sendSimple("哈哈哈...在沙漠中保持时髦的发型可不容易，是需要一些个人理解和天赋的。如果你有 #b阿里安特美发店高级会员卡#k 或 #阿里安特染色高级会员卡#k，我就能够让你的发型焕然一新。\r\n#L0#更改发型：#i5150027##t5150027##l\r\n#L1#更改发色：#i5151022##t5151022##l");
 		} else if (status == 1) {
 			if (selection == 0) {
 				beauty = 1;
@@ -49,7 +49,7 @@ function action(mode, type, selection) {
  % 10));
 					}
 				}
-				cm.sendStyle("Hahaha~all you need is #bAriant hair style coupon(VIP)#k to change up your hairstyle. Choose the new style, and let me do the rest.", hairnew);
+				cm.sendStyle("哈哈哈~只需要一张 #b阿里安特美发店高级会员卡#k ，你就可以选择喜欢的发型。来，认真挑选吧，剩下的交给我就好。", hairnew);
 			} else if (selection == 1) {
 				beauty = 2;
 				haircolor = Array();
@@ -58,7 +58,7 @@ function action(mode, type, selection) {
 				for(var i = 0; i < 8; i++) {
 					pushIfItemExists(haircolor, current + i);
 				}
-				cm.sendStyle("Every once in a while, it doesn't hurt to change up your hair color... it's fun. Allow me, the great Mazra, to dye your hair, so you just bring me #bAriant hair color coupon(VIP)#k, and choose your new hair color.", haircolor);
+				cm.sendStyle("时不时改变一下形象有益于身心健康...也很有趣。请允许我，伟大的玛兹拉，为您染发。只要给我一张#b阿里安特染色高级会员卡#k，就可以选择你的新发色了。", haircolor);
 			}
 		}
 		else if (status == 2){
@@ -67,18 +67,18 @@ function action(mode, type, selection) {
 				if (cm.haveItem(5150027) == true){
 					cm.gainItem(5150027, -1);
 					cm.setHair(hairnew[selection]);
-					cm.sendOk("Enjoy your new and improved hairstyle!");
+					cm.sendOk("好了，让朋友们赞叹你的新发型吧！");
 				} else {
-					cm.sendNext("I thought I told you, you need the coupon in order for me to work magic on your hair check again.");
+					cm.sendNext("看起来你没有我们的会员卡。恐怕我不能为你提供服务。");
 				}
 			}
 			if (beauty == 2){
 				if (cm.haveItem(5151022) == true){
 					cm.gainItem(5151022, -1);
 					cm.setHair(haircolor[selection]);
-					cm.sendOk("Enjoy your new and improved haircolor!");
+					cm.sendOk("好了，让朋友们赞叹你的新发色吧！");
 				} else {
-					cm.sendNext("I thought I told you, you need the coupon in order for me to work magic on your hair check again.");
+					cm.sendNext("看起来你没有我们的会员卡。恐怕我不能为你提供服务。");
 				}
 			}
 		}

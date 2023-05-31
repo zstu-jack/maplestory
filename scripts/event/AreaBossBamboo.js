@@ -49,7 +49,7 @@ function start() {
 	}
 	
     mapObj.spawnMonsterOnGroundBelow(mobObj, new Packages.java.awt.Point(560, 50));
-    mapObj.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "From amongst the ruins shrouded by the mists, Bamboo Warrior appears."));
+    mapObj.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "薄雾笼罩的废墟之中，青竹武士的身影缓缓显现。"));
 	em.schedule("start", 3 * 60 *60 * 1000);
 }
 

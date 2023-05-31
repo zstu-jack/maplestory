@@ -5,7 +5,7 @@ function enter(pi) {
             pi.playPortalSound(); pi.warp(925100200,0); //next
             return true;
         } else {
-            pi.playerMessage(5, "The portal is not opened yet.");
+            pi.playerMessage(5, "´«ËÍÃÅÉĞÎ´¿ªÆô¡£");
             return false;
         }
     } catch(e) {

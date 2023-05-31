@@ -87,7 +87,7 @@ function setEventRewards(eim) {
 }
 
 function afterSetup(eim) {
-    eim.dropMessage(5, "The first wave will start within 15 seconds, prepare yourselves.");
+    eim.dropMessage(5, "第一轮战斗将在 15 秒钟后开始，请做好准备。");
     eim.schedule("startWave", 15 * 1000);
 }
 
@@ -117,7 +117,7 @@ function setup(channel) {
 }
 
 function playerEntry(eim, player) {
-    eim.dropMessage(5, "[Expedition] " + player.getName() + " has entered the map.");
+    eim.dropMessage(5, "[远征队信息] " + player.getName() + " 进入了地图。");
     var map = eim.getMapInstance(entryMap);
     player.changeMap(map, map.getPortal(0));
 }
@@ -130,11 +130,11 @@ function changedMap(eim, player, mapid) {
     if (mapid < minMapId || mapid > maxMapId) {
 	if (eim.isExpeditionTeamLackingNow(true, minPlayers, player)) {
             eim.unregisterPlayer(player);
-            eim.dropMessage(5, "[Expedition] Either the leader has quit the expedition or there is no longer the minimum number of members required to continue it.");
+            eim.dropMessage(5, "[远征队信息] 队长目前已退出本场任务，或人数不满足继续任务的要求。");
             end(eim);
         }
         else {
-            eim.dropMessage(5, "[Expedition] " + player.getName() + " has left the expedition.");
+            eim.dropMessage(5, "[远征队信息] " + player.getName() + " 退出了地图。");
             eim.unregisterPlayer(player);
         }
     }
@@ -149,12 +149,12 @@ function playerDead(eim, player) {
     eim.setIntProperty("fallenPlayers", count);
     
     if(count == 5) {
-        eim.dropMessage(5, "[Expedition] Too many players have fallen, Pink Bean is now deemed undefeatable; the expedition is over.");
+        eim.dropMessage(5, "[远征队信息] Too many players have fallen, Pink Bean is now deemed undefeatable; the expedition is over.");
         end(eim);
     } else if(count == 4) {
-        eim.dropMessage(5, "[Expedition] Pink Bean is growing stronger than ever, last stand mode everyone!");
+        eim.dropMessage(5, "[远征队信息] Pink Bean is growing stronger than ever, last stand mode everyone!");
     } else if(count == 3) {
-        eim.dropMessage(5, "[Expedition] Casualty count is starting to get out of control. Battle with care.");
+        eim.dropMessage(5, "[远征队信息] Casualty count is starting to get out of control. Battle with care.");
     }
 }
 
@@ -171,11 +171,11 @@ function monsterRevive(eim, mob) {
 function playerDisconnected(eim, player) {
     if (eim.isExpeditionTeamLackingNow(true, minPlayers, player)) {
         eim.unregisterPlayer(player);
-        eim.dropMessage(5, "[Expedition] Either the leader has quit the expedition or there is no longer the minimum number of members required to continue it.");
+        eim.dropMessage(5, "[远征队信息] 队长目前已退出本场任务，或人数不满足继续任务的要求。");
         end(eim);
     }
     else {
-        eim.dropMessage(5, "[Expedition] " + player.getName() + " has left the expedition.");
+        eim.dropMessage(5, "[远征队信息] " + player.getName() + " has left the expedition.");
         eim.unregisterPlayer(player);
     }
 }

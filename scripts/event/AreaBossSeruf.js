@@ -56,7 +56,7 @@ function start() {
     var posY = 520;
     posX =  Math.floor((Math.random() * 2300) - 1500);
     theSeaweedTower.spawnMonsterOnGroundBelow(seruf, new Packages.java.awt.Point(posX, posY));
-    theSeaweedTower.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "A strange shell has appeared from a grove of seaweed"));
+    theSeaweedTower.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "海藻中间出现了一只奇怪的贝壳。"));
 	em.schedule("start", 3 * 60 * 60 * 1000);
 }
 

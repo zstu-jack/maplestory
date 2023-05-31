@@ -66,9 +66,9 @@ function playerCanLeave(eim) {
 function playerSurvived(eim) {
     if (eim.getLeader().isAlive()) {
         eim.setIntProperty("canLeave", 2);
-        eim.dropMessage(5, "Kyrin: You have passed the test. Now for the closing part... Are you able reach the exit over there?");
+        eim.dropMessage(5, "凯琳：你通过了测试，现在可以从侧面的出口离开这里。");
     } else {
-        eim.dropMessage(5, "Kyrin: You have failed the test. Aww, don't have such a sad face, just try it again later, ok?");
+        eim.dropMessage(5, "凯琳：你未能通过测试，别灰心，下一次再努力吧。");
     }
 }
 
