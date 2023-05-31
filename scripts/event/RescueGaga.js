@@ -104,7 +104,7 @@ function playerEntry(eim, player) {
         player.changeMap(map, map.getPortal(0));
         
         player.announce(MaplePacketCreator.showEffect("event/space/start"));
-        player.startMapEffect("Please rescue Gaga within the time limit.", 5120027);
+        player.startMapEffect("请在限制时间内拯救佳佳。", 5120027);
 }
 
 function scheduledTimeout(eim) {
