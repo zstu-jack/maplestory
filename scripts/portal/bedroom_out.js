@@ -3,6 +3,6 @@ function enter(pi) {
 		pi.playPortalSound(); pi.warp(120000101, 0);
 		return true;
 	}
-	pi.earnTitle("You still got some stuff to take care of. I can see it in your eyes. Wait...no, those are eye boogers.");
+	pi.earnTitle("你还有一些事情要做。我能从你的眼中看到。等等...没什么，原来那是眼屎。");
 	return false;
 }

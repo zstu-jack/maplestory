@@ -19,7 +19,23 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-function enter(pi) {
-    pi.showInstruction("想要查看角色信息的话，按#e#b[S]#k#n键。", 350, 5);
-    return true;
-}
+/*
+ *@Author:     kevintjuh93
+*/
+
+importPackage(Packages.tools); 
+var player;
+
+function start(ms) { 
+	player = ms.getPlayer();
+        player.resetEnteredScript(); 
+        ms.getClient().announce(MaplePacketCreator.showEffect("event/space/start")); 
+        player.startMapEffect("请在限制时间内拯救佳佳。", 5120027); 
+	var map = player.getMap();
+	if (map.getTimeLeft() > 0) {
+		ms.getClient().announce(MaplePacketCreator.getClock(map.getTimeLeft()));
+	} else {
+		map.addMapTimer(180);
+	}
+	ms.useItem(2360002);//HOORAY <3
+}  

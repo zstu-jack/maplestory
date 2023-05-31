@@ -13,7 +13,7 @@ function enter(pi) {
 	pi.playPortalSound(); pi.warp(914000200, 1);
 	return true;
 	} else {
-	pi.message("You can only exit after you accept the quest from Athena Pierce, who is to your right.");
+	pi.message("从右侧的赫丽娜处接取任务方可离开。");
 	return false;
 	}
 }

@@ -19,7 +19,24 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-function enter(pi) {
-    pi.showInstruction("想要查看角色信息的话，按#e#b[S]#k#n键。", 350, 5);
-    return true;
+/*
+ *@Author:     Moogra, Traitor, Ronan
+ *@Map(s):     All Dojo fighting maps
+ *@Function:   Displays info for the player when entering a dojo map
+*/
+
+
+function start(ms) {
+    ms.getPlayer().resetEnteredScript();
+    var stage = Math.floor(ms.getPlayer().getMap().getId() / 100) % 100;
+    
+    ms.getPlayer().showDojoClock();
+    if (stage % 6 > 0) {
+        var realstage = stage - ((stage / 6) | 0);
+        ms.dojoEnergy();
+        
+        ms.playSound("Dojang/start");
+        ms.showEffect("dojang/start/stage");
+        ms.showEffect("dojang/start/number/" + realstage);
+    }
 }
