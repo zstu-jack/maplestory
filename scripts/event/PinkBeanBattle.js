@@ -149,12 +149,12 @@ function playerDead(eim, player) {
     eim.setIntProperty("fallenPlayers", count);
     
     if(count == 5) {
-        eim.dropMessage(5, "[远征队信息] Too many players have fallen, Pink Bean is now deemed undefeatable; the expedition is over.");
+        eim.dropMessage(5, "[远征队信息] 无数的勇士阵亡了，然而品克缤依然屹立不倒。远征就此结束。");
         end(eim);
     } else if(count == 4) {
-        eim.dropMessage(5, "[远征队信息] Pink Bean is growing stronger than ever, last stand mode everyone!");
+        eim.dropMessage(5, "[远征队信息] 品克缤变得前所未有地强大，这将是最后一轮战斗！");
     } else if(count == 3) {
-        eim.dropMessage(5, "[远征队信息] Casualty count is starting to get out of control. Battle with care.");
+        eim.dropMessage(5, "[远征队信息] 阵亡的勇士变得越来越多，请谨慎作战。");
     }
 }
 
@@ -175,7 +175,7 @@ function playerDisconnected(eim, player) {
         end(eim);
     }
     else {
-        eim.dropMessage(5, "[远征队信息] " + player.getName() + " has left the expedition.");
+        eim.dropMessage(5, "[远征队信息] " + player.getName() + " 退出了远征。");
         eim.unregisterPlayer(player);
     }
 }
@@ -261,12 +261,12 @@ function monsterKilled(mob, eim) {
                 mapObj.spawnItemDrop(dropper, dropper, itemObj, reactObj.getPosition(), true, true);
 
 
-                eim.dropMessage(6, "With the last of its guardians fallen, Pink Bean loses its invulnerability. The real fight starts now!");
+                eim.dropMessage(6, "最后一尊守护石像失去了力量，品克缤的身体逐渐变得真实起来。真正的战斗就此打响。");
             } else {
                 stage++;
                 eim.setIntProperty("stage", stage);
                 
-                eim.dropMessage(5, "The next wave will start within 15 seconds, prepare yourselves.");
+                eim.dropMessage(5, "下一轮战斗将在 15 秒钟后开始，请做好准备。");
                 eim.schedule("startWave", 15 * 1000);
             }
         }
