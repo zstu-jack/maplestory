@@ -26,7 +26,7 @@ function action(mode, type, selection) {
         
 	var selStr = "你想要去训练场吗？";
 	for (var i = 0; i < num; i++) {
-		selStr += "\r\n#b#L" + i + "#战士修炼场 " + i + " (" + cm.getPlayerCount(map + i) + "/" + maxp + ")#l#k";
+		selStr += "\r\n#b#L" + i + "#修炼场 " + i + " (" + cm.getPlayerCount(map + i) + "/" + maxp + ")#l#k";
 	}
 	cm.sendSimple(selStr);
     } else if (status == 1) {

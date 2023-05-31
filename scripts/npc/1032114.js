@@ -19,21 +19,21 @@ function action(mode, type, selection) {
     }
     if (status == 0) {
         if(cm.getLevel() >= 20) {
-            cm.sendOk("#b魔法师修炼场#k只能#r≤20级#k的玩家才能传送过去。");
+            cm.sendOk("修炼场面向20级以下角色开放。");
             cm.dispose();
             return;
         }
         
-	var selStr = "你确定要去#b魔法师修炼场#k?";
+	var selStr = "想要进入修炼场吗？";
 	for (var i = 0; i < num; i++) {
-		selStr += "\r\n#b#L" + i + "#魔法师修炼场 " + i + " (" + cm.getPlayerCount(map + i) + "/" + maxp + ")#l#k";
+		selStr += "\r\n#b#L" + i + "#修炼场 " + i + " (" + cm.getPlayerCount(map + i) + "/" + maxp + ")#l#k";
 	}
 	cm.sendSimple(selStr);
     } else if (status == 1) {
 	if (selection < 0 || selection >= num) {
 		cm.dispose();
 	} else if (cm.getPlayerCount(map + selection) >= maxp) {
-		cm.sendNext("里面已经有人了。");
+		cm.sendNext("使用当前修炼场的人数已达到地图容量上限。");
 		status = -1;
 	} else {
 		cm.warp(map + selection, 0);
