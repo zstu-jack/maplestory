@@ -36,7 +36,7 @@ function playerEntry(eim, player) {
         player.changeMap(onRide, onRide.getPortal(0));
         
         player.getClient().announce(MaplePacketCreator.getClock(rideTime / 1000));
-        player.getClient().announce(MaplePacketCreator.earnTitleMessage("The next stop is at Kerning " + (myRide == 0 ? "Square" : "Subway") + " Station. The exit is to your left."));
+        player.getClient().announce(MaplePacketCreator.earnTitleMessage("下一站是废都" + (myRide == 0 ? "广场" : "地铁") + "站。请从出口下车。"));
         eim.schedule("timeOut", rideTime);
 }
 
