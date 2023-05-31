@@ -33,7 +33,7 @@ function enter(pi) {
         return true;
     }
     else {
-        pi.getPlayer().dropMessage(5, "传送门尚未开启。");
+        pi.getPlayer().dropMessage(5, "传送门目前尚未开启。");
         return false;
     }
 }

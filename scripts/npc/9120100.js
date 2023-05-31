@@ -52,7 +52,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            cm.sendSimple("欢迎来到昭和街美发店。如果你有#b#t5150009##k 或 #b#t5151009##k ，就请到美发椅这边坐下。选择你想要使用的服务。\r\n#L1#更改发型：#i5150009##t5150009##l\r\n#L2#更改发色：#i5151009##t5151009##l");
+            cm.sendSimple("欢迎来到昭和村美发店。如果你有#b#t5150009##k 或 #b#t5151009##k ，就请到美发椅这边坐下。选择你想要使用的服务。\r\n#L1#更改发型：#i5150009##t5150009##l\r\n#L2#更改发色：#i5151009##t5151009##l");
         } else if (status == 1) {
             if (selection == 1) {
                 beauty = 1;

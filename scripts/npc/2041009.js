@@ -69,7 +69,7 @@ function action(mode, type, selection) {
                         pushIfItemExists(hairnew, fhair_r[i] + parseInt(cm.getPlayer().getHair() % 10));
                     }
                 }
-                cm.sendYesNo("If you use the REG coupon your hair will change RANDOMLY with a chance to obtain a new experimental style that I came up with. Are you going to use #b#t5150012##k 来改变你的发型吗？");
+                cm.sendYesNo("如果使用普通会员卡，你的发型将会#r随机#k改变，有可能变为全新风格。确定要使用 #b#t5150012##k 来改变你的发型吗？");
             } else if (selection == 1) {
                 beauty = 1;
                 hairnew = Array();

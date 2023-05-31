@@ -39,7 +39,7 @@ function action(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            cm.sendYesNo("现在准备离开了吗？");
+            cm.sendYesNo("现在准备离开了吗?");
         } else if(status == 1) {
             cm.warp(209000000, 3);
             cm.dispose();

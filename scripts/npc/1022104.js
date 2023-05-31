@@ -24,7 +24,7 @@ function action(mode, type, selection) {
             return;
         }
         
-	var selStr = "你想要去训练场吗？";
+	var selStr = "你想要进入训练场吗？";
 	for (var i = 0; i < num; i++) {
 		selStr += "\r\n#b#L" + i + "#修炼场 " + i + " (" + cm.getPlayerCount(map + i) + "/" + maxp + ")#l#k";
 	}

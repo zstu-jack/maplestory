@@ -40,7 +40,7 @@ function cancelSchedule() {
 function start() {
     var bossMobid = 9400610;
     var bossMapid = 677000003;
-    var bossMsg = "黑暗独角兽出现了！";
+    var bossMsg = "黑暗独角兽出现了。";
     var bossPos = new Packages.java.awt.Point(467, 0);
     
     var map = em.getChannelServer().getMapFactory().getMap(bossMapid);

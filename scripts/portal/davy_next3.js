@@ -8,7 +8,7 @@ function enter(pi) {
 	pi.playPortalSound(); pi.warp(925100400,0); //next
         return true;
     } else {
-	pi.playerMessage(5, "传送门尚未开启。");
+	pi.playerMessage(5, "传送门目前尚未开启。");
         return false;
     }
 }

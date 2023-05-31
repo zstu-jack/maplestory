@@ -40,7 +40,7 @@ function cancelSchedule() {
 function start() {
     var bossMobid = 9400611;
     var bossMapid = 677000007;
-    var bossMsg = "雪之猫女出现了！";
+    var bossMsg = "雪之猫女出现了。";
     var bossPos = new Packages.java.awt.Point(171, 50);
     
     var map = em.getChannelServer().getMapFactory().getMap(bossMapid);

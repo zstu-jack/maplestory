@@ -40,7 +40,7 @@ function cancelSchedule() {
 function start() {
     var bossMobid = 9400613;
     var bossMapid = 677000009;
-    var bossMsg = "沃勒福出现了！";
+    var bossMsg = "沃勒福出现了。";
     var bossPos = new Packages.java.awt.Point(251, -841);
     
     var map = em.getChannelServer().getMapFactory().getMap(bossMapid);

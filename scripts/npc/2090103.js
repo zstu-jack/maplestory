@@ -127,7 +127,7 @@ function action(mode, type, selection) {
                     cm.setFace(facenew[selection]);
                     cm.sendOk("好了，让朋友们赞叹你的新脸型吧！");
                 } else {
-                    cm.sendOk("I'm sorry, but I don't think you have our plastic surgery coupon with you right now. Without the coupon, I'm afraid I can't do it for you..");
+                    cm.sendOk("很抱歉，如果没有整形会员卡的话，我无法为你服务。");
                 }
             } else if (beauty == 2){
                 if (cm.haveItem(5152041)){
