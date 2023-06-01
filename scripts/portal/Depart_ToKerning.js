@@ -1,7 +1,7 @@
 function enter(pi) {
         var em = pi.getEventManager("KerningTrain");
         if (!em.startInstance(pi.getPlayer())) {
-            pi.message("The passenger wagon is already full. Try again a bit later.");
+            pi.message("本次列车已满员，请乘坐下一班。");
             return false;
         }
         

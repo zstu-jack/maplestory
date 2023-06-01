@@ -13,5 +13,5 @@ function start(ms) {
 	}
 
 	map.spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(mobId), pos);
-	player.message(mobName + " 出现了！");
+	player.message(mobName + "出现了！");
 }

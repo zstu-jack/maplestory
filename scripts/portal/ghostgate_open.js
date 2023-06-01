@@ -31,7 +31,7 @@ function enter(pi) {
         return true;
     }
     else {
-        pi.playerMessage(5, "This way forward is not open yet.");
+        pi.playerMessage(5, "通往死亡回廊的大门尚未开启。");
         return false;
     }
 }

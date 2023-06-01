@@ -20,6 +20,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 function enter(pi) {
-	pi.playerMessage(5, "It seems to be locked.");
+	pi.playerMessage(5, "这里看起来上锁了。");
 	return true;
 }

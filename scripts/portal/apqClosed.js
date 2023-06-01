@@ -20,6 +20,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 function enter(pi) {
-        pi.message("此处暂未开放。");
+        pi.message("此处暂时无法通行。");
         return false;
 }

@@ -27,16 +27,16 @@ function enter(pi) {
         var em = pi.getEventManager("PapulatusBattle");
 
         if (pi.getParty() == null) {
-            pi.playerMessage(5, "You are currently not in a party, create one to attempt the boss.");
+            pi.playerMessage(5, "组成队伍后方可入场挑战。");
             return false;
         } else if(!pi.isLeader()) {
-            pi.playerMessage(5, "Your party leader must enter the portal to start the battle.");
+            pi.playerMessage(5, "队长进入地图后，队员方可进入。");
             return false;
         } else {
             var eli = em.getEligibleParty(pi.getParty());
             if(eli.size() > 0) {
                 if(!em.startInstance(pi.getParty(), pi.getPlayer().getMap(), 1)) {
-                    pi.playerMessage(5, "The battle against the boss has already begun, so you may not enter this place yet.");
+                    pi.playerMessage(5, "里面的战斗已经开始了，目前无法进入。");
                     return false;
                 }
             }

@@ -3,7 +3,7 @@ function enter(pi) {
 	pi.playPortalSound(); pi.warp(610030020, "out00");
         return true;
     } else {
-	pi.playerMessage(5, "The giant gate of iron will not budge no matter what, however there is a visible key-shaped socket.");
+	pi.playerMessage(5, "巨大的铁门纹丝不动，键石形状的插槽在其上清晰可见。");
         return false;
     }
 }
