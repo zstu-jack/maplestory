@@ -66,9 +66,9 @@ function start() {
     } else if (parseInt(cm.getJobId() / 100) == jobType && cm.canSpawnPlayerNpc(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()))) {
         spawnPnpc = true;
         
-        var sendStr = "你历经千辛万苦才获得了今天的成就。想要 #r将你的形象加入名人堂#k 吗？";
+        var sendStr = "你历经千辛万苦才获得了今天的成就。想要 #r将你的形象加入海盗的殿堂#k 吗？";
         if(spawnPnpcFee > 0) {
-            sendStr += "只要花费 #b " + cm.numberWithCommas(spawnPnpcFee) + " 金币#k，我就能为你做到。";
+            sendStr += "只要支付 #b " + cm.numberWithCommas(spawnPnpcFee) + " 金币#k，我就可以将你的形象加入海盗的殿堂。";
         }
         
         cm.sendYesNo(sendStr);
@@ -81,18 +81,18 @@ function start() {
             if (cm.isQuestCompleted(2191) || cm.isQuestCompleted(2192))
                 cm.sendNext("你完成得很好，我看到了。我将允许你在海盗之路上更进一步。");
             else
-                cm.sendNext("你的进展十分惊人。");
+                cm.sendNext("你的进步之大令人惊讶。");
         } else if (actionx["3thJobI"] || (cm.getPlayer().gotPartyQuestItem("JB3") && cm.getLevel() >= 70 && cm.getJobId() % 10 == 0 && parseInt(cm.getJobId() / 100) == 5 && !cm.getPlayer().gotPartyQuestItem("JBP"))){
             actionx["3thJobI"] = true;
-            cm.sendNext("几天前，神秘岛的 #b#p2020013##k 和我提起过你。我看到你对海盗的第3次转职很感兴趣，为了达到这个目标，我会对你的能力进行一个测试，看看你够不够格转职。在金银岛的蚂蚁洞里有一个入口，它会把你带到一个秘密通道。进入那里时，你会遇到我的一个分身。打败她，把 #b#t4031059##k 带回来给我。");
+            cm.sendNext("你终于来了。几天前，神秘岛的 #b#p2020013##k 对我提起过你。我看到你对海盗的第3次转职很感兴趣，为了达到这个目标，我会对你的能力进行一个测试，看看你够不够格转职。在金银岛的蚂蚁洞里有一个入口，它会把你带到一个秘密通道。进入那里时，你会遇到我的一个分身。打败她，把 #b#t4031059##k 带回来给我。");
         } else if (cm.getPlayer().gotPartyQuestItem("JBP") && !cm.haveItem(4031059)){
-            cm.sendNext("获得 #b#t4031059##k 后，再来和我对话。");
+            cm.sendNext("请带着 #b#t4031059##k 回来见我。");
             cm.dispose();
         } else if (cm.haveItem(4031059) && cm.getPlayer().gotPartyQuestItem("JBP")){
             actionx["3thJobC"] = true;
-            cm.sendNext("干得漂亮！你已经打败了我的分身，并把 #b#t4031059##k 安全地带了回来。在武力方面，你已经证明了你拥有3转的实力。现在你需要把这串项链带给神秘岛的 #b#p2020013##k 继续下一步的测试。祝你好运！");
+            cm.sendNext("干得漂亮！你已经打败了我的分身，并把 #b#t4031059##k 安全地带了回来。在力量方面，你已经证明了你拥有3转的实力。现在你需要把这串项链带给神秘岛的 #b#p2020013##k 继续下一步的测试。祝你好运！");
         } else {
-            cm.sendOk("You have chosen wisely.");
+            cm.sendOk("明智的选择。");
             cm.dispose();
         }
     }
@@ -146,7 +146,7 @@ function action(mode, type, selection) {
                     cm.sendOk("快去看看吧，希望你会喜欢。");
                     cm.gainMeso(-spawnPnpcFee);
                 } else {
-                    cm.sendOk("抱歉，名人堂已经满员了。");
+                    cm.sendOk("抱歉，海盗的殿堂已经满员了。");
                 }
             }
             
@@ -155,7 +155,7 @@ function action(mode, type, selection) {
         } else {
             if (mode != 1 || status == 7 && type != 1 || (actionx["1stJob"] && status == 4) || (cm.haveItem(4031008) && status == 2) || (actionx["3thJobI"] && status == 1)){
                 if (mode == 0 && status == 2 && type == 1)
-                    cm.sendOk("你知道，别无选择了...");
+                    cm.sendOk("选择职业后无法再次更改。");
                 if (!(mode == 0 && type != 1)){
                     cm.dispose();
                     return;
@@ -197,12 +197,12 @@ function action(mode, type, selection) {
             if (cm.isQuestCompleted(2191) || cm.isQuestCompleted(2192))
                 cm.sendSimple("好的。当你做出了决定，就点击底部的 [我现在要选择我的二转职业]。#b\r\n#L0#请向我解释什么是拳手。\r\n#L1#请向我解释什么是火枪手。\r\n#L3#我要选择我的二转职业！");
             else
-                cm.sendNext("不错的决定。你看起来很强大，但仍需要通过测试来证明有相符的实力。它对你来说应该并不困难，放轻松。");
+                cm.sendNext("不错的决定。你看起来很强大，但仍需要通过测试来证明有相符的实力。这对你来说应该并不困难，放轻松。");
         } else if (status == 1){
             if (!cm.isQuestCompleted(2191) && !cm.isQuestCompleted(2192)){
                 // Pirate works differently from the other jobs. It warps you directly in.
                 actionx["2ndJobT"] = true;
-                cm.sendYesNo("Would you like to take the test now?");
+                cm.sendYesNo("现在开始测试吗？");
             } else {
                 if (selection < 3) {
                     if(selection == 0) {    //brawler
@@ -250,9 +250,9 @@ function action(mode, type, selection) {
             if (cm.getJobId() != job)
                 cm.changeJobById(job);
         } else if (status == 4)
-            cm.sendNextPrev("我刚刚赋予了你作为一个 " + (job == 510 ? "拳手" : "枪手") + "应该掌握的技能。此外，你背包的其他栏也扩展了一行。你的最大生命值、最大魔力值也得到了增加。");
+            cm.sendNextPrev("我刚刚赋予了你作为一个 " + (job == 510 ? "拳手" : "枪手") + "应该掌握的技能。此外，你背包的其他栏扩展了一行，最大HP、最大MP也得到了增加。");
         else if (status == 5)
-            cm.sendNextPrev("我同时也为你提升了1点的 #bSP#k。请打开右下角的 #b技能菜单#k 进行查看。你可以用它来提升你的二转技能等级。但需要提醒你一下，你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
+            cm.sendNextPrev("我同时也为你提升了1点的 #b技能点#k。请打开右下角的 #b技能菜单#k 进行查看。你可以用它来提升你的二转技能等级。但需要提醒你一下，你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
         else if (status == 6)
             cm.sendNextPrev((job == 510 ? "拳手" : "枪手") + "，意味着更强的实力。但请记住，不要滥用你的力量，将这份力量用在正途上是一份意义高于继续变强的挑战。继续努力，当你更强大时再来找我。");
     } else if (actionx["3thJobI"]){
@@ -261,7 +261,7 @@ function action(mode, type, selection) {
                 cm.getPlayer().removePartyQuestItem("JB3");
                 cm.getPlayer().setPartyQuestItemObtained("JBP");
             }
-            cm.sendNextPrev("她是我的分身, 你可以想象这会是一场艰难的战斗. 你得在规定时间内战胜他。打倒他，把 #b#t4031059##k 带回来给我。");
+            cm.sendNextPrev("她是我的分身, 你可以想象这会是一场艰难的战斗. 你得在规定时间内战胜她。打倒她，把 #b#t4031059##k 带回来给我。");
         }
     } else if (actionx["3thJobC"]){
         cm.getPlayer().removePartyQuestItem("JBP");

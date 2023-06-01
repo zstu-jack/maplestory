@@ -15,9 +15,9 @@ function start() {
     if (parseInt(cm.getJobId() / 100) == jobType && cm.canSpawnPlayerNpc(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()))) {
         spawnPnpc = true;
 
-        var sendStr = "你已经走了很长的路才能获得今天的力量、智慧和勇气。现在你可以获得 #r用你当前的照片作为名人堂的一名NPC#k，你愿意尝试一下吗？";
+        var sendStr = "你历经千辛万苦才获得了今天的成就。想要 #r将你的形象加入弓箭手的殿堂#k 吗？";
         if (spawnPnpcFee > 0) {
-            sendStr += " 如果你愿意花费 #b " + cm.numberWithCommas(spawnPnpcFee) + " 金币，我就能帮你完成。#k";
+            sendStr += "只要支付 #b " + cm.numberWithCommas(spawnPnpcFee) + " 金币#k，我就可以将你的形象加入弓箭手的殿堂。";
         }
 
         cm.sendYesNo(sendStr);
@@ -38,13 +38,13 @@ function start() {
             actionx["3thJobI"] = true;
             cm.sendNext("几天前，冰封雪域的 #b#p2020010##k 向我提到过你。我看到你对弓箭手第三次转职感兴趣。为了实现这个目标，我必须测试你的实力，看看你是否值得晋升。在金银岛的深处从林中有一个开口，它将引导你进入一条秘密通道。一旦进入，你将面对我的克隆人。你的任务是击败他，然后把 #b#t4031059##k 带回来。");
         } else if (cm.getPlayer().gotPartyQuestItem("JBP") && !cm.haveItem(4031059)) {
-            cm.sendNext("请把 #b#t4031059##k 带回给我。");
+            cm.sendNext("请带着 #b#t4031059##k 回来见我。");
             cm.dispose();
         } else if (cm.haveItem(4031059) && cm.getPlayer().gotPartyQuestItem("JBP")) {
             actionx["3thJobC"] = true;
-            cm.sendNext("干得好，你已经打败了我的克隆体，并安全的吧 #b#t4031059##k 带了回来。你在物理方面证明了你值得第3次转职。现在，你需要把这条项链带给冰封雪域的 #b#p2020011##k，然后进行第2部分测试。祝你好运！");
+            cm.sendNext("干得漂亮！你已经打败了我的分身，并把 #b#t4031059##k 安全地带了回来。在力量方面，你已经证明了你拥有3转的实力。现在你需要把这串项链带给神秘岛的 #b#p2020011##k 继续下一步的测试。祝你好运！");
         } else {
-            cm.sendOk("明智的选择");
+            cm.sendOk("明智的选择。");
             cm.dispose();
         }
     }
@@ -66,16 +66,16 @@ function action(mode, type, selection) {
         if (spawnPnpc) {
             if (mode > 0) {
                 if (cm.getMeso() < spawnPnpcFee) {
-                    cm.sendOk("对不起，你没有足够的金币来购买你在名人堂的位置。");
+                    cm.sendOk("抱歉，你没有足够的金币，无法加入弓箭手的殿堂。");
                     cm.dispose();
                     return;
                 }
 
                 if (Packages.server.life.MaplePlayerNPC.spawnPlayerNPC(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()), cm.getPlayer())) {
-                    cm.sendOk("给你！希望你会喜欢。");
+                    cm.sendOk("快去看看吧，希望你会喜欢。");
                     cm.gainMeso(-spawnPnpcFee);
                 } else {
-                    cm.sendOk("对不起，名人堂的位置已经满了。。。");
+                    cm.sendOk("抱歉，弓箭手的殿堂已经满员了。");
                 }
             }
 
@@ -84,7 +84,7 @@ function action(mode, type, selection) {
         } else {
             if (mode != 1 || status == 7 && type != 1 || (actionx["1stJob"] && status == 4) || (cm.haveItem(4031008) && status == 2) || (actionx["3thJobI"] && status == 1)) {
                 if (mode == 0 && status == 2 && type == 1)
-                    cm.sendOk("你知道这别无选择");
+                    cm.sendOk("选择职业后无法再次更改。");
                 if (!(mode == 0 && type != 1)) {
                     cm.dispose();
                     return;
@@ -96,7 +96,7 @@ function action(mode, type, selection) {
     if (actionx["1stJob"]) {
         if (status == 0) {
             if (cm.getLevel() >= 10 && cm.canGetFirstJob(jobType)) {
-                cm.sendNextPrev("这是一个重要的最终选择，你将无法回头。");
+                cm.sendNextPrev("这个选择至关重要，做出决定后，职业将无法再变更。");
             } else {
                 cm.sendOk("再训练一点，直到你达到基本要求，我会指引你成为一名 #r弓箭手#k.");
                 cm.dispose();

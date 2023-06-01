@@ -27,7 +27,7 @@
 var status = 0;
 
 function start() {
-    cm.sendSimple("你听说过在离明珠港不远的地方有个叫#b黄金海滩#k的美丽海滩吗？只要你有#b1500金币#k或#bVIP门票#k，我就送你到那里去。怎么样？想不想去黄金海滩？\\r\\n\\r\\n#L0##b我想付1500金币#l\\r\\n#L1#我有VIP门票#l\\r\\n#L2#VIP门票#k是什么?#l");
+    cm.sendSimple("你听说过明珠港附近有一片令人流连忘返的#b黄金海滩#k吗？只要支付#b1500金币#k，或使用#b自由旅行券#k，我就可以送你去那里。\\r\\n\\r\\n#L0##b我愿意付 1500金币。#l\\r\\n#L1#我有自由旅行券。#l\\r\\n#L2#什么是自由旅行券？#k#l");
 }
 
 function action(mode, type, selection) {
@@ -35,7 +35,7 @@ function action(mode, type, selection) {
     if (mode != 1)
         if((mode == 0 && type == 1) || mode == -1 || (mode == 0 && status == 1)){
             if(type == 1)
-                cm.sendNext("你是不是有事情要处理？是参观或着打猎？去休息一下吧！！如果你改变主意了，那就和我谈谈。");
+                cm.sendNext("你在这里还有些事情要处理吗？看起来你最近疲于旅行和打猎了。稍作休息后如果改变了主意，就来找我谈谈。");
             cm.dispose();
             return;
         } else
@@ -44,18 +44,18 @@ function action(mode, type, selection) {
         status++;
     if(status == 1){
         if(selection == 1)
-            cm.sendYesNo("有#b黄金海滩的VIP门票#k? 你可以随时带着它去黄金海滩。注意：你可能会在那里遇到一些怪物。好的，你现在想去黄金海滩吗？");
+            cm.sendYesNo("你有#b自由旅行券#k？那就可以随时使用它前往黄金海岸。不过要小心，那附近也是有怪物的。那么，现在要前往黄金海岸吗？");
         else if (selection == 2)
-            cm.sendNext("你居然有 #b黄金海滩的VIP门票！#k 不可思议！！只要您拥有，您就可以免费前往弗洛里娜海滩。这是一件非常罕见的物品，甚至我们都不得不购买，但不幸的是，几周前，我在暑假期间丢失了它。");
+            cm.sendNext("你一定很好奇 #b自由旅行券！#k 是什么。哈哈，这也难怪。拥有自由旅行券的话，就可以免费前往黄金海岸。这东西珍贵又抢手，我好不容易才买到一张。但之前不小心弄丢了。");
     } else if (status == 2){
         if(type != 1 && selection != 0) {
-            cm.sendNextPrev("我回来时没有带它，没有它感觉很糟心。希望你把它捡起来放在安全的地方。不管怎样，这是我的故事，谁知道呢，你也许可以把它捡起来好好利用。如果你有任何问题，可以随时提问。");
+            cm.sendNextPrev("弄丢它以后回来时，感觉真是糟透了。希望捡到它的人能妥善保管。总之，我的故事就是这样了，如果你捡到了它，就好好使用。还有什么问题的话，尽管来找我问。");
             cm.dispose();
         } else{
             if (cm.getMeso() < 1500 && selection == 0)
-                cm.sendNext("哈哈~你的钱袋，貌似有些瘪。试试卖装备、打怪或者做任务。你知道我在说什么。");
+                cm.sendNext("你的金币不足。");
             else if(!cm.haveItem(4031134) && selection != 0){
-                cm.sendNext("口袋里似乎没有#b黄金海滩的VIP门票。\r\n#k 再去找找，风里雨里，我始终在这等你。");
+                cm.sendNext("你的#b自由旅行券。\r\n#k在哪里，是不是丢在哪里？再去找找吧。");
             }else{
                 if(selection == 0)
                     cm.gainMeso(-1500);

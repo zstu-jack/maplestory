@@ -36,14 +36,14 @@ function start() {
     if (jobType >= minJobType && jobType <= maxJobType && cm.canSpawnPlayerNpc(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()))) {
         spawnPnpc = true;
         
-        var sendStr = "You have walked a long way to reach the power, wisdom and courage you hold today, haven't you? What do you say about having right now #ra NPC on the Hall of Fame holding the current image of your character#k? Do you like it?";
+        var sendStr = "你历经千辛万苦才获得了今天的成就。想要 #r将你的形象加入名人堂#k 吗？";
         if(spawnPnpcFee > 0) {
-            sendStr += " I can do it for you, for the fee of #b " + cm.numberWithCommas(spawnPnpcFee) + " mesos.#k";
+            sendStr += "只要支付 #b " + cm.numberWithCommas(spawnPnpcFee) + " 金币#k，我就可以将你的形象加入名人堂。";
         }
         
         cm.sendYesNo(sendStr);
     } else {
-        cm.sendOk("Welcome to the Knights Chamber.");
+        cm.sendOk("欢迎来到骑士殿堂。");//骑士团脚本，不需要继续汉化了
         cm.dispose();
     }
 }
@@ -59,16 +59,16 @@ function action(mode, type, selection) {
         if(spawnPnpc) {
             if(mode > 0) {
                 if(cm.getMeso() < spawnPnpcFee) {
-                    cm.sendOk("Sorry, you don't have enough mesos to purchase your place on the Hall of Fame.");
+                    cm.sendOk("抱歉，你没有足够的金币，无法加入名人堂。");
                     cm.dispose();
                     return;
                 }
                 
                 if(Packages.server.life.MaplePlayerNPC.spawnPlayerNPC(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()), cm.getPlayer())) {
-                    cm.sendOk("There you go! Hope you will like it.");
+                    cm.sendOk("快去看看吧，希望你会喜欢。");
                     cm.gainMeso(-spawnPnpcFee);
                 } else {
-                    cm.sendOk("Sorry, the Hall of Fame is currently full...");
+                    cm.sendOk("抱歉，名人堂已经满员了。");
                 }
             }
             
