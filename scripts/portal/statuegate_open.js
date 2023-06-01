@@ -28,7 +28,7 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(990000301, 0);
         return true;
     } else {
-        pi.getPlayer().dropMessage(5, "The gate is closed.");
+        pi.getPlayer().dropMessage(5, "大门紧紧关着。");
         return false;
     }
 }

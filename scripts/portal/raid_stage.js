@@ -35,7 +35,7 @@ function enter(pi) {
         return true;
     }
     else {
-        pi.getPlayer().dropMessage(6, "Defeat all monsters before proceeding to the next stage.");
+        pi.getPlayer().dropMessage(6, "进入下一关卡前，请击败所有怪物。");
         return false;
     }
 }

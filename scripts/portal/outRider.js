@@ -4,7 +4,7 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(211050000, 4);
         return true;
     } else {
-        pi.playerMessage(5, "Free a slot on your inventory before receiving the couse clear's token.");
+        pi.playerMessage(5, "无法接收道具，请在其它栏腾出1格空间。");
         return false;
     }
 }

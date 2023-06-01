@@ -3,7 +3,7 @@ function enter(pi) {
 	pi.playPortalSound(); pi.warp(926110201, 0);
         return true;
     } else {
-	pi.playerMessage(5, "The door is not opened yet.");
+	pi.playerMessage(5, "²Ö¿âÃÅÉĞÎ´¿ªÆô¡£");
         return false;
     }
 }

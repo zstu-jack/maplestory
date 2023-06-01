@@ -37,7 +37,7 @@ function enter(pi) {
                     }
                 }
             } else {
-                pi.playerMessage(5, "Only solo or party leaders are supposed to enter the Mini-Dungeon.");
+                pi.playerMessage(5, "单人或队长带队方可进入迷你地图。");
                 return false;
             }
         } else {
@@ -49,7 +49,7 @@ function enter(pi) {
                 }
             }
         }
-        pi.playerMessage(5, "All of the Mini-Dungeons are in use right now, please try again later.");
+        pi.playerMessage(5, "迷你地图目前人数已满，请稍后再试。");
         return false;
     } else {
     	pi.playPortalSound();

@@ -29,7 +29,7 @@ function enter(pi) {
 		pi.warp(900000000, 0);
 		return true;
 	} else {
-                pi.message("Private property. This place can only be entered when running an errand from Camila.");
+                pi.message("此处是私人农场。执行射手村卡米拉交付的委托时方可进入。");
                 return false;
         }
 }

@@ -4,7 +4,7 @@ function enter(pi) {
                 pi.getEventInstance().warpEventTeam(920010100);
                 return true;
 	} else {
-		pi.playerMessage(5,"Please get the leader in this portal, make sure you have the Root of Life.");
+		pi.playerMessage(5,"由持有获得复活女神的生命草的成员担任队长，才能进入这里。");
                 return false;
 	}
 }

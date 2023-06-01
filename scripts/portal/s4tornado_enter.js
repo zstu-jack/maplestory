@@ -31,7 +31,7 @@ function enter(pi) {
             
             return true;
         } else {
-            pi.getPlayer().message("Some other player is currently inside.");
+            pi.getPlayer().message("其它玩家已经入场。");
             return false;
         }
     }

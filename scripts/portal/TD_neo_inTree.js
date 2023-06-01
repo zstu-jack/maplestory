@@ -25,6 +25,6 @@ function enter(pi) {
         }
     }
     
-    pi.message("A mysterious force won't let you in.");
+    pi.message("一股神秘的力量阻止着你进入这里。");
     return false;
 }
