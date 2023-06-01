@@ -26,7 +26,7 @@
 
 var status;
 var ticketId = 5451000;
-var mapName = ["Henesys", "Ellinia", "Perion", "Kerning City", "Sleepywood", "Mushroom Shrine", "Showa Spa (M)", "Showa Spa (F)", "New Leaf City", "Nautilus"];
+var mapName = ["射手村", "魔法密林", "勇士部落", "废弃都市", "林中之城", "蘑菇神社", "澡堂（男）", "澡堂（女）", "新叶城", "诺特勒斯"];//var mapName = ["Henesys", "Ellinia", "Perion", "Kerning City", "Sleepywood", "Mushroom Shrine", "Showa Spa (M)", "Showa Spa (F)", "New Leaf City", "Nautilus"];
 var curMapName = "";
 
 function start() {
@@ -49,7 +49,7 @@ function action(mode, type, selection) {
 				cm.gainItem(ticketId, -1);
 				cm.doGachapon();
 			} else {
-				cm.sendOk("Please have at least one slot in your #rEQUIP, USE, SET-UP, #kand #rETC#k inventories free.");
+				cm.sendOk("请在你的#r装备栏、消耗栏、设置栏#k和#r其它栏#k各留出至少一个空位。");
 			}
 		} else {
 			cm.dispose();

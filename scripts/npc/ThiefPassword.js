@@ -18,19 +18,19 @@ function action(mode, type, selection){
 
 
 	if(status == 0){
-		cm.sendGetText("A suspicious voice pierces through the silence. #bPassword#k!");
+		cm.sendGetText("可疑的声音打破了四周的静谧，那声音问道：#b暗号是什么#k？");
 	}
 	else if(status == 1){
-		if(cm.getText() == "Open Sesame"){
+		if(cm.getText() == "芝麻开门"){
 			if(cm.isQuestCompleted(3925))
-				cm.warp(260010402, 1);
+				cm.warp(260010402, 1);//GMS的密码是Open Sesam，CMS的密码是芝麻开门
 			else
-                                cm.playerMessage(5, "Although you said the right answer, the door will not budge.");
+                                cm.playerMessage(5, "说出了正确的暗号，然而宝库的大门纹丝不动。");
 
 			cm.dispose();
 		}
 		else{
-			cm.sendOk("#rWrong!");
+			cm.sendOk("#r暗号不对！");
 		}
 	}
 	else if(status == 2){

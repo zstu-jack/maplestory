@@ -36,9 +36,9 @@ function start() {
 		ticketId = 5451000;
 		
     if (cm.haveItem(ticketId)) {
-        cm.sendYesNo("You may use Gachapon. Would you like to use your Gachapon ticket?");
+        cm.sendYesNo("你可以使用快乐百宝箱。要使用快乐百宝券吗？");
     } else {
-        cm.sendSimple("Welcome to the " + cm.getPlayer().getMap().getMapName() + " Gachapon. How may I help you?\r\n\r\n#L0#What is Gachapon?#l\r\n#L1#Where can you buy Gachapon tickets?#l");
+        cm.sendSimple("欢迎使用 " + cm.getPlayer().getMap().getMapName() + " 快乐百宝箱。请选择你需要的服务。\r\n\r\n#L0#快乐百宝箱是什么？#l\r\n#L1#应该如何获得快乐百宝券？#l");
     }
 }
 
@@ -50,18 +50,18 @@ function action(mode, type, selection){
 			cm.gainItem(ticketId, -1);
 			cm.doGachapon();
 		} else {
-			cm.sendOk("Please have at least one slot in your #rEQUIP, USE, SET-UP, #kand #bETC#k inventories free.");
+			cm.sendOk("请在你的#r装备栏、消耗栏、设置栏#k和#r其它栏#k各留出至少一个空位。");
 		}
 		cm.dispose();
     } else {
         if (mode > 0) {
             status++;
             if (selection == 0) {
-                cm.sendNext("Play Gachapon to earn rare scrolls, equipment, chairs, mastery books, and other cool items! All you need is a #bGachapon Ticket#k to be the winner of a random mix of items.");
+                cm.sendNext("快乐百宝箱里有各种稀有的卷轴、装备、椅子、以及其它神秘道具。每使用一张#b快乐百宝券#k，就可以从中随机抽取一样物品。");
             } else if (selection == 1) {
-                cm.sendNext("Gachapon Tickets are available in the #rCash Shop#k and can be purchased using NX or Maple Points. Click on the red SHOP at the lower right hand corner of the screen to visit the #rCash Shop#k where you can purchase tickets.");
+                cm.sendNext("快乐百宝券可以从#r现金商城#k中购买，花费NX点数或枫叶点均可兑换。点击窗口右下方的红色商城按钮，进入#r现金商城#k后即可购买。");
             } else if (status == 2) {
-                cm.sendNext("You'll find a variety of items from the " + cm.getPlayer().getMap().getMapName() + " Gachapon, but you'll most likely find several related items and scrolls since " + cm.getPlayer().getMap().getMapName() + " is known as the town.");
+                cm.sendNext("使用" + cm.getPlayer().getMap().getMapName() + "快乐百宝箱时，更有可能获得" + cm.getPlayer().getMap().getMapName() + "地区相关道具。");
                 cm.dispose();
             } else {
 				

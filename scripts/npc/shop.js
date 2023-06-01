@@ -31,4 +31,4 @@ function action(mode, type, selection) {
         }
 
     }
-}
+}//感觉这个脚本是拍卖按钮的指向，不确定再看看

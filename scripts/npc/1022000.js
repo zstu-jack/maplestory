@@ -24,7 +24,7 @@ function start() {
     } else {
         if (cm.getJobId() == 0) {
             actionx["1stJob"] = true;
-            cm.sendNext("想成为一名 #r战士#k 吗？你需要满足要才能做到。#b 必须达到10级，并且拥有至少 " + cm.getFirstJobStatRequirement(jobType) + "#k。让我看看...");   // thanks Vcoc for noticing a need to state and check requirements on first job adv starting message
+            cm.sendNext("想成为一名 #r战士#k 吗？你需要满足要求才行。#b 必须达到10级，并且拥有至少 " + cm.getFirstJobStatRequirement(jobType) + "#k。让我看看...");   // thanks Vcoc for noticing a need to state and check requirements on first job adv starting message
         } else if (cm.getLevel() >= 30 && cm.getJobId() == 100) {
             actionx["2ndJob"] = true;
             if (cm.haveItem(4031012))
@@ -84,7 +84,7 @@ function action(mode, type, selection) {
         } else {
             if (mode != 1 || status == 7 && type != 1 || (actionx["1stJob"] && status == 4) || (cm.haveItem(4031008) && status == 2) || (actionx["3thJob"] && status == 1)) {
                 if (mode == 0 && status == 2 && type == 1)
-                    cm.sendOk("当你下定决心以后再来见我。");
+                    cm.sendOk("选择职业后无法再次更改。");
                 if (!(mode == 0 && type != 1)) {
                     cm.dispose();
                     return;
@@ -114,7 +114,7 @@ function action(mode, type, selection) {
                 cm.dispose();
             }
         } else if (status == 2)
-            cm.sendNextPrev("你现在变得更强了。此外，你的每一个背包都增加了一排。赶快查看一下吧。\n另外，我给了你一些 #b技能点#k，打开右下角的 #b技能#k 菜单，就能看到你能学习并使用的所有技能。不过你无法将它们的等级同时提升。你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
+            cm.sendNextPrev("你现在变得更强了。此外，你的每一个背包都增加了一排空格。赶快查看一下吧。\n另外，我给了你一些 #b技能点#k，打开右下角的 #b技能#k 菜单，就能看到你能学习并使用的所有技能。不过你无法将它们的等级同时提升。你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
         else if (status == 3)
             cm.sendNextPrev("请记住，一旦你做出了选择，你就不能再选择另一条道路了。出发吧，做一名自豪的战士。");
         else
@@ -122,7 +122,7 @@ function action(mode, type, selection) {
     } else if (actionx["2ndJob"]) {
         if (status == 0) {
             if (cm.haveItem(4031012))
-                cm.sendSimple("好的，当你下定决心选择，就点击下方的 [我现在要选择我的二转职业] 选项。#b\r\n#L0#请向我解释什么是剑客。\r\n#L1#请向我解释什么是准骑士。\r\n#L2#请向我解释什么是枪战士。\r\n#L3#我现在要选择我的二转职业！");
+                cm.sendSimple("好的，当你下定决心要做出选择，就点击下方的 [我现在要选择我的二转职业] 选项。#b\r\n#L0#请向我解释什么是剑客。\r\n#L1#请向我解释什么是准骑士。\r\n#L2#请向我解释什么是枪战士。\r\n#L3#我现在要选择我的二转职业！");
             else {
                 cm.sendNext("明智的选择。你看起来很强大，但仍需要通过测试来证明有相符的实力。这对你来说应该并不困难，放轻松。来，拿着这封信...可千万别弄丢了。");
                 if (!cm.isQuestStarted(100003)) cm.startQuest(100003);
@@ -132,9 +132,9 @@ function action(mode, type, selection) {
                 if (cm.canHold(4031008)) {
                     if (!cm.haveItem(4031008))
                         cm.gainItem(4031008, 1);
-                    cm.sendNextPrev("请把这封信带给 #b#p1072000##k 勇士部落附近的 #b#m102020300##k。他代替我担任本次考核的导师。把信交给他，他会代替我测试你。祝你好运。");
+                    cm.sendNextPrev("请把这封信带给 #b#p1072000##k ，他在勇士部落附近的 #b#m102020300##k。把信交给他，他会作为教官代替我测试你。祝你好运。");
                 } else {
-                    cm.sendNext("确保你的背包存在空槽");
+                    cm.sendNext("请确保其它栏至少有1格空位。");
                     cm.dispose();
                 }
             } else {
@@ -157,7 +157,7 @@ function action(mode, type, selection) {
                 return;
             }
             job += selection * 10;
-            cm.sendYesNo("所以想要选择 " + (job == 110 ? "#b剑客#k" : job == 120 ? "#b准骑士#k" : "#b枪战士#k") + " 作为你的二转职业吗？请注意，一旦做出决定，你就必须以此为生，精于此道，不能更改职业了。");
+            cm.sendYesNo("所以想要选择 " + (job == 110 ? "#b剑客#k" : job == 120 ? "#b准骑士#k" : "#b枪战士#k") + " 作为你的二转职业吗？你已经知道一旦决定了转职，就无法再选择其他职业了吧？");
         } else if (status == 3) {
             if (cm.haveItem(4031012))
                 cm.gainItem(4031012, -1);
@@ -169,7 +169,7 @@ function action(mode, type, selection) {
             if (cm.getJobId() != job)
                 cm.changeJobById(job);
         } else if (status == 4)
-            cm.sendNextPrev("我刚刚赋予了你作为一个 " + (job == 110 ? "剑客" : job == 120 ? "准骑士" : "枪战士") + " 应该学会的技能。此外，你背包的其他栏扩展了一行，最大HP、最大MP也得到了增加。");
+            cm.sendNextPrev("我刚刚赋予了你作为一个 " + (job == 110 ? "剑客" : job == 120 ? "准骑士" : "枪战士") + " 应该掌握的技能。此外，你背包的其他栏扩展了一行，最大HP、最大MP也得到了增加。");
         else if (status == 5)
             cm.sendNextPrev("我同时也为你提升了1点的 #b技能点#k。请打开右下角的 #b技能菜单#k 进行查看。你可以用它来提升你的二转技能等级。但需要提醒你一下，你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
         else if (status == 6)
@@ -180,7 +180,7 @@ function action(mode, type, selection) {
                 cm.getPlayer().removePartyQuestItem("JB3");
                 cm.getPlayer().setPartyQuestItemObtained("JBP");
             }
-            cm.sendNextPrev("我的分身相当厉害。他会使用许多特别的技能，而你只能单独和他作战。注意，你不能在秘密通道里呆太久，所以尽快打败他很重要。好...祝你好运，我很期待你把#b#t4031059###k带回来给我。");
+            cm.sendNextPrev("我的分身相当厉害。他会使用许多特殊技能，而你只能单独和他作战，可以想象这会是一场艰难的战斗。注意，你不能在秘密通道里呆太久，所以尽快打败他很重要。好...祝你好运，我很期待你带着#b#t4031059###k回来见我。");
         }
     } else if (actionx["3thJobC"]) {
         cm.getPlayer().removePartyQuestItem("JBP");

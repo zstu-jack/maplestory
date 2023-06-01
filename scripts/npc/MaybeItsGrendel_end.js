@@ -17,10 +17,10 @@ function action(mode, type, selection){
 
 
 	if(status == 0){
-		cm.sendNext("...a black shadowy figure came out and attacked you? How can this take place at #b#p1032001##k's house? This sounds like one big conspiracy here...");
+		cm.sendNext("...一团暗影突然浮现，攻击了你？这种事怎么会发生在 #b#p1032001##k 的家里呢？听起来像是有什么大阴谋...");
 	}
 	else if(status == 1){
-		cm.sendNextPrev("I'll have to sort this all out in my mind. Talk to me in a bit.");
+		cm.sendNextPrev("我得把这些事情都记下来，等下再来找我。");
 	}
 	else if(status == 2){
 		cm.dispose();

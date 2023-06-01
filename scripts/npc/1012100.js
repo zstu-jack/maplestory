@@ -24,25 +24,25 @@ function start() {
     } else {
         if (cm.getJobId() == 0) {
             actionx["1stJob"] = true;
-            cm.sendNext("你已经决定要成为一名 #r弓箭手#k了吗？在此之前，有些条件需要满足。#b你等等级必须达到10级，并且属性至少拥有 " + cm.getFirstJobStatRequirement(jobType) + "#k。让我看看。");   // thanks Vcoc for noticing a need to state and check requirements on first job adv starting message
+            cm.sendNext("你已经决定要成为一名 #r弓箭手#k了吗？在此之前，有些条件需要满足。#b你的等级必须达到10级，并且拥有至少 " + cm.getFirstJobStatRequirement(jobType) + "#k。让我看看...");   // thanks Vcoc for noticing a need to state and check requirements on first job adv starting message
         } else if (cm.getLevel() >= 30 && cm.getJobId() == 300) {
             actionx["2ndJob"] = true;
             if (cm.haveItem(4031012))
-                cm.sendNext("哈哈，我就知道你会轻而易举地通过考试。我承认，你是个很棒的弓箭手。我会让你变得更强。在此之前，你需要选择2个方向。这对你来说将是一个艰难的决定，但是，如果有什么问题要问，请提出你的想法。");
+                cm.sendNext("你安全回来了！我就知道你会轻松通过的。不得不说你是一位强大的弓箭手。那么，我会让你变得比现在更强大。但在这之前，你需要从两条道路中选择其一。这并不容易，所以如果你有问题，请随时提问。");
             else if (cm.haveItem(4031011)) {
                 cm.sendOk("去见见 #b#p1072002##k.");
                 cm.dispose();
             } else
-                cm.sendYesNo("你比上次见你，成长了很多。我看不到以前看到的羸弱，现在看起来更像一个弓箭手了。怎么样，你想变得更强吗，通过我为你准备的一个简单的测试，你确定想这么做吗？");
+                cm.sendYesNo("你比上次见面时成长了很多。我看不到以前看到的羸弱，现在看起来更像一个弓箭手了。怎么样，你想变得更强吗，通过我为你准备的一个简单的测试，你确定想这么做吗？");
         } else if (actionx["3thJobI"] || (cm.getPlayer().gotPartyQuestItem("JB3") && cm.getLevel() >= 70 && cm.getJobId() % 10 == 0 && parseInt(cm.getJobId() / 100) == 3 && !cm.getPlayer().gotPartyQuestItem("JBP"))) {
             actionx["3thJobI"] = true;
-            cm.sendNext("几天前，冰封雪域的 #b#p2020010##k 向我提到过你。我看到你对弓箭手第三次转职感兴趣。为了实现这个目标，我必须测试你的实力，看看你是否值得晋升。在金银岛的深处从林中有一个开口，它将引导你进入一条秘密通道。一旦进入，你将面对我的克隆人。你的任务是击败他，然后把 #b#t4031059##k 带回来。");
+            cm.sendNext("你终于来了。几天前，神秘岛的 #b#p2020010##k 向我提起过你。我知道你对弓箭手第三次转职感兴趣，所以要测试你是否拥有进行第三次转职的实力。在金银岛的森林迷宫中有一个入口，它将引导你进入一条秘密通道。进入后，你会遇到我的分身。打败她，把 #b#t4031059##k 带回来给我。");
         } else if (cm.getPlayer().gotPartyQuestItem("JBP") && !cm.haveItem(4031059)) {
             cm.sendNext("请带着 #b#t4031059##k 回来见我。");
             cm.dispose();
         } else if (cm.haveItem(4031059) && cm.getPlayer().gotPartyQuestItem("JBP")) {
             actionx["3thJobC"] = true;
-            cm.sendNext("干得漂亮！你已经打败了我的分身，并把 #b#t4031059##k 安全地带了回来。在力量方面，你已经证明了你拥有3转的实力。现在你需要把这串项链带给神秘岛的 #b#p2020011##k 继续下一步的测试。祝你好运！");
+            cm.sendNext("干得漂亮！你已经打败了我的分身，并把 #b#t4031059##k 安全地带了回来。在力量方面，你已经证明了你拥有3转的实力。现在你需要把这串项链带给神秘岛的 #b#p2020009##k 继续下一步的测试。祝你好运！");
         } else {
             cm.sendOk("明智的选择。");
             cm.dispose();
@@ -98,7 +98,7 @@ function action(mode, type, selection) {
             if (cm.getLevel() >= 10 && cm.canGetFirstJob(jobType)) {
                 cm.sendNextPrev("这个选择至关重要，做出决定后，职业将无法再变更。");
             } else {
-                cm.sendOk("再训练一点，直到你达到基本要求，我会指引你成为一名 #r弓箭手#k.");
+                cm.sendOk("多加训练。当你达到职业基础要求时，我会告诉你成为 #r弓箭手#k 的方法。");
                 cm.dispose();
             }
         } else if (status == 1) {
@@ -115,17 +115,17 @@ function action(mode, type, selection) {
                 cm.dispose();
             }
         } else if (status == 2)
-            cm.sendNextPrev("你现在变得更强了。此外，你的每一个背包都增加了插槽。确切地说，整整一排。赶快查看一下吧。\n另外，我给了你一些 #b技能点#k，当你打开右下角的 #b技能#k 菜单，它会展示你能学习并使用的所有技能。值得注意的是: 你无法一下子把它全部加满。还有一些技能，你必须先学会一些技能才能获得。");
+            cm.sendNextPrev("你现在变得更强了。此外，你的每一个背包都增加了一排空格。赶快查看一下吧。\n另外，我给了你一些 #b技能点#k，当你打开右下角的 #b技能#k 菜单，就能看到你能学习并使用的所有技能。不过你无法将它们的等级同时提升。你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
         else if (status == 3)
-            cm.sendNextPrev("提醒一下，一旦你做出了选择，就不能改变主意再尝试另一条路。现在就去吧，做一个骄傲的弓箭手。");
+            cm.sendNextPrev("请记住，一旦你做出了选择，你就不能再选择另一条道路了。出发吧，做一名自豪的弓箭手。");
         else
             cm.dispose();
     } else if (actionx["2ndJob"]) {
         if (status == 0) {
             if (cm.haveItem(4031012))
-                cm.sendSimple("当你做好了选择，点击 [我已经选定了我职业] 选项。#b\r\n#L0#P请向我介绍 猎人 相关的知识\r\n#L1#请向我介绍 弩手 相关的知识\r\n#L3#我已经选定了我职业！");
+                cm.sendSimple("好的，当你下定决心要做出选择，就点击下方的 [我现在要选择我的二转职业] 选项。#b\r\n#L0#P请向我解释什么是猎人。\r\n#L1#请向我解释什么是弩手。\r\n#L3#我现在要选择我的二转职业！");
             else {
-                cm.sendNext("明智的选择，你看起来很强大，但我需要看看你是否真的足够强大，能够通过测试。这不是一个困难的测试，所以你会做得很好。现在，带着我信，请确保不会丢失！");
+                cm.sendNext("明智的选择。你看起来很强大，但仍需要通过测试来证明有相符的实力。这对你来说应该并不困难，放轻松。来，拿着这封信...可千万别弄丢了。");
                 if (!cm.isQuestStarted(100000)) cm.startQuest(100000);
             }
         } else if (status == 1) {
@@ -133,47 +133,47 @@ function action(mode, type, selection) {
                 if (cm.canHold(4031010)) {
                     if (!cm.haveItem(4031010))
                         cm.gainItem(4031010, 1);
-                    cm.sendNextPrev("请把这封信带给 #b#p1072002##k 他在射手村附近的 #b#m106010000##k。她代替我担任本次任务的教官。把信交给她，她会代替我测试你。祝你好运。");
+                    cm.sendNextPrev("请把这封信带给 #b#p1072002##k ，她在射手村附近的 #b#m106010000##k。把信交给她，她会作为教官代替我测试你。祝你好运。");
                     cm.dispose();
                 } else {
-                    cm.sendNext("确保你的背包存在空槽");
+                    cm.sendNext("请确保其它栏至少有1格空位。");
                     cm.dispose();
                 }
             } else {
                 if (selection < 3) {
                     if (selection == 0) {    //hunter
-                        cm.sendNext("关于 #r猎人#。\r\n\r\n#b猎人#k 在早期阶段的伤害/分钟输出更高，攻击速度更快，但略弱于弩手。 #b猎人#k 能使用 #r爆炸箭#k，一种稍弱的攻击，可以导致多达6个敌人被眩晕。");
+                        cm.sendNext("擅长使用 #r弓# 的弓箭手。\r\n\r\n#b猎人#k 在早期阶段的伤害/分钟输出更高，攻击速度更快，但略弱于弩手。 #b猎人#k 可以习得 #r爆炸箭#k，虽然攻击力并不十分强大，但却可以眩晕多达6个敌人。");
                     } else if (selection == 1) {    //crossbowman
-                        cm.sendNext("关于 #r弩手#。\r\n\r\n#b弩手# 与猎人相比，等级越高，越能获得更高的攻击力。 #b弩手#k 能使用 #r穿透箭#k，一种更强的攻击，不会追踪敌人，但可以穿过墙壁。");
+                        cm.sendNext("擅长使用 #r弩# 的弓箭手。\r\n\r\n#b弩手# 与猎人相比，随等级成长时，单次的攻击伤害会更高。 #b弩手#k 可以习得 #r穿透箭#k，一种更强的攻击技能，不会追踪敌人，但可以穿过墙壁。");
                     }
 
                     status -= 2;
                 } else
-                    cm.sendSimple("现在，你有自己的主意了吗？请选择2转的职业: #b\r\n#L0#猎人\r\n#L1#弩手");
+                    cm.sendSimple("你下定决心了吗？请选择你的二转职业。 #b\r\n#L0#猎人\r\n#L1#弩手");
             }
         } else if (status == 2) {
             job += selection * 10;
-            cm.sendYesNo("你选择的2转职业为: " + (job == 310 ? "#b猎人#k" : "#b弩手#k") + "。你已经清楚了，一旦决定了转职，就无法再选择其他职业了，对吗？");
+            cm.sendYesNo("所以想要选择 " + (job == 310 ? "#b猎人#k" : "#b弩手#k") + " 作为你的二转职业吗？你已经知道一旦决定了转职，就无法再选择其他职业了吧？");
         } else if (status == 3) {
             if (cm.haveItem(4031012))
                 cm.gainItem(4031012, -1);
 
-            cm.sendNext("好的，现在你已经是一名 " + (job == 310 ? "#b猎人#k" : "#b弩手#k") + "。" + (job == 310 ? "#b猎人#k" : "#b弩手#k") + " 是一群有着令人难以置信的视力的聪明人吗？他们能够轻而易举地将箭穿过怪物的心脏。请每天训练自己。我会帮助你变得比现在更强大。");
+            cm.sendNext("好的，你现在已经成为了一名 " + (job == 310 ? "#b猎人#k" : "#b弩手#k") + "。" + (job == 310 ? "#b猎人#k" : "#b弩手#k") + " 是一种拥有更广阔视野的职业。他们能够轻而易举地击杀各种怪物。请每天努力训练自己，我会一直帮助你变得比现在更强大。");
             if (cm.getJobId() != job)
                 cm.changeJobById(job);
         } else if (status == 4)
-            cm.sendNextPrev("我给了你一本关于 " + (job == 310 ? "#b猎人#k" : "#b弩手#k") + "需要的技能书，你的背包其他栏必须有位置存放它。你的HP和MP的最大值已经提升，检查一下你自己的状态把。");
+            cm.sendNextPrev("我刚刚赋予了你作为一个 " + (job == 310 ? "#b猎人#k" : "#b弩手#k") + " 应该掌握的技能。此外，你背包的其他栏扩展了一行，最大HP、最大MP也得到了增加。");
         else if (status == 5)
-            cm.sendNextPrev("我给了你一些 #b技能点#k，打开左下角的 #b技能菜单#k，你将能够提升新获得的2转技能。不过，还是要提醒一下。你不可能一下子把它们都提高，有些技能只有在你学习了其他技能后才能使用，一定要记住这一点。");
+            cm.sendNextPrev("同时也为你提升了1点的 #b技能点#k。请打开右下角的 #b技能菜单#k 进行查看。你可以用它来提升你的二转技能等级。但需要提醒你一下，你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
         else if (status == 6)
-            cm.sendNextPrev((job == 310 ? "#b猎人#k" : "#b弩手#k") + " 需要变得更强。但请记住，你不能滥用这种权力，把它用在弱者身上。请以正确的方式使用你的巨大力量，因为对你来说，用正确的方式，这比变得更强壮要硬得多。请在你取得更大进步后找到我，我会等你的。");
+            cm.sendNextPrev((job == 310 ? "#b猎人#k" : "#b弩手#k") + "，意味着更强的实力。但请记住，不要滥用你的能力去欺凌弱小。要将它们用于正途，因为对你来说坚守初心比继续变强要难得多。当你变得更强大时再来找我，我会在这里等你。");
     } else if (actionx["3thJobI"]) {
         if (status == 0) {
             if (cm.getPlayer().gotPartyQuestItem("JB3")) {
                 cm.getPlayer().removePartyQuestItem("JB3");
                 cm.getPlayer().setPartyQuestItemObtained("JBP");
             }
-            cm.sendNextPrev("既然他是我的克隆人，你可以预料到前方会有一场艰苦的战斗。他使用了许多你从未见过的特殊攻击技能，你的任务是成功地一对一地击败他。秘密通道有时间限制，所以在时间限制内击败他是至关重要的。祝你好运，我希望你能把 #b#t4031059##k 带回来");
+            cm.sendNextPrev("我的分身相当厉害。她会使用许多特殊技能，而你只能单独和她作战。注意，你不能在秘密通道里呆太久，所以尽快打败她很重要。好...祝你好运，我很期待你带着#b#t4031059##k回来见我。");
         }
     } else if (actionx["3thJobC"]) {
         cm.getPlayer().removePartyQuestItem("JBP");
