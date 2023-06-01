@@ -50,15 +50,15 @@ function start() {
         } else if (cm.getLevel() >= 30 && cm.getJobId() == 400) {
             actionx["2ndJob"] = true;
             if (cm.haveItem(4031012))
-                cm.sendNext("你完成得很好，我看到了。我将允许你在飞侠之路上更进一步。");
+                cm.sendNext("我看到了，你做得很好。我将允许你在飞侠之路上更进一步。");
             else if (cm.haveItem(4031011)) {
-                cm.sendOk("去见一见 #b#p1072003##k.");
+                cm.sendOk("去见见 #b#p1072003##k.");
                 cm.dispose();
             } else
-                cm.sendNext("你的进展十分惊人。");
+                cm.sendNext("你的进步之大令人惊讶。");
         } else if (actionx["3thJobI"] || (cm.getPlayer().gotPartyQuestItem("JB3") && cm.getLevel() >= 70 && cm.getJobId() % 10 == 0 && parseInt(cm.getJobId() / 100) == 4 && !cm.getPlayer().gotPartyQuestItem("JBP"))) {
             actionx["3thJobI"] = true;
-            cm.sendNext("几天前，神秘岛的 #b#p2020011##k 和我提起过你。我看到你对飞侠的第3次转职很感兴趣，为了达到这个目标，我会对你的能力进行一个测试，看看你够不够格转职。在金银岛沼泽深处的中间有一个入口，它会把你带到一个秘密通道。进入那里时，你会遇到我的一个分身。打败他，把 #b#t4031059##k 带回来给我。");
+            cm.sendNext("你终于来了。几天前，神秘岛的 #b#p2020011##k 和我提起过你。我知道你对飞侠第三次转职很感兴趣，所以要测试你是否拥有进行第三次转职的实力。在金银岛沼泽深处的中间有一个入口，它会把你带到一个秘密通道。进入后，你会遇到我的分身。打败他，把 #b#t4031059##k 带回来给我。");
         } else if (cm.getPlayer().gotPartyQuestItem("JBP") && !cm.haveItem(4031059)) {
             cm.sendNext("获得这个 #b#t4031059##k 后，再来和我对话。");
             cm.dispose();
@@ -90,7 +90,7 @@ function action(mode, type, selection) {
         if (spawnPnpc) {
             if (mode > 0) {
                 if (cm.getMeso() < spawnPnpcFee) {
-                    cm.sendOk("抱歉，你没有足够的金币。");
+                    cm.sendOk("抱歉，你没有足够的金币，无法加入飞侠的殿堂。");
                     cm.dispose();
                     return;
                 }
@@ -122,7 +122,7 @@ function action(mode, type, selection) {
             if (cm.getLevel() >= 10 && cm.canGetFirstJob(jobType))
                 cm.sendYesNo("哦，你看起来可以成为我们的一员，你确定要成为飞侠吗?");
             else {
-                cm.sendOk("去进行训练吧，到时候我可以告诉你如何成为 #r飞侠#k.");
+                cm.sendOk("多加训练。当你达到职业基础要求时，我会告诉你成为 #r飞侠#k 的方法。");
                 cm.dispose();
             }
         } else if (status == 1) {
@@ -140,7 +140,7 @@ function action(mode, type, selection) {
                 cm.dispose();
             }
         } else if (status == 2)
-            cm.sendNextPrev("你现在比之前强壮多了，我把新手飞侠的必备武器与暗器送给你，也给你的背包加了一行，请检查一下。除此之外，我教给你了一些技能。你可以打开屏幕右下角的 #b技能#k 菜单查看, 你可以使用SP学习技能，不过要注意：有一些技能需要学会前置技能后才可以学习。");
+            cm.sendNextPrev("你现在变得更强了。我把新手飞侠的必备武器与暗器送给你，也给你的每一个背包都增加了一排空格，请检查一下。另外，我给了你一些 #b技能点#k，当你打开右下角的 #b技能#k 菜单，就能看到你能学习并使用的所有技能。不过你无法将它们的等级同时提升。你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
         else if (status == 3)
             cm.sendNextPrev("有一点要提醒你，一旦你做出了选择，将不可变更。");
         else
@@ -148,9 +148,9 @@ function action(mode, type, selection) {
     } else if (actionx["2ndJob"]) {
         if (status == 0) {
             if (cm.haveItem(4031012))
-                cm.sendSimple("好的,当你做出了决定,点击底部的 [我现在要选择我的二转职业].#b\r\n#L0#请向我解释什么是刺客.\r\n#L1#请向我解释什么是侠客.\r\n#L3#我现在要选择我的二转职业!");
+                cm.sendSimple("好的,当你做出了决定,点击底部的 [我现在要选择我的二转职业].#b\r\n#L0#请向我解释什么是刺客。\r\n#L1#请向我解释什么是侠客。\r\n#L3#我现在要选择我的二转职业！");
             else {
-                cm.sendNext("不错的决定. 你看起来很强大, 但我仍然需要测试一下你的实力,放轻松,测试并不难. 来,拿着这封信... 别弄丢了它!");
+                cm.sendNext("明智的选择。你看起来很强大，但仍需要通过测试来证明有相符的实力。这对你来说应该并不困难，放轻松。来，拿着这封信...可千万别弄丢了。");
                 if (!cm.isQuestStarted(100009)) cm.startQuest(100009);
             }
         } else if (status == 1) {
@@ -158,9 +158,9 @@ function action(mode, type, selection) {
                 if (cm.canHold(4031011)) {
                     if (!cm.haveItem(4031011))
                         cm.gainItem(4031011, 1);
-                    cm.sendNextPrev("请带着这封信去找 #b#p1072003##k他就在废弃都市附近的 #b#m102040000##k. 他是飞侠训练转职官. 把信件给他,他会负责测试你的能力. 祝你好运.");
+                    cm.sendNextPrev("请带着这封信去找 #b#p1072003##k，他就在废弃都市附近的 #b#m102040000##k。把信交给他，他会作为教官代替我测试你。祝你好运。");
                 } else {
-                    cm.sendNext("请确保你的背包有空位.");
+                    cm.sendNext("请确保其它栏至少有1格空位。");
                     cm.dispose();
                 }
             } else {
@@ -173,7 +173,7 @@ function action(mode, type, selection) {
 
                     status -= 2;
                 } else
-                    cm.sendSimple("你想好了吗? 请选择你的二转职业. #b\r\n#L0#刺客\r\n#L1#侠客");
+                    cm.sendSimple("你下定决心了吗？请选择你的二转职业。 #b\r\n#L0#刺客\r\n#L1#侠客");
             }
         } else if (status == 2) {
             if (cm.haveItem(4031011)) {
@@ -181,7 +181,7 @@ function action(mode, type, selection) {
                 return;
             }
             job += selection * 10;
-            cm.sendYesNo("所以你打算选择 " + (job == 410 ? "#b刺客#k" : "#b侠客#k") + "作为你的二转职业？要知道，一旦你选择过后，将无法再次改变职业。");
+            cm.sendYesNo("所以你打算选择 " + (job == 410 ? "#b刺客#k" : "#b侠客#k") + "作为你的二转职业？你已经清楚了，一旦决定了转职，就无法再选择其他职业了，对吗？");
         } else if (status == 3) {
             if (cm.haveItem(4031012))
                 cm.gainItem(4031012, -1);
@@ -193,18 +193,18 @@ function action(mode, type, selection) {
             if (cm.getJobId() != job)
                 cm.changeJobById(job);
         } else if (status == 4)
-            cm.sendNextPrev("我刚刚赋予了你作为一个 " + (job == 410 ? "刺客" : "侠客") + "应该掌握的技能。此外，你背包的其他栏也扩展了一行。你的最大生命值、最大魔力值也得到了增加。");
+            cm.sendNextPrev("我刚刚赋予了你作为一个 " + (job == 410 ? "刺客" : "侠客") + " 应该掌握的技能。此外，你背包的其他栏扩展了一行，最大HP、最大MP也得到了增加。");
         else if (status == 5)
-            cm.sendNextPrev("我同时也为你提升了1点的 #bSP#k。请打开右下角的 #b技能菜单#k 进行查看。你可以用它来提升你的二转技能等级。但需要提醒你一下，你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
+            cm.sendNextPrev("同时也为你提升了1点的 #b技能点#k。请打开右下角的 #b技能菜单#k 进行查看。你可以用它来提升你的二转技能等级。但需要提醒你一下，你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
         else if (status == 6)
-            cm.sendNextPrev((job == 410 ? "刺客" : "侠客") + "，更强的实力。但请记住，不要滥用你的力量，将这份力量用在正途上并不比继续变强简单。继续努力，当你更强大时再来找我。");
+            cm.sendNextPrev((job == 410 ? "刺客" : "侠客") + "，意味着更强的实力。但请记住，不要滥用你的能力去欺凌弱小。要将它们用于正途，因为对你来说坚守初心比继续变强要难得多。当你变得更强大时再来找我，我会在这里等你。");
     } else if (actionx["3thJobI"]) {
         if (status == 0) {
             if (cm.getPlayer().gotPartyQuestItem("JB3")) {
                 cm.getPlayer().removePartyQuestItem("JB3");
                 cm.getPlayer().setPartyQuestItemObtained("JBP");
             }
-            cm.sendNextPrev("他是我的分身, 你可以想象这会是一场艰难的战斗. 你得在规定时间内战胜他。打倒他，把 #b#t4031059##k 带回来给我。");
+            cm.sendNextPrev("我的分身相当厉害。他会使用许多特殊技能，而你只能单独和他作战，可以想象这会是一场艰难的战斗。注意，你不能在秘密通道里呆太久，所以尽快打败他很重要。好...祝你好运，我很期待你带着#b#t4031059###k回来见我。");
         }
     } else if (actionx["3thJobC"]) {
         cm.getPlayer().removePartyQuestItem("JBP");

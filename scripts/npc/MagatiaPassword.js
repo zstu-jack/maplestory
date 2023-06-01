@@ -16,7 +16,7 @@ function action(mode, type, selection){
 		status++;
 
 	if(status == 0){
-                cm.sendGetText("The door reacts to the entry pass inserted. #bPassword#k!");
+                cm.sendGetText("将通行证插入后，门有了反应。#b请输入密码#k。");
 	}
 	else if(status == 1){
                 if(cm.getText() == cm.getQuestProgress(3360)){
@@ -25,7 +25,7 @@ function action(mode, type, selection){
                         cm.warp(261030000, "sp_" + ((cm.getMapId() == 261010000) ? "jenu" : "alca"));
                 }
                 else {
-			cm.sendOk("#rWrong!");
+			cm.sendOk("#r密码错误。");
 		}
                 
                 cm.dispose();
