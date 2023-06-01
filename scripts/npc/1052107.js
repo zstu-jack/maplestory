@@ -45,7 +45,7 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendOk("A small focus of light lighting in the immersive darkness.");
+                        cm.sendOk("沉浸式黑暗中的小焦点灯光。");
                         cm.dispose();
                 }
         }
