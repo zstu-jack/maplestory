@@ -29,7 +29,7 @@ function enter(pi) {
             pi.playPortalSound(); pi.warp(670010600, "gt" + name + "PIB");
             return true;
         } else {
-            pi.message("The gate is not opened yet.");
+            pi.message("此处暂时无法通行。。");
             return false;
         }
 }

@@ -175,44 +175,44 @@ function start() {
 
 function action(mode, type, selection) {
     if (mode <= 0) {
-	cm.sendOk("Hmmm...it shouldn't be a bad deal for you. Come see me at the right time and you may get a much better item to be offered. Anyway, let me know when you have a change of heart.");
+	cm.sendOk("嗯...这对你来说应该是笔划算的交易。在合适的时间来找我交易，得到的道具或许会更好。不管怎么说，等你改变了主意，就来找我吧。");
 	cm.dispose();
 	return;
     }
     
     status++;
     if (status == 0) { // first interaction with NPC
-	cm.sendNext("Hey, got a little bit of time? Well, my job is to collect items here and sell them elsewhere, but these days the monsters have become much more hostile so it's been difficult to getting good items ... What do you think? Do you want to do some business with me?");
+	cm.sendNext("你想找我交换物品？好，我的工作就是在这里收集物品然后在其他地方出售，但是这些天怪物变得更加活跃，所以很难获得优质的道具...怎么样，你想要和我做生意吗？");
     } else if (status == 1) {
-	cm.sendYesNo("The deal is simple. You get me something I need, I get you something you need. The problem is, I deal with a whole bunch of people, so the items I have to offer may change every time you see me. What do you think? Still want to do it?");
+	cm.sendYesNo("交易流程很简单，我们各取所需。不过，由于我会和很多人做生意，所以每次提供用来交换的货物也各不相同。同意的话我们就开始吧。");
     } else if (status == 2) {
 	var eQuestChoice = makeChoices(eQuestChoices);
 	cm.sendSimple(eQuestChoice);
     } else if (status == 3){
 	lastSelection = selection;
 	requiredItem = eQuestChoices[selection];
-	cm.sendYesNo("Let's see, you want to trade your #b100 #t" + requiredItem + "##k with my stuff right? Before trading make sure you have an empty slot available on your use or etc. inventory. Now, do you want to trade with me?");
+	cm.sendYesNo("让我看看，你想要用你的 #b100个 #t" + requiredItem + "##k 来兑换物品吧？兑换前请确保你的消耗栏和其它栏各有至少1格空位。");
     }else if (status == 4){
 	itemSet = (Math.floor(Math.random() * eQuestPrizes[lastSelection].length));
 	reward = eQuestPrizes[lastSelection];
 	prizeItem = reward[itemSet][0];
 	prizeQuantity = reward[itemSet][1];
 	if(!cm.haveItem(requiredItem,100)){
-	    cm.sendOk("Hmmm... are you sure you have #b100 #t" + requiredItem + "##k? If so, then please check and see if your item inventory is full or not.");
+	    cm.sendOk("嗯... 你确定你有 #b100个 #t" + requiredItem + "##k吗？如果背包满了，也有可能无法交易。");
 	} else if(!cm.canHold(prizeItem)){
-	    cm.sendOk("Your use and etc. inventory seems to be full. You need the free spaces to trade with me! Make room, and then find me.");
+	    cm.sendOk("你的消耗栏或其它栏已满。请清理背包后来找我交易。");
 	} else {
 	    cm.gainItem(requiredItem,-100);
 	    cm.gainExp(500 * cm.getPlayer().getExpRate());
 	    cm.gainItem(prizeItem, prizeQuantity);
-	    cm.sendOk("For your #b100 #t"+requiredItem+"##k, here's my #b"+prizeQuantity+" #t"+prizeItem+"##k. What do you think? Do you like the items I gave you in return? I plan on being here for a while, so if you gather up more items, I'm always open for a trade ...");
+	    cm.sendOk("我用#b"+prizeQuantity+" #t"+prizeItem+"##k来交换了你的 #b100个 #t"+requiredItem+"##k。怎么样，喜欢我的货物吗？\r\n如果觉得交易公道，欢迎下次光临。我会在这里等你。");
 	}
 	cm.dispose();
     }
 }
 
 function makeChoices(a){
-    var result  = "Ok! First you need to choose the item that you'll trade with. The better the item, the more likely the chance that I'll give you something much nicer in return.\r\n";
+    var result  = "好的！首先你需要选择用来交易的物品。物品质量越好，我也更有可能用更高价值的道具来交易。\r\n";
     for (var x = 0; x< a.length; x++){
 	result += " #L" + x + "##v" + a[x] + "#  #t" + a[x] + "##l\r\n";
     }

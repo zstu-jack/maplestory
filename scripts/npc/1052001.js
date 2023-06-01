@@ -37,9 +37,9 @@ function start() {
     if (parseInt(cm.getJobId() / 100) == jobType && cm.canSpawnPlayerNpc(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()))) {
         spawnPnpc = true;
 
-        var sendStr = "你已经走了很长的路才能获得今天的力量、智慧和勇气。你想要 #r将你的形象加入名人堂#k 吗？";
+        var sendStr = "你历经千辛万苦才获得了今天的成就。想要 #r将你的形象加入飞侠的殿堂#k 吗？";
         if (spawnPnpcFee > 0) {
-            sendStr += "只要花费 #b " + cm.numberWithCommas(spawnPnpcFee) + " 金币#k， 我就能为你做到。";
+            sendStr += "只要支付 #b " + cm.numberWithCommas(spawnPnpcFee) + " 金币#k，我就可以将你的形象加入飞侠的殿堂。";
         }
 
         cm.sendYesNo(sendStr);
@@ -90,7 +90,7 @@ function action(mode, type, selection) {
         if (spawnPnpc) {
             if (mode > 0) {
                 if (cm.getMeso() < spawnPnpcFee) {
-                    cm.sendOk("你没有足够的钱。");
+                    cm.sendOk("抱歉，你没有足够的金币。");
                     cm.dispose();
                     return;
                 }
@@ -99,7 +99,7 @@ function action(mode, type, selection) {
                     cm.sendOk("快去看看吧，希望你会喜欢。");
                     cm.gainMeso(-spawnPnpcFee);
                 } else {
-                    cm.sendOk("抱歉，名人堂已经满员了...");
+                    cm.sendOk("抱歉，飞侠的殿堂已经满员了。");
                 }
             }
 
@@ -108,7 +108,7 @@ function action(mode, type, selection) {
         } else {
             if (mode != 1 || status == 7 && type != 1 || (actionx["1stJob"] && status == 4) || (cm.haveItem(4031008) && status == 2) || (actionx["3thJobI"] && status == 1)) {
                 if (mode == 0 && status == 2 && type == 1)
-                    cm.sendOk("你知道，别无选择了...");
+                    cm.sendOk("选择职业后无法再次更改。");
                 if (!(mode == 0 && type != 1)) {
                     cm.dispose();
                     return;

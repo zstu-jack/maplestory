@@ -54,7 +54,7 @@ function start() {
     var posY = 1030;
     posX =  Math.floor((Math.random() * 770) - 770);
     whirlpoolOfTime.spawnMonsterOnGroundBelow(timer1, new Packages.java.awt.Point(posX, posY));
-    whirlpoolOfTime.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "Tick-Tock Tick-Tock! Timer makes it's presence known."));
+    whirlpoolOfTime.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "嘀嗒，嘀嗒。闹钟的计时声响起，提莫出现了。"));
 	em.schedule("start", 3 * 60 * 60 * 1000);
 }
 

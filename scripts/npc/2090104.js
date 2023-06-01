@@ -59,7 +59,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            cm.sendSimple("Hey, I'm Noma, and I am assisting Pata in changing faces and applying lenses as my internship studies. With #b#t5152027##k or #b#t5152042##k, I can change the way you look. Now, what would you like to use?\r\n#L1#Plastic Surgery: #i5152027##t5152027##l\r\n#L2#Cosmetic Lenses: #i5152042##t5152042##l");
+            cm.sendSimple("嗨，我是诺马。正在这家整容医院辅助巴塔老师进行整容实习。如果你有 #b#t5152027##k 或 #b#t5152042##k 的话，我就可以为你改头换面。你想要使用哪种服务？\r\n#L1#改变脸型：#i5152027##t5152027##l\r\n#L2#改变瞳色：#i5152042##t5152042##l");
         } else if (status == 1) {
             if (selection == 1) {
                 beauty = 1;
@@ -78,7 +78,7 @@ function action(mode, type, selection) {
                                 % 100));
                     }
                 }
-                cm.sendYesNo("If you use the regular coupon, your face may transform into a random new look...do you still want to do it using #b#t5152027##k?");
+                cm.sendYesNo("如果使用普通会员卡，你的脸型将会#r随机#k改变。确定要使用 #b#t5152027##k?");
             } else if (selection == 2) {
                 beauty = 2;
                 if (cm.getPlayer().getGender() == 0) {
@@ -91,7 +91,7 @@ function action(mode, type, selection) {
                 }
                 colors = Array();
                 pushIfItemsExists(colors, [current , current + 100, current + 300, current + 500, current + 600, current + 700]);
-                cm.sendYesNo("If you use the regular coupon, you'll be awarded a random pair of cosmetic lenses. Are you going to use a #b#t5152042##k and really make the change to your eyes?");
+                cm.sendYesNo("如果使用普通会员卡，你的瞳色将会#r随机#k改变。确定要使用 #b#t5152042##k 来改变你的瞳色吗？");
             }
         }
         else if (status == 2){
@@ -100,18 +100,18 @@ function action(mode, type, selection) {
                 if (cm.haveItem(5152027)){
                     cm.gainItem(5152027, -1);
                     cm.setFace(facenew[Math.floor(Math.random() * facenew.length)]);
-                    cm.sendOk("Enjoy your new and improved face!");
+                    cm.sendOk("好了，让朋友们赞叹你的新脸型吧！");
                 } else {
-                    cm.sendOk("I'm sorry, but I don't think you have our plastic surgery coupon with you right now. Without the coupon, I'm afraid I can't do it for you..");
+                    cm.sendOk("很抱歉，如果没有整形会员卡的话，我无法为你服务。");
                 }
             }
             if (beauty == 2){
                 if (cm.haveItem(5152042)){
                     cm.gainItem(5152042, -1);
                     cm.setFace(colors[Math.floor(Math.random() * colors.length)]);
-                    cm.sendOk("Enjoy your new and improved cosmetic lenses!");
+                    cm.sendOk("好了，让朋友们赞叹你的新瞳色吧！");
                 } else {
-                    cm.sendOk("I'm sorry, but I don't think you have our cosmetic lens coupon with you right now. Without the coupon, I'm afraid I can't do it for you..");
+                    cm.sendOk("很抱歉，如果没有美瞳会员卡的话，我无法为你服务。");
                 }
             }
         }

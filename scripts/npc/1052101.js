@@ -53,7 +53,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            cm.sendSimple("我叫安德里亚，是钱老板的助手。如果你有#b#t5150002##k, #b#t5150011##k 或者 #b#t5151002##k, 我就可以#r随机#k为你变换一次发型或发色。\r\n#L0#随机美发：#i5150002##t5150002##l\r\n#L1#随机发色：#i5150011##t5150011##l\r\n#L2#Dye your hair: #i5151002##t5151002##l");
+            cm.sendSimple("我叫安德里亚，是钱老板的助手。如果你有#b#t5150002##k, #b#t5150011##k 或者 #b#t5151002##k, 我就可以#r随机#k为你变换一次发型或发色。\r\n#L0#随机美发：#i5150002##t5150002##l\r\n#L1#随机发色：#i5150011##t5150011##l\r\n#L2#随机发色：#i5151002##t5151002##l");
         } else if (status == 1) {
             if (selection == 0) {
                 beauty = 3;
@@ -137,7 +137,7 @@ function action(mode, type, selection) {
                     cm.gainItem(5151002, 1);
                     cm.sendOk("谢谢惠顾。");
                 } else {
-                    cm.sendOk("你没有足够的金币来购买美发券。");
+                    cm.sendOk("你没有足够的金币来购买会员卡。");
                 }
             }
         }

@@ -51,10 +51,10 @@ function action(mode, type, selection) {
     
                 if(status == 0) {
                         if(!cm.haveItem(4220153)) {
-                                cm.sendOk("(Scratch scratch...)");
+                                cm.sendOk("(挠挠...)");
                                 cm.dispose();
                         } else {
-                                cm.sendYesNo("Hey, nice #bTreasure Map#k you have there? #rCan I keep it#k for the Nautilus crew, if you don't need it any longer?");
+                                cm.sendYesNo("嘿，你有#b藏宝图#k吗？如果你不需要，#r可以把它给我#k吧？这对于诺特勒斯号的船员是至关重要的。");
                         }
                 } else if(status == 1) {
                         cm.gainItem(4220153, -1);

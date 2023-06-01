@@ -170,7 +170,7 @@ function scheduledTimeout(eim) {
                         chr.changeMap(entryMap + 10, "we00");
                 }
                 
-                mapobj.dropMessage(6, "Wedding Assistant: The couple are heading to the altar, hurry hurry talk to me to arrange your seat.");
+                mapobj.dropMessage(6, "婚礼助手：新人即将在圣坛前许下誓言。请贵宾们与我对话，我会为你们安排座位。");
 
                 eim.setIntProperty("weddingStage", 1);
                 eim.schedule("showStartMsg", startMsgTime * 60 * 1000);

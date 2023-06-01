@@ -179,7 +179,7 @@ function playerEntry(eim, player) {
         var map = eim.getMapInstance(entryMap);
         player.changeMap(map, map.getPortal(0));
         
-        var texttt = "Hi, my name is Eak, the Chamberlain of the Goddess. Don't be alarmed; you won't be able to see me right now. Back when the Goddess turned into a block of stone, I simultaneously lost my own power. If you gather up the power of the Magic Cloud of Orbis, however, then I'll be able to recover my body and re-transform back to my original self. Please collect #b20#k Magic Clouds and bring them back to me. Right now, you'll only see me as a tiny, flickering light.";
+        var texttt = "你好，我叫易克，女神雅典娜的帮佣。别着急，你现在还看不见我。当女神化为石像的同时，我也失去了自己的魔力。然而，如果你收集到了天空之城魔力云朵的力量，那么我就可以重新找回魔力将自己变回从前的样子。请收集 #b20#k 个魔云碎片带回来交给我。哦，对了，我就是在地图下方中央的那一道闪烁的光芒。将魔云碎片丢在这里，我就会出现。";
         player.getAbstractPlayerInteraction().npcTalk(2013001, texttt);
 }
 

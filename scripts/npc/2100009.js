@@ -36,7 +36,7 @@ function start() {
 function action(mode, type, selection) {
 	if (mode < 1) {  // disposing issue with stylishs found thanks to Vcoc
                 if (type == 7) {
-			cm.sendNext("I see...take your time, see if you really want it. Let me know when you make up your mind.");
+			cm.sendNext("我知道了...那么再会，如果你改变了主意，就来跟我说。");
 		}
             
 		cm.dispose();
@@ -47,7 +47,7 @@ function action(mode, type, selection) {
 			status--;
                     
                 if (status == 0) {
-                        cm.sendSimple("Hi, I'm the face surgery assistant doctor from around here. With a #b#t5152029##k or a #b#t5152048##k, I can make it kick in just nice, trust me. Ah, don't forget, what comes next after the operation will be random! Then, what are you going for?\r\n#L1#Plastic Surgery: #i5152029##t5152029##l\r\n#L2#Cosmetic Lens: #i5152048##t5152048##l");
+                        cm.sendSimple("你好，我是这里的面部整形医生。给我 #b#t5152029##k 或者 #b#t5152048##k的话，我就可以让它们物尽其用。啊...不过，手术后你的脸会变成什么样子，就连我自己也不知道。那么，你想要的服务是？\r\n#L1#改变脸型：#i5152029##t5152029##l\r\n#L2#改变瞳色：#i5152048##t5152048##l");
                 } else if (status == 1) {
                         if (selection == 1) {
                                 beauty = 0;
@@ -67,7 +67,7 @@ function action(mode, type, selection) {
                                                  % 100));
                                         }
                                 }
-                                cm.sendYesNo("If you use the regular coupon, your face may transform into a random new look...do you still want to do it using #b#t5152029##k?");
+                                cm.sendYesNo("如果使用普通会员卡，你的脸型将会#r随机#k改变。确定要使用 #b#t5152029##k?");
                         } else if (selection == 2) {
                                 beauty = 1;
                                 if (cm.getPlayer().getGender() == 0) {
@@ -80,7 +80,7 @@ function action(mode, type, selection) {
                                 }
                                 colors = Array();
                                 pushIfItemsExists(colors, [current , current + 100, current + 300, current + 600, current + 700]);
-                                cm.sendYesNo("If you use the regular coupon, you'll be awarded a random pair of cosmetic lenses. Are you going to use a #b#t5152048##k and really make the change to your eyes?");
+                                cm.sendYesNo("如果使用普通会员卡，你的瞳色将会#r随机#k改变。确定要使用 #b#t5152048##k 来改变你的瞳色吗？");
                         }
                 } else if (status == 2){	
 			cm.dispose();
@@ -89,17 +89,17 @@ function action(mode, type, selection) {
                                 if (cm.haveItem(5152029) == true){
                                         cm.gainItem(5152029, -1);
                                         cm.setFace(facenew[Math.floor(Math.random() * facenew.length)]);
-                                        cm.sendOk("Enjoy your new and improved face!");
+                                        cm.sendOk("好了，让朋友们赞叹你的新脸型吧！");
                                 } else {
-                                        cm.sendNext("Um ... it looks like you don't have the coupon specifically for this place...sorry to say this, but without the coupon, there's no plastic surgery for you.");
+                                        cm.sendNext("很抱歉，如果没有整形会员卡的话，我无法为你服务。");
                                 }
                         } else if (beauty == 1) {
                                 if (cm.haveItem(5152048)){
                                         cm.gainItem(5152048, -1);
                                         cm.setFace(colors[Math.floor(Math.random() * colors.length)]);
-                                        cm.sendOk("Enjoy your new and improved cosmetic lenses!");
+                                        cm.sendOk("好了，让朋友们赞叹你的新瞳色吧！");
                                 } else {
-                                       cm.sendOk("Hmm ... it looks like you don't have the coupon specifically for this place. Sorry to say this, but without the coupon, there's no plastic surgery for you...");
+                                       cm.sendOk("很抱歉，如果没有美瞳会员卡的话，我无法为你服务。");
                                 }
                         }
 		}

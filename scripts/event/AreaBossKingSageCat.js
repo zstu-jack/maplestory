@@ -54,7 +54,7 @@ function start() {
     var posY = 540;
     posX =  Math.floor((Math.random() * 1300) - 500);
     goblinForest2.spawnMonsterOnGroundBelow(kingSageCat, new Packages.java.awt.Point(posX, posY));
-    goblinForest2.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "The ghostly air around here has become stronger. The unpleasant sound of a cat crying can be heard."));
+    goblinForest2.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "四周诡异的气氛变得愈加浓重，令人烦躁的猫叫声不绝于耳。"));
 	em.schedule("start", 3 * 60 *60 * 1000);
 }
 

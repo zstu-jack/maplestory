@@ -25,11 +25,11 @@
 
 function enter(pi) {
     if (pi.getMap().countPlayers() == 1) {
-        pi.getPlayer().dropMessage(6, "As the last player on this map, you are compelled to wait for the incoming keys.");
+        pi.getPlayer().dropMessage(6, "最后一位留在本地图的玩家需要等待获得水晶钥匙。");
         return false;
     }else {
         if(pi.haveItem(4001087)) {
-            pi.getPlayer().dropMessage(6, "You cannot pass to the next map holding the 1st Crystal Key in your inventory.");
+            pi.getPlayer().dropMessage(6, "持有第一个迷宫的水晶钥匙方可进入下一阶段。");
             return false;
         }
         pi.playPortalSound(); pi.warp(240050101, 0);

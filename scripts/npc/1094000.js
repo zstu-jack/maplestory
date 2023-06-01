@@ -29,6 +29,6 @@ No specific function, useless text.
 -- GMS LIKE --
 */
 function start() {
-    cm.sendOk("I need to keep my eyes wide open to look for the enemy although my sea gull friends help me out so it's not all that bad.");
+    cm.sendOk("我得时刻保持警惕，观察敌情。不过还好有我的海鸥伙伴帮忙，轻松了许多。");
     cm.dispose();
 }

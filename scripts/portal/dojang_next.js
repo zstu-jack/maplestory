@@ -45,18 +45,18 @@ function enter(pi) {
                                 var chr = pIter.next();
                                 
                                 for(var j = i; j >= 0; j--) {
-                                    chr.message("You received " + chr.addDojoPointsByMap(mapId - 100 * j) + " training points. Your total training points score is now " + chr.getDojoPoints() + ".");
+                                    chr.message("获得了 " + chr.addDojoPointsByMap(mapId - 100 * j) + " 武陵道场点数。目前拥有 " + chr.getDojoPoints() + " 点。");
                                 }
                                 
                                 chr.changeMap(restMapId, 0);
                             }
                         }
                     } else {
-                        pi.getPlayer().message("You received " + pi.getPlayer().addDojoPointsByMap(pi.getMapId()) + " training points. Your total training points score is now " + pi.getPlayer().getDojoPoints() + ".");
+                        pi.getPlayer().message("获得了 " + pi.getPlayer().addDojoPointsByMap(pi.getMapId()) + " 武陵道场点数。目前拥有 " + pi.getPlayer().getDojoPoints() + " 点。");
                         pi.playPortalSound(); pi.warp(pi.getPlayer().getMap().getId() + 100, 0);
                     }
                 } else {
-                    pi.getPlayer().message("You received " + pi.getPlayer().addDojoPointsByMap(pi.getMapId()) + " training points. Your total training points score is now " + pi.getPlayer().getDojoPoints() + ".");
+                    pi.getPlayer().message("获得了 " + pi.getPlayer().addDojoPointsByMap(pi.getMapId()) + " 武陵道场点数。目前拥有 " + pi.getPlayer().getDojoPoints() + " 点。");
                     pi.playPortalSound(); pi.warp(pi.getPlayer().getMap().getId() + 100, 0);
                 }
             } else {
@@ -65,7 +65,7 @@ function enter(pi) {
             }
             return true;
         } else {
-            pi.getPlayer().message("The door is not open yet.");
+            pi.getPlayer().message("门还没开。");
             return false;
         }
     } else {

@@ -22,7 +22,7 @@ function enter(pi) {
                 pi.playPortalSound(); pi.warp(926130101, 0);
                 return true;
         } else {
-                pi.message("You don't have permission to access this room.");
+                pi.message("你没有得到进入这个房间的许可。");
                 return false;
         }
         

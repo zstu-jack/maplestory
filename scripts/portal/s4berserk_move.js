@@ -24,6 +24,6 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(910500200, "out00");
         return true;
     }
-    pi.getPlayer().dropMessage(5, "You must defeat all the monsters first.");
+    pi.getPlayer().dropMessage(5, "Çë»÷°ÜËùÓĞ¹ÖÎï¡£");
     return true;
 }

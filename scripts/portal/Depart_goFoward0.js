@@ -23,7 +23,7 @@ function enter(pi) {
             pi.warp(mapid + 10, "right00");
             return true;
     	}
-    	pi.getPlayer().dropMessage(5, "You cannot access this area.");
+    	pi.getPlayer().dropMessage(5, "本区域目前不对外开放。");
     	return false;
     }
 }

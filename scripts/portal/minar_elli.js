@@ -21,7 +21,7 @@
 */
 function enter(pi) {
 	if (!pi.haveItem(4031346)) {
-        pi.getPlayer().dropMessage(6, "You need a magic seed to use this portal.");
+        pi.getPlayer().dropMessage(6, "没有魔法种子，无法使用传送门。");
         return false;
     } 
     if (pi.getPlayer().getMapId() == 240010100) {

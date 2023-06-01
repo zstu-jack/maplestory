@@ -28,7 +28,7 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(990000631,1);
         return true;
     } else {
-        pi.getPlayer().dropMessage(5, "This door is closed.");
+        pi.getPlayer().dropMessage(5, "ÃÅ¹Ø×Å¡£");
         return false;
     }
 }

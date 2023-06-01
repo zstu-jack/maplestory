@@ -4,7 +4,7 @@ function enter(pi) {
         return true;
     }
     else {
-        pi.playerMessage(5, "The storage is currently inaccessible, as the powers of the Pixies remains active within the tower.");
+        pi.playerMessage(5, "精灵的力量仍然影响着通天塔，目前无法进入这处禁地。");
         return false;
     }
 }

@@ -1,6 +1,6 @@
 function enter(pi) {
 	if (!pi.canHold(4001261,1)) {
-		pi.playerMessage(5, "Please make 1 ETC room.");
+		pi.playerMessage(5, "请在其它栏留出至少1格空间。");
 		return false;
 	}
 	pi.gainItem(4001261,1);

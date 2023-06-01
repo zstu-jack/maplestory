@@ -3,7 +3,7 @@ function enter(pi) {
 	pi.playPortalSound(); pi.warp(926110200, 2);
         return true;
     } else {
-	pi.playerMessage(5, "The door is not opened yet.");
+	pi.playerMessage(5, "实验室的门尚未开启。");
         return false;
     }
 }

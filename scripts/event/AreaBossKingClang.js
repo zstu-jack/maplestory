@@ -55,7 +55,7 @@ function start() {
     var posY = 140;
     posX =  Math.floor((Math.random() * 2400) - 1600);
     hotSand.spawnMonsterOnGroundBelow(kingClang, new Packages.java.awt.Point(posX, posY));
-    hotSand.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "A strange turban shell has appeared on the beach."));
+    hotSand.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "海滩上出现了一只奇怪的海螺。"));
 	em.schedule("start", 3 * 60 * 60 * 1000);
 }
 

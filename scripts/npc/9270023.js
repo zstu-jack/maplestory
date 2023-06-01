@@ -39,7 +39,7 @@ function pushIfItemExists(array, itemid) {
 }
 
 function start() {
-    cm.sendSimple("If you use this regular coupon, your face may transform into a random new look...do you still want to do it using #b#t5152037##k, I will do it anyways for you. But don't forget, it will be random!\r\n\#L2#OK! (Uses #i5152037# #t5152037#)#l");
+    cm.sendSimple("如果使用一般会员卡，你的脸型会随机改变为全新的样子。如果你还是愿意使用#b#t5152037##k的话，我也是可以为你提供服务的。但请注意，我的整容效果是随机的。\r\n\#L2#好的 (使用 #i5152037# #t5152037#)#l");
 }
 
 function action(mode, type, selection) {
@@ -53,7 +53,7 @@ function action(mode, type, selection) {
         
         if (status == 1) {
             if (!cm.haveItem(5152037)) {
-                cm.sendOk("Hmm ... it looks like you don't have the coupon specifically for this place. Sorry to say this, but without the coupon, there's no plastic surgery for you...");
+                cm.sendOk("很抱歉，如果没有整容会员卡的话，我无法为你服务。");
                 cm.dispose();
                 return;
             }
@@ -65,11 +65,11 @@ function action(mode, type, selection) {
             if (cm.getPlayer().getGender() == 1)
                 for(var i = 0; i < fface_r.length; i++) 
                     pushIfItemExists(facenew, fface_r[i] + cm.getPlayer().getFace()% 1000 - (cm.getPlayer().getFace()% 100));
-            cm.sendYesNo("If you use the regular coupon, your face may transform into a random new look...do you still want to do it using #b#t5152037##k?");
+            cm.sendYesNo("如果使用普通会员卡，你的脸型将会#r随机#k改变。确定要使用 #b#t5152037##k?");
         } else if (status == 2){
             cm.gainItem(5152037 , -1);
             cm.setFace(facenew[Math.floor(Math.random() * facenew.length)]);
-            cm.sendOk("Enjoy your new and improved face!");
+            cm.sendOk("好了，让朋友们赞叹你的新脸型吧！");
             
             cm.dispose();
         }

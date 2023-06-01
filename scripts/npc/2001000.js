@@ -20,13 +20,13 @@ function action(mode, type, selection) {
 	}
     }
     if (status == 0) {
-	cm.sendNext("Do you see a bunch of snowmen standing around there? Go talk to one of them, and it'll take you to the famous Christmas tree here that is just humongous. The tree can be decorated using various kinds of ornaments. What do you think? Sounds fun, right?");
+	cm.sendNext("你看到周围这些堆好的雪人了吗？去找它们中的一个谈谈，它会带你前往胜地观赏这儿有名的巨大圣诞树。大家用各种各样的装饰物装点那棵树。怎么样，很有趣吧？");
     } else if (status == 1) {
-	cm.sendNextPrev("Only 6 can be at the place where the tree is at once, and you can't #btrade or open store#k there. The ornaments that you drop can only be picked back up by yourself, so don't worry about losing your ornaments here.");
+	cm.sendNextPrev("每次只有6名角色同时入场，在里面#b不能交易或开启个人商店#k。扔出的装饰物只能由本人捡起，所以完全不必担心你的装饰品遗失的问题。");
     } else if (status == 2) {
-	cm.sendNextPrev("Of course, the items that are dropped in there will never disappear. Once you get out of there through the snowman that's inside, all the items you've dropped at that map will come back to you, so you won't have to pick all those items up before leaving the place. Isn't that sweet?");
+	cm.sendNextPrev("当然，在那里，丢在地上的物品永远不会消失。如果你通过雪人离开，所有的装饰物都会回到你的背包里。所以不必在离开地图前一件件将它们捡回背包。是不是很贴心？");
     } else if (status == 3) {
-	cm.sendPrev("Well then, go see #p2002001#, buy some Christmas ornaments there, and then decorate the tree with those~ Oh yeah! The biggest, the most beautiful ornament cannot be bought from him. It's probably ... taken by a monster ... huh huh ..");
+	cm.sendPrev("那么。去找 #p2002001#吧，买一些圣诞装饰物, 然后用它们装点圣诞树~ 棒极了！不过最大、最漂亮的装饰物是不能从他那里买到的。它们或许...被什么怪物拿走了...嗯...");
 	cm.dispose();
     }
 }

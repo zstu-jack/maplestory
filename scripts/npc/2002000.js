@@ -25,7 +25,7 @@ Rupi- Happyville Warp NPC
 **/
 
 function start() {
-    cm.sendYesNo("Do you want to get out of Happyville?");
+    cm.sendYesNo("现在你想要离开幸福村吗？");
 }
 
 function action(mode, type, selection) {

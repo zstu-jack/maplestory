@@ -301,9 +301,9 @@ function yuleteAction(eim) {
         if(eim.getIntProperty("yuleteTalked") == 1) {
                 eim.setIntProperty("yuletePassed", 1);
                 
-                eim.dropMessage(5, "Yulete: Ugh, you guys disgust me. All I desired was to make this nation the greatest alchemy powerhouse of the entire world. If they won't accept this, I will make it true by myself, at any costs!!!");
+                eim.dropMessage(5, "犹泰：你们真是执迷不悟。我只是想把玛加提亚打造成为全世界炼金术士的圣地。如果有人不肯承认这一点，我将会不惜任何代价来实现我的理想！");
         } else {
-                eim.dropMessage(5, "Yulete: Hahaha... Did you really think I was going to be so disprepared knowing that the Magatia societies' dogs would be coming in my pursuit after my actions? Fools!");
+                eim.dropMessage(5, "犹泰：哈哈哈...你们真的认为我会对一直追逐着我的...那群玛加提亚炼金学会鹰犬的追踪毫无防备吗？一群笨蛋！");
         }
         eim.setIntProperty("yuleteTalked", -1);
         

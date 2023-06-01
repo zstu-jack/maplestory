@@ -51,10 +51,10 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            cm.sendSimple("Let's see...I can totally transform your face into something new. Don't you want to try it? For #b#t5152038##k, you can get the face of your liking. Take your time in choosing the face of your preference...\r\n\#L2#Let me get my dream face! (Uses #i5152038# #t5152038#)#l");
+            cm.sendSimple("让我瞧瞧...如果有一张#b#t5152038##k的话，我可以让你的脸焕然一新。选择你想要的效果吧。..\r\n\#L2#我想变得更漂亮！ (使用 #i5152038# #t5152038#)#l");
         } else if (status == 1) {
             if (!cm.haveItem(5152038)) {
-                cm.sendOk("Hmm ... it looks like you don't have the coupon specifically for this place. Sorry to say this, but without the coupon, there's no plastic surgery for you...");
+                cm.sendOk("很抱歉，如果没有整容会员卡的话，我无法为你服务。");
                 cm.dispose();
                 return;
             }
@@ -69,12 +69,12 @@ function action(mode, type, selection) {
                     pushIfItemExists(facenew, fface_v[i] + cm.getPlayer().getFace()% 1000 - (cm.getPlayer().getFace()% 100));
                 }
             }
-            cm.sendStyle("Let's see... I can totally transform your face into something new. Don't you want to try it? For #b#t5152038##k, you can get the face of your liking. Take your time in choosing the face of your preference...", facenew);
+            cm.sendStyle("让我瞧瞧...如果有一张#b#t5152038##k的话，我可以让你的脸焕然一新。选择你想要的效果吧。..", facenew);
         }
         else if (status == 2){
             cm.gainItem(5152038, -1);
             cm.setFace(facenew[selection]);
-            cm.sendOk("Enjoy your new and improved face!");
+            cm.sendOk("好了，让朋友们赞叹你的新脸型吧！");
             
             cm.dispose();
         }

@@ -39,7 +39,7 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendYesNo("#b#p2095000##k must be some way up this cliff, according to our latest reports... Or are you saying you want to #rleave here#k?");
+                        cm.sendYesNo("根据我们的最新情报，#b#p2095000##k一定是在这里的高处悬崖上。。或者说你想#r离开这里#k？");
                 } else if (status == 1) {
                         cm.warp(120000104);
                         cm.dispose();

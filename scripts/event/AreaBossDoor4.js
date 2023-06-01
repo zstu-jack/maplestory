@@ -40,7 +40,7 @@ function cancelSchedule() {
 function start() {
     var bossMobid = 9400633;
     var bossMapid = 677000012;
-    var bossMsg = "Astaroth has appeared!";
+    var bossMsg = "地狱大公出现了。";
     var bossPos = new Packages.java.awt.Point(842, 0);
     
     var map = em.getChannelServer().getMapFactory().getMap(bossMapid);

@@ -51,7 +51,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            cm.sendSimple("Well, I'm bored, so I'll help out the doctor. For a #b#t5152006##k, I will change the way you look. But don't forget, it will be random!\r\n#L2#Plastic Surgery: #i5152006##t5152006##l");
+            cm.sendSimple("我是无聊才来帮医生打工的。给我一张#b#t5152006##k，我就会帮你整容。不过要知道，我的整容效果是随机的喔。\r\n#L2#改变脸型：#i5152006##t5152006##l");
         } else if (status == 1) {
             if (selection == 2) {
                 facenew = Array();
@@ -69,7 +69,7 @@ function action(mode, type, selection) {
                                 % 100));
                     }
                 }
-                cm.sendYesNo("If you use the regular coupon, your face may transform into a random new look...do you still want to do it using #b#t5152006##k?");
+                cm.sendYesNo("如果使用普通会员卡，你的脸型将会#r随机#k改变。确定要使用 #b#t5152006##k?");
             }
         }
         else if (status == 2){
@@ -77,9 +77,9 @@ function action(mode, type, selection) {
             if (cm.haveItem(5152006) == true){
                 cm.gainItem(5152006, -1);
                 cm.setFace(facenew[Math.floor(Math.random() * facenew.length)]);
-                cm.sendOk("Enjoy your new and improved face!");
+                cm.sendOk("好了，让朋友们赞叹你的新脸型吧！");
             } else {
-                cm.sendOk("Hmm ... it looks like you don't have the coupon specifically for this place. Sorry to say this, but without the coupon, there's no plastic surgery for you...");
+                cm.sendOk("很抱歉，如果没有整容会员卡的话，我无法为你服务。");
             }
         }
     }

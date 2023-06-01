@@ -28,7 +28,7 @@ function enter(pi) {
         var evLevel = ((pi.getMapId() - 1) % 5) + 1;
         
         if(pi.getPlayer().getEventInstance().isEventLeader(pi.getPlayer()) && pi.getPlayer().getEventInstance().getPlayerCount() > 1) {
-                pi.message("Being the party leader, you cannot leave before your teammates leave first or you pass leadership.");
+                pi.message("队长无法先于队员主动退场，请耐心等待，或转交队长。");
                 return false;
         }
         
@@ -37,7 +37,7 @@ function enter(pi) {
                 return true;
         }
         else {
-                pi.message("Make a room available on all EQUIP, USE, SET-UP and ETC inventory to claim an instance prize.");
+                pi.message("请确保装备栏、消耗栏、设置栏各有至少1格空位来领取奖励。");
                 return false;
         }
 }

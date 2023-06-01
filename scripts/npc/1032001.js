@@ -15,9 +15,9 @@ function start() {
     if (parseInt(cm.getJobId() / 100) == jobType && cm.canSpawnPlayerNpc(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()))) {
         spawnPnpc = true;
 
-        var sendStr = "你已经走了很长的路才能获得今天的力量、智慧和勇气。现在你可以获得 #r用你当前的照片作为名人堂的一名NPC#k，你愿意尝试一下吗？";
+        var sendStr = "你历经千辛万苦才获得了今天的成就。想要 #r将你的形象加入魔法师的殿堂#k 吗？";
         if (spawnPnpcFee > 0) {
-            sendStr += " 如果你愿意花费 #b " + cm.numberWithCommas(spawnPnpcFee) + " 金币，我就能帮你完成。#k";
+            sendStr += "只要支付 #b " + cm.numberWithCommas(spawnPnpcFee) + " 金币#k，我就可以将你的形象加入魔法师的殿堂。";
         }
 
         cm.sendYesNo(sendStr);
@@ -44,7 +44,7 @@ function start() {
             actionx["3thJobC"] = true;
             cm.sendNext("干得好，你击败了我的克隆体，并把 #b#t4031059##k 安全的带回来了。你现在已经从力量的角度证明了自己值得第三次转职。现在，你可以把这个项链 #b#p2020011##k 带回冰封雪域，继续第二项训练。祝你好运！");
         } else {
-            cm.sendOk("明智的选择");
+            cm.sendOk("明智的选择。");
             cm.dispose();
         }
     }
@@ -66,16 +66,16 @@ function action(mode, type, selection) {
         if (spawnPnpc) {
             if (mode > 0) {
                 if (cm.getMeso() < spawnPnpcFee) {
-                    cm.sendOk("对不起，你没有足够的金币来购买你在名人堂的位置。");
+                    cm.sendOk("抱歉，你没有足够的金币，无法加入魔法师的殿堂。");
                     cm.dispose();
                     return;
                 }
 
                 if (Packages.server.life.MaplePlayerNPC.spawnPlayerNPC(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()), cm.getPlayer())) {
-                    cm.sendOk("给你！希望你会喜欢。");
+                    cm.sendOk("快去看看吧，希望你会喜欢。");
                     cm.gainMeso(-spawnPnpcFee);
                 } else {
-                    cm.sendOk("不好意思，名人堂的位置已经满了~");
+                    cm.sendOk("抱歉，魔法师的殿堂已经满员了。");
                 }
             }
 
@@ -84,7 +84,7 @@ function action(mode, type, selection) {
         } else {
             if (mode != 1 || status == 7 || (actionx["1stJob"] && status == 4) || (cm.haveItem(4031008) && status == 2) || (actionx["3thJobI"] && status == 1)) {
                 if (mode == 0 && status == 2 && type == 1)
-                    cm.sendOk("你知道这别无选择");
+                    cm.sendOk("选择职业后无法再次更改。");
                 if (!(mode == 0 && type == 0)) {
                     cm.dispose();
                     return;

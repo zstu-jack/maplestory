@@ -34,7 +34,7 @@ function enterLeverSequence(pi) {
             map.broadcastMessage(MaplePacketCreator.showEffect("quest/party/wrong_kor"));
             map.broadcastMessage(MaplePacketCreator.playSound("Party1/Failed"));
 
-            pi.playerMessage(5, "The right combination of levers is needed to pass. " + countMiss + " lever(s) are misplaced.");
+            pi.playerMessage(5, "所有拉杆处于正确的位置时，传送点就会开启。目前有 " + countMiss + " 支拉杆处于错误的位置。");
             return false;
         }
 
@@ -52,7 +52,7 @@ function enterNoMobs(pi) {
     var mobcount = map.countMonster(9300044);
 
     if (mobcount > 0) {
-        pi.playerMessage(5, "Please use the levers to defeat all the threats before you proceed.");
+        pi.playerMessage(5, "需要击败所有黑格里芬方可通过这里。");
         return false;
     } else {
         pi.playPortalSound(); pi.warp(pi.getMapId() + 2,0);

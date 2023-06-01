@@ -15,36 +15,36 @@ function start() {
     if (parseInt(cm.getJobId() / 100) == jobType && cm.canSpawnPlayerNpc(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()))) {
         spawnPnpc = true;
 
-        var sendStr = "你已经走了很长的路才能获得今天的力量、智慧和勇气。现在你可以获得 #r用你当前的照片作为名人堂的一名NPC#k，你愿意尝试一下吗？";
+        var sendStr = "你历经千辛万苦才获得了今天的成就。想要 #r将你的形象加入战士的殿堂#k 吗？";
         if (spawnPnpcFee > 0) {
-            sendStr += " 如果你愿意花费 #b " + cm.numberWithCommas(spawnPnpcFee) + " 金币，我就能帮你完成。#k";
+            sendStr += "只要支付 #b " + cm.numberWithCommas(spawnPnpcFee) + " 金币#k，我就可以将你的形象加入战士的殿堂。";
         }
 
         cm.sendYesNo(sendStr);
     } else {
         if (cm.getJobId() == 0) {
             actionx["1stJob"] = true;
-            cm.sendNext("你想成功为一名 #r战士#k 吗？你需要满足一些标准才能做到这一点。#b 首先，你必须达到10级。其次，你的属性点 " + cm.getFirstJobStatRequirement(jobType) + "#k 也是必要的。");   // thanks Vcoc for noticing a need to state and check requirements on first job adv starting message
+            cm.sendNext("想成为一名 #r战士#k 吗？你需要满足要才能做到。#b 必须达到10级，并且拥有至少 " + cm.getFirstJobStatRequirement(jobType) + "#k。让我看看...");   // thanks Vcoc for noticing a need to state and check requirements on first job adv starting message
         } else if (cm.getLevel() >= 30 && cm.getJobId() == 100) {
             actionx["2ndJob"] = true;
             if (cm.haveItem(4031012))
-                cm.sendNext("你安全回来了！我就知道你会轻松通过的。我承认，你是一个强大的战士！好吧，我会让你成为一个比现在更强大的战士。但在此之前，你需要从三条道路中选择一条。这并不容易，所以如果你有问题，请随时提问。");
+                cm.sendNext("你安全回来了！我就知道你会轻松通过的。不得不说你是一位强大的战士。那么，我会让你变得比现在更强大。但在这之前，你需要从三条道路中选择其一。这并不容易，所以如果你有问题，请随时提问。");
             else if (cm.haveItem(4031008)) {
                 cm.sendOk("去见见 #b#p1072000##k.");
                 cm.dispose();
             } else
-                cm.sendNext("你所取得的进步是惊人的。");
+                cm.sendNext("你的进步之大令人惊讶。");
         } else if (actionx["3thJobI"] || (cm.getPlayer().gotPartyQuestItem("JB3") && cm.getLevel() >= 70 && (cm.getJobId() % 10 == 0 && parseInt(cm.getJobId() / 100) == 1 && !cm.getPlayer().gotPartyQuestItem("JBP")))) {
             actionx["3thJobI"] = true;
-            cm.sendNext("我一直在等你，几天前，冰封雪域的 #b#p2020008##k 向我提起你。我想测试一下你的力量。蚂蚁隧道附近有一条秘密通道，除了你，没有人能进入那条通道。进入那条通道，你会遇见另一个我，击败他，并把 #b#t4031059##k 带回来给我。");
+            cm.sendNext("你终于来了。几天前，神秘岛的 #b#p2020008##k 对我提起过你。所以我想测试一下你的力量。蚂蚁洞附近有一条秘密通道，只有你能进入。进入后，你会遇到我的分身。打败他，把 #b#t4031059##k 带回来给我。");
         } else if (cm.getPlayer().gotPartyQuestItem("JBP") && !cm.haveItem(4031059)) {
-            cm.sendNext("请把 #b#t4031059##k 带回给我。");
+            cm.sendNext("请带着 #b#t4031059##k 回来见我。");
             cm.dispose();
         } else if (cm.haveItem(4031059) && cm.getPlayer().gotPartyQuestItem("JBP")) {
             actionx["3thJobC"] = true;
-            cm.sendNext("你已经击败了另一个我，并成功把 #b#t4031059##k 带了回来，干的好！这无疑证明了你的实力。再力量方面，你已经证明了你值得3转。我向你保证，我会把 #b#t4031057##k 给你。把这条项链交给冰封雪域的 #b#p2020008##k，你就能进行3转的第二次测试了。祝你好运！");
+            cm.sendNext("干得漂亮！你已经打败了我的分身，并把 #b#t4031059##k 安全地带了回来。在力量方面，你已经证明了你拥有3转的实力。现在你需要把这串项链带给神秘岛的 #b#p2020008##k 继续下一步的测试。祝你好运！");
         } else {
-            cm.sendOk("明智的选择");
+            cm.sendOk("明智的选择。");
             cm.dispose();
         }
     }
@@ -66,16 +66,16 @@ function action(mode, type, selection) {
         if (spawnPnpc) {
             if (mode > 0) {
                 if (cm.getMeso() < spawnPnpcFee) {
-                    cm.sendOk("对不起，你没有足够的金币来购买你在名人堂的位置。");
+                    cm.sendOk("抱歉，你没有足够的金币，无法加入战士的殿堂。");
                     cm.dispose();
                     return;
                 }
 
                 if (Packages.server.life.MaplePlayerNPC.spawnPlayerNPC(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()), cm.getPlayer())) {
-                    cm.sendOk("给你！希望你会喜欢。");
+                    cm.sendOk("快去看看吧，希望你会喜欢。");
                     cm.gainMeso(-spawnPnpcFee);
                 } else {
-                    cm.sendOk("不好意思，名人堂的位置已经满了~");
+                    cm.sendOk("抱歉，战士的殿堂已经满员了。");
                 }
             }
 
@@ -84,7 +84,7 @@ function action(mode, type, selection) {
         } else {
             if (mode != 1 || status == 7 && type != 1 || (actionx["1stJob"] && status == 4) || (cm.haveItem(4031008) && status == 2) || (actionx["3thJob"] && status == 1)) {
                 if (mode == 0 && status == 2 && type == 1)
-                    cm.sendOk("当你做好决定以后再来见我");
+                    cm.sendOk("当你下定决心以后再来见我。");
                 if (!(mode == 0 && type != 1)) {
                     cm.dispose();
                     return;
@@ -96,9 +96,9 @@ function action(mode, type, selection) {
     if (actionx["1stJob"]) {
         if (status == 0) {
             if (cm.getLevel() >= 10 && cm.canGetFirstJob(jobType)) {
-                cm.sendNextPrev("这是一个重要的选择，你将无法回头。");
+                cm.sendNextPrev("这个选择至关重要，做出决定后，职业将无法再变更。");
             } else {
-                cm.sendOk("再训练一点，直到你达到基本要求，我可以向你展示成为 #r战士#k 的道路。");
+                cm.sendOk("多加训练。当你达到职业基础要求时，我会告诉你成为 #r战士#k 的方法。");
                 cm.dispose();
             }
         } else if (status == 1) {
@@ -108,13 +108,13 @@ function action(mode, type, selection) {
                     cm.gainItem(1302077, 1);
                     cm.resetStats();
                 }
-                cm.sendNext("从现在开始，你将前往战士之路。这不是一份容易的职业，但如果你对自己的身体和技能充满信心并严格训练，你就会克服道路上的任何困难。加油，年轻的战士！");
+                cm.sendNext("从现在开始，你踏上了战士之路。前途坎坷，但如果对自己的身体和技能充满信心并严格训练，你就会克服道路上的任何困难。加油，年轻的战士。");
             } else {
-                cm.sendNext("确保你的背包腾出一些空间后，再来和我对话吧");
+                cm.sendNext("确保你的背包有足够的空间后，再来和我对话吧。");
                 cm.dispose();
             }
         } else if (status == 2)
-            cm.sendNextPrev("你现在变得更强了。此外，你的每一个背包都增加了插槽。确切地说，整整一排。赶快查看一下吧。\n另外，我给了你一些 #b技能点#k，当你打开右下角的 #b技能#k 菜单，它会展示你能学习并使用的所有技能。值得注意的是: 你无法一下子把它全部加满。还有一些技能，你必须先学会一些技能才能获得。");
+            cm.sendNextPrev("你现在变得更强了。此外，你的每一个背包都增加了一排。赶快查看一下吧。\n另外，我给了你一些 #b技能点#k，打开右下角的 #b技能#k 菜单，就能看到你能学习并使用的所有技能。不过你无法将它们的等级同时提升。你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
         else if (status == 3)
             cm.sendNextPrev("请记住，一旦你做出了选择，你就不能再选择另一条道路了。出发吧，做一名自豪的战士。");
         else
@@ -122,9 +122,9 @@ function action(mode, type, selection) {
     } else if (actionx["2ndJob"]) {
         if (status == 0) {
             if (cm.haveItem(4031012))
-                cm.sendSimple("当你做好了选择，点击 [我已经选定了我职业] 选项。#b\r\n#L0#请向我介绍 剑客 相关的知识\r\n#L1#请向我介绍 准骑士 相关的知识\r\n#L2#请向我介绍 枪战士 相关的知识\r\n#L3#我已经选定了我职业！");
+                cm.sendSimple("好的，当你下定决心选择，就点击下方的 [我现在要选择我的二转职业] 选项。#b\r\n#L0#请向我解释什么是剑客。\r\n#L1#请向我解释什么是准骑士。\r\n#L2#请向我解释什么是枪战士。\r\n#L3#我现在要选择我的二转职业！");
             else {
-                cm.sendNext("明智的选择，你看起来很强大，但我需要看看你是否真的足够强大，能够通过测试。这不是一个困难的测试，所以你会做得很好。现在，带着我信，请确保不会丢失！");
+                cm.sendNext("明智的选择。你看起来很强大，但仍需要通过测试来证明有相符的实力。这对你来说应该并不困难，放轻松。来，拿着这封信...可千万别弄丢了。");
                 if (!cm.isQuestStarted(100003)) cm.startQuest(100003);
             }
         } else if (status == 1) {
@@ -140,11 +140,11 @@ function action(mode, type, selection) {
             } else {
                 if (selection < 3) {
                     if (selection == 0) {    //剑客
-                        cm.sendNext("战士中 #r剑或斧#k 的大师。\r\n\r\n#r剑客#k 拥有 #b愤怒之火#k，一个使你的武器攻击增加10的技能。During 2nd job this is strongly appreciated, as it is free (except for -10 wep def, which is not going to impact the damage you take much at all), takes no Use slots and increases each party member's damage (except Mages) by several hundreds. The other classes can give themselves a weapon attack boost as well, but need items to do so. #r剑客s#k also get #bPower Guard#k, reducing touch damage by 40% and deals it back to the monster. This is the main reason why #r剑客s#k are considered soloers is because this reduces pot costs immensely.");
+                        cm.sendNext("擅长使用 #r剑与斧#k 的战士。\r\n\r\n#r剑客#k 可以习得 #b愤怒之火#k，能够提升全队10点物理攻击。在所有二转技能中，它的效果称得上是非常强大，能够免费地、不占用消耗栏地提升每位团队成员（除法师外）的伤害几百点之多。就算是有一点小小的副作用（无伤大雅地减少10点物理防御力）也不算什么了。相较之下，其它职业虽然也可以提升攻击力，但大部分是需要消耗物品来实现的。 #r剑客#k 还可以习得 #b伤害反击#k 来减少40%的触碰伤害，并将它们反馈给怪物。它能够大量节约药水消耗，这就是 #r剑客#k 总是看上去独来独往的原因。");
                     } else if (selection == 1) {    //准骑士
-                        cm.sendNext("战士中 #r剑、锤等钝器#k 的大师。\r\n\r\n#r准骑士s#k get #bThreaten#k, a skill that lowers the enemies' weapon defense and weapon attack by 20; this is mostly used to lower damage dealt to you. 准骑士s also get #bPower Guard#k, reducing touch damage by 40% and deals it back to the monster. This is one of the main reason why #b准骑士s/WKs#k are considered soloers, that's because this reduces pot costs immensely. Of course, constant KB and #bIce Charge#k helps also to the soloing factor.");
+                        cm.sendNext("擅长使用 #r剑与钝器#k 的战士。\r\n\r\n#r准骑士#k 可以习得 #b压制术#k，能够降低怪物们的物理防御力和物理攻击力各20点。通常被用来降低怪物对你造成的伤害。 #r准骑士#k 还可以习得 #b伤害反击#k 来减少40%的触碰伤害，并将它们反馈给怪物。它能够大量节约药水消耗，这就是 #r剑客#k 总是看上去独来独往的原因。当然，不断地击退和 #b寒冰之剑/寒冰钝器#k 也是他们能够独来独往的重要原因。");
                     } else {    //枪战士
-                        cm.sendNext("战士中 #r矛或枪#k 的大师。\r\n\r\n#r枪战士#k get #bHyper Body#k, which boosts your max HP/MP and that of your party by 60% when maxed. This skill is particularly useful for helping partied Thieves, Archers, and Mages to survive more hits from enemies and/or PQ bosses. They also get #bIron Will#k which gives +20 wep def and +20 mag def for 300 sec. It is basically a nerfed Bless with 100 seconds more duration but gives no accuracy or avoidability bonus. Even with this skill maxed, it isn't even close to being in the same league as Power Guard and is why 枪战士/Dark Knights are not considered a soloing class.");
+                        cm.sendNext("擅长使用 #r枪与矛#k 的战士。\r\n\r\n#r枪战士#k 可以习得  #b神圣之火#k，能够提升你和你的队友60%的最大HP与MP。这个技能可以大幅度地提升队伍中飞侠、弓箭手和法师们面对强大敌人时的生存概率。他们还拥有 #b极限防御#k ，能够在300秒内提升全队20点的物理防御力和魔法防御力。这个技能差不多算是牧师的祝福弱化版，它不提供命中率和回避率，但持续时间却多出100秒。就算加满它，也仍然不能与伤害反击相提并论。这也是枪战士及其后续职业黑骑士不被看好作为独行职业的原因。");
                     }
 
                     status -= 2;
@@ -157,30 +157,30 @@ function action(mode, type, selection) {
                 return;
             }
             job += selection * 10;
-            cm.sendYesNo("你选择的二转职业是 " + (job == 110 ? "#b剑客#k" : job == 120 ? "#b准骑士#k" : "#b枪战士#k") + "? 一旦你在这里做出决定，你必须以此为生，精于此道。不可更改职业了。");
+            cm.sendYesNo("所以想要选择 " + (job == 110 ? "#b剑客#k" : job == 120 ? "#b准骑士#k" : "#b枪战士#k") + " 作为你的二转职业吗？请注意，一旦做出决定，你就必须以此为生，精于此道，不能更改职业了。");
         } else if (status == 3) {
             if (cm.haveItem(4031012))
                 cm.gainItem(4031012, -1);
             cm.completeQuest(100005);
 
-            if (job == 110) cm.sendNext("很好，你即将成为 #b剑客#k. A 剑客 努力成为强者中的强者，永不停止战斗。永远不要失去战斗的意志，勇往直前。我会帮助你变得比现在更强大。");
-            else if (job == 120) cm.sendNext("很好，你即将成为 #b准骑士#k! 准骑士拥有高度的智慧和勇气，我希望你在通往正确道路的整个旅程中都能运用这些智慧和勇气。我会帮助你变得比现在更强大。");
-            else cm.sendNext("很好，你即将成为 #b枪战士#k. 枪战士用黑暗的力量消灭敌人，总是在阴影中涅槃重生。。。在你的旅程中，请相信你强大的力量。我会帮助你变得比现在更强大。");
+            if (job == 110) cm.sendNext("好的，你现在已经成为了一名 #b剑客#k。作为一名剑客要努力成为强者中的强者，不停战斗。永远不要失去战斗的意志，勇往直前。我会一直帮助你变得比现在更强大。");
+            else if (job == 120) cm.sendNext("好的，你现在已经成为了一名 #b准骑士#k。准骑士兼具高超的智慧与勇气，希望你能在今后的旅途中将它们运用得当。我会一直帮助你变得比现在更强大。");
+            else cm.sendNext("好的，你现在已经成为了一名 #b枪战士#k。枪战士总是身处暗影中，用黑暗的力量消灭敌人。。。在你的旅程中，请相信你自己，以及这份令人敬畏的力量。我会一直帮助你变得比现在更强大。");
             if (cm.getJobId() != job)
                 cm.changeJobById(job);
         } else if (status == 4)
-            cm.sendNextPrev("这本书，里面列出了你作为一名 " + (job == 110 ? "剑客" : job == 120 ? "准骑士" : "枪战士") + ". 此外，你的技能库存增加了一行。你的HP和MP也增加了。你自己去看看。");
+            cm.sendNextPrev("我刚刚赋予了你作为一个 " + (job == 110 ? "剑客" : job == 120 ? "准骑士" : "枪战士") + " 应该学会的技能。此外，你背包的其他栏扩展了一行，最大HP、最大MP也得到了增加。");
         else if (status == 5)
-            cm.sendNextPrev("我也给了你一点#b技能点#k。打开#b技能菜单#k。你将能够提升二级技能。提醒一下，你不可能一下子把它们都提高。有些技能只有在你学习了其他技能后才能使用。一定要记住这一点。");
+            cm.sendNextPrev("我同时也为你提升了1点的 #b技能点#k。请打开右下角的 #b技能菜单#k 进行查看。你可以用它来提升你的二转技能等级。但需要提醒你一下，你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
         else if (status == 6)
-            cm.sendNextPrev((job == 110 ? "剑客" : job == 120 ? "准骑士" : "枪战士") + " 想要变得更强的话。请记住，你不能滥用这种能力，记得你是一名正义的剑客，要以正确的方式使用你的巨大力量，因为。。。对你来说，坚守初心比变得更强壮要重要得多。请在你取得更大进步后找我。我会等你的。");
+            cm.sendNextPrev((job == 110 ? "剑客" : job == 120 ? "准骑士" : "枪战士") + "，意味着更强的实力。但请记住，不要滥用你的能力去欺凌弱小。要将它们用于正途，因为对你来说坚守初心比继续变强要难得多。当你变得更强大时再来找我，我会在这里等你。");
     } else if (actionx["3thJobI"]) {
         if (status == 0) {
             if (cm.getPlayer().gotPartyQuestItem("JB3")) {
                 cm.getPlayer().removePartyQuestItem("JB3");
                 cm.getPlayer().setPartyQuestItemObtained("JBP");
             }
-            cm.sendNextPrev("另一个自我也相当厉害。他会使用许多特殊技能，你应该和他一对一对抗。注意，你不能在秘密通道里呆太久，所以尽快打败他很重要。好祝你好运，我期待着你把#b#t4031059###k带给我。");
+            cm.sendNextPrev("我的分身相当厉害。他会使用许多特别的技能，而你只能单独和他作战。注意，你不能在秘密通道里呆太久，所以尽快打败他很重要。好...祝你好运，我很期待你把#b#t4031059###k带回来给我。");
         }
     } else if (actionx["3thJobC"]) {
         cm.getPlayer().removePartyQuestItem("JBP");

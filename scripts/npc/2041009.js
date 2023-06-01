@@ -54,7 +54,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            cm.sendSimple("Hi, I'm the assistant here. Don't worry, I'm plenty good enough for this. If you have #b#t5150006##k, #b#t5150012##k or #b#t5151006##k by any chance, then allow me to take care of the rest, alright?\r\n#L0#Haircut: #i5150006##t5150006##l\r\n#L1#Haircut: #i5150012##t5150012##l\r\n#L2#Dye your hair: #i5151006##t5151006##l");
+            cm.sendSimple("你好，我是这里的美发助手。如果你拥有 #b#t5150006##k, #b#t5150012##k 或 #b#t5151006##k的话，我就可以为您服务。想要选择哪一种美发服务？\r\n#L0#更改发型：#i5150006##t5150006##l\r\n#L1#更改发型：#i5150012##t5150012##l\r\n#L2#更改发色：#i5151006##t5151006##l");
         } else if (status == 1) {
             if (selection == 0) {
                 beauty = 3;
@@ -69,7 +69,7 @@ function action(mode, type, selection) {
                         pushIfItemExists(hairnew, fhair_r[i] + parseInt(cm.getPlayer().getHair() % 10));
                     }
                 }
-                cm.sendYesNo("If you use the REG coupon your hair will change RANDOMLY with a chance to obtain a new experimental style that I came up with. Are you going to use #b#t5150012##k and really change your hairstyle?");
+                cm.sendYesNo("如果使用普通会员卡，你的发型将会#r随机#k改变，有可能变为全新风格。确定要使用 #b#t5150012##k 来改变你的发型吗？");
             } else if (selection == 1) {
                 beauty = 1;
                 hairnew = Array();
@@ -83,7 +83,7 @@ function action(mode, type, selection) {
                         pushIfItemExists(hairnew, fhair_e[i] + parseInt(cm.getPlayer().getHair() % 10));
                     }
                 }
-                cm.sendYesNo("If you use the EXP coupon your hair will change RANDOMLY with a chance to obtain a new experimental style that I came up with. Are you going to use #b#t5150012##k and really change your hairstyle?");
+                cm.sendYesNo("如果使用普通会员卡，你的发型将会#r随机#k改变，有可能变为全新风格。确定要使用 #b#t5150012##k 来改变你的发型吗？");
             } else if (selection == 2) {
                 beauty = 2;
                 haircolor = Array();
@@ -91,7 +91,7 @@ function action(mode, type, selection) {
                 for(var i = 0; i < 8; i++) {
                     pushIfItemExists(haircolor, current + i);
                 }
-                cm.sendYesNo("If you use a regular coupon your hair will change RANDOMLY. Do you still want to use #b#t5151006##k and change it up?");
+                cm.sendYesNo("如果使用普通会员卡，你的发色将会#r随机#k改变，有可能变为全新风格。确定要使用 #b#t5151006##k 来改变你的发色吗？");
             }
         }
         else if (status == 2){
@@ -100,37 +100,37 @@ function action(mode, type, selection) {
                 if (cm.haveItem(5150012)){
                     cm.gainItem(5150012, -1);
                     cm.setHair(hairnew[Math.floor(Math.random() * hairnew.length)]);
-                    cm.sendOk("Enjoy your new and improved hairstyle!");
+                    cm.sendOk("好了，让朋友们赞叹你的新发型吧！");
                 } else {
-                    cm.sendOk("Hmmm...it looks like you don't have our designated coupon...I'm afraid I can't give you a haircut without it. I'm sorry...");
+                    cm.sendOk("看起来你没有我们的会员卡。恐怕我不能为你提供服务。");
                 }
             } else if (beauty == 2){
                 if (cm.haveItem(5151006)){
                     cm.gainItem(5151006, -1);
                     cm.setHair(haircolor[Math.floor(Math.random() * haircolor.length)]);
-                    cm.sendOk("Enjoy your new and improved haircolor!");
+                    cm.sendOk("好了，让朋友们赞叹你的新发色吧！");
                 } else {
-                    cm.sendOk("Hmmm...it looks like you don't have our designated coupon...I'm afraid I can't dye your hair without it. I'm sorry...");
+                    cm.sendOk("看起来你没有我们的会员卡。恐怕我不能为你提供服务。");
                 }
             } else if (beauty == 3){
                 if (cm.haveItem(5150006)){
                     cm.gainItem(5150006, -1);
                     cm.setHair(haircolor[Math.floor(Math.random() * haircolor.length)]);
-                    cm.sendOk("Enjoy your new and improved haircolor!");
+                    cm.sendOk("好了，让朋友们赞叹你的新发色吧！");
                 } else {
-                    cm.sendOk("Hmmm...it looks like you don't have our designated coupon...I'm afraid I can't dye your hair without it. I'm sorry...");
+                    cm.sendOk("看起来你没有我们的会员卡。恐怕我不能为你提供服务。");
                 }
             } else if (beauty == 0){
                 if (selection == 0 && cm.getMeso() >= hairprice) {
                     cm.gainMeso(-hairprice);
                     cm.gainItem(5150012, 1);
-                    cm.sendOk("Enjoy!");
+                    cm.sendOk("谢谢惠顾。");
                 } else if (selection == 1 && cm.getMeso() >= haircolorprice) {
                     cm.gainMeso(-haircolorprice);
                     cm.gainItem(5151006, 1);
-                    cm.sendOk("Enjoy!");
+                    cm.sendOk("谢谢惠顾。");
                 } else {
-                    cm.sendOk("You don't have enough mesos to buy a coupon!");
+                    cm.sendOk("你没有足够的金币来购买会员卡。");
                 }
             }
         }

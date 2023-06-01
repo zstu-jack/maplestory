@@ -4,7 +4,7 @@ var cost = [1000, 1000, 1000, 800, 1000];
 var selectedMap = -1;
 
 function start() {
-    cm.sendNext("Hello, I drive the Nautilus' Mid-Sized Taxi. If you want to go from town to town safely and fast, then ride our cab. We'll glady take you to your destination with an affordable price.");
+    cm.sendNext("你好，这里是诺特勒斯计程车。如果您想要安全便捷地前往其它城镇，就使用我们的服务吧。支付车费后，我们会准时将您送达目的地。");
 }
 
 function action(mode, type, selection) {
@@ -15,7 +15,7 @@ function action(mode, type, selection) {
             cm.dispose();
             return;
         } else if (status >= 2 && mode == 0) {
-            cm.sendNext("There's a lot to see in this town, too. Come back and find us when you need to go to a different town.");
+            cm.sendNext("这里还有很多地方可以逛。当你想要去不同的城镇的时候，欢迎随时来找我。");
             cm.dispose();
             return;
         }
@@ -26,13 +26,13 @@ function action(mode, type, selection) {
         if (status == 1) {
             var selStr = "";
             if (cm.getJobId() == 0)
-                selStr += "We have a special 90% discount for beginners.";
-            selStr += "Choose your destination, for fees will change from place to place.#b";
+                selStr += "新手使用时，享受90%的特殊折扣。";
+            selStr += "请选择目的地，费用会根据目的地的不同而有所变化。#b";
             for (var i = 0; i < maps.length; i++)
                 selStr += "\r\n#L" + i + "##m" + maps[i] + "# (" + (cm.getJobId() == 0 ? cost[i] / 10 : cost[i]) + " mesos)#l";
             cm.sendSimple(selStr);
         } else if (status == 2) {
-            cm.sendYesNo("You don't have anything else to do here, huh? Do you really want to go to #b#m" + maps[selection] + "##k? It'll cost you #b"+ (cm.getJobId() == 0 ? cost[selection] / 10 : cost[selection]) + " mesos#k.");
+            cm.sendYesNo("你在这里的事情已经办完了吗？前往 #b#m" + maps[selection] + "##k 的话，将花费 #b"+ (cm.getJobId() == 0 ? cost[selection] / 10 : cost[selection]) + " 金币#k。");
             selectedMap = selection;
         } else if (status == 3) {
             if (cm.getJobId() == 0) {
@@ -42,7 +42,7 @@ function action(mode, type, selection) {
             }
             
             if (cm.getMeso() < mesos) {
-                cm.sendNext("You don't have enough mesos. Sorry to say this, but without them, you won't be able to ride the cab.");
+                cm.sendNext("金币不足，无法搭乘计程车。");
                 cm.dispose();
                 return;
             }

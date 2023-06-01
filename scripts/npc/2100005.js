@@ -26,7 +26,7 @@ function start() {
 function action(mode, type, selection) {
 	if (mode < 1) {  // disposing issue with stylishs found thanks to Vcoc
                 if (type == 7) {
-                        cm.sendNext("I guess you aren't ready to make the change yet. Let me know when you are!");
+                        cm.sendNext("看来你还没有下定决心改变自己。没关系，等到你改了主意，再来找我就好！");
                 }
                 
 		cm.dispose();
@@ -36,7 +36,7 @@ function action(mode, type, selection) {
 		else
 			status--;
 		if (status == 0) {
-			cm.sendSimple("Hey there! I'm Shatti, and I'm Mazra's apprentice. If you have #bAriant hair style coupon(REG)#k or #bAriant hair color coupon(REG)#k with you, how about allowing me to work on your hair? \r\n#L0#Haircut: #i5150026##t5150026##l\r\n#L1#Dye your hair: #i5151021##t5151021##l");
+			cm.sendSimple("你好啊，我是夏特，玛扎拉的学徒。如果你有 #b阿里安特美发店普通会员卡#k 或 #b阿里安特染色普通会员卡#k 的话，让我来为你服务怎么样？\r\n#L0#更改发型：#i5150026##t5150026##l\r\n#L1#更改发色：#i5151021##t5151021##l");
 		} else if (status == 1) {
 			if (selection == 0) {
 				beauty = 1;
@@ -71,7 +71,7 @@ function action(mode, type, selection) {
 				if (cm.haveItem(5150026) == true){
 					cm.gainItem(5150026, -1);
 					cm.setHair(hairnew[Math.floor(Math.random() * hairnew.length)]);
-					cm.sendOk("Enjoy your new and improved hairstyle!");
+					cm.sendOk("好了，让朋友们赞叹你的新发型吧！");
 				} else {
 					cm.sendNext("I can only change your hairstyle if you bring me the coupon. You didn't forget that, did you?");
 				}
@@ -80,7 +80,7 @@ function action(mode, type, selection) {
 				if (cm.haveItem(5151021) == true){
 					cm.gainItem(5151021, -1);
 					cm.setHair(haircolor[Math.floor(Math.random() * haircolor.length)]);
-					cm.sendOk("Enjoy your new and improved haircolor!");
+					cm.sendOk("好了，让朋友们赞叹你的新发色吧！");
 				} else {
 					cm.sendNext("I can only change your hairstyle if you bring me the coupon. You didn't forget that, did you?");
 				}

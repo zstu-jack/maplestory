@@ -59,7 +59,7 @@ function setEventRequirements() {
         else reqStr += minLevel;
         
         reqStr += "\r\n    男女中至少有1人";
-        if(onlyMarriedPlayers) reqStr += "\r\n    All married";
+        if(onlyMarriedPlayers) reqStr += "\r\n    已婚";
         
         reqStr += "\r\n    时间限制: ";
         reqStr += eventTime + " 分钟";

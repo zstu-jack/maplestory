@@ -1,6 +1,6 @@
 function enter(pi) {
 	if(pi.getMap().countMonster(9300285) > 0){
-		pi.getPlayer().message("Defeat the Puppeteer before leaving.");
+		pi.getPlayer().message("击败人偶师后方可离开。");
 		return false;
 	}
 	else{

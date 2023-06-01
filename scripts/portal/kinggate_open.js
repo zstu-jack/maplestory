@@ -34,7 +34,7 @@ function enter(pi) {
         return true;
     }
     else {
-        pi.playerMessage(5, "This door is closed.");
+        pi.playerMessage(5, "通往艾里葛斯王座的大门紧闭着。");
         return false;
     }
 }

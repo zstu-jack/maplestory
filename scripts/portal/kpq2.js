@@ -32,7 +32,7 @@ function enter(pi) {
         return true;
     }
     else {
-        pi.getPlayer().dropMessage(5, "The portal is not opened yet.");
+        pi.getPlayer().dropMessage(5, "传送门目前尚未开启。");
         return false;
     }
 }
