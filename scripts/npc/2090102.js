@@ -40,10 +40,10 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            cm.sendSimple("Well, hello! Welcome to the Mu Lung Skin-Care! Would you like to have a firm, tight, healthy looking skin like mine?  With #b#t5153006##k, you can let us take care of the rest and have the kind of skin you've always wanted~!\r\n#L2#Skin Care: #i5153006##t5153006##l");
+            cm.sendSimple("嗨，你好啊！欢迎来到武陵护肤中心！想要像我一样拥有精致、健康的肌肤吗？只要有 #b#t5153006##k，你就可以享受我们的服务，拥有梦寐以求的健康肤色~！\r\n#L2#选择肤色：#i5153006##t5153006##l");
         } else if (status == 1) {
             if (selection == 2) {
-                cm.sendStyle("With our specialized machine, you can see the way you'll look after the treatment PRIOR to the procedure. What kind of a look are you looking for? Go ahead and choose the style of your liking~!", skin);
+                cm.sendStyle("使用这里的特制医疗器械，可以预览术后效果。你喜欢哪种肤色？选择一款你喜欢的风格吧。", skin);
             }
         }
         else if (status == 2){
@@ -51,9 +51,9 @@ function action(mode, type, selection) {
             if (cm.haveItem(5153006)){
                 cm.gainItem(5153006, -1);
                 cm.setSkin(skin[selection]);
-                cm.sendOk("Enjoy your new and improved skin!");
+                cm.sendOk("好了，让朋友们赞叹你的新肤色吧！");
             } else {
-                cm.sendOk("Um...you don't have the skin-care coupon you need to receive the treatment. Sorry, but I am afraid we can't do it for you...");
+                cm.sendOk("很抱歉，如果没有护肤会员卡的话，我无法为你服务。");
             }
         }
     }

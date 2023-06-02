@@ -41,20 +41,20 @@ function action(mode, type, selection) {
                 status--;
         
         if (status == 0) {
-            cm.sendSimple("Well, hello! Welcome to the Lian Hua Hua Skin-Care! Would you like to have a firm, tight, healthy looking skin like mine?  With #b#tCBD Skin Coupon##k, you can let us take care of the rest and have the kind of skin you've always wanted!\r\n\#L1#Sounds Good! (uses #i5153010# #t5153010#)#l");
+            cm.sendSimple("嗨，你好啊！欢迎来到脸花花护肤中心~！想要像我一样拥有精致、健康的肌肤吗？只要有 #b#t5153010##k，你就可以享受我们的服务，拥有梦寐以求的健康肤色~！\r\n\#L1#听起来真不错！ (使用 #i5153010# #t5153010#)#l");
         }
         else if (status == 1) {
             if (!cm.haveItem(5153010)) {
-                cm.sendOk("It looks like you don't have the coupon you need to receive the treatment. I'm sorry but it looks like we cannot do it for you.");
+                cm.sendOk("很抱歉，如果没有护肤会员卡的话，我无法为你服务。");
                 cm.dispose();
                 return;
             }
-            cm.sendStyle("With our specialized service, you can see the way you'll look after the treatment in advance. What kind of a skin-treatment would you like to do? Go ahead and choose the style of your liking...", skin);
+            cm.sendStyle("使用这里的特制医疗器械，可以预览术后效果。你喜欢哪种肤色？选择一款你喜欢的风格吧。", skin);
         }
         else {
             cm.gainItem(5153010, -1);
             cm.setSkin(selection);
-            cm.sendOk("Enjoy your new and improved skin!");
+            cm.sendOk("好了，让朋友们赞叹你的新肤色吧！");
             
             cm.dispose();
         }

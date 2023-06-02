@@ -28,14 +28,14 @@ function start() {
 
 function action(mode, type, selection) {
     if (status == 0) {
-        cm.sendYesNo("Do you wish to leave the genie?");
+        cm.sendYesNo("即将起飞，确定要离开精灵航班吗？");
         status++;
     } else {
         if (mode < 1) {
             cm.dispose();
         } else {
             if (status == 1) {
-                cm.sendNext ("Alright, see you next time. Take care.");
+                cm.sendNext ("好的，下次再见，请多保重。");
                 status++;
             } else if (status == 2) {
                 cm.warp(260000100, 0);

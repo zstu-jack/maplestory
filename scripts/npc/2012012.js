@@ -40,7 +40,7 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendOk("Can you help me find the Ancient Book? I lost it somewhere in El Nath...");
+                        cm.sendOk("你能帮我找到上古魔书吗？我把它丢在冰峰雪域的什么地方了...");
                         cm.dispose();
                 }
         }
