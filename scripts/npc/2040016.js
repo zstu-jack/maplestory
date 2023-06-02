@@ -217,7 +217,7 @@ function action(mode, type, selection) {
         }
 		
         if (cost > 0)
-            prompt += "\r\n#i4031138# " + cost * qty + " meso";
+            prompt += "\r\n#i4031138# " + cost * qty + " 金币";
 		
         cm.sendYesNo(prompt);
     }
@@ -235,11 +235,11 @@ function action(mode, type, selection) {
             recvQty = qty;
         
         if(!cm.canHold(recvItem, recvQty)) {
-            cm.sendOk("I'm afraid you have no slots available for this transaction.");
+            cm.sendOk("");
         }
         else if (cm.getMeso() < cost * qty)
         {
-            cm.sendOk("I'm afraid you cannot afford my services.");
+            cm.sendOk("金币不足的话，我无法为你制作。");
         }
         else
         {

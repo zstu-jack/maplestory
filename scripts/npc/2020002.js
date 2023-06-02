@@ -61,27 +61,27 @@ function action(mode, type, selection) {
         var shoes;
         if (selectedType == 0){ //warrior shoes
             selStr = "Warrior shoes? Okay, then which set?#b";
-            var shoes = new Array ("Sapphire Camel Boots#k - Warrior Lv. 60#b","Orihalcon Camel Boots#k - Warrior Lv. 60#b","Blood Camel Boots#k - Warrior Lv. 60#b",
-                "Blue Carzen Boots#k - Warrior Lv. 70#b","Purple Carzen Boots#k - Warrior Lv. 70#b","Dark Carzen Boots#k - Warrior Lv. 70#b",
-                "Red Rivers Boots#k - Warrior Lv. 80#b","Blue Rivers Boots#k - Warrior Lv. 80#b","Dark Rivers Boots#k - Warrior Lv. 80#b");
+            var shoes = new Array ("Sapphire Camel Boots#k - 战士 等级.60#b","Orihalcon Camel Boots#k - 战士 等级.60#b","Blood Camel Boots#k - 战士 等级.60#b",
+                "Blue Carzen Boots#k - 战士 等级.70#b","Purple Carzen Boots#k - 战士 等级.70#b","Dark Carzen Boots#k - 战士 等级.70#b",
+                "Red Rivers Boots#k - 战士 等级.80#b","Blue Rivers Boots#k - 战士 等级.80#b","Dark Rivers Boots#k - 战士 等级.80#b");
         }
         else if (selectedType == 1){ //bowman shoes
             selStr = "Bowman shoes? Okay, then which set?#b";
-            var shoes = new Array ("Red Gore Boots#k - Bowman Lv. 60#b","Blue Gore Boots#k - Bowman Lv. 60#b","Green Gore Boots#k - Bowman Lv. 60#b",
-                "Blue Elf Boots#k - Bowman Lv. 70#b","Beige Elf Boots#k - Bowman Lv. 70#b","Green Elf Boots#k - Bowman Lv. 70#b","Dark Elf Boots#k - Bowman Lv. 70#b",
-                "Blue Wing Boots#k - Bowman Lv. 80#b","Red Wing Boots#k - Bowman Lv. 80#b","Green Wing Boots#k - Bowman Lv. 80#b","Dark Wing Boots#k - Bowman Lv. 80#b");
+            var shoes = new Array ("Red Gore Boots#k - 弓箭手 等级.60#b","Blue Gore Boots#k - 弓箭手 等级.60#b","Green Gore Boots#k - 弓箭手 等级.60#b",
+                "Blue Elf Boots#k - 弓箭手 等级.70#b","Beige Elf Boots#k - 弓箭手 等级.70#b","Green Elf Boots#k - 弓箭手 等级.70#b","Dark Elf Boots#k - 弓箭手 等级.70#b",
+                "Blue Wing Boots#k - 弓箭手 等级.80#b","Red Wing Boots#k - 弓箭手 等级.80#b","Green Wing Boots#k - 弓箭手 等级.80#b","Dark Wing Boots#k - 弓箭手 等级.80#b");
         }
         else if (selectedType == 2){ //mage shoes
             selStr = "Magician shoes? Okay, then which set?#b";
-            var shoes = new Array ("Pink Goldrunners#k - Magician Lv. 60#b","Green Goldrunners#k - Magician Lv. 60#b","Orange Goldrunners#k - Magician Lv. 60#b","Blue Goldrunners#k - Magician Lv. 60#b",
-                "Blue Lapiz Sandals#k - Magician Lv. 70#b","Red Lapiz Sandals#k - Magician Lv. 70#b","Brown Lapiz Sandals#k - Magician Lv. 70#b","Gold Lapiz Sandals#k - Magician Lv. 70#b",
-                "Green Enigma Shoes#k - Magician Lv. 80#b","Purple Enigma Shoes#k - Magician Lv. 80#b","Dark Enigma Shoes#k - Magician Lv. 80#b");
+            var shoes = new Array ("Pink Goldrunners#k - 法师 等级.60#b","Green Goldrunners#k - 法师 等级.60#b","Orange Goldrunners#k - 法师 等级.60#b","Blue Goldrunners#k - 法师 等级.60#b",
+                "Blue Lapiz Sandals#k - 法师 等级.70#b","Red Lapiz Sandals#k - 法师 等级.70#b","Brown Lapiz Sandals#k - 法师 等级.70#b","Gold Lapiz Sandals#k - 法师 等级.70#b",
+                "Green Enigma Shoes#k - 法师 等级.80#b","Purple Enigma Shoes#k - 法师 等级.80#b","Dark Enigma Shoes#k - 法师 等级.80#b");
         }
         else if (selectedType == 3){ //thief shoes
             selStr = "Thief shoes? Okay, then which set?#b";
-            var shoes = new Array ("Blood Moss Boots#k - Thief Lv. 60#b","Gold Moss Boots#k - Thief Lv. 60#b","Dark Moss Boots#k - Thief Lv. 60#b",
-                "Purple Mystique Shoes#k - Thief Lv. 70#b","Blue Mystique Shoes#k - Thief Lv. 70#b","Red Mystique Shoes#k - Thief Lv. 70#b",
-                "Green Pirate Boots#k - Thief Lv. 80#b","Red Pirate Boots#k - Thief Lv. 80#b","Dark Pirate Boots#k - Thief Lv. 80#b");
+            var shoes = new Array ("Blood Moss Boots#k - 飞侠 等级.60#b","Gold Moss Boots#k - 飞侠 等级.60#b","Dark Moss Boots#k - 飞侠 等级.60#b",
+                "Purple Mystique Shoes#k - 飞侠 等级.70#b","Blue Mystique Shoes#k - 飞侠 等级.70#b","Red Mystique Shoes#k - 飞侠 等级.70#b",
+                "Green Pirate Boots#k - 飞侠 等级.80#b","Red Pirate Boots#k - 飞侠 等级.80#b","Dark Pirate Boots#k - 飞侠 等级.80#b");
         }
         for (var i = 0; i < shoes.length; i++){
             selStr += "\r\n#L" + i + "# " + shoes[i] + "#l";
@@ -145,7 +145,7 @@ function action(mode, type, selection) {
             matQty = matQtySet[selectedItem];
             cost = costSet[selectedItem];
         }
-        var prompt = "You want me to make a #t" + item + "#? In that case, I'm going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+        var prompt = "你想要制作 #t" + item + "# 吗？这样的话，你需要备齐材料。另外，请保证有足够的包裹空间。#b";
         if (mats instanceof Array)
             for(var i = 0; i < mats.length; i++)
                 prompt += "\r\n#i"+mats[i]+"# " + matQty[i] + " #t" + mats[i] + "#";
@@ -164,7 +164,7 @@ function action(mode, type, selection) {
             return;
         }
         else if (cm.getMeso() < cost) {
-            cm.sendOk("I'm afraid you cannot afford my services.");
+            cm.sendOk("金币不足的话，我无法为你制作。");
             cm.dispose();
             return;
         }

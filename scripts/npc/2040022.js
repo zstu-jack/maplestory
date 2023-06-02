@@ -67,7 +67,7 @@ function action(mode, type, selection) {
         else
             stimulator = false;
         if (selectedType == 0) { //What's a stim?
-            cm.sendNext("A stimulator is a special potion that I can add into the process of creating certain items. It gives it stats as though it had dropped from a monster. However, it is possible to have no change, and it is also possible for the item to be below average. There's also a 10% chance of not getting any item when using a stimulator, so please choose wisely.")
+            cm.sendNext("辅助剂是一种用来在特定物品制作过程中添加的特殊药剂。它所能提供的属性与掉落来源相仿。不过有可能不发生变化，也有可能使产物品质变低。另外，有10%的概率令物品消失，所以请慎重选择使用。")
             cm.dispose();
         }
         else if (selectedType == 1){ //warrior weapon
@@ -79,7 +79,7 @@ function action(mode, type, selection) {
         }
         else if (selectedType == 2){ //bowman weapon
             selStr = "Very well, then which Bowman weapon shall I work on?#b";
-            weapon = new Array ("Ryden#k - Lv. 30 Bow#b","Red Viper#k - Lv. 35 Bow#b","Vaulter 2000#k - Lv. 40 Bow#b","Olympus#k - Lv. 50 Bow#b","Eagle Crow#k - Bowman Lv. 32#b","Heckler#k - Bowman Lv. 38#b","Silver Crow#k - Bowman Lv. 42#b","Rower#k - Bowman Lv. 50#b");
+            weapon = new Array ("Ryden#k - Lv. 30 Bow#b","Red Viper#k - Lv. 35 Bow#b","Vaulter 2000#k - Lv. 40 Bow#b","Olympus#k - Lv. 50 Bow#b","Eagle Crow#k - 弓箭手 等级.32#b","Heckler#k - 弓箭手 等级.38#b","Silver Crow#k - 弓箭手 等级.42#b","Rower#k - 弓箭手 等级.50#b");
         }
         else if (selectedType == 3){ //magician weapon
             selStr = "Very well, then which Magician weapon shall I work on?#b";
@@ -174,7 +174,7 @@ function action(mode, type, selection) {
             cost = costSet[selectedItem];
         }
 		
-        var prompt = "You want me to make a #t" + item + "#? In that case, I'm going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+        var prompt = "你想要制作 #t" + item + "# 吗？这样的话，你需要备齐材料。另外，请保证有足够的包裹空间。#b";
 
         if(stimulator){
             stimID = mats[0] - 998; //stim ID for a weapon = manual ID for weapon - 998

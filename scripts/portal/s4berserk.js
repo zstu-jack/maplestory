@@ -33,7 +33,7 @@ function enter(pi) {
             
             return true;
         } else {
-            pi.getPlayer().message("其它玩家已经入场。");
+            pi.getPlayer().message("其他玩家已经入场。");
             return false;
         }
     } else {

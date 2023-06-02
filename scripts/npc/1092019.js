@@ -38,7 +38,7 @@ var status;
 
 var seagullProgress;
 var seagullIdx = -1;
-var seagullQuestion = ["One day, I went to the ocean and caught 62 Octopi for dinner. But then some kid came by and gave me 10 Octopi as a gift! How many Octopi do I have then, in total?"];
+var seagullQuestion = ["ÓĞÒ»Ìì£¬ÎÒÈ¥º£±ß×½ÁË62Ö»ÕÂÓã×öÍí²Í¡£ÓÖÓĞÂ·¹ıµÄĞ¡º¢×ÓËÍ¸øÎÒ10Ö»ÕÂÓã¡£ÄÇÃ´ÎÒµ±Ê±Ò»¹²ÓµÓĞ¶àÉÙÖ»ÕÂÓãÄØ£¿"];
 var seagullAnswer = ["72"];
  
 function start() {
@@ -59,9 +59,9 @@ function action(mode, type, selection) {
                 else
                         status--;
     
-                if (status == 0) {    // missing script for skill test found thanks to Jadeâ„¢
+                if (status == 0) {    // missing script for skill test found thanks to Jadeâ„?
                         if (!cm.isQuestStarted(6400)) {
-                                cm.sendOk("Who are you talking to me? If you're just bored, go bother somebody else.");
+                                cm.sendOk("ÓĞÊÂÂğ£¿Èç¹ûÖ»ÊÇÎŞÁÄ£¬È¥ÕÒÆäËûÈË´î»°°É¡£");
                                 cm.dispose();
                         } else {
                                 seagullProgress = cm.getQuestProgressInt(6400, 1);
@@ -70,46 +70,46 @@ function action(mode, type, selection) {
                                         seagullIdx = Math.floor(Math.random() * seagullQuestion.length);
                                         
                                         // string visibility thanks to ProXAIMeRx & Glvelturall
-                                        cm.sendNext("Ok then! I'll give you the first question now! You better be ready because this one's a hard one. Even the seagulls here think this one's pretty tough. It's a pretty difficult problem.");
+                                        cm.sendNext("ºÃ£¬ÎÒÒª¸øÄã³öµÚÒ»µÀÌâÁË¡£ÄãÒª×öºÃĞÄÀí×¼±¸£¬ÕâµÀÌâ·Ç³£ÄÑ¡£¾ÍËãÊÇº£Å¸ÃÇÒ²»á¾õµÃËüÒì³£À§ÄÑ£¬ÄÑÒÔ½â´ğ¡£");
                                 } else if (seagullProgress == 1) {
-                                        cm.sendNext("Now~ Let's go onto the next question. This one is really difficult. I am going to have Bart help me on this one. You know Bart, right?");
+                                        cm.sendNext("ÏÖÔÚ~ÎÒÃÇÀ´¿´¿´ÏÂÒ»Ìâ¡£ÕâµÀÌâÕæµÄºÜÄÑ¡£ÎÒµÃÇë°ÍÌØÀ´Ğ­ÖúÒ»ÏÂ.ÄãÈÏÊ¶Ëû£¬¶Ô°É£¿");
                                 } else {
-                                        cm.sendNext("Ohhhh! Now that was impressive! I considered my test quite difficult, and for you to pass that... you are indeed an integral member of the Pirate family, and a friend of seagulls. We are now bonded by the mutual friendship that will last a lifetime! And, most of all, friends are there to help you out when you are in dire straits. If you are in a state of emergency, call us seagulls.");
+                                        cm.sendNext("Å¶Å¶Å¶Å¶£¡Õâ¿ÉÕæÊÇÁîÈË¾ªÌ¾¡£ÎÒÒÔÇ°¾õµÃÕâĞ©²âÊÔ·Ç³£À§ÄÑ£¬Äã²»Ì«¿ÉÄÜÍ¨¹ı...ÄãÈ·ÊµÊÇº£µÁÃÇ²»¿É»òÈ±µÄÒ»Ô±£¬º£Å¸ÃÇµÄºÃÅóÓÑ¡£ÎÒÃÇÏÖÔÚ½«±»Ò»ÉúÒ»ÊÀµÄÓÑÒê½ôÃÜÁª½áÔÚÒ»Æğ£¡×îÖØÒªµÄÊÇ£¬ÅóÓÑÖ®¼ä»áÔÚÎ£ÄÑÖ®¼Ê»¥ÏàÉì³öÔ®ÊÖ¡£Èç¹ûÄãÉí´¦Î£ÏÕÖ®ÖĞ£¬¾Íºô½Ğº£Å¸ÅóÓÑ°É¡£");
                                 }
                         }
                 } else if (status == 1) {
                         if (seagullProgress == 0) {
                                 cm.sendGetText(seagullQuestion[seagullIdx]);
                         } else if (seagullProgress == 1) {
-                                cm.sendNextPrev("I'm going to send you to an empty room in The Nautilus. You will see 9 Barts there. Hahaha~ Are they twins? No, no, certainly not. I've used a bit of magic for this test of will.");
+                                cm.sendNextPrev("ÎÒ»áËÍÄãÈ¥ÅµÌØÀÕË¹ºÅÉÏµÄÒ»¸ö¿Õ·¿¼ä¡£Äã»áÔÚÄÇÀï¿´µ½9¸ö°ÍÌØ¡£¹ş¹ş¹ş~ËûÃÇµ±È»²»»áÊÇ¶à°ûÌ¥ÁË¡£ÎÒÖ»ÊÇÓÃÁËÒ»µãĞ¡Ğ¡µÄÕÏÑÛ·¨À´²âÊÔÄãµÄÒâÖ¾Á¦¡£");
                         } else {
-                                cm.sendNextPrev("Notify us using the skill Air Strike, and we will be there to help you out, because that's what friends are for.\r\n\r\n  #s5221003#    #b#q5221003##k");
+                                cm.sendNextPrev("ÌáĞÑÎÒÃÇÊ¹ÓÃµØÌºÊ½¿ÕÏ®£¬ÎÒÃÇ¾Í»á°ïÖúÄã°İÍĞÀ§¾³£¬Õâ¾ÍÊÇÅóÓÑÖ®¼ä¸Ã×öµÄ¡£\r\n\r\n  #s5221003#    #b#q5221003##k");
                         }
                 } else if (status == 2) {
                         if (seagullIdx > -1) {
                                 var answer = cm.getText();
                                 if (answer == seagullAnswer[seagullIdx]) {
-                                        cm.sendNext("What! I can't believe how incredibly smart you are! Incredible! In the seagull world, that kind of intellingence would give you a Ph.D. and then some. You're really amazing... I can't believe it... I simply can't believe it!");
+                                        cm.sendNext("Ìì°¡£¬ÎÒÕæÊÇÎŞ·¨ÏëÏóÄãÓĞ¶à´ÏÃ÷£¬ÄÑÒÔÖÃĞÅ£¡ÔÚº£Å¸µÄÊÀ½çÀï£¬ÕâÑùµÄÖÇÁ¦×ã¹»ÄÃÏÂ²©Ê¿Ñ§Î»£¬ÉõÖÁ¸ü¶àµÄÈÙÓş¡£ÄãÕæÊÇÌ«°ôÁË...ÎŞ·¨ÏàĞÅ...ÎÒÊÇÔÚ×öÃÎÂğ£¿");
                                         cm.setQuestProgress(6400, 1, 1);
                                         cm.dispose();
                                 } else {
-                                        cm.sendOk("Hmm, that's not quite how I recall it. Try again!");
+                                        cm.sendOk("àÅ£¬ÎÒ¼ÇµÃºÃÏñ²»ÊÇÕâÃ´¶à£¬ÔÙÊÔÊÔ°É¡£");
                                         cm.dispose();
                                 }
                         } else if (seagullProgress != 2) {
-                                cm.sendNextPrev("Anyway, only one of 9 Barts is the real Bart. You know that Pirates are known for the strength of their friendships and camaraderie with their fellow pirates. If you're a true pirate, you should be able to find your own mate with ease. Alright then, I'll send you to the room where Bart is.");
+                                cm.sendNextPrev("×ÜÖ®£¬9¸ö°ÍÌØÖĞÖ»ÓĞÒ»¸öÊÇÕæµÄ¡£ÄãÒ²ÖªµÀ£¬º£µÁÃÇÒÔ»¥ÏàÖ®¼ä¼á¶¨²»ÒÆµÄÓÑÒêÓëî¿°í¶øÎÅÃûÓÚÊÀ¡£Èç¹ûÄãÊÇ¸öÕæÕıµÄº£µÁ£¬¾ÍÓ¦¸ÃÄÜ¹»ÇáËÉÕÒµ½ÄãµÄÍ¬°é¡£ÄÇÃ´£¬ÎÒ»áËÍÄãÈ¥°ÍÌØËùÔÚµÄ·¿¼ä¡£");
                         } else {
                                 //cm.gainExp(1000000);
                                 //cm.teachSkill(5221003, 0, 10, -1);
                                 //cm.forceCompleteQuest(6400);
 
-                                cm.sendNextPrev("You have met all my challenges, and passed! Good job!");
+                                cm.sendNextPrev("ÄãÍ¨¹ıÁËÎÒËùÓĞµÄ²âÑé£¬×öµÃºÜºÃ£¡");//ÔõÃ´°ÑµØÌºÊ½¿ÕÏ®½±Àø¸øÈ¡ÏûÁË£¬Õâ¸ö¶Ë×ö¹ı¼¼¸ÄÂğ£¿
                                 cm.dispose();
                         }
                 } else if (status == 3) {
                         var em = cm.getEventManager("4jaerial");
                         if(!em.startInstance(cm.getPlayer())) {
-                                cm.sendOk("Another player is already challenging the test in this channel. Please try another channel, or wait for the current player to finish.");
+                                cm.sendOk("±¾ÆµµÀÒÑ¾­ÓĞÆäËûÍæ¼ÒÕıÔÚ½øĞĞÌôÕ½¡£ÇëµÈ´ıÆäÍê³ÉÌôÕ½»òÇĞ»»ÖÁÆäËüÆµµÀ¡£");
                         }
                         
                         cm.dispose();

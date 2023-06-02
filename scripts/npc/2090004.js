@@ -52,7 +52,7 @@ function action(mode, type, selection) {
                         }
 		}
 		var selStr = "I am a man of many talents. Let me know what you'd like to do. #b"
-				var options = new Array("Make a medicine","Make a scroll","Donate medicine ingredients");
+				var options = new Array("制作medicine","制作scroll","Donate medicine ingredients");
 		for (var i = 0; i < options.length; i++){
 			selStr += "\r\n#L" + i + "# " + options[i] + "#l";
 		}
@@ -131,7 +131,7 @@ function action(mode, type, selection) {
                         else prompt += "\r\n#i"+mats+"# " + matQty*makeQty + " #t" + mats + "#";
                         
                         if (matMeso > 0)
-                                prompt += "\r\n#i4031138# " + matMeso*makeQty + " meso";
+                                prompt += "\r\n#i4031138# " + matMeso*makeqty + " 金币";
                         
                         cm.sendYesNo(prompt);
                 }

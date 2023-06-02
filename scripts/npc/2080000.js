@@ -64,7 +64,7 @@ function action(mode, type, selection) {
         else
             stimulator = false;
         if (selectedType == 0) { //What's a stim?
-            cm.sendNext("A stimulator is a special potion that I can add into the process of creating certain items. It gives it stats as though it had dropped from a monster. However, it is possible to have no change, and it is also possible for the item to be below average. There's also a 10% chance of not getting any item when using a stimulator, so please choose wisely.")
+            cm.sendNext("辅助剂是一种用来在特定物品制作过程中添加的特殊药剂。它所能提供的属性与掉落来源相仿。不过有可能不发生变化，也有可能使产物品质变低。另外，有10%的概率令物品消失，所以请慎重选择使用。")
             cm.dispose();
         } else if (selectedType == 1){ //warrior weapon
             var selStr = "Very well, then which Warrior weapon shall receive a dragon's power?#b";
@@ -163,7 +163,7 @@ function action(mode, type, selection) {
             cost = cd_cost;
         }
         
-        var prompt = "You want me to make a #t" + item + "#? In that case, I'm going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+        var prompt = "你想要制作 #t" + item + "# 吗？这样的话，你需要备齐材料。另外，请保证有足够的包裹空间。#b";
         if(stimulator){
             stimID = getStimID(item);
             prompt += "\r\n#i"+stimID+"# 1 #t" + stimID + "#";

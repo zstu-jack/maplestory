@@ -47,8 +47,8 @@ function action(mode, type, selection) {
     else
         cm.dispose();
     if (status == 0 && mode == 1) {
-        var selStr = "Hello there. I'm Orbis' number one glove maker. Would you like me to make you something?#b"
-        var options = new Array("Create or upgrade a Warrior glove","Create or upgrade a Bowman glove","Create or upgrade a Magician glove","Create or upgrade a Thief glove");
+        var selStr = "你好，我是天空之城首屈一指的手套匠人。需要我帮你制作手套吗？#b"
+        var options = new Array("制作/升级战士手套","制作/升级弓箭手手套","制作/升级法师手套","制作/升级飞侠手套");
         for (var i = 0; i < options.length; i++){
             selStr += "\r\n#L" + i + "# " + options[i] + "#l";
         }
@@ -58,36 +58,36 @@ function action(mode, type, selection) {
     else if (status == 1 && mode == 1) {
         selectedType = selection;
         if (selectedType == 0){ //warrior glove
-            var selStr = "Warrior glove? Okay, then which one?#b";
-            var gloves = new Array ("Bronze Husk#k - Warrior Lv. 70#b","Mithril Husk#k - Warrior Lv. 70#b","Dark Husk#k - Warrior Lv. 70#b",
-                "Sapphire Emperor#k - Warrior Lv. 80#b","Emerald Emperor#k - Warrior Lv. 80#b","Blood Emperor#k - Warrior Lv. 80#b","Dark Emperor#k - Warrior Lv. 80#b");
+            var selStr = "你想要制作哪种战士手套？#b";
+            var gloves = new Array ("青铜暗影手套#k - 战士 等级.70#b","锂矿暗影手套#k - 战士 等级.70#b","黑暗影手套#k - 战士 等级.70#b",
+                "马尔斯蓝拳套#k - 战士 等级.80#b","马尔斯绿拳套#k - 战士 等级.80#b","马尔斯红拳套#k - 战士 等级.80#b","马尔斯黑拳套#k - 战士 等级.80#b");
             for (var i = 0; i < gloves.length; i++){
                 selStr += "\r\n#L" + i + "# " + gloves[i] + "#l";
             }
             cm.sendSimple(selStr);
         }
         else if (selectedType == 1){ //bowman glove
-            var selStr = "Bowman glove? Okay, then which one?#b";
-            var gloves = new Array ("Blue Eyes#k - Bowman Lv. 70#b","Gold Eyes#k - Bowman Lv. 70#b","Dark Eyes#k - Bowman Lv. 70#b",
-                "Red Cordon#k - Bowman Lv. 80#b","Blue Cordon#k - Bowman Lv. 80#b","Green Cordon#k - Bowman Lv. 80#b","Dark Cordon#k - Bowman Lv. 80#b");
+            var selStr = "你想要制作哪种弓箭手手套？#b";
+            var gloves = new Array ("蓝神眼手套#k - 弓箭手 等级.70#b","黄金神眼手套#k - 弓箭手 等级.70#b","黑神眼手套#k - 弓箭手 等级.70#b",
+                "红天使手套#k - 弓箭手 等级.80#b","蓝天使手套#k - 弓箭手 等级.80#b","绿天使手套#k - 弓箭手 等级.80#b","黑天使手套#k - 弓箭手 等级.80#b");
             for (var i = 0; i < gloves.length; i++){
                 selStr += "\r\n#L" + i + "# " + gloves[i] + "#l";
             }
             cm.sendSimple(selStr);
         }
         else if (selectedType == 2){ //mage glove
-            var selStr = "Magician glove? Okay, then which one?#b";
-            var gloves = new Array ("Brown Lorin#k - Magician Lv. 70#b","Blue Lorin#k - Magician Lv. 70#b","Dark Lorin#k - Magician Lv. 70#b",
-                "Green Clarity#k - Magician Lv. 80#b","Blue Clarity#k - Magician Lv. 80#b","Dark Clarity#k - Magician Lv. 80#b");
+            var selStr = "你想要制作哪种法师手套？#b";
+            var gloves = new Array ("褐战魂手套#k - 法师 等级.70#b","蓝战魂手套#k - 法师 等级.70#b","黑战魂手套#k - 法师 等级.70#b",
+                "魔力绿手套#k - 法师 等级.80#b","魔力蓝手套#k - 法师 等级.80#b","魔力黑手套#k - 法师 等级.80#b");
             for (var i = 0; i < gloves.length; i++){
                 selStr += "\r\n#L" + i + "# " + gloves[i] + "#l";
             }
             cm.sendSimple(selStr);
         }
         else if (selectedType == 3){ //thief glove
-            var selStr = "Thief glove? Okay, then which one?#b";
-            var gloves = new Array ("Bronze Rover#k - Thief Lv. 70#b","Silver Rover#k - Thief Lv. 70#b","Gold Rover#k - Thief Lv. 70#b",
-                "Green Larceny#k - Thief Lv. 80#b","Purple Larceny#k - Thief Lv. 80#b","Dark Larceny#k - Thief Lv. 80#b");
+            var selStr = "你想要制作哪种飞侠手套？#b";
+            var gloves = new Array ("青铜名誉手套#k - 飞侠 等级.70#b","银名誉手套#k - 飞侠 等级.70#b","黄金名誉手套#k - 飞侠 等级.70#b",
+                "德古拉蓝手套#k - 飞侠 等级.80#b","德古拉紫手套#k - 飞侠 等级.80#b","德古拉红手套#k - 飞侠 等级.80#b");
             for (var i = 0; i < gloves.length; i++){
                 selStr += "\r\n#L" + i + "# " + gloves[i] + "#l";
             }
@@ -138,7 +138,7 @@ function action(mode, type, selection) {
             cost = costSet[selectedItem];
         }
 		
-        var prompt = "You want me to make a #t" + item + "#? In that case, I'm going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+        var prompt = "你想要制作 #t" + item + "# 吗？这样的话，你需要备齐材料。另外，请保证有足够的包裹空间。#b";
 
         if (mats instanceof Array){
             for(var i = 0; i < mats.length; i++){
@@ -164,7 +164,7 @@ function action(mode, type, selection) {
         }
         else if (cm.getMeso() < cost)
         {
-            cm.sendOk("I'm afraid you cannot afford my services.");
+            cm.sendOk("金币不足的话，我无法为你制作。");
             cm.dispose();
             return;
         }
@@ -180,7 +180,7 @@ function action(mode, type, selection) {
         }
 			
         if (!complete)
-            cm.sendOk("I'm afraid that substitute items are unacceptable, if you want your gloves made properly.");
+            cm.sendOk("如果想要一副合适的手套，就不能使用其它材料替代。");
         else {
             if (mats instanceof Array) {
                 for (var i = 0; i < mats.length; i++){
@@ -192,7 +192,7 @@ function action(mode, type, selection) {
 					
             cm.gainMeso(-cost);
             cm.gainItem(item, 1);
-            cm.sendOk("Done. If you need anything else, just ask again.");
+            cm.sendOk("完成了。如果你还需要其它的东西，再来找我就好。");
         }
         cm.dispose();
     }

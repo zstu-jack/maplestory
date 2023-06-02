@@ -125,7 +125,7 @@ function action(mode, type, selection) {
         }
                 
         if (cost > 0)
-            prompt += "\r\n#i4031138# " + cost * qty + " meso";
+            prompt += "\r\n#i4031138# " + cost * qty + " 金币";
                 
         cm.sendYesNo(prompt);
     }
@@ -171,7 +171,7 @@ function action(mode, type, selection) {
                 cm.gainMeso(-cost * qty);
             
             cm.gainItem(recvItem, recvQty);
-            cm.sendOk("All done. If you need anything else... Well, I'm not going anywhere.");
+            cm.sendOk("做好了。如果你还有别的需要...总之，我会一直呆这儿。");
         }
         cm.dispose();
     }

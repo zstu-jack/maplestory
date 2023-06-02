@@ -175,7 +175,7 @@ function action(mode, type, selection) {
             prompt += "\r\n#i"+mats+"# " + matQty * qty + " #t" + mats + "#";
         }
         if (cost > 0)
-            prompt += "\r\n#i4031138# " + cost * qty + " meso";
+            prompt += "\r\n#i4031138# " + cost * qty + " ½ð±Ò";
         cm.sendYesNo(prompt);
     }
     else if (status == 4 && mode == 1) {

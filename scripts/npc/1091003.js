@@ -19,8 +19,8 @@ function action(mode, type, selection) {
 	else
 		cm.dispose();
 	if (status == 0 && mode == 1) {
-		var selStr = "What? You want to make your own weapons and gloves? Seriously... it's tough to do it by yourself if you don't have experience... I'll help you out. I've been a pirate for 20 years, and for 20 years I have made various items for the crew here. It's easy for me.";
-		var options = new Array("Make a Knuckler","Make a Gun","Make a pair of gloves");
+		var selStr = "什么？你想自己制作武器和手套？不是开玩笑吗...如果没有经验的话，自己动手制作是很困难的...交给我这个有20年制作经验的老手吧。这对我来说再简单不过了。";
+		var options = new Array("制作拳甲","制作手枪","制作手套");
 		for (var i = 0; i < options.length; i++){
 			selStr += "\r\n#b#L" + i + "# " + options[i] + "#l#k";
 		}
@@ -30,8 +30,8 @@ function action(mode, type, selection) {
 	else if (status == 1 && mode == 1) {
 		selectedType = selection;
 		if (selectedType == 0){ //Making a Knuckler
-			var selStr = "As long as you bring in the materials required, I'll make you a fine Knuckler. Which Knuckler would you like to make?";
-			var knucklers = new Array("Leather Arms (Level limit: 15, Pirate)", "Double Tail Knuckler (Level limit: 20, Pirate)", "Norman Grip (Level limit: 25, Pirate)", "Prime Hands (Level limit: 30, Pirate)", "Silver Maiden (Level limit: 35, Pirate)", "Neozard (Level limit: 40, Pirate)", "Fury Claw (Level limit: 50, Pirate)");
+			var selStr = "只要你有所需的材料，我就可以为你制作上好的拳甲，你想制作哪种？";
+			var knucklers = new Array("拳甲 (等级限制：15级，海盗)", "格斗指虎 (等级限制：20级，海盗)", "三日月冲拳 (等级限制：25级，海盗)", "全覆式拳甲 (等级限制：30级，海盗)", "双翼拳甲 (等级限制：35级，海盗)", "刺棘拳甲 (等级限制：40级，海盗)", "蛇吻 (等级限制：50级，海盗)");
 			for (var i = 0; i < knucklers.length; i++){
 				selStr += "\r\n#b#L" + i + "# " + knucklers[i] + "#l#k";
 			}
@@ -39,8 +39,8 @@ function action(mode, type, selection) {
 			cm.sendSimple(selStr);
 		}
 		else if (selectedType == 1){ //Making a Gun
-			var selStr = "As long as you bring in the materials required, I'll make you a fine Gun. Which Gun would you like to make?";
-			var guns = new Array("Dellinger Special (Level limit: 15, Pirate)", "The Negotiator (Level limit: 20, Pirate)", "Golden Hook (Level limit: 25, Pirate)", "Cold Mind (Level limit: 30, Pirate)", "Shooting Star (Level limit: 35, Pirate)", "Lunar Shooter (Level limit: 40, Pirate)", "Mr. Rasfelt (Level limit: 50, Pirate)");
+			var selStr = "只要你有所需的材料，我就可以为你制作上好的手枪，你想制作哪种？";
+			var guns = new Array("单发手铳 (等级限制：15级，海盗)", "大型手铳 (等级限制：20级，海盗)", "突击手铳 (等级限制：25级，海盗)", "银枪 (等级限制：30级，海盗)", "红杰克 (等级限制：35级，海盗)", "黑郁金香 (等级限制：40级，海盗)", "金钱豹 (等级限制：50级，海盗)");
 			for (var i = 0; i < guns.length; i++){
 				selStr += "\r\n#b#L" + i + "# " + guns[i] + "#l#k";
 			}
@@ -48,8 +48,8 @@ function action(mode, type, selection) {
 			cm.sendSimple(selStr);
 		}
 		else if (selectedType == 2){ //Making a pair of pirate gloves
-			var selStr = "As long as you bring in the materials required, I'll make you a fine glove. Which glove would you like to make?";
-			var gloves = new Array ("Green Lagger Halfglove","Brown Leather Armour Glove","Hard Leather Glove","Yellow Tartis","Brown Jewelled","Brown Barbee","Brown Royce","Black Schult");
+			var selStr = "只要你有所需的材料，我就可以为你制作上好的手套，你想制作哪种？";
+			var gloves = new Array ("胶皮手套","皮腕轮","铜腕轮","摸鱼手","鲨皮手套","追命","幽明","搜魂");
 			for (var i = 0; i < gloves.length; i++){
 				selStr += "\r\n#b#L" + i + "# " + gloves[i] + "#l#k";
 			}
@@ -105,7 +105,7 @@ function action(mode, type, selection) {
 			levelLimit = levelLimitSet[selectedItem];
 		}
 			
-		prompt = "Making one #t" + item + "# requires the items listed below. The level limit for this item is " + levelLimit + ", so check and make sure you really need this item before getting it. What do you think? Do you really want one?\r\n";
+		prompt = "制作一件 #t" + item + "# 需要以下清单中列出的材料。这件物品的装备等级限制是" + levelLimit + "，请在制作前确定你真的需要它。怎么样，确定要制作吗？\r\n";
 		
 		if (mats instanceof Array){
 			for(var i = 0; i < mats.length; i++){
@@ -117,7 +117,7 @@ function action(mode, type, selection) {
 		}
 		
 		if (cost > 0)
-			prompt += "\r\n#i4031138# " + cost * qty + " meso";
+			prompt += "\r\n#i4031138# " + cost * qty + " 金币";
 		
 		cm.sendYesNo(prompt);
 	}
@@ -131,7 +131,7 @@ function action(mode, type, selection) {
                 }
 		else if (cm.getMeso() < cost * qty)
 			{
-				cm.sendNext("Check and make sure you have all the necessary items to make this. Also, make sure your Equips inventory has room. I can't give you the item if your inventory is full, you know.");
+				cm.sendNext("请确保你拥有制作道具所需的一切材料。另外，要保证装备栏的空间足够。如果装备栏已满，我将无法为你制作。");
                                 cm.dispose();
                                 return;
 			}
@@ -177,7 +177,7 @@ function action(mode, type, selection) {
 			}
 			
 			if (pass == false) 
-				cm.sendNext("Check and make sure you have all the necessary items to make this. Also, make sure your Equips inventory has room. I can't give you the item if your inventory is full, you know.");
+				cm.sendNext("请确保你拥有制作道具所需的一切材料。另外，要保证装备栏的空间足够。如果装备栏已满，我将无法为你制作。");
 			else {
 				if (mats instanceof Array) {
 					for (var i = 0; i < mats.length; i++){
@@ -194,7 +194,7 @@ function action(mode, type, selection) {
 					cm.gainItem(4003000, 15 * qty);
 				else
 					cm.gainItem(item, qty);
-				cm.sendOk("All done. If you need anything else... Well, I'm not going anywhere.");
+				cm.sendOk("做好了。如果你还有别的需要...总之，我会一直呆这儿。");
 			}
 		cm.dispose();
 	}
