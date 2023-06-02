@@ -61,7 +61,7 @@ function action(mode, type, selection) {
                                                 cm.getPlayer().announce(MaplePacketCreator.showEffect("quest/party/wrong_kor"));
                                                 cm.getPlayer().announce(MaplePacketCreator.playSound("Party1/Failed"));
 
-                                                cm.message("You've missed the note... Start over again.");
+                                                cm.message("你弹错了音符...从头再来吧。");
                                         } else {
                                                 nextNote = harpSong[idx + 1];
 
@@ -69,7 +69,7 @@ function action(mode, type, selection) {
                                                         idx++;
 
                                                         if(idx == 45) {     // finished lullaby
-                                                                cm.message("Twinkle, twinkle, little star, how I wonder what you are.");
+                                                                cm.message("一闪一闪亮晶晶，漫天都是小星星。");
                                                                 cm.setQuestProgress(3114, 42);
 
                                                                 cm.getPlayer().announce(MaplePacketCreator.showEffect("quest/party/clear"));
@@ -79,11 +79,11 @@ function action(mode, type, selection) {
                                                                 return;
                                                         } else {
                                                                 if(idx == 14) {
-                                                                        cm.message("Twinkle, twinkle, little star, how I wonder what you are!");
+                                                                        cm.message("一闪一闪亮晶晶，漫天都是小星星...");
                                                                 } else if(idx == 22) {
-                                                                        cm.message("Up above the world so high,");
+                                                                        cm.message("挂在天上放光明...");
                                                                 } else if(idx == 30) {
-                                                                        cm.message("like a diamond in the sky.");
+                                                                        cm.message("好像许多小眼睛...");
                                                                 }
                                                         }
                                                 }
