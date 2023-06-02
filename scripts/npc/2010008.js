@@ -25,7 +25,7 @@ var status = 0;
 var sel;
 
 function start() {
-    cm.sendSimple("What would you like to do?\r\n#b#L0#Create/Change your Guild Emblem#l#k");
+    cm.sendSimple("你好，我是蕾雅，负责公会标志的相关业务。\r\n#b#L0#制作/更改公会标志。#l#k");
 }
 
 function action(mode, type, selection) {
@@ -37,9 +37,9 @@ function action(mode, type, selection) {
             sel = selection;
             if (sel == 0) {
                 if (cm.getPlayer().getGuildRank() == 1)
-                    cm.sendYesNo("Creating or changing Guild Emblem costs #b 5000000 mesos#k, are you sure you want to continue?");
+                    cm.sendYesNo("制作或更改公会标志需要花费#b 5,000,000 金币#k，是否继续？");
                 else
-                    cm.sendOk("You must be the Guild Leader to change the Emblem. Please tell your leader to speak with me.");
+                    cm.sendOk("只有族长才能更改家族标志。请转告你的族长，让他亲自来找我。");
             }
         }
         else if (status == 2 && sel == 0) {

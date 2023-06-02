@@ -46,7 +46,7 @@ function action(mode, type, selection) {
         if(selection == 1)
             cm.sendYesNo("你有#b自由旅行券#k？那就可以随时使用它前往黄金海岸。不过要小心，那附近也是有怪物的。那么，现在要前往黄金海岸吗？");
         else if (selection == 2)
-            cm.sendNext("你一定很好奇 #b自由旅行券！#k 是什么。哈哈，这也难怪。拥有自由旅行券的话，就可以免费前往黄金海岸。这东西珍贵又抢手，我好不容易才买到一张。但之前不小心弄丢了。");
+            cm.sendNext("你一定很好奇 #b自由旅行券#k 是什么。哈哈，这也难怪。拥有自由旅行券的话，就可以免费前往黄金海岸。这东西珍贵又抢手，我好不容易才买到一张。但之前不小心弄丢了。");
     } else if (status == 2){
         if(type != 1 && selection != 0) {
             cm.sendNextPrev("弄丢它以后回来时，感觉真是糟透了。希望捡到它的人能妥善保管。总之，我的故事就是这样了，如果你捡到了它，就好好使用。还有什么问题的话，尽管来找我问。");
@@ -55,7 +55,7 @@ function action(mode, type, selection) {
             if (cm.getMeso() < 1500 && selection == 0)
                 cm.sendNext("你的金币不足。");
             else if(!cm.haveItem(4031134) && selection != 0){
-                cm.sendNext("你的#b自由旅行券。\r\n#k在哪里，是不是丢在哪里？再去找找吧。");
+                cm.sendNext("你的#b自由旅行券\r\n#k 在哪儿？是不是弄丢了？好好找找吧。");
             }else{
                 if(selection == 0)
                     cm.gainMeso(-1500);

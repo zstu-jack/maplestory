@@ -27,9 +27,9 @@
 
 function start() {
     if (cm.haveItem(4001020))
-        cm.sendYesNo("You can use #bEos Rock Scroll#k to activate #bFourth Eos Rock#k. Will you head over to #bThird Eos Rock#k at the 41st floor?");
+        cm.sendYesNo("可以使用 #b魔法石觉醒卷轴（玩具塔）#k 来激活 #b第四个玩具塔石#k。你想要传送到 #b第三个玩具塔石#k 所在的41层吗？");
     else {
-        cm.sendOk("There's a rock that will enable you to teleport to #bThird Eos Rock#k, but it cannot be activated without the scroll.");
+        cm.sendOk("这块魔法石可以将你传送到 #b第三个玩具塔石#k，但必须要用魔法石觉醒卷轴（玩具塔）来激活。");
         cm.dispose();
     }
 }

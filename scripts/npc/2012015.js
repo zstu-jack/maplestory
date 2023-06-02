@@ -33,9 +33,9 @@
 
 function start() {
     if (cm.haveItem(4001019))
-        cm.sendYesNo("You can use #b#t4001019##k to activate #b#p2012014##k. Will you teleport to where #b#p2012015##k is?");
+        cm.sendYesNo("可以使用#b#t4001019##k 来激活 #b#p2012014##k。你想要传送到 #b#p2012015##k 所在的地方吗？");
     else {
-        cm.sendOk("There's a #b#p2012015##k that'll enable you to teleport to where #b#p2012014##k is, but you can't activate it without the scroll.");
+        cm.sendOk("这块 #b#p2012015##k 可以将你传送到 #b#p2012014##k 所在的地方，但必须要用魔法石觉醒卷轴（通天塔）来激活。");
         cm.dispose();
     }
 }

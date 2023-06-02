@@ -29,9 +29,9 @@ var map;
 
 function start() {
     if (cm.haveItem(4001020)) {
-        cm.sendSimple("You can use #bEos Rock Scroll#k to activate #bThird Eos Rock#k. Which of these rocks would you like to teleport to?#b\r\n#L0#Second Eos Rock (71st Floor)#l\r\n#L1#Fourth Eos Rock (1st Floor)#l");
+        cm.sendSimple("可以使用 #b魔法石觉醒卷轴（玩具塔）#k 来激活 #b第三个玩具塔石#k。你想要传送到哪块玩具塔石？#b\r\n#L0#第二块玩具塔石 (71层)#l\r\n#L1#第四块玩具塔石 (1层)#l");
     } else {
-        cm.sendOk("There's a rock that will enable you to teleport to #bSecond Eos Rock or Fourth Eos Rock#k, but it cannot be activated without the scroll.");
+        cm.sendOk("这块魔法石可以将你传送到 #b第一个或第三个玩具塔石#k，但必须要用魔法石觉醒卷轴来激活。");
         cm.dispose();
     }
 }
@@ -43,10 +43,10 @@ function action(mode, type, selection) {
         status++;
         if (status == 1) {
             if (selection == 0) {
-                cm.sendYesNo("You can use #bEos Rock Scroll#k to activate #bThird Eos Rock#k. Will you teleport to #bSecond Eos Rock#k at the 71st Floor?");
+                cm.sendYesNo("可以使用 #b魔法石觉醒卷轴（玩具塔）#k 来激活 #b第三个玩具塔石#k。你想要传送到 #b第二个玩具塔石#k 所在的71层吗？");
                 map = 221022900;
             } else {
-                cm.sendYesNo("You can use #bEos Rock Scroll#k to activate #bThird Eos Rock#k. Will you teleport to #bFourth Eos Rock#k at the 1st Floor?");
+                cm.sendYesNo("可以使用 #b魔法石觉醒卷轴（玩具塔）#k 来激活 #b第三个玩具塔石#k。你想要传送到 #b第四个玩具塔石#k 所在的1层吗？");
                 map = 221020000;
             }
         } else if (status == 2) {

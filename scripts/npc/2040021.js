@@ -68,17 +68,17 @@ function action(mode, type, selection) {
             cm.sendNext("辅助剂是一种用来在特定物品制作过程中添加的特殊药剂。它所能提供的属性与掉落来源相仿。不过有可能不发生变化，也有可能使产物品质变低。另外，有10%的概率令物品消失，所以请慎重选择使用。")
             cm.dispose();
         } else if (selectedType == 1){ //warrior shoe
-            selStr = "Warrior shoes? Sure thing, which kind?#b";
-            shoes = new Array ("Emerald Battle Grieve#k - 战士 等级.30#b","Mithril Battle Grieve#k - 战士 等级.30#b","Silver Battle Grieve#k - 战士 等级.30#b","Blood Battle Grieve#k - 战士 等级.30#b", "Steel Trigger#k - 战士 等级.35#b","Mithril Trigger#k - 战士 等级.35#b","Dark Trigger#k - 战士 等级.35#b", "Brown Jangoon Boots#k - 战士 等级.40#b","Maroon Jangoon Boots#k - 战士 等级.40#b","Blue Jangoon Boots#k - 战士 等级.40#b", "Emerald Hildon Boots#k - 战士 等级.50#b","Mithril Hildon Boots#k - 战士 等级.50#b","Orihalcon Hildon Boots#k - 战士 等级.50#b","Gold Hildon Boots#k - 战士 等级.50#b");;
+            selStr = "你想要制作哪种战士鞋子？#b";
+            shoes = new Array ("绿斗士鞋#k - 战士 等级.30#b","蓝斗士鞋#k - 战士 等级.30#b","银斗士鞋#k - 战士 等级.30#b","红斗士鞋#k - 战士 等级.30#b", "铁头皮鞋#k - 战士 等级.35#b","蓝铁头鞋#k - 战士 等级.35#b","黑铁头鞋#k - 战士 等级.35#b", "黄金月长靴#k - 战士 等级.40#b","紫金月鞋#k - 战士 等级.40#b","蓝金月鞋#k - 战士 等级.40#b", "祖母绿将军靴#k - 战士 等级.50#b","锂矿蓝将军靴#k - 战士 等级.50#b","紫矿将军靴#k - 战士 等级.50#b","黄金将军靴#k - 战士 等级.50#b");;
         } else if (selectedType == 2){ //bowman shoe
-            selStr = "Bowman shoes? Sure thing, which kind?#b";
-            shoes = new Array ("Red Hunter Boots#k - 弓箭手 等级.30#b","Blue Hunter Boots#k - 弓箭手 等级.30#b","Green Hunter Boots#k - 弓箭手 等级.30#b","Black Hunter Boots#k - 弓箭手 等级.30#b", "Brown Hunter Boots#k - 弓箭手 等级.30#b","Blue Silky Boots#k - 弓箭手 等级.35#b","Green Silky Boots#k - 弓箭手 等级.35#b","Red Silky Boots#k - 弓箭手 等级.35#b", "Red Pierre Shoes#k - 弓箭手 等级.40#b","Yellow Pierre Shoes#k - 弓箭手 等级.40#b","Brown Pierre Shoes#k - 弓箭手 等级.40#b","Blue Pierre Shoes#k - 弓箭手 等级.40#b", "Brown Steel-Tipped Boots#k - 弓箭手 等级.50#b","Green Steel-Tipped Boots#k - 弓箭手 等级.50#b","Blue Steel-Tipped Boots#k - 弓箭手 等级.50#b","Purple Steel-Tipped Boots#k - 弓箭手 等级.50#b");
+            selStr = "你想要制作哪种弓箭手鞋子？#b";
+            shoes = new Array ("红打猎鞋#k - 弓箭手 等级.30#b","蓝打猎鞋#k - 弓箭手 等级.30#b","绿打猎鞋#k - 弓箭手 等级.30#b","黑打猎鞋#k - 弓箭手 等级.30#b", "褐打猎鞋#k - 弓箭手 等级.30#b","蓝锦丝鞋#k - 弓箭手 等级.35#b","绿锦丝鞋#k - 弓箭手 等级.35#b","红锦丝鞋#k - 弓箭手 等级.35#b", "红精灵鞋#k - 弓箭手 等级.40#b","黄精灵鞋#k - 弓箭手 等级.40#b","褐精灵鞋#k - 弓箭手 等级.40#b","蓝精灵鞋#k - 弓箭手 等级.40#b", "褐空空鞋#k - 弓箭手 等级.50#b","绿空空鞋#k - 弓箭手 等级.50#b","蓝空空鞋#k - 弓箭手 等级.50#b","紫空空鞋#k - 弓箭手 等级.50#b");
         } else if (selectedType == 3){ //magician shoe
-            selStr = "Magician shoes? Sure thing, which kind?#b";
-            shoes = new Array ("Red Magicshoes#k - 法师 等级.30#b","Blue Magicshoes#k - 法师 等级.30#b","White Magicshoes#k - 法师 等级.30#b","Black Magicshoes#k - 法师 等级.30#b","Purple Salt Shoes#k - 法师 等级.35#b","Red Salt Shoes#k - 法师 等级.35#b","Black Salt Shoes#k - 法师 等级.35#b","Red Moon Shoes#k - 法师 等级.40#b","Blue Moon Shoes#k - 法师 等级.40#b","Gold Moon Shoes#k - 法师 等级.40#b","Dark Moon Shoes#k - 法师 等级.40#b", "Pink Goldwind Shoes#k - 法师 等级.50#b","Blue Goldwind Shoes#k - 法师 等级.50#b","Purple Goldwind Shoes#k - 法师 等级.50#b","Green Goldwind Shoes#k - 法师 等级.50#b");
+            selStr = "你想要制作哪种法师鞋子？#b";
+            shoes = new Array ("红魔法鞋#k - 法师 等级.30#b","蓝魔法鞋#k - 法师 等级.30#b","白魔法鞋#k - 法师 等级.30#b","黑魔法鞋#k - 法师 等级.30#b","紫守护鞋#k - 法师 等级.35#b","红守护鞋#k - 法师 等级.35#b","黑守护鞋#k - 法师 等级.35#b","红月鞋#k - 法师 等级.40#b","蓝月鞋#k - 法师 等级.40#b","黄金月鞋#k - 法师 等级.40#b","黑月鞋#k - 法师 等级.40#b", "粉红黄金风#k - 法师 等级.50#b","蓝黄金风#k - 法师 等级.50#b","紫黄金风#k - 法师 等级.50#b","绿黄金风#k - 法师 等级.50#b");
         } else if (selectedType == 4){ //thief shoe
-            selStr = "Thief shoes? Sure thing, which kind?#b";
-            shoes = new Array ("Bronze Chain Boots#k - 飞侠 等级.30#b","Iron Chain Boots#k - 飞侠 等级.30#b","Silver Chain Boots#k - 飞侠 等级.30#b","Gold Chain Boots#k - 飞侠 等级.30#b", "Red White-Line Boots#k - 飞侠 等级.35#b","Green White-Line Boots#k - 飞侠 等级.35#b","Blue White-Line Boots#k - 飞侠 等级.35#b", "Black Red-Lined Shoes#k - 飞侠 等级.40#b","Black Green-Lined Shoes#k - 飞侠 等级.40#b","Black Yellow-Lined Shoes#k - 飞侠 等级.40#b","Black Blue-Lined Shoes#k - 飞侠 等级.40#b","Blue Goni Shoes#k - 飞侠 等级.50#b","Red Goni Shoes#k - 飞侠 等级.50#b","Green Goni Shoes#k - 飞侠 等级.50#b","Purple Goni Shoes#k - 飞侠 等级.50#b");
+            selStr = "你想要制作哪种飞侠鞋子？#b";
+            shoes = new Array ("青铜链鞋#k - 飞侠 等级.30#b","钢铁链鞋#k - 飞侠 等级.30#b","银链鞋#k - 飞侠 等级.30#b","金链鞋#k - 飞侠 等级.30#b", "红杨柳鞋#k - 飞侠 等级.35#b","绿杨柳鞋#k - 飞侠 等级.35#b","蓝杨柳鞋#k - 飞侠 等级.35#b", "红流星鞋#k - 飞侠 等级.40#b","绿流星鞋#k - 飞侠 等级.40#b","黄流星鞋#k - 飞侠 等级.40#b","蓝流星鞋#k - 飞侠 等级.40#b","蓝雷电鞋#k - 飞侠 等级.50#b","红雷电鞋#k - 飞侠 等级.50#b","绿雷电鞋#k - 飞侠 等级.50#b","紫雷电鞋#k - 飞侠 等级.50#b");
         }	
         if (selectedType != 0) {
             for (var i = 0; i < shoes.length; i++)
@@ -199,13 +199,13 @@ function action(mode, type, selection) {
                 var deleted = Math.floor(Math.random() * 10);
                 if (deleted != 0) {
                     cm.gainItem(item, 1, true, true);
-                    cm.sendOk("There, the shoes are ready. Be careful, they're still hot.");
+                    cm.sendOk("给，鞋子做好了。小心些，他们还在发烫。");
                 } else {
                     cm.sendOk("咦！是不是辅助剂加多了...呃，看起来这坨东西已经不能用了。抱歉，但我是不会给你退款的。");
                 }
             } else  {
                 cm.gainItem(item, 1);
-                cm.sendOk("There, the shoes are ready. Be careful, they're still hot.");
+                cm.sendOk("给，鞋子做好了。小心些，他们还在发烫。");
             }
         }
         cm.dispose();

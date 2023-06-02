@@ -27,7 +27,7 @@ var access = false;
 var status = 0;
 
 function start() {
-    cm.sendSimple("Have you heard of the beach with a spectacular view of the ocean called #b#m110000000##k, located a little far from #m"+cm.getPlayer().getMapId()+"#? I can take you there right now for either #b"+pay+" mesos#k, or if you have #b#t"+ticket+"##k with you, in which case you'll be in for free.\r\n\r\n#L0##bI'll pay "+pay+" mesos.#k#l\r\n#L1##bI have #t"+ticket+"##k#l\r\n#L2##bWhat is #t"+ticket+"#?#k#l");
+    cm.sendSimple("你听说过有拥有令人流连忘返的美景的那片 #b#m110000000##k 吗？离这里 #m"+cm.getPlayer().getMapId()+"# 虽然稍稍有些遥远，不过只要支付 #b"+pay+" 金币#k或使用 #b#t"+ticket+"##k，我就可以送你去那里。\r\n\r\n#L0##b我愿意付 "+pay+" 金币。#k#l\r\n#L1##b我有 #t"+ticket+"#。#k#l\r\n#L2##b什么是 #t"+ticket+"#？#k#l");
 }
 
 function action(mode, type, selection) {
@@ -39,7 +39,7 @@ function action(mode, type, selection) {
             return;
         } 
 		if (mode == 0 && status == 1) {
-            cm.sendNext("You must have some buiness to take care of here. You must be tired from all that traveling and hunting. Go take some rest, and if you feel like changing your mind, then come talk to me.");
+            cm.sendNext("你在这里还有些事情要处理吗？看起来你最近疲于旅行和打猎了。稍作休息后如果改变了主意，就来找我谈谈。");
             cm.dispose();
             return;
         }
@@ -51,18 +51,18 @@ function action(mode, type, selection) {
             if (selection == 0 || selection == 1) {
                 check = selection;
                 if (selection == 0)
-                    msg = "You want to pay #b"+pay+" mesos#k and leave for #m110000000#?";
+                    msg = "要支付 #b"+pay+" 金币#k 前往 #m110000000#吗？";
                 else if (selection == 1)
-                    msg = "So you have #b#t"+ticket+"##k? You can always head over to #m110000000# with that.";
-                cm.sendYesNo(msg+" Okay!! Please beware that you may be running into some monsters around there though, so make sure not to get caught off-guard. Okat, would you like to head over to #m110000000# right now?");
+                    msg = "你有 #b#t"+ticket+"##k ？那样的话，你可以随时使用它免费前往 #m110000000#。";
+                cm.sendYesNo(msg+"不过要小心，那附近也是有怪物的。那么，现在要前往 #m110000000# 吗？");
             } else if (selection == 2) {
-                cm.sendNext("You must be curious about #b#t"+ticket+"##k. Yeah, I can see that. #t"+ticket+"# is an item where as long as you have in possession, you may make your way to #m110000000# for free. It's such a rare item that even we had to buy those, but unfortunately I lost mine a few weeks ago during a long weekend.");
+                cm.sendNext("你一定很好奇 #b#t"+ticket+"##k 是什么。哈哈，这也难怪。拥有 #b#t"+ticket+"##k 的话，就可以免费前往黄金海岸。这东西珍贵又抢手，我好不容易才买到一张。但之前不小心弄丢了。");
                 status = 3;
             }
         } else if (status == 2) {
             if (check == 0) {
                 if (cm.getPlayer().getMeso() < pay) {
-                    cm.sendOk("I think you're lacking mesos. There are many ways to gather up some money, you know, like ... selling your armor ... defeating the monsters ... doing quests ... you know what I'm talking about.");
+                    cm.sendOk("你的金币不足。");
                     cm.dispose();
                 } else {
                     cm.gainMeso(-pay);
@@ -70,7 +70,7 @@ function action(mode, type, selection) {
                 }
             } else if (check == 1) {
                 if (!cm.haveItem(ticket)) {
-                    cm.sendOk("Hmmm, so where exactly is #b#t"+ticket+"##k?? Are you sure you have them? Please double-check.");
+                    cm.sendOk("你的 #b#t"+ticket+"##k 在哪儿？是不是弄丢了？好好找找吧。");
                     cm.dispose();
                 } else
                     access = true;
@@ -81,9 +81,9 @@ function action(mode, type, selection) {
                 cm.dispose();
             }
         } else if (status == 3)
-            cm.sendNext("You must be curious about #b#t"+ticket+"##k. Yeah, I can see that. #t"+ticket+"# is an item where as long as you have in possession, you may make your way to #m110000000# for free. It's such a rare item that even we had to buy those, but unfortunately I lost mine a few weeks ago during a long weekend.");
+            cm.sendNext("你一定很好奇 #b#t"+ticket+"##k 是什么。哈哈，这也难怪。拥有 #b#t"+ticket+"##k 的话，就可以免费前往黄金海岸。这东西珍贵又抢手，我好不容易才买到一张。但之前不小心弄丢了。");
         else if (status == 4)
-            cm.sendPrev("I came back without it, and it just feels awful not having it. Hopefully someone picked it up and put it somewhere safe. Anyway this is my story and who knows, you may be able to pick it up and put it to good use. If you have any questions, feel free to ask");
+            cm.sendPrev("弄丢它以后回来时，感觉真是糟透了。希望捡到它的人能妥善保管。总之，我的故事就是这样了，如果你捡到了它，就好好使用。还有什么问题的话，尽管来找我问。");
         else if (status == 5)
             cm.dispose();
     }
