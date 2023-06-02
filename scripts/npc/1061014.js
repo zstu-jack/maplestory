@@ -34,10 +34,10 @@ var player;
 var em;
 var exped = MapleExpeditionType.BALROG_NORMAL;
 var expedName = "Balrog";
-var expedBoss = "Balrog";
-var expedMap = "Balrog's Tomb";
+var expedBoss = "蝙蝠怪";
+var expedMap = "蝙蝠怪的墓地";
 
-var list = "你有什么事吗？#b\r\n\r\n#L1#确认目前的远征队成员。#l\r\n#L2#挑战蝙蝠魔 - 入场#l\r\n#L3#取消远征队登记。#l";
+var list = "你有什么事吗？#b\r\n\r\n#L1#确认目前的远征队成员。#l\r\n#L2#挑战蝙蝠怪 - 入场#l\r\n#L3#取消远征队登记。#l";
 
 function start() {
     action(1, 0, 0);

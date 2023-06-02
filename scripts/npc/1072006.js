@@ -55,10 +55,10 @@ function action(mode, type, selection) {
                 if(status == 0) {
                     if (cm.haveItem(4031013,30)) {
                         completed = true;
-                        cm.sendOk("You're a true hero! Take this and Athena will acknowledge you.");
+                        cm.sendOk("你真是个了不起的家伙！拿着它去找赫丽娜，她会告诉你接下来怎么做。");
                     } else {
                         completed = false;
-                        cm.sendSimple("You will have to collect me #b30 #t4031013##k. Good luck. \r\n#b#L1#I would like to leave#l");
+                        cm.sendSimple("需要收集#b30个 #t4031013##k。祝你好运。 \r\n#b#L1#我想要现在离开。#l");
                     }
                 } else if(status == 1) {
                     if(completed) {

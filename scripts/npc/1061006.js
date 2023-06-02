@@ -21,12 +21,12 @@
 */
 var status = 0;
 var zones = 0;
-var names = Array("沉睡森林1", "沉睡森林2", "沉睡森林3");
+var names = Array("沉睡森林1", "沉睡森林2", "沉睡森林3");//官方译名是（一层）（二层）（三层），但看起来这样更好，所以保留了
 var maps = Array(105040310, 105040312, 105040314);
 var selectedMap = -1;
 
 function start() {
-    cm.sendNext("你觉得周围的这尊雕像的神秘力量。");
+    cm.sendNext("把手放上去时，感受到雕像周围有一股神秘的力量。");//You feel a mysterious force surrounding this statue.林中经典沉睡石像
     if (cm.isQuestStarted(2054) || cm.isQuestCompleted(2054))
         zones = 3;
     else if (cm.isQuestStarted(2053) || cm.isQuestCompleted(2053))
@@ -42,7 +42,7 @@ function action(mode, type, selection) {
         cm.dispose();
     else {
         if (status >= 2 && mode == 0) {
-            cm.sendOk("好吧，下次再见。");
+            cm.sendOk("抽回手来，什么也没有发生。");//上下文对应
             cm.dispose();
             return;
         }
@@ -54,7 +54,7 @@ function action(mode, type, selection) {
             if (zones == 0)
                 cm.dispose();
             else {
-                var selStr = "它的力量让你沉醉在森林里。";
+                var selStr = "雕像的力量会将你送往森林深处。#b";
                 for (var i = 0; i < zones; i++)
                     selStr += "\r\n#L" + i + "#" + names[i] + "#l";
                 cm.sendSimple(selStr);

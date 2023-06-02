@@ -132,7 +132,7 @@ function action(mode, type, selection) {
                 }
 
                 if (cost > 0)
-                    prompt += "\r\n#i4031138# " + cost + " meso";
+                    prompt += "\r\n#i4031138# " + cost + " 金币";
 
                 cm.sendYesNo(prompt);
             }
@@ -141,7 +141,7 @@ function action(mode, type, selection) {
             var recvItem = item, recvQty = 1, qty = 1;
 
             if(!cm.canHold(recvItem, recvQty)) {
-                cm.sendOk("Check your inventory for a free slot first.");
+                cm.sendOk("请检查你的物品栏是否有足够空间。");
                 cm.dispose();
                 return;
             }

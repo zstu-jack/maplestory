@@ -54,7 +54,7 @@ function action(mode, type, selection) {
     			cm.dispose();
     			return;
     		} else {
-    			cm.sendOk("Blake可没说过你正在协助他.");  
+    			cm.sendOk("阿赫可没说过你正在协助他.");  
        		}
     	} else {
     		if (cm.isQuestCompleted(2290)) {

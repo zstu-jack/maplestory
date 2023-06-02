@@ -176,13 +176,13 @@ function action(mode, type, selection) {
             prompt += "\r\n#i"+mats+"# " + matQty + " #t" + mats + "#";
         }
         if (cost > 0)
-            prompt += "\r\n#i4031138# " + cost + " meso";
+            prompt += "\r\n#i4031138# " + cost + " 金币";
         cm.sendYesNo(prompt);
     } else if (status == 3) {
         var complete = true;
         
         if(!cm.canHold(item, 1)) {
-            cm.sendOk("Check your inventory for a free slot first.");
+            cm.sendOk("请检查你的物品栏是否有足够空间。");
             cm.dispose();
             return;
         }

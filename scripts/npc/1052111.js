@@ -30,15 +30,15 @@ function action(mode, type, selection){
 				if(!cm.hasItem(4032136)) {
 					if(cm.canHold(4032136)) {
 						cm.gainItem(4032136, 1);
-						cm.sendNext("你发现一个 #b#t4032136##k 在垃圾桶里!   #i4032136#");
+						cm.sendNext("你在垃圾桶里发现了一个#b#t4032136##k！  #i4032136#");//You have found a #b#t4032136##k in the trash can!   #i4032136#语序
 					} else {
-						cm.sendOk("#i4032136# 背包空间不够了。");
+						cm.sendOk("其它栏空间不足，装不下#i4032136#。");//Not enough space in your ETC inventory.（ETC是其它栏的意思）
 					}
 				} else {
-					cm.sendOk("那里只有一个垃圾桶。");
+					cm.sendOk("只是一个随处可见的垃圾桶。");//Just a trash can sitting there.结合上下文，只是一个随处可见的垃圾桶。
 				}
 			} else {
-				cm.sendOk("那里只有一个垃圾桶。");
+				cm.sendOk("只是一个随处可见的垃圾桶。");
 			}
 		} else if(status == 1){
 			cm.dispose();

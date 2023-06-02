@@ -46,25 +46,25 @@ function action(mode, type, selection) {
     
                 if(status == 0) {
                         if (cm.isQuestCompleted(100010)) {
-                            cm.sendOk("You're truly a hero!");
+                            cm.sendOk("真是了不起的家伙！");
                             cm.dispose();
                         } else if(cm.isQuestCompleted(100009)) {
-                            cm.sendNext("Alright I'll let you in! Defeat the monsters inside, collect 30 Dark Marbles, then strike up a conversation with a colleague of mine inside. He'll give you #bThe Proof of a Hero#k, the proof that you've passed the test. Best of luck to you.");
+                            cm.sendNext("好的，我允许你入内。打败里面的怪物并收集30颗黑珠，然后和我那位在里面的同僚对话。他会给你 #b英雄证书#k 作为通过测试的证明。祝你好运。");
                             status = 3;
                         } else if (cm.isQuestStarted(100009)) {
-                            cm.sendNext("Oh, isn't this a letter from the #bDark Lord#k?");
+                            cm.sendNext("喔，这不是 #b达克鲁#k 寄来的信件吗？");
                         } else {
-                            cm.sendOk("I can show you the way once your ready for it.");
+                            cm.sendOk("准备好后再与我对话，我会向你解释考试内容。");
                             cm.dispose();
                         }
                 }
                 
                 else if(status == 1)
-                    cm.sendNextPrev("So you want to prove your skills? Very well...");
+                    cm.sendNextPrev("想要证明自己的实力吗？很好...");
                 else if (status == 2)
-                    cm.sendAcceptDecline("I will give you a chance if you're ready.");
+                    cm.sendAcceptDecline("我会给你这个机会，希望你把握住。");
                 else if (status == 3) {
-                    cm.sendOk("You will have to collect me #b30 #t4031013##k. Good luck.");
+                    cm.sendOk("需要收集#b30个 #t4031013##k。祝你好运。");
                     cm.completeQuest(100009);
                     cm.startQuest(100010);
                     cm.gainItem(4031011, -1);

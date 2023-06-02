@@ -46,8 +46,8 @@ function action(mode, type, selection) {
     else
         cm.dispose();
     if (status == 0 && mode == 1) {
-        var selStr = "您好，我住在这里，但是不要低估了我。怎么样我帮你把你一双新鞋？#b"
-        var options = new Array("做一双剑士鞋子", "做一双弓箭手鞋子", "做一双法师鞋子", "做一双盗贼鞋子");
+        var selStr = "你好，可别因为我住在这种地方，就低估了我的技艺。让我来帮你制作一双新鞋怎么样？#b"
+        var options = new Array("制作战士鞋子","制作弓箭手鞋子","制作法师鞋子","制作飞侠鞋子");
         for (var i = 0; i < options.length; i++){
             selStr += "\r\n#L" + i + "# " + options[i] + "#l";
         }
@@ -59,7 +59,7 @@ function action(mode, type, selection) {
         var selStr;
         var shoes;
         if (selectedType == 0){ //warrior shoe
-            selStr = "你想要做什么的鞋子？？#b";
+            selStr = "你想制作哪种战士鞋子？#b";
             shoes = new Array ("银战斗鞋#k - 剑士 等级. 25#b", "金战斗鞋#k - 剑士 等级. 25#b", "黑战斗鞋#k - 剑士 等级. 25#b",
                 "绿斗士鞋#k - 剑士 等级. 30#b", "蓝斗士鞋#k - 剑士 等级. 30#b", "银斗士鞋#k - 剑士 等级. 30#b", "红斗士鞋#k - 剑士 等级. 30#b",
                 "铁头皮鞋#k - 剑士 等级. 35#b", "蓝铁头鞋#k - 剑士 等级. 35#b", "黑铁头鞋#k - 剑士 等级. 35#b",
@@ -68,7 +68,7 @@ function action(mode, type, selection) {
                 "蓝十字鞋#k - 剑士 等级. 60#b", "紫十字鞋#k - 剑士 等级. 60#b", "红十字鞋#k - 剑士 等级. 60#b");
         }
         else if (selectedType == 1){ //bowman shoe
-            selStr = "你需要哪款弓手鞋?#b";
+            selStr = "你想制作哪种弓箭手鞋子？#b";
             shoes = new Array ("#t1072027##k - 弓箭手 等级. 25#b", "#t1072034##k - 弓箭手 等级. 25#b", "#t1072069##k - 弓箭手 等级. 25#b",
                 "#t1072079##k - 弓箭手 等级. 30#b", "#t1072080##k - 弓箭手 等级. 30#b", "#t1072081##k - 弓箭手 等级. 30#b", "#t1072082##k - 弓箭手 等级. 30#b", "#t1072083##k - 弓箭手 等级. 30#b",
                 "#t1072101##k - 弓箭手 等级. 35#b", "#t1072102##k - 弓箭手 等级. 35#b", "#t1072103##k - 弓箭手 等级. 35#b",
@@ -76,7 +76,7 @@ function action(mode, type, selection) {
                 "#t1072122##k - 弓箭手 等级. 50#b", "#t1072123##k - 弓箭手 等级. 50#b", "#t1072124##k - 弓箭手 等级. 50#b", "#t1072125##k - 弓箭手 等级. 50#b",
                 "#t1072144##k - 弓箭手 等级. 60#b", "#t1072145##k - 弓箭手 等级. 60#b", "#t1072146##k - 弓箭手 等级. 60#b");
         }else if (selectedType == 2){ //magician shoe
-            selStr = "你需要哪款魔法师鞋?#b";
+            selStr = "你想制作哪种魔法师鞋子？#b";
             shoes = new Array ("#t1072019##k - 法师 等级. 20#b", "#t1072020##k - 法师 等级. 20#b", "#t1072021##k - 法师 等级. 20#b",
                 "#t1072072##k - 法师 等级. 25#b", "#t1072073##k - 法师 等级. 25#b", "#t1072074##k - 法师 等级. 25#b",
                 "#t1072075##k - 法师 等级. 30#b", "#t1072076##k - 法师 等级. 30#b", "#t1072077##k - 法师 等级. 30#b", "#t1072078##k - 法师 等级. 30#b",
@@ -85,7 +85,7 @@ function action(mode, type, selection) {
                 "#t1072140##k - 法师 等级. 50#b", "#t1072141##k - 法师 等级. 50#b", "#t1072142##k - 法师 等级. 50#b", "#t1072143##k - 法师 等级. 50#b",
                 "#t1072136##k - 法师 等级. 60#b", "#t1072137##k - 法师 等级. 60#b", "#t1072138##k - 法师 等级. 60#b", "#t1072139##k - 法师 等级. 60#b");
         }else if (selectedType == 3){ //thief shoe
-            selStr = "你需要哪款盗贼鞋??#b";
+            selStr = "你想制作哪种飞侠鞋子？#b";
             shoes = new Array ("#t1072084##k - 盗贼 等级. 25#b", "#t1072085##k - 盗贼 等级. 25#b", "#t1072086##k - 盗贼 等级. 25#b", "#t1072087##k - 盗贼 等级. 25#b",
                 "#t1072032##k - 盗贼 等级. 30#b", "#t1072033##k - 盗贼 等级. 30#b", "#t1072035##k - 盗贼 等级. 30#b", "#t1072036##k - 盗贼 等级. 30#b",
                 "#t1072104##k - 盗贼 等级. 35#b", "#t1072105##k - 盗贼 等级. 35#b", "#t1072106##k - 盗贼 等级. 35#b",
@@ -159,14 +159,14 @@ function action(mode, type, selection) {
         else
             prompt += "\r\n#i"+mats+"# " + matQty + " #t" + mats + "#";
         if (cost > 0)
-            prompt += "\r\n#i4031138# " + cost + " meso";
+            prompt += "\r\n#i4031138# " + cost + " 金币";
         cm.sendYesNo(prompt);
     }
     else if (status == 3 && mode == 1) {
         var complete = true;
         
         if(!cm.canHold(item, 1)) {
-            cm.sendOk("装备栏满啦。");
+            cm.sendOk("请检查你的物品栏是否有足够空间。");
             cm.dispose();
             return;
         }
@@ -186,7 +186,7 @@ function action(mode, type, selection) {
                 complete = false;
         }
         if (!complete)
-            cm.sendOk("很抱歉，你的材料不足，我无法帮你制作。");
+            cm.sendOk("很抱歉，每一样材料都是制作所必须的。请备齐材料再来。");
         else {
             if (mats instanceof Array) {
                 for (var i = 0; i < mats.length; i++)
@@ -196,7 +196,7 @@ function action(mode, type, selection) {
                 cm.gainItem(mats, -matQty);
             cm.gainMeso(-cost);
             cm.gainItem(item, 1);
-            cm.sendOk("制作完毕。看起来不赖。");
+            cm.sendOk("拿着，新鞋子做好了。");
         }
         cm.dispose();
     }

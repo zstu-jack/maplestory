@@ -125,7 +125,7 @@ function action(mode, type, selection) {
 		var pass = true;
 
                 if(!cm.canHold(item)) {
-                    cm.sendOk("Check your inventory for a free slot first.");
+                    cm.sendOk("请检查你的物品栏是否有足够空间。");
                     cm.dispose();
                     return;
                 }

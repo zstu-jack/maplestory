@@ -20,11 +20,11 @@ function action(mode, type, selection) {
     
                 if(status == 0){
                         if(cm.getEventInstance().isEventCleared()) {
-                                cm.sendOk("喔！居然打败了蝙蝠魔.");
+                                cm.sendOk("哇哦，居然打败了蝙蝠怪。");//之前说过这里是蝙蝠怪
                         } else if(cm.getPlayer().getMap().getCharacters().size() > 1) {
-                                cm.sendYesNo("你和你的伙伴都会离开，确定要放弃吗?");
+                                cm.sendYesNo("确定要离开这场战斗，丢下你的同伴独自面对吗？");//Are you really going to leave this battle and leave your fellow travelers to die?
                         } else {
-                                cm.sendYesNo("危险，如果你害怕的话，请远离此处。");
+                                cm.sendYesNo("如果你是个胆小鬼，就从这里出去吧。");//If you're a coward, you will leave.
                         }
                 } else if(status == 1){
                         if(cm.getEventInstance().isEventCleared()) {

@@ -24,7 +24,7 @@ function action(mode, type, selection) {
         status--;
     
         if(status == 0) {
-            cm.sendOk("那里只有一个垃圾桶。");
+            cm.sendOk("只是一个随处可见的垃圾桶。");
             cm.dispose();
         }
     }

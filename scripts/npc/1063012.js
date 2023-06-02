@@ -31,7 +31,7 @@ function activateShamanRock(slot,progress) {
         
         cm.setQuestProgress(2236, nextProgress);
         cm.gainItem(4032263, -1);
-        cm.sendOk("The seal took it's place, repelling the evil in the area.");
+        cm.sendOk("贴好道符后，这片区域的恶魔被驱逐了");
         return 1;
     }
     
