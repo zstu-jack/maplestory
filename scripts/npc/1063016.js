@@ -24,7 +24,7 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendYesNo("Will you exit this trial?");
+                        cm.sendYesNo("你要离开此处吗?");
                 } else {
                         cm.warp(105040201, 2);
                         cm.dispose();

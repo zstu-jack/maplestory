@@ -24,10 +24,10 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendYesNo("Ahead awaits the Master himself. Are you ready to face him?");
+                        cm.sendYesNo("你要去挑战人偶师BOSS吗？");
                 } else {
                         if(cm.getClient().getChannelServer().getMapFactory().getMap(925020010).getCharacters().size() > 0) {
-                            cm.sendOk("Someone is already challenging the Master. Try again later.");
+                            cm.sendOk("有玩家正在挑战，请稍后尝试进入。。。");
                         } else {
                             cm.getWarpMap(910510202).spawnMonsterOnGroundBelow(Packages.server.life.MapleLifeFactory.getMonster(9300346), new java.awt.Point(95, 200));
                             cm.warp(910510202, 0);

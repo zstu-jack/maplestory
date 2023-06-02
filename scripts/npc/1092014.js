@@ -4,7 +4,7 @@ var cost = [1000, 1000, 1000, 800, 1000];
 var selectedMap = -1;
 
 function start() {
-    cm.sendNext("你好，这里是诺特勒斯计程车。如果您想要安全便捷地前往其它城镇，就使用我们的服务吧。支付车费后，我们会准时将您送达目的地。");
+    cm.sendNext("你好，这里是诺特勒斯港口的出租车。如果您想要安全便捷地前往其它城镇，就使用我们的服务吧。支付车费后，我们会准时将您送达目的地。");
 }
 
 function action(mode, type, selection) {
