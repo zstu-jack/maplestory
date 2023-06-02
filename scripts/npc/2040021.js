@@ -39,8 +39,9 @@ var stimID = 4130001;
 
 function start() {
     cm.getPlayer().setCS(true);
-    var selStr = "Hello, and welcome to the Ludibrium Shoe Store. How can I help you today??#b"
-    var options = new Array("What's a stimulator?","Create Warrior shoes","Create Bowman shoes","Create Magician shoes","Create Thief shoes", "Create Warrior shoes with a Stimulator","Create Bowman shoes with a Stimulator","Create Magician shoes with a Stimulator","Create Thief shoes with a Stimulator");
+    var selStr = "你好，欢迎来到玩具城制鞋店。今天要我为你做些什么？#b"
+    var options = new Array("辅助剂是什么？","制作战士鞋子","制作弓箭手鞋子","制作法师鞋子","制作飞侠鞋子",
+    "使用辅助剂制作战士鞋子","使用辅助剂制作弓箭手鞋子","使用辅助剂制作法师鞋子","使用辅助剂制作飞侠鞋子");
     for (var i = 0; i < options.length; i++){
         selStr += "\r\n#L" + i + "# " + options[i] + "#l";
     }

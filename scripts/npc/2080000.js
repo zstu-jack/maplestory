@@ -37,7 +37,7 @@ var cd_cost = 25000;
 function start() {
     cm.getPlayer().setCS(true);
     var selStr = "A dragon's power is not to be underestimated. If you like, I can add its power to one of your weapons. However, the weapon must be powerful enough to hold its potential...#b"
-    var options = new Array("What's a stimulator?","Create a Warrior weapon","Create a Bowman weapon","Create a Magician weapon","Create a Thief weapon","Create a Pirate Weapon",
+    var options = new Array("辅助剂是什么？","Create a Warrior weapon","Create a Bowman weapon","Create a Magician weapon","Create a Thief weapon","Create a Pirate Weapon",
         "Create a Warrior weapon with a Stimulator","Create a Bowman weapon with a Stimulator","Create a Magician weapon with a Stimulator","Create a Thief weapon with a Stimulator","Create a Pirate Weapon with a Stimulator");
         
     if(cm.isQuestStarted(7301) || cm.isQuestStarted(7303)) options.push("Make #t4001078#");
@@ -68,36 +68,36 @@ function action(mode, type, selection) {
             cm.dispose();
         } else if (selectedType == 1){ //warrior weapon
             var selStr = "Very well, then which Warrior weapon shall receive a dragon's power?#b";
-            var weapon = new Array ("Dragon Carbella#k - Lv. 110 One-Handed Sword#b","Dragon Axe#k - Lv. 110 One-Handed Axe#b","Dragon Mace#k - Lv. 110 One-Handed BW#b","Dragon Claymore#k - Lv. 110 Two-Handed Sword#b","Dragon Battle Axe#k - Lv. 110 Two-Handed Axe#b","Dragon Flame#k - Lv. 110 Two-Handed BW#b",
-                "Dragon Faltizan#k - Lv. 110 Spear#b","Dragon Chelbird#k - Lv. 110 Polearm#b");
+            var weapon = new Array ("Dragon Carbella#k - 等级.110 单手剑#b","Dragon Axe#k - 等级.110 单手斧#b","Dragon Mace#k - 等级.110 单手钝器#b","Dragon Claymore#k - 等级.110 双手剑#b","Dragon Battle Axe#k - 等级.110 双手斧#b","Dragon Flame#k - 等级.110 双手钝器#b",
+                "Dragon Faltizan#k - 等级.110 Spear#b","Dragon Chelbird#k - 等级.110 矛#b");
             for (var i = 0; i < weapon.length; i++){
                 selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
             }
             cm.sendSimple(selStr);
         } else if (selectedType == 2){ //bowman weapon
             var selStr = "Very well, then which Bowman weapon shall receive a dragon's power?#b";
-            var weapon = new Array ("Dragon Shiner Bow#k - Lv. 110 Bow#b","Dragon Shiner Cross#k - Lv. 110 Crossbow#b");
+            var weapon = new Array ("Dragon Shiner Bow#k - 等级.110 弓#b","Dragon Shiner Cross#k - 等级.110 Crossbow#b");
             for (var i = 0; i < weapon.length; i++){
                 selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
             }
             cm.sendSimple(selStr);
         } else if (selectedType == 3){ //magician weapon
             var selStr = "Very well, then which Magician weapon shall receive a dragon's power?#b";
-            var weapon = new Array ("Dragon Wand#k - Lv. 108 Wand#b","Dragon Staff#k - Lv. 110 Staff#b");
+            var weapon = new Array ("Dragon Wand#k - 等级.108 短杖#b","Dragon Staff#k - 等级.110 长杖#b");
             for (var i = 0; i < weapon.length; i++){
                 selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
             }
             cm.sendSimple(selStr);
         } else if (selectedType == 4){ //thief weapon
             var selStr = "Very well, then which Thief weapon shall receive a dragon's power?#b";
-            var weapon = new Array ("Dragon Kanzir#k - Lv. 110 STR Dagger#b","Dragon Kreda#k - Lv. 110 LUK Dagger#b","Dragon Green Sleve#k - Lv. 110 Claw#b");
+            var weapon = new Array ("Dragon Kanzir#k - 等级.110 短刀（力）#b","Dragon Kreda#k - 等级.110 短刀（运）#b","Dragon Green Sleve#k - 等级.110 拳套#b");
             for (var i = 0; i < weapon.length; i++){
                 selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
             }
             cm.sendSimple(selStr);
         } else if (selectedType == 5){ //pirate weapon
             var selStr = "Very well, then which Pirate weapon shall receive a dragon's power?#b";
-            var weapon = new Array ("Dragon Slash Claw#k - Lv. 110 Knuckle#b","Dragonfire Revolver#k - Lv. 110 Gun#b");
+            var weapon = new Array ("Dragon Slash Claw#k - 等级.110 Knuckle#b","Dragonfire Revolver#k - 等级.110 Gun#b");
             for (var i = 0; i < weapon.length; i++){
                     selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
             }

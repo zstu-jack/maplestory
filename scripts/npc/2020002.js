@@ -47,8 +47,8 @@ function action(mode, type, selection) {
     else
         cm.dispose();
     if (status == 0 && mode == 1) {
-        var selStr = "Hello there. El Nath winters are incredibly cold, you're going to need a warm pair of shoes to survive.#b"
-        var options = new Array("Create Warrior shoes","Create Bowman shoes","Create Magician shoes","Create Thief shoes");
+        var selStr = "你好，冰峰雪域的冬天冷得要命，你肯定需要一双温暖的鞋子来抵御寒冷。#b"
+        var options = new Array("制作战士鞋子","制作弓箭手鞋子","制作法师鞋子","制作飞侠鞋子");
         for (var i = 0; i < options.length; i++){
             selStr += "\r\n#L" + i + "# " + options[i] + "#l";
         }
@@ -60,28 +60,28 @@ function action(mode, type, selection) {
         var selStr;
         var shoes;
         if (selectedType == 0){ //warrior shoes
-            selStr = "Warrior shoes? Okay, then which set?#b";
-            var shoes = new Array ("Sapphire Camel Boots#k - 战士 等级.60#b","Orihalcon Camel Boots#k - 战士 等级.60#b","Blood Camel Boots#k - 战士 等级.60#b",
-                "Blue Carzen Boots#k - 战士 等级.70#b","Purple Carzen Boots#k - 战士 等级.70#b","Dark Carzen Boots#k - 战士 等级.70#b",
-                "Red Rivers Boots#k - 战士 等级.80#b","Blue Rivers Boots#k - 战士 等级.80#b","Dark Rivers Boots#k - 战士 等级.80#b");
+            selStr = "你想要制作哪种战士鞋子？#b";
+            var shoes = new Array ("蓝十字鞋#k - 战士 等级.60#b","紫十字鞋#k - 战士 等级.60#b","红十字鞋#k - 战士 等级.60#b",
+                "蓝飞魂鞋#k - 战士 等级.70#b","紫飞魂鞋#k - 战士 等级.70#b","黑飞魂鞋#k - 战士 等级.70#b",
+                "红宝石靴#k - 战士 等级.80#b","蓝宝石靴#k - 战士 等级.80#b","黄宝石靴#k - 战士 等级.80#b");
         }
         else if (selectedType == 1){ //bowman shoes
-            selStr = "Bowman shoes? Okay, then which set?#b";
-            var shoes = new Array ("Red Gore Boots#k - 弓箭手 等级.60#b","Blue Gore Boots#k - 弓箭手 等级.60#b","Green Gore Boots#k - 弓箭手 等级.60#b",
-                "Blue Elf Boots#k - 弓箭手 等级.70#b","Beige Elf Boots#k - 弓箭手 等级.70#b","Green Elf Boots#k - 弓箭手 等级.70#b","Dark Elf Boots#k - 弓箭手 等级.70#b",
-                "Blue Wing Boots#k - 弓箭手 等级.80#b","Red Wing Boots#k - 弓箭手 等级.80#b","Green Wing Boots#k - 弓箭手 等级.80#b","Dark Wing Boots#k - 弓箭手 等级.80#b");
+            selStr = "你想要制作哪种弓箭手鞋子？#b";
+            var shoes = new Array ("紫花精鞋#k - 弓箭手 等级.60#b","蓝花精鞋#k - 弓箭手 等级.60#b","绿花精鞋#k - 弓箭手 等级.60#b",
+                "蓝箭魂鞋#k - 弓箭手 等级.70#b","黄箭魂鞋#k - 弓箭手 等级.70#b","绿箭魂鞋#k - 弓箭手 等级.70#b","黑箭魂鞋#k - 弓箭手 等级.70#b",
+                "蓝飞翼鞋#k - 弓箭手 等级.80#b","红飞翼鞋#k - 弓箭手 等级.80#b","绿飞翼鞋#k - 弓箭手 等级.80#b","黑飞翼鞋#k - 弓箭手 等级.80#b");
         }
         else if (selectedType == 2){ //mage shoes
-            selStr = "Magician shoes? Okay, then which set?#b";
-            var shoes = new Array ("Pink Goldrunners#k - 法师 等级.60#b","Green Goldrunners#k - 法师 等级.60#b","Orange Goldrunners#k - 法师 等级.60#b","Blue Goldrunners#k - 法师 等级.60#b",
-                "Blue Lapiz Sandals#k - 法师 等级.70#b","Red Lapiz Sandals#k - 法师 等级.70#b","Brown Lapiz Sandals#k - 法师 等级.70#b","Gold Lapiz Sandals#k - 法师 等级.70#b",
-                "Green Enigma Shoes#k - 法师 等级.80#b","Purple Enigma Shoes#k - 法师 等级.80#b","Dark Enigma Shoes#k - 法师 等级.80#b");
+            selStr = "你想要制作哪种法师鞋子？#b";
+            var shoes = new Array ("粉红天使靴#k - 法师 等级.60#b","绿天使靴#k - 法师 等级.60#b","黄天使靴#k - 法师 等级.60#b","蓝天使靴#k - 法师 等级.60#b",
+                "蓝水晶凉鞋#k - 法师 等级.70#b","红水晶凉鞋#k - 法师 等级.70#b","褐水晶凉鞋#k - 法师 等级.70#b","金水晶凉鞋#k - 法师 等级.70#b",
+                "绿密林之鞋#k - 法师 等级.80#b","紫密林之鞋#k - 法师 等级.80#b","黑密林之鞋#k - 法师 等级.80#b");
         }
         else if (selectedType == 3){ //thief shoes
-            selStr = "Thief shoes? Okay, then which set?#b";
-            var shoes = new Array ("Blood Moss Boots#k - 飞侠 等级.60#b","Gold Moss Boots#k - 飞侠 等级.60#b","Dark Moss Boots#k - 飞侠 等级.60#b",
-                "Purple Mystique Shoes#k - 飞侠 等级.70#b","Blue Mystique Shoes#k - 飞侠 等级.70#b","Red Mystique Shoes#k - 飞侠 等级.70#b",
-                "Green Pirate Boots#k - 飞侠 等级.80#b","Red Pirate Boots#k - 飞侠 等级.80#b","Dark Pirate Boots#k - 飞侠 等级.80#b");
+            selStr = "你想要制作哪种飞侠鞋子？#b";
+            var shoes = new Array ("红无痕之鞋#k - 飞侠 等级.60#b","金无痕之鞋#k - 飞侠 等级.60#b","黑无痕之鞋#k - 飞侠 等级.60#b",
+                "紫龙皮鞋#k - 飞侠 等级.70#b","蓝龙皮鞋#k - 飞侠 等级.70#b","红龙皮鞋#k - 飞侠 等级.70#b",
+                "绿飞影鞋#k - 飞侠 等级.80#b","红飞影鞋#k - 飞侠 等级.80#b","黑飞影鞋#k - 飞侠 等级.80#b");
         }
         for (var i = 0; i < shoes.length; i++){
             selStr += "\r\n#L" + i + "# " + shoes[i] + "#l";
@@ -178,7 +178,7 @@ function action(mode, type, selection) {
                 complete = false;
         }
         if (!complete)
-            cm.sendOk("I only make quality goods, which I cannot do without the proper materials.");
+            cm.sendOk("我只做质量上乘的东西，材料不对数是没法制作的。");
         else {
             if (mats instanceof Array)
                 for (var i = 0; i < mats.length; i++)
@@ -187,7 +187,7 @@ function action(mode, type, selection) {
                 cm.gainItem(mats, -matQty );
             cm.gainMeso(-cost);
             cm.gainItem(item, 1);
-            cm.sendOk("All done. Stay warm!");
+            cm.sendOk("做好了，它还微微发热呢。");
         }
         cm.dispose();
     }
