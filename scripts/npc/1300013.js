@@ -32,7 +32,7 @@ function action(mode, type, selection){
                 }
             
                 if(status == 0){
-                        cm.sendSimple("#L0#Enter to fight #bKing Pepe#k and #bYeti Brothers#k.#l\r\n#L1#Enter to fight #bPrime Minister#k.#l");
+                        cm.sendSimple("#L0#Enter to fight #bKing Pepe#k ºÍ #bYeti Brothers#k.#l\r\n#L1#Enter to fight #bPrime Minister#k.#l");
                 }
                 else if(status == 1){
                         if(selection == 0){
@@ -69,7 +69,7 @@ function action(mode, type, selection){
                 }
             
                 if(status == 0){
-                        cm.sendSimple("#L1#Enter to fight #bKing Pepe#k and #bYeti Brothers#k.#l");
+                        cm.sendSimple("#L1#Enter to fight #bKing Pepe#k ºÍ #bYeti Brothers#k.#l");
                 }
                 else if(status == 1){
                         if(selection == 1){
