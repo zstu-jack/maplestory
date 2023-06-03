@@ -76,8 +76,8 @@ function action(mode, type, selection){
 				cm.getPlayer().removePartyQuestItem("JBQ");
 			}
                         
-			if(Math.floor(cm.getJobId() / 10) == 31) cm.sendNext("You have officially become the #bRanger#k. One of the skills that you'll truly embrace is a skill called #bMortal Blow#k that allows Rangers to fire arrows from close-range. #bInferno#k allows Rangers to temporarily perform fire-based attacks on monsters, while skills like #bPuppet#k (summons a scarecrow which attracts the monsters' attention) and #bSilver Hawk#k (summons a Silver Hawk that attacks monsters) solidify the Bowman's status as a long-range attack extraordinaire.");
-                        else cm.sendNext("You have officially become the #bSniper#k. One of the skills that you'll truly embrace is a skill called #bMortal Blow#k that allows Snipers to fire arrows from close-range. #bBlizzard#k allows Snipers to temporarily perform ice-based attacks on monsters, while skills like #bPuppet#k (summons a scarecrow which attracts the monsters' attention) and #bGolden Eagle#k (summons a Golden Eagle that attacks monsters) solidify the Bowman's status as a long-range attack extraordinaire.");
+			if(Math.floor(cm.getJobId() / 10) == 31) cm.sendNext("你已经正式转职成为 #b射手#k 了。你即将掌握的技能 #b贯穿箭#k 可以赋予你在近距离射出箭矢的能力。#b烈火箭#k 可以对怪物造成非持续性的火属性伤害，而像 #b替身术#k (召唤一只稻草人吸引怪物的注意力) 和 #b银鹰召唤#k (召唤一只银鹰助战) 确立了弓箭手作为远程攻击者的地位。");
+                        else cm.sendNext("你已经正式转职成为 #b游侠#k 了。你即将掌握的技能 #b贯穿箭#k 可以赋予你在近距离射出箭矢的能力。#b寒冰箭#k 可以对怪物造成非持续性的冰属性伤害，而像 #b替身术#k (召唤一只稻草人吸引怪物的注意力) 和 #b金鹰召唤#k (召唤一只金鹰助战) 确立了弓箭手作为远程攻击者的地位。");
 		} else if (status == 3) {
 		    cm.sendNextPrev("另外，我为你提升了5点AP（能力点）和1点SP（技能点），来帮助你开启3转后的旅程。现在你是一位极其强大的弓箭手了。不过要记得，现实世界的前方仍然有更艰巨的困难需要去克服。当你感到训练的作用微乎其微，实力已经无法提升到更高的层次时，就再来找我吧。我会一直在这里等你。");
 		}

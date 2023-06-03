@@ -74,8 +74,8 @@ function action(mode, type, selection){
                 cm.getPlayer().removePartyQuestItem("JBQ");
             }
 
-            if(Math.floor(cm.getJobId() / 10) == 41) cm.sendNext("You have officially been anointed as a #bHermit#k from here on out. The skill book introduces a slew of new attacking skills for Hermits using shadows as a way of duplication and replacement, including such skills as #bShadow Meso#k (replacing MP with mesos and attack monsters with the damage based on the amount of mesos thrown) and #bCopy cat#k (creating a shadow that mimics every move, enabling a Hermit to attack a monster as if two Hermits are there). Use those skills to take on the monsters that may have been difficult to conquer before.");
-	    else cm.sendNext("You have officially been anointed as a #bChief Bandit#k from here on out. One of the new additions to the skill book is a skill called #bBand of Thieves#k, in which you can summon fellow Bandits to attack multiple monsters at once. Chief Bandits can also utilize mesos in numerous ways, from attacking monsters (#bMeso Explosion#k, which explodes the mesos on the ground), to defending yourself (#bMeso Guard#k, which decreases the weapon damage).");
+            if(Math.floor(cm.getJobId() / 10) == 41) cm.sendNext("你被正式赋予了 #b无影人#k 这一职业。技能书里介绍了大量的崭新攻击技能，你将学着使用影子复制攻击、规避伤害。包括 #b金钱攻击#k (使用金币替代MP以及飞镖攻击怪物，造成基于掷出金币数额的伤害）以及 #b影分身#k (创造一团影子来模仿每次攻击，使无影人的攻击达到几乎双倍的效率)。有了它们，你将有可能征服远比之前强大的怪物。");
+	    else cm.sendNext("你被正式赋予了 #b独行客#k 这一职业。使用技能书里的一项新技能 #b分身术#k 可以召唤你的侠客同伴来同时攻击多个怪物。独行客更可以多种方式利用金币，从攻击怪物 (#b金钱炸弹#k 可以引爆地上的金币)，到提供防御(#b金钱护盾#k 可以降低触碰伤害)。");
 	
         } else if (status == 3) {
             cm.sendNextPrev("另外，我为你提升了5点AP（能力点）和1点SP（技能点），来帮助你开启3转后的旅程。现在你是一位极其强大的飞侠了。不过要记得，现实世界的前方仍然有更艰巨的困难需要去克服。当你感到训练的作用微乎其微，实力已经无法提升到更高的层次时，就再来找我吧。我会一直在这里等你。");
