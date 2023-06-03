@@ -71,31 +71,31 @@ function action(mode, type, selection) {
         
         em = cm.getEventManager("ZakumPQ");
         if(em == null) {
-            cm.sendOk("The Zakum PQ has encountered an error.");
+            cm.sendOk("The Zakum 组队任务遇到了一个错误。");
             cm.dispose();
             return;
         }
         
         if (status == 0) {
-            cm.sendSimple("#e#b<Party Quest: Zakum Campaign>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nBeware, for the power of olde has not been forgotten... #b\r\n#L0#Enter the Unknown Dead Mine (Stage 1)#l\r\n#L1#Face the Breath of Lava (Stage 2)#l\r\n#L2#Forging the Eyes of Fire (Stage 3)#l");
+            cm.sendSimple("#e#b<组队任务：Zakum Campaign>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nBeware, for the power of olde has not been forgotten... #b\r\n#L0#Enter the Unknown Dead Mine (Stage 1)#l\r\n#L1#Face the Breath of Lava (Stage 2)#l\r\n#L2#Forging the Eyes of Fire (Stage 3)#l");
         }
         else if (status == 1) {
             if (selection == 0) {
                 if (cm.getParty() == null) {
-                    cm.sendOk("You can participate in the party quest only if you are in a party.");
+                    cm.sendOk("处于组队状态时，才能执行组队任务。");
                     cm.dispose();
                 } else if(!cm.isLeader()) {
-                    cm.sendOk("Your party leader must talk to me to start this party quest.");
+                    cm.sendOk("如果想执行组队任务，请让你的队长来和我对话。");
                     cm.dispose();
                 } else {
                     var eli = em.getEligibleParty(cm.getParty());
                     if(eli.size() > 0) {
                         if(!em.startInstance(cm.getParty(), cm.getPlayer().getMap(), 1)) {
-                            cm.sendOk("Another party has already entered the #rParty Quest#k in this channel. Please try another channel, or wait for the current party to finish.");
+                            cm.sendOk("本频道已经有队伍正在执行组队任务，请等待其完成组队任务或切换至其他频道。");
                         }
                     }
                     else {
-                        cm.sendOk("You cannot start this party quest yet, because either your party is not in the range size, some of your party members are not eligible to attempt it or they are not in this map. If you're having trouble finding party members, try Party Search.");
+                        cm.sendOk("目前无法执行组队任务，原因可能是组队人数不满足要求，组队中存在不符合资格的成员，组队成员没有进入本地图之一。如果缺少组队成员，请尝试组队搜索功能。");
                     }
 
                     cm.dispose();

@@ -72,34 +72,34 @@ function recruitPqAction(mode, type, selection) {
                         return;
                 }
 
-                cm.sendSimple("#e#b<Party Quest: Holiday>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nHow about you and your party members collectively beating a quest? Here you'll find obstacles and problems where you won't be able to beat it without great teamwork. If you want to try it, please tell the #bleader of your party#k to talk to me.#b\r\n#L0#I want to participate in the party quest.\r\n#L1#I would like to " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "disable" : "enable") + " Party Search.\r\n#L2#I would like to hear more details.");
+                cm.sendSimple("#e#b<组队任务：Holiday>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nHow about you and your party members collectively beating a quest? Here you'll find obstacles and problems where you won't be able to beat it without great teamwork. If you want to try it, please tell the #bleader of your party#k to talk to me.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
         } else if (status == 1) {
                 if (selection == 0) {
                         if (cm.getParty() == null) {
-                                cm.sendOk("You can participate in the party quest only if you are in a party.");
+                                cm.sendOk("处于组队状态时，才能执行组队任务。");
                                 cm.dispose();
                         } else if(!cm.isLeader()) {
-                                cm.sendOk("Your party leader must talk to me to start this party quest.");
+                                cm.sendOk("如果想执行组队任务，请让你的队长来和我对话。");
                                 cm.dispose();
                         } else {
                                 var eli = em.getEligibleParty(cm.getParty());
                                 if(eli.size() > 0) {
                                         if(!em.startInstance(cm.getParty(), cm.getPlayer().getMap(), pqType)) {
-                                                cm.sendOk("Another party has already entered the #rParty Quest#k in this channel. Please try another channel, or wait for the current party to finish.");
+                                                cm.sendOk("本频道已经有队伍正在执行组队任务，请等待其完成组队任务或切换至其他频道。");
                                         }
                                 }
                                 else {
-                                        cm.sendOk("You cannot start this party quest yet, because either your party is not in the range size, some of your party members are not eligible to attempt it or they are not in this map. If you're having trouble finding party members, try Party Search.");
+                                        cm.sendOk("目前无法执行组队任务，原因可能是组队人数不满足要求，组队中存在不符合资格的成员，组队成员没有进入本地图之一。如果缺少组队成员，请尝试组队搜索功能。");
                                 }
 
                                 cm.dispose();
                         }
                 } else if (selection == 1) {
                         var psState = cm.getPlayer().toggleRecvPartySearchInvite();
-                        cm.sendOk("Your Party Search status is now: #b" + (psState ? "enabled" : "disabled") + "#k. Talk to me whenever you want to change it back.");
+                        cm.sendOk("现在组队搜索状态为: #b" + (psState ? "启用" : "禁用") + "#k。需要更改时请与我对话。");
                         cm.dispose();
                 } else {
-                        cm.sendOk("#e#b<Party Quest: Holiday>#k#n\r\n\r\nJoin in with your team to build up the Snowman that will protect Happyville from the misdoings of Scrooge. While inside, work out with your team to protect it at any means necessary while collecting Snow Vigor that will help on the build up of the Snowman.");
+                        cm.sendOk("#e#b<组队任务：Holiday>#k#n\r\n\r\nJoin in with your team to build up the Snowman that will protect Happyville from the misdoings of Scrooge. While inside, work out with your team to protect it at any means necessary while collecting Snow Vigor that will help on the build up of the Snowman.");
                         cm.dispose();
                 }
         }

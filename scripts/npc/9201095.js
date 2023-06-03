@@ -107,13 +107,13 @@ function action(mode, type, selection) {
             cost = costSet[selectedItem];
         }
                 
-        var prompt = "You want me to make ";
+        var prompt = "你想制作 ";
         if (qty == 1)
-            prompt += "a #t" + item + "#?";
+            prompt += "一件 #t" + item + "#?";
         else
-            prompt += qty + " #t" + item + "#?";
+            prompt += qty + "件 #t" + item + "#?";
                         
-        prompt += " In that case, I'm going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+        prompt += " 那么，请确认你准备好了对应材料，并且背包里有充足的空间。#b";
                 
         if (mats instanceof Array){
             for(var i = 0; i < mats.length; i++){

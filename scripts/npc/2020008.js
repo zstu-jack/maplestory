@@ -35,7 +35,7 @@ function start() {
         
         var em = cm.getEventManager("ElnathPQ");
         if(em == null) {
-            cm.sendOk("The El Nath PQ has encountered an error.");
+            cm.sendOk("The El Nath 组队任务遇到了一个错误。");
             cm.dispose();
             return;
         }

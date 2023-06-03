@@ -120,7 +120,7 @@ function action(mode, type, selection) {
                 cost = costSet[selection];
 
                 var prompt = "Then I'm going to craft you a #b#t" + item + "##k, is that right?";
-                prompt += " In that case, I'm going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+                prompt += " 那么，请确认你准备好了对应材料，并且背包里有充足的空间。#b";
 
                 if (mats instanceof Array){
                     for(var i = 0; i < mats.length; i++){

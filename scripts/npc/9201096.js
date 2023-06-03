@@ -79,9 +79,9 @@ function action(mode, type, selection) {
                 
         var prompt = "So, you want me to make ";
         if (qty == 1)
-            prompt += "a #t" + item + "#?";
+            prompt += "Ò»¼þ #t" + item + "#?";
         else
-            prompt += qty + " #t" + item + "#?";
+            prompt += qty + "¼þ #t" + item + "#?";
                         
         prompt += " In that case, I'm going to need specific items from you in order to make it. And make sure you have room in your inventory!#b";
                 

@@ -151,7 +151,7 @@ function action(mode, type, selection) {
             cost = costSet[selectedItem];
         }
         
-        var prompt = "You want me to make ";
+        var prompt = "ÄãÏëÖÆ×÷ ";
         if(selectedType != 3) {
             if (qty == 1)
                 prompt += "a #b#t" + item + "##k?";

@@ -49,7 +49,7 @@ function action(mode, type, selection) {
                 if (status == 0) {
                         em = cm.getEventManager("EllinPQ");
                         if(em == null) {
-                                cm.sendOk("The Ellin PQ has encountered an error.");
+                                cm.sendOk("The Ellin 组队任务遇到了一个错误。");
                                 cm.dispose();
                                 return;
                         } else if(cm.isUsingOldPqNpcStyle()) {
@@ -57,38 +57,38 @@ function action(mode, type, selection) {
                                 return;
                         }
                     
-                        cm.sendSimple("#e#b<Party Quest: Forest of Poison Haze>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nWould you like to assemble or join a team to solve the puzzles of the #bForest of Poison Haze#k? Have your #bparty leader#k talk to me or make yourself a party.#b\r\n#L0#I want to participate in the party quest.\r\n#L1#I would like to " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "disable" : "enable") + " Party Search.\r\n#L2#I would like to hear more details.\r\n#L3#I would like to reclaim a prize.");
+                        cm.sendSimple("#e#b<组队任务：Forest of Poison Haze>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n你想组成或加入一支队伍来揭开#bForest of Poison Haze#k的谜团吗？让你的#b队长#k与我对话，或者创建一个队伍。#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。\r\n#L3#我想要兑换奖励。");
                 } else if (status == 1) {
                         if (selection == 0) {
                                 if (cm.getParty() == null) {
-                                        cm.sendOk("You can participate in the party quest only if you are in a party.");
+                                        cm.sendOk("处于组队状态时，才能执行组队任务。");
                                         cm.dispose();
                                 } else if(!cm.isLeader()) {
-                                        cm.sendOk("Your party leader must talk to me to start this party quest.");
+                                        cm.sendOk("如果想执行组队任务，请让你的队长来和我对话。");
                                         cm.dispose();
                                 } else {
                                         var eli = em.getEligibleParty(cm.getParty());
                                         if(eli.size() > 0) {
                                                 if(!em.startInstance(cm.getParty(), cm.getPlayer().getMap(), 1)) {
-                                                        cm.sendOk("Another party has already entered the #rParty Quest#k in this channel. Please try another channel, or wait for the current party to finish.");
+                                                        cm.sendOk("本频道已经有队伍正在执行组队任务，请等待其完成组队任务或切换至其他频道。");
                                                 }
                                         }
                                         else {
-                                                cm.sendOk("You cannot start this party quest yet, because either your party is not in the range size, some of your party members are not eligible to attempt it or they are not in this map. If you're having trouble finding party members, try Party Search.");
+                                                cm.sendOk("目前无法执行组队任务，原因可能是组队人数不满足要求，组队中存在不符合资格的成员，组队成员没有进入本地图之一。如果缺少组队成员，请尝试组队搜索功能。");
                                         }
                                         
                                         cm.dispose();
                                 }
                         } else if (selection == 1) {
                                 var psState = cm.getPlayer().toggleRecvPartySearchInvite();
-                                cm.sendOk("Your Party Search status is now: #b" + (psState ? "enabled" : "disabled") + "#k. Talk to me whenever you want to change it back.");
+                                cm.sendOk("现在组队搜索状态为: #b" + (psState ? "启用" : "禁用") + "#k。需要更改时请与我对话。");
                                 cm.dispose();
                         } else if (selection == 2) {
-                                cm.sendOk("#e#b<Party Quest: Forest of Poison Haze>#k#n\r\nIn this PQ, your mission is to progressively make your way through the woods, taking on all baddies in your path, solving many puzzles you encounter and rallying yourselves to take the best of teamwork to overcome time limits and powerful creatures. Clearing the final boss, your team have a chance to obtain a marble that, #bwhen dropped by the fountain at the exit map#k, will guarantee the team extra prizes. Good luck.");
+                                cm.sendOk("#e#b<组队任务：Forest of Poison Haze>#k#n\r\nIn this PQ, your mission is to progressively make your way through the woods, taking on all baddies in your path, solving many puzzles you encounter and rallying yourselves to take the best of teamwork to overcome time limits and powerful creatures. Clearing the final boss, your team have a chance to obtain a marble that, #bwhen dropped by the fountain at the exit map#k, will guarantee the team extra prizes. Good luck.");
                                 cm.dispose();
                         }
                         else {
-                                cm.sendSimple("So, what prize do you want to obtain?\r\n#b#L0#Give me Altaire Earrings.\r\n#L1#Give me Glittering Altaire Earrings.\r\n#L2#Give me Brilliant Altaire Earrings");
+                                cm.sendSimple("你想要领取哪种奖励？\r\n#b#L0#Give me Altaire Earrings.\r\n#L1#Give me Glittering Altaire Earrings.\r\n#L2#Give me Brilliant Altaire Earrings");
                         }
                 } else if (status == 2) {
                         if (selection == 0) {
