@@ -25,7 +25,7 @@ function action(mode, type, selection) {
 			cm.dispose();
 			return;
 		} else if(mode == 0) {
-			cm.sendNext("OK. If you ever change your mind, please let me know.");
+			cm.sendNext("等你改变主意了，再来找我吧。回见！");
 			cm.dispose();
 			return;
 		}
@@ -33,13 +33,13 @@ function action(mode, type, selection) {
 		if (status == 0) {
                         var display = "";
                         for(var i=0; i < menu.length; i++) {
-                                display += "\r\n#L"+i+"##b Ereve (1000 mesos)#k";
+                                display += "\r\n#L"+i+"##b 圣地 (1000 金币)#k";
                         }			
-                        cm.sendSimple("This ship will head towards #bEreve#k, an island where you'll find crimson leaves soaking up the sun, the gentle breeze that glides past the stream, and the Empress of Maple Cygnus. If you're interested in joining the Cygnus Knights, Then you should definitly pay a visit here. Are you interested in visiting Ereve?, The Trip will cost you #b1000#k Mesos\r\n"+display);
+                        cm.sendSimple("你想去#r圣地#k吗？ 请支付 #b1000#k 金币\r\n"+display);
 
                 } else if(status == 1) {
                         if(cm.getMeso() < 1000) {
-                                cm.sendNext("Hmm... Are you sure you have #b1000#k Mesos? Check your Inventory and make sure you have enough. You must pay the fee or I can't let you get on...");
+                                cm.sendNext("抱歉，你没有 #b1000#k 金币，不能前往。 ");
                                 cm.dispose();
                         } else {
                                 cm.gainMeso(-1000);
