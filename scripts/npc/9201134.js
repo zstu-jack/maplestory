@@ -47,17 +47,17 @@ function action(mode, type, selection) {
                 var eim = cm.getEventInstance();
                 if(!eim.isEventCleared()) {
                         if (status == 0) {
-                                cm.sendYesNo("If you leave now, you won't be able to return. Are you sure you want to leave?");
+                                cm.sendYesNo("如果现在离开，将无法返回。确定要离开吗？");
                         } else if (status == 1) {
                                 cm.warp(551030100, 2);
                                 cm.dispose();
                         }
                 } else {
                         if (status == 0) {
-                                cm.sendNext("You guys defeated both Scarlion and Targa! Wonderful! Take this memento as a prize for your bravery.");
+                                cm.sendNext("你们打败了心疤狮王和暴力熊！干得漂亮！请收下这些奖励，这是这座城市对你们付出的奖赏。");//原文虽然如此，但没有把奖励写进去，后期需要增补。
                         } else if (status == 1) {
                                 if(!eim.giveEventReward(cm.getPlayer())) {
-                                        cm.sendNext("Please make room on your inventory first!");
+                                        cm.sendNext("请先腾出背包空间再与我对话。");
                                 } else {
                                         cm.warp(551030100, 2);
                                 }
