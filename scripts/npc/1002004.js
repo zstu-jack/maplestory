@@ -47,7 +47,7 @@ function action(mode, type, selection) {
     	return;
     }
     if (status == 1) {
-        cm.sendYesNo(cm.getJobId() == 0 , "我们对新手有百分90的优惠哦！如果你想要安全到达#b蚂蚁广场#k,那就快点付钱吧！");
+        cm.sendYesNo(cm.getJobId() == 0 ? "我们对新手有百分90的优惠哦！如果你想要安全到达#b蚂蚁广场#k,那就快点付钱吧！");
         cost /= ((cm.getJobId() == 0) ? 10 : 1);
     } else if (status == 2) {
         if (cm.getMeso() < cost)

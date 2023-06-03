@@ -38,7 +38,7 @@ function start() {
         return;
     }
     
-    cm.sendNext("Hey, you look like you want to go farther and deeper past this place. Over there, though, you'll find yourself surrounded by aggressive, dangerous monsters, so even if you feel that you're ready to go, please be careful. Long ago, a few brave men from our town went in wanting to eliminate anyone threatening the town, but never came back out...");
+    cm.sendNext("看起来你想要深入这片区域。在那里，你会发现自己被凶猛危险的怪物们围绕着。所以即便你觉得自己已经足够强大了，也最好再考虑一下。很久之前，我们的村子里有几个胆大的男人进入里面，想要除掉威胁着村子的存在。然而没有一个人从里面回来...");
 }
 
 function action(mode, type, selection) {
@@ -46,7 +46,7 @@ function action(mode, type, selection) {
         cm.dispose();
     else {
         if (status == 1 && mode == 0 && cm.getLevel() > 49) {
-            cm.sendNext("Even if your level's high it's hard to actually go in there, but if you ever change your mind, please find me. After all, my job is to protect this place.");
+            cm.sendNext("即便你的等级足够高，进入里面还是有些勉强。但如果你改了主意，就来找我。毕竟保护这里是我的职责。");
             cm.dispose();
             return;
         }
@@ -56,9 +56,9 @@ function action(mode, type, selection) {
             status--;
         if (status == 1) {
             if (cm.getLevel() > 49)
-                cm.sendYesNo("If you are thinking of going in, I suggest you change your mind. But if you really want to go in... I'm only letting in the ones that are strong enough to stay alive in there. I do not wish to see anyone else die. Let's see... Hmmm...! You look pretty strong. All right, do you want to go in?");
+                cm.sendYesNo("如果你决定要进去，我劝你还是改变主意。但如果你坚持的话...我只会允许强大到能够在里面活下去的人入内。因为我真的不想看到更多伤亡了。让我看看...嗯...！你看起来非常强大。好吧，你想要进入里面吗？");
              else 
-                cm.sendPrev("If you are thinking of going in, I suggest you change your mind. But if you really want to go in... I'm only letting in the ones that are strong enough to stay alive in there. I do not wish to see anyone else die. Let's see... Hmmm... You haven't reached Level 50 yet. I can't let you in, then, so forget it.");
+                cm.sendPrev("如果你决定要进去，我劝你还是改变主意。但如果你坚持的话...我只会允许强大到能够在里面活下去的人入内。因为我真的不想看到更多伤亡了。让我看看...嗯...你还没有到达50级。我不能允许你入内，放弃吧。");
         } else if (status == 2) {
             if (cm.getLevel() >= 50) 
                 cm.warp(211040300, 5);
