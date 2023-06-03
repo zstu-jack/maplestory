@@ -56,8 +56,8 @@ function action(mode, type, selection) {
     else
         cm.dispose();
     if (status == 0 && mode == 1) {
-        var selStr = "孩子...如果你有一些适合的东西，我可以把它变成什么...#b"
-        var options = new Array("制作手套", "升级手套", "制作拳套", "升级拳套", "木材与螺丝钉制作");
+        var selStr = "悄悄告诉你...如果你有适合的材料，我可以把它们做成好东西...#b"//Pst是悄悄话的意思。
+        var options = new Array("制作手套", "升级手套", "制作拳套", "升级拳套", "制作材料");
         for (var i = 0; i < options.length; i++)
             selStr += "\r\n#L" + i + "# " + options[i] + "#l";
         cm.sendSimple(selStr);
@@ -65,7 +65,7 @@ function action(mode, type, selection) {
     else if (status == 1 && mode == 1) {
         selectedType = selection;
         if (selectedType == 0){ //glove refine
-            var selStr = "那么，你想要我制作什么样的手套?#b";
+            var selStr = "那么，你想要制作什么样的手套?#b";
             var gloves = new Array ("工地手套（白）#k - 需要等级 Lv. 10#b", "褐短指手套#k - 需要等级 Lv. 15#b", "蓝短指手套#k - 需要等级 Lv. 15#b", "黑短指手套#k - 需要等级 Lv. 15#b", "青铜盗贼手套#k - 需要等级 Lv. 20#b", "青铜精神手套#k - 需要等级 Lv. 25#b", "钢铁暴风手套#k - 需要等级 Lv. 30#b",
                 "钢铁追击手套#k - 需要等级 Lv. 35#b", "红盗贼手套#k - 需要等级 Lv. 40#b", "青月手套#k - 需要等级 Lv. 50#b", "青铜柔丝手套#k - 需要等级 Lv. 60#b");
             for (var i = 0; i < gloves.length; i++)
@@ -74,7 +74,7 @@ function action(mode, type, selection) {
             cm.sendSimple(selStr);
         }
         else if (selectedType == 1){ //glove upgrade
-            var selStr = "要升级手套?当然可以, 注意，升级后，属性不会延续到新的手套上。 #b";
+            var selStr = "（卷轴）升级过的手套当然也可以作为原材料，但要知道，（卷轴）升级后的属性不会继承到新的手套上。 #b";//明晰释义
             var gloves = new Array ("锂矿盗贼手套#k - 需要等级 Lv. 20#b", "黑色盗贼手套#k - 需要等级 Lv. 20#b", "锂矿精神手套#k - 需要等级 Lv. 25#b",
                 "黑精神手套#k - 需要等级 Lv. 25#b", "银暴风手套#k - 需要等级 Lv. 30#b", "黄金暴风手套#k - 需要等级 Lv. 30#b", "紫矿追击手套#k - 需要等级 Lv. 35#b", "黄金追击手套#k - 需要等级 Lv. 35#b", "黄金盗贼手套#k - 需要等级 Lv. 40#b",
                 "黑盗贼手套#k - 需要等级 Lv. 40#b", "赤月手套#k - 需要等级 Lv. 50#b", "黄月手套#k - 需要等级 Lv. 50#b", "钢铁柔丝手套#k - 需要等级 Lv. 60#b", "黄金柔丝手套#k - 需要等级 Lv. 60#b");
@@ -94,7 +94,7 @@ function action(mode, type, selection) {
             cm.sendSimple(selStr);
         }
         else if (selectedType == 3){ //claw upgrade
-            var selStr = "要升级拳套?当然可以, 注意，升级后，属性不会延续到新的拳套..#b";
+            var selStr = "（卷轴）升级过的拳套当然也可以作为原材料，但要知道，（卷轴）升级后的属性不会继承到新的拳套上。#b";
             var claws = new Array ("锂矿拳套#k - 需要等级 Lv. 15#b", "黄金拳套#k - 需要等级 Lv. 15#b", "钢铁指虎#k - 需要等级 Lv. 20#b", "朱矿指虎#k - 需要等级 Lv. 20#b", "锂矿斗拳#k - 需要等级 Lv. 30#b", "朱矿斗拳#k - 需要等级 Lv. 30#b", "银守护拳套#k - 需要等级 Lv. 35#b", "黑守护拳套#k - 需要等级 Lv. 35#b", "赤红护腕#k - 需要等级 Lv. 40#b", "朱矿护腕#k - 需要等级 Lv. 40#b", "黑护腕#k - 需要等级 Lv. 40#b", "赤红手甲#k - 需要等级 Lv. 50#b", "蓝宝手甲#k - 需要等级 Lv. 50#b");
             for (var i = 0; i < claws.length; i++){
                 selStr += "\r\n#L" + i + "# " + claws[i] + "#l";
@@ -103,8 +103,8 @@ function action(mode, type, selection) {
             cm.sendSimple(selStr);
         }
         else if (selectedType == 4){ //material refine
-            var selStr = "材料？我知道一些材料，我可以帮你...?#b";
-            var materials = new Array ("用10个树枝制作1个木材", "用5个木柴制作1个木材", "制作螺丝钉(1次15个)");
+            var selStr = "材料？我可以为你加工这几种材料...?#b";
+            var materials = new Array ("使用树枝制作加工过的木材","使用木块制作加工过的木材","制作螺丝钉 (每组15个)");
             for (var i = 0; i < materials.length; i++){
                 selStr += "\r\n#L" + i + "# " + materials[i] + "#l";
             }
@@ -127,7 +127,7 @@ function action(mode, type, selection) {
             cost = costSet[selectedItem];
         }
                 
-        var prompt = "所以你需要我帮你做一些#t" + item + "#? 那你想要我做多少个呢?";
+        var prompt = "想要制作#t" + item + "#，对吗？那么，你想制作多少？";
                 
         cm.sendGetNumber(prompt,1,1,100)
     }
@@ -181,13 +181,13 @@ function action(mode, type, selection) {
             cost = costSet[selectedItem];
         }
                 
-        var prompt = "你需要我帮你做";
+        var prompt = "你想制作";
         if (qty == 1)
-            prompt += "#t" + item + "#?";
+            prompt += "一件 #t" + item + "#?";
         else
-            prompt += qty + " 个#t" + item + "#?";
+            prompt += qty + "件 #t" + item + "#?";
                         
-        prompt += " 好的我会帮你完成的,但请你确认你的背包是否有足够的空间哦#b";
+        prompt += " 那么，请确认你准备好了对应材料，并且背包里有充足的空间。#b";
                 
         if (mats instanceof Array){
             for(var i = 0; i < mats.length; i++){
@@ -219,7 +219,7 @@ function action(mode, type, selection) {
         }
         else if (cm.getMeso() < cost * qty)
         {
-            cm.sendOk("恐怕不能为你提供服务哦。");
+            cm.sendOk("金币不足的话，我无法为你制作。");
             cm.dispose();
             return;
         }
@@ -235,7 +235,7 @@ function action(mode, type, selection) {
         }
                         
         if (!complete)
-            cm.sendOk("你以前也老是这样吗? 除非你给我要的东西，否则我什么都做不了。");
+            cm.sendOk("别着急。没有相应的材料，我也没法制作你想要的东西。");
         else {
             if (mats instanceof Array) {
                 for (var i = 0; i < mats.length; i++){

@@ -19,7 +19,7 @@ function action(mode, type, selection) {
 	else
 		cm.dispose();
 	if (status == 0 && mode == 1) {
-		var selStr = "什么？你想自己制作武器和手套？不是开玩笑吗...如果没有经验的话，自己动手制作是很困难的...交给我这个有20年制作经验的老手吧。这对我来说再简单不过了。";
+		var selStr = "什么？你想自己制作武器和手套？你是认真的吗...如果没有经验的话，自己动手制作是很困难的...交给我这个有20年制作经验的老手吧。这对我来说再简单不过了。";
 		var options = new Array("制作拳甲","制作手枪","制作手套");
 		for (var i = 0; i < options.length; i++){
 			selStr += "\r\n#b#L" + i + "# " + options[i] + "#l#k";

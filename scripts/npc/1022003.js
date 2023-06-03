@@ -50,8 +50,8 @@ function action(mode, type, selection) {
     else
         cm.dispose();
     if (status == 0 && mode == 1) {
-        var selStr = "百米，你到底是何人？你听说过我的锻造技术吗？我愿意收费帮你做一些。#b"
-        var options = new Array("精炼矿石”、“精炼宝石”、“升级头盔”、“提升盾牌”");
+        var selStr = "嗯？你是...哦，你听说过我高超的锻造技术了？那样的话，我很乐意为你冶炼一些母矿...只要支付手续费就好。#b"//Hm是语气词，还有一些其它翻译小问题
+        var options = new Array("冶炼矿石母矿","冶炼宝石母矿","升级头盔","升级盾牌");//脚本里的双引号需要使用英文符号的双引号才不会出现错误。不能用顿号取代英文逗号。
         for (var i = 0; i < options.length; i++){
             selStr += "\r\n#L" + i + "# " + options[i] + "#l";
         }
@@ -61,8 +61,8 @@ function action(mode, type, selection) {
     else if (status == 1 && mode == 1) {
         selectedType = selection;
         if (selectedType == 0){ //mineral refine
-            var selStr = "你想精炼什么矿石呢#b";
-            var minerals = new Array ("青铜", "钢铁", "锂矿石", "朱矿石", "银", "紫矿石", "黄金");
+            var selStr = "你想要冶炼哪种矿石母矿？#b";
+            var minerals = new Array ("青铜母矿","钢铁母矿","锂矿石母矿","朱矿石母矿","银的母矿","紫矿石母矿","黄金母矿");
             for (var i = 0; i < minerals.length; i++){
                 selStr += "\r\n#L" + i + "# " + minerals[i] + "#l";
             }
@@ -70,8 +70,8 @@ function action(mode, type, selection) {
             equip = false;
         }
         else if (selectedType == 1){ //jewel refine
-            var selStr = "所以你想要制作什么宝石??#b";
-            var jewels = new Array ("石榴石", "紫水晶", "海蓝宝石", "祖母绿", "蛋白石", "蓝宝石", "黄晶", "钻石", "黑暗水晶");
+            var selStr = "你想要冶炼哪种宝石母矿？#b";
+            var jewels = new Array ("石榴石母矿","紫水晶母矿","海蓝石母矿","祖母绿母矿","蛋白石母矿","蓝宝石母矿","黄晶母矿","钻石母矿","黑水晶母矿");
             for (var i = 0; i < jewels.length; i++){
                 selStr += "\r\n#L" + i + "# " + jewels[i] + "#l";
             }
@@ -79,7 +79,7 @@ function action(mode, type, selection) {
             equip = false;
         }
         else if (selectedType == 2){ //helmet refine
-            var selStr = "你想升级头盔吗？那告诉我，哪一个？#b";
+            var selStr = "你想要将头盔升级成哪一种？#b";
             var helmets = new Array ("蓝色金属头箍#k - 需要等级 Lv. 15#b","黄色金属头箍#k - 需要等级 Lv. 15#b","金属头盔#k - 需要等级 Lv. 10#b","锂矿头盔#k - 需要等级 Lv. 10#b","钢铁帽#k - 需要等级 Lv. 12#b","锂矿帽#k - 需要等级 Lv. 12#b","铁制头具#k - 需要等级 Lv. 15#b",
                 "锂矿钢盔#k - 需要等级 Lv. 15#b","钢制海盗帽#k - 需要等级 Lv. 20#b","锂矿海盗头盔#k - 需要等级 Lv. 20#b","钢铁球帽#k - 需要等级 Lv. 20#b","锂矿橄榄球帽#k - 需要等级 Lv. 20#b","锂矿尖头盔#k - 需要等级 Lv. 22#b",
                 "黄金尖头盔#k - 需要等级 Lv. 22#b",
@@ -92,7 +92,7 @@ function action(mode, type, selection) {
             equip = true;
         }
         else if (selectedType == 3){ //shield refine
-            var selStr = "哦? 你想要升级盾牌? 好的那告诉我要升级成哪一个吧!?#b";
+            var selStr = "你想要将盾牌升级成哪一种？#b";
             var shields = new Array ("朱矿方盾#k - 需要等级 Lv. 40#b","锂矿方盾#k - 需要等级 Lv. 40#b","古老银盾#k - 需要等级 Lv. 60#b","古老朱矿盾#k - 需要等级 Lv. 60#b");
             for (var i = 0; i < shields.length; i++){
                 selStr += "\r\n#L" + i + "# " + shields[i] + "#l";
@@ -126,7 +126,7 @@ function action(mode, type, selection) {
             cost = costSet[selectedItem];
         }
                 
-        var prompt = "所以你需要做一些#t" + item + "#? 那你想要做多少个呢?";
+        var prompt = "想要制作#t" + item + "#，对吗？那么，你想制作多少？";
                 
         cm.sendGetNumber(prompt,1,1,100)
     }
@@ -162,12 +162,12 @@ function action(mode, type, selection) {
             matQty = matQtySet[selectedItem];
             cost = costSet[selectedItem];
         }
-        var prompt = "你需要我帮你做";
+        var prompt = "你想制作";
         if (qty == 1)
-            prompt += "#t" + item + "#?";
+            prompt += "一件 #t" + item + "#?";
         else
-            prompt += qty + " #t" + item + "#?";
-        prompt += "好的，我会帮你完成,但请你确认你的背包是否有足够的空间#b";
+            prompt += qty + "件 #t" + item + "#?";
+        prompt += " 那么，请确认你准备好了对应材料，并且背包里有充足的空间。#b";
         if (mats instanceof Array)
             for(var i = 0; i < mats.length; i++)
                 prompt += "\r\n#i"+mats[i]+"# " + matQty[i] * qty + " #t" + mats[i] + "#";
@@ -182,13 +182,13 @@ function action(mode, type, selection) {
         var complete = true;
         
         if(!cm.canHold(item, qty)) {
-            cm.sendOk("我怕你付不起我的工资,抱歉啰。");
+            cm.sendOk("请确认背包有足够的空间。");
             cm.dispose();
             return;
         }
         else if (cm.getMeso() < cost * qty)
         {
-            cm.sendOk("恐怕不能为你提供服务。");
+            cm.sendOk("金币不足的话，我无法为你制作。");//这里是金币不足的提示，上面的地方是物品栏不足，抄错了
             cm.dispose();
             return;
         }
@@ -203,7 +203,7 @@ function action(mode, type, selection) {
                 complete = false;
         }       
         if (!complete)
-            cm.sendOk("你缺少了我想要的东西。下次见？");
+            cm.sendOk("缺少材料，无法完成制作。");
         else {
             if (mats instanceof Array)
                 for (var i = 0; i < mats.length; i++)
@@ -212,7 +212,7 @@ function action(mode, type, selection) {
                 cm.gainItem(mats, -matQty * qty);
             cm.gainMeso(-cost * qty);
             cm.gainItem(item,qty);
-            cm.sendOk("好了，完成了。你觉得一件艺术品怎么样？好吧，如果你还需要什么，你知道在哪里找我。");
+            cm.sendOk("一如既往，是件完美的作品。如果你还想做些什么，请再来找我。");
         }
         cm.dispose();
     }

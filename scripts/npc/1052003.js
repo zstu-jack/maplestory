@@ -39,8 +39,8 @@ function action(mode, type, selection) {
             status--;
 
         if (status == 0) {
-            var selStr = "是的，我退休的盗贼。如果你愿意付出，我可以给你我的一些服务.#b"
-            var options = new Array("制作矿石", "提炼宝石矿", "铁甲猪蹄兑换中心...", "升级拳套");
+            var selStr = "没错，我就是这间锻造铺的主人。你付钱，我做事。#b"//恢复原文翻译
+            var options = new Array("冶炼矿石母矿","冶炼宝石母矿", "我有一些铁甲猪蹄...", "升级拳套");
             for (var i = 0; i < options.length; i++){
                 selStr += "\r\n#L" + i + "# " + options[i] + "#l";
             }
@@ -50,7 +50,7 @@ function action(mode, type, selection) {
         else if (status == 1) {
             selectedType = selection;
             if (selectedType == 0){ //mineral refine
-                var selStr = "所以你想要制作什么矿石??#b";
+                var selStr = "你想要冶炼哪种矿石母矿？#b";
                 var minerals = new Array ("青铜", "钢铁", "锂矿石", "朱矿石", "银", "紫矿石", "黄金");
                 for (var i = 0; i < minerals.length; i++){
                     selStr += "\r\n#L" + i + "# " + minerals[i] + "#l";
@@ -59,7 +59,7 @@ function action(mode, type, selection) {
                 cm.sendSimple(selStr);
             }
             else if (selectedType == 1){ //jewel refine
-                var selStr = "所以你要我提炼哪种宝石??#b";
+                var selStr = "你想要冶炼哪种宝石母矿？#b";
                 var jewels = new Array ("石榴石", "紫水晶", "海蓝宝石", "祖母绿", "蛋白石", "蓝宝石", "黄晶", "钻石", "黑暗水晶");
                 for (var i = 0; i < jewels.length; i++){
                     selStr += "\r\n#L" + i + "# " + jewels[i] + "#l";
@@ -68,12 +68,12 @@ function action(mode, type, selection) {
                 cm.sendSimple(selStr);
             }
             else if (selectedType == 2){ //foot refine
-                var selStr = "你知道吗？很多人不知道，铁甲猪蹄的潜力......我可以使它成为一些特别的东西，如果你要我做的话...";
+                var selStr = "你居然知道？很多人不知道铁甲猪蹄的用途...如果你需要，我可以把它们制作成特定材料...";
                 equip = false;
                 cm.sendYesNo(selStr);
             }
             else if (selectedType == 3){ //claw refine
-                var selStr = "啊你想要升级拳套，告诉我要升级哪一个?#b";
+                var selStr = "你想要升级拳套？要哪种？#b";
                 var claws = new Array ("赤红战神拳套#k - 盗贼 等级. 60#b", "蓝宝战神拳套#k - 盗贼 等级. 60#b", "黑战神拳套#k - 盗贼 等级. 60#b");
                 for (var i = 0; i < claws.length; i++){
                     selStr += "\r\n#L" + i + "# " + claws[i] + "#l";
@@ -117,7 +117,7 @@ function action(mode, type, selection) {
                 cost = costSet[0];
             }
 
-            var prompt = "所以，你要我做一些 #t" + item + "#? 你要做多少个?";
+            var prompt = "想要制作#t" + item + "#，对吗？那么，你想制作多少？";
 
             cm.sendGetNumber(prompt,1,1,100)
         }
@@ -146,13 +146,13 @@ function action(mode, type, selection) {
                     last_use = true;
             }
 
-            var prompt = "你需要我制作什么？ ";
+            var prompt = "你想制作 ";
             if (qty == 1)
-                prompt += "a #t" + item + "#?";
+                prompt += "一件 #t" + item + "#?";
             else
-                prompt += qty + " #t" + item + "#?";
+                prompt += qty + "件 #t" + item + "#?";
 
-            prompt += " 在这种情况下，我要为了做出好的品质。请确保您是否有这么多空间可以放!#b";
+            prompt += " 那么，请确认你准备好了对应材料，并且背包里有充足的空间。#b";
 
             if (mats instanceof Array){
                 for (var i = 0; i < mats.length; i++) {
@@ -175,7 +175,7 @@ function action(mode, type, selection) {
                 return;
             }
             else if (cm.getMeso() < cost * qty) {
-                cm.sendOk("我只收现金，不支持刷卡。");
+                cm.sendOk("金币不足的话，我无法为你制作。");
                 cm.dispose();
                 return;
             } else {
@@ -189,7 +189,7 @@ function action(mode, type, selection) {
             }
 
             if (!complete)
-                cm.sendOk("我不能接受的替代品。如果你没有什么我需要的话，我将无法帮你!!");
+                cm.sendOk("无法使用其它材料代替。如果没有我需要的材料，我将无法为你制作。");
             else {
                 if (mats instanceof Array) {
                     for (var i = 0; i < mats.length; i++){
@@ -200,7 +200,7 @@ function action(mode, type, selection) {
                 }
                 cm.gainMeso(-cost * qty);
                 cm.gainItem(item, qty);
-                cm.sendNext("呼...没想到这么快就搞定了.很不错，我希望你喜欢它。");
+                cm.sendNext("呼...没想到这么快就做好了。总之，希望你喜欢。");
             }
             cm.dispose();
         }

@@ -82,7 +82,7 @@ function action(mode, type, selection) {
                 } else {
                         var levels = ["#m190000000#", "#m191000000#", "#m192000000#", "#m195000000#", "#m196000000#", "#m197000000#"];
                         if (status == 0) {
-                                var sendStr = "奔腾路由多个容纳了多种多样的怪物的区域组成，能够作为从#p1052014#处获取经验与橡皮的理想场所，请选择你想要进入的区域:\r\n\r\n#b";
+                                var sendStr = "Pentium 路由多个容纳了各种怪物的区域组成，能够作为从#p1052014#处获取经验与橡皮的理想场所，请选择你想要进入的区域:\r\n\r\n#b";//这个不要改掉，CMS地图的名字就是英文。
                                 for(var i = 0; i < 6; i++) {
                                     sendStr += "#L" + i + "#" + levels[i] + "#l\r\n";
                                 }
@@ -102,7 +102,7 @@ function action(mode, type, selection) {
                                         return;
                                 }
 
-                                cm.sendSimple("#e#b<组队任务：奔腾路 - " + levels[selection] + ">\r\n#k#n" + em.getProperty("party") + "\r\n\r\n #p1052014# 的运行方式与众不同。并不依赖金币或百宝券运行，而是花费#r橡皮#k, 它们可以通过完成奔腾路的任务来获得。想要进入此处冒险，需要寻找队友执行组队任务。建立队伍后，请让你们的 #b队长#k 与我对话。#b\r\n#L0#我想执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "停止" : "开始") + " 组队搜索。\r\n#L2#我想了解更多细节。");
+                                cm.sendSimple("#e#b<组队任务：Pentium 路 - " + levels[selection] + ">\r\n#k#n" + em.getProperty("party") + "\r\n\r\n #p1052014# 的运行方式与众不同。并不依赖金币或百宝券运行，而是花费#r橡皮#k, 它们可以通过完成Pentium 路的任务来获得。想要进入此处冒险，需要寻找队友执行组队任务。建立队伍后，请让你们的 #b队长#k 与我对话。#b\r\n#L0#我想执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "停止" : "开始") + " 组队搜索。\r\n#L2#我想了解更多细节。");
                         } else if (status == 2) {
                                 if (selection == 0) {
                                         if (cm.getParty() == null) {
@@ -119,7 +119,7 @@ function action(mode, type, selection) {
                                                         }
                                                 }
                                                 else {
-                                                        cm.sendOk("您还无法开始这个组队任务.因为组队人数不对,或是组队成员中存在不符合资格的成员,又或者是尚有组队成员没有进入此地图.如果缺少组队成员,请尝试使用组队搜索功能.");
+                                                        cm.sendOk("目前无法执行组队任务，原因可能是组队人数不满足要求，组队中存在不符合资格的成员，组队成员没有进入本地图之一。如果缺少组队成员，请尝试组队搜索功能。");
                                                 }
 
                                                 cm.dispose();
@@ -129,7 +129,7 @@ function action(mode, type, selection) {
                                         cm.sendOk("现在团队搜索状态为: #b" + (psState ? "开启" : "关闭") + "#k. 你想更改的时候就跟我说。");
                                         cm.dispose();
                                 } else {
-                                        cm.sendOk("#e#b<组队任务：奔腾路由>#k#n\r\n进入地图后，队员们将面对大量相应等级的怪物，从它们身上收集到所有的通行证交给我。与关卡对应地，每位成员都可以收到一枚橡皮。在自动售货机处可以使用#b相同的橡皮或是多枚不同的橡皮#k来交换更好的奖励。");
+                                        cm.sendOk("#e#b<组队任务：Pentium 路由>#k#n\r\n进入地图后，队员们将面对大量相应等级的怪物，从它们身上收集到所有的通行证交给我。与关卡对应地，每位成员都可以收到一枚橡皮。在自动售货机处可以使用#b相同的橡皮或是多枚不同的橡皮#k来交换更好的奖励。");
                                         cm.dispose();
                                 }
                         }

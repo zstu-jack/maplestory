@@ -69,7 +69,7 @@ function action(mode, type, selection) {
                                                         idx++;
 
                                                         if(idx == 45) {     // finished lullaby
-                                                                cm.message("一闪一闪亮晶晶，漫天都是小星星。");
+                                                                cm.message("一闪一闪亮晶晶，漫天都是小星星...");
                                                                 cm.setQuestProgress(3114, 42);
 
                                                                 cm.getPlayer().announce(MaplePacketCreator.showEffect("quest/party/clear"));
@@ -79,7 +79,7 @@ function action(mode, type, selection) {
                                                                 return;
                                                         } else {
                                                                 if(idx == 14) {
-                                                                        cm.message("一闪一闪亮晶晶，漫天都是小星星...");
+                                                                        cm.message("一闪一闪亮晶晶，漫天都是小星星。");
                                                                 } else if(idx == 22) {
                                                                         cm.message("挂在天上放光明...");
                                                                 } else if(idx == 30) {

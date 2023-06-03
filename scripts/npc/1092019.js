@@ -83,7 +83,7 @@ function action(mode, type, selection) {
                         } else if (seagullProgress == 1) {
                                 cm.sendNextPrev("我会送你去诺特勒斯号上的一个空房间。你会在那里看到9个巴特。哈哈哈~他们当然不会是多胞胎了。我只是用了一点小小的障眼法来测试你的意志力。");
                         } else {
-                                cm.sendNextPrev("提醒我们使用地毯式空袭，我们就会帮助你拜托困境，这就是朋友之间该做的。\r\n\r\n  #s5221003#    #b#q5221003##k");
+                                cm.sendNextPrev("发出信号，我们就会使用地毯式空袭帮助你摆脱困境，这就是朋友之间该做的。\r\n\r\n  #s5221003#    #b#q5221003##k");
                         }
                 } else if (status == 2) {
                         if (seagullIdx > -1) {
