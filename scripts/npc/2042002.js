@@ -174,10 +174,10 @@ function action(mode, type, selection) {
             if (status == 0) {
                 if (cm.getParty() == null) {
                     status = 10;
-                    cm.sendOk("需要结成队伍后方可加入战斗！");
+                    cm.sendOk("需要组成队伍后才能加入战斗！");
                 } else if (!cm.isLeader()) {
                     status = 10;
-                    cm.sendOk("若想要开启战斗，请让#b队长#k与我交谈。");
+                    cm.sendOk("如果想要开启战斗，请让#b队长#k与我交谈。");
                 } else {
                     var party = cm.getParty().getMembers();
                     var inMap = cm.partyMembersInMap();
@@ -201,10 +201,10 @@ function action(mode, type, selection) {
                         cm.sendOk("请确认队员等级均处于(" + cpqMinLvl + "~" + cpqMaxLvl + ")!");
                     } else if (isOutMap > 0) {
                         status = 10;
-                        cm.sendOk("尚有组队成员不在当前地图。");
+                        cm.sendOk("存在没有处于当前地图的组队成员。");
                     } else {
                         if (!cm.sendCPQMapLists()) {
-                            cm.sendOk("全部怪物嘉年华场地都在战斗中，请稍后再试。");
+                            cm.sendOk("所有嘉年华战斗地图都正在被使用，请稍后再试。");
                             cm.dispose();
                         }
                     }
@@ -306,19 +306,19 @@ function action(mode, type, selection) {
                     }
                 } else if (select == 2) {//S2 Warrior 26 S3 Magician 6 S4 Bowman 6 S5 Thief 8
                     status = 10;
-                    cm.sendSimple("Please make sure you have #t4001129# for the weapon you want. Select the weapon you would like to trade #t4001129#. The choices I have are really good, and I'm not the one who speaks to the people who say it! \r\n#b#L0# #z1302004# (" + n3 + " coins)#l\r\n#L1# #z1402006# (" + n3 + " coins)#l\r\n#L2# #z1302009# (" + n4 + " coins)#l\r\n#L3# #z1402007# (" + n4 + " coins)#l\r\n#L4# #z1302010# (" + n5 + " coins)#l\r\n#L5# #z1402003# (" + n5 + " coins)#l\r\n#L6# #z1312006# (" + n3 + " coins)#l\r\n#L7# #z1412004# (" + n3 + " coins)#l\r\n#L8# #z1312007# (" + n4 + " coins)#l\r\n#L9# #z1412005# (" + n4 + " coins)#l\r\n#L10# #z1312008# (" + n5 + " coins)#l\r\n#L11# #z1412003# (" + n5 + " coins)#l\r\n#L12# Continue to the next page(1/2)#l");
+                    cm.sendSimple("请确认你拥有#t4001129#；来交换所需的武器。选择一把你想要用#t4001129#交换的武器。样样都是上上之选，大家都这么说！\r\n#b#L0# #z1302004# (" + n3 + " 纪念币)#l\r\n#L1# #z1402006# (" + n3 + " 纪念币)#l\r\n#L2# #z1302009# (" + n4 + " 纪念币)#l\r\n#L3# #z1402007# (" + n4 + " 纪念币)#l\r\n#L4# #z1302010# (" + n5 + " 纪念币)#l\r\n#L5# #z1402003# (" + n5 + " 纪念币)#l\r\n#L6# #z1312006# (" + n3 + " 纪念币)#l\r\n#L7# #z1412004# (" + n3 + " 纪念币)#l\r\n#L8# #z1312007# (" + n4 + " 纪念币)#l\r\n#L9# #z1412005# (" + n4 + " 纪念币)#l\r\n#L10# #z1312008# (" + n5 + " 纪念币)#l\r\n#L11# #z1412003# (" + n5 + " 纪念币)#l\r\n#L12# Continue to the next page(1/2)#l");
                 } else if (select == 3) {
                     status = 20;
-                    cm.sendSimple("选择你想要兑换的武器。这里的武器都让人爱不释手，自己挑就行！ \r\n#b#L0# #z1372001# (" + n3 + "纪念币)#l\r\n#L1# #z1382018# (" + n3 + " 纪念币)#l\r\n#L2# #z1372012# (" + n4 + " 纪念币)#l\r\n#L3# #z1382019# (" + n4 + " 纪念币)#l\r\n#L4# #z1382001# (" + n5 + " 纪念币)#l\r\n#L5# #z1372007# (" + n5 + " 纪念币)#l");
+                    cm.sendSimple("选择你想要兑换的武器。这里的武器都让人爱不释手，选一款你喜欢的！ \r\n#b#L0# #z1372001# (" + n3 + "纪念币)#l\r\n#L1# #z1382018# (" + n3 + " 纪念币)#l\r\n#L2# #z1372012# (" + n4 + " 纪念币)#l\r\n#L3# #z1382019# (" + n4 + " 纪念币)#l\r\n#L4# #z1382001# (" + n5 + " 纪念币)#l\r\n#L5# #z1372007# (" + n5 + " 纪念币)#l");
                 } else if (select == 4) {
                     status = 30;
-                    cm.sendSimple("选择你想要兑换的武器。这里的武器都让人爱不释手，自己挑就行！ \r\n#b#L0# #z1452006# (" + n3 + " 纪念币)#l\r\n#L1# #z1452007# (" + n4 + " 纪念币)#l\r\n#L2# #z1452008# (" + n5 + " 纪念币)#l\r\n#L3# #z1462005# (" + n3 + " 纪念币)#l\r\n#L4# #z1462006# (" + n4 + " 纪念币)#l\r\n#L5# #z1462007# (" + n5 + " 纪念币)#l");
+                    cm.sendSimple("选择你想要兑换的武器。这里的武器都让人爱不释手，选一款你喜欢的！ \r\n#b#L0# #z1452006# (" + n3 + " 纪念币)#l\r\n#L1# #z1452007# (" + n4 + " 纪念币)#l\r\n#L2# #z1452008# (" + n5 + " 纪念币)#l\r\n#L3# #z1462005# (" + n3 + " 纪念币)#l\r\n#L4# #z1462006# (" + n4 + " 纪念币)#l\r\n#L5# #z1462007# (" + n5 + " 纪念币)#l");
                 } else if (select == 5) {
                     status = 40;
-                    cm.sendSimple("选择你想要兑换的武器。这批武器都是上等货色。选一把自己喜欢的！ \r\n#b#L0# #z1472013# (" + n3 + " 纪念币)#l\r\n#L1# #z1472017# (" + n4 + " 纪念币)#l\r\n#L2# #z1472021# (" + n5 + " 纪念币)#l\r\n#L3# #z1332014# (" + n3 + " 纪念币)#l\r\n#L4# #z1332031# (" + n4 + " 纪念币)#l\r\n#L5# #z1332011# (" + n4 + " 纪念币)#l\r\n#L6# #z1332016# (" + n5 + " 纪念币)#l\r\n#L7# #z1332003# (" + n5 + " 纪念币)#l");
+                    cm.sendSimple("选择你想要兑换的武器。这批武器都是上等货色。选一款你喜欢的！ \r\n#b#L0# #z1472013# (" + n3 + " 纪念币)#l\r\n#L1# #z1472017# (" + n4 + " 纪念币)#l\r\n#L2# #z1472021# (" + n5 + " 纪念币)#l\r\n#L3# #z1332014# (" + n3 + " 纪念币)#l\r\n#L4# #z1332031# (" + n4 + " 纪念币)#l\r\n#L5# #z1332011# (" + n4 + " 纪念币)#l\r\n#L6# #z1332016# (" + n5 + " 纪念币)#l\r\n#L7# #z1332003# (" + n5 + " 纪念币)#l");
                 } else if (select == 6) {
                     status = 50; //pirate rewards
-                    cm.sendSimple("选择你想要兑换的武器。这批武器都是上等货色。选一把自己喜欢的！ \r\n#b#L0# #z1482005# (" + n3 + " 纪念币)#l \r\n#b#L1# #z1482006# (" + n4 + " 纪念币)#l \r\n#b#L2# #z1482007# (" + n5 + " 纪念币)#l \r\n#b#L3# #z1492005# (" + n3 + " 纪念币)#l \r\n#b#L4# #z1492006# (" + n4 + " 纪念币)#l \r\n#b#L5# #z1492007# (" + n5 + " 纪念币)#l");
+                    cm.sendSimple("选择你想要兑换的武器。这批武器都是上等货色。选一款你喜欢的！ \r\n#b#L0# #z1482005# (" + n3 + " 纪念币)#l \r\n#b#L1# #z1482006# (" + n4 + " 纪念币)#l \r\n#b#L2# #z1482007# (" + n5 + " 纪念币)#l \r\n#b#L3# #z1492005# (" + n3 + " 纪念币)#l \r\n#b#L4# #z1492006# (" + n4 + " 纪念币)#l \r\n#b#L5# #z1492007# (" + n5 + " 纪念币)#l");
                 }
             } else if (status == 11) {
                 if (selection == 12) {
@@ -338,7 +338,7 @@ function action(mode, type, selection) {
             } else if (status == 12) {
                 if (selection == 12) {
                     status = 10;
-                    cm.sendSimple("请确认你拥有#t4001129#以换取所需的武器。选择一把你愿意以#t4001129#交换的武器。样样都是上上之选，大家都这么说！ \r\n#b#L0# #z1302004# (" + n3 + " 纪念币)#l\r\n#L1# #z1402006# (" + n3 + " 纪念币)#l\r\n#L2# #z1302009# (" + n4 + " 纪念币)#l\r\n#L3# #z1402007# (" + n4 + " 纪念币)#l\r\n#L4# #z1302010# (" + n5 + " 纪念币)#l\r\n#L5# #z1402003# (" + n5 + " 纪念币)#l\r\n#L6# #z1312006# (" + n3 + " 纪念币)#l\r\n#L7# #z1412004# (" + n3 + " 纪念币)#l\r\n#L8# #z1312007# (" + n4 + " 纪念币)#l\r\n#L9# #z1412005# (" + n4 + " 纪念币)#l\r\n#L10# #z1312008# (" + n5 + " 纪念币)#l\r\n#L11# #z1412003# (" + n5 + " 纪念币)#l\r\n#L12# Continue to the next page(1/2)#l");
+                    cm.sendSimple("请确认你拥有#t4001129#；来交换所需的武器。选择一把你想要用#t4001129#交换的武器。样样都是上上之选，大家都这么说！ \r\n#b#L0# #z1302004# (" + n3 + " 纪念币)#l\r\n#L1# #z1402006# (" + n3 + " 纪念币)#l\r\n#L2# #z1302009# (" + n4 + " 纪念币)#l\r\n#L3# #z1402007# (" + n4 + " 纪念币)#l\r\n#L4# #z1302010# (" + n5 + " 纪念币)#l\r\n#L5# #z1402003# (" + n5 + " 纪念币)#l\r\n#L6# #z1312006# (" + n3 + " 纪念币)#l\r\n#L7# #z1412004# (" + n3 + " 纪念币)#l\r\n#L8# #z1312007# (" + n4 + " 纪念币)#l\r\n#L9# #z1412005# (" + n4 + " 纪念币)#l\r\n#L10# #z1312008# (" + n5 + " 纪念币)#l\r\n#L11# #z1412003# (" + n5 + " 纪念币)#l\r\n#L12# Continue to the next page(1/2)#l");
                 } else {
                     var item = new Array(1322015, 1422008, 1322016, 1422007, 1322017, 1422005, 1432003, 1442003, 1432005, 1442009, 1442005, 1432004);
                     var cost = new Array(n3, n3, n4, n4, n5, n5, n3, n3, n4, n4, n5, n5);
@@ -398,7 +398,7 @@ function action(mode, type, selection) {
             } else if (status == 61) {
                 select = selection;
                 if (selection == 0) {
-                    cm.sendNext("哈哈！我是休彼德蔓，怪物嘉年华的主办者。在此举办第一届#b怪物嘉年华#k，等待像你这样的冒险家参与这场盛会。");
+                    cm.sendNext("哈哈！我是休彼德蔓，怪物嘉年华的主办者。在这里举办第一届#b怪物嘉年华#k，等待像你这样的冒险家参与这场盛会。");
                 } else if (selection == 1) {
                     cm.sendNext("#b怪物嘉年华#k是两队玩家进入战场，向对方场地放置怪物的对抗活动。#b根据所取得嘉年华点数(CP)确定战斗胜利的一方#k。");
                 } else if (selection == 2) {

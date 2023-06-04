@@ -58,10 +58,10 @@ function action(mode, type, selection) {
                     cm.sendOk("请确认队员等级均处于(" + cpqMinLvl + "~" + cpqMaxLvl + ")!");
                 } else if (isOutMap > 0) {
                     status = 10;
-                    cm.sendOk("尚有组队成员不在当前地图。");
+                    cm.sendOk("存在没有处于当前地图的组队成员。");
                 } else {
                     if (!cm.sendCPQMapLists2()) {
-                        cm.sendOk("全部怪物嘉年华场地都在战斗中，请稍后再试。");
+                        cm.sendOk("所有嘉年华战斗地图都正在被使用，请稍后再试。");
                         cm.dispose();
                     }
                 }
