@@ -69,11 +69,11 @@ function action(mode, type, selection) {
                 } else if (selection == 2) {
                     var size = expedMembers.size();
                     if (size == 1) {
-                        cm.sendOk("You are the only member of the expedition.");
+                        cm.sendOk("目前尚无其他人加入远征队。");
                         cm.dispose();
                         return;
                     }
-                    var text = "The following members make up your expedition (Click on them to expel them):\r\n";
+                    var text = "以下成员加入了远征队，可以点击名字将其移除：\r\n";
                     text += "\r\n\t\t1." + expedicao.getLeader().getName();
                     for (var i = 1; i < size; i++) {
                         text += "\r\n#b#L" + (i + 1) + "#" + (i + 1) + ". " + expedMembers.get(i).getValue() + "#l\n";
@@ -108,7 +108,7 @@ function action(mode, type, selection) {
                 if (selection > 0) {
                     var banned = expedMembers.get(selection - 1);
                     expedicao.ban(banned);
-                    cm.sendOk("You have banned " + banned.getValue() + " from the expedition.");
+                    cm.sendOk("你将 " + banned.getValue() + " 驱逐出了远征队。");
                     cm.dispose();
                 } else {
                     cm.sendSimple(list);

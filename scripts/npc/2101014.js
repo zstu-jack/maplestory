@@ -139,9 +139,9 @@ function enterArena(arenaPlayers) {
                 cm.warp(map, 0);
                 cm.getPlayer().dropMessage("Your arena was created successfully. Wait for people to join the battle.");
             } else if (res > 0) {
-                cm.sendOk("Sorry, you've already reached the quota of attempts for this expedition! Try again another day...");
+                cm.sendOk("抱歉，你的挑战次数已达上限。");
             } else {
-                cm.sendOk("An unexpected error has occurred when starting the expedition, please try again later.");
+                cm.sendOk("发生了未知错误，请稍后重试。");
             }
         } else {
             cm.sendOk("An unexpected error has occurred when locating the expedition, please try again later.");
