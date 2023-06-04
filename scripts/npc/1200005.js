@@ -9,6 +9,6 @@
 **/
 
 function start() {
-	cm.sendOk("Ahhhh, this is so boring... The whale is controlling the ship so i'm left with nothing to do but look up and stare at the clouds.");
+	cm.sendOk("啊哈，看看这头大鲸鱼，宏伟~壮阔。有它在，船稳得很~~一切都是这么的美好。嗯，所以你可以放下心神，听听音乐，抬头看看云层外的美丽世界。");
 	cm.dispose()
 }
