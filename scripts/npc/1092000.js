@@ -49,7 +49,7 @@ function action(mode, type, selection){
 				cm.warp(912000100, 0);
 			}
 			else{
-				cm.sendOk("背包已满，我没法把空奶瓶交给你。请在其它栏腾出空间。");
+				cm.sendOk("背包已满，我没法把空奶瓶交给你。请在其他栏腾出空间。");
 			}
 			cm.dispose();
 		}

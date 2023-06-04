@@ -57,7 +57,7 @@ function action(mode, type, selection) {
                                 return;
                         }
                     
-                        cm.sendSimple("#e#b<组队任务：Forest of Poison Haze>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n你想组成或加入一支队伍来揭开#bForest of Poison Haze#k的谜团吗？让你的#b队长#k与我对话，或者创建一个队伍。#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。\r\n#L3#我想要兑换奖励。");
+                        cm.sendSimple("#e#b<组队任务：毒雾森林>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n你想组成或加入一支队伍来揭开#bForest of Poison Haze#k的谜团吗？让你的#b队长#k与我对话，或者创建一个队伍。#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。\r\n#L3#我想要兑换奖励。");
                 } else if (status == 1) {
                         if (selection == 0) {
                                 if (cm.getParty() == null) {

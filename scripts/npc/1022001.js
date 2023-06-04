@@ -33,7 +33,7 @@ function action(mode, type, selection) {
                 selStr += "\r\n#L" + i + "##m" + maps[i] + "# (" + (cm.getJobId() == 0 ? cost[i] / 10 : cost[i]) + " 金币)#l";
             cm.sendSimple(selStr);
         } else if (status == 2) {
-            cm.sendYesNo("你在这里没有别的事可做，是吗？你真的想去 #b#m" + maps[selection] + "##k？此次旅程将花费 #b"+ (cm.getJobId() == 0 ? cost[selection] / 10 : cost[selection]) + " 金币#k.");
+            cm.sendYesNo("你在这里没有别的事情要做了，对吗？你真的想去 #b#m" + maps[selection] + "##k？此次旅程将花费 #b"+ (cm.getJobId() == 0 ? cost[selection] / 10 : cost[selection]) + " 金币#k.");
             selectedMap = selection;
         } else if (status == 3) {
             if (cm.getJobId() == 0) {

@@ -20,7 +20,7 @@ function action(mode, type, selection) {
 	} else if (cm.getMapId() == 910330001) {
 		var itemid = 4001321;
 		if (!cm.canHold(itemid)) {
-			cm.sendOk("请在其它栏留出至少1格空间。");
+			cm.sendOk("请在其他栏留出至少1格空间。");
 		} else {
 			cm.gainItem(itemid,1);
 			cm.warp(910320000, 0);

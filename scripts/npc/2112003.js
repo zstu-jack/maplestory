@@ -65,7 +65,7 @@ function action(mode, type, selection) {
                                         return;
                                 }
 
-                                cm.sendSimple("#e#b<组队任务：Romeo and Juliet>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nMy beloved Romeo has been kidnapped! Although he is Zenumist's, I can't stand by and just see him suffer just because of this foolish clash. I need you and your colleagues help to save him! Please, help us!! Please have your #bparty leader#k talk to me.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
+                                cm.sendSimple("#e#b<组队任务：罗密欧与朱丽叶>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nMy beloved Romeo has been kidnapped! Although he is Zenumist's, I can't stand by and just see him suffer just because of this foolish clash. I need you and your colleagues help to save him! Please, help us!! Please have your #bparty leader#k talk to me.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
                         } else if (status == 1) {
                                 if (selection == 0) {
                                         if (cm.getParty() == null) {

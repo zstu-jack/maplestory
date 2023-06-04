@@ -160,7 +160,7 @@ function action(mode, type, selection) {
                         cm.gainItem(4031011, 1);
                     cm.sendNextPrev("请带着这封信去找 #b#p1072003##k，他就在废弃都市附近的 #b#m102040000##k。把信交给他，他会作为教官代替我测试你。祝你好运。");
                 } else {
-                    cm.sendNext("请确保其它栏至少有1格空位。");
+                    cm.sendNext("请确保其他栏至少有1格空位。");
                     cm.dispose();
                 }
             } else {

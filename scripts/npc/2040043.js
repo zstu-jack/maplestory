@@ -87,14 +87,14 @@ function action(mode, type, selection) {
                 var eim = cm.getPlayer().getEventInstance();
                 
                 if(eim.getProperty(stage.toString() + "stageclear") != null) {
-                        cm.sendNext("Hurry, goto the next stage, the portal is open!");
+                        cm.sendNext("传送门已经开启，可以前往下一阶段。");
                 }
                 else {
                         if (eim.isEventLeader(cm.getPlayer())) {
                                 var state = eim.getIntProperty("statusStg" + stage);
 
                                 if(state == -1) {           // preamble
-                                        cm.sendOk("Hi. Welcome to the #bstage " + stage + "#k. In this stage, line up 5 member of your party above those boxes in order to form the right combination to unlock the next stage. Only one player should stay above a box desired to pertain the combination.");
+                                        cm.sendOk("你好，欢迎来到#b第" + stage + "阶段#k。在这个阶段，5名队员需要依次站在这些方块上面，形成正确的组合来解锁下一阶段。同一个方块上面只能站着一个玩家。");
                                         
                                         var st = (debug) ? 2 : 0;
                                         eim.setProperty("statusStg" + stage, st);
@@ -145,12 +145,12 @@ function action(mode, type, selection) {
                                                 cm.dispose();
                                             }
                                         } else {
-                                            cm.sendNext("It looks like you haven't found the 5 boxes just yet. Please think of a different combination of boxes. Only 5 are allowed to stand on boxes, and if you move it may not count as an answer, so please keep that in mind. Keep going!");
+                                            cm.sendNext("看起来你们还没有找到正确的5个方块，请尝试不同的方块组合。同一时间只有5名玩家可以站在方块上，如果有人在这时移动，将不会被认为是给出了答案，请记住这一点。");
                                             cm.dispose();
                                         }
                                 }
                         } else {
-                                cm.sendNext("Please tell your #bParty-Leader#k to come talk to me.");
+                                cm.sendNext("请让你的#b队长#k来跟我对话。");
                         }
                 }
                 

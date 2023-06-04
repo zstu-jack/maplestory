@@ -134,7 +134,7 @@ function action(mode, type, selection) {
                         cm.gainItem(4031008, 1);
                     cm.sendNextPrev("请把这封信带给 #b#p1072000##k ，他在勇士部落附近的 #b#m102020300##k。把信交给他，他会作为教官代替我测试你。祝你好运。");
                 } else {
-                    cm.sendNext("请确保其它栏至少有1格空位。");
+                    cm.sendNext("请确保其他栏至少有1格空位。");
                     cm.dispose();
                 }
             } else {

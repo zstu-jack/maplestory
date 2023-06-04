@@ -40,12 +40,12 @@ function action(mode, type, selection) {
                 else
                         status--;
                 if (status == 0 && mode == 1) {
-                        cm.sendNext("Congratulations on sealing the dimensional crack! For all of your hard work, I have a gift for you! Here take this prize.");
+                        cm.sendNext("祝贺你们封印了时空裂缝！我准备了一些礼物送给你们，请收好，这是你的奖励。");
                 } else if(status == 1) {
                         var eim = cm.getEventInstance();
                     
                         if(!eim.giveEventReward(cm.getPlayer())) {
-                                cm.sendNext("It seems you don't have a free slot in either your #rEquip#k, #rUse#k or #rEtc#k inventories. Please make some room and try again.");
+                                cm.sendNext("请确认你的#r装备栏#k, #r消耗栏#k或#r其他栏#k是否有足够的空间。清理出一些空间再来和我对话吧。");
                         } else {
                                 cm.warp(221024500);
                         }

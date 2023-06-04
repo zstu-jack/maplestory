@@ -33,8 +33,8 @@ var player;
 var em;
 var exped = MapleExpeditionType.SHOWA;
 var expedName = "Showa Gang";
-var expedBoss = "The Boss";
-var expedMap = "Nightmarish Last Days";
+var expedBoss = "大头头";//这个怪物真该翻译成大头领的
+var expedMap = "恶梦般的一天";
 var expedItem = 4000138;
 
 var list = "有什么事要做？#b\r\n\r\n#L1#确认目前的远征队成员。#l\r\n#L2#开启远征。#l\r\n#L3#取消远征队登记。#l";
@@ -122,7 +122,7 @@ function action(mode, type, selection) {
                 cm.dispose();
                 return;
             } else if (selection == 2) {
-                cm.sendOk("当然，并不是每个人都能挑战 " + expedBoss + "。");
+                cm.sendOk("确实，并非每个人都想要挑战 " + expedBoss + "。");
                 cm.dispose();
                 return;
             }

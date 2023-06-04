@@ -29,7 +29,7 @@ function action(mode, type, selection) {
         
         if (cm.getPlayer().getMapId() == 980030010) {
             if (status == 0) {
-                cm.sendNext("I hope you had fun at the Monster Carnival!");
+                cm.sendNext("希望你在怪物嘉年华里玩得开心！");
             } else if (status > 0) {
                 cm.warp(980030000, 0);
                 cm.dispose();
@@ -40,20 +40,20 @@ function action(mode, type, selection) {
                     var shiu = "";
                     if (cm.getPlayer().getFestivalPoints() >= 300) {
                         shiu += "#rA#k";
-                        cm.sendOk("Unfortunately, you either drew or lost the battle despite your excellent performance. Victory can be yours next time! \r\n\r\n#bYour result: " + shiu);
+                        cm.sendOk("很遗憾，虽然你表现出众，但还是取得了平局或输掉了比赛。下次努力取胜吧！\r\n\r\n#b你的评分是：" + shiu);
                         rnk = 10;
                     } else if (cm.getPlayer().getFestivalPoints() >= 100) {
                         shiu += "#rB#k";
                         rnk = 20;
-                        cm.sendOk("Unfortunately, you either drew or lost the battle, even with your ultimate performance. Just a little bit, and the victory could have been yours! \r\n\r\n#bYour result: " + shiu);
+                        cm.sendOk("很遗憾，虽然你表现不错，但还是取得了平局或输掉了比赛。如果再稍微努力一点，胜利就可能属于你！\r\n\r\n#b你的评分是：" + shiu);
                     } else if (cm.getPlayer().getFestivalPoints() >= 50) {
                         shiu += "#rC#k";
                         rnk = 30;
-                        cm.sendOk("Unfortunately, you either drew or lost the battle. Victory is for those who strive. I see your efforts, so victory is not far from your reach. Keep it up!\r\n\r\n#bYour result: " + shiu);
+                        cm.sendOk("很遗憾，你取得了平局或输掉了比赛。胜利属于奋战到底的人。我有看到你的努力，胜利对你而言并非遥不可及。继续努力吧！\r\n\r\n#b你的评分是：" + shiu);
                     } else {
                         shiu += "#rD#k";
                         rnk = 40;
-                        cm.sendOk("Unfortunately, you either equalized or lost the battle, and your performance clearly reflects on it. I expect more from you next time. \r\n\r\n#bYour result: " + shiu);
+                        cm.sendOk("很遗憾，你取得了平局或输掉了比赛。你的表现很能够说明问题。希望你下次更加努力。\r\n\r\n#b你的评分是：" + shiu);
                     }
                 } else {
                     cm.warp(980030000, 0);
@@ -94,19 +94,19 @@ function action(mode, type, selection) {
                     if (cm.getPlayer().getFestivalPoints() >= 300) {
                         shi += "#rA#k";
                         rnk = 1;
-                        cm.sendOk("Congratulations on your victory!!! What a performance! The opposite group could not do anything! I hope the same good work next time! \r\n\r\n#bYour result: " + shi);
+                        cm.sendOk("恭喜你取得了胜利！赢得真是漂亮，对方毫无还手之力！我期待你下次也能有同样出色的表现！\r\n\r\n#b你的评分是：" + shi);
                     } else if (cm.getPlayer().getFestivalPoints() >= 100) {
                         shi += "#rB#k";
                         rnk = 2;
-                        cm.sendOk("Congratulations on your victory! That was awesome! You did a good job against the opposing group! Just a little longer, and you'll definitely get an A next time! \r\n\r\n#bYour result: " + shi);
+                        cm.sendOk("恭喜你取得了胜利！太棒了！你在对抗中表现得很好！如果再给多一点时间，你一定会拔得头筹的！下次一定没问题！\r\n\r\n#b你的评分是：" + shi);
                     } else if (cm.getPlayer().getFestivalPoints() >= 50) {
                         shi += "#rC#k";
                         rnk = 3;
-                        cm.sendOk("Congratulations on your victory. You did some things here and there, but that can not be considered a good victory. I expect more from you next time. \r\n\r\n#bYour result: " + shi);
+                        cm.sendOk("恭喜你取得了胜利。你也做了一些贡献，不过这并不能算是完胜。我期待你下次能有更好的表现。\r\n\r\n#b你的评分是：" + shi);
                     } else {
                         shi += "#rD#k";
                         rnk = 4;
-                        cm.sendOk("Congratulations on your victory, though your performance did not quite reflect that. Be more active in your next participation in the Monster Carnival! \r\n\r\n#bYour result: " + shi);
+                        cm.sendOk("恭喜你取得了胜利。虽然你的表现并配不上这场胜利。下次怪物嘉年华中要表现得更加活跃才行！\r\n\r\n#b你的评分是：" + shi);
                     }
                 } else {
                     cm.warp(980030000, 0);

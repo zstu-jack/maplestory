@@ -52,16 +52,16 @@ function action(mode, type, selection) {
 
                 if (party >= 1) {
                     status = 10;
-                    cm.sendOk("You do not have enough people in your party. You need a party with #b" + cpqMinAmt + "#k - #r" + cpqMaxAmt + "#k members and they should be on the map with you.");
+                    cm.sendOk("队伍人数不足。需要与#b" + cpqMinAmt + "#k - #r" + cpqMaxAmt + "#k等级内队员同地图方可进行。");
                 } else if (lvlOk != inMap) {
                     status = 10;
-                    cm.sendOk("Make sure everyone in your party is among the correct levels (" + cpqMinLvl + "~" + cpqMaxLvl + ")!");
+                    cm.sendOk("请确认队员等级均处于(" + cpqMinLvl + "~" + cpqMaxLvl + ")!");
                 } else if (isOutMap > 0) {
                     status = 10;
-                    cm.sendOk("There are some of the party members that is not on the map!");
+                    cm.sendOk("尚有组队成员不在当前地图。");
                 } else {
                     if (!cm.sendCPQMapLists2()) {
-                        cm.sendOk("All Monster Carnival fields are currently in use! Try again later.");
+                        cm.sendOk("全部怪物嘉年华场地都在战斗中，请稍后再试。");
                         cm.dispose();
                     }
                 }
@@ -72,15 +72,15 @@ function action(mode, type, selection) {
                     cm.challengeParty2(selection);
                     cm.dispose();
                 } else {
-                    cm.sendOk("The room is currently full.");
+                    cm.sendOk("房间已满。");
                     cm.dispose();
                 }
             } else {
                 var party = cm.getParty().getMembers();
                 if ((selection === 0 || selection === 1 ) && party.size() < (Packages.config.YamlConfig.config.server.USE_ENABLE_SOLO_EXPEDITIONS ? 1 : 2)) {
-                    cm.sendOk("You need at least 2 players to participate in the battle!");
+                    cm.sendOk("需要至少2名玩家方可开启战斗！");
                 } else if ((selection === 2 ) && party.size() < (Packages.config.YamlConfig.config.server.USE_ENABLE_SOLO_EXPEDITIONS ? 1 : 3)) {
-                    cm.sendOk("You need at least 3 players to participate in the battle!");
+                    cm.sendOk("需要至少3名玩家方可开启战斗！");
                 } else {
                     cm.cpqLobby2(selection);
                 }

@@ -61,7 +61,7 @@ function action(mode, type, selection) {
                                 return;
                         }
                     
-                        cm.sendSimple("#e#b<组队任务：Ludibrium Maze>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nThis is the entrance to the Ludibrium Maze. Enjoy!\r\n#b#L0#Enter the Lubidrium Maze#l\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#What is the Ludibrium Maze?");
+                        cm.sendSimple("#e#b<组队任务：玩具城迷宫>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nThis is the entrance to the Ludibrium Maze. Enjoy!\r\n#b#L0#Enter the Lubidrium Maze#l\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#What is the Ludibrium Maze?");
                 } else if (status == 1) {
                         if (selection == 0) {
                                 if (cm.getParty() == null) {

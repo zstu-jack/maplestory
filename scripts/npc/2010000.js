@@ -191,7 +191,7 @@ function action(mode, type, selection) {
     } else if (status == 3){
 	lastSelection = selection;
 	requiredItem = eQuestChoices[selection];
-	cm.sendYesNo("让我看看，你想要用你的 #b100个 #t" + requiredItem + "##k 来兑换物品吧？兑换前请确保你的消耗栏和其它栏各有至少1格空位。");
+	cm.sendYesNo("让我看看，你想要用你的 #b100个 #t" + requiredItem + "##k 来兑换物品吧？兑换前请确保你的消耗栏和其他栏各有至少1格空位。");
     }else if (status == 4){
 	itemSet = (Math.floor(Math.random() * eQuestPrizes[lastSelection].length));
 	reward = eQuestPrizes[lastSelection];
@@ -200,7 +200,7 @@ function action(mode, type, selection) {
 	if(!cm.haveItem(requiredItem,100)){
 	    cm.sendOk("嗯... 你确定你有 #b100个 #t" + requiredItem + "##k吗？如果背包满了，也有可能无法交易。");
 	} else if(!cm.canHold(prizeItem)){
-	    cm.sendOk("你的消耗栏或其它栏已满。请清理背包后来找我交易。");
+	    cm.sendOk("你的消耗栏或其他栏已满。请清理背包后来找我交易。");
 	} else {
 	    cm.gainItem(requiredItem,-100);
 	    cm.gainExp(500 * cm.getPlayer().getExpRate());

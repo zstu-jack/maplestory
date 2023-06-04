@@ -57,7 +57,7 @@ function action(mode, type, selection) {
                                 return;
                         }
                     
-                        cm.sendSimple("#e#b<组队任务：Pirate Ship>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nHelp! My son has been kidnapped and is bound on the hands of the fearful #rLord Pirate#k. I need your help... Would you please assemble or join a team to save him? Have your #bparty leader#k talk to me or make yourself a party.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
+                        cm.sendSimple("#e#b<组队任务：老海盗>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nHelp! My son has been kidnapped and is bound on the hands of the fearful #rLord Pirate#k. I need your help... Would you please assemble or join a team to save him? Have your #bparty leader#k talk to me or make yourself a party.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
                 } else if (status == 1) {
                         if (selection == 0) {
                                 if (cm.getParty() == null) {

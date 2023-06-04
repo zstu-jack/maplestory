@@ -164,7 +164,7 @@ function action(mode, type, selection) {
                                                 }
                                         }
                                 } else {
-                                        cm.sendNext("Please tell your #bParty-Leader#k to come talk to me.");
+                                        cm.sendNext("请让你的#b队长#k来跟我对话。");
                                 }
                         } else {
                                 var area = cm.getMap().getArea(0);
@@ -186,7 +186,7 @@ function action(mode, type, selection) {
                                                         cm.sendNext("How is it? Are you going to retrieve me the #b#t4031594##k? That's your last trial, hold on!")
                                                 }
                                         } else {
-                                                cm.sendNext("Please tell your #bParty-Leader#k to come talk to me.");
+                                                cm.sendNext("请让你的#b队长#k来跟我对话。");
                                         }
                                 }
                         }

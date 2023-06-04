@@ -55,10 +55,10 @@ function action(mode, type, selection) {
 
         if (status == 0) {
             if (player.getLevel() < cwkpq.getMinLevel() || player.getLevel() > cwkpq.getMaxLevel()) { //Don't fit requirement, thanks Conrad
-                cm.sendOk("You do not meet the criteria to take attempt Crimsonwood Keep Party Quest!");
+                cm.sendOk("你尚不满足挑战绯红军械库组队任务的资格。");
                 cm.dispose();
             } else if (expedition == null) { //Start an expedition
-                cm.sendSimple("#e#b<组队任务：Crimsonwood Keep>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nWould you like to assemble a team to attempt the #rCrimsonwood Keep Party Quest#k?\r\n#b#L1#Lets get this going!#l\r\n\#L2#No, I think I'll wait a bit...#l");
+                cm.sendSimple("#e#b<组队任务：绯红军械库>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n你想要组成一支队伍来执行 #r绯红军械库组队任务#k 吗？\r\n#b#L1#入场。#l\r\n\#L2#现在还不是时候...#l");
                 status = 1;
             } else if (expedition.isLeader(player)) { //If you're the leader, manage the exped
                 if (expedition.isInProgress()) {
@@ -81,7 +81,7 @@ function action(mode, type, selection) {
                     em.getInstance("CWKPQ" + player.getClient().getChannel()).registerPlayer(player);
                     cm.dispose();
                 } else { //If you're not in by now, tough luck
-                    cm.sendOk("Another expedition has taken the initiative to complete the Crimsonwood Keep Party Quest, lets pray for those brave souls.");
+                    cm.sendOk("其它远征队正在执行绯红军械库组队任务，愿他们勇敢的灵魂得偿所愿。");
                     cm.dispose();
                 }
             }
@@ -96,7 +96,7 @@ function action(mode, type, selection) {
                 
                 var res = cm.createExpedition(cwkpq);
                 if (res == 0) {
-                    cm.sendOk("The #rCrimsonwood Keep Party Quest Expedition#k has been created.\r\n\r\nTalk to me again to view the current team, or start the fight!");
+                    cm.sendOk("#r绯红军械库组队任务远征队#k 已创建。\r\n\r\n目前可以与我对话确认队员名单，或开启挑战。");
                 } else if (res > 0) {
                     cm.sendOk("抱歉，你的挑战次数已达上限。");
                 } else {
@@ -106,7 +106,7 @@ function action(mode, type, selection) {
                 cm.dispose();
                 return;
             } else if (selection == 2) {
-                cm.sendOk("Sure, not everyone's up to attempting Crimsonwood Keep Party Quest.");
+                cm.sendOk("确实，并非每个人都想要挑战绯红军械库组队任务。");
                 cm.dispose();
                 return;
             }
@@ -140,7 +140,7 @@ function action(mode, type, selection) {
                     return;
                 }
                 
-                cm.sendOk("The expedition will begin and you will now be escorted to the #bEntrance to CWKPQ Altar#k.");
+                cm.sendOk("任务即将开始，远征队将被传送进入 #b密室走廊#k。");
                 status = 4;
             } else if (selection == 3) {
                 player.getMap().broadcastMessage(MaplePacketCreator.serverNotice(6, expedition.getLeader().getName() + " 结束了远征。"));
@@ -159,7 +159,7 @@ function action(mode, type, selection) {
             em.setProperty("leader", player.getName());
             em.setProperty("channel", player.getClient().getChannel());
             if(!em.startInstance(expedition)) {
-                cm.sendOk("Another expedition has taken the initiative to complete the Crimsonwood Keep Party Quest, lets pray for those brave souls.");
+                cm.sendOk("其它远征队正在执行绯红军械库组队任务，愿他们勇敢的灵魂得偿所愿。");
                 cm.dispose();
                 return;
             }

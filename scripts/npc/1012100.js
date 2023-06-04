@@ -136,7 +136,7 @@ function action(mode, type, selection) {
                     cm.sendNextPrev("请把这封信带给 #b#p1072002##k ，她在射手村附近的 #b#m106010000##k。把信交给她，她会作为教官代替我测试你。祝你好运。");
                     cm.dispose();
                 } else {
-                    cm.sendNext("请确保其它栏至少有1格空位。");
+                    cm.sendNext("请确保其他栏至少有1格空位。");
                     cm.dispose();
                 }
             } else {

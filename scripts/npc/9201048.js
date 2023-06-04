@@ -57,7 +57,7 @@ function action(mode, type, selection) {
                                 return;
                         }
                     
-                        cm.sendSimple("#e#b<组队任务：Amorian Challenge>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nIf you're brave enough to attempt the Amorian Challenge, join with others like you and let your #bparty leader#k talk to me. If a party filled with whole married couples register to the challenge, better prizes awaits there.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
+                        cm.sendSimple("#e#b<组队任务：婚礼村的挑战>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nIf you're brave enough to attempt the Amorian Challenge, join with others like you and let your #bparty leader#k talk to me. If a party filled with whole married couples register to the challenge, better prizes awaits there.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
                 } else if (status == 1) {
                         if (selection == 0) {
                                 if (cm.getParty() == null) {
@@ -84,7 +84,7 @@ function action(mode, type, selection) {
                                 cm.sendOk("现在组队搜索状态为: #b" + (psState ? "启用" : "禁用") + "#k。需要更改时请与我对话。");
                                 cm.dispose();
                         } else {
-                                cm.sendOk("#e#b<组队任务：Amorian Challenge>#k#n\r\nI am Amos, hoster of the well-round famed Amorian Challenge. The instance consist of many team puzzles, where cooperation is the fundamental key for progress. Team up with other players to attempt for the bonus stage, where many goodies can be obtained at the end of the instance. If an all-couple party is formed, they can get even better prizes on the extra bonus stage.");
+                                cm.sendOk("#e#b<组队任务：婚礼村的挑战>#k#n\r\nI am Amos, hoster of the well-round famed Amorian Challenge. The instance consist of many team puzzles, where cooperation is the fundamental key for progress. Team up with other players to attempt for the bonus stage, where many goodies can be obtained at the end of the instance. If an all-couple party is formed, they can get even better prizes on the extra bonus stage.");
                                 cm.dispose();
                         }
                 }

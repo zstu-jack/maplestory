@@ -63,12 +63,12 @@ function action(mode, type, selection) {
                 if (status == 0) {
                         em = cm.getEventManager("GuildQuest");
                         if(em == null) {
-                                cm.sendOk("The Guild Quest has encountered an error.");
+                                cm.sendOk("家族任务遇到了一个错误。");
                                 cm.dispose();
                                 return;
                         }
                     
-                        cm.sendSimple("#e#b<Guild Quest: Sharenian Ruins>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nThe path to Sharenian starts here. What would you like to do? #b\r\n#L0#Register your guild for Guild Quest#l\r\n#L1#Join your guild's Guild Quest#l\r\n#L2#我想要听取更多相关细节。#l");
+                        cm.sendSimple("#e#b<家族任务：Sharenian Ruins>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nThe path to Sharenian starts here. 有什么事要做？#b\r\n#L0#Register your guild for Guild Quest#l\r\n#L1#Join your guild's Guild Quest#l\r\n#L2#我想要听取更多相关细节。#l");
                 } else if (status == 1) {
                         sel = selection;
                         if (selection == 0) {
@@ -111,7 +111,7 @@ function action(mode, type, selection) {
                                 reqStr += "     - 1 team member who is a #rlong ranged attacker#k like Bowman, Assassin, or Gunslinger.\r\n";
                                 reqStr += "     - 1 team member with #rgood jumping skills#k like Assassin with maxed Flash Jump or Gunslinger with Wings.\r\n";
                             
-                                cm.sendOk("#e#b<Guild Quest: Sharenian Ruins>#k#n\r\n Team up with your guild members in an auspicious attempt to recover the Rubian from the skeleton's grasp, with teamwork overcoming many puzzles and challenges awaiting inside the Sharenian tombs. Great rewards can be obtained upon the instance completion, and Guild Points can be racked up for your Guild." + reqStr);
+                                cm.sendOk("#e#b<家族任务：Sharenian Ruins>#k#n\r\n Team up with your guild members in an auspicious attempt to recover the Rubian from the skeleton's grasp, with teamwork overcoming many puzzles and challenges awaiting inside the Sharenian tombs. Great rewards can be obtained upon the instance completion, and Guild Points can be racked up for your Guild." + reqStr);
                                 cm.dispose();
                         }
                 } else if (status == 2) {

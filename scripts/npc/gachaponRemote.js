@@ -49,7 +49,7 @@ function action(mode, type, selection) {
 				cm.gainItem(ticketId, -1);
 				cm.doGachapon();
 			} else {
-				cm.sendOk("请在你的#r装备栏、消耗栏、设置栏#k和#r其它栏#k各留出至少一个空位。");
+				cm.sendOk("请在你的#r装备栏、消耗栏、设置栏#k和#r其他栏#k各留出至少一个空位。");
 			}
 		} else {
 			cm.dispose();

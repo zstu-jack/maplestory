@@ -186,7 +186,7 @@ function action(mode, type, selection) {
                 }
                 
                 if (!complete)
-                    cm.sendOk("请确保材料足够，并且有足够的其它栏空间。");
+                    cm.sendOk("请确保材料足够，并且有足够的其他栏空间。");
                 else {
                     if (mats instanceof Array) {
                         for (var i = 0; i < mats.length; i++){
