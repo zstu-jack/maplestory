@@ -33,7 +33,7 @@ var status = 0;
 var cost = 10000;
 
 function start() {
-    cm.sendNext("嗨！本出租车仅供贵宾使用。我们不只是像普通出租车那样带您去不同的城镇，还提供VIP级别的更好服务。不贵，只需10.000金币，我们就可以安全地将您带到 \r\n#b蚂蚁广场#k.");
+    cm.sendNext("你好！本出租车仅供VIP客人乘坐。不同于搭载客人往来与城镇间的普通出租车，我们会提供更好的服务，与VIP档次相符的服务。虽然有些昂贵，但...只要10,000金币，我们就可以安全地将您送到 \r\n蚂蚁洞广场#k。");
 }
 
 function action(mode, type, selection) {
@@ -41,17 +41,18 @@ function action(mode, type, selection) {
     if (mode == -1){
         cm.dispose();
         return;
+    }else if(mode == 0) {
     } else if (mode == 0) {
-        cm.sendOk("这个城市也有很多你没探索到的地方哦。如果觉得有必要去蚂蚁广场，你可以随时找我。");
+        cm.sendOk("这个城镇也有很多可以游览的去处。如果您有前往蚂蚁洞广场的想法，请联系我们。");
     	cm.dispose();
     	return;
     }
     if (status == 1) {
-        cm.sendYesNo(cm.getJobId() == 0 ? "我们对新手有百分90的优惠哦！如果你想要安全到达#b蚂蚁广场#k,那就快点付钱吧！");
+        cm.sendYesNo(cm.getJobId() == 0 ? "我们对新人提供 1折 的特别优惠。蚂蚁洞广场位于金银岛幽深的地下洞穴中，有间24小时便利店在那里常年开张。想要支付 #b1,000 金币#k 前往那里吗？" : "新手之外的职业将适用正常费用。蚂蚁洞广场位于金银岛幽深的地下洞穴中，有间24小时便利店在那里常年开张。想要支付 #b1,000 金币#k 前往那里吗？");//这里不能动了，拉取到的脚本还是有报错，按原版比较好
         cost /= ((cm.getJobId() == 0) ? 10 : 1);
     } else if (status == 2) {
         if (cm.getMeso() < cost)
-            cm.sendNext("小气鬼！这么一点小钱都舍不得，坐不起就'11路'压马路去吧，小心路上的妖魔鬼怪。反悔了，我大人不记小人过，你还可以再来找我。")
+            cm.sendNext("看起来您没有足够的金币。这样的话，我们无法为您提供服务。")
         else {
             cm.gainMeso(-cost);
             cm.warp(105070001);

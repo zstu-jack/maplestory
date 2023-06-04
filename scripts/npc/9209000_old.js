@@ -79,7 +79,7 @@ function action(mode, type, selection) {
             if(selection != 1)
                 cm.sendNext("Something's not right. Check again.");
             else{
-                cm.sendNext("The transaction has been completed. See you next time.");
+                cm.sendNext("The transaction has been completed. ÏÂ´Î¼û¡£");
                 cm.gainMeso(180);
                 cm.gainItem(pickup, -1);
             }

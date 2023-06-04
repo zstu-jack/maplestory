@@ -32,7 +32,7 @@ function action(mode, type, selection) {
                 var mapobj = cm.getMap();
             
                 if (mode == 0 && type > 0) {
-                        cm.getPlayer().dropMessage(5, "Eleanor: Oh, lost the Empress and still challenging us? Now you've done it! Prepare yourself!!!");
+                        cm.getPlayer().dropMessage(5, "埃雷奥诺尔：哦，没有女皇的庇护，居然赢过我们？现在你做到了！");
                         
                         mapobj.spawnMonsterOnGroundBelow(Packages.server.life.MapleLifeFactory.getMonster(9001010), new Packages.java.awt.Point(850, 0));
                         mapobj.destroyNPC(1104002);
@@ -47,14 +47,14 @@ function action(mode, type, selection) {
     
                 if(status == 0) {
                         if(!cm.isQuestStarted(20407)) {
-                                cm.sendOk("... Knight, you still #bseem unsure to face this fight#k, don't you? There's no grace in challenging someone when they are still not mentally ready for the battle. Talk your peace to that big clumsy bird of yours, maybe it'll put some guts on you.");
+                                cm.sendOk("...骑士,你看起来还#b没有勇气#k面对这场战斗, 当一个人还没有做好战斗的心理准备时，是无法战胜它的。和你那只笨拙的大鸟谈谈你的懦弱，也许它会给你一些鼓励。");
                                 cm.dispose();
                                 return;
                         }
                     
-                        cm.sendAcceptDecline("Hahahahaha! This place's Empress is already under my domain, that's surely a great advance on the #bBlack Wings#k' overthrow towards Maple World... And you, there? Still wants to face us? Or, better yet, since you seem strong enough to be quite a supplementary reinforcement at our service, #rwill you meet our expectations and fancy joining us#k since there's nothing more you can do?");
+                        cm.sendAcceptDecline("哈哈哈哈！女皇的这块领地已经归我们了，这无疑是#b黑色之翼#k向冒险世界迈出的一个巨大成功。。。你呢？还敢面对我们吗？你看起来足够强壮，考虑成为我们团队的后备补充力量吧，#r想加入我们吗#k，朋友？");
                 } else if (status == 1) {
-                        cm.sendOk("Heh, cowards have no place on the #rBlack Mage's#k army. Begone!");
+                        cm.sendOk("嘿，懦夫在#b黑法师的军团#k中没有立足之地！");
                         cm.dispose();
                 }
         }

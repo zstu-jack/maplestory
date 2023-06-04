@@ -32,10 +32,10 @@
  
 function start() {
     if(cm.getMapId() == 280030000) {
-        if(!cm.getEventInstance().isEventCleared()) cm.sendYesNo("If you leave now, you'll have to start over. Are you sure you want to leave?");
-        else cm.sendYesNo("You guys finally overthrew Zakum, what a superb feat! Congratulations! Are you sure you want to leave now?");
+        if(!cm.getEventInstance().isEventCleared()) cm.sendYesNo("如果现在退场，下次进入时将需要重新开始。确定要离开吗？");
+        else cm.sendYesNo("你们终于成功打倒了扎昆，多么了不起的功绩，恭喜你们！现在要离开扎昆的祭台吗？");
     } else {
-        cm.sendYesNo("If you leave now, you'll have to start over. Are you sure you want to leave?");
+        cm.sendYesNo("如果现在退场，下次进入时将需要重新开始。确定要离开吗？");
     }
 }
 

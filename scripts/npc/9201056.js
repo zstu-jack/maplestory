@@ -30,7 +30,7 @@ function start() {
 function action(mode, type, selection) {
     if (mode != 1) {
         if (mode == 0)
-            cm.sendOk("Alright, see you next time.");
+            cm.sendOk("Alright, ÏÂ´Î¼û¡£");
         cm.dispose();
     }
     else {

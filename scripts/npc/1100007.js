@@ -25,7 +25,7 @@ function action(mode, type, selection) {
 			cm.dispose();
 			return;
 		} else if(mode == 0) {
-			cm.sendNext("If you're not interested, then oh well...");
+			cm.sendNext("既然不感兴趣，那再见吧。");
 			cm.dispose();
 			return;
 		}
@@ -33,13 +33,13 @@ function action(mode, type, selection) {
 		if (status == 0) {
 			var display = "";
                         for(var i=0; i < menu.length; i++) {
-                                display += "\r\n#L"+i+"##b Ereve (1000 mesos)#k";
+                                display += "\r\n#L"+i+"##b 圣地 (1000 金币)#k";
                         }			
-                        cm.sendSimple("Eh... So... Um... Are you trying to leave Victoria to go to a different region? You can take this boat to #bEreve#k. There, you will see bright sunlight shinning on the leaves and feel a gentle breeze on your skin. It's where Shinsoo and Empress Cygnus are. Would you like to go to Ereve? It will take about #b2 Minutes#k, and it will cost you #b1000#k mesos.\r\n"+display);
+                        cm.sendSimple("你要前往#r圣地#k吗？ 需要支付 #b1000#k 金币。\r\n"+display);
 			
 		} else if(status == 1) {
 		 if(cm.getMeso() < 1000) {
-				cm.sendNext("Hmm... Are you sure you have #b1000#k Mesos? Check your Inventory and make sure you have enough. You must pay the fee or I can't let you get on...");
+				cm.sendNext("你的金币不够。");
 				cm.dispose();
 			} else {
 				cm.gainMeso(-1000);

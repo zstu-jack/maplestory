@@ -85,7 +85,7 @@ function action(mode, type, selection) {
                                         cm.sendOk("现在组队搜索状态为: #b" + (psState ? "启用" : "禁用") + "#k。需要更改时请与我对话。");
                                         cm.dispose();
                                 } else if (selection == 2) {
-                                        cm.sendOk("#e#b<组队任务：女神塔>#k#n\r\nOur goddess has been missing since some time ago, rumor has it She has been seen last time inside the 女神塔. Furthermore, our sanctuary has been seized by the overwhelming forces of the pixies, those beings that are recently wandering at the outskirts of Orbis. Their leader, Papa Pixie, currently holds the throne and may know Her whereabouts, so we urge to find a composition of brave heroes to charge into and claim back our sanctuary and rescue Her. If your team is able to be a composite of every job niche available (Warrior, Magician, Bowman, Thief and Pirate), you guys will receive my blessings to aid you in battle. Will you aid us?\r\n");
+                                        cm.sendOk("#e#b<组队任务：女神塔>#k#n\r\n我们的女神在很久之前就不知去向了，据说她最后一次现身的地方是女神塔。与此同时，我们的家园也已经被最近出现在天空之城附近的魔物以及精灵强大的力量所占据。它们的首领目前是远古精灵，它很有可能知道女神的下落。所以我们现在正在寻找一群勇敢的英雄进入女神塔，帮助我们夺回家园、拯救女神。如果队伍中拥有所有职业（战士、魔法师、弓箭手、飞侠、海盗），全队将在任务过程中获得温莉的祝福。可以帮帮我们吗？\r\n");//因为you兼具你、你们两种不同的意义，很多处翻译中将其省略以避免含义分歧。
                                         cm.dispose();
                                 }
                                 else {
@@ -98,14 +98,14 @@ function action(mode, type, selection) {
                                                 cm.gainItem(4001158, -10);
                                                 cm.dispose();
                                         } else {
-                                                cm.sendOk("You either have女神的手镯 already or you do not have 10 #t4001158#.");
+                                                cm.sendOk("无法兑换奖励。已拥有女神的手镯、没有足够的装备栏空间或持有的 #t4001158# 不足10个。");
                                                 cm.dispose();
                                         }
                                 }
                         }
                 } else {
                         if(status == 0) {
-                                cm.sendYesNo("Are you going to drop out from this rescue mission?");
+                                cm.sendYesNo("确定要从拯救女神的任务中离开吗？");
                         } else if(status == 1) {
                                 cm.warp(920011200);
                                 cm.dispose();

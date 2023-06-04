@@ -26,7 +26,7 @@ function start() {
     completed = cm.haveItem(4031508, 5) && cm.haveItem(4031507,5);
     
     if (completed) {
-        cm.sendNext("Wow~ You have succeeded in collecting 5 of each #b#t4031508##k and #b#t4031507##k. Okay then, I will send you to Zoo. Please talk to me again when you get there.");
+        cm.sendNext("Wow~ You have succeeded in collecting 5 of each #b#t4031508##k ºÍ #b#t4031507##k. Okay then, I will send you to Zoo. Please talk to me again when you get there.");
     } else {
         cm.sendYesNo("You haven't completed the requirements. Are you sure you want to leave?");
     }

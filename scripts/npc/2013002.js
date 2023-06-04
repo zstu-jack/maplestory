@@ -37,7 +37,7 @@ function action(mode, type, selection) {
         status++;        
         if (cm.getPlayer().getMapId() == 920010100) { //Center tower
             if (status == 0)
-                cm.sendYesNo("I have lifted the spell that was blocking the access to the tower's jail storages. You may find some goodies down there... Alternatively, you may want to be leaving now. Are you ready to exit?");
+                cm.sendYesNo("我已经解开了封锁咒语，从这里通往女神塔宝物仓库的通道开放了。你们或许可以在下面找到一些好东西...也可能你们想要现在离开。你们确定要离开吗？");
             else if (status == 1) {
                 cm.warp(920011300, 0);
                 cm.dispose();
@@ -45,7 +45,7 @@ function action(mode, type, selection) {
             
         } else if (cm.getPlayer().getMapId() == 920011100) {
             if (status == 0)
-                cm.sendYesNo("So, are you ready to exit?");
+                cm.sendYesNo("你们确定要离开吗？");
             else if (status == 1) {
                 cm.warp(920011300, 0);
                 cm.dispose();
@@ -53,14 +53,14 @@ function action(mode, type, selection) {
                         
         } else if (cm.getPlayer().getMapId() == 920011300) {
             if (status == 0) 
-                cm.sendNext("Thank you for not only restoring the statue, but rescuing me, Minerva, from the entrapment. May the blessing of the goddess be with you till the end... As a token of gratitude, please accept this memento for your bravery.");
+                cm.sendNext("感谢你们，不仅修复了女神像，还把我从封印中解救了出来。愿女神的祝福与你们同在，直到永远...为了表示感谢，请务必收下这份纪念着你们勇敢之举的礼物。");
             else if (status == 1) {
                 if(cm.getEventInstance().giveEventReward(cm.getPlayer())) {
                     cm.warp(200080101, 0);
                     cm.dispose();
                 }
                 else {
-                    cm.sendOk("Please make room on your inventory first.");
+                    cm.sendOk("请先腾出背包空间再与我对话。");
                     cm.dispose();
                 }
             }
