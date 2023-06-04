@@ -62,29 +62,29 @@ function action(mode, type, selection) {
                 var eim = cm.getPlayer().getEventInstance();
                 
                 if(eim.getProperty(stage.toString() + "stageclear") != null) {
-                        cm.sendNext("Hurry, goto the next stage, the portal is open!");
+                        cm.sendNext("传送门已经开启，可以前往下一阶段。");
                 }
                 else {
                         if (eim.isEventLeader(cm.getPlayer())) {
                                 var state = eim.getIntProperty("statusStg" + stage);
 
                                 if(state == -1) {           // preamble
-                                        cm.sendOk("Hi. Welcome to the #bstage " + stage + "#k. Collect 25 #t4001022#'s scattered across the map, then talk to me.");
+                                        cm.sendOk("你好，欢迎来到#b第" + stage + "阶段#k。收集25张分散在地图上的#t4001022#，然后跟我对话。");
                                         eim.setProperty("statusStg" + stage, 0);
                                 }
                                 else {       // check stage completion
                                         if (cm.haveItem(4001022, 25)) {
-                                                cm.sendOk("Good job! You have collected all 25 #b#t4001022#'s.#k");
+                                                cm.sendOk("干得漂亮！你收集了全部25张#b#t4001022#。#k");
                                                 cm.gainItem(4001022, -25);
 
                                                 eim.setProperty("statusStg" + stage, 1);
                                                 clearStage(stage, eim, curMap);
                                         } else {
-                                                cm.sendNext("Sorry you don't have all 25 #b#t4001022#'s.#k");
+                                                cm.sendNext("抱歉，你还没有收集齐全部25张#b#t4001022#。#k");
                                         }
                                 }
                         } else {
-                                cm.sendNext("Please tell your #bParty-Leader#k to come talk to me.");
+                                cm.sendNext("请让你的#b队长#k来跟我对话。");
                         }
                 }
                 

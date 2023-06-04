@@ -116,7 +116,7 @@ function action(mode, type, selection) {
                 cm.dispose();
                 return;
             } else if (selection == 2) {
-                cm.sendOk("当然，并不是每个人都能挑战 " + expedBoss + "。");
+                cm.sendOk("确实，并非每个人都想要挑战 " + expedBoss + "。");
                 cm.dispose();
                 return;
             } else {

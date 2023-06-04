@@ -32,7 +32,7 @@ function action(mode, type, selection){
 						cm.gainItem(4032136, 1);
 						cm.sendNext("你在垃圾桶里发现了一个#b#t4032136##k！  #i4032136#");//You have found a #b#t4032136##k in the trash can!   #i4032136#语序
 					} else {
-						cm.sendOk("其它栏空间不足，装不下#i4032136#。");//Not enough space in your ETC inventory.（ETC是其它栏的意思）
+						cm.sendOk("其他栏空间不足，装不下#i4032136#。");//Not enough space in your ETC inventory.（ETC是其他栏的意思）
 					}
 				} else {
 					cm.sendOk("只是一个随处可见的垃圾桶。");//Just a trash can sitting there.结合上下文，只是一个随处可见的垃圾桶。

@@ -22,7 +22,7 @@ function action(mode, type, selection) {
             cm.sendYesNo("开往 " + mapName2[select] + " 的飞船整点起每 " + (select == 0 ? 15 : 10) + " 分钟一趟, 购票需要 #b"+cost[select]+" 金币#k。你想购买 #b#t"+ticket[select]+"##k？");
         } else if(status == 2) {
             if (cm.getMeso() < cost[select] || !cm.canHold(ticket[select]))
-                cm.sendOk("你确定身上有 #b"+cost[select]+" 金币#k吗？请确认背包的其它栏是否有1个空位。");
+                cm.sendOk("你确定身上有 #b"+cost[select]+" 金币#k吗？请确认背包的其他栏是否有1个空位。");
             else {
                 cm.gainMeso(-cost[select]);
                 cm.gainItem(ticket[select],1);

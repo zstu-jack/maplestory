@@ -34,8 +34,8 @@ var player;
 var em;
 var exped = MapleExpeditionType.SCARGA;
 var expedName = "Scarga";
-var expedBoss = "Scarlion and Targa";
-var expedMap = "Spooky World";
+var expedBoss = "心疤狮王和暴力熊";
+var expedMap = "阴森世界";
 var expedItem = 4032246;
 
 var list = "有什么事要做？#b\r\n\r\n#L1#确认目前的远征队成员。#l\r\n#L2#开启远征。#l\r\n#L3#取消远征队登记。#l";
@@ -123,7 +123,7 @@ function action(mode, type, selection) {
                 cm.dispose();
                 return;
             } else if (selection == 2) {
-                cm.sendOk("当然，并不是每个人都能挑战 " + expedBoss + "。");
+                cm.sendOk("确实，并非每个人都想要挑战 " + expedBoss + "。");
                 cm.dispose();
                 return;
             }

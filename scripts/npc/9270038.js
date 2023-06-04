@@ -61,7 +61,7 @@ function action(mode, type, selection) {
                                         cm.dispose();
                                 }
 				else {
-                                        cm.sendOk("背包其它栏已满，购票前请预留空格。");
+                                        cm.sendOk("背包其他栏已满，购票前请预留空格。");
                                         cm.dispose();
                                 }
 			} else {

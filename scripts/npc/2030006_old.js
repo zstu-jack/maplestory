@@ -29,7 +29,7 @@ function start() {
     if (cm.getPlayer().gotPartyQuestItem("JBQ") && !cm.haveItem(4031058))
         if (cm.haveItem(4005004)) {
             if(!cm.canHold(4031058)) {
-                cm.sendNext("在接受这个试炼之前，请确保背包的其它栏拥有一个空位。");
+                cm.sendNext("在接受这个试炼之前，请确保背包的其他栏拥有一个空位。");
             } else {
                 cm.sendNext("好的...我将会在这里测试你的智慧。正确地回答所有问题，你就可以通过测试。但只要你答错一回，就必须从头来过。好的，让我们开始吧。");
                 return;

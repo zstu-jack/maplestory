@@ -57,7 +57,7 @@ function start() {
         
         var em = cm.getEventManager("3rdJob_" + js);
         if (em == null)
-            cm.sendOk("抱歉，(" + js + ") 3转预热活动尚未开启。");
+            cm.sendOk("抱歉，(" + js + ") 3转活动尚未开启。");
         else {
             if (!em.startInstance(cm.getPlayer())) {
                 cm.sendOk("与分身的战斗正在进行中。请等待内场玩家离开后再尝试进入。");

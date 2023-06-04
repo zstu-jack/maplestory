@@ -62,29 +62,29 @@ function action(mode, type, selection) {
                 var eim = cm.getPlayer().getEventInstance();
                 
                 if(eim.getProperty(stage.toString() + "stageclear") != null) {
-                        cm.sendNext("Hurry, goto the next stage, the portal is open!");
+                        cm.sendNext("传送门已经开启，可以前往下一阶段。");
                 }
                 else {
                         if (eim.isEventLeader(cm.getPlayer())) {
                                 var state = eim.getIntProperty("statusStg" + stage);
 
                                 if(state == -1) {           // preamble
-                                        cm.sendOk("Hi. Welcome to the #bstage " + stage + "#k. This is the 2nd stage, but everyone has to cooperate. There are 6 portals here. One is guarded by undefeatable monsters, and one is very high. I'd like you and your party to go in each one and break the boxes inside. Bring back the drops -- there should be 24.");
+                                        cm.sendOk("你好，欢迎来到#b第" + stage + "阶段#k。在这一阶段，队员必须通力合作。这里有6个传送门。其中一个被无法击败的怪物看守着。，还有一个非常高。队伍里的每个人进入不同的入口，打开里面的盒子。把掉落出来的东西给我，总共应该有24张才对。");
                                         eim.setProperty("statusStg" + stage, 0);
                                 }
                                 else {       // check stage completion
                                         if (cm.haveItem(4001022, 24)) {
-                                                cm.sendOk("Good job! You have collected all 24 #b#t4001022#'s.#k");
+                                                cm.sendOk("干得漂亮！你收集了全部24张#b#t4001022#。#k");
                                                 cm.gainItem(4001022, -24);
 
                                                 eim.setProperty("statusStg" + stage, 1);
                                                 clearStage(stage, eim, curMap);
                                         } else {
-                                                cm.sendNext("Sorry you don't have all 24 #b#t4001022#'s.#k");
+                                                cm.sendNext("抱歉，你还没有收集齐全部24张#b#t4001022#。#k");
                                         }
                                 }
                         } else {
-                                cm.sendNext("Please tell your #bParty-Leader#k to come talk to me.");
+                                cm.sendNext("请让你的#b队长#k来跟我对话。");
                         }
                 }
                 

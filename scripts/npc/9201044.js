@@ -282,7 +282,7 @@ function action(mode, type, selection) {
                                         }
                                 }
                         } else {
-                                cm.sendNext("Please tell your #bParty-Leader#k to come talk to me.");
+                                cm.sendNext("请让你的#b队长#k来跟我对话。");
                         }
                 }
                 

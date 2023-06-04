@@ -62,29 +62,29 @@ function action(mode, type, selection) {
                 var eim = cm.getPlayer().getEventInstance();
                 
                 if(eim.getProperty(stage.toString() + "stageclear") != null) {
-                        cm.sendNext("Hurry, goto the next stage, the portal is open!");
+                        cm.sendNext("传送门已经开启，可以前往下一阶段。");
                 }
                 else {
                         if (eim.isEventLeader(cm.getPlayer())) {
                                 var state = eim.getIntProperty("statusStg" + stage);
 
                                 if(state == -1) {           // preamble
-                                        cm.sendOk("Hi. Welcome to the #bstage " + stage + "#k. On this stage, several creatures are hiding in the shadows of the inner parts of this tower. Some of them cannot be beaten by physical means, so magical attacks are required to do the job, whereas others work the other way around. Get me 6 #t4001022#'s this time.");
+                                        cm.sendOk("你好，欢迎来到#b第" + stage + "阶段#k。这一阶段有几只怪物隐藏在玩具塔内部的阴影里。其中一些怪物免疫物理伤害，需要魔法师来处理它们。这一次请给我6张#t4001022#。");
                                         eim.setProperty("statusStg" + stage, 0);
                                 }
                                 else {                      // check stage completion
                                         if (cm.haveItem(4001022, 6)) {
-                                                cm.sendOk("Good job! You have collected all 6 #b#t4001022#'s.#k");
+                                                cm.sendOk("干得漂亮！你收集了全部6张#b#t4001022#。#k");
                                                 cm.gainItem(4001022, -6);
 
                                                 eim.setProperty("statusStg" + stage, 1);
                                                 clearStage(stage, eim, curMap);
                                         } else {
-                                                cm.sendNext("Sorry you don't have all 6 #b#t4001022#'s.#k");
+                                                cm.sendNext("抱歉，你还没有收集齐全部6张#b#t4001022#。#k");
                                         }
                                 }
                         } else {
-                                cm.sendNext("Please tell your #bParty-Leader#k to come talk to me.");
+                                cm.sendNext("请让你的#b队长#k来跟我对话。");
                         }
                 }
                 

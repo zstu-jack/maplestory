@@ -15,7 +15,7 @@ function enter(pi) {
                         pi.warp(106021400, 2);
                         return true;
  		} else {
- 			pi.getPlayer().message("请在其它栏留出至少1格空位。");
+ 			pi.getPlayer().message("请在其他栏留出至少1格空位。");
  			return false;
  		}
  	} else {

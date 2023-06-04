@@ -83,7 +83,7 @@ function action(mode, type, selection) {
         cm.sendYesNo("确定想要购买 #r"+amount+" 个#t"+item[selected]+" ##k 吗？每个 #t"+item[selected]+"# 需要 "+cost[selected]+" 金币, 总价 #r"+totalcost+" 金币#k。");
     } else if(status == 3) {
         if(cm.getMeso() < totalcost || !cm.canHold(item[selected])) {
-            cm.sendNext("你确定带够了金币吗？或许应该查看一下你的其它栏是否有足够的空间。这些东西的总价是 #r"+totalcost+"#k 金币，请再确认一下交易无法完成的原因。");
+            cm.sendNext("你确定带够了金币吗？或许应该查看一下你的其他栏是否有足够的空间。这些东西的总价是 #r"+totalcost+"#k 金币，请再确认一下交易无法完成的原因。");
             cm.dispose();
         }
         cm.sendNext("感谢惠顾。如果旅行途中又需要它们了，就回到这里来。我虽然年纪大了，制作魔法物品还是轻而易举的。");

@@ -28,6 +28,6 @@
 */
 
 function start() {
-    cm.sendOk("Try to find the right combination of numbers to reach the top.");
+    cm.sendOk("尝试站到正确的数字组合，到达最高处吧。");
     cm.dispose();
 }

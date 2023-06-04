@@ -56,14 +56,14 @@ function action(mode, type, selection) {
                 var eim = cm.getPlayer().getEventInstance();
                 
                 if(eim.getProperty(stage.toString() + "stageclear") != null) {
-                        cm.sendNext("Hurry, goto the next stage, the portal is open!");
+                        cm.sendNext("传送门已经开启，可以前往下一阶段。");
                 }
                 else {
                         if (eim.isEventLeader(cm.getPlayer())) {
                                 var state = eim.getIntProperty("statusStg" + stage);
 
                                 if(state == -1) {           // preamble
-                                        cm.sendOk("Hi. Welcome to the #bBOSS stage#k. Kill the Ratz on that platform to reveal the Alishar, and defeat him!");
+                                        cm.sendOk("你好，欢迎来到最终的#bBOSS 阶段#k。击杀平台上的玩具白鼠来召唤阿丽莎乐，然后击败它！");
                                         eim.setProperty("statusStg" + stage, 0);
                                 }
                                 else {                      // check stage completion
@@ -80,11 +80,11 @@ function action(mode, type, selection) {
                                                 
                                                 eim.clearPQ();
                                         } else {
-                                                cm.sendNext("Please defeat Alishar and bring me his #b#t4001023#.#k");
+                                                cm.sendNext("请击败阿丽莎乐，把它掉落的#b#t4001023#交给我。#k");
                                         }
                                 }
                         } else {
-                                cm.sendNext("Please tell your #bParty-Leader#k to come talk to me.");
+                                cm.sendNext("请让你的#b队长#k来跟我对话。");
                         }
                 }
                 

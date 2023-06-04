@@ -51,14 +51,14 @@ function action(mode, type, selection) {
                 
                 if (status == 0) {
                         if(!(cm.isQuestCompleted(6316) && (cm.isQuestStarted(6225) || cm.isQuestStarted(6315)))) {
-                                cm.sendOk("You seems to have no reason to meet element-based Thanatos.");
+                                cm.sendOk("看起来你没有要面对元素黑甲凶灵的理由。");
                                 cm.dispose();
                                 return;
                         }
                     
                         em = cm.getEventManager("ElementalBattle");
                         if(em == null) {
-                                cm.sendOk("The Elemental Battle has encountered an error.");
+                                cm.sendOk("与元素黑甲凶灵的战斗发生了一个错误。");
                                 cm.dispose();
                                 return;
                         } else if(cm.isUsingOldPqNpcStyle()) {
@@ -66,7 +66,7 @@ function action(mode, type, selection) {
                                 return;
                         }
                     
-                        cm.sendSimple("#e#b<组队任务：Elemental Thanatos>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nYou are looking for Elemental Thanatos, right? If you team up with another mage, with the opposite elemental affinity as yours, you guys will be able to overcome them. As a leader, talk to me when you feel ready to go.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
+                        cm.sendSimple("#e#b<组队任务：逆属性>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n你在寻找携带着元素灵石的黑甲凶灵，是不是？如果你和另外一名拥有其它元素亲和力的魔法师组队，你们将有机会战胜它。队长可以在做好准备后与我对话。#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
                 } else if (status == 1) {
                         if (selection == 0) {
                                 if (cm.getParty() == null) {
@@ -93,7 +93,7 @@ function action(mode, type, selection) {
                                 cm.sendOk("现在组队搜索状态为: #b" + (psState ? "启用" : "禁用") + "#k。需要更改时请与我对话。");
                                 cm.dispose();
                         } else {
-                                cm.sendOk("#e#b<组队任务：Elemental Thanatos>#k#n\r\n Team up with another mage with #rdifferent elemental affinity#k before entering the stage. This team aspect is crucial to overcome the elementals inside.");
+                                cm.sendOk("#e#b<组队任务：逆属性>#k#n\r\n 进入本关卡前需要与另外一名 #r亲和不同元素#k 的魔法师组成队伍。这样组成队伍对于接下来战胜地图中的元素至关重要。");
                                 cm.dispose();
                         }
                 }

@@ -42,7 +42,7 @@ function action(mode, type, selection) {
         if (mode == -1) {
                 cm.dispose();//ExitChat
         }else if (mode == 0){
-                cm.sendOk("Wise choice. Who wouldn't want free mesos from the #bBonus Stage#k?");
+                cm.sendOk("明智的选择。没有人会拒绝#b奖励关卡#k的金币奖励。");
                 cm.dispose();//No
         } else {
                 if (mode == 1)
@@ -51,7 +51,7 @@ function action(mode, type, selection) {
                         status--;
 
                 if(status == 0) {
-                        cm.sendYesNo("Would you like to leave the bonus stage?");
+                        cm.sendYesNo("确定要离开奖励关卡吗？");
                 }
                 else {
                         cm.warp(922011100, "st00");

@@ -34,7 +34,7 @@ function start() {
             status = 0;
             action(1, 0, 4);
         } else {
-            cm.sendOk("The Monster Carnival is currently unavailable.");
+            cm.sendOk("怪物嘉年华目前尚未开启。");
             cm.dispose();
         }
         
@@ -59,7 +59,7 @@ function action(mode, type, selection) {
         
         if (cm.getPlayer().getMapId() == 980000010) {
             if (status == 0) {
-                cm.sendNext("I hope you had fun at the Monster Carnival!");
+                cm.sendNext("希望你在怪物嘉年华里玩得开心！");
             } else if (status > 0) {
                 cm.warp(980000000, 0);
                 cm.dispose();
@@ -70,20 +70,20 @@ function action(mode, type, selection) {
                     var shiu = "";
                     if (cm.getPlayer().getFestivalPoints() >= 300) {
                         shiu += "#rA#k";
-                        cm.sendOk("Unfortunately, you either drew or lost the battle despite your excellent performance. Victory can be yours next time! \r\n\r\n#bYour result: " + shiu);
+                        cm.sendOk("很遗憾，虽然你表现出众，但还是取得了平局或输掉了比赛。下次努力取胜吧！\r\n\r\n#b你的评分是：" + shiu);
                         rnk = 10;
                     } else if (cm.getPlayer().getFestivalPoints() >= 100) {
                         shiu += "#rB#k";
                         rnk = 20;
-                        cm.sendOk("Unfortunately, you either drew or lost the battle, even with your ultimate performance. Just a little bit, and the victory could have been yours! \r\n\r\n#bYour result: " + shiu);
+                        cm.sendOk("很遗憾，虽然你表现不错，但还是取得了平局或输掉了比赛。如果再稍微努力一点，胜利就可能属于你！\r\n\r\n#b你的评分是：" + shiu);
                     } else if (cm.getPlayer().getFestivalPoints() >= 50) {
                         shiu += "#rC#k";
                         rnk = 30;
-                        cm.sendOk("Unfortunately, you either drew or lost the battle. Victory is for those who strive. I see your efforts, so victory is not far from your reach. Keep it up!\r\n\r\n#bYour result: " + shiu);
+                        cm.sendOk("很遗憾，你取得了平局或输掉了比赛。胜利属于奋战到底的人。我有看到你的努力，胜利对你而言并非遥不可及。继续努力吧！\r\n\r\n#b你的评分是：" + shiu);
                     } else {
                         shiu += "#rD#k";
                         rnk = 40;
-                        cm.sendOk("Unfortunately, you either equalized or lost the battle, and your performance clearly reflects on it. I expect more from you next time. \r\n\r\n#bYour result: " + shiu);
+                        cm.sendOk("很遗憾，你取得了平局或输掉了比赛。你的表现很能够说明问题。希望你下次更加努力。\r\n\r\n#b你的评分是：" + shiu);
                     }
                 } else {
                     cm.warp(980000000, 0);
@@ -124,19 +124,19 @@ function action(mode, type, selection) {
                     if (cm.getPlayer().getFestivalPoints() >= 300) {
                         shi += "#rA#k";
                         rnk = 1;
-                        cm.sendOk("Congratulations on your victory!!! What a performance! The opposite group could not do anything! I hope the same good work next time! \r\n\r\n#bYour result: " + shi);
+                        cm.sendOk("恭喜你取得了胜利！赢得真是漂亮，对方毫无还手之力！我期待你下次也能有同样出色的表现！\r\n\r\n#b你的评分是：" + shi);
                     } else if (cm.getPlayer().getFestivalPoints() >= 100) {
                         shi += "#rB#k";
                         rnk = 2;
-                        cm.sendOk("Congratulations on your victory! That was awesome! You did a good job against the opposing group! Just a little longer, and you'll definitely get an A next time! \r\n\r\n#bYour result: " + shi);
+                        cm.sendOk("恭喜你取得了胜利！太棒了！你在对抗中表现得很好！如果再给多一点时间，你一定会拔得头筹的！下次一定没问题！\r\n\r\n#b你的评分是：" + shi);
                     } else if (cm.getPlayer().getFestivalPoints() >= 50) {
                         shi += "#rC#k";
                         rnk = 3;
-                        cm.sendOk("Congratulations on your victory. You did some things here and there, but that can not be considered a good victory. I expect more from you next time. \r\n\r\n#bYour result: " + shi);
+                        cm.sendOk("恭喜你取得了胜利。你也做了一些贡献，不过这并不能算是完胜。我期待你下次能有更好的表现。\r\n\r\n#b你的评分是：" + shi);
                     } else {
                         shi += "#rD#k";
                         rnk = 4;
-                        cm.sendOk("Congratulations on your victory, though your performance did not quite reflect that. Be more active in your next participation in the Monster Carnival! \r\n\r\n#bYour result: " + shi);
+                        cm.sendOk("恭喜你取得了胜利。虽然你的表现并配不上这场胜利。下次怪物嘉年华中要表现得更加活跃才行！\r\n\r\n#b你的评分是：" + shi);
                     }
                 } else {
                     cm.warp(980000000, 0);
@@ -174,10 +174,10 @@ function action(mode, type, selection) {
             if (status == 0) {
                 if (cm.getParty() == null) {
                     status = 10;
-                    cm.sendOk("You need to create a party first before you can join the battle!");
+                    cm.sendOk("需要组成队伍才能参加怪物嘉年华。");
                 } else if (!cm.isLeader()) {
                     status = 10;
-                    cm.sendOk("If you want to start the battle, let the #bParty Leader#k talk to me.");
+                    cm.sendOk("如果想要参加怪物嘉年华，请让#b队长#k与我交谈。");
                 } else {
                     var party = cm.getParty().getMembers();
                     var inMap = cm.partyMembersInMap();
@@ -195,16 +195,16 @@ function action(mode, type, selection) {
 
                     if (party >= 1) {
                         status = 10;
-                        cm.sendOk("You do not have enough people in your party. You need a party with #b" + cpqMinAmt + "#k - #r" + cpqMaxAmt + "#k members and they should be on the map with you.");
+                        cm.sendOk("队伍人数不足。需要与#b" + cpqMinAmt + "#k - #r" + cpqMaxAmt + "#k等级内队员同地图方可进行。");
                     } else if (lvlOk != inMap) {
                         status = 10;
-                        cm.sendOk("Make sure everyone in your party is among the correct levels (" + cpqMinLvl + "~" + cpqMaxLvl + ")!");
+                        cm.sendOk("请确认队员等级均处于(" + cpqMinLvl + "~" + cpqMaxLvl + ")!");
                     } else if (isOutMap > 0) {
                         status = 10;
-                        cm.sendOk("There are some of the party members that is not on the map!");
+                        cm.sendOk("存在没有处于当前地图的组队成员。");
                     } else {
                         if (!cm.sendCPQMapLists()) {
-                            cm.sendOk("All Monster Carnival fields are currently in use! Try again later.");
+                            cm.sendOk("所有嘉年华战斗地图都正在被使用，请稍后再试。");
                             cm.dispose();
                         }
                     }
@@ -215,15 +215,15 @@ function action(mode, type, selection) {
                         cm.challengeParty(selection);
                         cm.dispose();
                     } else {
-                        cm.sendOk("The room is currently full.");
+                        cm.sendOk("房间已满。");
                         cm.dispose();
                     }
                 } else {
                     var party = cm.getParty().getMembers();
                     if ((selection >= 0 && selection <= 3) && party.size() < 1) {
-                        cm.sendOk("You need at least 2 players to participate in the battle!");
+                        cm.sendOk("需要至少2名玩家方可开启战斗！");
                     } else if ((selection >= 4 && selection <= 5) && party.size() < 1) {
-                        cm.sendOk("You need at least 3 players to participate in the battle!");
+                        cm.sendOk("需要至少3名玩家方可开启战斗！");
                     } else {
                         cm.cpqLobby(selection);
                     }
@@ -234,9 +234,9 @@ function action(mode, type, selection) {
             }
         } else {
             if (status == 0) {
-                var talk = "What would you like to do? If you have never participate in the Monster Carnival, you will need to know a few things before participating! \r\n#b#L0# Go to the Monster Carnival 1.#l \r\n#L3# Go to the Monster Carnival 2.#l \r\n#L1# Learn about the Monster Carnival.#l\r\n#L2# Trade #t4001129#.#l";
+                var talk = "你想做点什么？如果没有参加过怪物嘉年华，那么此前有些事情你需要了解一下！\r\n#b#L0#前往怪物嘉年华（初级）。#l \r\n#L3#前往怪物嘉年华（进阶）。#l \r\n#L1#了解有关怪物嘉年华。#l\r\n#L2#以#t4001129#换取奖励。#l";
                 if (Packages.config.YamlConfig.config.server.USE_ENABLE_CUSTOM_NPC_SCRIPT) {
-                    talk += "\r\n#L4# ... Can I just refine my ores?#l";
+                    talk += "\r\n#L4# ...我只想冶炼一些母矿。#l";
                 }
                 cm.sendSimple(talk);
             } else if (status == 1) {
@@ -247,33 +247,33 @@ function action(mode, type, selection) {
                         cm.dispose();
                         return;
                     } else if (cm.getLevel() < 30) {
-                        cm.sendOk("You must be at least level 30 to participate in the Monster Carnival. Talk to me when you're strong enough.");
+                        cm.sendOk("30级以下无法参加怪物嘉年华。达到相应等级再来与我交谈。");
                         cm.dispose();
                         return;
                     } else {
-                        cm.sendOk("I'm sorry, but only players of level 30 ~ 50 can participate in the Monster Carnival.");
+                        cm.sendOk("抱歉，怪物嘉年华（初级）仅限30~50级玩家参与。");
                         cm.dispose();
                         return;
                     }
                 } else if (selection == 1) {
                     status = 60;
-                    cm.sendSimple("What would you like to do?\r\n#b#L0# What is Monster Carnival?#l\r\n#L1# Overview of the Monster Carnival.#l\r\n#L2# Detailed information about the Monster Carnival.#l\r\n#L3# Nothing really, I've changed my mind.#l");
+                    cm.sendSimple("你想做点什么？\r\n#b#L0#什么是怪物嘉年华？#l\r\n#L1#简要介绍怪物嘉年华。#l\r\n#L2#怪物嘉年华的详细信息。#l\r\n#L3#我没有什么想要问的了。#l");
                 } else if (selection == 2) {
-                    cm.sendSimple("Remember, if you have #t4001129#, you can exchange for items. Select the item you would like to change them! \r\n#b#L0# #t1122007# (" + n1 + " coins)#l\r\n#L1# #t2041211# (" + n2 + " coins)#l\r\n#L2# Weapons for Warriors#l\r\n#L3# Weapons for Magician#l\r\n#L4# Weapons for Archers#l\r\n#L5# Weapons for Thief#l\r\n#L6# Weapons for Pirate#l");
+                    cm.sendSimple("请记住，获得#t4001129#后，你可以交换相应奖励。挑选你心仪的奖品吧！\r\n#b#L0# #t1122007# (" + n1 + " 纪念币)#l\r\n#L1# #t2041211# (" + n2 + " 纪念币)#l\r\n#L2#战士武器#l\r\n#L3#魔法师武器#l\r\n#L4#弓箭手武器#l\r\n#L5#飞侠武器#l\r\n#L6#海盗武器#l");
                 } else if (selection == 3) {
                     cm.getChar().saveLocation("MONSTER_CARNIVAL");
                     cm.warp(980030000, 0);
                     cm.dispose();
                     return;
                 } else if (selection == 4) {
-                    var selStr = "Very well, instead I offer a steadfast #bore refining#k service for you, taxing #r" + ((feeMultiplier * 100) | 0) + "%#k over the usual fee to synthetize them. What will you do?#b";
+                    var selStr = "好的，我提供了一项更为安全的#b矿石精炼#k服务，不过合成费要比通常的服务多收取#r" + ((feeMultiplier * 100) | 0) + "%#k。你意下如何？#b";
 
-                    var options = new Array("Refine mineral ores","Refine jewel ores");
+                    var options = new Array("冶炼矿石母矿","冶炼宝石母矿");
                     if(refineCrystals) {
-                        options.push("Refine crystal ores");
+                        options.push("冶炼水晶母矿");
                     }
                     if(refineRocks) {
-                        options.push("Refine plates/jewels");
+                        options.push("冶炼矿锭/宝石");
                     }
 
                     for (var i = 0; i < options.length; i++){
@@ -292,7 +292,7 @@ function action(mode, type, selection) {
                         cm.gainItem(4001129, -n1);
                         cm.dispose();
                     } else {
-                        cm.sendOk("Check and see if you are missing #b#t4001129##k or if your EQUIP inventory is full.");
+                        cm.sendOk("请确认是否拥有#b#t4001129##k或装备栏已满。");
                         cm.dispose();
                     }
                 } else if (select == 1) {
@@ -301,28 +301,28 @@ function action(mode, type, selection) {
                         cm.gainItem(4001129, -n2);
                         cm.dispose();
                     } else {
-                        cm.sendOk("Check and see if you are missing #b#t4001129##k or if your USE inventory is full.");
+                        cm.sendOk("请确认是否拥有#b#t4001129##k或消耗栏已满。");
                         cm.dispose();
                     }
                 } else if (select == 2) {//S2 Warrior 26 S3 Magician 6 S4 Bowman 6 S5 Thief 8
                     status = 10;
-                    cm.sendSimple("Please make sure you have #t4001129# for the weapon you want. Select the weapon you would like to trade #t4001129#. The choices I have are really good, and I'm not the one who speaks to the people who say it! \r\n#b#L0# #z1302004# (" + n3 + " coins)#l\r\n#L1# #z1402006# (" + n3 + " coins)#l\r\n#L2# #z1302009# (" + n4 + " coins)#l\r\n#L3# #z1402007# (" + n4 + " coins)#l\r\n#L4# #z1302010# (" + n5 + " coins)#l\r\n#L5# #z1402003# (" + n5 + " coins)#l\r\n#L6# #z1312006# (" + n3 + " coins)#l\r\n#L7# #z1412004# (" + n3 + " coins)#l\r\n#L8# #z1312007# (" + n4 + " coins)#l\r\n#L9# #z1412005# (" + n4 + " coins)#l\r\n#L10# #z1312008# (" + n5 + " coins)#l\r\n#L11# #z1412003# (" + n5 + " coins)#l\r\n#L12# Continue to the next page(1/2)#l");
+                    cm.sendSimple("请确认你拥有#t4001129#；来交换所需的武器。选择一把你想要用#t4001129#交换的武器。样样都是上上之选，大家都这么说！\r\n#b#L0# #z1302004# (" + n3 + " 纪念币)#l\r\n#L1# #z1402006# (" + n3 + " 纪念币)#l\r\n#L2# #z1302009# (" + n4 + " 纪念币)#l\r\n#L3# #z1402007# (" + n4 + " 纪念币)#l\r\n#L4# #z1302010# (" + n5 + " 纪念币)#l\r\n#L5# #z1402003# (" + n5 + " 纪念币)#l\r\n#L6# #z1312006# (" + n3 + " 纪念币)#l\r\n#L7# #z1412004# (" + n3 + " 纪念币)#l\r\n#L8# #z1312007# (" + n4 + " 纪念币)#l\r\n#L9# #z1412005# (" + n4 + " 纪念币)#l\r\n#L10# #z1312008# (" + n5 + " 纪念币)#l\r\n#L11# #z1412003# (" + n5 + " 纪念币)#l\r\n#L12# Continue to the next page(1/2)#l");
                 } else if (select == 3) {
                     status = 20;
-                    cm.sendSimple("Select the weapon you would like to trade. The weapons I have here are extremely attractive. See for yourself! \r\n#b#L0# #z1372001# (" + n3 + " coins)#l\r\n#L1# #z1382018# (" + n3 + " coins)#l\r\n#L2# #z1372012# (" + n4 + " coins)#l\r\n#L3# #z1382019# (" + n4 + " coins)#l\r\n#L4# #z1382001# (" + n5 + " coins)#l\r\n#L5# #z1372007# (" + n5 + " coins)#l");
+                    cm.sendSimple("选择你想要兑换的武器。这里的武器都让人爱不释手，选一款你喜欢的！ \r\n#b#L0# #z1372001# (" + n3 + "纪念币)#l\r\n#L1# #z1382018# (" + n3 + " 纪念币)#l\r\n#L2# #z1372012# (" + n4 + " 纪念币)#l\r\n#L3# #z1382019# (" + n4 + " 纪念币)#l\r\n#L4# #z1382001# (" + n5 + " 纪念币)#l\r\n#L5# #z1372007# (" + n5 + " 纪念币)#l");
                 } else if (select == 4) {
                     status = 30;
-                    cm.sendSimple("Select the weapon you would like to trade. The weapons I have here are extremely attractive. See for yourself! \r\n#b#L0# #z1452006# (" + n3 + " coins)#l\r\n#L1# #z1452007# (" + n4 + " coins)#l\r\n#L2# #z1452008# (" + n5 + " coins)#l\r\n#L3# #z1462005# (" + n3 + " coins)#l\r\n#L4# #z1462006# (" + n4 + " coins)#l\r\n#L5# #z1462007# (" + n5 + " coins)#l");
+                    cm.sendSimple("选择你想要兑换的武器。这里的武器都让人爱不释手，选一款你喜欢的！ \r\n#b#L0# #z1452006# (" + n3 + " 纪念币)#l\r\n#L1# #z1452007# (" + n4 + " 纪念币)#l\r\n#L2# #z1452008# (" + n5 + " 纪念币)#l\r\n#L3# #z1462005# (" + n3 + " 纪念币)#l\r\n#L4# #z1462006# (" + n4 + " 纪念币)#l\r\n#L5# #z1462007# (" + n5 + " 纪念币)#l");
                 } else if (select == 5) {
                     status = 40;
-                    cm.sendSimple("Select the weapon you would like to trade for. The weapons I have are of the highest quality. Select the one most appealing to you! \r\n#b#L0# #z1472013# (" + n3 + " coins)#l\r\n#L1# #z1472017# (" + n4 + " coins)#l\r\n#L2# #z1472021# (" + n5 + " coins)#l\r\n#L3# #z1332014# (" + n3 + " coins)#l\r\n#L4# #z1332031# (" + n4 + " coins)#l\r\n#L5# #z1332011# (" + n4 + " coins)#l\r\n#L6# #z1332016# (" + n5 + " coins)#l\r\n#L7# #z1332003# (" + n5 + " coins)#l");
+                    cm.sendSimple("选择你想要兑换的武器。这批武器都是上等货色。选一款你喜欢的！ \r\n#b#L0# #z1472013# (" + n3 + " 纪念币)#l\r\n#L1# #z1472017# (" + n4 + " 纪念币)#l\r\n#L2# #z1472021# (" + n5 + " 纪念币)#l\r\n#L3# #z1332014# (" + n3 + " 纪念币)#l\r\n#L4# #z1332031# (" + n4 + " 纪念币)#l\r\n#L5# #z1332011# (" + n4 + " 纪念币)#l\r\n#L6# #z1332016# (" + n5 + " 纪念币)#l\r\n#L7# #z1332003# (" + n5 + " 纪念币)#l");
                 } else if (select == 6) {
                     status = 50; //pirate rewards
-                    cm.sendSimple("Select the weapon you would like to trade for. The weapons I have are of the highest quality. Select the one most appealing to you! \r\n#b#L0# #z1482005# (" + n3 + " coins)#l \r\n#b#L1# #z1482006# (" + n4 + " coins)#l \r\n#b#L2# #z1482007# (" + n5 + " coins)#l \r\n#b#L3# #z1492005# (" + n3 + " coins)#l \r\n#b#L4# #z1492006# (" + n4 + " coins)#l \r\n#b#L5# #z1492007# (" + n5 + " coins)#l");
+                    cm.sendSimple("选择你想要兑换的武器。这批武器都是上等货色。选一款你喜欢的！ \r\n#b#L0# #z1482005# (" + n3 + " 纪念币)#l \r\n#b#L1# #z1482006# (" + n4 + " 纪念币)#l \r\n#b#L2# #z1482007# (" + n5 + " 纪念币)#l \r\n#b#L3# #z1492005# (" + n3 + " 纪念币)#l \r\n#b#L4# #z1492006# (" + n4 + " 纪念币)#l \r\n#b#L5# #z1492007# (" + n5 + " 纪念币)#l");
                 }
             } else if (status == 11) {
                 if (selection == 12) {
-                    cm.sendSimple("Select the weapon you would like to trade. The weapons I have here are extremely useful. Take a look! \r\n#b#L0# #z1322015# (" + n3 + " coins)#l\r\n#L1# #z1422008# (" + n3 + " coins)#l\r\n#L2# #z1322016# (" + n4 + " coins)#l\r\n#L3# #z1422007# (" + n4 + " coins)#l\r\n#L4# #z1322017# (" + n5 + " coins)#l\r\n#L5# #z1422005# (" + n5 + " coins)#l\r\n#L6# #z1432003# (" + n3 + " coins)#l\r\n#L7# #z1442003# (" + n3 + " coins)#l\r\n#L8# #z1432005# (" + n4 + " coins)#l\r\n#L9# #z1442009# (" + n4 + " coins)#l\r\n#L10# #z1442005# (" + n5 + " coins)#l\r\n#L11# #z1432004# (" + n5 + " coins)#l\r\n#L12# Back to the first page (2/2)#l");
+                    cm.sendSimple("选择你想要兑换的武器。我这里的武器都很好用。瞧瞧吧！ \r\n#b#L0# #z1322015# (" + n3 + " 纪念币)#l\r\n#L1# #z1422008# (" + n3 + " 纪念币)#l\r\n#L2# #z1322016# (" + n4 + " 纪念币)#l\r\n#L3# #z1422007# (" + n4 + " 纪念币)#l\r\n#L4# #z1322017# (" + n5 + " 纪念币)#l\r\n#L5# #z1422005# (" + n5 + " 纪念币)#l\r\n#L6# #z1432003# (" + n3 + " 纪念币)#l\r\n#L7# #z1442003# (" + n3 + " 纪念币)#l\r\n#L8# #z1432005# (" + n4 + " 纪念币)#l\r\n#L9# #z1442009# (" + n4 + " 纪念币)#l\r\n#L10# #z1442005# (" + n5 + " 纪念币)#l\r\n#L11# #z1432004# (" + n5 + " 纪念币)#l\r\n#L12# Back to the first page (2/2)#l");
                 } else {
                     var item = new Array(1302004, 1402006, 1302009, 1402007, 1302010, 1402003, 1312006, 1412004, 1312007, 1412005, 1312008, 1412003);
                     var cost = new Array(n3, n3, n4, n4, n5, n5, n3, n3, n4, n4, n5);
@@ -331,14 +331,14 @@ function action(mode, type, selection) {
                         cm.gainItem(4001129, -cost[selection]);
                         cm.dispose();
                     } else {
-                        cm.sendOk("You do not have enough #b#t4001129##k, or your inventory is full. Please check again.");
+                        cm.sendOk("你没有足够的#b#t4001129##k，或物品栏已满，请确认后重试。");
                         cm.dispose();
                     }
                 }
             } else if (status == 12) {
                 if (selection == 12) {
                     status = 10;
-                    cm.sendSimple("Please make sure you have #b#t4001129##k for the weapon you want. Select the weapon you would like to trade #t4001129#. The choices I have are really good, and I'm not the one who speaks to the people who say it! \r\n#b#L0# #z1302004# (" + n3 + " coins)#l\r\n#L1# #z1402006# (" + n3 + " coins)#l\r\n#L2# #z1302009# (" + n4 + " coins)#l\r\n#L3# #z1402007# (" + n4 + " coins)#l\r\n#L4# #z1302010# (" + n5 + " coins)#l\r\n#L5# #z1402003# (" + n5 + " coins)#l\r\n#L6# #z1312006# (" + n3 + " coins)#l\r\n#L7# #z1412004# (" + n3 + " coins)#l\r\n#L8# #z1312007# (" + n4 + " coins)#l\r\n#L9# #z1412005# (" + n4 + " coins)#l\r\n#L10# #z1312008# (" + n5 + " coins)#l\r\n#L11# #z1412003# (" + n5 + " coins)#l\r\n#L12# Continue to the next page(1/2)#l");
+                    cm.sendSimple("请确认你拥有#t4001129#；来交换所需的武器。选择一把你想要用#t4001129#交换的武器。样样都是上上之选，大家都这么说！ \r\n#b#L0# #z1302004# (" + n3 + " 纪念币)#l\r\n#L1# #z1402006# (" + n3 + " 纪念币)#l\r\n#L2# #z1302009# (" + n4 + " 纪念币)#l\r\n#L3# #z1402007# (" + n4 + " 纪念币)#l\r\n#L4# #z1302010# (" + n5 + " 纪念币)#l\r\n#L5# #z1402003# (" + n5 + " 纪念币)#l\r\n#L6# #z1312006# (" + n3 + " 纪念币)#l\r\n#L7# #z1412004# (" + n3 + " 纪念币)#l\r\n#L8# #z1312007# (" + n4 + " 纪念币)#l\r\n#L9# #z1412005# (" + n4 + " 纪念币)#l\r\n#L10# #z1312008# (" + n5 + " 纪念币)#l\r\n#L11# #z1412003# (" + n5 + " 纪念币)#l\r\n#L12# Continue to the next page(1/2)#l");
                 } else {
                     var item = new Array(1322015, 1422008, 1322016, 1422007, 1322017, 1422005, 1432003, 1442003, 1432005, 1442009, 1442005, 1432004);
                     var cost = new Array(n3, n3, n4, n4, n5, n5, n3, n3, n4, n4, n5, n5);
@@ -347,7 +347,7 @@ function action(mode, type, selection) {
                         cm.gainItem(4001129, -cost[selection]);
                         cm.dispose();
                     } else {
-                        cm.sendOk("You do not have enough #b#t4001129##k, or your inventory is full. Please check again.");
+                        cm.sendOk("你没有足够的#b#t4001129##k，或物品栏已满，请确认后重试。");
                         cm.dispose();
                     }
                 }
@@ -359,7 +359,7 @@ function action(mode, type, selection) {
                     cm.gainItem(4001129, -cost[selection]);
                     cm.dispose();
                 } else {
-                    cm.sendOk("You do not have enough #b#t4001129##k, or your inventory is full. Please check again.");
+                    cm.sendOk("你没有足够的#b#t4001129##k，或物品栏已满，请确认后重试。");
                     cm.dispose();
                 }
             } else if (status == 31) {
@@ -370,7 +370,7 @@ function action(mode, type, selection) {
                     cm.gainItem(4001129, -cost[selection]);
                     cm.dispose();
                 } else {
-                    cm.sendOk("You do not have enough #b#t4001129##k, or your inventory is full. Please check again.");
+                    cm.sendOk("你没有足够的#b#t4001129##k，或物品栏已满，请确认后重试。");
                     cm.dispose();
                 }
             } else if (status == 41) {
@@ -381,7 +381,7 @@ function action(mode, type, selection) {
                     cm.gainItem(4001129, -cost[selection]);
                     cm.dispose();
                 } else {
-                    cm.sendOk("You do not have enough #b#t4001129##k, or your inventory is full. Please check again.");
+                    cm.sendOk("你没有足够的#b#t4001129##k，或物品栏已满，请确认后重试。");
                     cm.dispose();
                 }
             } else if (status == 51) {
@@ -392,54 +392,54 @@ function action(mode, type, selection) {
                     cm.gainItem(4001129, -cost[selection]);
                     cm.dispose();
                 } else {
-                    cm.sendOk("You do not have enough #b#t4001129##k, or your inventory is full. Please check again.");
+                    cm.sendOk("你没有足够的#b#t4001129##k，或物品栏已满，请确认后重试。");
                     cm.dispose();
                 }
             } else if (status == 61) {
                 select = selection;
                 if (selection == 0) {
-                    cm.sendNext("Haha! I am Spiegelmann, the leader of this Monster Carnival. I got the first #bMonster Carnival#k here, waiting for travelers like you to take part in this extravaganza!");
+                    cm.sendNext("哈哈！我是休彼德蔓，怪物嘉年华的主办者。在这里举办第一届#b怪物嘉年华#k，等待像你这样的冒险家参与这场盛会。");
                 } else if (selection == 1) {
-                    cm.sendNext("#bMonster Carnival#k consists of 2 groups entering the battlefield, and dropping the monsters invoked by the other party. #bA combat brigade that determines the victor by the amount of Carnival Points (CP) received#k.");
+                    cm.sendNext("#b怪物嘉年华#k是两队玩家进入战场，向对方场地放置怪物的对抗活动。#b根据所取得嘉年华点数(CP)确定战斗胜利的一方#k。");
                 } else if (selection == 2) {
-                    cm.sendNext("When you enter the Carnival Field, you will see the Monster List window appear. All you need to do is #bselect what you want to use, and press OK#k. Very easy, right?");
+                    cm.sendNext("当你进入怪物嘉年华战场时，可以看到一侧的怪物列表窗口。只需#选中想要应用的效果或放置的怪物，然后按下确认#k。很简单，不是吗？");
                 } else {
                     cm.dispose();
                 }
             } else if (status == 62) {
                 if (select == 0) {
-                    cm.sendNext("What is #bMonster Carnival#k? Hahaha! Let's say it's an experience you'll never forget! It's a battle against other travelers just like you!#k");
+                    cm.sendNext("#b怪物嘉年华#k是什么？哈哈哈！可以这样说，这会是你难以忘怀的一次体验！在活动中与像你一样的其他玩家对抗！#k");
                 } else if (select == 1) {
-                    cm.sendNext("When entering the Carnival Field, your task is to #breceive CP by killing the monsters from the opposite group, and using these CP's to distract the opposing group from hitting monsters#k.");
+                    cm.sendNext("进入怪物嘉年华后，你需要#b消灭敌队召唤的怪物来获取CP点数，并使用这些点数干扰对方攻击怪物#k。");
                 } else if (select == 2) {
-                    cm.sendNext("Once you get used to the commands, try using #bTAB and F1 ~ F12#k. #bTAB toggles between Monster Invocation / Skills / Protector#k, and, #bF1 ~ F12 enables you to access one of the windows directly#k.");
+                    cm.sendNext("当你熟悉了这些命令后，试着使用#bTAB和F1 ~ F12#k。TAB 可以在#b召唤兽 / 技能 / 召唤物#k之间切换，与此同时#bF1 ~ F12能够快速切换到该命令所在窗口#k。");
                 }
             } else if (status == 63) {
                 if (select == 0) {
-                    cm.sendNext("I know it's too dangerous for you to fight with each other using real weapons; and I would not suggest such a barbaric act. Not my friend, what I offer to the competition. The excitement of the battle and the excitement of competing against such strong and motivated people. I offer the premise that your group and the opposite group both #binvoquem the monsters, and defeat the monsters invoked by the opposing group. This is the essence of the Monster Carnival. In addition, you can use Maple Coins earned during the Monster Carnival to get new items and weapons! #k");
+                    cm.sendNext("你们双方如果要真刀真枪地打一架的话也太危险了，我可不希望你们这么野蛮。你们双方既是竞争对手，也是朋友。战斗与竞争的激情澎湃汹涌，让所有人都欢欣鼓舞。不过前提是你们双方的团队都#b积极召唤怪物，并努力消灭对方为你们召唤的怪物#k。这就是怪物嘉年华的精髓所在。还有，你可以用活动期间获取的嘉年华纪念币#b换取崭新的道具与武器#k!");
                 } else if (select == 1) {
-                    cm.sendNext("There are 3 ways to distract the opposing group: #bSummoning a monster, Ability, and Protector#k. I will give you a more in-depth look if you want to know more about 'detailed instructions'!");
+                    cm.sendNext("有三种方法方法可以干扰敌队：#b召唤怪物、负面效果、放置召唤物#k。如果你想要更详细的说明，我也会为你深入讲解。");
                 } else if (select == 2) {
-                    cm.sendNext("#bSummoning#k a Monster calls a monster that attacks the opposing party, under its control. Use CP to bring an Summoned Monster, and it will appear in the same area, attacking the opposing group.");
+                    cm.sendNext("#b召唤兽#k 通过这个选项召唤一只怪物攻击敌队。使用CP点数召唤的召唤兽会在敌方战斗区域出现，并攻击敌队。");
                 }
             } else if (status == 64) {
                 if (select == 0) {
-                    cm.sendNext("Of course, it's not that simple. There are other ways to prevent the other group from dropping monsters, and it's up to you to figure out how to do it. What do you think? Interested in a friendly competition?");
+                    cm.sendNext("当然，事情没有这么简单。还有其他方式可以阻止对方消灭怪物，这取决于你的选择。你觉得呢？想来一场友谊赛吗？");
                     cm.dispose();
                 } else if (select == 1) {
-                    cm.sendNext("Please remember. It's never a good idea to keep your CP's. #bThe CPs you used will help determine the winner and loser of Monster Carnival.");
+                    cm.sendNext("要记住。囤积CP点数可不是个好主意。#b你使用的CP点数有助于在怪物嘉年华中分出胜负#k。");
                 } else if (select == 2) {
-                    cm.sendNext("#bAbility#k is an option to use abilities such as Darkness, Weakness, and others to prevent the opposing group from killing other monsters. Not many CPs are needed, but it's worth it. The only problem is they do not last very long. Use this tactic wisely!");
+                    cm.sendNext("#b技能#k 使用黑暗、虚弱或是其它负面状态来阻止敌队消灭怪物。需要的点数不多，效果却很好。只不过持续时间并不会很久。要巧妙地利用它才好。");
                 }
-            } else if (status == 65) {
+            }  else if (status == 65) {
                 if (select == 1) {
-                    cm.sendNext("Oh, and do not worry about turning into a ghost. In the Monster Carnival, #byou will not lose EXP after death#k. So it's really an experience like no other!");
+                    cm.sendNext("对了，别担心变成一个小墓碑之类的事情。在怪物嘉年华里#b死亡并不会损失经验#k。这可真是一次独特的体验啊！");
                     cm.dispose();
                 } else if (select == 2) {
-                    cm.sendNext("#bProtetor#k basically an invoked item that drastically increases the abilities of the monsters invoked by your group. Protector works until it is demolished by the opposing group, so I'm hoping you'll summon several monsters first, and then bring the Protector.");
+                    cm.sendNext("#b召唤物#k 召唤后极大地提升己方召唤的怪物能力。召唤物将会持续生效，直至被敌队摧毁为止。因此你最好先召唤几只怪物，然后再召唤它。");
                 }
             } else if (status == 66) {
-                cm.sendNext("Lastly, while in the Monster Carnival, #byou can not use items / recovery potions that you carry around with you. #kMeanwhile, the monsters let these items fall for good. when, and when you #bget them, the item will immediately activate#k. That's why it's important to know when to get these items.");
+                cm.sendNext("最后一点，参与怪物嘉年华时，#b你无法使用随身携带的增益道具和药剂#k。不过，战场中的怪物也会掉落这些东西供你使用，当你#b拾取该物品时，物品会即刻生效#k。因此要懂得选取合适的时机拾取物品。");
                 cm.dispose();
             } else if (status == 77) {
                 var allDone;
@@ -455,9 +455,9 @@ function action(mode, type, selection) {
                 }
 
                 if(allDone) {
-                    cm.sendOk("Done. Thanks for showing up~.");
+                    cm.sendOk("做好了，谢谢惠顾~");
                 } else {
-                    cm.sendOk("Done. Be aware some of the items #rcould not be synthetized#k because either you have a lack of space on your ETC inventory or there's not enough mesos to cover the fee.");
+                    cm.sendOk("做好了。不过有些物品并没能#b成功合成#k。这是因为你的其他栏已满，或没有足够的金币支付费用。");
                 }
                 cm.dispose();
             }

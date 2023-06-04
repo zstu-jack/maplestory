@@ -38,15 +38,15 @@ function action(mode, type, selection) {
         status++;
         
         if (status == 0) {
-            cm.sendNext("Congratulations on getting this far! Well, I suppose I'd better give you the #bBreath of Fire#k. You've certainly earned it!");
+            cm.sendNext("恭喜你来到这里！好吧，我想我必须给你一点奖励，这是 #b火山的呼吸#k。");
         } else if (status == 1) {
             if(!cm.canHold(4031062)) {
-                cm.sendOk("Try freeing a slot to receive the #b#t4031062##k.");
+                cm.sendOk("请腾出背包空间接收 #b#t4031062##k。");
                 cm.dispose();
                 return;
             }
             
-            cm.sendNext("Well, time for you to head off.");
+            cm.sendNext("奖励已发放，请继续下一阶段。");//意思就是这里完成了
         } else if (status == 2) {
             cm.gainItem(4031062,1);
             cm.gainExp(10000 * cm.getPlayer().getExpRate());

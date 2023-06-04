@@ -25,7 +25,7 @@
  
 function enter(pi) {
     if (!pi.getEventInstance().isEventCleared()) {
-        pi.getPlayer().dropMessage(5, "你的队伍尚未完成试炼。请先获得火石母矿碎片，将它交给奥拉。");
+        pi.getPlayer().dropMessage(5, "你的队伍尚未完成试炼。请先获得火石的母矿，将它交给奥拉。");
         return false;
     }
     

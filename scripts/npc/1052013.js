@@ -68,7 +68,7 @@ function action(mode, type, selection) {
                                         }
                                 } else {
                                         if(!eim.giveEventReward(cm.getPlayer())) {
-                                                cm.sendOk("请确认其它栏有足够的空间以获得奖励。");
+                                                cm.sendOk("请确认其他栏有足够的空间以获得奖励。");
                                                 cm.dispose();
                                         } else {
                                                 cm.warp(193000000);

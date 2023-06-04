@@ -39,7 +39,7 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendOk("For those capable of great feats and bearers of an unwavering resolve, the #bfinal destination#k lies ahead past the gate. The Machine Room accepts only #rone party at a time#k, so make sure your party is ready when crossing the gate.");
+                        cm.sendOk("那些决心坚定，想要创造伟大成就的冒险家啊，你们 #b最终的目的地#k 就在那扇大门后面。时间塔的本源每次只能容纳 #r一支队伍#k 同时入场。在进入大门之前请确认你的队员都已做好准备。");
                         cm.dispose();
                 }
         }

@@ -65,29 +65,29 @@ function action(mode, type, selection) {
                 var eim = cm.getPlayer().getEventInstance();
                 
                 if(eim.getProperty(stage.toString() + "stageclear") != null) {
-                        cm.sendNext("Hurry, goto the next stage, the portal is open!");
+                        cm.sendNext("传送门已经开启，可以前往下一阶段。");
                 }
                 else {
                         if (eim.isEventLeader(cm.getPlayer())) {
                                 var state = eim.getIntProperty("statusStg" + stage);
 
                                 if(state == -1) {           // preamble
-                                        cm.sendOk("Hi. Welcome to the #bstage " + stage + "#k. You need ranged personnel here. They must kill the three Ratz, which will trigger something. What's next is for you to find out! Get me 3 passes!");
+                                        cm.sendOk("你好，欢迎来到#b第" + stage + "阶段#k。这一阶段需要远程攻击者。他们需要杀死3只玩具白鼠，之后引发的情况就要靠你们自己去查明了。将3张#b#t4001022#交给我。");
                                         eim.setProperty("statusStg" + stage, 0);
                                 }
                                 else if(state == 0) {       // check stage completion
                                         if (cm.haveItem(4001022, 3)) {
-                                                cm.sendOk("Good job! You have collected all 3 #b#t4001022#'s.#k");
+                                                cm.sendOk("干得漂亮！你收集了全部3张#b#t4001022#。#k");
                                                 cm.gainItem(4001022, -3);
 
                                                 eim.setProperty("statusStg" + stage, 1);
                                                 clearStage(stage, eim, curMap);
                                         } else {
-                                                cm.sendNext("Sorry you don't have all 3 #b#t4001022#'s.#k");
+                                                cm.sendNext("抱歉，你还没有收集齐全部3张#b#t4001022#。#k");
                                         }
                                 }
                         } else {
-                                cm.sendNext("Please tell your #bParty-Leader#k to come talk to me.");
+                                cm.sendNext("请让你的#b队长#k来跟我对话。");
                         }
                 }
                 

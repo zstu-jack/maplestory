@@ -8,7 +8,7 @@ function enter(pi) {
     var spring = pi.getMap().getReactorById(3008000);  // thanks Chloek3, seth1 for noticing fragments not being awarded properly
     if(spring != null && spring.getState() > 0) {
         if(!pi.canHold(4001198, 1)) {
-            pi.playerMessage(5, "通过传送点前，请确认其它栏至少有1格空位。");
+            pi.playerMessage(5, "通过传送点前，请确认其他栏至少有1格空位。");
             return false;
         }
         

@@ -52,40 +52,40 @@ function action(mode, type, selection) {
         
         if (status == 0) {
             if(!eim.isEventCleared()) {
-                cm.sendSimple("...#b\r\n#L0#What am I supposed to do here?#l\r\n#L1#I brought items!#l\r\n#L2#I want to get out!#l");
+                cm.sendSimple("...#b\r\n#L0#我应该做什么？#l\r\n#L1#我带来了火石母矿碎片！#l\r\n#L2#我想要离开！#l");
             } else {
-                cm.sendNext("You completed this ordeal, now receive your prize.");
+                cm.sendNext("你们完成了这场严酷的挑战，现在可以领取奖励了。");
             }
         }
         else if (status == 1) {
             if(!eim.isEventCleared()) {
                 selectedType = selection;
                 if (selection == 0) {
-                    cm.sendNext("To reveal the power of Zakum, you'll have to recreate its core. Hidden somewhere in this dungeon is a #b\"Fire Ore\"#k which is one of the necessary materials for that core. Find it, and bring it to me.\r\n\r\nOh, and could you do me a favour? There's also a number of #bPaper Documents#k lying under rocks around here. If you can get 30 of them, I can reward you for your efforts.");
+                    cm.sendNext("你们需要重塑扎昆的核心来揭示它的力量所在。在这洞穴的某处隐藏着 #b\"火石的母矿\"#k，它是核心的主要构成部分。找到它，带回来给我。\r\n\r\n对了，可以另外帮我一点小忙吗？这洞穴的石头和宝箱里还藏着很多 #b废矿卷轴#k。如果你能找齐30张，我也会给你一些奖励。");
                     cm.dispose();
                     return;
                 }
                 else if (selection == 1) {
                     if(!cm.isEventLeader()) {
-                        cm.sendNext("Please let your leader bring the materials to me to complete this ordeal.");
+                        cm.sendNext("请让你的队长将火石的母矿交给我，完成这场严酷的挑战。");
                         cm.dispose();
                         return;
                     }
 
                     if (!cm.haveItem(4001018)) { //fire ore
-                        cm.sendNext("Please bring the #bFire Ore#k with you.");
+                        cm.sendNext("请带着 #b火石的母矿#k 来找我。");
                         cm.dispose();
                     }
                     else {
                         gotAllDocs = cm.haveItem(4001015, 30);
                         if (!gotAllDocs) { //documents
-                            cm.sendYesNo("So, you brought the fire ore with you? In that case, I can give to you and to each member of your party a piece of it, that should be more than enough to make the core of Zakum. Make sure your whole party has room in their inventory before proceeding.");
+                            cm.sendYesNo("你们把火石的母矿带回来了？这样的话，我可以给你和你的队员们每人一块，这应该完全足够用来重塑扎昆的核心了。接受奖励之前，请确保全部队伍成员的背包里都有足够的格子。");
                         } else {
-                            cm.sendYesNo("So, you brought the fire ore and the documents with you? In that case, I can give to you and to each member of your party a piece of it, that should be more than enough to make the core of Zakum. As well, since you #rbrought the documents#k with you, I can also provide you a special item which will #bbring you to the mine's entrance at any time#k. Make sure your whole party has room in their inventory before proceeding.");
+                            cm.sendYesNo("你们把火石的母矿和废矿卷轴带回来了？这样的话，我可以给你和你的队员们每人一块，这应该完全足够用来重塑扎昆的核心了。另外，因为你们 #r足够多的废矿卷轴#k ，我还会为你们提供能够 #b能够随时将你传送到扎昆入口#k 的特殊道具。接受奖励之前，请确保全部队伍成员的背包里都有足够的格子。");
                         }
                     }
                 } else if (selection == 2)
-                    cm.sendYesNo("Are you sure you want to exit? If you're the party leader, your party will also be removed from the mines.");
+                    cm.sendYesNo("确定想要现在离开吗？如果你是队长，全队将会一起退场。 ");
             } else {
                 if(eim.getProperty("gotDocuments") == 1) {
                     if(eim.gridCheck(cm.getPlayer()) == -1) {
@@ -95,10 +95,10 @@ function action(mode, type, selection) {
 
                             eim.gridInsert(cm.getPlayer(), 1);
                         } else {
-                            cm.sendOk("Make sure you have room in your inventory before proceeding.");
+                            cm.sendOk("请确保全部队伍成员的背包里都有足够的格子。");
                         }
                     } else {
-                        cm.sendOk("You have already received your share. You can now exit the mines through the portal over there.");
+                        cm.sendOk("你们已经获得了自己的那份奖励，现在可以从那边的传送点离开这里。");
                     }
                 } else {
                     if(eim.gridCheck(cm.getPlayer()) == -1) {
@@ -107,10 +107,10 @@ function action(mode, type, selection) {
 
                             eim.gridInsert(cm.getPlayer(), 1);
                         } else {
-                            cm.sendOk("Make sure you have room in your inventory before proceeding.");
+                            cm.sendOk("请确保全部队伍成员的背包里都有足够的格子。");
                         }
                     } else {
-                        cm.sendOk("You have already received your share. You can now exit the mines through the portal over there.");
+                        cm.sendOk("你们已经获得了自己的那份奖励，现在可以从那边的传送点离开这里。");
                     }
                 }
                 

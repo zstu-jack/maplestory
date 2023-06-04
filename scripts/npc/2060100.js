@@ -26,10 +26,10 @@ function start(){
             cm.gainItem(4000175, -1);
             cm.warp(923000000, 0);
         } else {
-            cm.sendOk("In order to open the crack of dimension you will have to posess one piece of Miniature Pianus. Those could be gained by defeating a Pianus.");
+            cm.sendOk("开启次元裂缝需要消耗一枚皮亚奴斯模型。击败皮亚奴斯后有概率获得该道具。");
         }
     } else {
-        cm.sendOk("I'm #bCarta the sea-witch.#k Don't fool around with me, as I'm known for my habit of turning people into worms.");
+        cm.sendOk("我是海巫女 #b卡勒塔#k。别想愚弄我，众所周知，我的爱好就是把人类变成虫子。");
     }
     
     cm.dispose();

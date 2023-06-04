@@ -31,7 +31,7 @@ function enter(pi) {
         
             return true;
         } else {
-            pi.getPlayer().message("请确保其它栏至少有1格空间来接收任务物品。");
+            pi.getPlayer().message("请确保其他栏至少有1格空间来接收任务物品。");
             return false;
         }
     } else {

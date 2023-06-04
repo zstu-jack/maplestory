@@ -44,7 +44,7 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendOk("A document roll on the ground.");
+                        cm.sendOk("一个文件包掉在了地上。");
                         cm.dispose();
                 }
         }

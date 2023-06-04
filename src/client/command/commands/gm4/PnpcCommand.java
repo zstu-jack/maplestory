@@ -40,14 +40,14 @@ import tools.MaplePacketCreator;
 
 public class PnpcCommand extends Command {
     {
-        setDescription("");
+        setDescription("在当前地图创建npc");
     }
 
     @Override
     public void execute(MapleClient c, String[] params) {
         MapleCharacter player = c.getPlayer();
         if (params.length < 1) {
-            player.yellowMessage("Syntax: !pnpc <npcid>");
+            player.yellowMessage("输入: !pnpc <npcid>");
             return;
         }
         
@@ -100,13 +100,13 @@ public class PnpcCommand extends Command {
                     map.broadcastMessage(MaplePacketCreator.spawnNPC(npc));
                 }
 
-                player.yellowMessage("Pnpc created.");
+                player.yellowMessage("NPC创建成功");
             } catch (SQLException e) {
                 e.printStackTrace();
-                player.dropMessage(5, "Failed to store pNPC in the database.");
+                player.dropMessage(5, "NPC创建失败");
             }
         } else {
-            player.dropMessage(5, "You have entered an invalid NPC id.");
+            player.dropMessage(5, "你输入的NPC ID不存在");
         }
     }
 }

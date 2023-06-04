@@ -57,7 +57,7 @@ function action(mode, type, selection) {
                 cm.dispose();
                 return;
             }
-            cm.sendSimple("The battle to defeat Zakum begins here. What would you like to do? #b\r\n#L0#Start a new Zakum Battle#l\r\n#L1#Join your group's Zakum Battle#l");
+            cm.sendSimple("The battle to defeat Zakum begins here. 有什么事要做？#b\r\n#L0#Start a new Zakum Battle#l\r\n#L1#Join your group's Zakum Battle#l");
         }
         else if (status == 1) {
             state = selection;

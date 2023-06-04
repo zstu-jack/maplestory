@@ -45,7 +45,7 @@ var costSet = [10000,25000,25000,25000,25000,25000,25000];
 
 function start() {
     cm.getPlayer().setCS(true);
-    var selStr = "Hey there! My name is #p2040014#, and I am a specialist in mini-games. What kind of mini-game you want me to make? #b"
+    var selStr = "你好啊！我是 #p2040014#，是迷你游戏专家。你想要制作哪种迷你游戏？#b"
     var options = ["#i4080100# #t4080100#","#i4080006# #t4080006#","#i4080007# #t4080007#","#i4080008# #t4080008#","#i4080009# #t4080009#","#i4080010# #t4080010#","#i4080011# #t4080011#"];
     for (var i = 0; i < options.length; i++)
         selStr += "\r\n#L" + i + "# " + options[i] + "#l";
@@ -67,25 +67,25 @@ function action(mode, type, selection) {
         cost = costSet[selectedItem];
         qty = 1;
         
-        var prompt = "So we are going for ";
+        var prompt = "你想制作";
         if (qty == 1)
-            prompt += "a #t" + item + "#";
+            prompt += "1份 #t" + item + "#";
         else
-            prompt += qty + " #t" + item + "#";
-        prompt += ", right? In that case, I'm going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+            prompt += qty + "份 #t" + item + "#";
+        prompt += "，对吧？ 那么，请确认你准备好了对应材料，并且背包里有充足的空间。b";
         if (mats instanceof Array)
             for(var i = 0; i < mats.length; i++)
                 prompt += "\r\n#i" + mats[i] + "# " + (matQty[i] * qty) + " #t" + mats[i] + "#";
         else
             prompt += "\r\n#i" + mats + "# " + (matQty * qty) + " #t" + mats + "#";
         if (cost > 0)
-            prompt += "\r\n#i4031138# " + (cost * qty) + " meso";
+            prompt += "\r\n#i4031138# " + (cost * qty) + " 金币";
         cm.sendYesNo(prompt);
     }else if (status == 1) {
         var complete = true;
         
         if (cm.getMeso() < (cost * qty)) {
-            cm.sendOk("See, I need to specify my wages to support my career, that cannot be bypassed. I will gladly help you once you've got the money.");
+            cm.sendOk("你瞧，我的工作也不可避免地需要资金支持。如果你有足够的金币，我很乐意帮你。");
             cm.dispose();
             return;
         }
@@ -98,7 +98,7 @@ function action(mode, type, selection) {
                 complete = false;
         }	
         if (!complete)
-            cm.sendOk("You are lacking some items for the set you want to make. Please provide them so that we can assemble the game set.");
+            cm.sendOk("缺少材料，无法完成制作。带来足够的材料才能制作游戏套组。");
         else {
             if (cm.canHold(item,qty)) {
                 if (mats instanceof Array) {
@@ -109,9 +109,9 @@ function action(mode, type, selection) {
                 cm.gainMeso(-(cost * qty));
                 
                 cm.gainItem(item, qty);
-                cm.sendOk("There is your game set. Have fun!");
+                cm.sendOk("游戏套组已完成，玩得开心！");
             }else {
-                cm.sendOk("I can't make a set for you if there's no room in your ETC inventory for it. Please free a space first and then talk to me.");
+                cm.sendOk("你的其他栏没有足够空间，我无法为你制作游戏套组。请先腾出背包空间再与我对话。");
             }
         }
         

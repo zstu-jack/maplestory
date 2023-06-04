@@ -38,7 +38,7 @@ function action(mode, type, selection) {
                 cm.sendYesNo("嗯，我知道你是被内哈特推荐到金银岛来提高你的骑士技能的。就在这一次，乘车将是免费的，你愿意搭便车吗？");
                 hasCoupon = true;
             } else {
-                cm.sendYesNo("你在这里没有别的事可做，是吗？你真的想去 #b#m" + maps[selection] + "##k？此次旅程将花费 #b"+ (cm.getJobId() == 0 ? cost[selection] / 10 : cost[selection]) + " 金币#k.");
+                cm.sendYesNo("你在这里没有别的事情要做了，对吗？你真的想去 #b#m" + maps[selection] + "##k？此次旅程将花费 #b"+ (cm.getJobId() == 0 ? cost[selection] / 10 : cost[selection]) + " 金币#k.");
             }
             
             selectedMap = selection;

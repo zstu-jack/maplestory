@@ -24,7 +24,7 @@
  */
 
 function start() {
-    cm.sendYesNo("Beep... beep... you can make your escape to a safer place through me. Beep... beep... would you like to leave this place?");
+    cm.sendYesNo("哔...哔...可以从我这里逃往安全的场所。哔...哔...你想要离开这里吗？");
 }
 
 function action(mode, type, selection) {
