@@ -30,7 +30,7 @@ import client.MapleCharacter;
 
 public class JobCommand extends Command {
     {
-        setDescription("");
+        setDescription("改变职业");
     }
 
     @Override
@@ -39,7 +39,7 @@ public class JobCommand extends Command {
         if (params.length == 1) {
             int jobid = Integer.parseInt(params[0]);
             if (jobid < 0 || jobid >= 2200) {
-                player.message("Jobid " + jobid + " is not available.");
+                player.message("职业id " + jobid + " 不存在");
                 return;
             }
 
@@ -51,17 +51,17 @@ public class JobCommand extends Command {
             if (victim != null) {
                 int jobid = Integer.parseInt(params[1]);
                 if (jobid < 0 || jobid >= 2200) {
-                    player.message("Jobid " + jobid + " is not available.");
+                    player.message("职业id " + jobid + " 不存在");
                     return;
                 }
 
                 victim.changeJob(MapleJob.getById(jobid));
                 player.equipChanged();
             } else {
-                player.message("Player '" + params[0] + "' could not be found.");
+                player.message("玩家 '" + params[0] + "' 不存在");
             }
         } else {
-            player.message("Syntax: !job <job id> <opt: IGN of another person>");
+            player.message("输入: !job <职业id> <可选: 玩家名>");
         }
     }
 }

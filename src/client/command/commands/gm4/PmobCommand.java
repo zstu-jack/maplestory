@@ -39,14 +39,14 @@ import tools.DatabaseConnection;
 
 public class PmobCommand extends Command {
     {
-        setDescription("");
+        setDescription("在当前地图创建怪物");
     }
 
     @Override
     public void execute(MapleClient c, String[] params) {
         MapleCharacter player = c.getPlayer();
         if (params.length < 1) {
-            player.yellowMessage("Syntax: !pmob <mobid> [<mobtime>]");
+            player.yellowMessage("输入: !pmob <怪物id> [<怪物生成时间，单位秒>]");
             return;
         }
 
@@ -93,13 +93,13 @@ public class PmobCommand extends Command {
                     map.addAllMonsterSpawn(mob, mobTime, -1);
                 }
                 
-                player.yellowMessage("Pmob created.");
+                player.yellowMessage("怪物创建成功");
             } catch (SQLException e) {
                 e.printStackTrace();
-                player.dropMessage(5, "Failed to store pmob in the database.");
+                player.dropMessage(5, "怪物创建失败");
             }
         } else {
-            player.dropMessage(5, "You have entered an invalid mob id.");
+            player.dropMessage(5, "你输入的怪物id不存在");
         }
     }
 }

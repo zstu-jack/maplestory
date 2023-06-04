@@ -41,7 +41,7 @@ import tools.Pair;
 
 public class PnpcRemoveCommand extends Command {
     {
-        setDescription("");
+        setDescription("移除当前地图创建的NPC");
     }
 
     @Override
@@ -95,7 +95,7 @@ public class PnpcRemoveCommand extends Command {
             con.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            player.dropMessage(5, "Failed to remove pNPC from the database.");
+            player.dropMessage(5, "移除NPC失败");
         }
         
         if (!toRemove.isEmpty()) {
@@ -108,6 +108,6 @@ public class PnpcRemoveCommand extends Command {
             }
         }
         
-        player.yellowMessage("Cleared " + toRemove.size() + " pNPC placements.");
+        player.yellowMessage("共移除 " + toRemove.size() + " 名NPC");
     }
 }
