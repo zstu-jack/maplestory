@@ -60,9 +60,9 @@ function action(mode, type, selection) {
         
         if(!(cm.isQuestStarted(100200) || cm.isQuestCompleted(100200))) {   // thanks Vcoc for finding out a need of reapproval from the masters for Zakum expeditions
             if (cm.getPlayer().getLevel() >= 50) {  // thanks Z1peR for noticing not-so-clear unmet requirements message here.
-                cm.sendOk("Beware, for the power of olde has not been forgotten... If you seek to defeat #rZakum#k someday, earn the #bChief's Residence Council#k approval foremost and then #bface the trials#k, only then you will become eligible to fight.");
+                cm.sendOk("小心，那些来自远古的力量仍未被遗忘...如果你想要挑战 #r扎昆#k ，从 #b长老公馆#k 的各位长老处获得许可后 #b通过试炼#k，到那时才有资格挑战扎昆。");
             } else {
-                cm.sendOk("Beware, for the power of olde has not been forgotten...");
+                cm.sendOk("小心，那些来自远古的力量仍未被遗忘...");
             }
             
             cm.dispose();
@@ -71,13 +71,13 @@ function action(mode, type, selection) {
         
         em = cm.getEventManager("ZakumPQ");
         if(em == null) {
-            cm.sendOk("The Zakum 组队任务遇到了一个错误。");
+            cm.sendOk("扎昆组队任务遇到了一个错误。");
             cm.dispose();
             return;
         }
         
         if (status == 0) {
-            cm.sendSimple("#e#b<组队任务：Zakum Campaign>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nBeware, for the power of olde has not been forgotten... #b\r\n#L0#Enter the Unknown Dead Mine (Stage 1)#l\r\n#L1#Face the Breath of Lava (Stage 2)#l\r\n#L2#Forging the Eyes of Fire (Stage 3)#l");
+            cm.sendSimple("#e#b<组队任务：前往扎昆的祭台>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n小心，那些来自远古的力量仍未被遗忘...#b\r\n#L0#调查未知废矿区 (第一阶段)#l\r\n#L1#探索扎昆迷宫 (第二阶段)#l\r\n#L2#领取献给扎昆的祭品 (Stage 3)#l");//直面火山的呼吸和制作火焰的眼不认真看物品的玩家会觉得有些突兀，所以用CMS现行脚本内容替代。另外征讨扎昆这种翻译怎么看怎么怪，所以用目的地作为组队任务的名字了。
         }
         else if (status == 1) {
             if (selection == 0) {
@@ -102,17 +102,17 @@ function action(mode, type, selection) {
                 }
             } else if(selection == 1) {
                 if (cm.haveItem(4031061) && !cm.haveItem(4031062))
-                    cm.sendYesNo("Would you like to attempt the #bBreath of Lava#k?  If you fail, there is a very real chance you will die.");
+                    cm.sendYesNo("想要尝试获取 #b火山的呼吸#k 吗？如果在里面失败，很有可能会死亡。");
                 else {
-                    if (cm.haveItem(4031062)) cm.sendNext("You've already got the #bBreath of Lava#k, you don't need to do this stage.");
-                    else cm.sendNext("Please complete the earlier trials first.");
+                    if (cm.haveItem(4031062)) cm.sendNext("你已经获得 #b火山的呼吸#k 不再需要进行本试炼了。");
+                    else cm.sendNext("请完成上一阶段的试炼后再行尝试。");
                     
                     cm.dispose();
                 }
             } else {
                 if(cm.haveItem(4031061) && cm.haveItem(4031062)) {
                     if(!cm.haveItem(4000082, 30)) {
-                        cm.sendOk("You have completed the trials, however there's still the need of #b30 #t4000082##k to forge 5 #t4001017#.");
+                        cm.sendOk("你通过了试炼，但现在仍然需要 #b30枚 #t4000082##k 来制作 5个 #t4001017#。");
                     } else {
                         cm.completeQuest(100201);
                         cm.gainItem(4031061, -1);
@@ -120,12 +120,12 @@ function action(mode, type, selection) {
                         cm.gainItem(4000082, -30);
 
                         cm.gainItem(4001017, 5);
-                        cm.sendNext("You #rhave completed the trials#k, from now on having my approval to challenge Zakum.");
+                        cm.sendNext("你已经 #r通过了试炼#k，现在起你被获准挑战扎昆。");
                     }
                     
                     cm.dispose();
                 } else {
-                    cm.sendOk("You lack some of the required items to forge the #b#t4001017##k.");
+                    cm.sendOk("道具不足，无法兑换 #b#t4001017##k。");
                     cm.dispose();
                 }
             }

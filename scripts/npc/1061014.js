@@ -37,7 +37,7 @@ var expedName = "Balrog";
 var expedBoss = "蝙蝠怪";
 var expedMap = "蝙蝠怪的墓地";
 
-var list = "你有什么事吗？#b\r\n\r\n#L1#确认目前的远征队成员。#l\r\n#L2#挑战蝙蝠怪 - 入场#l\r\n#L3#取消远征队登记。#l";
+var list = "有什么事要做？##b\r\n\r\n#L1#确认目前的远征队成员。#l\r\n#L2#挑战蝙蝠怪 - 入场#l\r\n#L3#取消远征队登记。#l";
 
 function start() {
     action(1, 0, 0);
@@ -59,10 +59,10 @@ function action(mode, type, selection) {
 
         if (status == 0) {
             if (player.getLevel() < exped.getMinLevel() || player.getLevel() > exped.getMaxLevel()) { //Don't fit requirement, thanks Conrad
-                cm.sendOk("你尚不满足挑战 " + expedBoss + "的资格。");
+                cm.sendOk("你尚不满足挑战" + expedBoss + "的资格。");
                 cm.dispose();
             } else if (expedition == null) { //Start an expedition
-                cm.sendSimple("#e#b<远征队： " + expedName + ">\r\n#k#n" + em.getProperty("party") + "\r\n\r\n你要组成一支远征队讨伐 #r" + expedBoss + "#k吗?\r\n#b#L1#入场。#l\r\n\#L2#还不是时候。#l\r\n\#L3#我想多了解一点关于这次远征的事情。#l");
+                cm.sendSimple("#e#b<远征队：" + expedName + ">\r\n#k#n" + em.getProperty("party") + "\r\n\r\n你要组成一支远征队讨伐#r" + expedBoss + "#k吗?\r\n#b#L1#入场。#l\r\n\#L2#还不是时候。#l\r\n\#L3#我想多了解一点关于这次远征的事情。#l");
                 status = 1;
             } else if (expedition.isLeader(player)) { //If you're the leader, manage the exped
                 if (expedition.isInProgress()) {
@@ -86,12 +86,12 @@ function action(mode, type, selection) {
                     if(eim.getIntProperty("canJoin") == 1) {
                         eim.registerPlayer(player);
                     } else {
-                        cm.sendOk("你的远征队已经开始挑战" + expedBoss + "。");
+                        cm.sendOk("你的远征队正在挑战" + expedBoss + "。愿他们勇敢的灵魂得偿所愿。");
                     }
                     
                     cm.dispose();
                 } else { //If you're not in by now, tough luck
-                    cm.sendOk("其它远征队正在挑战 " + expedBoss + "。");
+                    cm.sendOk("其它远征队正在挑战 " + expedBoss + "。愿他们勇敢的灵魂得偿所愿。");
                     cm.dispose();
                 }
             }
@@ -140,7 +140,7 @@ function action(mode, type, selection) {
                     cm.dispose();
                     return;
                 }
-                var text = "以下成员加入了远征队，可以点击名字将其驱逐:\r\n";
+                var text = "以下成员加入了远征队，可以点击名字将其移除：\r\n";
                 text += "\r\n\t\t1." + expedition.getLeader().getName();
                 for (var i = 1; i < size; i++) {
                     text += "\r\n#b#L" + (i + 1) + "#" + (i + 1) + ". " + expedMembers.get(i).getValue() + "#l\n";
