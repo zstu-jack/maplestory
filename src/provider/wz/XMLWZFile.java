@@ -122,7 +122,9 @@ public class XMLWZFile implements MapleDataProvider {
                     }
                     for (MapleData life : lifeData) {
                         life.getName();
-                        npcList.add(MapleDataTool.getString(life.getChildByPath("id")));
+                        if ("n".equals(MapleDataTool.getString(life.getChildByPath("type")))) {
+                            npcList.add(MapleDataTool.getString(life.getChildByPath("id")));
+                        }
                     }
                     mapNpcRelation.put(fileName.substring(0, fileName.length() - 8), npcList);
                     fis.close();

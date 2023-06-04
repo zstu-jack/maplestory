@@ -1,4 +1,4 @@
-package client.command.commands.gm2;
+package client.command.commands.gm3;
 
 import client.MapleCharacter;
 import client.MapleClient;

@@ -41,7 +41,7 @@ import tools.Pair;
 
 public class PmobRemoveCommand extends Command {
     {
-        setDescription("");
+        setDescription("移除当前地图创建的怪物");
     }
 
     @Override
@@ -95,7 +95,7 @@ public class PmobRemoveCommand extends Command {
             con.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            player.dropMessage(5, "Failed to remove pmob from the database.");
+            player.dropMessage(5, "怪物移除失败");
         }
         
         if (!toRemove.isEmpty()) {
@@ -109,6 +109,6 @@ public class PmobRemoveCommand extends Command {
             }
         }
         
-        player.yellowMessage("Cleared " + toRemove.size() + " pmob placements.");
+        player.yellowMessage("共移除 " + toRemove.size() + " 个怪物");
     }
 }

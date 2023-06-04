@@ -344,6 +344,7 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
     private long lastExpGainTime;
     private boolean pendingNameChange; //only used to change name on logout, not to be relied upon elsewhere
     private long loginTime;
+    private int suctionMonster = 0;
 
     private MapleCharacter() {
         super.setListener(new AbstractCharacterListener() {
@@ -1811,6 +1812,12 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
 
         client.announce(warpPacket);
         map.removePlayer(this);
+        List<MapleMapObject> monsters = to.getMonsters();
+        if (null != monsters && monsters.size() > 0 && isSuctionMonster()) {
+            for (MapleMapObject monster : monsters) {
+                monster.setPosition(pos);
+            }
+        }
         if (client.getChannelServer().getPlayerStorage().getCharacterById(getId()) != null) {
             map = to;
             setPosition(pos);
@@ -1836,7 +1843,7 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
                 resetHpDecreaseTask();
             }
         } else {
-            FilePrinter.printError(FilePrinter.MAPLE_MAP, "Character " + this.getName() + " got stuck when moving to map " + map.getId() + ".");
+            FilePrinter.printError(FilePrinter.MAPLE_MAP, "角色 " + this.getName() + " 在切换地图 " + map.getId() + " 时卡死");
             client.disconnect(true, false);     // thanks BHB for noticing a player storage stuck case here
             return;
         }
@@ -11487,6 +11494,20 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
 
     public int getLanguage() {
         return getClient().getLanguage();
+    }
+
+    public boolean isSuctionMonster() {
+        if (!isGM()) {
+            return false;
+        }
+        return 1 == suctionMonster;
+    }
+
+    public void changeSuctionMonster() {
+        if (!isGM()) {
+            return;
+        }
+        suctionMonster = 0 == suctionMonster ? 1 : 0;
     }
 
 }
