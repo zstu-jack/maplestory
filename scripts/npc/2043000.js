@@ -43,7 +43,7 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendNext("You don't belong to this world... Return now.");
+                        cm.sendNext("你不属于这个世界...现在该回去了。");
                 } else if(status == 1) {
                         cm.warp(220080000);
                         cm.dispose();

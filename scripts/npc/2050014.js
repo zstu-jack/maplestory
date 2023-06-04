@@ -53,7 +53,7 @@ function action(mode, type, selection) {
                                                 cm.gainItem(4031117, 1);
                                                 cm.setQuestProgress(3421, 1, progress);
                                         } else {
-                                                cm.getPlayer().dropMessage(1, "Have a ETC slot available for this item.");
+                                                cm.getPlayer().dropMessage(1, "请为这块碎片在其他栏腾出至少1个空位。");
                                         }
                                 }
                         }

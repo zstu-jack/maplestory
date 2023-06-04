@@ -18,7 +18,7 @@ function action(mode, type, selection) {
         cm.dispose();
     } else {
         if (status >= 0 && mode == 0) {
-            cm.sendOk("Alright then, I hope we can chat later next time.");
+            cm.sendOk("好吧，希望下次能和你聊聊。");
             cm.dispose();
             return;
         }

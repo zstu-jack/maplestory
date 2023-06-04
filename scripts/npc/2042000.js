@@ -175,10 +175,10 @@ function action(mode, type, selection) {
             if (status == 0) {
                 if (cm.getParty() == null) {
                     status = 10;
-                    cm.sendOk("需要组成队伍后才能加入战斗！");
+                    cm.sendOk("需要组成队伍才能参加怪物嘉年华。");
                 } else if (!cm.isLeader()) {
                     status = 10;
-                    cm.sendOk("如果想要开启战斗，请让#b队长#k与我交谈。");
+                    cm.sendOk("如果想要参加怪物嘉年华，请让#b队长#k与我交谈。");
                 } else {
                     var party = cm.getParty().getMembers();
                     var inMap = cm.partyMembersInMap();

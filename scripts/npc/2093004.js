@@ -42,7 +42,7 @@ function action(mode, type, selection) {
             status--;
         if (status == 1) {
             if(cm.getPlayer().getMeso() < cost)
-                cm.sendOk("I don't think you have enough money...");
+                cm.sendOk("ÄãµÄ½ð±Ò²»×ã...");
             else {
                 cm.gainMeso(-cost);
                 cm.warp(230000000);

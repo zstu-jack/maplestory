@@ -30,10 +30,10 @@ function action(mode, type, selection) {
         if (status == 0) {
             if (cm.getParty() == null) {
                 status = 10;
-                cm.sendOk("You need to create a party before you can participate in Monster Carnival!");
+                cm.sendOk("需要组成队伍后才能参加怪物嘉年华。");
             } else if (!cm.isLeader()) {
                 status = 10;
-                cm.sendOk("If you want to start the battle, let the #bleader#k come and speak to me.");
+                cm.sendOk("如果想要参加怪物嘉年华，请让#b队长#k与我交谈。");
             } else {
                 var leaderMapid = cm.getMapId();
                 var party = cm.getParty().getMembers();
