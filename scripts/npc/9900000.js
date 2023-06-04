@@ -48,15 +48,15 @@ function pushIfItemExists(array, itemid) {
 
 function start() {
     if(cm.getPlayer().gmLevel() < 1) {
-        cm.sendOk("Hey wassup?");
+        cm.sendOk("好久不见~。");
         cm.dispose();
         return;
     }
     
 	if(cm.getPlayer().isMale()){
-		cm.sendSimple("Hey there, you can change your look for " + price + " mesos. What would you like to change?\r\n#L0#Skin#l\r\n#L1#Male Hair#l\r\n#L2#Hair Color#l\r\n#L3#Male Regular Eyes#l\r\n#L4#Eye Color#l");
+		cm.sendSimple("看这里，你可以支付 " + price + " 金币. 想改变写什么吗?\r\n#L0#皮肤#l\r\n#L1#男士发型#l\r\n#L2#头发染色#l\r\n#L3#男士眼型#l\r\n#L4#瞳孔颜色#l");
 	}else{
-		cm.sendSimple("Hey there, you can change your look for " + price + " mesos. What would you like to change?\r\n#L0#Skin#l\r\n#L5#Female Hair#l\r\n#L2#Hair Color#l\r\n#L6#Female Eyes#l\r\n#L4#Eye Color#l");
+		cm.sendSimple("看这里，你可以支付 " + price + " 金币. 想改变写什么吗?\r\n#L0#皮肤#l\r\n#L5#女士发型#l\r\n#L2#头发染色#l\r\n#L6#女生眼型#l\r\n#L4#瞳孔颜色#l");
 	}
 }
 
@@ -70,28 +70,28 @@ function action(mode, type, selection) {
         beauty = selection + 1;
 		if(cm.getMeso() > price){
 			if (selection == 0)
-				cm.sendStyle("Pick one?", skin);
+				cm.sendStyle("挑一款喜欢的L0?", skin);
 			else if (selection == 1 || selection == 5) {
 				for each(var i in selection == 1 ? hair : fhair)
 					pushIfItemExists(hairnew, i);
-				cm.sendStyle("Pick one?", hairnew);
+				cm.sendStyle("挑一款喜欢的L1?", hairnew);
 			} else if (selection == 2) {
 				var baseHair = parseInt(cm.getPlayer().getHair() / 10) * 10;
-				for(var k = 0; k < 8; k++)
+				for (var k = 0; k < 8; k++)
 					pushIfItemExists(haircolor, baseHair + k);
-				cm.sendStyle("Pick one?", haircolor);
+				cm.sendStyle("挑一款喜欢的L2?", haircolor);
 			} else if (selection == 3 || selection == 6) {
 				for each(var j in selection == 3 ? face : fface)
 					pushIfItemExists(facenew, j);
-				cm.sendStyle("Pick one?", facenew);
+				cm.sendStyle("挑一款喜欢的L3或L6?", facenew);
 			} else if (selection == 4) {
 				var baseFace = parseInt(cm.getPlayer().getFace() / 1000) * 1000 + parseInt(cm.getPlayer().getFace() % 100);
-				for(var i = 0; i < 9; i++)
+				for (var i = 0; i < 9; i++)
 					pushIfItemExists(colors, baseFace + (i*100));
-				cm.sendStyle("Pick one?", colors);
+				cm.sendStyle("挑一款喜欢的?L4", colors);
 			}
 		} else {
-			cm.sendNext("You don't have enough mesos. Sorry to say this, but without " + price + " mesos, you won't be able to change your look!");
+			cm.sendNext("你没有足够的金币. 如果你有 " + price + " 金币, 暂时不能改变外观!");
             cm.dispose();
 		}
         
