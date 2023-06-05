@@ -39,7 +39,7 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendOk("Hey guys, what's going on? I'm already getting married at this age? But I'm only a child!!! How comes?");
+                        cm.sendOk("嘿，伙计们，发生什么了？我怎么这么年轻就已经结婚了？可我还是个孩子啊！！！怎么会这样？");
                         cm.dispose();
                 }
         }
