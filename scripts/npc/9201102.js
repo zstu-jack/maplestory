@@ -4,6 +4,6 @@
  */
  
 function start() {
-    cm.sendOk("The patrol in New Leaf City is always ready. No creatures are able to break through to the city.");
+    cm.sendOk("新叶城的警备力量时刻待命，没有任何生物能够突破这座城市的防线。");
     cm.dispose();
 }

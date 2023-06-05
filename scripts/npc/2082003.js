@@ -1,5 +1,5 @@
 function start() {
-    cm.sendSimple("If you had wings, I'm sure you could go there.  But, that alone won't be enough.  If you want to fly though the wind that's sharper than a blade, you'll need tough scales as well.  I'm the only Halfling left that knows the way back... If you want to go there, I can transform you.  No matter what you are, for this moment, you will become a #bDragon#k...\r\n #L0##bI want to become a dragon.#k#l");
+    cm.sendSimple("我相信如果你有翅膀，就可以到达另一边。但是光靠这些还不够。返程时想要在刀割般的强风中飞行，一身坚硬的鳞片也必不可少。我是唯一一位知道安全返回方法的哈夫林...如果想要通过这里，我可以将你暂时性地幻化成为一条龙。不管你原本是什么种族，在这一刻，你都将化身为#b龙族#k...\r\n #L0##b我想要幻化为龙族。#k#l");
 }
 
 function action(m, t, s) {

@@ -32,7 +32,7 @@ function action(mode, type, selection) {
         cm.dispose();
     else {
         if (mode == 0) {
-            cm.sendNext("Hmmm ... too busy to do it right now? If you feel like doing it, though, come back and find me.");
+            cm.sendNext("เล... too busy to do it right now? If you feel like doing it, though, come back and find me.");
             cm.dispose();
             return;
         }

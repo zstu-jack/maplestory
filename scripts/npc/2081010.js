@@ -40,7 +40,7 @@ function action(mode, type, selection){
     
     status++;
     if(status == 0) {
-        cm.sendYesNo("Do you want to exit the area? If you quit, you will need to start this task from the scratch.");
+        cm.sendYesNo("一旦离开本地图，将只能从头开始执行任务。确定要离开这里吗？");
     }
     
     else if(status == 1) {

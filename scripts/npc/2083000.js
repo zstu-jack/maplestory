@@ -44,16 +44,16 @@ function action(mode, type, selection) {
             status--;
         if (status == 0) {
             if(cm.haveItem(4001086)) {
-                cm.sendYesNo("Do you want to access #b#m240050400##k right now?");
+                cm.sendYesNo("你想要现在进入#b#m240050400##k吗？");
             } else if(Packages.config.YamlConfig.config.server.USE_ENABLE_SOLO_EXPEDITIONS) {
                 if(canBypassHTPQ()) {
-                    cm.sendYesNo("Do you want to access #b#m240050400##k right now?");
+                    cm.sendYesNo("你想要现在进入#b#m240050400##k吗？");
                 } else {
-                    cm.sendOk("Those who don't have the #r#t4001086##k must prove their valor before challenging #bHorntail#k. Come here holding the #r3 certificates#k that proves you're worthy to || the task.");    // NPC picture is so long it goes through some section of text, || to fill up that space
+                    cm.sendOk("没有携带 #r#t4001086##k 的玩家必须在挑战#b暗黑龙王#k前证明他们的勇气。#r敢死队的象征#k 来证明自己确实能够胜任。");    // NPC picture is so long it goes through some section of text, || to fill up that space 说是NPC图片遮挡文本，如果游戏里出现问题自己加空格或符号就好
                     cm.dispose();
                 }
             } else {
-                cm.sendOk("Those who don't have the #r#t4001086##k must prove their valor before challenging #bHorntail#k.");
+                cm.sendOk("没有携带 #r#t4001086##k 的玩家必须在挑战#b暗黑龙王#k前证明他们的勇气。");
                 cm.dispose();
             }
         }

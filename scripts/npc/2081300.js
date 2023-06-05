@@ -47,15 +47,15 @@ function action(mode, type, selection) {
     
                 if(status == 0) {
                         if(cm.getLevel() < 120 || Math.floor(cm.getJobId() / 100) != 3) {
-                                cm.sendOk("Please don't bother me right now, I am trying to concentrate.");
+                                cm.sendOk("请别来打扰我，我正在试着冥想。");
                                 cm.dispose();
                         } else if (!cm.isQuestCompleted(6924)) { 
-                                cm.sendOk("You have not yet passed my trials. I can not advance you until you do so.");
+                                cm.sendOk("你还没有通过我的试炼，在那之前我无法为你提供建言。");
                                 cm.dispose();
                         } else if ( cm.getJobId() % 100 % 10 != 2) {
-                                cm.sendYesNo("You did a marvellous job passing my test. Are you ready to advance to your 4th job?");
+                                cm.sendYesNo("你在试炼中的表现真是不可思议。准备好进行第4次转职了吗？");
                         } else {
-                                cm.sendSimple("If I must, I can teach you the art of your class.\r\n#b#L0#Teach me the skills of my class.#l");
+                                cm.sendSimple("如果有必要的话，你可以从我这里学到本职业的技能。\r\n#b#L0#请传授我本职业技能。#l");
                                 //cm.dispose();
                         }
                 } else if(status == 1) {
@@ -73,7 +73,7 @@ function action(mode, type, selection) {
                                         }
                                         cm.gainItem(2280003, 1);
                                 } else {
-                                        cm.sendOk("Please have one slot available on #bUSE#k inventory to receive a skill book.");
+                                        cm.sendOk("请确保你的 #b消耗栏#k 至少有一个空位来接收技能书。");
                                 }
                         } else if(mode >= 0 && cm.getJobId() % 100 % 10 == 2) {
                                 if(cm.getJobId() == 312) {
@@ -91,7 +91,7 @@ function action(mode, type, selection) {
                                         if(cm.getPlayer().getSkillLevel(3221001) == 0)
                                                 cm.teachSkill(3221001 , 0, 10, -1);
                                 }
-                                cm.sendOk("It is done. Leave me now.");
+                                cm.sendOk("转职完成，你可以离开了。");
                         }
                         
                         cm.dispose();

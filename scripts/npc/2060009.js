@@ -18,7 +18,7 @@ function start() {
 			menu = "#L0#支付 #b10,000金币#k 前往 #b#m230030200##k。#l\r\n#L1#支付 #b10,000金币#k 前往 #b#m251000000##k。#l";
         payment = true;
     }
-    cm.sendSimple ("海洋连接着每一个人。无法步行前往的地方，却可以通过海洋轻易到达。今天要乘坐 #b海豚的士#k 吗，与我们一同出行吗？\r\n"+menu);
+    cm.sendSimple ("海洋连接着每一个人。无法步行前往的地方，却可以通过海洋轻易到达。今天要乘坐 #b海豚的士#k ，与我们一同出行吗？\r\n"+menu);
 }
 
 function action(mode, type, selection) {

@@ -76,7 +76,7 @@ function action(mode, type, selection) {
                         if (mapid > 0) {
                             cm.warp(mapid, 1);
                         } else {
-                            cm.sendOk("Complete your mission first.");
+                            cm.sendOk("请完成关卡目标。");
                         }
                 }
         }
