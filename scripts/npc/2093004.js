@@ -24,7 +24,7 @@ var menu;
 var cost = 10000;
 
 function start() {
-    cm.sendYesNo("Will you move to #b#m230000000##k now? The price is #b"+cost+" mesos#k.");
+    cm.sendYesNo("你想现在前往 #b#m230000000##k 吗？费用是 #b"+cost+" 金币#k。");
 }
 
 function action(mode, type, selection) {
@@ -32,7 +32,7 @@ function action(mode, type, selection) {
         cm.dispose();
     else {
         if (mode == 0) {
-            cm.sendNext("嗯... too busy to do it right now? If you feel like doing it, though, come back and find me.");
+            cm.sendNext("嗯...现在没时间吗？如果你需要搭乘海豚的士，就回来找我。");
             cm.dispose();
             return;
         }

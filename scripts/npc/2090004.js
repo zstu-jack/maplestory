@@ -120,8 +120,9 @@ function action(mode, type, selection) {
                         item = itemSet[selectedItem];
 			mats = matSet[selectedItem];
 			matQty = matQtySet[selectedItem];
-                        matMeso = matQtyMeso[selectedItem];
+            matMeso = matQtyMeso[selectedItem];
                         
+			var prompt = "你想制作#b" + makeQty + "件 #t" + item + "##k？要制作 " + makeQty + "件 #t" + item +"# 需要以下材料：\r\n";
 			if (mats instanceof Array){
 				for(var i = 0; i < mats.length; i++){
 					prompt += "\r\n#i"+mats[i]+"# " + matQty[i]*makeQty + " #t" + mats[i] + "#";
@@ -257,7 +258,7 @@ function action(mode, type, selection) {
 			if (!cm.canHold(4001124, reward))
 				cm.sendOk("请确保你的材料足够，并且背包的其他栏有足够的空间。");
 			else {
-                cm.gainItem(item, -100);
+				cm.gainItem(item, -100);
 				cm.gainItem(4001124, reward);
 			}
 
