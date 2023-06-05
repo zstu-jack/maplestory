@@ -9,6 +9,6 @@
 **/
 
 function start() {
-    cm.sendOk("The current is serene, wich means we may arive in lith harbor earlier than expected.");
+    cm.sendOk("今日风平浪静，我猜猜~~嗯，可能会比预期更早地到达明珠港。");
     cm.dispose();
 }

@@ -37,15 +37,15 @@ function action(mode, type, selection) {
 	if(cm.getPlayer().getMapId() == 140090000) {
 		if (!cm.containsAreaInfo(21019, "helper=clear")) {
 		if (status == 0) {
-		cm.sendNext("You've finally awoken...!", 8);
+		cm.sendNext("你终于醒了。。。!", 8);
 		} else if (status == 1) {
-			cm.sendNextPrev("And you are...?", 2);
+			cm.sendNextPrev("你是。。。？", 2);
 		} else if (status == 2) {
-			cm.sendNextPrev("The hero who fought against the Black Mage... I've been waiting for you to wake up!", 8);
+			cm.sendNextPrev("与黑魔法师战斗的英雄。。我一直在等你醒来！", 8);
 		} else if (status == 3) {
-			cm.sendNextPrev("Who... Who are you? And what are you talking about?", 2);
+			cm.sendNextPrev("你。。。你是谁？你在说什么？", 2);
 		} else if (status == 4) {
-			cm.sendNextPrev("And who am I...? I can't remember anything... Ouch, my head hurts!", 2);
+			cm.sendNextPrev("我是谁。。。？我怎么什么都记不起来了。。。啊~~~~~！！！我的头好疼！", 2);
 		} else if (status == 5) {
 			cm.showIntro("Effect/Direction1.img/aranTutorial/face");
 			cm.showIntro("Effect/Direction1.img/aranTutorial/ClickLilin");
@@ -54,19 +54,19 @@ function action(mode, type, selection) {
 		}
 		} else {
 		if (status == 0) {
-			cm.sendNextPrev("Are you alright?", 8);
+			cm.sendNextPrev("你还好吗？", 8);
 		} else if (status == 1) {
-			cm.sendNextPrev("I can't remember anything. Where am I? And who are you...?", 2);
+			cm.sendNextPrev("我什么都记不起来了。我在哪里？你是谁。。。？", 2);
 		} else if (status == 2) {
-			cm.sendNextPrev("Stay calm. There is no need to panic. You can't remember anything because the curse of the Black Mage erased your memory. I'll tell you everything you need to know...step by step.", 8);
+			cm.sendNextPrev("冷静。没有必要恐慌。你什么都记不起来了，是因为黑魔法师的诅咒抹去了你的记忆。我会告诉你，你想知道的一切。。。稍安勿躁。", 8);
 		} else if (status == 3) {
-			cm.sendNextPrev("You're a hero who fought the Black Mage and saved Maple World hundreds of years ago. But at the very last moment, the curse of the Black Mage put you to sleep for a long, long time. That's when you lost all of your memories.", 8);
+			cm.sendNextPrev("你是数百年前与黑魔法师战斗并拯救冒险世界的大英雄。但在最后一刻，黑魔法师的诅咒让你睡了很长很长的时间。于是。。。你失去了所有记忆。", 8);
 		} else if (status == 4) {
-			cm.sendNextPrev("This island is called Rien, and it's where the Black Mage trapped you. Despite its name, this island is always covered in ice and snow because of the Black Mage's curse. You were found deep inside the Ice Cave.", 8);
+			cm.sendNextPrev("这个岛叫里恩，是黑魔法师困住你的地方。尽管有它的名字，但由于黑魔法师诅咒的原因，这个岛常年被冰雪覆盖。你是在冰洞深处被发现的。", 8);
 		} else if (status == 5) {
-			cm.sendNextPrev("My name is Lilin and I belong to the clan of Rien. The Rien Clan has been waiting for a hero to return for a long time now, and we finally found you. You've finally returned!", 8);
+			cm.sendNextPrev("我的名字叫丽琳，我属于里恩家族。里恩家族已经等待英雄归来很长时间了，我们终于找到了你。你终于回来了！", 8);
 		} else if (status == 6) {
-			cm.sendNextPrev("I've said too much. It's okay if you don't really understand everything I just told you. You'll get it eventually. For now, #byou should head to town#k. I'll stay by your side and help you until you get there.", 8);
+			cm.sendNextPrev("我说得太多了。如果你不能真正理解我刚刚告诉你的一切，没关系。你最终会找回记忆的。目前，#b你应该前往#k里恩镇。我会一直陪在你身边，直到你到达那里。", 8);
 		} else if (status == 7) {
 			cm.spawnGuide();
 			cm.warp(140090100, 0);
@@ -75,19 +75,19 @@ function action(mode, type, selection) {
 	        }	
 	} else {
 		if (status == 0)
-			cm.sendSimple("Is there anything you're still curious about? If so, I'll try to explain it better. #b#l\r\n#L0#Who am I? #l #l\r\n#L1#Where am I? #l #l\r\n#L2#Who are you?#l#l\r\n#L3#Tell me what I have to do.#l #l\r\n#L4#Tell me about my Inventory.#l #l\r\n#L5#How do I advance my skills?#l #l\r\n#L6#I want to know how to equip items.#l #l\r\n#L7#How do I use quick slots? #l #l\r\n#L8#How can I open breakable containers?#l #l\r\n#L9#I want to sit in a chair but I forgot how.#l#k");
+			cm.sendSimple("你还想问些什么? 我会尽量解释详细些的。 #b#l\r\n#L0#我是谁? #l #l\r\n#L1#我在哪? #l #l\r\n#L2#你是谁?#l#l\r\n#L3#我该做些什么？#l #l\r\n#L4#如何打开背包？#l #l\r\n#L5#如何提升我的技能?#l #l\r\n#L6#如何使用物品，装备？#l #l\r\n#L7#如何使用快捷栏? #l #l\r\n#L8#如何破坏箱子?#l #l\r\n#L9#如何使用座椅？#l#k");
 		else if (status == 1) {
 				if (selection == 0) {
-					cm.sendNext("You are one of the heroes that saved Maple World from the Black Mage hundreds of years ago. You've lost your memory due to the curse of the Black Mage.");
+					cm.sendNext("你是数百年前从黑魔法师手中拯救冒险世界的英雄之一。由于黑魔法师的诅咒，你失去了记忆。");
 					cm.dispose();
 				} else if (selection == 1) {
-					cm.sendNext("This island is called Rien, and this is where the Black Mage's curse put you to sleep. It's a small island covered in ice and snow, and the majority of the residents are Penguins.");
+					cm.sendNext("这个岛叫里恩，这是黑魔法师诅咒你，并将你冰封的地方。是一个被冰雪覆盖的小岛，大多数居民是企鹅。");
 					cm.dispose();
 				} else if(selection == 2) {
-					cm.sendNext("I'm Lilin, a clan member of Rien, and I've been waiting for your return as the prophecy foretold. I'll be your guide for now.");
+					cm.sendNext("我是丽琳，里恩家族的成员，正如预言的那样，我一直在等待你的归来。我现在是你的向导。");
 					cm.dispose();
 				} else if(selection == 3) {
-					cm.sendNext("Let's not waste any more time and just get to town. I'll give you the details when we get there.");
+					cm.sendNext("我们别再浪费时间了，直接进城去吧。我们到那里后我会告诉你细节。");
 					cm.dispose();
 				} else if(selection == 4) {
 					cm.guideHint(14);

@@ -9,7 +9,7 @@ function action(mode, type, selection) {
     if(cm.haveItemWithId(1902016, true)) {
         cm.warp(140010210, 0);
     } else {
-        cm.sendOk("What is it? If you you're here to waste my time, get lost!");
+        cm.sendOk("你是什么怪物？别浪费我的时间，在我面前消失!");
     }
     
     cm.dispose();

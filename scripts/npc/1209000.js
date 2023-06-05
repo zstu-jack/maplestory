@@ -40,11 +40,11 @@ function action(mode, type, selection) {
         status--;
 	}
 	if (status == 0) {
-		cm.sendNext("Aran, you're awake! How are you feeling? Hm? You want to know what's been going on?");
+		cm.sendNext("阿兰，你醒了！你感觉怎么样？你想知道发生了什么?");
 	} else if (status == 1) {
-		cm.sendNext("We're almost done preparing for the escape. You don't have to worry. Everyone I could possibly find has boarded the ark, and Shinsoo has agreed to guide the way. We'll head to Victoria Island as soon as we finish the remaining preparations.");
+		cm.sendNext("我们几乎做好了一切逃跑的准备。别担心。我能找到的每个人，带他们都登上了方舟，已经说服向导同意带路了。一旦我们完成后续的准备工作，我们立即前往金银岛。");
 	} else if (status == 2) {
-		cm.sendNext("The other heroes? They've left to fight the Black Mage. They're buying us time to escape. What? You want to fight with them? No! You can't! You're hurt. You must leave with us!");
+		cm.sendNext("你想知道其余的勇士们？额。。。他们已经离开去和黑魔法师战斗了。在为我们争取逃跑的时间。什么？？？你想和他们打架吗？不！！你不能！你受伤了。你必须和我们一起离开！");
 	} else if (status == 3) {
 		//cm.setQuestProgress(21002, 1);
 		cm.showIntro("Effect/Direction1.img/aranTutorial/Trio");
