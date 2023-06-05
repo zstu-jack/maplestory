@@ -76,8 +76,8 @@ function action(mode, type, selection) {
 					pushIfItemExists(hairnew, i);
 				cm.sendStyle("挑一款喜欢的L1?", hairnew);
 			} else if (selection == 2) {
-				var baseHair = parseInt(cm.getPlayer().getHair() / 10) * 10;
-				for (var k = 0; k < 8; k++)
+				var baseHair = parseInt(cm.getPlayer().getHair() / 1000) * 1000;
+				for(var k = 0; k < 8; k++)
 					pushIfItemExists(haircolor, baseHair + k);
 				cm.sendStyle("挑一款喜欢的L2?", haircolor);
 			} else if (selection == 3 || selection == 6) {
@@ -91,7 +91,7 @@ function action(mode, type, selection) {
 				cm.sendStyle("挑一款喜欢的?L4", colors);
 			}
 		} else {
-			cm.sendNext("你没有足够的金币. 如果你有 " + price + " 金币, 暂时不能改变外观!");
+			cm.sendNext("你没有足够的金币. 这项服务需要花费 " + price + " 金币。");
             cm.dispose();
 		}
         
