@@ -83,7 +83,7 @@ function action(mode, type, selection) {
             if (selection == 0) {
                 cm.sendNext("Alright. I'll take you back to where you were before the visit to Japan. If you ever feel like traveling again down the road, please let me know!");
             } else if (selection == 1) {
-                cm.sendOk("OK. If you ever change your mind, please let me know.");
+                cm.sendOk("好的，如果你改变主意，记得告诉我。");
                 cm.dispose();
             }
         } else if (status == 2) {

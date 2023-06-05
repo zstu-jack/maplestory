@@ -40,7 +40,7 @@ var dojoWarp = 0;
 
 function start() {
     if (disabled) {
-        cm.sendOk("My master has requested that the dojo be #rclosed#k at this time so I can't let you in.");
+        cm.sendOk("师父告诉我目前道场#r闭馆#k，所以我不能放你进去。");
         cm.dispose();
         return;
     }

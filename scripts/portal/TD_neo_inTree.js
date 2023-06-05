@@ -1,7 +1,7 @@
 function enter(pi) {
     var nex = pi.getEventManager("GuardianNex");
     if(nex == null) {
-        pi.message("Guardian Nex challenge encountered an error and is unavailable.");
+        pi.message("时间守护兽努克斯挑战遇到了一个错误，目前无法使用。");
         return false;
     }
     
@@ -11,12 +11,12 @@ function enter(pi) {
     for(var i = 0; i < quests.length; i++) {
         if (pi.isQuestActive(quests[i])) {
             if(pi.getQuestProgressInt(quests[i], mobs[i]) != 0) {
-                pi.message("You already faced Nex. Complete your mission.");
+                pi.message("你面前的就是时间守护兽努克斯，履行你的使命吧。");
                 return false;
             }
             
-            if(!nex.startInstance(i, pi.getPlayer())) {
-                pi.message("Someone is already challenging Nex. Wait for them to finish before you enter.");
+            if(!nex.startInstance( i, pi.getPlayer())) {
+                pi.message("已经有玩家入场挑战时间守护兽努克斯了。请等待他们完成挑战后再尝试进入。");
                 return false;
             } else {
                 pi.playPortalSound();

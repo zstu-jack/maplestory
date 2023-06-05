@@ -33,7 +33,7 @@ function action(mode, type, selection) {
             cm.dispose();
             return;
         } else if(mode == 0) {
-            cm.sendNext("OK. If you ever change your mind, please let me know.");
+            cm.sendNext("好的，如果你改变主意，记得告诉我。");
             cm.dispose();
             return;
         }
@@ -41,32 +41,32 @@ function action(mode, type, selection) {
         if (status == 0) {
             for(var i=0; i < menu.length; i++) {
                 if(cm.getPlayer().getMapId() == 200000141 && i < 1) {
-                    display += "\r\n#L"+i+"##b"+menu[i]+"("+cost[i]+" mesos)#k";
+                    display += "\r\n#L"+i+"##b"+menu[i]+"("+cost[i]+" 金币)#k";
                 } else if(cm.getPlayer().getMapId() == 250000100 && i > 0 && i < 3) {
-                    display += "\r\n#L"+i+"##b"+menu[i]+"("+cost[i]+" mesos)#k";
+                    display += "\r\n#L"+i+"##b"+menu[i]+"("+cost[i]+" 金币)#k";
                 }
             }
             if(cm.getPlayer().getMapId() == 200000141 || cm.getPlayer().getMapId() == 251000000) {
-                btwmsg = "#bOrbis#k to #bMu Lung#k";
+                btwmsg = "#b天空之城#k 前往 #b武陵#k";
             } else if(cm.getPlayer().getMapId() == 250000100) {
-                btwmsg = "#bMu Lung#k to #bOrbis#k";
+                btwmsg = "#b武陵#k 前往 #b天空之城#k";
             }
             if(cm.getPlayer().getMapId() == 251000000) {
-                cm.sendYesNo("Hello there. How's the traveling so far? I've been transporting other travelers like you to #b"+menu[3]+"#k in no time, and... are you interested? It's not as stable as the ship, so you'll have to hold on tight, but i can get there much faster than the ship. I'll take you there as long as you pay #b"+cost[2]+" mesos#k.");
+                cm.sendYesNo("你好。最近的旅途还顺利吗？我曾经载着一位像你一样的旅行者快速抵达#b"+menu[3]+"#k那么你呢...你有没有兴趣？可能不像坐船那么平稳，所以最好抓紧包袱。但我可以比船更快地将你送到目的地。只要你支付 #b"+cost[2]+" 金币，我就送你一程#k。");
                 status++;
             } else if(cm.getPlayer().getMapId() == 250000100) {
-                cm.sendSimple("Hello there. How's the traveling so far? I understand that walking on two legs is much harder to cover ground compared to someone like me that can navigate the skies. I've been transporting other travelers like you to other regions in no time, and... are you interested? If so, then select the town you'd like yo head to.\r\n"+display);
+                cm.sendSimple("你好。最近的旅途还顺利吗？我知道比起像我这样可以征服蓝天的动物而言，只靠两条腿很难踏遍这片土地。我曾经载着一位像你一样的旅行者快速抵达其它地区，那么你呢...你有没有兴趣？如果你愿意，就选一个你想去的城镇吧。\r\n"+display);
             } else {
-                cm.sendSimple("Hello there. How's the traveling so far? I've been transporting other travelers like you to other regions in no time, and... are you interested? If so, then select the town you'd like to head to.\r\n"+display);
+                cm.sendSimple("你好。最近的旅途还顺利吗？我曾经载着一位像你一样的旅行者快速抵达其它地区，那么你呢...你有没有兴趣？如果你愿意，就选一个你想去的城镇吧。\r\n"+display);
             }
         } else if(status == 1) {
             slct = selection;
-            cm.sendYesNo("Will you move to #b"+menu[selection]+"#k now? If you have #b"+cost[selection]+" mesos#k, I'll take you there right now.");
+            cm.sendYesNo("你想现在前往 #b"+menu[selection]+"#k 吗？如果你有 #b"+cost[selection]+" 金币#k，我就载你出发去那里。");
 
         } else if(status == 2) {
             if(slct == 2) {
                 if(cm.getMeso() < cost[2]) {
-                    cm.sendNext("Are you sure you have enough mesos?");
+                    cm.sendNext("你确定自己带够了金币吗？");
                     cm.dispose();
                 } else {
                     cm.gainMeso(-cost[2]);
@@ -77,7 +77,7 @@ function action(mode, type, selection) {
             
             else {
                 if(cm.getMeso() < cost[slct]) {
-                        cm.sendNext("Are you sure you have enough mesos?");
+                        cm.sendNext("你确定自己带够了金币吗？");
                         cm.dispose();
                 } else {
                         if(cm.getPlayer().getMapId() == 251000000) {
@@ -87,7 +87,7 @@ function action(mode, type, selection) {
                         } else {
                             var em = cm.getEventManager("Hak");
                             if (!em.startInstance(cm.getPlayer())) {
-                                cm.sendOk("Uh... We are currently taking requests from too many maplers right now... Please try again in a bit.");
+                                cm.sendOk("嗯...我们现在接到太多冒险者的运输申请了...请稍微等一下再来。");
                                 cm.dispose();
                                 return;
                             }

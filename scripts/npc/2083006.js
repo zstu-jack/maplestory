@@ -4,12 +4,12 @@
 */
 
 var quests = [3719, 3724, 3730, 3736, 3742, 3748];
-var array = ["Year 2021 - Average Town Entrance", "Year 2099 - Midnight Harbor Entrance", "Year 2215 - Bombed City Center Retail District", "Year 2216 - Ruined City Intersection", "Year 2230 - Dangerous Tower Lobby", "Year 2503 - Air Battleship Bow"/*, "Year 2227 - Dangerous City Intersection"*/];
+var array = ["2021年 - 平凡的村庄", "2099年 - 深夜港口入口", "2215年 - 遭到攻击的城区", "2216年 - 变成废墟的城市", "2230年 - 危险的塔大厅", "2503年 - 天空战舰船头"/*, "2227年 - 危险的城市交叉路"*/];
 var limit;
 
 function start() {
         if(!cm.isQuestCompleted(3718)) {
-            cm.sendOk("The time machine has not been activated yet.");
+            cm.sendOk("时间机器还没有激活。");
             cm.dispose();
             return;
         }
@@ -21,7 +21,7 @@ function start() {
         }
         
         if(limit == 0) {
-            cm.sendOk("Prove your valor against the #bGuardian Nex#k before unlocking next Neo City maps.");
+            cm.sendOk("在进入未来东京地图之前，请向#b时间守护兽努克斯#k证明你的勇气。");
             cm.dispose();
             return;
         }

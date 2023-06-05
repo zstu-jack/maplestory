@@ -37,7 +37,7 @@ function action(mode, type, selection) {
     status++;
     if(status == 0) {
         if(cm.isQuestStarted(6180) && cm.getQuestProgressInt(6180, 9300096) < 200) {
-            cm.sendYesNo("请注意：停留在训练场的期间，要确保 #b装备了#t1092041##k吗，这是非常重要的。准备好进入训练场了吗？");
+            cm.sendYesNo("请注意：停留在训练场的期间，要确保 #b装备了#t1092041##k，这是非常重要的。准备好进入训练场了吗？");
         }
         
         else {
