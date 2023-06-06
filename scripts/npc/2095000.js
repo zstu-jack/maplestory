@@ -44,7 +44,7 @@ function action(mode, type, selection) {
     
                 if (status == 0) {
                         if (cm.getMapId() != 925010400) {
-                                em = cm.getEventManager("DelliBattle");
+                                em = cm.getEventManager("DelliBattle");//黑魔法师相关
                                 if(em == null) {
                                         cm.sendOk("The Delli Battle has encountered an error.");
                                         cm.dispose();
@@ -54,7 +54,7 @@ function action(mode, type, selection) {
                                         return;
                                 }
 
-                                cm.sendSimple("#e#b<组队任务：Save Delli>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nAh, #r#p1095000##k sent you here? Is she worried about me? ... I'm terribly sorry to hear that, but I can't really go back just yet, some monsters are under the Black Mage's influence, and it's up to me to liberate them! ... It seems you're not going to accept that either, huh? Would you like to collaborate with party members to help me? If so, please have your #bparty leader#k talk to me.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
+                                cm.sendSimple("#e#b<组队任务：Save Delli>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nAh, #r#p1095000##k sent you here? Is she worried about me? ... I'm terribly sorry to hear that, but I can't really go back just yet, some monsters are under the 黑魔法师的影响之下, and it's up to me to liberate them! ... It seems you're not going to accept that either, huh? Would you like to collaborate with party members to help me? If so, please have your #bparty leader#k talk to me.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
                         } else {
                                 cm.sendYesNo("The mission succeeded, thanks for escorting me! I can lead you to #b#m120000104##k, are you ready?");
                         }

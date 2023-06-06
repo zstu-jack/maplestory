@@ -4,7 +4,7 @@
 
 
 function start() {
-    cm.sendOk("Stay away from me, if you don't want any danger.");
+    cm.sendOk("不想惹上麻烦的话，就离我远点。");
 }
 
 function action() {

@@ -53,7 +53,7 @@ function action(mode, type, selection) {
  % 10));
 					}
 				}
-				cm.sendYesNo("If you use the REG coupon, your hairstyle will be changed to a random new look. You'll also have access to new hairstyles I worked on that's not available for VIP coupons. Would you like to use #bAriant hair style coupon(REG)#k for a fabulous new look?");
+				cm.sendYesNo("如果使用普通会员卡，你的发型将会改变为随机的全新形象。也有可能得到使用高级会员卡时无法获得的新发型。确定要使用 #b阿里安特美发店普通会员卡#k 来获得一个棒极了的新发型吗？");
 			} else if (selection == 1) {
 				beauty = 2;
 				haircolor = Array();
@@ -62,7 +62,7 @@ function action(mode, type, selection) {
 				for(var i = 0; i < 8; i++) {
 					pushIfItemExists(haircolor, current + i);
 				}
-				cm.sendYesNo("If you use the regular coupon, your hair color will change to a random new color. Are you sure you want to use #b#t5151021##k and randomly change your hair color?");
+				cm.sendYesNo("如果使用普通会员卡，你的发色将会随机改变，有可能变为全新风格。确定要使用 #b#t5151021##k 来改变你的发色吗？");
 			}
 		}
 		else if (status == 2){
@@ -73,7 +73,7 @@ function action(mode, type, selection) {
 					cm.setHair(hairnew[Math.floor(Math.random() * hairnew.length)]);
 					cm.sendOk("好了，让朋友们赞叹你的新发型吧！");
 				} else {
-					cm.sendNext("I can only change your hairstyle if you bring me the coupon. You didn't forget that, did you?");
+					cm.sendNext("只有使用我们的会员卡，我才能为你染发。你知道的吧？");
 				}
 			}
 			if (beauty == 2){
@@ -82,7 +82,7 @@ function action(mode, type, selection) {
 					cm.setHair(haircolor[Math.floor(Math.random() * haircolor.length)]);
 					cm.sendOk("好了，让朋友们赞叹你的新发色吧！");
 				} else {
-					cm.sendNext("I can only change your hairstyle if you bring me the coupon. You didn't forget that, did you?");
+					cm.sendNext("只有使用我们的会员卡，我才能为你染发。你知道的吧？");
 				}
 			}
 		}

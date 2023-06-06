@@ -15,7 +15,7 @@ function action(mode, type, selection) {
 		cm.dispose();
 	} else {
 	if (mode == 0) {
-		cm.sendNext("Aye...are you scared of speed or heights? You can't trust my flying skills? Trust me, I've worked out all the kinks!");
+		cm.sendNext("°¥...ÄãÊÇÅÂare you scared of speed or heights? You can't trust my flying skills? Trust me, I've worked out all the kinks!");
 		cm.dispose();
 		return;
 	}

@@ -45,7 +45,7 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendOk("Amateurs train on this map. Adepts train on the next. Professionals train on the last, where the boss will be awaiting.");
+                        cm.sendOk("初级修炼者可以在这张地图里修炼。中级修炼者去下一张地图。上级修炼者在最后一张地图修炼，那里有Boss在等你们。");
                         cm.dispose();
                 }
         }

@@ -25,6 +25,6 @@
  */
 
 function start() {
-    cm.sendNext ("The light and dark always coexist...");
+    cm.sendNext ("光明和黑暗总是循环相生的...");
     cm.dispose();
 }

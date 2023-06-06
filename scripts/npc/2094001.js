@@ -70,7 +70,7 @@ function action(mode, type, selection) {
                                         cm.warp(251010404,0);
                                 } else {
                                         if (cm.haveItem(1003267, 1)) {
-                                                cm.sendOk("这顶帽子是最好的，给你。");
+                                                cm.sendOk("你已经拿到了品质最好的海盗帽。");
                                         } else if (cm.haveItem(1002573, 1)) {
                                                 if (cm.haveItem(4001158, 20)) {	
                                                         if (cm.canHold(1003267,1)) {

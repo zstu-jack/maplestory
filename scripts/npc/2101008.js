@@ -26,6 +26,6 @@
 
 
 function start() {
-    cm.sendNext("The King and Queen are so bossy and demanding lately. I only get to see my family every Sunday or whenever they come visit. But like me, they're poor and are in need of mesos... for some reason Tigun doesn't allow the poor to enter.");
+    cm.sendNext("最近国王和王妃都很专横，不近人情。我只能在星期天，或是自己的家人来皇宫里拜访时才能见他们一面。但就和我一样，他们都很穷，没有金币...提干又不知道因为什么原因不许穷人入内。");
     cm.dispose();
 }
