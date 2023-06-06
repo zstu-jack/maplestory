@@ -57,7 +57,7 @@ function action(mode, type, selection) {
                                 return;
                         }
                     
-                        cm.sendSimple("#e#b<组队任务：海盗船>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nHelp! My son has been kidnapped and is bound on the hands of the fearful #rLord Pirate#k. I need your help... Would you please assemble or join a team to save him? Have your #bparty leader#k talk to me or make yourself a party.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
+                        cm.sendSimple("#e#b<组队任务：海盗船>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n救命！我的儿子被这艘船上最可怕的 #r老海盗#k 绑架了。请你们帮帮我...你可以召集或加入一支队伍来拯救他吗？让你的 #b队长#k 来和我对话，或者自己创建组队。#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
                 } else if (status == 1) {
                         if (selection == 0) {
                                 if (cm.getParty() == null) {
@@ -84,7 +84,7 @@ function action(mode, type, selection) {
                                 cm.sendOk("现在组队搜索状态为: #b" + (psState ? "启用" : "禁用") + "#k。需要更改时请与我对话。");
                                 cm.dispose();
                         } else {
-                                cm.sendOk("#e#b<组队任务：海盗船>#k#n\r\nIn this PQ, your mission is to progressively make your way through the ship, taking on all pirates and baddies in your path. Reaching the #rLord Pirate#k, depending on how many great chests you opened on the stages before, the boss will reveal himself even more powerful, so stay alert. Said chests, if opened, gives many extra rewards to your crew, it's worth a shot! Good luck.");
+                                cm.sendOk("#e#b<组队任务：海盗船>#k#n\r\n在这个组队任务中，你的使命是逐步穿越这艘船，打倒路上所有的海盗恶徒。抵达 #r老海盗#k 所在的地方时，依据在之前阶段开启的宝箱而定，老海盗也会展现出不同的实力，所以要保持警惕。上面说到的宝箱，开启后会为全队提供很多额外奖励，非常值得一试。祝你们好运。");
                                 cm.dispose();
                         }
                 }
