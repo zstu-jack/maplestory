@@ -29,6 +29,6 @@
 */
 
 function start() {
-    cm.sendOk("Definitely Alcadno is excluded.....Huhuhuhu.....Stupid people....cannot see the real important things..");
+    cm.sendOk("当然不会选卡帕莱特...呼呼呼呼.....一群白痴....没法看到真正的重点...");
     cm.dispose();
 }

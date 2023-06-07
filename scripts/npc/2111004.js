@@ -29,6 +29,6 @@
 */
 
 function start() {
-    cm.sendOk("Even though Alchemists and Fairies have antipathy for each other, I can still be in this town because the Zenumist President has been protecting us.");
+    cm.sendOk("就算炼金术士和妖精们互相厌恶，我也还是能够在这座城镇里居留。是蒙特鸠协会的会长在保护着我们。");
     cm.dispose();
 }

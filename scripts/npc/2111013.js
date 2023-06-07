@@ -50,7 +50,7 @@ function action(mode, type, selection) {
                                 
                                 cm.setQuestProgress(3311, progress);
                                 
-                                cm.sendOk("This is a mug picture of Dr. De Lang. It seems he is adorning a locket with the emblem of the Alcadno academy, he is a retainer of the Alcadno society.", 2);
+                                cm.sendOk("这是德朗博士的头像。它被镶嵌在一枚印有卡帕莱特协会徽章的吊坠里，他是卡帕莱特协会的会员。", 2);
                         }
                     
                         cm.dispose();

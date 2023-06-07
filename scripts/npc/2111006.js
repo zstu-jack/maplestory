@@ -33,7 +33,7 @@ function start() {
     if(cm.isQuestStarted(3320) || cm.isQuestCompleted(3320)) {
         cm.warp(926120200, 1);
     } else {
-        cm.sendOk("uuuuhuk...Why only Ghost are around here?...");
+        cm.sendOk("呜呜呜嗬...为什么这附近只有幽灵呢？...");//uuuuhuk类似鬼叫的声音
     }
     
     cm.dispose();

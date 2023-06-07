@@ -32,7 +32,7 @@ function start() {
     if(cm.isQuestStarted(3310) && !cm.haveItem(4031709, 1)) {
         cm.warp(926120100, "out00");
     } else {
-        cm.sendNext("Alchemy....and Alchemist.....both of them are important. But more importantly, it is the Magatia that tolerate everything. The honor of Magatia should be protected by me.");
+        cm.sendNext("炼金术...还有炼金术士...是互相成就的。但更重要的是这座包容万物的玛加提亚之城成就了它们。而玛加提亚的荣耀将由我来守护。");
     }
     
     cm.dispose();

@@ -29,6 +29,6 @@
 */
 
 function start() {
-    cm.sendOk("Make it clear of your position! Are you Zenumist or Alcadno?");
+    cm.sendOk("选择你要站在哪边？蒙特鸠还是卡帕莱特？");
     cm.dispose();
 }
