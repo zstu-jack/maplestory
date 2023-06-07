@@ -30,8 +30,8 @@
 ---------------------------------------------------------------------------------------------------
 */
 
-var toMagatia = "Would you like to take the #bCamel Cab#k to #bMagatia#k, the town of Alchemy? The fare is #b1500 mesos#k.";
-var toAriant = "Would you like to take the #bCamel Cab#k to #bAriant#k, the town of Burning Roads? The fare is #b1500 mesos#k.";
+var toMagatia = "Would you like to take the #b¬ÊÕ’÷–∞Õ#k to #bMagatia#k, the town of Alchemy? The fare is #b1500 mesos#k.";
+var toAriant = "Would you like to take the #b¬ÊÕ’÷–∞Õ#k to #bAriant#k, the town of Burning Roads? The fare is #b1500 mesos#k.";
 
 function start() {
     cm.sendYesNo(cm.getPlayer().getMapId() == 260020000 ? toMagatia : toAriant);

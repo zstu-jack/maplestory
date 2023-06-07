@@ -6,7 +6,7 @@ function start() {
 
 function action(mode, type, selection) {
     if(cm.isQuestStarted(3927)) {
-        cm.sendNext("If I had an iron hammer and a dagger, a bow and an arrow...");
+        cm.sendNext("如果我有一把铁锤，一套弓箭...");
         cm.setQuestProgress(3927, 1);
     }
     
