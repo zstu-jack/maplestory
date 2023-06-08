@@ -24,6 +24,6 @@
  */
 
 function start() {
-    cm.sendNext ("This control device seems to be monitoring something...");
+    cm.sendNext ("这处控制装置似乎正在监控什么...");
     cm.dispose();
 }

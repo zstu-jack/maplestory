@@ -50,12 +50,12 @@ function action(mode, type, selection) {
                                 
                                 cm.setQuestProgress(3311, progress);
                                 
-                                cm.sendOk("The diary of Dr. De Lang. A lot of formulas and pompous scientific texts can be found all way through the pages, but it is worth noting that in the last entry (3 weeks ago), it is written that he concluded the researches on an improvement on the blueprints for the Neo Huroids, thus making the last preparations to show it to the 'society'... No words after this...", 2);
+                                cm.sendOk("这是德朗博士的日记。每一页上都写满了大量公式和冗长的科学内容。但值得注意的是，在最后一篇日记 (3周前)里，总结了一种新型洛伊德的设计模型，从而为它的'面世'做好了最后的准备...这之后就没有任何记录了...", 2);
                         } else if(cm.isQuestStarted(3322) && !cm.haveItem(4031697, 1)) {
                                 if(cm.canHold(4031697, 1))
                                         cm.gainItem(4031697, 1);
                                 else
-                                        cm.sendNext("Your inventory is full, make sure a ETC slot is available for the item.");
+                                        cm.sendNext("你的背包已满，腾出一格其他栏来获得该道具。");
                         }
                     
                         cm.dispose();

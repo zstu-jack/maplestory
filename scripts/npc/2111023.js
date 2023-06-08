@@ -48,7 +48,7 @@ function action(mode, type, selection) {
                                         cm.gainItem(4031740, -1);
                                         cm.gainItem(4031741, -1);
                     
-                                        cm.sendOk("(As you place the shards a light shines over the circle, repelling whatever omens were brewing inside the artifact.)", 2);
+                                        cm.sendOk("(将所有魔法石放好的那一瞬间，光投向圆环中心，驱散了魔法阵中酝酿着的所有征兆。)", 2);
                                         cm.dispose();
                                 } else if(progress < 4) {
                                         cm.setQuestProgress(3345, 0);

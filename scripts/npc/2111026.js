@@ -24,6 +24,6 @@
  */
 
 function start() {
-    cm.sendNext ("This chalkboard has some hard-founded studies annotated on it...");
+    cm.sendNext ("这块黑板上写着一些内容详实的研究内容...");
     cm.dispose();
 }

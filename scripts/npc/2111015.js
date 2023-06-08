@@ -48,9 +48,9 @@ function action(mode, type, selection) {
                         if(cm.isQuestStarted(3314) && !cm.haveItem(2022198, 1) && !isPillUsed(cm.getPlayer())) {
                                 if(cm.canHold(2022198, 1)) {
                                         cm.gainItem(2022198, 1);
-                                        cm.sendOk("You took the pills that were laying on the desk.", 2);
+                                        cm.sendOk("你拿走了桌上的药片。", 2);
                                 } else {
-                                        cm.sendOk("You don't have a USE slot available to get Russellon's pills.", 2);
+                                        cm.sendOk("你的消耗栏没有空间来收纳罗赛伦的陈旧药片。", 2);
                                 }
                         }
                     

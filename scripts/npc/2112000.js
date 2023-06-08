@@ -67,18 +67,18 @@ function action(mode, type, selection) {
                                 var state = eim.getIntProperty("yuleteTalked");
 
                                 if(state == -1) {
-                                    cm.sendOk("Heh, it seems you guys have company. Have fun with them, as I politely request my leave.");
+                                    cm.sendOk("嗨，看起来你们有伴儿了。那么祝你们玩得开心，我就先失陪了。");
 
                                 } else if (playersTooClose()) {
-                                    cm.sendOk("Oh, hello there. I have been #bmonitoring your moves#k since you guys entered this perimeter. Quite the feat reaching here, I commend all of you. Now, now, look at the time, I've got an appointment right now, I'm afraid I will need to request my leave. But worry not, my #raccessors#k will deal with all of you. Now, if you permit me, I'm leaving now.");
+                                    cm.sendOk("哦...你们好。从你们踏入这片区域开始，我就在#b监视你们的动向#k。能来到这儿真不容易，我得称赞一下你们。真不巧，看时间现在我刚刚好有个约会，恐怕不得不先离开了。但不用担心，我的#r小家伙们#k会招待你们的。那么，我就先告退了。");
 
                                     eim.setIntProperty("yuleteTalked", -1);
                                 } else if (eim.getIntProperty("npcShocked") == 0) {
-                                    cm.sendOk("Ho~ Aren't you quite the sneaky one? Well, it matters not. I have been #bmonitoring your moves#k since you guys entered this perimeter. Quite the feat reaching here, I commend all of you. Now, now, look at the time, I've got an appointment right now, I'm afraid I will need to request my leave. But worry not, my #raccessors#k will deal with all of you. Now, if you permit me, I'm leaving now.");
+                                    cm.sendOk("嚯~你们还真是相当狡猾啊？算了，无所谓。从你们踏入这片区域开始，我就在#b监视你们的动向#k。能来到这儿真不容易，我得称赞一下你们。真不巧，看时间现在我刚刚好有个约会，恐怕不得不先离开了。但不用担心，我的#r小家伙们#k会招待你们的。那么，我就先告退了。");
 
                                     eim.setIntProperty("yuleteTalked", -1);
                                 } else {
-                                    cm.sendOk("... Hah! What, wh-- How did you get here?! I though I had sealed all paths here! No matter, this situation will be resolved soon. Guys: DEPLOY the #rmaster weapon#k!! You! Yes, you. Don't you think this ends here, look back at your companions, they need some help! I'll be retreating for now.");
+                                    cm.sendOk("...哈哈！什么，等等——你们怎么会来到这里？我应该已经封锁了所有通往这里的通道！没关系，这个异常情况很快就会得到解决。听我的命令：启动 #r超级武器#k！！你们，没错，你们所有人。别以为这里能在这里结束一切。看看你们的同伴，他们就快要不行了。我先暂时撤退了。");
 
                                     eim.setIntProperty("yuleteTalked", 1);
                                 }

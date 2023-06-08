@@ -43,7 +43,7 @@ function action(mode, type, selection) {
                                 var progress = cm.getQuestProgressInt(23339, 1);
                             
                                 if(progress == 3) {
-                                        cm.sendGetText("The pipe reacts as the water starts flowing. A secret compartment with a keypad shows up. #bPassword#k!");
+                                        cm.sendGetText("水开始流动的同时，管道也有了反应。一处隐秘的暗门打开后，能看到键盘就在它的背面。需要输入#b密码#k。");
                                 } else if(progress == 0) {
                                         cm.setQuestProgress(23339, 1, 1);
                                         cm.dispose();
@@ -62,13 +62,13 @@ function action(mode, type, selection) {
                                 cm.dispose();
                         }
                 } else if(status == 1) {
-                        if(cm.getText() == "my love Phyllia") {
+                        if(cm.getText() == "my love Phyllia") {//需要结合任务对话去改动。可能是我的挚爱琵丽雅之类的。。看看任务对话先
                                 cm.setQuestProgress(23339, 1, 4);
                                 cm.warp(261000001, 1);
                                 cm.dispose();
                         }
                         else{
-                                cm.sendOk("#rWrong!");
+                                cm.sendOk("#r密码错误#k！");
                                 cm.dispose();
                         }
                 }
