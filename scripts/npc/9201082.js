@@ -19,7 +19,7 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendOk("Have you ever come to know about the card game based on MapleStory, the MapleStory iTCG?");
+                        cm.sendOk("你有没有听说过基于MapleStory的卡牌游戏，MapleStory iTCG?");
                         cm.dispose();
                 }
         }

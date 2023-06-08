@@ -41,7 +41,7 @@ function action(mode, type, selection) {
                 if(status == 0) {
                         var mapid = cm.getMapId();
                         if(mapid == 674030100) {
-                                cm.sendNext("Hi, I'm #p9220019#.");
+                                cm.sendNext("ƒ„∫√£¨Œ“ «#p9220019#.");
                                 cm.dispose();
                                 return;
                         } else if(mapid == 674030300) {

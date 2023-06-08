@@ -38,7 +38,7 @@ function action(mode, type, selection) {
             cm.dispose();
         } else {
             if (status == 1) {
-                cm.sendNext ("OK.");
+                cm.sendNext ("ºÃµÄ¡£");
                 status++;
             } else if (status == 2) {
                 cm.warp(701010320, 0);// back to orbis

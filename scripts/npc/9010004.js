@@ -4,6 +4,6 @@ function start() {
 }
 
 function action(mode, type, selection) {
-	cm.sendNext("Hi, I'm #p9010004#.");
+	cm.sendNext("ƒ„∫√£¨Œ“ «#p9010004#.");
 	cm.dispose();
 }
