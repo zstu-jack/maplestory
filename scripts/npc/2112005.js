@@ -54,8 +54,8 @@ function action(mode, type, selection) {
                                         cm.gainItem(4001130, -1);
                                         eim.setIntProperty("npcShocked", 1);
                                         
-                                        cm.sendNext("Oh? You got a letter for me? On times like this, what should it be... Gasp! Something big is going on, guys. Rally yourselves, from now on things will be harder than ever!");
-                                        eim.dropMessage(6, "Juliet seemed very much in shock after reading Romeo's Letter.");
+                                        cm.sendNext("喔？你找到了一封给我的信？这样的时候，会是什么...嘶，发生大事情了。朋友们，打起精神来，现在是前所未有的危急时刻！");
+                                        eim.dropMessage(6, "看完罗密欧的信之后，朱丽叶显得非常震惊。");
                                         
                                         cm.dispose();
                                         return;
@@ -63,10 +63,10 @@ function action(mode, type, selection) {
                                         var door = cm.getMap().getReactorByName("jnr3_out3");
                                     
                                         if(door.getState() == 0) {
-                                                cm.sendNext("Let me open the door for you.");
+                                                cm.sendNext("我来为你们开启这扇门。");
                                                 door.hitReactor(cm.getClient());
                                         } else {
-                                                cm.sendNext("Please hurry, Romeo is in trouble.");
+                                                cm.sendNext("请快些，罗密欧遇到麻烦了。");
                                         }
                                         
                                         cm.dispose();
@@ -75,7 +75,7 @@ function action(mode, type, selection) {
                                         if (cm.isEventLeader()) {
                                                 cm.gainItem(4001134, -1);
                                                 cm.gainItem(4001135, -1);
-                                                cm.sendNext("Great! You got both Alcadno and Zenumist files at hand. Now we can proceed.");
+                                                cm.sendNext("太好了！你们把蒙特鸠和卡帕莱特的文件都拿到了，现在可以继续下一阶段。");
 
                                                 eim.showClearEffect();
                                                 eim.giveEventPlayersStageReward(4);
@@ -84,13 +84,13 @@ function action(mode, type, selection) {
                                                 cm.getMap().killAllMonsters();
                                                 cm.getMap().getReactorByName("jnr3_out3").hitReactor(cm.getClient());
                                         } else {
-                                                cm.sendOk("Please let your leader pass the files to me.");
+                                                cm.sendOk("请让你的队长把文件交给我。");
                                         }
 
                                         cm.dispose();
                                         return;
                                 } else {
-                                        cm.sendYesNo("We must keep fighting to save Romeo, please keep your pace. If you are not feeling so well to continue, your companions and I will understand... So, are you going to retreat?");
+                                        cm.sendYesNo("为了拯救罗密欧，我们必须继续努力，请不要放慢脚步。如果你觉得无法进行下去，你的伙伴还有我都会理解你的...所以，你现在想退场吗？");
                                 }
                         } else {
                                 cm.warp(926110700, 0);
@@ -99,14 +99,14 @@ function action(mode, type, selection) {
                 } else {
                         if(status == 0) {
                                 if(eim.getIntProperty("escortFail") == 0) {
-                                        cm.sendNext("Finally, Romeo is safe! Thanks to your efforts, we could save him from the clutches of Yulete, who will now be judged for his rebellion against Magatia. From now on, as he will start rehabilitation, we will keep an eye on his endeavours, making sure he will cause no more troubles on the future.");
+                                        cm.sendNext("罗密欧终于得救了！感谢你们努力将他从犹泰的魔爪中拯救出来。犹泰会因为抗逆玛加提亚而受审的，感谢你们。从现在开始，他要弥补自己所做作为造成的后果，我们会留意他的行动，以免他今后制造什么新的麻烦。");
                                 }
                                 else {
-                                        cm.sendNext("Romeo is safe now, although the battle took it's toll on him... Thanks to your efforts, we could save him from the clutches of Yulete, who will now be judged for his rebellion against Magatia. Thank you.");
+                                        cm.sendNext("罗密欧现在安全了，尽管他在战斗中受了伤...感谢你们努力将他从犹泰的魔爪中拯救出来。犹泰会因为抗逆玛加提亚而受审的，感谢你们。");
                                         status = 2;
                                 }
                         } else if(status == 1) {
-                                cm.sendNext("Now, please receive this gift as an act of acceptation for our gratitude.");
+                                cm.sendNext("现在，为了表达我们的感激之情，请收下这份礼物。");
                         } else if(status == 2) {
                                 if(cm.canHold(4001160)) {
                                         cm.gainItem(4001160, 1);
@@ -114,7 +114,7 @@ function action(mode, type, selection) {
                                         if(eim.getIntProperty("normalClear") == 1) cm.warp(926110600, 0);
                                         else cm.warp(926110500, 0);
                                 } else {
-                                        cm.sendOk("Make sure you have a space on your ETC inventory.");
+                                        cm.sendOk("请确保你的其他栏有至少1格空位。");
                                 }
                                 
                                 cm.dispose();

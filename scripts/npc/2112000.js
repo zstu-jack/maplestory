@@ -88,15 +88,15 @@ function action(mode, type, selection) {
                 } else {
                         if(status == 0) {
                                 if(eim.isEventCleared()) {
-                                        cm.sendOk("Nooooo... I have been beated? But how? Everything I did was for the sake of the development of a greater alchemy! You can't jail me, I did what everybody standing in a place like mine would do! But no, they simply decided to damp up the progress of the science JUST BECAUSE it was deemed dangerous??? Oh, come on!");
+                                        cm.sendOk("不...我被打败了？这怎么可能？我所做的一切都是为了发展伟大的炼金术！你们没有道理监禁我，不管是谁站在我的立场上都会这样做！什么，你们说不是这样？他们会仅仅因为觉得科学危险就阻碍它的发展进程？哈，别开玩笑了！");
                                 } else {
                                         var state = eim.getIntProperty("yuletePassed");
 
                                         if(state == -1) {
-                                                cm.sendOk("Behold! The pinnacle of Magatia's alchemy studies! Hahahahahahaha...");
+                                                cm.sendOk("看啊！玛加提亚炼金术的巅峰之作！哈哈哈哈哈哈...");
                                         } else if(state == 0) {
-                                                cm.sendOk("You guys are such a pain, geez. Very well, I present you my newest weapon, brought by the finest alchemy, #rFrankenroid#k.");
-                                                eim.dropMessage(5, "Yulete: I present you my newest weapon, brought by the finest alchemy, Frankenroid!");
+                                                cm.sendOk("你们这群家伙还真难缠，哎唷。非常好，请允许我介绍我的最新武器，由炼金科学前沿技术催化而成的造物——#r法兰肯#k！");
+                                                eim.dropMessage(5, "犹泰：请允许我介绍我的最新武器，由炼金科学前沿技术催化而成的造物——法兰肯！");
 
                                                 var mapobj = eim.getMapInstance(926100401);
                                                 var bossobj = MapleLifeFactory.getMonster(9300139);
@@ -107,8 +107,8 @@ function action(mode, type, selection) {
                                                 eim.setIntProperty("statusStg7", 1);
                                                 eim.setIntProperty("yuletePassed", -1);
                                         } else {
-                                                cm.sendOk("You guys are such a pain, geez. Very well, I present you my newest weapon, brought by the finest combined alchemy of Alcadno's and Zenumist's, those that the boring people of Magatia societies have banned to bring along, the #rmighty Frankenroid#k!");
-                                                eim.dropMessage(5, "Yulete: I present you my newest weapon, brought by the finest combined alchemy of Alcadno's and Zenumist's, those that the boring people of Magatia societies have banned to bring along, the mighty Frankenroid!!");
+                                                cm.sendOk("你们这群家伙还真难缠，哎唷。非常好，请允许我介绍我的最新武器，由蒙特鸠和卡帕莱特的炼金科学前沿技术...那群无聊的玛加提亚协会禁止研究的炼金术催化而成的造物——#r生气的法兰肯#k！");
+                                                eim.dropMessage(5, "犹泰：请允许我介绍我的最新武器，由蒙特鸠和卡帕莱特的炼金科学前沿技术...那群无聊的玛加提亚协会禁止研究的炼金术催化而成的造物——生气的法兰肯！");
 
                                                 var mapobj = eim.getMapInstance(926100401);
                                                 var bossobj = MapleLifeFactory.getMonster(9300140);

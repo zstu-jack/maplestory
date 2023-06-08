@@ -48,7 +48,7 @@ function action(mode, type, selection) {
                     
                 if(cm.getMapId() != 261000011) {
                         if(status == 0) {
-                                cm.sendYesNo("We must keep fighting to save Juliet, please keep your pace. If you are not feeling so well to continue, your companions and I will understand... So, are you going to retreat?");
+                                cm.sendYesNo("为了拯救朱丽叶，我们必须继续努力，请不要放慢脚步。如果你觉得无法进行下去，你的伙伴还有我都会理解你的...所以，你现在想退场吗？");
                         } else if(status == 1) {
                                 cm.warp(926100700, 0);
                                 cm.dispose();
@@ -57,7 +57,7 @@ function action(mode, type, selection) {
                         if (status == 0) {
                                 em = cm.getEventManager("MagatiaPQ_Z");
                                 if(em == null) {
-                                        cm.sendOk("The Magatia PQ (Zenumist) has encountered an error.");
+                                        cm.sendOk("玛加提亚组队任务(蒙特鸠)发生了错误。");
                                         cm.dispose();
                                         return;
                                 } else if(cm.isUsingOldPqNpcStyle()) {
@@ -65,7 +65,7 @@ function action(mode, type, selection) {
                                         return;
                                 }
 
-                                cm.sendSimple("#e#b<组队任务：罗密欧与朱丽叶>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nMy beloved Juliet has been kidnapped! Although she is Alcadno's, I can't stand by and just see her suffer just because of this foolish clash. I need you and your colleagues help to save her! Please, help us!! Please have your #bparty leader#k talk to me.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
+                                cm.sendSimple("#e#b<组队任务：罗密欧与朱丽叶>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n我心爱的朱丽叶被绑架了！虽然她是卡帕莱特协会的成员，但我无法因为这场愚蠢的争执而对她受难袖手旁观。请你和你的同伴们帮我救出她吧！求求你们，拜托了！！请让你的#b队长#k来与我对话。#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
                         } else if (status == 1) {
                                 if (selection == 0) {
                                         if (cm.getParty() == null) {
@@ -92,7 +92,7 @@ function action(mode, type, selection) {
                                         cm.sendOk("现在组队搜索状态为: #b" + (psState ? "启用" : "禁用") + "#k。需要更改时请与我对话。");
                                         cm.dispose();
                                 } else {
-                                        cm.sendOk("#e#b<组队任务：Romeo and Juliet>#k#n\r\nNot long ago, a scientist named Yulete has been banished from this town because of his researches of combined alchemies of Alcadno's and Zenumist's. Because of the immensurable amount of power coming from this combination, it is forbidden by law to study both. Yet, he ignored this law and got hands in both researches. As a result, he has been exiled.\r\nHe is now retaliating, already took my beloved one and his next target is me, as we are big pictures of Magatia, successors of both societies. But I'm not afraid. We must recover her at all costs!\r\n");
+                                        cm.sendOk("#e#b<组队任务：罗密欧与朱丽叶>#k#n\r\n不久前，一位名叫犹泰的学者因为在研究中结合特鸠与卡帕莱特的炼金术而遭到驱逐。因为两种炼金术的结合蕴含着不可预测的力量，玛加提亚颁布了法令禁止同时学习两者。然而，犹泰无视了这条法令，同时进行两种炼金术的研究，因此被驱逐了。\r\n犹泰正在进行复仇，掳走我的心上人后，下一个目标就会是我。因为我们是玛加提亚的名片，两所协会的继承人。但我并不害怕，我们必须不惜一切代价把她营救回来！\r\n");
                                         cm.dispose();
                                 }
                         }
