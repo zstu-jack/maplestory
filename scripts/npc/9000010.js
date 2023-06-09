@@ -21,7 +21,7 @@
 */
 
 function start() {
-    cm.sendNext("I'm sorry but I'm afraid you didn't win the event. Try it again some other time. You can return to where you were through me.");
+    cm.sendNext("很抱歉，你在活动中失利了。欢迎下次参与，你可以与我对话返回之前所在的地方。");
 }
 
 function action(mode, type, selection) {

@@ -26,10 +26,10 @@ var travelFrom = [777777777, 541000000];
 var travelFee = [3000, 10000];
 
 var travelMap = [800000000, 550000000];
-var travelPlace = ["Mushroom Shrine of Japan", "Trend Zone of Malaysia"];
-var travelPlaceShort = ["Mushroom Shrine", "Metropolis"];
-var travelPlaceCountry = ["Japan", "Malaysia"];
-var travelAgent = ["I", "#r#p9201135##k"];
+var travelPlace = ["古代神社 - 日本", "吉隆大都市 - 马来西亚"];
+var travelPlaceShort = ["古代神社", "吉隆大都市"];
+var travelPlaceCountry = ["日本", "马来西亚"];
+var travelAgent = ["我", "#r#p9201135##k"];
 
 var travelDescription = ["If you desire to feel the essence of Japan, there's nothing like visiting the Shrine, a Japanese cultural melting pot. Mushroom Shrine is a mythical place that serves the incomparable Mushroom God from ancient times.",
                         "If you desire to feel the heat of the tropics on an upbeat environment, the residents of Malaysia are eager to welcome you. Also, the metropolis itself is the heart of the local economy, that place is known to always offer something to do or to visit around."];

@@ -46,12 +46,12 @@ function action(mode, type, selection) {
             preamble = eim.getProperty("leader" + nthtext + "preamble");
             mobcount = eim.getProperty("leader" + nthtext + "mobcount");
             if (preamble == null) {
-                cm.sendOk("Hi. Welcome to the " + nthtext + " stage. This is where you fight the #bboss#k. Shall we get started?");
+                cm.sendOk("你好，欢迎来到第 " + nthtext + " 阶段。你将会在这里与#bboss#k战斗。现在要开始战斗吗？");
                 status = 9;
             }else{
                 if(!isLeader()){
                     if(mobcount == null){
-                        cm.sendOk("Please tell your #bParty-Leader#k to come talk to me");
+                        cm.sendOk("请让你的#b队长#k来与我对话。");
                         cm.dispose();
                     }else{
                         cm.warp(109020001,0);
@@ -59,19 +59,19 @@ function action(mode, type, selection) {
                     }
                 }
                 if(mobcount == null){
-                    cm.sendYesNo("You're finished?!");
+                    cm.sendYesNo("战斗结束了吗？");
                 }
             }
         }else if (status == 1){
             //if (cm.mobCount(600010000)==0) {
             if (cm.mapMobCount() == 0) {
-                cm.sendOk("Good job! You've killed 'em!");
+                cm.sendOk("干得漂亮，你打败了它们！");
             }else{
-                cm.sendOk("What are you talking about? Kill those creatures!!");
+                cm.sendOk("还聊什么天啊？打倒它们！");
                 cm.dispose();
             }
         }else if (status == 2){
-            cm.sendOk("You may continue to the next stage!");
+            cm.sendOk("你可以前往下一阶段了。");
         }else if (status == 3) {
             cm.clear();
             eim.setProperty("leader" + nthtext + "mobcount","done");

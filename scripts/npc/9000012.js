@@ -28,7 +28,7 @@ var status = 0;
 
 function start() {
     status = -1;
-	cm.sendSimple("Man... It is hot!!!~ How can I help you?\r\n#L0##bLeave the event game.#l\r\n#L1#Buy the weapon (Wooden Club 1 meso)");
+	cm.sendSimple("伙计...这里真热啊~有什么需要帮忙的吗？\r\n#L0##b我要离开活动地图。#l\r\n#L1#B购买武器 (棍棒 1金币)");
 }
 
 function action(mode, type, selection) {
@@ -44,10 +44,10 @@ function action(mode, type, selection) {
         }
         if (status == 0) {
             if (selection == 0) {
-                cm.sendYesNo("If you leave now, you can't participate in this event for the next 24 hours. Are you sure you want to leave?");
+                cm.sendYesNo("如果现在离开的话，接下来的24小时内都无法再次参与活动，确定要离开吗？");
                 } else if (selection == 1) {
                 if (cm.getMesos < 1 && !cm.canHold(1322005)) {
-                cm.sendOk("You don't have enough mesos or you don't have any space in your inventory.");
+                cm.sendOk("你没有足够的金币，或背包没有空位。");
                 cm.dispose();
                 } else {
                 cm.gainItem(1322005);

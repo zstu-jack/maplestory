@@ -4,7 +4,7 @@
  */
 
 function start() {
-    cm.sendAcceptDecline("If only I had the Mirror of Goodness then I can re-summon the Black Wizard! \r\nWait! something's not right! Why is the Black Wizard not summoned? Wait, what's this force? I feel something... totally different from the Black Wizard Ahhhhh!!!!! \r\n\r\n #b(Places a hand on the shoulder of Kryston.)");
+    cm.sendAcceptDecline("如果拥有女神的镜子，我就可以重新召唤黑魔法师了！\r\n等等！不对劲！为什么没有召唤成功？等等，这股力量是？我感受到的是...全然不同于黑魔法师的存在啊啊啊啊啊啊!!!!! \r\n\r\n #b(把一只手放在奇拉的肩膀上。)");
 }
 
 function action(mode, type, selection) {

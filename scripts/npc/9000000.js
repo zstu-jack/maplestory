@@ -27,7 +27,7 @@
 var status = 0;
 
 function start() {
-    cm.sendNext("Hey, I'm #bPaul#k, if you're not busy and all ... then can I hang out with you? I heard there are people gathering up around here for an #revent#k but I don't want to go there by myself ... Well, do you want to go check it out with me?");
+    cm.sendNext("你好，我是 #b珀尔k，如果你有空的话...可以跟我一起吗？我听说有些人在附近组织 #r活动#k ，但我不想一个人去...那么，你愿意和我一起去看看吗？");
 }
 
 function action(mode, type, selection) {
@@ -36,35 +36,35 @@ function action(mode, type, selection) {
     } else {
         status++;
         if (status == 1) {
-            cm.sendSimple("Huh? What kind of an event? Well, that's...\r\n#L0##e1.#n#b What kind of an event is it?#k#l\r\n#L1##e2.#n#b Explain the event game to me.#k#l\r\n#L2##e3.#n#b Alright, let's go!#k#l");
+            cm.sendSimple("嗯？都有哪些活动？嗯，是这样的...\r\n#L0##e1.#n#b这是什么样的活动？#k#l\r\n#L1##e2.#n#b请为我详细说明活动内容。#k#l\r\n#L2##e3.#n#b好的，我们入场吧！#k#l");
         } else if (status == 2) {
             if (selection == 0) {
-                cm.sendNext("All this month, MapleStory Global is celebrating its 3rd anniversary! The GM's will be holding surprise GM Events throughout the event, so stay on your toes and make sure to participate in at least one of the events for great prizes!");
+                cm.sendNext("这个月MapleStory Global（枫之谷全球服）的三周年庆典正在进行！GM会在整个活动期间举办令人惊喜的GM活动，所以时刻注意系统提示，保证至少能参加一次活动来赢取奖励！");
                 cm.dispose();
             } else if (selection == 1) {
-                cm.sendSimple("There are many games for this event. It will help you a lot to know how to play the game before you play it. Choose the one you want to know more of! #b\r\n#L0# Ola Ola#l\r\n#L1# MapleStory Maple Physical Fitness Test#l\r\n#L2# Snow Ball#l\r\n#L3# Coconut Harvest#l\r\n#L4# OX Quiz#l\r\n#L5# Treasure Hunt#l#k");
+                cm.sendSimple("活动拥有多种游戏内容。在参与到游戏中之前了解游戏玩法是很有帮助的。选择一种你想要了解的游戏吧！#b\r\n#L0#上楼~上楼~#l\r\n#L1#向高地#l\r\n#L2#雪球赛#l\r\n#L3#椰子比赛#l\r\n#L4#OX问答#l\r\n#L5#寻宝游戏#l#k");
             } else if (selection == 2) {
-                cm.sendNext("Either the event has not been started, you already have the #bScroll of Secrets#k, or you have already participated in this event within the last 24 hours. Please try again later!");
+                cm.sendNext("可能是活动目前尚未开始、已持有#b恶魔文件#k，或在24小时内参加过活动，因而无法入场。请稍后再试。");
                 cm.dispose();
             }
         } else if (status == 3) {
             if (selection == 0) {
-                cm.sendNext("#b[Ola Ola]#k is a game where participants climb ladders to reach the top. Climb your way up and move to the next level by choosing the correct portal out of the numerous portals available. \r\n\r\nThe game consists of three levels, and the time limit is #b6 MINUTES#k. During [Ola Ola], you #bwon't be able to jump, teleport, haste, or boost your speed using potions or items#k. There are also trick portals that'll lead you to a strange place, so please be aware of those.");
+                cm.sendNext("#b[上楼~上楼~]#k中，参与者需要使用爬梯抵达最高层。向上爬，在众多传送点与梯子之中选择正确的入口去往下一层。\r\n\r\n游戏地图分为三层，时间限制为#b6分钟#k。在[上楼~上楼~]活动中。#b无法进行跳跃、使用快速移动和轻功，也不能使用道具增加移动速度#k。另外会有错误的入口将玩家送往奇怪的地方。所以请留意它们。");
                 cm.dispose();
             } else if (selection == 1) {
-                cm.sendNext("#b[MapleStory Physical Fitness Test] is a race through an obstacle course#k much like the Forest of Patience. You can win it by overcoming various obstacles and reach the final destination within the time limit. \r\n\r\nThe game consists of four levels, and the time limit is #b15 MINUTES#k. During [MapleStory Physical Fitness Test], you won't be able to use teleport or haste.");
+                cm.sendNext("#b[向高地]是一场障碍赛#k，和忍苦森林有异曲同工之妙。在时间限制内越过各种各样的障碍达到终点即可获胜。\r\n\r\n活动包含四个关卡，时间限制为 #b15分钟#k。在[向高地]活动中，无法使用快速移动和轻功技能。");
                 cm.dispose();
             } else if (selection == 2) {
-                cm.sendNext("#b[Snowball]#k consists of two teams, Maple Team and Story Team, and the two teams duke it out to see #bwhich team rolled the snowball farther and bigger in a limited time#k. If the game cannot be decided within the time period, then the team that rolled the snowball farther wins. \r\n\r\nTo roll up the snow, attack it by pressing #bCtrl#k. All long-ranged attacks and skill-based attacks will not work here, #bonly the close-range attacks will work#k. \r\n\r\nIf a character touches the snowball, he/she'll be sent back to the starting point. Attack the snowman in front of the starting point to prevent the opposing team from rolling the snow forward. This is where a well-planned strategy works, as the team will decide whether to attack the snowball or the snowman.");
+                cm.sendNext("#b[雪球赛]#k中，玩家将分为Maple队和Story队两支队伍展开较量，比拼哪一队#b在时间限制内雪球滚出的距离更远、体积更大者#k。如果在规定时间内两队都没有将雪球推到终点，则推得较远的一队获胜。\r\n\r\n若要使雪球滚动，请按#bCtrl键#k攻击雪球。所有远程攻击与技能攻击在地图中均会失效，#b只有近程普通攻击能够起效#k。\r\n\r\n如果一名角色碰到雪球，他/她将会被送回起点。攻击出发点附近的雪人可阻碍对方的雪球滚动。玩家们需要精心策划战略，决定好攻击雪球与雪人之间的队员分工。");
                 cm.dispose();
             } else if (selection == 3) {
-                cm.sendNext("#b[Coconut Harvest]#k consists of two teams, Maple Team and Story Team, and the two teams duke it out to see #bwhich team gathers up the most coconuts#k. The time limit is #b5 MINUTES#k. If the game ends in a tie, an additional 2 minutes will be awarded to determine the winner. If, for some reason, the score stays tied, then the game will end in a draw. \r\n\r\nAll long-range attacks and skill-based attacks will not work here, #bonly the close-range attacks will work#k. If you don't have a weapon for the close-range attacks, you can purchase them through an NPC within the event map. No matter the level of character, the weapon, or skills, all damages applied will be the same.\r\n\r\nBeware of the obstacles and traps within the map. If the character dies during the game, the character will be eliminated from the game. The player who strikes last before the coconut drops wins. Only the coconuts that hit the ground counts, which means the ones that do not fall off the tree, or the occasional explosion of the coconuts WILL NOT COUNT. There's also a hidden portal at one of the shells at the bottom of the map, so use that wisely!");
+                cm.sendNext("#b[椰子比赛]#k中，玩家将分为Maple队和Story队两支队伍展开较量，以#b收集更多椰子的队伍#k为胜。时间限制为#b5分钟#k。如果比赛出现平局，则加时2分钟来决出胜者。若分数仍然持平，比赛将以平局告终。\r\n\r\n所有远程攻击与技能攻击在地图中均会失效，#b只有近程普通攻击能够起效#k。如果没有携带一件近战武器，可以通过活动地图中的NPC购买。无论角色拥有怎样的等级、武器或技能，所造成的伤害不会有任何区别。\r\n\r\n请小心地图中的障碍与陷阱。如果角色在活动地图中死亡，将被传送出图。在椰子掉落前进行最后一次攻击的玩家会赢得这枚椰子的分数。只有完全落地的椰子才会计分，也就是说没有从树上脱落，或突然消失的椰子不会被计分。地图底部有一枚贝壳上存在隐藏的传送点，请合理利用它。");
                 cm.dispose();
             } else if (selection == 4) {
-                cm.sendNext("#b[OX Quiz]#k is a game of MapleStory smarts through X's and O's. Once you join the game, turn on the minimap by pressing #bM#k to see where the X and O are. A total of #r10 questions#k will be given, and the character that answers them all correctly wins the game. \r\n\r\nOnce the question is given, use the ladder to enter the area where the correct answer may be, be it X or O. If the character does not choose an answer or is hanging on the ladder past the time limit, the character will be eliminated. Please hold your position until [CORRECT] is off the screen before moving on. To prevent cheating of any kind, all types of chatting will be turned off during the OX Quiz.");
+                cm.sendNext("#b[OX问答]#k是快速辨别冒险岛知识对错的游戏。参加游戏的玩家需要查看按下#bM#k时看到的小地图来确认X和O的位置。题目总共有#r10道#k，答对所有问题的玩家将会获胜。\r\n\r\n一旦GM给出题目，玩家需要在X和O中选择正确选项并站上台阶。没有选择答案以及在达到时间限制时仍然犹豫不定的玩家也将视为给出了错误答案，同样会被传送出图。请在屏幕出现[正确]字样之前保持站立在台阶上，不要进行移动。为了防止任何形式的作弊，在OX问答期间将会禁用所有种类的频道聊天。");
                 cm.dispose();
             } else if (selection == 5) {
-                cm.sendNext("#b[Treasure Hunt]#k is a game in which your goal is to find the #btreasure scrolls#k that are hidden all over the map #rin 10 minutes#k. There will be a number of mysterious treasure chests hidden away, and once you break them apart, many items will surface from the chest. Your job is to pick out the treasure scroll from those items. \r\nTreasure chests can be destroyed using #bregular attacks#k, and once you have the treasure scroll in possession, you can trade it for the Scroll of Secrets through an NPC that's in charge of trading items. The trading NPC can be found on the Treasure Hunt map, but you can also trade your scroll through #bVikin#k of Lith Harbor.\r\n\r\nThis game has its share of hidden portals and hidden teleporting spots. To use them, press the #bup arrow#k at a certain spot, and you'll be teleported to a different place. Try jumping around, for you may also run into hidden stairs or ropes. There will also be a treasure chest that'll take you to a hidden spot, and a hidden chest that can only be found through the hidden portal, so try looking around.\r\n\r\nDuring the game of Treasure Hunt, all attack skills will be #rdisabled#k, so please break the treasure chest with the regular attack.");
+                cm.sendNext("#b[寻宝游戏]#k是#b在10分钟内#k以寻找隐藏在各地图内的#b藏宝图#k为目标的游戏。每个房间都藏有神秘的藏宝箱，一旦敲开他们，就有机会获得各种道具。你需要从这些道具中找到藏宝图。\r\n宝箱可以被#b普通攻击#k所破坏，一旦获得藏宝图，就可以通过负责交易道具的NPC交换恶魔文件。交易NPC会在寻宝游戏地图上现身，不过你也可以在明珠港的#b贝干#k那里交换。\r\n\r\n在活动中，地图里有隐藏的入口和传送点。想使用它们的话，只要在对应地点按#b[↑[键#k，就可以传送到另一处。试着到处跳跳，也有可能发现隐藏的梯子或绳子。也有些宝箱在被打开后会将你传送到隐藏地图，有些隐藏宝箱只有通过暗门后才能发现，请仔细搜索。\r\n\r\n在寻宝游戏中，一切攻击技能都将被#r禁用#k，所以只能使用普通攻击打开宝箱。");
                 cm.dispose();
             }
         }

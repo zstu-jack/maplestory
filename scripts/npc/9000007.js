@@ -40,7 +40,7 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendOk("Just a kid... Don't talk to me...");
+                        cm.sendOk("你还稚嫩得很...不要来找我说话...");
                         cm.dispose();
                 }
         }

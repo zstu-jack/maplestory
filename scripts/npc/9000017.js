@@ -45,23 +45,23 @@ function action(mode, type, selection) {
     if (mode == 1)
         status++;
     else {
-        cm.sendOk("Oh, ok... Talk back to us when you want to make business.");
+        cm.sendOk("喔，好的...等你想要做这笔生意的时候再回来找我们谈吧。");
         cm.dispose();
         return;
     }
 
     if (status == 0) {
         if (!Packages.config.YamlConfig.config.server.USE_ENABLE_CUSTOM_NPC_SCRIPT) {
-            cm.sendOk("Hi, I'm #b#p" + cm.getNpc() + "##k.");
+            cm.sendOk("你好，我们是#b#p" + cm.getNpc() + "##k。");
             cm.dispose();
             return;
         }
         
-        var selStr = "Hey traveler! Come, come closer... We offer a #bhuge opportunity of business#k to you. If you want to know what it is, keep listening...";
+        var selStr = "你好啊，旅行者！过来，再靠近点...我们要和你#b做一笔大生意#k。如果你有兴趣了解一下的话，就听我们说下去...";
         cm.sendNext(selStr);
     }
     else if (status == 1) {
-	var selStr = "We've got here the knowledge to synthetize the mighty #b#t2049100##k! Of course, making one is not an easy task... But worry not! Just gather some material to me and a fee of #b1,200,000 mesos#k for our services to #bobtain it#k. You still want to do it?";
+	var selStr = "我们刚刚学到了合成强大的#b#t2049100##k的方法！当然，制作起来并不简单...不过别担心！只要凑齐材料交给我们，再支付 #b1,200,000金币#k 作为我们的服务费就能 #b得到它#k。你有没有兴趣？";
         cm.sendYesNo(selStr);
     }
 
@@ -78,7 +78,7 @@ function action(mode, type, selection) {
         matQty = matQtySet[selectedItem];
         cost = costSet[selectedItem];
                 
-        var prompt = "So, you want us to make some #t" + item + "#? In that case, how many do you want us to make?";
+        var prompt = "想要制作#t" + item + "#，对吗？那么，你想制作多少？";
         cm.sendGetNumber(prompt,1,1,100)
     }
         
@@ -86,13 +86,13 @@ function action(mode, type, selection) {
         qty = (selection > 0) ? selection : (selection < 0 ? -selection : 1);
         last_use = false;
                 
-        var prompt = "You want us to make ";
+        var prompt = "想要制作";
         if (qty == 1)
             prompt += "一件 #t" + item + "#?";
         else
             prompt += qty + "件 #t" + item + "#?";
                         
-        prompt += " In that case, we're going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+        prompt += " 那么，请确认你准备好了相应材料，并且背包里有充足的空间。#b";
                 
         if (mats instanceof Array){
             for (var i = 0; i < mats.length; i++) {
@@ -112,10 +112,10 @@ function action(mode, type, selection) {
         var complete = true;
                 
         if (cm.getMeso() < cost * qty) {
-            cm.sendOk("Come on! We're not here doing you a favor! We all need money to live properly, so bring the cash so we make deal and start the synthesis.");
+            cm.sendOk("别这样，我们不是免费来帮忙的！我们也需要金币，带够金币来找我们，我们才会为你合成。");
         }
         else if(!cm.canHold(item, qty)) {
-            cm.sendOk("You didn't check if you got a slot to spare on your inventory before our business, no?");
+            cm.sendOk("在和我们做生意之前，你还没有检查过你的背包是不是有空位，对吧？");
         }
         else {
             if (mats instanceof Array) {
@@ -131,7 +131,7 @@ function action(mode, type, selection) {
             }
             
             if (!complete)
-                cm.sendOk("You kidding, right? We won't be able to start the process without all the ingredients at hands. Go get all of them and then talk to us!");
+                cm.sendOk("没有原材料的话，我们也没法开始制作。去搜集所有的材料再来找我们吧！");
             else {
                 if (mats instanceof Array) {
                     for (var i = 0; i < mats.length; i++){
@@ -142,7 +142,7 @@ function action(mode, type, selection) {
                 }
                 cm.gainMeso(-cost * qty);
                 cm.gainItem(item, qty);
-                cm.sendOk("Wow... can't believe it worked! To think for a moment that it could f... Ahem. Of course it worked, all work of ours are very efficient! Nice doing business with you.");
+                cm.sendOk("哇...真不敢相信，居然成功了！我还想如果失败了怎么办呢...咳嗯。成功是很自然的事情，我们的所有工序都很高效！给，和你做生意很愉快。");
             }
         }
         cm.dispose();

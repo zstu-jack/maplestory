@@ -72,7 +72,7 @@ function action(mode, type, selection) {
             prompt += "1份 #t" + item + "#";
         else
             prompt += qty + "份 #t" + item + "#";
-        prompt += "，对吧？ 那么，请确认你准备好了对应材料，并且背包里有充足的空间。b";
+        prompt += "，对吧？ 那么，请确认你准备好了相应材料，并且背包里有充足的空间。b";
         if (mats instanceof Array)
             for(var i = 0; i < mats.length; i++)
                 prompt += "\r\n#i" + mats[i] + "# " + (matQty[i] * qty) + " #t" + mats[i] + "#";
