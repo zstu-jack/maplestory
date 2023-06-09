@@ -3,6 +3,6 @@ function start() {
 }
 
 function action(mode, type, selection) {
-    cm.sendNext("Zzzzz...");
+    cm.sendNext("Zzzzz...");//不用翻译了，这样反而更好
     cm.dispose();
 }

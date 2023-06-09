@@ -45,9 +45,9 @@ function action(mode, type, selection) {
                         } else if(mapid == 930000400) {
                             if (cm.haveItem(4001169, 20)) {
                                 if(cm.isEventLeader()) {
-                                    cm.sendNext("Oh you have brought them! We can now continue, shall we proceed?");
+                                    cm.sendNext("喔！你把它们带来了。我们可以继续下一阶段了，现在出发吗？");
                                 } else {
-                                    cm.sendOk("You have brought them, but you're not the leader! Please let the leader hand me the marbles...");
+                                    cm.sendOk("你把它们带来了，可你并不是队长！请让你的队长亲手把怪物之珠交给我...");
                                     cm.dispose();
                                     return;
                                 }

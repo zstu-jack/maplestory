@@ -3,6 +3,6 @@ function start() {
 }
 
 function action(mode, type, selection) {
-    cm.sendNext("Being young doesn't mean I'm any different from those guys. I'll show them!");
+    cm.sendNext("年轻并不意味着我比那群家伙差多少。我会证明给他们瞧的！");
     cm.dispose();
 }

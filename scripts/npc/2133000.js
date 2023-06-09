@@ -49,7 +49,7 @@ function action(mode, type, selection) {
                 if (status == 0) {
                         em = cm.getEventManager("EllinPQ");
                         if(em == null) {
-                                cm.sendOk("The Ellin 组队任务遇到了一个错误。");
+                                cm.sendOk("艾琳森林组队任务遇到了一个错误。");
                                 cm.dispose();
                                 return;
                         } else if(cm.isUsingOldPqNpcStyle()) {
@@ -57,7 +57,7 @@ function action(mode, type, selection) {
                                 return;
                         }
                     
-                        cm.sendSimple("#e#b<组队任务：毒雾森林>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n你想组成或加入一支队伍来揭开#bForest of Poison Haze#k的谜团吗？让你的#b队长#k与我对话，或者创建一个队伍。#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。\r\n#L3#我想要兑换奖励。");
+                        cm.sendSimple("#e#b<组队任务：毒雾森林>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n你想组成或加入一支队伍来揭开#b毒雾森林#k的谜团吗？让你的#b队长#k与我对话，或者创建一个队伍。#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。\r\n#L3#我想要兑换奖励。");
                 } else if (status == 1) {
                         if (selection == 0) {
                                 if (cm.getParty() == null) {
@@ -84,11 +84,11 @@ function action(mode, type, selection) {
                                 cm.sendOk("现在组队搜索状态为: #b" + (psState ? "启用" : "禁用") + "#k。需要更改时请与我对话。");
                                 cm.dispose();
                         } else if (selection == 2) {
-                                cm.sendOk("#e#b<组队任务：Forest of Poison Haze>#k#n\r\nIn this PQ, your mission is to progressively make your way through the woods, taking on all baddies in your path, solving many puzzles you encounter and rallying yourselves to take the best of teamwork to overcome time limits and powerful creatures. Clearing the final boss, your team have a chance to obtain a marble that, #bwhen dropped by the fountain at the exit map#k, will guarantee the team extra prizes. Good luck.");
+                                cm.sendOk("#e#b<组队任务：毒雾森林>#k#n\r\n在这个组队任务中，你们的任务是逐步穿越森林，打倒路上遇到的所有怪物，解开遭遇的许多谜题，团结起来，克服时间上的限制、击退强大的生物。击败最终的Boss后，#b抵达退场地图时#k可以获得一块石板，作为全队的额外奖励。祝你们好运。");
                                 cm.dispose();
                         }
                         else {
-                                cm.sendSimple("你想要领取哪种奖励？\r\n#b#L0#Give me Altaire Earrings.\r\n#L1#Give me Glittering Altaire Earrings.\r\n#L2#Give me Brilliant Altaire Earrings");
+                                cm.sendSimple("你想要领取哪种奖励？\r\n#b#L0#兑换阿尔泰耳环。\r\n#L1#兑换发光的阿尔泰耳环。\r\n#L2#兑换闪耀的阿尔泰耳环。");
                         }
                 } else if (status == 2) {
                         if (selection == 0) {
@@ -97,7 +97,7 @@ function action(mode, type, selection) {
                                         cm.gainItem(4001198, -10);
                                         cm.dispose();
                                 } else {
-                                        cm.sendOk("You either have Altair Earrings already or you do not have 10 Altair Fragments.");
+                                        cm.sendOk("或许你尚未获得阿尔泰耳环，也可能拥有的阿尔泰碎片不足 10枚。");
                                         cm.dispose();
                                 }
                         } else if (selection == 1){
@@ -107,7 +107,7 @@ function action(mode, type, selection) {
                                         cm.gainItem(4001198, -10);
                                         cm.dispose();
                                 } else {
-                                       cm.sendOk("You either don't have Altair Earrings already or you do not have 10 Altair Fragments.");
+                                       cm.sendOk("或许你尚未获得阿尔泰耳环，也可能拥有的阿尔泰碎片不足 10枚。");
                                        cm.dispose();
                                 }
                         } else if (selection == 2){
@@ -117,7 +117,7 @@ function action(mode, type, selection) {
                                         cm.gainItem(4001198, -10);
                                         cm.dispose();
                                 } else {
-                                        cm.sendOk("You either don't have Glittering Altair Earrings already or you do not have 10 Altair Fragments.");
+                                        cm.sendOk("或许你尚未获得发光的阿尔泰耳环 ，也可能拥有的阿尔泰碎片不足 10枚。");
                                         cm.dispose();
                                 }
                         }

@@ -5,6 +5,6 @@
 */
 
 function start(){
-	cm.sendOk("Hmmm! For you to make your way here, far away from the Camp, you must be one strong individual. Let's explore new areas and find a place to establish our own town!!");
+	cm.sendOk("嗯...!你离开营地，披荆斩棘来到这里，一定是个强大而又特立独行的家伙。让我们一起探索新的区域，找一片好地方来属于我们自己的城镇吧！");
 	cm.dispose();
 }
