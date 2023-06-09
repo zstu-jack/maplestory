@@ -31,11 +31,11 @@ var travelPlaceShort = ["古代神社", "吉隆大都市"];
 var travelPlaceCountry = ["日本", "马来西亚"];
 var travelAgent = ["我", "#r#p9201135##k"];
 
-var travelDescription = ["If you desire to feel the essence of Japan, there's nothing like visiting the Shrine, a Japanese cultural melting pot. Mushroom Shrine is a mythical place that serves the incomparable Mushroom God from ancient times.",
-                        "If you desire to feel the heat of the tropics on an upbeat environment, the residents of Malaysia are eager to welcome you. Also, the metropolis itself is the heart of the local economy, that place is known to always offer something to do or to visit around."];
+var travelDescription = ["如果你想感受日本文化的精髓，参观神社是再好不过的选择了，它是日本文化的大熔炉。而古代神社是一处传说中自古以来就供奉着蘑菇之神的胜地。",
+                        "如果想去富有活力的地方感受热带风情，马来西亚的居民会热切地招待你。另外，吉隆大都市本身就是当地的经济中心，那里有许多机遇与风景等待游客去邂逅。"];
 
-var travelDescription2 = ["Check out the female shaman serving the Mushroom God, and I strongly recommend trying Takoyaki, Yakisoba, and other delocious food sold in the streets of Japan. Now, let's head over to #bMushroom Shrine#k, a mythical place if there ever was one.",
-                        "Once there, I strongly suggest you to schedule a visit to Kampung Village. Why? Surely you've come to know about the fantasy theme park Spooky World? No? It's simply put the greatest theme park around there, it's worth a visit! Now, let's head over to the #bTrend Zone of Malaysia#k."];
+var travelDescription2 = ["在那里可以近距离接触侍奉蘑菇之神的巫女，另外我强烈推荐尝一尝在日本街头出售的美食，如章鱼烧、炒面等。现在，让我们前往#b古代神社#k，一处神话般的地方。",
+                        "抵达那里时，我强烈建议你拨出时间去参观一下甘榜村。为什么？你一定知道那个有名的梦幻主题公园，阴森世界吧？不知道吗？它是那里最大的主题公园了，值得一游！现在，让我们前往#b马来西亚的吉隆大都市#k吧。"];
 
 var travelType;
 var travelStatus;
@@ -78,10 +78,10 @@ function action(mode, type, selection) {
     
     if (travelStatus != -1) {
         if (status == 0) 
-            cm.sendSimple("How's the traveling? Are you enjoying it?#b\r\n#L0#Yes, I'm done with traveling. Can I go back to #m" + cm.getPlayer().peekSavedLocation("WORLDTOUR") + "#?\r\n#L1#No, I'd like to continue exploring this place.");
+            cm.sendSimple("这次旅行怎样？乐在其中吗？#b\r\n#L0#是的，在这里玩得很尽兴。我想返回#m" + cm.getPlayer().peekSavedLocation("WORLDTOUR") + "#。\r\n#L1#不，我还想在这里继续探索一段时间。");
         else if (status == 1) {
             if (selection == 0) {
-                cm.sendNext("Alright. I'll take you back to where you were before the visit to Japan. If you ever feel like traveling again down the road, please let me know!");
+                cm.sendNext("好的，我会带你回到游览日本之前的出发地点。如果今后还想再次旅行，请告诉我。");
             } else if (selection == 1) {
                 cm.sendOk("好的，如果你改变主意，记得告诉我。");
                 cm.dispose();
@@ -96,14 +96,14 @@ function action(mode, type, selection) {
     } else {
         if (status == 0) {
             travelType = getTravelType(cm.getPlayer().getMapId());
-            cm.sendNext("If you're tired of the monotonous daily life, how about getting out for a change? there's nothing quite like soaking up a new culture, learning something new by the minute! It's time for you to get out and travel. We, at the Maple Travel Agency recommend you going on a #bWorld Tour#k! Are you worried about the travel expense? You shouldn't be! We, the #bMaple Travel Agency#k, have carefully come up with a plan to let you travel for ONLY #b" + cm.numberWithCommas(travelFee[travelType]) + " mesos#k!");
+            cm.sendNext("如果你厌倦了单调乏味的日常生活，就从中脱身换个口味怎么样？吸收新的文化，无时无刻不在学习新知识，简直不能更棒了！你是时候来一场旅行了。我们枫叶旅行社推荐你进行#b世界旅游#k！你是在担心旅费吗？大可不必！我们#b枫叶旅行社#k已经精心制定了旅行计划，费用只需#b" + cm.numberWithCommas(travelFee[travelType]) + "金币#k！");
         } else if (status == 1) {
-            cm.sendSimple("We currently offer this place for you traveling pleasure: #b" + travelPlace[travelType] + "#k. " + travelAgent[travelType] + "'ll be there serving you as the travel guide. Rest assured, the number of destinations will be increase over time. Now, would you like to head over to the " + travelPlaceShort[travelType] + "?#b\r\n#L0#Yes, take me to " + travelPlaceShort[travelType] + " (" + travelPlaceCountry[travelType] + ")");
+            cm.sendSimple("我们目前为您提供以下地区的旅行休闲服务：#b" + travelPlace[travelType] + "#k。" + travelAgent[travelType] + "会在那里作为导游为您服务。请放心，目的地的数量会随着时间推移不断增加。现在，你想前往" + travelPlaceShort[travelType] + "吗？#b\r\n#L0#是的，请送我去" + travelPlaceShort[travelType] + " (" + travelPlaceCountry[travelType] + ")");
         } else if (status == 2) {
-            cm.sendNext("Would you like to travel to #b" + travelPlace[travelType] + "#k? " + travelDescription[travelType]);
+            cm.sendNext("你想要去 #b" + travelPlace[travelType] + "#k旅行吗？ " + travelDescription[travelType]);
         } else if (status == 3) {
             if(cm.getMeso() < travelFee[travelType]){
-                cm.sendNext("You don't have enough mesos to take the travel.");
+                cm.sendNext("你没有足够的金币去旅行。");
                 cm.dispose();
                 return;
             }

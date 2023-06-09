@@ -40,7 +40,7 @@ var maxEqp = 0;
 
 function start() {
     if (!Packages.config.YamlConfig.config.server.USE_ENABLE_CUSTOM_NPC_SCRIPT) {
-        cm.sendOk("Hi, I'm #b#p" + cm.getNpc() + "##k.");
+        cm.sendOk("你好，我是#b#p" + cm.getNpc() + "##k。");//工作人员E被拿来做饰品制作NPC了？！这太私服了不能接受（跳过）
         cm.dispose();
         return;
     }
