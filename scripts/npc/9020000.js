@@ -50,12 +50,12 @@ function action(mode, type, selection) {
 
                 if (status == 0) {
                         if(state == 1) {
-                                cm.sendYesNo("Do you wish to abandon this area?");
+                                cm.sendYesNo("你想要离开这里吗？");
                         }
                         else {
                                 em = cm.getEventManager("KerningPQ");
                                 if(em == null) {
-                                        cm.sendOk("The Kerning 组队任务遇到了一个错误。");
+                                        cm.sendOk("废弃都市组队任务遇到了一个错误。");
                                         cm.dispose();
                                 } else if(cm.isUsingOldPqNpcStyle()) {
                                         action(1, 0, 0);

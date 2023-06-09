@@ -34,7 +34,7 @@ function start() {
     action(1, 0, 0);
 }
 
-function action(mode, type, selection) {
+function action(mode, type, selection) {//捏麻麻滴，转生都来了是吧，跳过
     if (mode == 1) {
         status++;
     } else {

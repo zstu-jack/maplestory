@@ -4,6 +4,6 @@ function start() {
 }
 
 function action(mode, type, selection) {
-	cm.sendNext("你好，我是#p9010004#.");
+	cm.sendNext("你好，我是#p9010004#。");
 	cm.dispose();
 }

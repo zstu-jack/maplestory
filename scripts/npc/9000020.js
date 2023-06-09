@@ -100,7 +100,7 @@ function action(mode, type, selection) {
         } else if (status == 1) {
             cm.sendSimple("我们目前为您提供以下地区的旅行休闲服务：#b" + travelPlace[travelType] + "#k。" + travelAgent[travelType] + "会在那里作为导游为您服务。请放心，目的地的数量会随着时间推移不断增加。现在，你想前往" + travelPlaceShort[travelType] + "吗？#b\r\n#L0#是的，请送我去" + travelPlaceShort[travelType] + " (" + travelPlaceCountry[travelType] + ")");
         } else if (status == 2) {
-            cm.sendNext("你想要去 #b" + travelPlace[travelType] + "#k旅行吗？ " + travelDescription[travelType]);
+            cm.sendNext("你想要去#b" + travelPlace[travelType] + "#k旅行吗？ " + travelDescription[travelType]);
         } else if (status == 3) {
             if(cm.getMeso() < travelFee[travelType]){
                 cm.sendNext("你没有足够的金币去旅行。");
