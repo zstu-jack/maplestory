@@ -42,7 +42,7 @@ function action(mode, type, selection) {
         cm.dispose();
     } else {
         if (status == 0 && mode == 0) {
-			cm.sendNext("Let me know if you've changed your mind!");
+			cm.sendNext("如果你改变了主意再来找我吧。");
 			cm.dispose();
         }
 
