@@ -62,7 +62,7 @@ function action(mode, type, selection) {
                                         return;
                                 }
                             
-                                cm.sendSimple("#e#b<组队任务：第一次同行>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nHow about you and your party members collectively beating a quest? Here you'll find obstacles and problems where you won't be able to beat it without great teamwork. If you want to try it, please tell the #bleader of your party#k to talk to me.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
+                                cm.sendSimple("#e#b<组队任务：第一次同行>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n与组队成员一起完成一次任务怎样？你会在这里遇到障碍和困难，只有出色的团队合作才能克服这一切。如果你想尝试挑战，请让你的#b队长#k来和我说话。#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
                         }
                 } else if (status == 1) {
                         if(state == 1) {
@@ -95,7 +95,7 @@ function action(mode, type, selection) {
                                         cm.sendOk("现在组队搜索状态为: #b" + (psState ? "启用" : "禁用") + "#k。需要更改时请与我对话。");
                                         cm.dispose();
                                 } else {
-                                        cm.sendOk("#e#b<组队任务：1st Accompaniment>#k#n\r\nYour party must pass through many obstacles and puzzles while traversing the sub-objectives of this Party Quest. Coordinate with your team in order to further advance and defeat the final boss and collect the dropped item in order to access the rewards and bonus stage.");
+                                        cm.sendOk("#e#b<组队任务：第一次同行>#k#n\r\n你们必须在这次组队任务的探索过程中经历许多障碍和谜题。整个团队通力合作，一起打败最终boss并收集掉落的道具，最终领取奖励，并进入奖励关卡。");
                                         cm.dispose();
                                 }
                         }

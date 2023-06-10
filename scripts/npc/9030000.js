@@ -43,10 +43,10 @@ function action(mode, type, selection) {
 			cm.dispose();
 		} else {
 			if (cm.hasMerchant()) {
-				cm.sendOk("You have a Merchant open.");
+				cm.sendOk("您的雇佣商人正在营业。");
 				cm.dispose();
 			} else {
-				cm.sendOk("You don't have any items or mesos to be retrieved.");
+				cm.sendOk("您没有待取回的道具或金币。");
 				cm.dispose();
 			}
 		}

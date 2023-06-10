@@ -208,7 +208,7 @@ function action(mode, type, selection) {
                     if(selection == 0) {    //brawler
                         cm.sendNext("拳手擅长使用 #r拳甲#k.\r\n\r\n#b拳手#k 是使用拳术近身战斗的斗士，拥有高HP并且能造成大量伤害。装备#r贯骨击#k后，你可以一次性对多个怪物造成大量伤害。#r橡木伪装#k 能帮助你规避高难度的战斗。");
                     } else if(selection == 1) {    //gunslinger
-                        cm.sendNext("枪手是擅长使用 #r手枪#k的海盗.\r\n\r\n#b火枪手#k 擅长进行远程快速攻击。使用 #r轻羽鞋#k，枪手可以漂浮在空中，进行长距离，更久滞空时间的跳跃。#r迷惑射击#k 能帮助你一次性眩晕数个附近的敌人。");
+                        cm.sendNext("火枪手是擅长使用 #r手枪#k的海盗.\r\n\r\n#b火枪手#k 擅长进行远程快速攻击。使用 #r轻羽鞋#k，火枪手可以漂浮在空中，进行长距离，更久滞空时间的跳跃。#r迷惑射击#k 能帮助你一次性眩晕数个附近的敌人。");
                     }
                     
                     status -= 2;
@@ -250,11 +250,11 @@ function action(mode, type, selection) {
             if (cm.getJobId() != job)
                 cm.changeJobById(job);
         } else if (status == 4)
-            cm.sendNextPrev("我刚刚赋予了你作为一个 " + (job == 510 ? "拳手" : "枪手") + "应该掌握的技能。此外，你背包的其他栏扩展了一行，最大HP、最大MP也得到了增加。");
+            cm.sendNextPrev("我刚刚赋予了你作为一个 " + (job == 510 ? "拳手" : "火枪手") + "应该掌握的技能。此外，你背包的其他栏扩展了一行，最大HP、最大MP也得到了增加。");
         else if (status == 5)
             cm.sendNextPrev("我同时也为你提升了1点的 #b技能点#k。请打开右下角的 #b技能菜单#k 进行查看。你可以用它来提升你的二转技能等级。但需要提醒你一下，你并不能同时提升所有技能的等级，因为有些技能需要习得前置技能后才可以学习。");
         else if (status == 6)
-            cm.sendNextPrev((job == 510 ? "拳手" : "枪手") + "，意味着更强的实力。但请记住，不要滥用你的力量，将这份力量用在正途上是一份意义高于继续变强的挑战。继续努力，当你更强大时再来找我。");
+            cm.sendNextPrev((job == 510 ? "拳手" : "火枪手") + "，意味着更强的实力。但请记住，不要滥用你的力量，将这份力量用在正途上是一份意义高于继续变强的挑战。继续努力，当你更强大时再来找我。");
     } else if (actionx["3thJobI"]){
         if (status == 0){
             if (cm.getPlayer().gotPartyQuestItem("JB3")){

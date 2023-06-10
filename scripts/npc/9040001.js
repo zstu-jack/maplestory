@@ -45,14 +45,14 @@ function action(mode, type, selection){
     }
 
     if (status == 0) {
-        var outText = "It seems you have finished exploring Sharenian Keep, yes? Are you going to return to the recruitment map now?";
+        var outText = "看起来你们对圣瑞尼亚城堡的探索已经告一段落了。现在想要返回遗迹发掘队营地吗？";
         cm.sendYesNo(outText);
     } else if (mode == 1) {
         var eim = cm.getEventInstance();
         
         if(eim != null && eim.isEventCleared()) {
             if(!eim.giveEventReward(cm.getPlayer())) {
-                    cm.sendNext("It seems you don't have a free slot in either your #rEquip#k, #rUse#k or #rEtc#k inventories. Please make some room first.");
+                    cm.sendNext("请在你的#r装备栏、消耗栏、设置栏#k和#r其他栏#k各留出至少一个空位。");
             } else {
                     cm.warp(101030104);
             }
