@@ -44,7 +44,7 @@ function action(mode, type, selection){
                         status--;
 
                 if (status == 0) {
-                        cm.sendNext("Come this way to return to Ludibrium.");
+                        cm.sendNext("顺着这条路可以回到玩具城。");
                 } else {
                         cm.warp(220000000, 0);
                         cm.dispose();

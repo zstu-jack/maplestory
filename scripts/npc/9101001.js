@@ -36,7 +36,7 @@ function action(mode, type, selection) {
     } else {
         status++;
         if (status == 1) 
-            cm.sendNextPrev("But remember, once you get out of here, you will enter a village full with monsters. Well them, good bye!");
+            cm.sendNextPrev("但要记住，一旦离开这里，你就会进入一片遍地怪物的郊野。好了，祝你好运！");
         else if (status == 2) {
             cm.warp(40000, 0);
             cm.gainExp(3);

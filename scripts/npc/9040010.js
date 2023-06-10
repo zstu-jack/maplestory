@@ -39,11 +39,11 @@ function start() {
                 eim.clearPQ();
             }
             else {
-                cm.sendOk("This is your final challenge. Defeat the evil lurking within the Rubian and return it to me. That is all.");
+                cm.sendOk("这是你们的最终挑战。击败潜伏在鲁碧安里面的恶魔，然后将宝石交给我。");
             }
         }
         else {
-            cm.sendOk("This is your final challenge. Defeat the evil lurking within the Rubian and let your instance leader return it to me. That is all.");
+            cm.sendOk("T这是你们的最终挑战。击败潜伏在鲁碧安里面的恶魔，然后让你们的队长将宝石交给我。");
         }
     }
     else

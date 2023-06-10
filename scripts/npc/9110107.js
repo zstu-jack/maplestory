@@ -12,7 +12,7 @@ function action(mode, type, selection) {
 	status++;
     } else {
 	if (status == 1 || status == 0 && mode == -1) {
-	    cm.sendNext("需要的時候再來找我吧。");
+	    cm.sendNext("需要的时候再来找我吧。");
 	    cm.dispose();
 	    return;
 	}
@@ -23,9 +23,9 @@ function action(mode, type, selection) {
 	    if (status == 0) {
 		cm.sendNext("是否要回去古代神社？ 一次 " + cost + "金币就好了。");
 		} else if (status == 1) {
-		cm.sendYesNo("您真的要回去嗎??");
+		cm.sendYesNo("您确定要回去吗？");
 	    } else if (status == 2) {
-		cm.sendNext("那我就帶您回去囉！");
+		cm.sendNext("那我就带您回去咯！");
 	    } else if (status == 3) {
 		cm.gainMeso(-cost);
 		cm.warp(800000000, 0);
@@ -37,9 +37,9 @@ function action(mode, type, selection) {
 	    if (status == 0) {
 		cm.sendNext("是否要去枫叶古城？ 一次 " + cost + "金币就好了。");
 		} else if (status == 1) {
-		cm.sendYesNo("您真的要去嗎??");	
+		cm.sendYesNo("您确定要去吗？");	
 	    } else if (status == 2) {
-		cm.sendNext("那我就帶您去囉！");
+		cm.sendNext("那我就带您回去咯！");
 	    } else if (status == 3) {
 		cm.gainMeso(-cost);
 		cm.warp(800040000, 0);

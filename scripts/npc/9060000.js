@@ -26,9 +26,9 @@ function start() {
     completed = cm.haveItem(4031508, 5) && cm.haveItem(4031507,5);
     
     if (completed) {
-        cm.sendNext("Wow~ You have succeeded in collecting 5 of each #b#t4031508##k 和 #b#t4031507##k. Okay then, I will send you to Zoo. Please talk to me again when you get there.");
+        cm.sendNext("哇~你成功地收集了#b#t4031508##k和#b#t4031507##k各5份。好的，我现在就送你回动物园。请在抵达那里时再找我对话。");
     } else {
-        cm.sendYesNo("You haven't completed the requirements. Are you sure you want to leave?");
+        cm.sendYesNo("你还没有完成任务要求，确定要就这样离开吗？");
     }
 }
 
@@ -40,7 +40,7 @@ function action(mode, type, selection){
     }
     
     if(status == 0) {
-        cm.sendOk("Well okay, I will send you back.");
+        cm.sendOk("那么就这样好了，我送你回去。");
     } else {
         if (completed) {
             cm.getEventInstance().clearPQ();

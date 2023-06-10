@@ -25,6 +25,6 @@
  */
 
 function start() {
-    cm.sendOk("The plaque translates as follows: \r\n\"The knights of Sharenian are proud warriors. Their Longinus Spears are both formidable weapons and the key to the castle's defense: By removing them from their platforms at the highest points of this hall, they block off the entrance from invaders.\"\r\n\r\nSomething seems to be etched in English on the side, barely readable: \r\n\"evil stole spears, chained up behind obstacles. return to top of towers. large spear, grab from higher up.\"\r\n...Obviously whoever figured it out didn't have much time to live. Poor guy.");
+    cm.sendOk("雕像下的石匾中刻有这样的文字：\r\n\"圣瑞尼亚的骑士们是荣耀的勇士。他们的圣枪既是强大的武器，也是守卫城堡的关键所在：将它们从这座大厅的最高处取下时，就切断了入侵者的所有道路。\"\r\n\r\n似乎有些现代文字被刻在一旁，几乎无法辨认：\r\n\"恶魔盗走了圣枪，将它们锁在重重障碍之后......送回顶部......长枪......从高处抓住......\"\r\n(很显然，不论是哪位探险者发现其中奥秘并刻在这里，都没有多久好活了，真可怜。)");
     cm.dispose();
 }

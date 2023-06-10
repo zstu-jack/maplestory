@@ -52,7 +52,7 @@ function action(mode, type, selection) {
             cm.warp(990001100);
         } else {
             if(eim.getProperty("stage1clear") == "true") {
-                cm.sendOk("Excellent work. You may proceed to the next stage.");
+                cm.sendOk("干得漂亮，你们可以进行下一阶段了。");
                 cm.dispose();
                 return;
             }
@@ -68,9 +68,9 @@ function action(mode, type, selection) {
                         }
                         
                         if (stage == 1) {
-                            cm.sendOk("In this challenge, I shall show a pattern on the statues around me. When I give the word, repeat the pattern to me to proceed.");
+                            cm.sendOk("在这一轮挑战中，我会依次激活周围的雕像作为示范。当我示意可以开始的时候，你需要按照我激活雕像的顺序重复一遍。");
                         } else {
-                            cm.sendOk("I shall now present a more difficult puzzle for you. Good luck.");
+                            cm.sendOk("接下来的挑战更为艰难，祝你好运。");
                         }
                     } else if (eim.getProperty("stage1status").equals("active")) {
                         stage = parseInt(eim.getProperty("stage1phase"));
@@ -81,30 +81,30 @@ function action(mode, type, selection) {
                                 clearStage(1, eim);
                                 cm.getGuild().gainGP(15);
 
-                                cm.sendOk("Excellent work. You may proceed to the next stage.");
+                                cm.sendOk("干得漂亮，你们可以进行下一阶段了。");
                             } else {
-                                cm.sendOk("Very good. You still have more to complete, however. Talk to me again when you're ready.");
+                                cm.sendOk("很好。不过距离完成考验还远。准备好后再次与我对话。");
                                 eim.setProperty("stage1phase", stage + 1);
-                                cm.mapMessage(5, "You have completed part " + stage + " of the Gatekeeper Test.");
+                                cm.mapMessage(5, "你已经完成了城门守门人的第" + stage + "次考验。");
                             }
 
                         } else {
                             eim.showWrongEffect();
-                            cm.sendOk("You have failed this test.");
-                            cm.mapMessage(5, "You have failed the Gatekeeper Test.");
+                            cm.sendOk("你没能通过这次考验。");
+                            cm.mapMessage(5, "你没能通过城门守门人的考验。");
                             eim.setProperty("stage1phase","1");
                         }
                         eim.setProperty("stage1status", "waiting");
                         cm.dispose();
                     } else {
-                        cm.sendOk("The statues are working on the pattern. Please wait.");
+                        cm.sendOk("雕像正在按顺序激活，请稍候。");
                         cm.dispose();
                     }
                 }
                 else if (status == 1) {
                     var reactors = getReactors();
                     var combo = makeCombo(reactors);
-                    cm.mapMessage(5, "Please wait while the combination is revealed.");
+                    cm.mapMessage(5, "请等待雕像激活完毕。");
                     var delay = 5000;
                     for (var i = 0; i < combo.length; i++) {
                         cm.getPlayer().getMap().getReactorByOid(combo[i]).delayedHitReactor(cm.getClient(), delay + 3500*i);
@@ -114,7 +114,7 @@ function action(mode, type, selection) {
                     cm.dispose();
                 }
             } else {
-                cm.sendOk("I need the leader of this instance to speak with me, nobody else.");
+                cm.sendOk("除了队长，其他人没有资格与我对话。");
                 cm.dispose();
             }
         }

@@ -53,14 +53,14 @@ function action(mode, type, selection) {
         var eim = cm.getPlayer().getEventInstance();
         
         if (eim.getProperty("stage4clear") != null && eim.getProperty("stage4clear").equals("true")) {
-            cm.sendOk("After what I thought would be an immortal sleep, I have finally found someone that will save Sharenian. I can truly rest in peace now.");
+            cm.sendOk("我原本以为会就此陷入永眠，但如今能够拯救圣瑞尼亚的人终究出现了。现在我可以真正的安息了。");
             cm.dispose();
             return;
         }
         
         if (status == 0) {
             if (cm.isEventLeader()) {
-                cm.sendNext("After what I thought would be an immortal sleep, I have finally found someone that will save Sharenian. This old man will now pave the way for you to finish the quest.");
+                cm.sendNext("我原本以为会就此陷入永眠，但如今能够拯救圣瑞尼亚的人终究出现了。*这位老人为你开启了通往任务终点的通道*");
 
                 clearStage(4, eim);
                 cm.getGuild().gainGP(30);
@@ -70,7 +70,7 @@ function action(mode, type, selection) {
             }
             else
             {
-                cm.sendOk("I need the leader of your party to speak with me, nobody else.");
+                cm.sendOk("除了队长，其他人没有资格与我对话。");
                 cm.dispose();
             }
         }

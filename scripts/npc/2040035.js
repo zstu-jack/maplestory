@@ -45,7 +45,7 @@ function action(mode, type, selection) {
                         var eim = cm.getEventInstance();
                     
                         if(!eim.giveEventReward(cm.getPlayer())) {
-                                cm.sendNext("请确认你的#r装备栏#k, #r消耗栏#k或#r其他栏#k是否有足够的空间。清理出一些空间再来和我对话吧。");
+                                cm.sendNext("请确认你的#r装备栏#k, #r消耗栏#k或#r其他栏#k是否有足够的空间。清理出一些空间再来和我对话。");
                         } else {
                                 cm.warp(221024500);
                         }

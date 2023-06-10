@@ -31,15 +31,15 @@
 **/
 
 function start() {
-    cm.sendYesNo("#b(I can see something covered in grass. Should I pull it out?)");
+    cm.sendYesNo("#b(看到有什么东西被草遮住了。要取出来吗？)");
 }
 
 function action(mode, type, selection) {
     if (mode == -1) {
     } else if (mode == 0) {
-        cm.sendNext("#b(I didn't think much of it, so I didn't touch it.)");
+        cm.sendNext("#b(没有多想，不去碰它。)");
     } else if (mode == 1) {
-        cm.sendNext("#b(Yuck... it's pet poop!)");
+        cm.sendNext("#b(呃啊啊...是宠物便便！)");
         cm.gainItem(4031922, 1);
     }
     cm.dispose();

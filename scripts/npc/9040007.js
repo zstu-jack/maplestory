@@ -20,6 +20,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 function start() {
-    cm.sendOk("\"I fought the Rubian and I lost, and now I am imprisoned in the very gate that blocks my path, my body desecrated. However, my old clothing has holy power within. If you can return the clothing to my body, I should be able to open the gate. Please hurry! \r\n- Sharen III \r\n\r\nP.S. I know this is rather picky of me, but can you please return the clothes to my body #bbottom to top#k? Thank you for your services.\"");
+    cm.sendOk("\"我在争夺鲁碧安的过程中落败，如今灵魂被囚禁在前方阻挡着的大门之后，就连残骸也已经被亵渎。但是原本覆在其上的残衣仍然蕴藏圣力。如果能够寻回那些衣物，将它们放置在残骸上，我就可以开启大门。拜托了。 \r\n- 锡安列三世 \r\n\r\n另，虽然听上去有些难伺候，可以为我把衣服#b按顺序穿好#k吗？非常感谢你们。\"");
     cm.dispose();
 }

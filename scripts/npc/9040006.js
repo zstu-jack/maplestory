@@ -17,7 +17,7 @@ function clearStage(stage, eim) {
 
 function start() {
     if (cm.getPlayer().getMap().getReactorByName("watergate").getState() > 0){
-        cm.sendOk("Excellent work. You may proceed to the next stage.");
+        cm.sendOk("干得漂亮，你们可以进行下一阶段了。");
         cm.dispose();
         return;
     }
@@ -33,7 +33,7 @@ function start() {
                 eim.setProperty("stage3combo",newCombo);
                 //cm.playerMessage("Debug: " + newCombo);
                 eim.setProperty("stage3attempt","1");
-                cm.sendOk("This fountain guards the secret passage to the throne room. Offer items in the area to the vassals to proceed. The vassals shall tell you whether your offerings are accepted, and if not, which vassals are displeased. You have seven attempts. Good luck.");
+                cm.sendOk("这尊人象之石守卫着通往王座之间的秘密通道。将四种道具正确放置在它的扈从面向的区域才能继续前进。扈从会判断你们的祭品是否适宜，如不适宜，该祭品会消失。你们拥有7次尝试的机会。祝你们好运。");
             } else {
                 var attempt = parseInt(eim.getProperty("stage3attempt"));
                 var combo = parseInt(currentCombo);
@@ -45,7 +45,7 @@ function start() {
                         cm.getGuild().gainGP(25);
                         
                         removeGroundItems();
-                        cm.sendOk("Excellent work. You may proceed to the next stage.");
+                        cm.sendOk("E干得漂亮，你们可以进行下一阶段了。");
                     } else {
                         if (attempt < 7) {
                             var comboItems = [0, 0, 0, 0];
@@ -74,41 +74,41 @@ function start() {
                             //cm.playerMessage("Results - Correct: " + results[0] + " | Incorrect: " + results[1] + " | Unknown: " + results[2]);
                             if (correct != 0) {
                                 if (correct == 1) {
-                                    string += "1 vassal is pleased with their offering.\r\n";
+                                    string += "1 位扈从对面前的祭品感到满意。\r\n";
                                 } else {
-                                    string += correct + " vassals are pleased with their offerings.\r\n";
+                                    string += correct + " 位扈从对面前的祭品感到满意。\r\n";
                                 }
                             }
                             if (incorrect != 0) {
                                 if (incorrect == 1) {
-                                    string += "1 vassal has received an incorrect offering.\r\n";
+                                    string += "1 位扈从对面前的祭品感到不满。\r\n";
                                 } else {
-                                    string += incorrect + " vassals have received incorrect offerings.\r\n";
+                                    string += incorrect + " 位扈从对面前的祭品感到不满。\r\n";
                                 }
                             }
                             if (unknown != 0) {
                                 if (unknown == 1) {
-                                    string += "1 vassal has received an unknown offering.\r\n";
+                                    string += "1 位扈从对面前的祭品感到迷惑。\r\n";
                                 } else {
-                                    string += unknown + " vassals have received unknown offerings.\r\n";
+                                    string += unknown + " 位扈从对面前的祭品感到迷惑。\r\n";
                                 }
                             }
-                            string += "This is your ";
+                            string += "这是你们的 ";
                             switch (attempt) {
                                 case 1:
-                                    string += "1st";
+                                    string += "第1次";
                                     break;
                                 case 2:
-                                    string += "2nd";
+                                    string += "第2次";
                                     break;
                                 case 3:
-                                    string += "3rd";
+                                    string += "第3次";
                                     break;
                                 default:
-                                    string += attempt + "th";
+                                    string += "第" + attempt + "次";
                                     break;
                             }
-                            string += " attempt.";
+                            string += "尝试。";
 
                             //spawn one black and one myst knight
                             spawnMob(9300036, -350, 150, cm.getPlayer().getMap());
@@ -119,7 +119,7 @@ function start() {
                         } else {
                             //reset the combo and mass spawn monsters
                             eim.setProperty("stage3combo","reset");
-                            cm.sendOk("You have failed the test. Please compose yourselves and try again later.");
+                            cm.sendOk("你没有通过考验。请冷静思考，稍后再试。");
 
                             for (var i = 0; i < 6; i++) {
                                 //keep getting new monsters, lest we spawn the same monster five times o.o!
@@ -131,11 +131,11 @@ function start() {
                         eim.showWrongEffect();
                     }
                 } else {
-                    cm.sendOk("Please make sure your attempt is properly set in front of the vassals and talk to me again.");
+                    cm.sendOk("将祭品摆在扈从对应的位置前方后再来与我对话。");
                 }
             }
         } else {
-            cm.sendOk("Please have your leader speak to me.");
+            cm.sendOk("请让队长与我对话。");
         }
     }
     

@@ -54,26 +54,26 @@ function action(mode, type, selection) {
         if (status == 0) {
             var prompt = "\r\n#b#L0#圣瑞尼亚是什么？#l\r\n#b#L1##t4001024#？那是什么？#l\r\n#b#L2#家族对抗赛是什么？#l\r\n#b#L3#我没有任何问题了。#l";
             if (selectedOption == -1) {
-                prompt = "We, the Union of Guilds, have been trying to decipher 'Emerald Tablet,' a treasured old relic, for a long time. As a result, we have found out that Sharenian, the mysterious country from the past, lay asleep here. We also found out that clues of #t4001024#, a legendary, mythical jewelry, may be here at the remains of Sharenian. This is why the Union of Guilds have opened Guild Quest to ultimately find #t4001024#." + prompt;
+                prompt = "我们是家族同盟，长久以来一直试图揭开珍贵遗物'荣耀之石'的秘密。因而发现了圣瑞尼亚，这座古老的神秘国度就长眠于此。我们还找到了有关那颗传说的神秘宝石#t4001024#的线索，也许它就在圣瑞尼亚遗迹之中。这也是家族同盟会在这里举办家族任务的原因，就是为了最终寻获#t4001024#。" + prompt;
             } else {
-                prompt = "Do you have any other questions?" + prompt;
+                prompt = "还有什么想问的吗？" + prompt;
             }
             cm.sendSimple(prompt);
         }
         else if (status == 1) {
             selectedOption = selection;
             if (selectedOption == 0) {
-                cm.sendNext("Sharenian was a literate civilization from the past that had control over every area of the Victoria Island. The Temple of Golem, the Shrine in the deep part of the Dungeon, and other old architectural constructions where no one knows who built it are indeed made during the Sharenian times.");
+                cm.sendNext("圣瑞尼亚是一个拥有文字流传的古老文明，它的治权范围曾经遍及金银岛的每一寸土地。现存的石头人寺院、地穴深处的寺庙以及其它尚不明确建造者的古代建筑都建成于圣瑞尼亚时期。");
             }
             else if (selectedOption == 1) {
-                cm.sendNext("#t4001024# is a legendary jewel that brings eternal youth to the one that possesses it. Ironically, it seems like everyone that had #t4001024# ended up downtrodden, which should explain the downfall of Sharenian.");
+                cm.sendNext("#t4001024#是传说中的宝石，它能使佩戴者永葆青春。然而讽刺的是，似乎#t4001024#的每一任主人都被推翻了，这或许能够解释圣瑞尼亚文明的衰落。");
                 status = -1;
             }
             else if (selectedOption == 2) {
-                cm.sendNext("I've sent groups of explorers to Sharenian before, but none of them ever came back, which prompted us to start the Guild Quest. We've been waiting for guilds that are strong enough to take on tough challenges, guilds like yours.");
+                cm.sendNext("我曾经派遣一批探险者进入圣瑞尼亚遗迹，但没有一个人从那里返回，这促使了我们启动家族任务。我们一直在等待像你们这样强大到足以应对严峻挑战的家族加入这场任务。");
             }
             else if (selectedOption == 3) {
-                cm.sendOk("Really? If you have anything else to ask, please feel free to talk to me.");
+                cm.sendOk("真的没有了？如果有什么不懂的，尽管来问我就好。");
                 cm.dispose();
             }
             else {
@@ -82,10 +82,10 @@ function action(mode, type, selection) {
         }
         else if (status == 2) { //should only be available for options 0 and 2
             if (selectedOption == 0) {
-                cm.sendNextPrev("The last king of Sharenian was a gentleman named Sharen III, and apparently he was a very wise and compassionate king. But one day, the whole kingdom collapsed, and there was no explanation made for it.");
+                cm.sendNextPrev("圣瑞尼亚王国的末代君主是一位名叫锡安列三世的贤王，很显然他是一位既明智，又体恤臣民的君王。没有任何原因可以解释这样的王国会在一夜之间崩毁。");
             }
             else if (selectedOption == 2) {
-                cm.sendNextPrev("The ultimate goal of this Guild Quest is to explore Sharenian and find #t4001024#. This is not a task where power solves everything. Teamwork is more important here.");
+                cm.sendNextPrev("家族对抗赛的终极目标是探索圣瑞尼亚并寻获#t4001024#。这不是一份可以使用蛮力解决一切的任务。团队协作反而尤为重要。");
             }
             else {
                 cm.dispose();
