@@ -164,14 +164,14 @@ function action(mode, type, selection) {
                 }
 
                 if (hasEngagement) {
-                    var text = "Hi there. How can I help you?";
-                    var choice = new Array("We're ready to get married.");
+                    var text = "你好啊。我有什么能帮你的？";
+                    var choice = new Array("我们想要结婚。");
                     for (x = 0; x < choice.length; x++) {
                         text += "\r\n#L" + x + "##b" + choice[x] + "#l";
                     }
                     cm.sendSimple(text);
                 } else {
-                    cm.sendOk("Hmm, today two fluttering hearts are about to be joined together by the blessings of love!");
+                    cm.sendOk("今天两颗悸动的心因爱情的祝福在此结合。");
                     cm.dispose();
                 }
             } else if (status == 1) {
@@ -183,36 +183,36 @@ function action(mode, type, selection) {
                         var partner = cserv.getPlayerStorage().getCharacterById(cm.getPlayer().getPartnerId());
                         if (!(partner == null || !cm.getMap().equals(partner.getMap()))) {
                             if (!cm.canHold(4000313)) {
-                                cm.sendOk("Please have a free ETC slot available to get the #b#t4000313##k.");
+                                cm.sendOk("请空出一格其他栏以获取#b#t4000313##k。");
                                 cm.dispose();
                                 return;
                             } else if (!partner.canHold(4000313)) {
-                                cm.sendOk("Please let your partner know they must have a free ETC slot available to get the #b#t4000313##k.");
+                                cm.sendOk("请告知您的伴侣空出一格其他栏以获取#b#t4000313##k。");
                                 cm.dispose();
                                 return;
                             } else if (!isSuitedForWedding(cm.getPlayer(), false)) {
-                                cm.sendOk("Please purchase a #rwedding garment#k for the ceremony, quickly! Without it I am not able to marry you.");
+                                cm.sendOk("请购买#r结婚礼服#k！出席婚礼时需穿着正装。");
                                 cm.dispose();
                                 return;
                             } else if (!isSuitedForWedding(partner, false)) {
-                                cm.sendOk("Please let your partner know they must have a #rwedding garment#k ready for the ceremony.");
+                                cm.sendOk("请告知您的伴侣购买#r结婚礼服#k！出席婚礼时需穿着正装。");
                                 cm.dispose();
                                 return;
                             }
 
-                            cm.sendOk("Very well, the preparatives here are finished too. This indeed is a beautiful day, you two are truly blessed to marry on such a day. Let us begin the marriage!!");
+                            cm.sendOk("很好，这样准备工作就完成了。今天是个美好的日子，正适合你们两位成婚。那么，我们开始婚礼吧。");
                         } else {
-                            cm.sendOk("Hmm, it seems your partner is elsewhere... Please let them come here before starting the ceremony.");
+                            cm.sendOk("呃，你的伴侣好像在别的地方...请通知对方在仪式开始之前赶到这里。");
                             cm.dispose();
                         }
                     } else {
                         var placeTime = cserv.getWeddingReservationTimeLeft(wid);
 
-                        cm.sendOk("Have patience. Your wedding is set to happen at the #r" + placeTime + "#k. Don't forget the wedding garment.");
+                        cm.sendOk("不要急。你的婚礼定于#r" + placeTime + "#k举办。记得穿好礼服，按时出席。");
                         cm.dispose();
                     }
                 } else {
-                    cm.sendOk("Hmm, I'm sorry but there are no reservations made for you at this channel for the time being.");
+                    cm.sendOk("抱歉，这个频道暂时没有您的婚礼预订。");
                     cm.dispose();
                 }
             } else if (status == 2) {
@@ -235,23 +235,23 @@ function action(mode, type, selection) {
 
                                     eim.registerPlayer(partner);
                                 } else {
-                                    cm.sendOk("An unexpected error happened when locating the wedding event. Please try again later.");
+                                    cm.sendOk("定位婚礼事件时发生了预料之外的错误，请稍后重试。");
                                 }
 
                                 cm.dispose();
                             } else {
-                                cm.sendOk("An unexpected error happened before the wedding preparations. Please try again later.");
+                                cm.sendOk("定位婚礼事件时发生了预料之外的错误，请稍后重试。");
                                 cm.dispose();
                             }
                         } else {
-                            cm.sendOk("An unexpected error happened before the wedding preparations. Please try again later.");
+                            cm.sendOk("定位婚礼事件时发生了预料之外的错误，请稍后重试。");
                             cm.dispose();
                         }
                     } else {    // partner already decided to start
                         cm.dispose();
                     }
                 } else {
-                    cm.sendOk("Hmm, it seems your partner is elsewhere... Please let them come here before starting the ceremony.");
+                    cm.sendOk("呃,你的伴侣好像在别的地方...请通知对方在仪式开始之前赶到这里。");
                     cm.dispose();
                 }
             }
@@ -268,35 +268,35 @@ function action(mode, type, selection) {
                     var wstg = eim.getIntProperty("weddingStage");
 
                     if (wstg == 2) {
-                        cm.sendYesNo("Very well, the guests has bestowed all their blessings to you now. The time has come, #rshould I make you Husband and Wife#k?");
+                        cm.sendYesNo("好了，宾客们已经把他们的所有祝福都献给了你们。时间到了，你们想要#r成为夫妻#k吗？");
                         state = 1;
                     } else if (wstg == 1) {
-                        cm.sendOk("While you two are making your wedding vows to each other, your guests are currently giving their blessings to you. This is a time of happiness for both of you, please rejoice the ceremony.");
+                        cm.sendOk("你们相互许下结婚誓言时，宾客们也为你们的爱情送上了祝福。这会是你们铭记终生的幸福时光，请享受这一刻吧。");
                         cm.dispose();
                     } else {
-                        cm.sendOk("Congratulations on your wedding! Our ceremony is complete, you can head to #b#p9201007##k now, she will lead you and your guests to the afterparty. Cheers for your love!");
+                        cm.sendOk("祝贺你们成婚!仪式已经结束了，你们现在可以请#b#p9201007##k引领你们和宾客前往后场派对。为你们的爱情干杯！");
                         cm.dispose();
                     }
                 } else {
                     var wstg = eim.getIntProperty("weddingStage");
                     if (wstg == 1) {
                         if (eim.gridCheck(cm.getPlayer()) != -1) {
-                            cm.sendOk("Everyone give your blessings to this lovely couple!");
+                            cm.sendOk("让我们大家把祝福送给这对彼此深爱的情侣吧！");
                             cm.dispose();
                         } else {
                             if (eim.getIntProperty("guestBlessings") == 1) {
-                                cm.sendYesNo("Do you want to bless this couple?");
+                                cm.sendYesNo("你要祝福这对情侣吗？");
                                 state = 0;
                             } else {
-                                cm.sendOk("Today we are gathered here to reunite this lively couple in matrimony!");
+                                cm.sendOk("今天我们相聚在这里，见证这对新人的结合！");
                                 cm.dispose();
                             }
                         }
                     } else if (wstg == 3) {
-                        cm.sendOk("The two loving birds are now married. What a lively day! Please #rget ready for the afterparty#k, it should start soon. Follow the married couple's lead.");
+                        cm.sendOk("两位可爱的新人现在已经步入婚姻的殿堂。今天真是热闹啊。请#r准备参加后场派对#k，它即将在不久后开始。请跟随这对新人入场。");
                         cm.dispose();
                     } else {
-                        cm.sendOk("The guest's blessing time has ended. Hang on, the couple will renew their vows very soon now. What a sight to see!");
+                        cm.sendOk("请安静，宾客们已经献上了他们的祝福。现在这对新人即将复述他们的誓言，让我们侧耳倾听吧。");
                         cm.dispose();
                     }
                 }
@@ -304,7 +304,7 @@ function action(mode, type, selection) {
                 if (state == 0) {    // give player blessings
                     eim.gridInsert(cm.getPlayer(), 1);
 
-                    if (YamlConfig.config.server.WEDDING_BLESSER_SHOWFX) {
+                    if (ServerConstants.WEDDING_BLESSER_SHOWFX) {
                         var target = cm.getPlayer();
                         target.announce(MaplePacketCreator.showSpecialEffect(9));
                         target.getMap().broadcastMessage(target, MaplePacketCreator.showForeignEffect(target.getId(), 9), false);
@@ -318,7 +318,7 @@ function action(mode, type, selection) {
                         target.getMap().broadcastMessage(target, MaplePacketCreator.showForeignEffect(target.getId(), 9), false);
                     }
 
-                    cm.sendOk("Your blessings have been added to their love. What a noble act for a lovely couple!");
+                    cm.sendOk("你的祝福已经传达给了这对新人，让他们的爱情愈加甜美。");
                     cm.dispose();
                 } else {            // couple wants to complete the wedding
                     var wstg = eim.getIntProperty("weddingStage");
@@ -326,7 +326,7 @@ function action(mode, type, selection) {
                     if (wstg == 2) {
                         var pid = cm.getPlayer().getPartnerId();
                         if (pid <= 0) {
-                            cm.sendOk("It seems you are no longer engaged to your partner, just before the altar... Where did all that happiness you two had sported a while ago went?");
+                            cm.sendOk("你们似乎突然改变了主意，取消了订婚。就在这圣坛之前...刚刚你们之间的那份幸福都去哪儿了？");
                             cm.dispose();
                             return;
                         }
@@ -341,7 +341,7 @@ function action(mode, type, selection) {
                                     var pid = eim.getIntProperty("confirmedVows");
                                     if (pid != -1) {
                                         if (pid == player.getId()) {
-                                            cm.sendOk("You have already confirmed your vows. All that is left is for your partner to confirm now.");
+                                            cm.sendOk("你已经起誓了，现在请等待你的伴侣起誓。");
                                         } else {
                                             eim.setIntProperty("weddingStage", 3);
                                             var cmPartner = partner.getAbstractPlayerInteraction();
@@ -364,56 +364,56 @@ function action(mode, type, selection) {
 
                                             giveCoupleBlessings(eim, player, partner);
 
-                                            cm.getMap().dropMessage(6, "High Priest John: By the power vested in me through the mighty Maple tree, I now pronounce you  Husband and Wife. You may kiss the bride!");
+                                            cm.getMap().dropMessage(6, "勒贝尔托4世：以伟大的枫之意志的名义，我宣布你们二人结为夫妻。新郎，你可以亲吻新娘了！");
                                             eim.schedule("showMarriedMsg", 2 * 1000);
                                         }
                                     } else {
                                         eim.setIntProperty("confirmedVows", player.getId());
-                                        cm.getMap().dropMessage(6, "Wedding Assistant: " + player.getName() + " has confirmed vows! Alright, one step away to make it official. Tighten your seatbelts!");
+                                        cm.getMap().dropMessage(6, "婚礼助手：" + player.getName() + " 确认了他们的爱情誓言！好的，距离婚礼完成只有一步之遥了！");
                                     }
 
                                     break;
 
                                 case -1:
-                                    cm.sendOk("It seems you no longer have the ring/ring box you and your partner shared at the engagement time. Sorry, but that was needed for the wedding...");
+                                    cm.sendOk("你们之中的一人好像是把订婚时交换的戒指或是戒指盒弄丢了。抱歉，那是完成婚礼时的必需品。");
                                     break;
 
                                 case -2:
-                                    cm.sendOk("It seems your partner no longer has the ring/ring box you two shared at the engagement time. Sorry, but that was needed for the wedding...");
+                                    cm.sendOk("你们之中的一人好像是把订婚时交换的戒指或是戒指盒弄丢了。抱歉，那是完成婚礼时的必需品。");
                                     break;
 
                                 case -3:
-                                    cm.sendOk("It seems you don't have the #r#t4000313##k given at the entrance... Please find it, I can't marry you without that item in hands.");
+                                    cm.sendOk("看起来你没有携带入口处发放的#r#t4000313##k，请找到它后与我交谈，没有#r#t4000313##k的话，婚礼无法正常进行下去。");
                                     break;
 
                                 case -4:
-                                    cm.sendOk("Pardon my rudiness, but the garments are a essential part of the ceremony. Please #rsuit yourself properly#k for a wedding.");
+                                    cm.sendOk("很抱歉要提醒您一下，婚礼期间请务必穿着礼服，请#r穿着正装#k出席婚礼。");
                                     break;
 
                                 case 1:
-                                    cm.sendOk("Please make an EQUIP slot available to get the marriage ring, will you?");
+                                    cm.sendOk("请空出一格装备栏用于存放婚戒。");
                                     break;
 
                                 case 2:
-                                    cm.sendOk("Please let your partner know to make an EQUIP slot available to get the marriage ring, will you?");
+                                    cm.sendOk("请告知你的伴侣空出一格装备栏用于存放婚戒。");
                                     break;
 
                                 case 3:
-                                    cm.sendOk("It seems your partner don't have the #r#t4000313##k given at the entrance... Please find it, I can't marry you without that item in hands.");
+                                    cm.sendOk("看起来你的伴侣没有携带入口处发放的#r#t4000313##k，请找到它后与我交谈，没有#r#t4000313##k的话，婚礼无法正常进行下去。");
                                     break;
 
                                 case 4:
-                                    cm.sendOk("It seems your partner is not properly dressed for the wedding... Pardon my rudiness, but the garments are a essential part of the ceremony.");
+                                    cm.sendOk("看起来您的伴侣没有穿着正装出席婚礼...很抱歉要提醒您一下，婚礼期间请务必穿着礼服。");
                                     break;
                             }
 
                             cm.dispose();
                         } else {
-                            cm.sendOk("Hmm, it seems your partner is not here, before the altar... It is a pity, but I can't fulfill the wedding if your partner is not here.");
+                            cm.sendOk("呃,你的伴侣好像并不在这里啊...不行，如果双方中有一方缺席的话，婚礼是无法继续下去的。");
                             cm.dispose();
                         }
                     } else {
-                        cm.sendOk("You are now #bhusband and wife#k. Congratulations!");
+                        cm.sendOk("你们现在是一对#b夫妻#k了，真是珠联璧合啊，恭喜你们！");
                         cm.dispose();
                     }
                 }

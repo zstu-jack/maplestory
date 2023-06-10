@@ -24,76 +24,76 @@
  *@author Jvlaple
  *@author Ronan
  */
-var numberOfLoves = 0;
-var status = -1;
-var state = 0;
-
-function hasProofOfLoves(player) {
-    var count = 0;
-    
-    for(var i = 4031367; i <= 4031372; i++) {
-        if(player.haveItem(i)) {
-            count++;
-        }
-    }
-    
-    return count >= 4;
-}
-
-function start() {
-    status = -1;
-    action(1, 0, 0);
-}
-
-function action(mode, type, selection) {
-    if (mode == -1) {
-        cm.dispose();
-    } else {
-        if (mode == 0 && type > 0) {
-            cm.dispose();
-            return;
-        }
-        if (mode == 1)
-            status++;
-        else
-            status--;
-
-        if (status == 0) {
-            if (!cm.isQuestStarted(100400)) {
-                cm.sendOk("Hello we're Mom and Dad...");
-                cm.dispose();
-            } else {
-                if (cm.getQuestProgressInt(100400, 1) == 0) {
-                    cm.sendNext("Mom, dad, I have a request to do to both of you... I wanna know more about the path you've already been walking since always, the path of loving and caring for someone dear to me.", 2);
-                } else {
-                    if(!hasProofOfLoves(cm.getPlayer())) {
-                        cm.sendOk("Dear, we need to make sure you are really ready to fall in love with whoever you choose to be your partner, please bring here #b4 #t4031367#'s#k.");
-                        cm.dispose();
-                    } else {
-                        cm.sendNext("#b#h0##k, you made us proud today. You may now have #rour blessings#k to choose whoever you like to be your fiancee. You may now consult #p9201000#, the Wedding Jeweler. Have a sooth, loving and caring journey ahead~~");
-                        state = 1;
-                    }
-                }
-            }
-        } else if (status == 1) {
-            if (state == 0) {
-                cm.sendNextPrev("My dear! How thoughtful of you asking our help. Surely we will help you out!");
-            } else {
-                cm.sendOk("Mom... Dad... Thanks a lot for your tender support!!!", 2);
-                
-                cm.completeQuest(100400);
-                cm.gainExp(20000 * cm.getPlayer().getExpRate());
-                for(var i = 4031367; i <= 4031372; i++) {
-                    cm.removeAll(i);
-                }
-                
-                cm.dispose();
-            }
-        } else if (status == 2) {
-            cm.sendNextPrev("Certainly you must have already seen #rNanas, the fairies of Love#k, around the Maple world. From 4 of them, collect #b4 #t4031367#'s#k and bring them here. This journey shall clear some questions you may have about love...");
-        } else if (status == 3) {
-            cm.setQuestProgress(100400, 1, 1);
-            cm.dispose();
-        }
-    }
-}
+ var numberOfLoves = 0;
+ var status = -1;
+ var state = 0;
+ 
+ function hasProofOfLoves(player) {
+     var count = 0;
+ 
+     for (var i = 4031367; i <= 4031372; i++) {
+         if (player.haveItem(i)) {
+             count++;
+         }
+     }
+ 
+     return count >= 4;
+ }
+ 
+ function start() {
+     status = -1;
+     action(1, 0, 0);
+ }
+ 
+ function action(mode, type, selection) {
+     if (mode == -1) {
+         cm.dispose();
+     } else {
+         if (mode == 0 && type > 0) {
+             cm.dispose();
+             return;
+         }
+         if (mode == 1)
+             status++;
+         else
+             status--;
+ 
+         if (status == 0) {
+             if (!cm.isQuestStarted(100400)) {
+                 cm.sendOk("你来了，#h0#?有什么事吗?");
+                 cm.dispose();
+             } else {
+                 if (cm.getQuestProgress(100400, 1) == 0) {
+                     cm.sendNext("母亲，父亲，我想请求你们一件事...我想了解你们所经历的事情，你们是如何相识，相知，相恋的呢？", 2);
+                 } else {
+                     if (!hasProofOfLoves(cm.getPlayer())) {
+                         cm.sendOk("孩子,我们要确定你是否做好准备与你所选择的人共度余生，去收集#b4个 #t4031367##k吧。");
+                         cm.dispose();
+                     } else {
+                         cm.sendNext("#b#h0##k，你一直是我们引以为豪的家人。那么我们现在就#r祝福#k你与你的未婚妻，希望你们幸福。你现在可以去找#p9201000#了，他会为你们制作婚戒。愿你们有一场心甜意洽的旅行~~");
+                         state = 1;
+                     }
+                 }
+             }
+         } else if (status == 1) {
+             if (state == 0) {
+                 cm.sendNextPrev("孩子，你想得可真周到。既然向我们求助了，那我们也一定会帮忙的！");
+             } else {
+                 cm.sendOk("母亲...父亲...非常感谢你们的鼓励！！", 2);
+ 
+                 cm.completeQuest(100400);
+                 cm.gainExp(20000 * cm.getPlayer().getExpRate());
+                 for (var i = 4031367; i <= 4031372; i++) {
+                     cm.removeAll(i);
+                 }
+ 
+                 cm.dispose();
+             }
+         } else if (status == 2) {
+             cm.sendNextPrev("你们肯定已经见过#r娜娜们#k了，她们是冒险岛世界的#r爱情精灵#k。请从她们几个那里收集#b4枚 #t4031367##k回来。这次旅行将会解答你们关于爱情的困惑...");
+         } else if (status == 3) {
+             cm.setQuestProgress(100400, 1, 1);
+             cm.dispose();
+         }
+     }
+ }

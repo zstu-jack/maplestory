@@ -22,7 +22,7 @@
 /**
 	Assistant Nancy
 -- By ---------------------------------------------------------------------------------------------
-	Angel (get31720)
+	Angel (get31720 ragezone)
 -- Version Info -----------------------------------------------------------------------------------
 	1.0 - First Version by Angel
         2.0 - Second Version by happydud3 & XotiCraze
@@ -45,16 +45,16 @@ function start() {
     
     if(cm.getMapId() == 680000200) {
         if(eim.getIntProperty("weddingStage") == 0) {
-            cm.sendNext("The guests are gathering here right now. Please wait awhile, the ceremony will start soon enough.");
+            cm.sendNext("宾客们正在这边等待入场.请稍候,婚礼将在不久后开始.");
         } else {
             cm.warp(680000210, "sp");
-            cm.sendNext("Pick your seat over here and good show!");
+            cm.sendNext("请入座.婚礼即将开始!");
         }
         
         cm.dispose();
     } else {
         if(cm.getPlayer().getId() != eim.getIntProperty("groomId") && cm.getPlayer().getId() != eim.getIntProperty("brideId")) {
-            cm.sendNext("Sorry, only the marrying couple should be talking to me right now.");
+            cm.sendNext("抱歉,我现在只与新人交谈.");
             cm.dispose();
             return;
         }
@@ -82,7 +82,7 @@ function start() {
 
 function action(mode, type, selection) {
     if (mode == -1 || mode == 0) {
-        cm.sendOk("Goodbye then."); 
+        cm.sendOk("再会."); 
         cm.dispose();
         return;
     } else if (mode == 1) {
@@ -95,17 +95,17 @@ function action(mode, type, selection) {
         var hasGoldenLeaf = cm.haveItem(4000313);
         
         if (hasGoldenLeaf && hasEngage) {
-            cm.sendOk("You can't leave yet! You need to click High Priest John and get married before I can let you leave.");
+            cm.sendOk("你暂时还不能离场,请与勒贝尔托4世交谈完成婚礼后再行尝试.");
             cm.dispose();
         } else if (hasGoldenLeaf && hasRing) {
-            var choice = Array("Go to the Afterparty", "What should I be doing");
-            var msg = "What can I help you with?#b";
+            var choice = Array("前往婚礼派对", "我该做什么?");
+            var msg = "我有什么能帮你的?#b";
             for (i = 0; i < choice.length; i++) {
                 msg += "\r\n#L" + i + "#" + choice[i] + "#l";
             }
             cm.sendSimple(msg);
         } else {
-            cm.sendNext("You don't seem to have a Gold Maple Leaf, engagement ring, or wedding ring. You must not belong here, so I will take you to Amoria.");
+            cm.sendNext("你似乎并没有黄金枫叶,订婚戒指或是结婚戒指中的任何一种,你在这里没什么事做,我会把你送回婚礼村.");
             selection = 20; // Random.
         }
     } else if (status == 1) {
@@ -120,19 +120,19 @@ function action(mode, type, selection) {
             case 0:
                 if(eim.getIntProperty("isPremium") == 1) {
                     eim.warpEventTeam(680000300);
-                    cm.sendOk("Enjoy! Cherish your Photos Forever!");
-                    if (cmPartner != null) cmPartner.npcTalk(cm.getNpc(), "Enjoy! Cherish your Photos Forever!");
+                    cm.sendOk("恭喜!请妥善保管你的结婚照片!");
+                    if (cmPartner != null) cmPartner.npcTalk(cm.getNpc(), "恭喜!请妥善保管你的结婚照片!");
                 } else {    // skip the party-time (premium only)
                     eim.warpEventTeam(680000500);
-                    cm.sendOk("Congratulations for the newly-wed! I will escort you to the exit.");
-                    if (cmPartner != null) cmPartner.npcTalk(cm.getNpc(), "Congratulations for the newly-wed! I will escort you to the exit.");
+                    cm.sendOk("恭贺新婚!我会将你们送往出口.");
+                    if (cmPartner != null) cmPartner.npcTalk(cm.getNpc(), "恭贺新婚!我会将你们送往出口.");
                 }
                 
                 cm.dispose();
                 break;
                 
             case 1:
-                cm.sendOk("The Bride and Groom must receive the blessings of High Priest John to be wed. When you are ready you can click me to go to the Afterparty.");
+                cm.sendOk("新郎与新娘必须接受勒贝尔托4世的祝福后方可成婚.当你们做好准备,请与我交谈,前往婚礼派对会场.");
                 cm.dispose();
                 break;
                 

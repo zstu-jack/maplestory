@@ -35,18 +35,18 @@
 var price = 300;
 
 function start() {
-    cm.sendYesNo("Would you like to enter the bathhouse? That'll be " + price + " mesos for you.");
+    cm.sendYesNo("想进入澡堂吗？需要付 " + price + " 金币。");
 }
 
 function action(mode, type, selection) {
     if (mode < 1) {
         if (mode == 0)
-            cm.sendOk("Please come back some other time.");
+            cm.sendOk("欢迎下次光临。");
         cm.dispose();
         return;
     }
     if (cm.getMeso < price)
-        cm.sendOk("Please check and see if you have " + price + " mesos to enter this place.");
+        cm.sendOk("你的金币不够，需要付 " + price + " 金币才能入内。");
     else {
         cm.gainMeso(-price);
         cm.warp(801000100 + 100 * cm.getPlayer().getGender(), "out00");

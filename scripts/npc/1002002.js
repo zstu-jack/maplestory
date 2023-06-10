@@ -55,7 +55,7 @@ function action(mode, type, selection) {
             if (cm.getMeso() < 1500 && selection == 0)
                 cm.sendNext("你的金币不足。");
             else if(!cm.haveItem(4031134) && selection != 0){
-                cm.sendNext("你的#b自由旅行券\r\n#k 在哪儿？是不是弄丢了？好好找找吧。");
+                cm.sendNext("你的#b自由旅行券#k 在哪儿？是不是弄丢了？好好找找吧。");
             }else{
                 if(selection == 0)
                     cm.gainMeso(-1500);

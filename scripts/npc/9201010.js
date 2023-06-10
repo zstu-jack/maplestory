@@ -31,13 +31,13 @@
 **/
 
 var status;
- 
+
 function start() {
-        status = -1;
-        action(1, 0, 0);
+    status = -1;
+    action(1, 0, 0);
 }
 
-function action(mode, type, selection) {  
+function action(mode, type, selection) {
     if (mode == -1 || mode == 0) {
         cm.dispose();
         return;
@@ -46,20 +46,20 @@ function action(mode, type, selection) {
     } else {
         status--;
     }
-    
+
     var eim = cm.getEventInstance();
-    if(eim == null) {
-        cm.warp(680000000,0);
+    if (eim == null) {
+        cm.warp(680000000, 0);
         cm.dispose();
         return;
     }
-    
+
     var isMarrying = (cm.getPlayer().getId() == eim.getIntProperty("groomId") || cm.getPlayer().getId() == eim.getIntProperty("brideId"));
-		
+
     switch (status) {
         case 0:
-            if(cm.getMapId() == 680000300) {
-                cm.sendYesNo("Are you sure you want to #rquit the stage#k and head back to #bAmoria#k? You will be #rskipping the bonus stages#k that way.");
+            if (cm.getMapId() == 680000300) {
+                cm.sendYesNo("你确定要#r中途退出婚礼#k前往#b婚礼小镇#k吗?这样的话,将会#r跳过奖励阶段#k.");
             } else {
                 var hasEngagement = false;
                 for (var x = 4031357; x <= 4031364; x++) {
@@ -70,27 +70,27 @@ function action(mode, type, selection) {
                 }
 
                 if (cm.haveItem(4000313) && isMarrying) {
-                    if(eim.getIntProperty("weddingStage") == 3) {
-                        cm.sendOk("You guys totally rocked the stage!!! Go go, talk to #b#p9201007##k to start the afterparty.");
+                    if (eim.getIntProperty("weddingStage") == 3) {
+                        cm.sendOk("你们完全把气氛活跃起来了!!!快,与#b#p9201007##k交谈,前往婚礼派对吧.");
                         cm.dispose();
-                    } else if(hasEngagement) {
+                    } else if (hasEngagement) {
                         if (!cm.createMarriageWishlist()) {
-                            cm.sendOk("You have already sent your wishlist...");
+                            cm.sendOk("你已经提交了愿望单...");
                         }
                         cm.dispose();
                     } else {
-                        cm.sendOk("Oh, hey, where are the credentials for the this so-lauded party? Oh man, we can't continue at this rate now... Sorry, the party is over.");
+                        cm.sendOk("嗯?开启盛大派对的资格书呢?抱歉,没有证明的话,无法继续婚礼流程.");
                     }
                 } else {
-                    if(eim.getIntProperty("weddingStage") == 3) {
-                        if(!isMarrying) {
-                            cm.sendYesNo("You guys didn't miss them right? Our superstars #rworked so good together#k, and soon #bthey will start the afterparty#k. Are you really going to #rdrop out of the show#k and return to #bAmoria#k?");
+                    if (eim.getIntProperty("weddingStage") == 3) {
+                        if (!isMarrying) {
+                            cm.sendYesNo("你们是不是不巧与他们错过了?我们的超级巨星#r配合默契#k,即将开启#b婚礼派对#k.你确定要#r就此退出#k回到#b婚礼小镇#k吗?");
                         } else {
-                            cm.sendOk("You guys totally rocked the stage!!! Go go, talk to #b#p9201007##k to start the afterparty.");
+                            cm.sendOk("你们完全把气氛活跃起来了!!!快,与#b#p9201007##k交谈,前往婚礼派对吧.");
                             cm.dispose();
                         }
                     } else {
-                        cm.sendYesNo("Are you sure you want to #rquit the stage#k and head to #bAmoria#k? You will be #rskipping the bonus stages#k, fam.");
+                        cm.sendYesNo("你确定要#r中途退出婚礼#k前往#b婚礼小镇#k吗?这样的话,将会#r跳过奖励阶段#k.");
                     }
                 }
             }

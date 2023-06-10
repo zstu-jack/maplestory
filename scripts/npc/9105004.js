@@ -142,7 +142,7 @@ function insidePqAction(mode, type, selection) {
                         var snowman = MapleLifeFactory.getMonster(9400317 + (5 * difficulty));
                         mapobj.spawnMonsterOnGroundBelow(snowman, new java.awt.Point(-180, 15));
                         eim.setIntProperty("snowmanLevel", 1);
-                        eim.dropMessage(5, "雪人出现在空地上了！请使出浑身解数保护它！");
+                        eim.dropMessage(5, "雪人出现了！请使出浑身解数保护它！");
 
                         eim.setIntProperty("statusStg1", 0);
                         cm.dispose();

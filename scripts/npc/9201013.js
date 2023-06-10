@@ -20,10 +20,10 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /* Victoria
-    @author Ronan
+by Ronan
  */
 
 function start() {
-    cm.sendOk("Welcome to the Cathedral.\r\n\r\n#bCouples#k wanting to marry on the Cathedral should first #barrange a reservation#k with #r#p9201005##k. When the arranged time comes #bboth#k must show up here, on the same channel from the reservation, and start the ceremony (there is a 10-minutes fault policy to this) by talking to #r#p9201002##k. Once arranged, both can #bdistribute tickets#k to friends or acquainteds to become the guests for the marriage.\r\n\r\nThe ceremony will start accepting #bguests#k after the groom and the bride has entered the building. Show the #b#t4000313##k to #r#p9201005##k to access the inner rooms. No one without a ticket is allowed to enter the stage!");
+    cm.sendOk("欢迎来到教堂.\r\n\r\n想要在这里结婚的#b情侣们#k需要向#r#p9201005##k进行#b预约#k.届时情侣需要#b一同#k在与预约时相同的频道出席婚礼.之后婚礼将会开始(有10分钟等待时间).之后需要与#r#p9201002##k对话.等到一切安排妥当,两位可以向亲友#b分发请柬#k邀请他们前来参加婚礼.\r\n\r\n当新郎与新娘进入礼堂后,#b宾客#k才能进入.当然,此前需要向#r#p9201005##k出示#b#t4000313##k.若没有请柬,则无法进入.");
     cm.dispose();
 }

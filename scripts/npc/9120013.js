@@ -29,8 +29,8 @@ var questionNum;
 
 function start() {
     status = -1;
-    questions = new Array("Which of these items does the Flaming Raccoon NOT drop?","Which NPC is responsible for transporting travellers from Kerning City to Zipangu, and back?","Which of the items sold at the Mushroom Shrine increases your attack power?","Which of these items do the Extras NOT drop?","Which of these items DO NOT exist??","What's the name of the vegetable store owner in Showa Town?","Which of these items DO exist?","What is the name of the strongest boss in the Mushroom Shrine?","Which one of these items has a mis-matched class or level description?","Which of these noodles are NOT being sold by Robo at the Mushroom Shrine?","Which of these NPCs do NOT stand in front of Showa Movie Theater?")
-    answers = new Array(new Array("Raccoon Firewood","Solid Horn","Red Brick"),new Array("Peli","Spinel","Poli"),new Array("Takoyaki","Yakisoba","Tempura"),new Array("Extra A's Badge","Extra B's Corset","Extra C's Necklace"),new Array("Frozen Tuna","Fan","Fly Swatter"),new Array("Sami","Kami","Umi"),new Array("Cloud Fox's Tooth","Ghost's Bouquet","Dark Cloud Fox's Tail"),new Array("Black Crow","Blue Mushmom","Himegami"),new Array("Bamboo Spear - Warrior-only Weapon","Pico-Pico Hammer - One-handed Sword","Mystic Cane - Level 51 equip"),new Array("Kinoko Ramen (Pig Skull)","Kinoko Ramen (Salt)","Mushroom Miso Ramen"),new Array("Skye","Furano","Shinta"));
+    questions = new Array("以下哪种道具不包含在火狸猫的掉落中？","以下哪名NPC负责接送旅行者往返于废弃都市和日本之间？","蘑菇神社出售的道具中，哪种可以提升攻击力？","以下哪种道具不包含在流氓们的掉落中？","以下哪种道具是不存在的？","商店街的菜店是谁开的？","以下哪种道具是真实存在的？","古代神社附近最强大的BOSS叫什么名字？","以下哪项道具与类别或等级描述不符？","蘑菇神社附近的元泰不卖哪种面？","以下哪名NPC没有站在昭和村影院前？")
+    answers = new Array(new Array("狸猫柴火","独角狮硬角","红色砖头"),new Array("艾琳","妮妮","莎伦"),new Array("章鱼串","日本炒面","天妇罗"),new Array("流氓A的徽章","	流氓B的内衣","流氓C的项链"),new Array("冻冻鱼","团扇","苍蝇拍"),new Array("智美","嘉美","由美"),new Array("云狐牙齿","幽灵花篮","云狐尾巴"),new Array("天球","蓝蘑菇王","姬神"),new Array("木精灵枪 - 战士专用武器","橡皮榔头 - 单手剑","枫树杖 - 51级可装备"),new Array("日式拉面(猪排)	","日式拉面(海鲜)","蘑菇味噌拉面"),new Array("绘里香","黑泽","	阿利博士"));
     correctAnswer = new Array(1,1,0,1,2,2,2,0,0,2,2);
     action(1, 0, 0);
 }
@@ -46,7 +46,7 @@ function action(mode, type, selection) {
             status--;
         if (status == 0 && mode == 1) {
             if (cm.isQuestStarted(8012) && !cm.haveItem(4031064)){ //quest in progress
-                cm.sendYesNo("Did you get them all? Are you going to try to answer all of my questions?");
+                cm.sendYesNo("找来炸鸡了吗？是不是准备好回答问题了？");
             }
             else { //quest not started or already completed
                 //cm.sendOk("Meeeoooowww!");//lol what's this?
@@ -57,33 +57,33 @@ function action(mode, type, selection) {
             var hasChicken = true;
             if (!cm.haveItem(2020001,300)) hasChicken=false;
             if (!hasChicken) {
-                cm.sendOk("What? No! 300! THREE. HUNDRED. No less. Hand over more if you want, but I need at least 300. Not all of us can be as big and as fed as you...");
+                cm.sendOk("什么？没门！300只，三，百，只。少一只也不行。想多给也没问题，但至少要有300只。我们可不像你，吃那么一点就能长到这么魁梧...");
                 cm.dispose();
             }
             else {
                 cm.gainItem(2020001, -300)
-                cm.sendNext("Good job! Now hold on a sec... Hey look! I got some food here! Help yourselves. Okay, now it's time for me to ask you some questions. I'm sure you're aware of this, but remember, if you're wrong, it's over. It's all or nothing!");
+                cm.sendNext("嗯，干得不错。先等等...瞧啊！这里有吃的！您请自便...好吧好吧，现在我会问你一些问题。你知道的吧？记好了，如果你答错了一题，炸鸡和珠子就都没啦。要么赢，要么走人！");
             }
         }
         else if (status == 7 && mode == 1) { //2-6 are the questions
             if (selection != correctAnswer.pop()){
-                cm.sendNext("Hmmm...all humans make mistakes anyway! If you want to take another crack at it, then bring me 300 Fried Chicken.")
+                cm.sendNext("嗯...只要是人类，就都会犯错的。如果想重新来过，就带300只炸鸡来找我。")
                 cm.dispose();
             }
             else {
-                cm.sendNext("Dang, you answered all the questions right. I may not like humans in general, but I HATE breaking a promise, so, as promised, here's the Orange Marble.")
+                cm.sendNext("当~你答对了所有问题。正常来说我是不怎么喜欢人类的，但我更讨厌违背承诺。所以就像约好的那样，雨珠子给你。")
             }
         }
         else if (status == 8 && mode == 1) { //gain marble
             cm.gainItem(4031064, 1);
-            cm.sendOk("Our business is concluded, thank you very much! You can leave now!");
+            cm.sendOk("我们的生意做成了，非常感谢你。你可以走了！");
             cm.dispose();
         }
         else if (status >= 2 && status <= 6 && mode == 1) {//questions
             var cont = true;
             if (status > 2) {
                 if (selection != correctAnswer.pop()){
-                    cm.sendNext("Hmmm...all humans make mistakes anyway! If you want to take another crack at it, then bring me 300 Fried Chicken.")
+                    cm.sendNext("嗯...只要是人类，就都会犯错的。如果想重新来过，就带300只炸鸡来找我。")
                     cm.dispose();
                     cont = false;
                 }
@@ -104,7 +104,7 @@ function action(mode, type, selection) {
                 }
                 var question = questions.pop();
                 var answer = answers.pop();
-                var prompt = "Question no." + (status - 1) + ": " + question;
+                var prompt = "第 " + (status - 1) + " 个问题：" + question;
                 for (var i = 0; i < answer.length; i++)
                     prompt += "\r\n#b#L" + i + "#" + answer[i] + "#l#k";
                 cm.sendSimple(prompt);

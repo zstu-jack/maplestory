@@ -61,33 +61,33 @@ function action(mode, type, selection) {
             status--;
 
         if(status == 0) {
-            options = ["I want to make a ring.", "I want to discard the ring box I have."];
-            cm.sendSimple("I'm #p9201000#, the #bengagement ring maker#k. How can I help you?\r\n\r\n#b" + generateSelectionMenu(options));
+            options = ["我想制作订婚戒指。", "我想销毁我的戒指盒。"];
+            cm.sendSimple("我是#p9201000#，是位#b婚戒匠人#k。有什么能帮助您的？\r\n\r\n#b" + generateSelectionMenu(options));
         } else if(status == 1) {
             if(selection == 0) {
                 if(!cm.isQuestCompleted(100400)) {
                     if(!cm.isQuestStarted(100400)) {
                         state = 0;
-                        cm.sendNext("So you want to make a engagement ring, huh? Very well, I can provide one after you receive #rblessings#k from your #b#p9201003##k.");
+                        cm.sendNext("想制作订婚戒指吗？那么你需要先从#b#p9201003##k那里获得#r祝福#k，我才会为你制作。");
                     } else {
-                        cm.sendOk("Take the blessings from your #b#p9201003##k before trying to craft an engagement ring. They must be waiting for you at home, beyond #rHenesys hunting grounds#k.");
+                        cm.sendOk("要先从#b#p9201003##k那里获得祝福，我才会为你制作订婚戒指。他们应该就在家里等你，去#r射手训练场#k附近找他们吧。");
                         cm.dispose();
                     }
                 } else {
                     if(hasEngagementBox(cm.getPlayer())) {
-                        cm.sendOk("Sorry, you already have an engagement box. I cannot provide you more than one box per time.");
+                        cm.sendOk("抱歉，你已经有订婚戒指盒了。每人只能持有一只订婚戒指盒。");
                         cm.dispose();
                         return;
                     }
                     if(cm.getPlayer().getGender() != 0) {
-                        cm.sendOk("Sorry, but the ring box is currently available only for males.");
+                        cm.sendOk("抱歉，订婚戒指盒仅供男方求婚时使用。");
                         cm.dispose();
                         return;
                     }
 
                     state = 1;
-                    options = ["Moonstone","Star Gem","Golden Heart", "Silver Swan"];
-                    var selStr = "So, what kind of engagement ring you want me to craft?\r\n\r\n#b" + generateSelectionMenu(options);
+                    options = ["月岩", "星岩", "金心相印", "夙世银缘"];
+                    var selStr = "所以,你想定制什么样子的订婚戒指呢？\r\n\r\n#b" + generateSelectionMenu(options);
                     cm.sendSimple(selStr);
                 }
             } else {
@@ -96,16 +96,16 @@ function action(mode, type, selection) {
                         cm.removeAll(i);
                     }
                     
-                    cm.sendOk("Your ring box has been discarded.");
+                    cm.sendOk("你的订婚戒指盒已经被成功销毁。");
                 } else {
-                    cm.sendOk("You have no ring box to discard.");
+                    cm.sendOk("你没有可供销毁的订婚戒指盒。");
                 }
                 
                 cm.dispose();
             }
         } else if(status == 2) {
             if(state == 0) {
-                cm.sendOk("Where do they live, you ask? My, it goes way back... you see, I'm a friend of theirs, and I was the one who crafted and personally delivered their engagement ring. They live beyond #rHenesys Hunting Grounds#k, I'm sure you know where it is.");
+                cm.sendOk("他们住在哪里~嗯~这就要从很久之前开始说起了。你知道的，我们是老朋友了，他们的订婚戒指也是我制作的。他们住在#r射手训练场#k附近，我相信具体的位置你很容易就能找到。");
                 cm.startQuest(100400);
                 cm.dispose();
             } else {
@@ -119,7 +119,7 @@ function action(mode, type, selection) {
                 matQty = matQtySet[selection];
                 cost = costSet[selection];
 
-                var prompt = "Then I'm going to craft you a #b#t" + item + "##k, is that right?";
+                var prompt = "那么我会为你制作#b#t" + item + "##k,你确定是这个款式,没错吧？";
                 prompt += " 那么，请确认你准备好了相应材料，并且背包里有充足的空间。#b";
 
                 if (mats instanceof Array){
@@ -147,7 +147,7 @@ function action(mode, type, selection) {
             }
             else if (cm.getMeso() < cost * qty)
             {
-                cm.sendOk("I'm sorry but there's a fee for my services. Please bring me the right amount of mesos here before trying to forge a ring.");
+                cm.sendOk("抱歉，这可不是免费服务。请备好足够的金币用于制作订婚戒指。");
                 cm.dispose();
                 return;
             }
@@ -163,7 +163,7 @@ function action(mode, type, selection) {
             }
 
             if (!complete)
-                cm.sendOk("Hm, it seems you're lacking some ingredients for the engagement ring. Please provide them first, will you?");
+                cm.sendOk("嗯，你还没准备好制作订婚戒指的材料吧？先找齐材料交给我，好吗？");
             else {
                 if (mats instanceof Array) {
                     for (var i = 0; i < mats.length; i++){
@@ -177,7 +177,7 @@ function action(mode, type, selection) {
                     cm.gainMeso(-cost * qty);
 
                 cm.gainItem(recvItem, recvQty);
-                cm.sendOk("All done, the engagement ring came out just right. I wish you a happy engagement.");
+                cm.sendOk("制作结束，一枚新制成的订婚戒指。祝你求婚成功。");
             }
             cm.dispose();
         }
