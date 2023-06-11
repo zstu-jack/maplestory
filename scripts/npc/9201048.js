@@ -49,7 +49,7 @@ function action(mode, type, selection) {
                 if (status == 0) {
                         em = cm.getEventManager("AmoriaPQ");
                         if(em == null) {
-                                cm.sendOk("The Amoria 组队任务遇到了一个错误。");
+                                cm.sendOk("婚礼村组队任务发生了一个错误。");
                                 cm.dispose();
                                 return;
                         } else if(cm.isUsingOldPqNpcStyle()) {
@@ -57,7 +57,7 @@ function action(mode, type, selection) {
                                 return;
                         }
                     
-                        cm.sendSimple("#e#b<组队任务：婚礼村的挑战>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nIf you're brave enough to attempt the Amorian Challenge, join with others like you and let your #bparty leader#k talk to me. If a party filled with whole married couples register to the challenge, better prizes awaits there.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
+                        cm.sendSimple("#e#b<组队任务：婚礼村挑战>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n你是否足够勇敢,来这里一试便知.想要参加婚礼村挑战的话,需要6位队员组成队伍后,让队长与我对话.如果组队成员全部#r已婚#k的话,会得到更好的奖励.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
                 } else if (status == 1) {
                         if (selection == 0) {
                                 if (cm.getParty() == null) {
@@ -84,7 +84,7 @@ function action(mode, type, selection) {
                                 cm.sendOk("现在组队搜索状态为: #b" + (psState ? "启用" : "禁用") + "#k。需要更改时请与我对话。");
                                 cm.dispose();
                         } else {
-                                cm.sendOk("#e#b<组队任务：婚礼村的挑战>#k#n\r\nI am Amos, hoster of the well-round famed Amorian Challenge. The instance consist of many team puzzles, where cooperation is the fundamental key for progress. Team up with other players to attempt for the bonus stage, where many goodies can be obtained at the end of the instance. If an all-couple party is formed, they can get even better prizes on the extra bonus stage.");
+                                cm.sendOk("#e#b<组队任务：婚礼村的挑战>#k#n\r\n我是亚莫斯,有名的婚礼村挑战就是由我举办的.这个组队任务包含了许多需要团队协作才能解决的问题,因此在活动中,合作是通关的基础.与其他希望获得奖励的玩家一起组队挑战吧,这会是一场奖励丰厚的冒险.如果组队成员全部已婚,在任务结束时会获得额外奖励.");
                                 cm.dispose();
                         }
                 }

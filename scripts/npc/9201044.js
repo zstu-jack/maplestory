@@ -152,16 +152,16 @@ function action(mode, type, selection) {
                 var eim = cm.getPlayer().getEventInstance();
                 
                 if(eim.getProperty(stage.toString() + "stageclear") != null) {
-                        cm.sendNext("The portal is already open, advance for the trials that awaits you there.");
+                        cm.sendNext("传送口已经开启,去迎接你们的挑战吧.");
                 }
                 else {
                         if (eim.isEventLeader(cm.getPlayer())) {
                                 var state = eim.getIntProperty("statusStg" + stage);
 
                                 if(state == -1) {           // preamble
-                                        if(stage == 1) cm.sendOk("Hi. Welcome to the #bstage " + stage + "#k of the Amorian Challenge. In this stage, talk to #p9201047#, he will pass to you further details of the mission. After shattering the Magik Mirror down there, return the shard to #p9201047# and come here to gain access to the next stage.");
-                                        else if(stage == 2) cm.sendOk("Hi. Welcome to the #bstage " + stage + "#k of the Amorian Challenge. In this stage, let 5 of your party members climb up the platforms in such a way to try for a combination to unlock the portal to the next level. When you feel ready, talk to me and I'll let you know the situation. However, be prepared, as in the case the portal does not get unlocked after a few tries, monsters will spawn.");
-                                        else if(stage == 3) cm.sendOk("Hi. Welcome to the #bstage " + stage + "#k of the Amorian Challenge. In this stage, let 5 of your party members climb up the platforms, one on each, in such a way to try for a combination to unlock the portal to the next level. When you feel ready, talk to me and I'll let you know the situation. Take hint: upon failing, count the number of slimes appearing on the scene, that will tell how many of you had their position right.");
+                                        if(stage == 1) cm.sendOk("欢迎来到#b婚礼村挑战第" + stage + "关卡#k.在这个关卡,你需要和#p9201047#交谈,他会为你们解答任务的更多细节.击碎魔镜后,将碎片交给#p9201047#,然后进入下一阶段.");
+                                        else if(stage == 2) cm.sendOk("欢迎来到#b婚礼村挑战第" + stage + "关卡#k.在这个关卡,欢迎来到#b婚礼村挑战第" + stage + "关卡#k.在这个关卡,让你的5名队员站在台子上,尝试各种组合,从而开启通往下一关的传送门.等你们准备好了就告诉我,我就会告诉你们组合是否正确.但要做好准备,如果多次尝试后没有成功,就会出现怪物.");
+                                        else if(stage == 3) cm.sendOk("欢迎来到#b婚礼村挑战第" + stage + "关卡#k.在这个关卡,让你的5名队员站在台子上,尝试各种组合,从而开启通往下一关的传送门.等你们准备好了就告诉我,我就会告诉你们组合是否正确.给你们一个小提示,数一数场上出现的水灵,它会提示你们所站立的位置中有多少是正确的.");
 
                                         var st = (autopass) ? 2 : 0;
                                         eim.setProperty("statusStg" + stage, st);
@@ -179,7 +179,7 @@ function action(mode, type, selection) {
                                                 if(eim.getIntProperty("statusStg" + stage) == 1) {
                                                     clearStage(stage, eim, curMap);
                                                 } else {
-                                                    cm.sendOk("Talk with #p9201047# for more info on this stage.");
+                                                    cm.sendOk("想了解更多信息的话,去问问#p9201047#吧.");
                                                 }
                                         } else if(stage == 2 || stage == 3) {
                                                 if(map.countMonsters() == 0) {
@@ -249,12 +249,12 @@ function action(mode, type, selection) {
                                                                     eim.setIntProperty("missCount", miss);
 
                                                                     if(guessedRight == 6) { //6 unused slots on this stage
-                                                                        cm.sendNext("All ropes weigh differently. Think your next course of action, then try again.");
-                                                                        cm.mapMessage(5, "Amos: Hmm... All ropes weigh differently.");
+                                                                        cm.sendNext("所有的绳子上重量都不对.想想接下来该尝试哪种组合吧.");
+                                                                        cm.mapMessage(5, "亚莫斯: 所有的绳子重量都不对.");
                                                                     }
                                                                     else {
-                                                                        cm.sendNext("One rope weigh the same. Think your next course of action, then try again.");
-                                                                        cm.mapMessage(5, "Amos: Hmm... One rope weigh the same.");
+                                                                        cm.sendNext("有的绳子重量正确了.想想接下来该尝试哪种组合吧.");
+                                                                        cm.mapMessage(5, "亚莫斯: 有的绳子重量正确了.");
                                                                     }
                                                                 } else {
                                                                     spawnMobs(playersRight);
@@ -262,8 +262,8 @@ function action(mode, type, selection) {
                                                                     if(stage == 2) {
                                                                         eim.setProperty("stage2combo", "");
 
-                                                                        cm.sendNext("You have failed to discover the right combination, now it shall be reset. Start over again!");
-                                                                        cm.mapMessage(5, "Amos: You have failed to discover the right combination, now it shall be reset. Start over again!");
+                                                                        cm.sendNext("你们没能找到正确的组合,现在它们即将被重置了.从头再来吧.");
+                                                                        cm.mapMessage(5, "亚莫斯: 你们没能找到正确的组合,现在它们即将被重置了.从头再来吧.");
                                                                     }
                                                                 }
 
@@ -271,18 +271,18 @@ function action(mode, type, selection) {
                                                                 cm.dispose();
                                                             }
                                                         } else {
-                                                            if(stage == 2) cm.sendNext("It looks like you guys haven't found the ways of this trial yet. Think on an arrangement of 5 members on the platforms. Remember, exactly 5 are allowed to stand on the platforms, and if you move it may not count as an answer, so please keep that in mind. Keep going!");
-                                                            else cm.sendNext("It looks like you guys haven't found the ways of this trial yet. Think on an arrangement of party members on different platforms. Remember, exactly 5 are allowed to stand on the platforms, and if you move it may not count as an answer, so please keep that in mind. Keep going!");
+                                                            if(stage == 2) cm.sendNext("看来你们还没有找到通过这一关的方法.思考如何安排台子上的5名成员来过关吧.记住,只有5人可以站在台子上,不要随意走动,那样可能会使你们错过正确答案.这一点可要记好了.继续尝试吧.");
+                                                            else cm.sendNext("看来你们还没有找到通过这一关的方法.思考如何安排不同台子上的5名成员来过关吧.记住,只有5人可以站在台子上,不要随意走动,那样可能会使你们错过正确答案.这一点可要记好了.继续尝试吧.");
 
                                                             cm.dispose();
                                                         }
                                                 } else {
-                                                        cm.sendNext("Defeat all mobs before trying for a combination.");
+                                                        cm.sendNext("尝试下一个组合之前,先把场上的怪物都清理掉.");
                                                 }
                                         }
                                 }
                         } else {
-                                cm.sendNext("请让你的#b队长#k来跟我对话。");
+                                cm.sendNext("让你的#b队长#k来跟我对话。");
                         }
                 }
                 

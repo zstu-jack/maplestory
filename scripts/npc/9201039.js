@@ -39,16 +39,16 @@ function pushIfItemExists(array, itemid) {
 
 function start() {
     if (cm.isQuestCompleted(8860) && !cm.haveItem(4031528)) {
-        cm.sendNext("I've already done your hair once as a trade-for-services, sport. You'll have to snag an EXP Hair coupon from the Cash Shop if you want to change it again!");
+        cm.sendNext("我已经为你做过一次发型作为报酬了,如果你想要再次更换发型,需要从现金商店里购买一张#i4031528#.");
         cm.dispose();
     } else
-        cm.sendYesNo("Ready for an awesome hairdo? I think you are! Just say the word, and we'll get started!");
+        cm.sendYesNo("准备好做一个很棒的新发型了吗?我觉得你已经准备好了!我的剪刀也已经跃跃欲试了!");
 }
 
 function action(mode, type, selection) {
     if (mode < 1) {  // disposing issue with stylishs found thanks to Vcoc
         if (type == 7) {
-            cm.sendNext("Ok, I'll give you a minute.");
+            cm.sendNext("好的,我等你一会儿.");
         }
         
         cm.dispose();
@@ -67,10 +67,10 @@ function action(mode, type, selection) {
         if (cm.haveItem(4031528)) {
             cm.gainItem(4031528, -1);
             cm.setHair(hairnew[Math.floor(Math.random() * hairnew.length)]);
-            cm.sendNextPrev("Not bad, if I do say so myself! I knew those books I studied would come in handy...");
+            cm.sendNextPrev("以我的眼光而言,还不错!我就知道我看过的那些书会派上用场的...");
             cm.dispose();
         } else {
-            cm.sendNext("Hmmm...are you sure you have our designated free coupon? Sorry but no haircut without it.");
+            cm.sendNext("嗯...你确定你有我们店里的会员卡吗?如果没有的话可不能做发型哦.");
             cm.dispose();
         }
     }

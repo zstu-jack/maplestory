@@ -54,11 +54,11 @@ function action(mode, type, selection) {
 
         if (status == 0) {
         	if (cm.getMapId() == hv) {
-                tst = 1; //to shalom temple
-				cm.sendYesNo("The Shalom Temple is unlike any other place in Happyville, would you like to head to #bShalom Temple#k?"); //not GMS lol
+                tst = 1; //to shalom temple shalom是希伯来语的问候，所以作为平安和谐翻译了
+				cm.sendYesNo("和谐圣坛与幸福村其他的地方不一样，你想前往#b和谐圣坛#k吗？"); //not GMS lol
 			} else if (cm.getMapId() == smap) {
                 b2h = 1; //back to happyville
-				cm.sendYesNo("Would you like to head back to Happyville?");
+				cm.sendYesNo("你想要返回幸福村吗？");
 			}
 		} else if (status == 1) {
             if (tst == 1) {

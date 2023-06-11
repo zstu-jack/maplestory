@@ -49,7 +49,7 @@ function action(mode, type, selection) {
     
                 if(status == 0) {
                         if(cm.getMapId() != 670010200) {
-                            cm.sendYesNo("So, are you going to leave this place?");
+                            cm.sendYesNo("那么,你们想要现在退出吗?");
                         } else {
                             if(cm.isEventLeader()) {
                                 var eim = cm.getEventInstance();
@@ -59,7 +59,7 @@ function action(mode, type, selection) {
                                     cm.gainItem(4031595, -1);
                                     eim.setIntProperty("statusStg" + stage, 1);
 
-                                    cm.sendOk("You retrieved the #t4031595#, splendid! You may report to Amos about your success on this task.");
+                                    cm.sendOk("干得好,你们获得了#t4031595#!你们成功地完成了任务,去找亚莫斯汇报吧.");
                                 } else if(st < 1 && cm.getMap().countMonsters() == 0) {
                                     eim.setIntProperty("statusStg" + stage, 1);
                                     
@@ -69,13 +69,13 @@ function action(mode, type, selection) {
                                     var mobObj = Packages.server.life.MapleLifeFactory.getMonster(9400518);
                                     mapObj.spawnMonsterOnGroundBelow(mobObj, new Packages.java.awt.Point(-245, 810));
                                     
-                                    cm.sendOk("The fierry appeared! Defeat it to get the #b#t4031596##k!");
+                                    cm.sendOk("怪物出现了!击败它们,找到#b#t4031596##k!");
                                 } else {
-                                    if(st < 1) cm.sendOk("Your task is to recover a shard of the Magik Mirror. To do so, you will need a #b#t4031596##k, that drops on a fierry that appears when all other mobs are killed. To access the rooms the mobs are, pick the portal corresponding to your gender and kill all mobs there. Ladies take the left side, gentlemen the right side.");
-                                    else cm.sendOk("Your task is to recover a shard of the Magik Mirror. Defeat the fierry to get the #b#t4031596##k.");
+                                    if(st < 1) cm.sendOk("你们的任务是寻回#b#t4031595##k.为了完成这个任务,你们需要一把#b#t4031596##k,它会从这附近出现的怪物身上掉落.想要到达怪物所在的房间,需要根据性别进入对应通道,女士请通过左侧的通道进入,而男士则需通过右侧的通道进入.");
+                                    else cm.sendOk("你们的任务是寻回#b#t4031595##k.为此首先需要击败怪物,获得#b#t4031596##k.");
                                 }
                             } else {
-                                cm.sendOk("Your task is to recover a shard of the Magik Mirror. To do so, you will need a #b#t4031596##k, that drops on a fierry that appears when all other mobs are killed. To access the rooms the mobs are, pick the portal corresponding to your gender and kill all mobs there. Ladies take the left side, gentlemen the right side. #bYour leader#k must bring the #b#t4031595##k to have my pass.");
+                                cm.sendOk("你们的任务是寻回#b#t4031595##k.为了完成这个任务,你们需要一把#b#t4031596##k,它会从这附近出现的怪物身上掉落.想要到达怪物所在的房间,需要根据性别进入对应通道,女士请通过左侧的通道进入,而男士则需通过右侧的通道进入.之后请#b队长#k携带#b#t4031595##k与我对话,方可完成这一关的挑战.");
                             }
                             
                             cm.dispose();

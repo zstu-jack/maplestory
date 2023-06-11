@@ -46,14 +46,14 @@ function action(mode, type, selection) {
             status--;
         if (status == 0 && mode == 1) {
             if (cm.isQuestCompleted(4911)) {
-                cm.sendNext("Good job! You've solved all of my questions about NLC. Enjoy your trip!");
+                cm.sendNext("干得漂亮！你已经正确回答了我所有有关新叶城的问题。祝你旅途愉快！");
                 cm.dispose();
             } else if (cm.isQuestCompleted(4900) || cm.isQuestStarted(4900)) {  // thanks imbee for pointing out the quiz leak
-                cm.sendNext("Hey, pay attention, I'm trying to quiz you on another question, fam!");
+                cm.sendNext("嘿，注意了亲爱的，我要问下一个问题了！");
                 cm.dispose();
             } else {
-                var selStr = "What up! Name's Icebyrd Slimm, mayor of New Leaf City! Happy to see you accepted my invite. So, what can I do for you?#b"
-                var info = new Array("What is this place?","Who is Professor Foxwit?","What's a Foxwit Door?","Where are the MesoGears?","What is the Krakian Jungle?","What's a Gear Portal?","What do the street signs mean?","What's the deal with Jack Masque?","Lita Lawless looks like a tough cookie, what's her story?","When will new boroughs open up in the city?","I want to take the quiz!");
+                var selStr = "你好！我是艾斯拜德·斯利姆，新叶城的市长。感谢你受邀前来游览新叶城。那么，我能为您做些什么呢？#b"
+                var info = new Array("这里是什么地方?","狐智教授是谁?","什么是狐智门?","内部齿轮装置在哪里?","什么是克兰卡丛林?","什么是齿轮入口?","这些路标代表什么?","蒙面杰克是谁?","莉塔·罗莉丝看起来像块硬骨头,她的过去是怎样的?","这座城市中的新地区何时会开放?","我想参加新叶城知识问答!");
                 for (var i = 0; i < info.length; i++)
                     selStr += "\r\n#L" + i + "# " + info[i] + "#l";
                 cm.sendSimple(selStr);

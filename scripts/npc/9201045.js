@@ -74,7 +74,7 @@ function action(mode, type, selection) {
                     
                 var eim = cm.getPlayer().getEventInstance();
                 if(eim.getProperty(stage.toString() + "stageclear") != null) {
-                        if(stage < 5) cm.sendNext("The portal is already open, advance for the trials that awaits you there.");
+                        if(stage < 5) cm.sendNext("传送口已经开启,去迎接你们的挑战吧.");
                         else if(stage == 5) eim.warpEventTeamToMapSpawnPoint(670010700, 0);
                         else {
                                 if(cm.isEventLeader()) {
@@ -88,7 +88,7 @@ function action(mode, type, selection) {
                                                 eim.warpEventTeamToMapSpawnPoint(670010750, 1);
                                         }
                                 } else {
-                                        cm.sendNext("Wait for the leader's command to start the bonus phase.");
+                                        cm.sendNext("等待你们的队长开启奖励关卡.");
                                 }
                         }
                 }
@@ -98,8 +98,8 @@ function action(mode, type, selection) {
                                         var state = eim.getIntProperty("statusStg" + stage);
 
                                         if(state == -1) {           // preamble
-                                                if(stage == 4) cm.sendOk("Hi. Welcome to the #bstage " + stage + "#k of the Amorian Challenge. In this stage, collect me #b50 #t4031597##k from the mobs around here.");
-                                                else if(stage == 5) cm.sendOk("Hi. Welcome to the #bstage " + stage + "#k of the Amorian Challenge. That was quite the run to reach here, eh? Well, that was your task this stage here, anyway: survival! Firstly, have anyone alive gathered here before challenging the boss.");
+                                                if(stage == 4) cm.sendOk("欢迎来到#b婚礼村挑战第" + stage + "关卡#k.在这个关卡,你需要从这里的怪物身上收集#b50个 #t4031597##k.");
+                                                else if(stage == 5) cm.sendOk("欢迎来到#b婚礼村挑战第" + stage + "关卡#k.来到这里不容易吧?那么在这一关,你需要做的很简单,就是活下来.首先要存活下来,才能挑战这一关的Boss.");
 
                                                 var st = (debug) ? 2 : 0;
                                                 eim.setProperty("statusStg" + stage, st);
@@ -115,11 +115,11 @@ function action(mode, type, selection) {
                                                                 eim.restartEventTimer(4 * 60 * 1000);
                                                             }
 
-                                                            cm.sendNext("Well done! Let me open the gate for you now.");
-                                                            cm.mapMessage(5, "Amos: The time runs short now. Your objective is to open the gates and gather together on the other side of the next map. Good luck!");
+                                                            cm.sendNext("干得好!我现在就帮你们开启传送门.");
+                                                            cm.mapMessage(5, "亚莫斯: 时间不多了.你们的目标是开启大门,在下一张地图的另一侧汇合,祝你们好运!");
                                                             clearStage(stage, eim, curMap);
                                                         } else {
-                                                            cm.sendNext("Hey, didn't you pay heed? I demand #r50 #t4031597##k for the success of this trial.");
+                                                            cm.sendNext("没听清吗?我需要#r50个 #t4031597##k,这样才能成功通过这一关.");
                                                         }
 
                                                 } else if(stage == 5) {
@@ -151,20 +151,20 @@ function action(mode, type, selection) {
                                                                         eim.restartEventTimer(tl - (4 * 60 * 1000 - tr));
                                                                     }
 
-                                                                    cm.sendNext("Okay, your team is already gathered. Talk to me when you guys feel ready to fight the #rGeist Balrog#k.");
+                                                                    cm.sendNext("好了,队伍已经集结完毕.如果你们准备好与#r感性蝙蝠怪#k战斗了,就和我对话.");
 
-                                                                    cm.mapMessage(5, "Amos: Now only the boss fight remains! Once inside, talk to me only if you want to join the boss fight, you will be transported to action immediately.");
+                                                                    cm.mapMessage(5, "亚莫斯: 现在只剩下与Boss战斗的环节了!不过要注意,一旦进入场地后将立即开始战斗.");
                                                                     clearStage(stage, eim, curMap);
                                                                 } else {
-                                                                    cm.sendNext("You guys reached here by teleporting, eh? I can tell it. This is a shame, all gates needs to be open to fulfill this stage. If you still have the time, backtrack your steps and take down those gates.");
+                                                                    cm.sendNext("你们是传送到这儿来的吗,嗯?我一眼就看出来了.这样可不行,必须把所有大门都打开才能完成这一阶段.回去开启所有大门后再来找我对话.");
                                                                 }
                                                         } else {
-                                                                cm.sendNext("Your team has not gathered nearby yet. Give them some time to reach here.");
+                                                                cm.sendNext("你的队伍还没有集结完毕,给他们一点时间.");
                                                         }
                                                 }
                                         }
                                 } else {
-                                        cm.sendNext("请让你的#b队长#k来跟我对话。");
+                                        cm.sendNext("让你的#b队长#k来跟我对话。");
                                 }
                         } else {
                                 var area = cm.getMap().getArea(0);
@@ -172,21 +172,21 @@ function action(mode, type, selection) {
                                         if(cm.getPlayer().isAlive()) {
                                                 cm.warp(670010700, "st01");
                                         } else {
-                                                cm.sendNext("Oy stand back... You are already dead.");
+                                                cm.sendNext("稍微休息一下吧...你已经死了.");
                                         }
                                 } else {
                                         if(cm.isEventLeader()) {
                                                 if(cm.haveItem(4031594, 1)) {
                                                         cm.gainItem(4031594, -1);
-                                                        cm.sendNext("Congratulations! Your party defeated the Geist Balrog, thus #bcompleting the Amorian Challenge#k! Talk to me again to start the bonus stage.");
+                                                        cm.sendNext("恭喜!你们的队伍击败了感性蝙蝠怪,完成了#b婚礼村挑战#k!与我再次对话前往奖励关卡吧.");
 
                                                         clearStage(stage, eim, curMap);
                                                         eim.clearPQ();
                                                 } else {
-                                                        cm.sendNext("How is it? Are you going to retrieve me the #b#t4031594##k? That's your last trial, hold on!")
+                                                        cm.sendNext("怎么样?取回#b#t4031594##k了吗?这是你们最后的试炼,坚持一下!")
                                                 }
                                         } else {
-                                                cm.sendNext("请让你的#b队长#k来跟我对话。");
+                                                cm.sendNext("让你的#b队长#k来跟我对话。");
                                         }
                                 }
                         }

@@ -74,33 +74,33 @@ function action(mode, type, selection) {
                 advance = true;
     
                 if(status == 0) {
-                        cm.sendNext("Hi there, how is it going? Since you're passing by Amoria, have you heard about the instance my brother Amos is hosting? It is the #bAmorian Challenge#k, an instance for everyone above level 40.\r\n\r\nThere, you may find the #i4031543# #i4031544# #i4031545# #bWish Tickets#k that can be brought here to redeem prizes.");
+                        cm.sendNext("嗨,近来可好?既然你来婚礼村观光,那肯定听说过我好兄弟亚莫斯举办的活动了.就是#b婚礼村组队任务#k,40级以上的冒险家才能参加的活动.\r\n\r\n那么,如果你在活动中获得了#i4031543# #i4031544# #i4031545# #b三种希望票#k,就可以来我这里兑换奖品.");
                 } else if(status == 1) {
                         var listStr = "";
                         for(var i = 0; i < wishPrizes.length; i++) {
                                 listStr += "#b#L" + i + "#" + wishPrizesQty[i] + " #z" + wishPrizes[i] + "##k";
-                                listStr += " - " + wishPrizesCst[i] + " wish tickets";
+                                listStr += " - " + wishPrizesCst[i] + " 希望票";
                                 listStr += "#l\r\n";
                         }
                     
-                        cm.sendSimple("You currently have #b" + amntTicket + " #i" + slctTicket + "# #t" + slctTicket + "##k.\r\n\r\nPurchase a prize:\r\n\r\n" + listStr);
+                        cm.sendSimple("你当前拥有#b" + amntTicket + " #i" + slctTicket + "# #t" + slctTicket + "##k.\r\n\r\n你希望兑换的奖品是:\r\n\r\n" + listStr);
                 } else if(status == 2) {
                         sel = selection;
                         
                         if(amntTicket < wishPrizesCst[selection]) {
-                                cm.sendPrev("You will need #b" + wishPrizesCst[selection] + " #t" + slctTicket + "##k to purchase that! If you want this, come back another time when you have all the tickets at hand.");
+                                cm.sendPrev("你需要用#b" + wishPrizesCst[selection] + " #t" + slctTicket + "##k来兑换奖励!如果你仍想兑换奖励,请收集足够的希望票再来找我.");
                                 advance = false;
                         } else {
-                                cm.sendYesNo("You have selected #b" + wishPrizesQty[selection] + " #z" + wishPrizes[selection] + "##k, that will require #b" + wishPrizesCst[selection] + " #t" + slctTicket + "##k. Will you purchase it?");
+                                cm.sendYesNo("你选择#b" + wishPrizesQty[selection] + " #z" + wishPrizes[selection] + "##k,这需要用#b" + wishPrizesCst[selection] + " #t" + slctTicket + "##k来兑换.你想要兑换吗?");
                         }
                 } else {
                         if(cm.canHold(wishPrizes[sel], wishPrizesQty[sel])) {
                                 cm.gainItem(wishPrizes[sel], wishPrizesQty[sel]);
                                 cm.gainItem(slctTicket, -wishPrizesCst[sel]);
                                 
-                                cm.sendOk("There you go, have a good day!");
+                                cm.sendOk("给,祝你今天过得开心!");
                         } else {
-                                cm.sendOk("Please have a slot available on your inventory before claiming the item.");
+                                cm.sendOk("领取奖励前,请空出至少一个包裹位置.");
                         }
                     
                         cm.dispose();
