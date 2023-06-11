@@ -54,7 +54,7 @@ function action(mode, type, selection) {
                     cm.warp(680000000);
                     cm.sendOk("你刚刚收到了一份礼物.去婚礼村找#b#p9201014##k吧,她知道如何开启这个玛瑙箱子.");
                 } else {
-                    cm.sendOk("请空出一格其它栏来存放玛瑙箱子.");
+                    cm.sendOk("请空出一格其他栏来存放玛瑙箱子.");
                     cm.dispose();
                     return;
                 }

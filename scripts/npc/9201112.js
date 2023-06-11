@@ -20,7 +20,7 @@ function action(mode, type, selection) {
         }
         var eim = cm.getEventInstance();
         if (eim == null) {
-            cm.sendNext("The event isn't started...");
+            cm.sendNext("ÈÎÎñÉÐÎ´¿ªÆô...");
             cm.dispose();
             return;
         }

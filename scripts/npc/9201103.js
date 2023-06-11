@@ -4,7 +4,7 @@
  */
  
 function start() {
-    if(cm.getLevel() >= 100) cm.sendOk("Expeditions are frequently being held inside the Crimsonwood Keep by adventurers like you, where many people from many parties cooperate together, solving puzzles therein and taking down strong enemies, being able to get many prizes in the process. To find more info about this, go ahead inside the keep at the top-right room there.");
-    else cm.sendOk("Inside the Keep, expeditions can be formed to attempt the Crimsonwood Keep PQ, which requires maplers from level 100 or more. It seems you are not suitable for attempting it yet, train some more if you want to attempt it.");
+    if(cm.getLevel() >= 100) cm.sendOk("像你这样的冒险家们应该在绯红要塞中探险。各种各样的人们在城堡里团结协作，解决难题，击倒强大的敌人，并最终获得奖励，凯旋而归。想要了解更多信息，就进入右上角的房间吧。");
+    else cm.sendOk("要塞中，100级以上的冒险家可以组成队伍执行绯红要塞组队任务。你看起来还不够资格，去多多磨炼自己之后再来这里吧。");
     cm.dispose();
 }

@@ -28,9 +28,9 @@
 
 var status;
 var map = 100000201;
-var job = "Bowman";
+var job = "弓箭手";
 var jobType = 3;
-var no = "Come back to me if you decided to be a #b"+job+"#k.";
+var no = "如果你决心想要成为#b"+job+"#k的话，再来找我吧。";
 
 function start() {
     status = -1;
@@ -55,13 +55,13 @@ function action(mode, type, selection) {
         if(status == 0) {
             if (cm.getJob() == "BEGINNER") {
                 if (cm.getLevel() >= 10 && cm.canGetFirstJob(jobType)) {
-                    cm.sendYesNo("Hey #h #, I can send you to #b#m"+map+"##k if you want to be a #b"+job+"#k. Do you want to go now?");
+                    cm.sendYesNo("嘿，#h0#。如果你真的想成为一位#b"+job+"#k的话，我可以把你传送到#b#m"+map+"##k去，想要现在出发吗？");
                 } else {
-                    cm.sendOk("If you want to be a #b"+job+"#k, train yourself further until you reach #blevel 10, " + cm.getFirstJobStatRequirement(jobType) + "#k.");
+                    cm.sendOk("如果你想要成为一名#b"+job+"#k，你必须满足" + cm.getFirstJobStatRequirement(jobType) + "#k。");
                     cm.dispose();
                 }
             } else {
-                cm.sendOk("You're much stronger now. Keep training!");
+                cm.sendOk("你还不够强大！多多训练吧！");
                 cm.dispose();
             }
         } else if (status == 1) {

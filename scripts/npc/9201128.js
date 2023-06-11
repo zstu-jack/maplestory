@@ -17,13 +17,13 @@ function action(mode, type, selection) {
     if (status == 0) {
         if (cm.isQuestStarted(quest)) {
             if (cm.haveItem(questItem)) {
-                cm.sendYesNo("Would you like to move to #b#m" + map + "##k?");
+                cm.sendYesNo("你想要现在移动到#b#m" + map + "##k吗？");
             } else {
-                cm.sendOk("The entrance is blocked by a force that can only be lifted by those holding an emblem.");
+                cm.sendOk("入口被一股神秘的力量封锁着，只有使用来自埃尔帕姆的力量才能解开。");
                 cm.dispose();
             }
         } else {
-            cm.sendOk("The entrance is blocked by a strange force.");
+            cm.sendOk("入口被神秘的力量封锁着。");
             cm.dispose();
         }
     } else {

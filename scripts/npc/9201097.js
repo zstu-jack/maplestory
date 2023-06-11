@@ -76,7 +76,7 @@ function start() {
 
 function action(mode, type, selection) {
     if (mode <= 0) {
-	cm.sendOk("Hmmm...it shouldn't be a bad deal for you. Come see me at the right time and you may get a much better item to be offered. Anyway, let me know if you have a change of mind.");
+	cm.sendOk("嗯……这笔交易对你来说可不算吃亏。找个合适的机会来我这里看看，你可能会买到更好的东西。总之，如果你想买东西了就来找我吧。");
 	cm.dispose();
 	return;
     }
@@ -84,14 +84,14 @@ function action(mode, type, selection) {
     status++;
     if (status == 0) { // first interaction with NPC
         if(cm.getQuestStatus(8225) != 2) {
-            cm.sendNext("Hey, I'm not a bandit, ok?");
+            cm.sendNext("喂，我可不是强盗啊。");
             cm.dispose();
             return;
         }
         
-	cm.sendNext("Hey, got a little bit of time? Well, my job is to collect items here and sell them elsewhere, but these days the monsters have become much more hostile so it have been difficult to get good items... What do you think? Do you want to do some business with me?");
+	cm.sendNext("嘿，有空吗？我负责在这边收集物品倒卖，但这些日子里怪物们变得越来越难缠，都收不到什么好货了……你呢？你身上有什么好东西可以交易吗？");
     } else if (status == 1) {
-	cm.sendYesNo("The deal is simple. You get me something I need, I get you something you need. The problem is, I deal with a whole bunch of people, so the items I have to offer may change every time you see me. What do you think? Still want to do it?");
+	cm.sendYesNo("交易很简单。你拿来我需要的东西，我们就各取所需。不过我得事先说明，我每天都要和许多人打交道，所以用来交易的货物也会随之改变。你觉得如何，还要交易吗？");
     } else if (status == 2) {
 	var eQuestChoice = makeChoices(eQuestChoices);
 	cm.sendSimple(eQuestChoice);
@@ -102,31 +102,31 @@ function action(mode, type, selection) {
         if(selection < 4) qnt = 50;
         else qnt = 25;
         
-	cm.sendYesNo("Let's see, you want to trade your #b" + qnt +  " #t" + requiredItem + "##k with my stuff, right? Before trading make sure you have an empty slot available on your use or etc. inventory. Now, do you want to trade with me?");
+	cm.sendYesNo("我看看……你想用#b" + qnt + "个 #t" + requiredItem + "##k交换道具对不对？那么在交易之前，要确认自己包裹里有足够的空位可供交换。你想现在交易吗？");
     }else if (status == 4){
 	itemSet = (Math.floor(Math.random() * eQuestPrizes[lastSelection].length));
 	reward = eQuestPrizes[lastSelection];
 	prizeItem = reward[itemSet][0];
 	prizeQuantity = reward[itemSet][1];
 	if(!cm.haveItem(requiredItem,qnt)){
-	    cm.sendOk("Hmmm... are you sure you have #b" + qnt + " #t" + requiredItem + "##k? If so, then please check and see if your item inventory is full or not.");
+	    cm.sendOk("你确定包裹里有#b" + qnt + " #t" + requiredItem + "##k吗？不过也可能是你包裹满了，自己看看吧。");
 	} else if(prizeItem == 0) {
             cm.gainItem(requiredItem,-qnt);
             cm.gainMeso(prizeQuantity);
-            cm.sendOk("For your #b" + qnt + " #t"+requiredItem+"##k, here's #b" + prizeQuantity + " mesos#k. What do you think? Did you like the items I gave you in return? I plan on being here for awhile, so if you gather up more items, I'm always open for a trade...");
+            cm.sendOk("用你的#b" + qnt + "个 #t" + requiredItem + "##k，交换了#b" + prizeQuantity + " 金币#k。你觉得怎么样？这笔交易还挺合算的吧。我准备在这里呆一段时间，不管你拿来多少道具，我这边都可以交易...");
         } else if(!cm.canHold(prizeItem)){
-	    cm.sendOk("Your use and etc. inventory seems to be full. You need the free spaces to trade with me! Make room, and then find me.");
+	    cm.sendOk("你的包裹满了，没法完成交易。清理一下吧。");
 	} else {
 	    cm.gainItem(requiredItem,-qnt);
 	    cm.gainItem(prizeItem, prizeQuantity);
-	    cm.sendOk("For your #b" + qnt + " #t"+requiredItem+"##k, here's my #b"+prizeQuantity+" #t"+prizeItem+"##k. What do you think? Did you like the items I gave you in return? I plan on being here for awhile, so if you gather up more items, I'm always open for a trade...");
+	    cm.sendOk("用你的#b" + qnt + "个 #t" + requiredItem + "##k，交换了#b" + prizeQuantity + "个 #t" + prizeItem + "##k。你觉得怎么样？这笔交易还挺合算的吧。我准备在这里呆一段时间，不管你拿来多少道具，我这边都可以交易...");
 	}
 	cm.dispose();
     }
 }
 
 function makeChoices(a){
-    var result  = "Ok! First you need to choose the item that you'll trade with. The better the item, the more likely the chance that I'll give you something much nicer in return.\r\n";
+    var result  = "好！那么首先选择一下你要交易的东西吧。你拿来的东西越稀有，我提供的货物成色也就越好。\r\n";
     var qnty = [50, 25];
     
     for (var x = 0; x< a.length; x++){

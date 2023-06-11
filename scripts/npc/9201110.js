@@ -4,10 +4,10 @@
 function start() {
 	switch(cm.getPlayer().getMapId()) {
 		case 610030500:
-        		cm.sendOk("As every Thief knows, the best attack is the one you never see coming. So, to best illustrate this, you'll be in a chamber with platforms and ledges that you can only get to with Haste, as well as All-Seeing Eyes that your dagger or claw must close--permanently. After all the All-Seeing Eyes have been eliminated, get ti the Thief Statue and lay claim to the Primal Claw! Good luck!");
+        		cm.sendOk("每一位飞侠都深知，最巧妙的攻击永远来自最意想不到的方位。而飞侠专精房间很好地诠释了这一点，在这里，你需要在平台与横档之间闪转腾挪，快速抵达全视之眼所在处，用短刀或是拳套消灭它们。等到全视之眼尽数清除后，开启飞侠雕像，从中取得原初之爪。祝你好运。");
 			break;
 		case 610030000:
-			cm.sendOk("Once known as the 'Prince of Shadows', Grandmaster Ryo possessed supreme speed and power with short-ranged daggers and longer chain-like Claw. A part-time member of the Bosshunters, he was reowned for unparalleled ability to blend into the very night itself. His legend grew during a battle with Crimson Balrog, where he moved so swiftly that Balrog's attacks only caught air. Ryo also performed occasional 'retrievals' for those less fortunate than himself.");
+			cm.sendOk("亮大师一度被称为“影武者”，他能够活用短刀与链爪，作战时兼具速度与力量。偶尔参与远征队的经历却令他声名大噪，那无与伦比的隐蔽能力令人难以忘怀。他的传说在与绯红魔神的作战中达到了顶峰，这场战斗中，绯红之主啸吼着尝试攻击，然而落在旁人眼中却只是对着空气徒劳无功地挥拳而已。而对于那些陷入不幸的同门，亮也从来不吝伸出援手。");
 			break;
 		case 610030530:
 			if (cm.isAllReactorState(6108004, 1)) {
@@ -18,18 +18,18 @@ function start() {
                                 if ((stgStatus >> jobNiche) % 2 == 0) {
                                         if(cm.canHold(4001256, 1)) {
                                                 cm.gainItem(4001256, 1);
-                                                cm.sendOk("Good job.");
+                                                其他栏cm.sendOk("做得好。");
 
                                                 stgStatus += (1 << jobNiche);
                                                 eim.setIntProperty("glpq5_room", stgStatus);
                                         } else {
-                                                cm.sendOk("Make room on your ETC inventory first.");
+                                                cm.sendOk("需要先空出一格其他栏。");
                                         }
                                 } else {
-                                        cm.sendOk("The weapon inside this room has already been retrieved.");
+                                        cm.sendOk("这个房间中的武器已经被取走了。");
                                 }
 			} else {
-				cm.sendOk("Go now, destroy all of the watchful eyes with your mobility skills, fellow Thief. Report back to me when you are done.");
+				cm.sendOk("去吧，善用你伶俐的身手，摧毁所有全视之眼。");
 			}
 			break;
 	}

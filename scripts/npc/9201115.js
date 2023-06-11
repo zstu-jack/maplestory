@@ -7,13 +7,13 @@ function start() {
 function action(mode, type, selection) {
         var eim = cm.getEventInstance();
         if (eim != null && eim.getIntProperty("glpq6") == 3) {
-                cm.sendOk("... Well played. You overtook the Twisted Masters. Pass through that gate to receive your prizes.");
+                cm.sendOk("...做得好。你们的实力已经超越了堕落的宗师们。穿过那扇大门去领取奖励吧。");
                 cm.dispose();
                 return;
         }
         
         if (!cm.isEventLeader()) {
-                cm.sendNext("I wish for your leader to talk to me.");
+                cm.sendNext("请让你的队长来与我对话。");
                 cm.dispose();
                 return;
         }
@@ -27,12 +27,12 @@ function action(mode, type, selection) {
         if (eim != null) {
                 if (eim.getIntProperty("glpq6") == 0) {
                         if (status == 0) {
-                                cm.sendNext("Welcome to the Twisted Masters' Keep. I will be your host for this evening...");
+                                cm.sendNext("欢迎来到宗师们的会议大厅。今晚将由我来招待你们...");
                         } else if (status == 1) {
-                                cm.sendNext("Tonight, we have a feast of a squad of Maplers.. ahaha...");
+                                cm.sendNext("今晚，我们将会享用一整队冒险家...哈哈...");
                         } else if (status == 2) {
-                                cm.sendNext("Let our specially trained Master Guardians escort you!");
-                                cm.mapMessage(6, "Engarde! Master Guardians approach!");
+                                cm.sendNext("就让受过特训的宗师护卫会会你们吧！");
+                                cm.mapMessage(6, "小心了！宗师护卫接近了！");
                                 for (var i = 0; i < 10; i++) {
                                         var mob = eim.getMonster(9400594);
                                         cm.getMap().spawnMonsterOnGroundBelow(mob, new java.awt.Point(-1337 + (Math.random() * 1337), 276));
@@ -47,10 +47,10 @@ function action(mode, type, selection) {
                 } else if (eim.getIntProperty("glpq6") == 1) {
                         if (cm.getMap().countMonsters() == 0) {
                                 if (status == 0) {
-                                        cm.sendOk("Eh. What is this? You've defeated them?");
+                                        cm.sendOk("嗯。怎么回事？你们打败了他们吗？");
                                 } else if (status == 1) {
-                                        cm.sendNext("Well, no matter! The Twisted Masters will be glad to welcome you.");
-                                        cm.mapMessage(6, "Twisted Masters approach!");
+                                        cm.sendNext("哈，无所谓。堕落的宗师们欢迎你们的到来。");
+                                        cm.mapMessage(6, "堕落的宗师们接近了！");
 
                                         //Margana
                                         var mob = eim.getMonster(9400590);
@@ -72,13 +72,13 @@ function action(mode, type, selection) {
                                         cm.dispose();
                                 }
                         } else {
-                                cm.sendOk("Pay no attention to me. The Master Guardians will escort you!");
+                                cm.sendOk("不必在我身上白费功夫了，宗师护卫们会招待你的。");
                                 cm.dispose();
                         }
                 } else if (eim.getIntProperty("glpq6") == 2) {
                         if (cm.getMap().countMonsters() == 0) {
-                                cm.sendOk("WHAT? Ugh... this can't be happening.");
-                                cm.mapMessage(5, "The portal to the next stage has opened!");
+                                cm.sendOk("什么？啊...怎么会发生这种事情。");
+                                cm.mapMessage(5, "通向下一阶段的传送门已经开启。");
                                 eim.setIntProperty("glpq6", 3);
                                 
                                 eim.showClearEffect(true);
@@ -87,11 +87,11 @@ function action(mode, type, selection) {
                                 eim.clearPQ();
                                 cm.dispose();
                         } else {
-                                cm.sendOk("Pay no attention to me. The Twisted Masters will escort you!");
+                                cm.sendOk("不必在我身上白费功夫了，堕落的宗师们会招待你的。");
                                 cm.dispose();
                         }
                 } else {
-                        cm.sendOk("... Well played. You overtook the Twisted Masters. Pass through that gate to receive your prizes.");
+                        cm.sendOk("...做得好。你们的实力已经超越了堕落的宗师们。穿过那扇大门去领取奖励吧。");
                         cm.dispose();
                 }
         } else {

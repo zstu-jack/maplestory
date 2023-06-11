@@ -4,9 +4,9 @@
  */
  
 function start() {
-    if(cm.getMapId() == 610020000) cm.sendOk("O, brave adventurer. Just by reaching this spot, you are truly distinct among the masses, congratulations. However, #rpay heed#k: on the path ahead, which leads to the mighty fortress of #bCrimsonwood Keep#k, #rdeadly Menhirs#k are deployed as traps for those unaware of the dangers ahead. #rOne hit from it is enough to take you down#k, so beware. If you aim to reach the Keep, follow the trail ahead carefully.");
-    else if(cm.getMapId() == 610020003) cm.sendOk("You seem worthy now to receive a hint for what lies ahead. Once inside the main room of the Keep, make sure you remember the layout of the statue you see there. That's it.");
-    else if(cm.getMapId() == 610020004) cm.sendOk("You seem worthy now to receive a hint for what lies ahead. Devices known as Sigils are activated by detection when some skills of certain jobs are activated nearby, make sure your team is made whole for when the time comes. That's it.");
-    else cm.sendOk("So far your progress is splendid, good job. However, to make it to the Keep, you must face and accomplish this ordeal, carry on.");
+    if(cm.getMapId() == 610020000) cm.sendOk("勇敢的冒险家。一旦踏足这里，就足以证明你已经从凡人中脱颖而出了，祝贺你。然而#r要注意#k：前方通往#b绯红要塞#k的道路上设置了许多致命的陷阱，#r死亡石柱#k就是其中之一。被它#r撞到一下就会当场去世#k，所以请小心。如果你想要到达要塞，就得留心前人的足迹，慎重前行。");
+    else if(cm.getMapId() == 610020003) cm.sendOk("你似乎有必要获得一点提示，去了解前方等待你的是什么。一定要在进入城堡大厅的第一时间，记下在那里所见到的雕像顺序。");
+    else if(cm.getMapId() == 610020004) cm.sendOk("你似乎有必要获得一点提示，去了解前方等待你的是什么。当特定职业在被称为Sigils的机关前使用特定技能时，它们就会被激活。在激活它们之前，请确保你的队员全部在场。");
+    else cm.sendOk("成功抵达这里，做的不错。不过想要抵达城堡的话，你必须直面更加严酷的考验，加油。");
     cm.dispose();
 }

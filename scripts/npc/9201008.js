@@ -256,7 +256,7 @@ function action(mode, type, selection) {
                                 var expirationTime = cserv.getRelativeWeddingTicketExpireTime(resStatus);
                                 cm.gainItem(weddingSendTicket, 3, false, true, expirationTime);
                             } else {
-                                cm.sendOk("请空出至少一格其它栏以获取请柬.");
+                                cm.sendOk("请空出至少一格其他栏以获取请柬.");
                             }
                         } else {
                             cm.sendOk("您目前尚未预订场地,无法制作请柬.");

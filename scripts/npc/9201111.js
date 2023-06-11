@@ -3,10 +3,10 @@
 
 function start() {
         if (cm.getPlayer().getMap().getId() == 610030500) {
-                cm.sendOk("You're about to get wet and do what a Pirate does best--dig for booty! Be careful--that water beneath is known as Heavy Water, and it's so dense that I doubt you could swim through it! You'll have to make your way around....The relic you seek is known as the Forbidden Gun, which is an ancient weapon of the finest Pirate to grace the shores of Masteria--Steel Fist Jack! It's been buried in one of the many treasure chests you'll find below the sea. It won't be easy...Pirates were known for burying things in the most unlikely places, so dig deep and keep your guard up. There are sharks and much worse in those waters!");
+                cm.sendOk("过会你就该变成落汤鸡了，因为接下来就是海盗最擅长的任务——水下寻宝！要小心——这下面的海水密度极高，游动时会感到极大的阻力。你需要在海盗专精房间里寻找被称为“禁忌之枪”的遗物，它曾经属于宗师之地最强的的海盗#b铁拳杰克#k。漫长的岁月过去，它却一直深藏于海底众多的宝箱之中。要想找到它并非易事……海盗常常把宝物埋藏在最难以想象的地方，所以在深入探索的同时也要保持警觉。");
                 cm.dispose();
         } else if (cm.getPlayer().getMap().getId() == 610030000) {
-                cm.sendOk("Long ago, a strange warrior washed upon the shores of Masteria. This being claimed to be a member of a mysterious band of warriors that used claw-like weapons and projectile-based artillery to defeat foes. Known as 'Steel Fist Jack', his cunning and trickery in battle was devilishly effective. He eventually built a boat and left the Keep in search of his former crew and captain.");
+                cm.sendOk("很久以前，一位穿着奇特的战士被潮水冲上宗师之地的海滨。据他自己所说，他受训于一支神秘的部队，与这片大陆上流传的武术与魔法大不相同，他们使用拳甲与火枪作战。这位被称为“铁拳杰克”的战士在作战中展现出机动性与迷惑性令他屡战屡胜。后来，这位神秘的战士乘着一只自制小艇，离开要塞去寻找他从前的船长与船员了。");
                 cm.dispose();
         }
 }

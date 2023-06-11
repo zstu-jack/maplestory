@@ -39,7 +39,7 @@ var qty;
 
 function start() {
     if (cm.getQuestStatus(8225) != 2) {
-        cm.sendOk("Step aside, novice, we're doing business here.");
+        cm.sendOk("一边去，新来的。我们这儿不做你的生意。");
         cm.dispose();
         return;
     }
@@ -56,8 +56,8 @@ function action(mode, type, selection) {
         cm.dispose();
     
     if (status == 0 && mode == 1) {
-        var selStr = "Hey, partner! If you have the right goods, I can turn it into something very nice...#b"
-        var options = new Array("Weapon Forging","Weapon Upgrading");
+        var selStr = "嘿，朋友！如果你有合适的道具，我可以帮你用它们制造出很好的东西...#b"
+        var options = new Array("锻造武器","升级武器");
         for (var i = 0; i < options.length; i++)
             selStr += "\r\n#L" + i + "# " + options[i] + "#l";
         cm.sendSimple(selStr);
@@ -65,7 +65,7 @@ function action(mode, type, selection) {
     else if (status == 1 && mode == 1) {
         selectedType = selection;
         if (selectedType == 0){ //weapon forge
-            var selStr = "So, what kind of weapon would you like me to forge?#b";
+            var selStr = "所以，你想要让我锻造哪种武器？#b";
             var weapon = new Array ("#t2070018#","#t1382060#","#t1442068#","#t1452060#");
             for (var i = 0; i < weapon.length; i++)
                 selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
@@ -73,7 +73,7 @@ function action(mode, type, selection) {
             cm.sendSimple(selStr);
         }
         else if (selectedType == 1){ //weapon upgrade
-            var selStr = "An upgraded weapon? Of course, but note that upgrades won't carry over to the new item... #b";
+            var selStr = "想要升级一把强化过的武器？可以是可以，但要注意，武器上的附加属性并不会被继承到新的武器上... #b";
             var weapon = new Array ("#t1472074#","#t1472073#","#t1472075#","#t1332079#","#t1332078#","#t1332080#","#t1462054#","#t1462053#","#t1462055#","#t1402050#","#t1402049#","#t1402051#");
             for (var i = 0; i < weapon.length; i++)
                 selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
@@ -142,7 +142,7 @@ function action(mode, type, selection) {
         }
         else if (cm.getMeso() < cost * qty)
         {
-            cm.sendOk("I am afraid you don't have enough to pay me, partner. Please check this out first, ok?");
+            cm.sendOk("你这点钱可不够啊，朋友。看清标价再来，好吗？");
             cm.dispose();
             return;
         }
@@ -158,7 +158,7 @@ function action(mode, type, selection) {
         }
                         
         if (!complete)
-            cm.sendOk("Hey, I need those items to craft properly, you know?");
+            cm.sendOk("喂，东西都没找齐，我怎么给你做啊。");
         else {
             if (mats instanceof Array) {
                 for (var i = 0; i < mats.length; i++){
@@ -171,7 +171,7 @@ function action(mode, type, selection) {
                 cm.gainMeso(-cost * qty);
             
             cm.gainItem(recvItem, recvQty);
-            cm.sendOk("做好了。如果你还有别的需要...总之，我会一直呆这儿。");
+            cm.sendOk("做好了。如果你还有别的需要...来找我就行，反正我哪儿也不会去。");
         }
         cm.dispose();
     }

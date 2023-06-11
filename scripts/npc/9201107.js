@@ -3,10 +3,10 @@
 
 function start() {
         if (cm.getPlayer().getMapId() == 610030500) {
-                cm.sendOk("Unbelievable strength and power, anyone can be achieve. But what makes a warrior special is their iron will. No matter the odds, a true warrior pushes through until victory is assured. Thus, the Warrior Chamber is a brutal road where the room itself is against you, as well as the ultra-strong monsters within. Use your skills to shake off the effects and defeat the monsters within to reach the Warrior Statue and claim the Master Sword. Good luck!");
+                cm.sendOk("任何人都可以通过锻炼自身获得惊人的体力与力量。但一位真正的战士与众不同之处在于他们钢铁般的意志。无论胜算多小，他们都会坚持到底，直到胜利的曙光出现在前方。因此，战士专精房间会是一条荆棘之路，这个房间原本就会使战士处处掣肘，更不必说其中还充斥着强力的怪物。活用你的技巧摆脱负面状态，击溃其中的怪物，前往战士雕像所在之处，获取宗师之剑吧。祝你好运。");
                 cm.dispose();
         } else if (cm.getPlayer().getMap().getId() == 610030000) {
-                cm.sendOk("A legendary family of heroes, the de Vrisiens are the original founders of the Stormcasters. The family is unique, as each son or daughter inherits the full fighting techniques of their ancestors. This ability has proven to be immensely useful; as it allows for nearly unlimited strategy, improvisation and tactics to defeat all enemies. A true family for the generations.");
+                cm.sendOk("弗里西安是一支传奇英雄家族，其先祖创立了劫风兵。这个家族的血脉非比寻常，每一位后裔都完全继承了先祖的战斗技巧。这与生俱来的能力为世人所公认，蒙天之赐，这个家族的后裔们都拥有近乎无穷的攻击手段，无论在机变亦或是策略方面，没有任何敌人能胜过他们一筹。当世任何一个家族与其相较之下都会黯然失色。");
                 cm.dispose();
         } else if (cm.getPlayer().getMapId() == 610030510) {
                 if (cm.getPlayer().getMap().countMonsters() == 0) {
@@ -17,18 +17,18 @@ function start() {
                         if ((stgStatus >> jobNiche) % 2 == 0) {
                                 if(cm.canHold(4001259, 1)) {
                                         cm.gainItem(4001259, 1);
-                                        cm.sendOk("Good job.");
+                                        cm.sendOk("做得好。");
                                         
                                         stgStatus += (1 << jobNiche);
                                         eim.setIntProperty("glpq5_room", stgStatus);
                                 } else {
-                                        cm.sendOk("Make room on your ETC inventory first.");
+                                        cm.sendOk("需要先空出一格其他栏。");
                                 }
                         } else {
-                                cm.sendOk("The weapon inside this room has already been retrieved.");
+                                cm.sendOk("这个房间中的武器已经被取走了。");
                         }
                 } else {
-                        cm.sendOk("Eliminate all Crimson Guardians.");
+                        cm.sendOk("消灭所有绯红守护者。");
                 }
                 cm.dispose();
         }

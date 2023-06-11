@@ -61,23 +61,23 @@ function action(mode, type, selection) {
         } else if(status == 1) {
             switch (selection) {
                 case 0:
-                    cm.sendNext("I've always dreamed of building a city. Not just any city, but one where everyone was welcome. I used to live in Kerning City, so I decided to see if I could create a city. As I went along in finding the means to do so, I encountered many people, some of whom I've come to regard as friends. Like Professor Foxwit-he's our resident genius; saved him from a group of man-eating plants. Jack Masque is an old hunting buddy from Amoria-almost too smooth of a talker for his own good. Lita and I are old friends from Kerning City-she's saved me a few times with that weapon of hers; so I figured she was a perfect choice for Town Sheriff. It took a bit of persuasion, but she came to believe her destiny lies here. About our resident explorer, Barricade came searching for something; he agreed to bring whatever he found to the museum. I'd heard stories about him and his brother when I was still in Kerning City. And Elpam...well, let's just say he's not from around here. At all. We've spoken before, and he seems to mean well, so I've allowed him to stay. I just realized that I've rambled quite a bit! What else would you like to know?");
+                    cm.sendNext("我一直想要建起一座城市。不能是一座普通的城市，而是一座对所有人开放的城市。我以前住在废弃都市，这也是我这样做的原因。完善计划的过程中，我遇到了很多人，其中一些已经可以作为朋友相处了。就像狐智教授一样，他是我们新叶城的天才，我曾经把他从几株食人花中救了出来。蒙面杰克是一位来自婚礼村的老猎手，他说话太圆滑了，给人留下的印象不太好。莉塔和我是老朋友了，我们一起从废弃都市来到这里，她的武力好几次帮助我化险为夷，所以我觉得她是警长的完美人选。虽然很是费了一番功夫说服，但她已经开始相信这里就是她命运中的归属了。另外就是我们的探险家，巴里凯德兄弟，他们似乎是来找什么东西的，他已经同意把找到的东西捐赠给市博物馆了。当我还在废弃都市的时候，我就听说过他们两兄弟的故事。还有埃尔帕姆...好吧，我只能说他不是这里的原住民，完全不是。我们之前谈过，他似乎没有什么恶意，所以我允许他留在新叶城...我才意识到刚才闲聊了那么多！还有什么想要问的吗？");
                     status -= 2;
                     break;
                 case 1:
-                    cm.sendNext("A pretty spry guy for being 97. He's a time-traveller I ran into outside the city one day. Old guy had a bit of trouble with some jungle creatures-like they tried to eat him. In return for me saving him, he agreed to build a time museum. I get the feeling that he's come here for another reason, as he's mentioned more than a few times that New Leaf City has an interesting role to play in the future. Maybe you can find out a bit more...");
+                    cm.sendNext("一位活力充沛的97岁老人。他是个时间旅行者，有天我在市郊闲逛的时候和他偶遇了。这老东西好像和一群丛林生物模样的东西闹了点矛盾，它们想要吃掉他。我救下了他，作为救命之恩的回报，他同意为新叶城建造一座时间博物馆。我觉得他来这里还有其它原因，因为他不止一次提到新叶城在未来会发生有趣的事情。也许你以后会慢慢发现的...");
                     status -= 2;
                     break;
                 case 2:
-                    cm.sendNext("Heh, I asked the same thing when I saw the Professor building them. They're warp points. Pressing Up will warp you to another location. I recommend getting the hang of them, they're our transport system.");
+                    cm.sendNext("呵呵，看着教授制造它们时，我也问了同样的问题。它们是折跃奇点，也就是我们常说的传送点。站在门内按下[↑]键会将你传送到另一个位置。我建议你快些掌握它的使用方法，这是我们城市的便捷运输系统。");
                     status -= 2;
                     break;
                 case 3:
-                    cm.sendNext("The MesoGears are beneath Bigger Ben. It's a monster-infested section of Bigger Ben that Barricade discovered. It seems to reside in a separate section of the tower-quite strange if you ask me. I hear he needs a bit of help exploring it, you should see him. Be careful though, the Wolf Spiders in there are no joke.");
+                    cm.sendNext("内部齿轮装置位于大笨钟地底。那里是巴里凯德发的一处怪物聚集区。那里似乎是独立于塔体的一片区域，如果要我评价的话，我也觉得很奇怪。我听说他需要人帮忙探索那片区域，你应该去见见他。不过要小心，那里的机械蜘蛛可不是吃素的。");
                     status -= 2;
                     break;
                 case 4:
-                    cm.sendNext("Ah...well. The Krakian Jungle is located on the outskirts of New Leaf City. Many new and powerful creatures roam those areas, so you'd better be prepared to fight if you head out there. It's at the right end of town. Rumors abound that the Jungle leads to a lost city, but we haven't found anything yet.");
+                    cm.sendNext("啊...克兰卡丛林位于新叶城的郊区。许多从未见过的强大生物在这片地区游荡。如果你要前往那里，最好做好战斗的准备。从新叶城向右走就能到达。传说那片丛林的尽头有一座失落之城，但我们目前还没有找到任何线索。");
                     status -= 2;
                     break;
                 case 5:
