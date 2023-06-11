@@ -53,7 +53,7 @@ function action(mode, type, selection) {
                 cm.dispose();
             } else {
                 var selStr = "你好！我是艾斯拜德·斯利姆，新叶城的市长。感谢你受邀前来游览新叶城。那么，我能为您做些什么呢？#b"
-                var info = new Array("这里是什么地方?","狐智教授是谁?","什么是狐智门?","内部齿轮装置在哪里?","什么是克兰卡丛林?","什么是齿轮入口?","这些路标代表什么?","蒙面杰克是谁?","莉塔·罗莉丝看起来像块硬骨头,她的过去是怎样的?","这座城市中的新地区何时会开放?","我想参加新叶城知识问答!");
+                var info = new Array("这里是什么地方?","狐智教授是谁?","什么是狐智门?","内部齿轮装置在哪里?","什么是克兰卡丛林?","什么是齿轮入口?","这些路标代表什么?","蒙面杰克是谁?","莉塔·罗莉丝看起来像个女汉子,她的过去是怎样的?","这座城市中的新地区何时会开放?","我想参加新叶城知识问答!");
                 for (var i = 0; i < info.length; i++)
                     selStr += "\r\n#L" + i + "# " + info[i] + "#l";
                 cm.sendSimple(selStr);
@@ -81,31 +81,31 @@ function action(mode, type, selection) {
                     status -= 2;
                     break;
                 case 5:
-                    cm.sendNext("Well, when John found himself in the MesoGears portion of Bigger Ben, he stood on one and went to another location. However, he could only head back and forth-they don't cycle through like the Foxwit Door. Ancient tech for you.");
+                    cm.sendNext("那是约翰在大笨钟的内部齿轮装置地区探险时发现的。他站在其中一处齿轮入口上传送到了其它地方。不过，传送的目的地有时与齿轮入口并不能对应构成循环，他有时也得靠走的。算是不知道什么人为我们留下的古代科技。");
                     status -= 2;
                     break;
                 case 6:
-                    cm.sendNext("Well, you'll see them just about everywhere. They're areas under construction. The Red lights mean it's not finished, but the Green lights mean it's open. Check back often, we're always building!");
+                    cm.sendNext("新叶城里随处可见。那意味着前方区域正在建设中。亮起红灯代表着工程尚未完成，但如果亮起绿灯就代表可以通行了。经常回来看看，我们一直在建设这座城市！");
                     status -= 2;
                     break;
                 case 7:
-                    cm.sendNext("Ah, Jack. You know those guys that are too cool for school? The ones who always seem to get away with everything? AND get the girl? Well, that's Jack, but without the girl. He thinks he blew his chance, and began wearing that mask to hide his true identity. My lips are sealed about who he is, but he's from Amoria. He might tell you a bit more if you ask him.");
+                    cm.sendNext("啊，杰克。你知道那群经常逃学的酷小子吧？他们好像总是对所有的事情无所谓一样，身边还经常有女孩相伴。以上说的就是杰克那种人，只不过他没有女朋友。他觉得他曾经拥有过一次机会，只不过是错过了而已。从那之后，他就开始戴上面罩来掩盖自己的真实身份。我对他的真实身份守口如瓶，但他是从婚礼村来的。如果你亲自去问他，可能他会告诉你更多事情。");
                     status -= 2;
                     break;
                 case 8:
-                    cm.sendNext("I've known Lita for a while, though we've just recently rekindled our friendship. I didn't see her for quite a bit, but I understand why. She trained for a very, very long time as a Thief. Matter of fact, that's how we first met! I was besieged by a group of wayward Mushrooms, and she jumped in to help. When it was time to pick a sheriff, it was a no-brainer. She's made a promise to help others in their training and protect the city, so if you're interested in a bit of civic duty, speak with her.");
+                    cm.sendNext("我和莉塔认识很久了，虽然不久前我们才重拾这份友谊。很长一段时间里我没有见过她，不过我也能够理解。她作为飞侠修炼了非常非常久。事实上来说，从我们一开始相遇的时候她就是这样。那时候我被一群难搞的蘑菇包围，她从天而降救下了我。在选任警长时，我没怎么多想就邀请了她。她也答应守护这座城市，并为大家提供帮助。所以如果你想为这座城市尽一点公民应尽的义务，就去找她聊聊。");
                     status -= 2;
                     break;
                 case 9:
-                    cm.sendNext("Soon, my friend. Even though you can't see them, the city developers are hard at work. When they're ready, we'll open them. I know you're looking forward to it and so am I!");
+                    cm.sendNext("很快就会的，我的朋友。尽管你没有看到，这座城市的建筑者们也还在努力工作。当一切就绪时，我们会开放那些区域的。我知道你很期待那一天，我也一样！");
                     status -= 2;
                     break;
                 case 10:
                     if (cm.getLevel() >= minlevel) {
-                        cm.sendNext("No problem. I'll give you something nice if you answer them correctly!");
+                        cm.sendNext("没问题。如果你全部答对的话，我会送你好东西的。");
                         cm.startQuest(4900);
                     } else {
-                        cm.sendNext("Eager, are we? How about you explore a bit more before I let you take the quiz?");
+                        cm.sendNext("迫不及待了吗？在参加知识竞赛之前，多探索一会怎么样？");
                     }
                     
                     cm.dispose();
