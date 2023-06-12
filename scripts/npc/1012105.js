@@ -42,7 +42,7 @@ function action(mode, type, selection) {
     
                 
                 if (status == 0) {
-                        cm.sendSimple("欢迎来到弓箭手村护夫中心! 是否有想要染的皮肤呢?? 就像我的健康皮肤??  如果你有 #b#t5153000##k, 就可以随意染的想到的皮肤~~~\\r\\n\\#L2#我已经有一个优惠券!#l");
+                        cm.sendSimple("欢迎来到弓箭手村护夫中心! 是否有想要染的皮肤呢?? 就像我的健康皮肤??  如果你有 #b#t5153000##k, 就可以随意染的想到的皮肤~~~\r\n#L2#我已经有一个优惠券!#l");
                 }
                 else if (status == 1) {
                         if (cm.haveItem(5153000)){
