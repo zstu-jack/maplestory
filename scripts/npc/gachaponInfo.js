@@ -48,10 +48,10 @@ function action(mode, type, selection) {
                         status--;
     
                 if (status == 0) {
-                        var sendStr = "Hi, #r#p" + cm.getNpc() + "##k here! I'm announcing all obtainable loots from the Gachapons. Which Gachapon machine would you like to look?\r\n\r\n#b" + gachaMessages[0] + "#k";
+                        var sendStr = "你好，我是#r#p" + cm.getNpc() + "##k！我可以为你列出特定百宝箱中的奖品清单。你想要查看哪个百宝箱？\r\n\r\n#b" + gachaMessages[0] + "#k";
                         cm.sendSimple(sendStr);
                 } else if(status == 1) {
-                        var sendStr = "Loots from #b" + gachas[selection].name() + "#k:\r\n\r\n" + gachaMessages[selection + 1];
+                        var sendStr = "从#b" + gachas[selection].name() + "#k中可以获取:\r\n\r\n" + gachaMessages[selection + 1];
                         cm.sendPrev(sendStr);
                 } else if(status == 2) {
                         cm.dispose();

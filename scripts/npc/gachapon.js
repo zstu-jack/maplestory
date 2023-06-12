@@ -26,7 +26,7 @@
 
 var status;
 var ticketId = 5220000;
-var mapName = ["Henesys", "Ellinia", "Perion", "Kerning City", "Sleepywood", "Mushroom Shrine", "Showa Spa (M)", "Showa Spa (F)", "Ludibrium", "New Leaf City", "El Nath", "Nautilus"];
+var mapName = ["射手村", "魔法密林", "勇士部落", "废弃都市", "林中之城", "古代神社", "澡堂（男）", "澡堂（女）", "玩具城", "新叶城", "冰峰雪域", "诺特勒斯"];
 var curMapName = "";
 
 function start() {
@@ -46,26 +46,26 @@ function action(mode, type, selection) {
             status--;
         if (status == 0 && mode == 1) {
 			if (cm.haveItem(ticketId)) {
-				cm.sendYesNo("You may use the " + curMapName + " Gachapon. Would you like to use your Gachapon ticket?");
+				cm.sendYesNo("你可以使用" + curMapName + "快乐百宝箱。要使用快乐百宝券吗？");
 			} else {
-				cm.sendSimple("Welcome to the " + curMapName + " Gachapon. How may I help you?\r\n\r\n#L0#What is Gachapon?#l\r\n#L1#Where can you buy Gachapon tickets?#l");
+				cm.sendSimple("欢迎使用" + curMapName + " 快乐百宝箱。请选择你需要的服务。\r\n\r\n#L0#快乐百宝箱是什么？#l\r\n#L1#我可以从哪里买到快乐百宝券呢？#l");
 			}
 		} else if(status == 1 && cm.haveItem(ticketId)) {
 			if(cm.canHold(1302000) && cm.canHold(2000000) && cm.canHold(3010001) && cm.canHold(4000000)) { // One free slot in every inventory.
 				cm.gainItem(ticketId, -1);
 				cm.doGachapon();
 			} else {
-				cm.sendOk("Please have at least one slot in your #rEQUIP, USE, SET-UP, #kand #rETC#k inventories free.");
+				cm.sendOk("请在#r装备栏、消耗栏、设置栏、其它栏#k各留出至少一格空位。");
 			}
 			cm.dispose();
 		} else if(status == 1) {
 			if (selection == 0) {
-                cm.sendNext("Play Gachapon to earn rare scrolls, equipment, chairs, mastery books, and other cool items! All you need is a #bGachapon Ticket#k to be the winner of a random mix of items.");
+                cm.sendNext("快乐百宝箱里有各种稀有的卷轴、装备、椅子、以及其它神秘道具。每使用一张#b快乐百宝券#k，就可以从中随机抽取一样物品。");
             } else {
-                cm.sendNext("Gachapon Tickets are available in the #rCash Shop#k and can be purchased using NX or Maple Points. Click on the red SHOP at the lower right hand corner of the screen to visit the #rCash Shop#k where you can purchase tickets.");
+                cm.sendNext("快乐百宝券可以从#r现金商城#k中购买，花费NX点数或枫叶点均可兑换。点击窗口右下方的红色商城按钮，进入#r现金商城#k后即可购买。");
             }
 		} else if(status == 2) {
-			cm.sendNextPrev("You'll find a variety of items from the " + curMapName + " Gachapon, but you'll most likely find items and scrolls related to " + curMapName + ".");
+			cm.sendNextPrev("使用" + curMapName + "快乐百宝箱时，可以获得各种各样的道具。但更有可能获得" + curMapName + "地区相关道具和卷轴。");
 		} else {
 			cm.dispose();
 		}

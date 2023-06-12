@@ -48,40 +48,40 @@ function action(mode, type, selection) {
 	}
 	if(mode == 0) {
 		if (cm.getMapId() == 540010101) {
-			cm.sendOk("Please hold on for a sec, and we're reaching Singapore! Thanks for your patience.");
+			cm.sendOk("请稍等片刻，我们即将抵达新加坡，感谢您耐心等待。");
 			cm.dispose();
 			return;
 		} else {
-			cm.sendOk("Please hold on for a sec, and we're reaching Kerning City! Thanks for your patience.");
+			cm.sendOk("请稍等片刻，我们即将抵达废弃都市，感谢您耐心等待。");
 			cm.dispose();
 			return;
 		}
 	}
 	if(status == 0) {
 		if (cm.getMapId() == 540010001) {
-			cm.sendYesNo("The plane is taking off soon, are you sure you want to leave now? The ticket is not refundable.");
+			cm.sendYesNo("T飞机即将起飞，确定要离开吗？检票后机票无法进行退款");
 			airport = 1;
 		} else if (cm.getMapId() == 540010002) {
-			cm.sendOk("We're reaching Kerning City in a minute, please sit down and wait.");
+			cm.sendOk("我们即将抵达废弃都市，请在座位上坐好，等待降落。");
                         cm.dispose();
 			s2k = 1;
 		} else if (cm.getMapId() == 540010101) {
-			cm.sendOk("We're reaching Singapore in a minute, please sit down and wait.");
+			cm.sendOk("我们即将抵达新加坡，请在座位上坐好，等待降落。");
                         cm.dispose();
 			k2s = 1;
 		}
 	} else if(status == 1) {
 		if (k2s == 1) {
 			cm.warp(103000000);
-			cm.sendOk("Hope to see you again soon!");
+			cm.sendOk("期待与您再会。");
 			cm.dispose();
 		} else if (airport == 1) {
 			cm.warp(540010000);
-			cm.sendOk("Hope to see you again soon!");
+			cm.sendOk("期待与您再会。");
 			cm.dispose();
 		} else if (s2k == 1) {
 			cm.warp(540010000);
-			cm.sendOk("Hope to see you again soon!");
+			cm.sendOk("期待与您再会。");
 			cm.dispose();
 		}
 	}

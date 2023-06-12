@@ -38,21 +38,21 @@ function action(mode, type, selection) {
             status--;
         if (status == 0 && mode == 1) {
 			if(cm.haveItem(2430026)) {
-				cm.sendYesNo("I can change your name for you if you would like?", 1);
+				cm.sendYesNo("如果你愿意，可以在这里改为你喜欢的名字。", 1);//
 			} else {
 				cm.dispose();
 			}
 		} else if(status == 1) {
-			cm.sendGetText("Please input your desired name below.");
+			cm.sendGetText("请在下方输入你想更改的新名字。");
 		} else if(status == 2) {
 			var text = cm.getText();
 			var canCreate = Packages.client.MapleCharacter.canCreateChar(text);
 			if(canCreate) {
 				cm.getPlayer().setName(text);
-				cm.sendOk("Your name has been changed to #b" + text + "#k. You will have to login again for this to take effect.", 1);
+				cm.sendOk("你的名字已经成功改为 #b" + text + "#k。需要重新登陆游戏后才能生效。", 1);
 				cm.gainItem(2430026, -1);
 			} else {
-				cm.sendNext("I'm afraid you can't use the name #b" + text + "#k or it is already taken.", 1);
+				cm.sendNext("抱歉，你无法使用 #b" + text + "#k 这个名字，它可能违规或已被占用。", 1);
 			}
 		} else if(status == 3) {
 			cm.dispose();

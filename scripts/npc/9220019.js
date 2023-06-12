@@ -45,12 +45,12 @@ function action(mode, type, selection) {
                                 cm.dispose();
                                 return;
                         } else if(mapid == 674030300) {
-                                cm.sendNext("Hi there, #h0#. This is the MV's treasure room. Use the time you have here to do whatever you want, there are a lot of things to uncover here, actually. Or else you can use the portal here to #rgo back#k to the entrance.");
+                                cm.sendNext("你好啊，#h0#。这里就是V的宝库。达到时间限制之前，在里面想做什么都可以。其实这里也确实有很多秘密尚待揭露。当然，你也可以通过这个传送点#r返回#k入口。");
                                 cm.dispose();
                                 return;
                         }
                     
-                        cm.sendYesNo("Are you sure you want to return? By returning now you are leaving your partners behind, do you really want to do it?");
+                        cm.sendYesNo("确定要返回吗？现在原路返回，就这么把队友丢在这里，真的要这样做吗？");
                 } else if(status == 1) {
                         cm.warp(674030100);
                         cm.dispose();

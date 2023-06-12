@@ -103,13 +103,13 @@ function action(mode, type, selection) {
         }
         
         if(travelCost > 0) {
-            cm.sendYesNo("Would you like to travel to #b#m" + travelMap + "##k? To head over to #b#m" + travelMap + "##k, it'll cost you #r" + cm.numberWithCommas(travelCost) + " mesos#k. Would you like to go right now?");
+            cm.sendYesNo("你想要去#b#m" + travelMap + "##k旅游吗？要去#b#m" + travelMap + "##k的话，需要花费#r" + cm.numberWithCommas(travelCost) + "金币#k。现在要出发吗？");
         } else {
-            cm.sendNext("Had a great time in #rMalaysia#k? I hope so, have a safe travel back!");
+            cm.sendNext("在#r马来西亚#k玩得开心吗？希望是这样。祝你归途平安！");
         }
     } else if (status == 2) {
         if (cm.getMeso() < travelCost) {
-            cm.sendNext("You do not seem to have enough mesos.");
+            cm.sendNext("你的金币好像不够。");
         } else {
             if(travelCost > 0) {
                 cm.gainMeso(-travelCost);

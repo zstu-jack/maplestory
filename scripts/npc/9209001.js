@@ -49,44 +49,44 @@ function action(mode, type, selection) {
         if (sel == undefined)
             sel = selection;
         if (selection == 0) {
-            cm.sendNext("Okay, we will send you to the Maple 7th Day Market map.");
+            cm.sendNext("好的，我们将会把你送往冒险岛周末集市。");
         } else
-            cm.sendSimple("What would you like to know about the Maple 7th Day Market?#b\r\n#L0#Where does the Maple 7th Day Market take place?\r\n#L1#What can you do at the Maple 7th Day Market?\r\n#L2#I do not have any questions.");
+            cm.sendSimple("关于冒险岛周末集市，有什么想要了解的吗？#b\r\n#L0#冒险岛周末集市在哪里举行？\r\n#L1#冒险岛周末集市里有什么活动？\r\n#L2#我没有问题要问了。");
     } else if(status == 1) {
         if (sel == 0) {
         	cm.getPlayer().saveLocation("EVENT");
             cm.warp(680100000 + parseInt(Math.random() * 3));
             cm.dispose();
         } else if (selection == 0) {
-            cm.sendNext("The Maple 7th Day Market opens only on Sundays. You can enter if you find me in any town, Henesys, New Leaf City, Leafre, Kerning City, Ludibrium, I'm just about everywhere!");
+            cm.sendNext("冒险岛周末集市只在星期日开放。如果你在任何一个城镇找到了我，就可以进入集市。射手村，新叶城，玩具城...我有可能出现在任何城镇里！");
             status -= 2;
         } else if (selection == 1)
-            cm.sendSimple("You can find rare goods that are hard to find elsewhere at the Maple 7th Day Market.#b\r\n#L0#Purchase Special Items\r\n#L1#Help the Poultry Farm Owner");
+            cm.sendSimple("你可以在冒险岛周末集市找到其它地方难得一见的稀有商品。#b\r\n#L0#购买特殊道具\r\n#L1#帮助养鸡场主人");
         else {
-            cm.sendNext("I guess you don't have any question. Please keep us in your thoughts, and ask if you are curious about anything.");
+            cm.sendNext("您没有其它问题了吗？好的。如果以后对集市感兴趣的话，请记得来找我。");
             cm.dispose();
         }
     } else if (status == 2) {
         if (sel2 == undefined)
             sel2 = selection;
         if (sel2 == 0)
-            cm.sendNext("You can find many items at the Maple 7th Day Market. The prices are subject to change, so you'd better get them when they're cheap!");
+            cm.sendNext("你可以在冒险岛周末集市买到不同种类的商品。价格会随时变化，所以最好趁便宜的时候下手。");
         else
-            cm.sendNext("Aside from the merchants, you can also find the lazy daughter of the poultry farm owner at the Maple 7th Day Market. Help Mimi and hatch her egg until it grows to be a chicken!");
+            cm.sendNext("除了中介商人之外，你还可以在冒险岛周末集市里见到农场主的懒女儿。帮烦斯乐孵化鸡蛋，让它们长大成鸡！");
     } else if (status == 3) {
         if (sel2 == 0)
-            cm.sendNextPrev("The purchases made here can be sold back to the merchant intermediary, Abdula. He won't accept anything more than a week old, so make sure you re-sell by Saturday!");
+            cm.sendNextPrev("在集市里买到的东西可以卖给中介商人阿得拉。他不会买一周前的旧货，所以记得要周六之前在他那里出手。");
         else
-            cm.sendNextPrev("Since she can't just trust anyone with the egg, she'll ask for deposit money. Pay her the deposit and take good care of the egg.");
+            cm.sendNextPrev("因为在鸡蛋这件事情上她不相信任何人，所以需要支付保证金才能从她那里获得用来孵化的鸡蛋。");
     } else if (status == 4) {
         if (sel2 == 0)
-            cm.sendNextPrev("Abdula adjusts his reselling rates as well, so it would be wise to sell when you can make the most profit. The prices tend to fluctuate hourly, so remember to check often.");
+            cm.sendNextPrev("阿得拉会经常调整他的回收价格，所以要在能获得最大利润的节点卖出货物。价格会在每个整点进行调整，记得按时查看。");
         else
-            cm.sendNextPrev("If you manage to successfully grow the egg into a chicken and take it back to Mimi, Mimi will reward you. She may be lazy but she's not ungrateful.");
+            cm.sendNextPrev("如果你成功地把鸡蛋孵化养大成鸡，并且把它带给烦斯乐，烦斯乐会给你奖励的。她或许真的很懒，但并不是不懂感恩。");
     } else if (status == 5) {
         if (sel2 == 0)
-            cm.sendNextPrev("Test your business wit by buying good at low prices in the Maple 7th Day Market and selling it to the merchant intermediary when its value goes up!");
+            cm.sendNextPrev("考验你商业头脑的时候到了，在冒险岛周末集市与中介商人之间低买高卖吧。");
         else
-            cm.sendNextPrev("You can click on the egg to check on its growth. You have to be diligent with the egg since the EXP you gain and the egg will grow together.");
+            cm.sendNextPrev("你可以点击鸡蛋来检查它的成长情况。一定要认真地养大它，这样你获得的经验也会变得更多。");
     }
 }

@@ -33,19 +33,19 @@
 var status = 0;
 
 function start() {
-    cm.sendYesNo("The plane will be taking off soon, will you leave now? You will have to buy the plane ticket again to come in here.");
+    cm.sendYesNo("飞机即将起飞，确定要离开吗？如果想要再次进入这里，需要重新购买机票。");
 }
 
 function action(mode, type, selection) {
     if (mode != 1) {
         if (mode == 0)
-            cm.sendOk("Please hold on for a sec, and plane will be taking off. Thanks for your patience.");
+            cm.sendOk("请稍等片刻，飞机即将起飞。感谢您耐心等待。");
         cm.dispose();
         return;
     }
     status++;
     if (status == 1) {
-        cm.sendNext("The ticket is not refundable, hope to see you again!");
+        cm.sendNext("检票后机票无法进行退款，期待与您再会！");
     } else if(status == 2){
 		cm.warp(103000000);
 		cm.dispose();

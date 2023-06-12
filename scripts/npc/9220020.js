@@ -40,14 +40,14 @@ function action(mode, type, selection) {
     
                 if(status == 0) {
                         if(!cm.isEventLeader()) {
-                                cm.sendNext("Please let your party leader talk to me for further instructions to proceed to the next stage.");
+                                cm.sendNext("请让你的队长与我对话，来了解有关继续下一阶段的信息");
                                 cm.dispose();
                                 return;
                         }
                         
                         var eim = cm.getEventInstance();
                         if(eim.getIntProperty("statusStg1") == 1) {
-                                cm.sendNext("Go through this tunnel for the boss battle.");
+                                cm.sendNext("穿过这条通道后将会与Boss进行战斗。");
                         } else {
                                 if(cm.haveItem(4032118, 15)) {
                                         cm.gainItem(4032118, -15);
@@ -56,9 +56,9 @@ function action(mode, type, selection) {
                                         eim.showClearEffect();
                                         eim.giveEventPlayersStageReward(1);
 
-                                        cm.sendNext("You got the letters, great! Now, you can proceed to the room MV is through this tunnel. Be prepared!");
+                                        cm.sendNext("你找到了足够多的信件，太棒了！现在，你们可以穿过这条通道与V战斗了。做好准备！");
                                 } else {
-                                        cm.sendNext("Please hand me #r15 secret letters#k.");
+                                        cm.sendNext("请交给我#r15封秘密文件#k。");
                                 }
                         }
                         

@@ -48,7 +48,7 @@ function action(mode, type, selection) {
             status--;
 
         if (status == 0) {
-            var greeting = "Hello, I'm #p9209000#, the Skill & Mastery Book announcer! ";
+            var greeting = "Hello, I'm #p9209000#, the Skill & Mastery Book announcer! ";//阿得拉这个脚本被sf改成了用来领取能手册和技能书的npc，跳过。
             
             if(cm.getPlayer().isCygnus()) {
                 cm.sendOk(greeting + "There are no skill or mastery books available for Cygnus Knights.");

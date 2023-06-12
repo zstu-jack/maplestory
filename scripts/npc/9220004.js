@@ -11,7 +11,7 @@ function action(mode, type, selection) {
 		cm.dispose(); 
 	} else {
                 if (status == 0 && mode == 0) { 
-			cm.sendOk("Talk to me again when you want to."); 
+			cm.sendOk("Talk to me again when you want to."); //这很可能不是原版脚本。看起来像个打boss的粗糙脚本，跳过了。
 			cm.dispose(); 
 		} 
                 if (mode == 1) 

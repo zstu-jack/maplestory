@@ -42,8 +42,8 @@ function action(mode, type, selection) {
                 cm.getPlayer().setChallenged(true);
                 var snd = "";
                 for (var i = 0; i < party.size(); i++)
-                    snd += "#bName: " + party.get(i).getName() + " / (Level: " + party.get(i).getLevel() + ") / " + GameConstants.getJobName(party.get(i).getJobId()) + "#k\r\n\r\n";
-                cm.sendAcceptDecline(snd + "Would you like to fight this party at the Monster Carnival?");
+                    snd += "#b名字： " + party.get(i).getName() + " / (等级： " + party.get(i).getLevel() + ") / " + GameConstants.getJobName(party.get(i).getJobId()) + "#k\r\n\r\n";
+                cm.sendAcceptDecline(snd + "你想要在怪物嘉年华中与这支队伍对抗吗？");
             } else {
                 cm.answerCPQChallenge(false);
                 cm.getChar().setChallenged(false);
@@ -55,7 +55,7 @@ function action(mode, type, selection) {
             } else {
                 cm.answerCPQChallenge(false);
                 cm.getChar().setChallenged(false);
-                cm.sendOk("The number of players between the teams is not the same.");
+                cm.sendOk("需要组队成员人数相等方可开启战斗。");
             }
             cm.dispose();
         }
