@@ -29,5 +29,5 @@ function act() {    // string visibility thanks to ProXAIMeRx & Glvelturall
         rm.setQuestProgress(6400, 6401, "q3");
     }
     
-    rm.message("Real Bart has been found. Return to Jonathan through the portal.");
+    rm.message("你找到了真正的巴特，可以通过传送门返回海鸥爷爷所在的地方。");
 }

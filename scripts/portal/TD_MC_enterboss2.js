@@ -33,7 +33,7 @@ function enter(pi) {
                     pi.playPortalSound();
                     return true;
                 } else {
-                    pi.message("Another party is already challenging the boss in this channel.");
+                    pi.message("本频道已有其他队伍正在挑战Boss。");
                     return false;
                 }
             }
@@ -42,7 +42,7 @@ function enter(pi) {
                 pi.playPortalSound();
                 return true;
             } else {
-                pi.message("Another party is already challenging the boss in this channel.");
+                pi.message("本频道已有其他队伍正在挑战Boss。");
                 return false;
             }
         }
@@ -58,7 +58,7 @@ function enter(pi) {
                     pi.playPortalSound();
                     return true;
                 } else {
-                    pi.message("Another party is already challenging the boss in this channel.");
+                    pi.message("本频道已有其他队伍正在挑战Boss。");
                     return false;
                 }
             }
@@ -67,7 +67,7 @@ function enter(pi) {
                 pi.playPortalSound();
                 return true;
             } else {
-                pi.message("Another party is already challenging the boss in this channel.");
+                pi.message("本频道已有其他队伍正在挑战Boss。");
                 return false;
             }
         }

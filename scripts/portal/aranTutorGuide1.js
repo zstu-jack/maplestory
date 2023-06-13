@@ -28,7 +28,7 @@ function enter(pi) {
 		return false;
 	}
     	pi.showInfo("Effect/OnUserEff.img/guideEffect/aranTutorial/tutorialGuide2");  
-    	pi.message("You can use Consecutive Attacks by pressing the Ctrl key multiple times."); 
+    	pi.message("多次按下[Ctrl]键可对怪物进行连击。"); 
 	pi.updateAreaInfo(21002, "normal=o;arr0=o;arr1=o;mo1=o;chain=o;mo2=o;mo3=o;mo4=o");    
     	return true; 
 }  
