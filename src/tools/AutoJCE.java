@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.security.Permission;
 import java.security.PermissionCollection;
+import java.security.Security;
 import java.util.Map;
 
 public class AutoJCE{   // AutoJCE into server source thanks to Acernis dev team
@@ -13,6 +14,7 @@ public class AutoJCE{   // AutoJCE into server source thanks to Acernis dev team
 	 * http://stackoverflow.com/questions/1179672/
 	 */
 	public static byte removeCryptographyRestrictions(){
+		Security.setProperty("crypto.policy", "unlimited");
 		if(!isRestrictedCryptography()){
 			//System.out.println("Cryptography restrictions removal not needed");
 			return 0;
