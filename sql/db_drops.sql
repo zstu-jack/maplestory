@@ -1,4 +1,4 @@
--- 第二个执行他，下一个执行：db_shopupdate.sql
+-- 第二个执行他，下一个执行：'db_shopupdate.sql'
 
 USE `napms`;
 
