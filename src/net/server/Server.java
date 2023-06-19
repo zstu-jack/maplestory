@@ -1894,6 +1894,8 @@ public class Server {
         System.out.println("Worlds + Channels are offline.");
         acceptor.unbind();
         acceptor = null;
+        // 关闭连接池中的数据库连接
+        DatabaseConnection.closeConnection();
         if (!restart) {  // shutdown hook deadlocks if System.exit() method is used within its body chores, thanks MIKE for pointing that out
             new Thread(new Runnable() {
                 @Override
