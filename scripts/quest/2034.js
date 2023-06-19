@@ -12,12 +12,12 @@ function end(mode, type, selection) {
         status++;
 
 	if(status == 0) {
-		qm.sendNext("I knew it ... I knew you could get it done with, quickly! You did your job well last time, and here you are again, taking care of business!! Alright, since you have done it so well, I should reward you well. #b#p1051000##k is giving you a pair of shoes in hopes of helping you out on your future traveling.");
+		qm.sendNext("我就知道。。。你可以很快完成的! 上次你做得很好, 你又来办理业务了啊？ 好吧,你做的这么棒, 我想报答你. #b#p1051000##k 拿着吧，勇士，希望你今后的旅行更加顺利。");
 	}
 
 	else if(status == 1) {
 	    if(qm.getPlayer().getInventory(Packages.client.inventory.MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-		qm.sendOk("Please free a EQUIP inventory slot to receive the reward.");
+		qm.sendOk("你的装备栏满了.");
 		qm.dispose();
 		return;
 	    }
@@ -35,7 +35,7 @@ function end(mode, type, selection) {
             qm.gainExp(2200);
             qm.completeQuest();
             
-            qm.sendOk("Alright, if you need work sometime down the road, feel free to come back and see me. This town sure can use a person like you for help~");
+            qm.sendOk("好吧, 如果你以后需要工作，请随时回来找我。这个小镇肯定会需要像你这样的人来帮忙~");
         }
 
         else if (status == 2) {
