@@ -23,7 +23,6 @@ package net.server;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.security.Security;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,6 +41,8 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Lock;
 
+import cn.nap.utils.common.NapComUtils;
+import cn.nap.utils.common.NapMapUtils;
 import config.YamlConfig;
 import net.server.audit.ThreadTracker;
 import net.server.audit.locks.MonitoredLockType;
@@ -558,47 +559,32 @@ public class Server {
         return couponRates;
     }
 
-    public static void cleanNxcodeCoupons(Connection con) throws SQLException {
-        if (!YamlConfig.config.server.USE_CLEAR_OUTDATED_COUPONS) return;
-
-        long timeClear = System.currentTimeMillis() - 14 * 24 * 60 * 60 * 1000;
-
-        PreparedStatement ps = con.prepareStatement("SELECT * FROM nxcode WHERE expiration <= ?");
-        ps.setLong(1, timeClear);
-        ResultSet rs = ps.executeQuery();
-
-        if (!rs.isLast()) {
-            PreparedStatement ps2 = con.prepareStatement("DELETE FROM nxcode_items WHERE codeid = ?");
-            while (rs.next()) {
-                ps2.setInt(1, rs.getInt("id"));
-                ps2.addBatch();
-            }
-            ps2.executeBatch();
-            ps2.close();
-
-            ps2 = con.prepareStatement("DELETE FROM nxcode WHERE expiration <= ?");
-            ps2.setLong(1, timeClear);
-            ps2.executeUpdate();
-            ps2.close();
-        }
-
-        rs.close();
-        ps.close();
+    private void initAccount() {
+        DatabaseConnection.update("UPDATE accounts SET loggedin = 0");
+        DatabaseConnection.update("UPDATE characters SET HasMerchant = 0");
     }
 
-    private void loadCouponRates(Connection c) throws SQLException {
-        PreparedStatement ps = c.prepareStatement("SELECT couponid, rate FROM nxcoupons");
-        ResultSet rs = ps.executeQuery();
-
-        while (rs.next()) {
-            int cid = rs.getInt("couponid");
-            int rate = rs.getInt("rate");
-
-            couponRates.put(cid, rate);
+    private void cleanNxCodeCoupons() {
+        if (!YamlConfig.config.server.USE_CLEAR_OUTDATED_COUPONS) {
+            return;
         }
 
-        rs.close();
-        ps.close();
+        long timeClear = System.currentTimeMillis() - 14 * 24 * 60 * 60 * 1000;
+        List<Map<String, Object>> nxCodeList = DatabaseConnection.select("SELECT id FROM nxcode WHERE expiration <= ?", timeClear);
+        if (NapComUtils.isEmpty(nxCodeList)) {
+            return;
+        }
+        Object[][] params = new Object[nxCodeList.size()][1];
+        for (int i = 0; i < nxCodeList.size(); i++) {
+            params[i] = new Object[]{nxCodeList.get(i).get("id")};
+        }
+        DatabaseConnection.batchDelete("DELETE FROM nxcode_items WHERE codeid = ?", params);
+        DatabaseConnection.delete("DELETE FROM nxcode WHERE expiration <= ?", timeClear);
+    }
+
+    private void loadCouponRates() {
+        List<Map<String, Object>> selectList = DatabaseConnection.select("SELECT couponid, rate FROM nxcoupons");
+        selectList.forEach(map -> couponRates.put(NapMapUtils.getInt(map, "couponid"), NapMapUtils.getInt(map, "rate")));
     }
 
     public List<Integer> getActiveCoupons() {
@@ -631,45 +617,17 @@ public class Server {
         }
     }
 
-    public void updateActiveCoupons() throws SQLException {
+    public void updateActiveCoupons() {
         synchronized (activeCoupons) {
             activeCoupons.clear();
             Calendar c = Calendar.getInstance();
-
             int weekDay = c.get(Calendar.DAY_OF_WEEK);
             int hourDay = c.get(Calendar.HOUR_OF_DAY);
-
-            Connection con = null;
-            try {
-                con = DatabaseConnection.getConnection();
-
-                int weekdayMask = (1 << weekDay);
-                PreparedStatement ps = con.prepareStatement("SELECT couponid FROM nxcoupons WHERE (activeday & ?) = ? AND starthour <= ? AND endhour > ?");
-                ps.setInt(1, weekdayMask);
-                ps.setInt(2, weekdayMask);
-                ps.setInt(3, hourDay);
-                ps.setInt(4, hourDay);
-
-                ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    activeCoupons.add(rs.getInt("couponid"));
-                }
-
-                rs.close();
-                ps.close();
-
-                con.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-
-                try {
-                    if (con != null && !con.isClosed()) {
-                        con.close();
-                    }
-                } catch (SQLException ex2) {
-                    ex2.printStackTrace();
-                }
-            }
+            int weekdayMask = (1 << weekDay);
+            List<Map<String, Object>> selectList = DatabaseConnection.select(
+                    "SELECT couponid FROM nxcoupons WHERE (activeday & ?) = ? AND starthour <= ? AND endhour > ?",
+                    weekdayMask, weekdayMask, hourDay, hourDay);
+            selectList.forEach(map -> activeCoupons.add(NapMapUtils.getInt(map, "couponid")));
         }
     }
 
@@ -872,44 +830,39 @@ public class Server {
 
         TimeZone.setDefault(TimeZone.getTimeZone(YamlConfig.config.server.TIMEZONE));
 
-        Connection c = null;
-        try {
-            c = DatabaseConnection.getConnection();
-            PreparedStatement ps = c.prepareStatement("UPDATE accounts SET loggedin = 0");
-            ps.executeUpdate();
-            ps.close();
-            ps = c.prepareStatement("UPDATE characters SET HasMerchant = 0");
-            ps.executeUpdate();
-            ps.close();
-
-            cleanNxcodeCoupons(c);
-            loadCouponRates(c);
-            updateActiveCoupons();
-
-            c.close();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        }
-        applyAllNameChanges(); // -- name changes can be missed by INSTANT_NAME_CHANGE --
+        DatabaseConnection.init();
+        long timeToTake = System.currentTimeMillis();
+        // 初始化账户信息
+        initAccount();
+        // 清空过期点券
+        cleanNxCodeCoupons();
+        // 载入点券比例
+        loadCouponRates();
+        // 载入未失效点券
+        updateActiveCoupons();
+        // 接受所有改名，关联参数INSTANT_NAME_CHANGE
+        applyAllNameChanges();
+        // 接受转区
         applyAllWorldTransfers();
         //MaplePet.clearMissingPetsFromDb();    // thanks Optimist for noticing this taking too long to run
+        // 加载最大的现金id
         MapleCashidGenerator.loadExistentCashIdsFromDb();
+        System.out.println("数据库\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
 
         ThreadManager.getInstance().start();
         initializeTimelyTasks();    // aggregated method for timely tasks thanks to lxconan
 
-        long timeToTake = System.currentTimeMillis();
         SkillFactory.loadAllSkills();
-        System.out.println("技能 加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
+        System.out.println("技能\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
 
         timeToTake = System.currentTimeMillis();
 
         CashItemFactory.getSpecialCashItems();
-        System.out.println("物品 加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
+        System.out.println("物品\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
 
         timeToTake = System.currentTimeMillis();
         MapleQuest.loadAllQuest();
-        System.out.println("任务 加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒\r\n");
+        System.out.println("任务\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒\r\n");
 
         NewYearCardRecord.startPendingNewYearCardRequests();
 
@@ -934,7 +887,7 @@ public class Server {
         if (YamlConfig.config.server.USE_FAMILY_SYSTEM) {
             timeToTake = System.currentTimeMillis();
             MapleFamily.loadAllFamilies();
-            System.out.println("家族 加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
+            System.out.println("家族\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
         }
 
         System.out.println();
@@ -1591,81 +1544,83 @@ public class Server {
         }
     }
 
-    private static void applyAllNameChanges() {
-        try (Connection con = DatabaseConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement("SELECT * FROM namechanges WHERE completionTime IS NULL")) {
-            ResultSet rs = ps.executeQuery();
-            List<Pair<String, String>> changedNames = new LinkedList<Pair<String, String>>(); //logging only
-            while (rs.next()) {
-                con.setAutoCommit(false);
-                int nameChangeId = rs.getInt("id");
-                int characterId = rs.getInt("characterId");
-                String oldName = rs.getString("old");
-                String newName = rs.getString("new");
-                boolean success = MapleCharacter.doNameChange(con, characterId, oldName, newName, nameChangeId);
-                if (!success) con.rollback(); //discard changes
-                else changedNames.add(new Pair<String, String>(oldName, newName));
-                con.setAutoCommit(true);
+    private void applyAllNameChanges() {
+        DatabaseConnection.getConnectionAndFree(conn -> {
+            try (PreparedStatement ps = conn.prepareStatement("SELECT * FROM namechanges WHERE completionTime IS NULL")) {
+                ResultSet rs = ps.executeQuery();
+                List<Pair<String, String>> changedNames = new LinkedList<Pair<String, String>>(); //logging only
+                while (rs.next()) {
+                    conn.setAutoCommit(false);
+                    int nameChangeId = rs.getInt("id");
+                    int characterId = rs.getInt("characterId");
+                    String oldName = rs.getString("old");
+                    String newName = rs.getString("new");
+                    boolean success = MapleCharacter.doNameChange(conn, characterId, oldName, newName, nameChangeId);
+                    if (!success) conn.rollback(); //discard changes
+                    else changedNames.add(new Pair<String, String>(oldName, newName));
+                    conn.setAutoCommit(true);
+                }
+                //log
+                for (Pair<String, String> namePair : changedNames) {
+                    FilePrinter.print(FilePrinter.CHANGE_CHARACTER_NAME, "Name change applied : from \"" + namePair.getLeft() + "\" to \"" + namePair.getRight() + "\" at " + Calendar.getInstance().getTime().toString());
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                FilePrinter.printError(FilePrinter.CHANGE_CHARACTER_NAME, e, "Failed to retrieve list of pending name changes.");
             }
-            //log
-            for (Pair<String, String> namePair : changedNames) {
-                FilePrinter.print(FilePrinter.CHANGE_CHARACTER_NAME, "Name change applied : from \"" + namePair.getLeft() + "\" to \"" + namePair.getRight() + "\" at " + Calendar.getInstance().getTime().toString());
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            FilePrinter.printError(FilePrinter.CHANGE_CHARACTER_NAME, e, "Failed to retrieve list of pending name changes.");
-        }
+        });
     }
 
-    private static void applyAllWorldTransfers() {
-        try (Connection con = DatabaseConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement("SELECT * FROM worldtransfers WHERE completionTime IS NULL")) {
-            ResultSet rs = ps.executeQuery();
-            List<Integer> removedTransfers = new LinkedList<Integer>();
-            while (rs.next()) {
-                int nameChangeId = rs.getInt("id");
-                int characterId = rs.getInt("characterId");
-                int oldWorld = rs.getInt("from");
-                int newWorld = rs.getInt("to");
-                String reason = MapleCharacter.checkWorldTransferEligibility(con, characterId, oldWorld, newWorld); //check if character is still eligible
-                if (reason != null) {
-                    removedTransfers.add(nameChangeId);
-                    FilePrinter.print(FilePrinter.WORLD_TRANSFER, "World transfer cancelled : Character ID " + characterId + " at " + Calendar.getInstance().getTime().toString() + ", Reason : " + reason);
-                    try (PreparedStatement delPs = con.prepareStatement("DELETE FROM worldtransfers WHERE id = ?")) {
-                        delPs.setInt(1, nameChangeId);
-                        delPs.executeUpdate();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                        FilePrinter.printError(FilePrinter.WORLD_TRANSFER, e, "Failed to delete world transfer for character ID " + characterId);
+    private void applyAllWorldTransfers() {
+        DatabaseConnection.getConnectionAndFree(conn -> {
+            try (PreparedStatement ps = conn.prepareStatement("SELECT * FROM worldtransfers WHERE completionTime IS NULL")) {
+                ResultSet rs = ps.executeQuery();
+                List<Integer> removedTransfers = new LinkedList<Integer>();
+                while (rs.next()) {
+                    int nameChangeId = rs.getInt("id");
+                    int characterId = rs.getInt("characterId");
+                    int oldWorld = rs.getInt("from");
+                    int newWorld = rs.getInt("to");
+                    String reason = MapleCharacter.checkWorldTransferEligibility(conn, characterId, oldWorld, newWorld); //check if character is still eligible
+                    if (reason != null) {
+                        removedTransfers.add(nameChangeId);
+                        FilePrinter.print(FilePrinter.WORLD_TRANSFER, "World transfer cancelled : Character ID " + characterId + " at " + Calendar.getInstance().getTime().toString() + ", Reason : " + reason);
+                        try (PreparedStatement delPs = conn.prepareStatement("DELETE FROM worldtransfers WHERE id = ?")) {
+                            delPs.setInt(1, nameChangeId);
+                            delPs.executeUpdate();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                            FilePrinter.printError(FilePrinter.WORLD_TRANSFER, e, "Failed to delete world transfer for character ID " + characterId);
+                        }
                     }
                 }
+                rs.beforeFirst();
+                List<Pair<Integer, Pair<Integer, Integer>>> worldTransfers = new LinkedList<Pair<Integer, Pair<Integer, Integer>>>(); //logging only <charid, <oldWorld, newWorld>>
+                while (rs.next()) {
+                    conn.setAutoCommit(false);
+                    int nameChangeId = rs.getInt("id");
+                    if (removedTransfers.contains(nameChangeId)) continue;
+                    int characterId = rs.getInt("characterId");
+                    int oldWorld = rs.getInt("from");
+                    int newWorld = rs.getInt("to");
+                    boolean success = MapleCharacter.doWorldTransfer(conn, characterId, oldWorld, newWorld, nameChangeId);
+                    if (!success) conn.rollback();
+                    else
+                        worldTransfers.add(new Pair<Integer, Pair<Integer, Integer>>(characterId, new Pair<Integer, Integer>(oldWorld, newWorld)));
+                    conn.setAutoCommit(true);
+                }
+                //log
+                for (Pair<Integer, Pair<Integer, Integer>> worldTransferPair : worldTransfers) {
+                    int charId = worldTransferPair.getLeft();
+                    int oldWorld = worldTransferPair.getRight().getLeft();
+                    int newWorld = worldTransferPair.getRight().getRight();
+                    FilePrinter.print(FilePrinter.WORLD_TRANSFER, "World transfer applied : Character ID " + charId + " from World " + oldWorld + " to World " + newWorld + " at " + Calendar.getInstance().getTime().toString());
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                FilePrinter.printError(FilePrinter.WORLD_TRANSFER, e, "Failed to retrieve list of pending world transfers.");
             }
-            rs.beforeFirst();
-            List<Pair<Integer, Pair<Integer, Integer>>> worldTransfers = new LinkedList<Pair<Integer, Pair<Integer, Integer>>>(); //logging only <charid, <oldWorld, newWorld>>
-            while (rs.next()) {
-                con.setAutoCommit(false);
-                int nameChangeId = rs.getInt("id");
-                if (removedTransfers.contains(nameChangeId)) continue;
-                int characterId = rs.getInt("characterId");
-                int oldWorld = rs.getInt("from");
-                int newWorld = rs.getInt("to");
-                boolean success = MapleCharacter.doWorldTransfer(con, characterId, oldWorld, newWorld, nameChangeId);
-                if (!success) con.rollback();
-                else
-                    worldTransfers.add(new Pair<Integer, Pair<Integer, Integer>>(characterId, new Pair<Integer, Integer>(oldWorld, newWorld)));
-                con.setAutoCommit(true);
-            }
-            //log
-            for (Pair<Integer, Pair<Integer, Integer>> worldTransferPair : worldTransfers) {
-                int charId = worldTransferPair.getLeft();
-                int oldWorld = worldTransferPair.getRight().getLeft();
-                int newWorld = worldTransferPair.getRight().getRight();
-                FilePrinter.print(FilePrinter.WORLD_TRANSFER, "World transfer applied : Character ID " + charId + " from World " + oldWorld + " to World " + newWorld + " at " + Calendar.getInstance().getTime().toString());
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            FilePrinter.printError(FilePrinter.WORLD_TRANSFER, e, "Failed to retrieve list of pending world transfers.");
-        }
+        });
     }
 
     public void loadAccountCharacters(MapleClient c) {
