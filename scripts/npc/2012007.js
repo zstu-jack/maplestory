@@ -61,7 +61,7 @@ function action(mode, type, selection) {
                 else
                     for (var i = 0; i < fhair_d.length; i++)
                         pushIfItemExists(hairnew, fhair_d[i] + parseInt(cm.getPlayer().getHair() % 10));
-                cm.sendYesNo("如果使用散发发型会员卡，你的发型将会#r随机#k改变，有可能变为全新风格。确定要使用 #b#t5154000##k 来改变你的发型吗？");
+                cm.sendYesNo("如果使用普通发型会员卡，你的发型将会#r随机#k改变，有可能变为全新风格。确定要使用 #b#t5154000##k 来改变你的发型吗？");
             } else if (selection == 1) {
                 beauty = 3;
                 hairnew = Array();
