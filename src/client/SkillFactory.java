@@ -99,23 +99,26 @@ public class SkillFactory {
 
     public static void loadAllSkills() {
         final MapleDataDirectoryEntry root = datasource.getRoot();
-        int skillid;    
+        int skillid;
         for (MapleDataFileEntry topDir : root.getFiles()) { // Loop thru jobs
-            if (topDir.getName().length() <= 8) {
-                for (MapleData data : datasource.getData(topDir.getName())) { // Loop thru each jobs
-                    if (data.getName().equals("skill")) {
-                        for (MapleData data2 : data) { // Loop thru each jobs
-                            if (data2 != null) {
-                                skillid = Integer.parseInt(data2.getName());
-                                skills.put(skillid, loadFromData(skillid, data2));
-                            }
-                        }
+            if (topDir.getName().length() > 8) {
+                continue;
+            }
+            for (MapleData data : datasource.getData(topDir.getName())) { // Loop thru each jobs
+                if (!data.getName().equals("skill")) {
+                    continue;
+                }
+                for (MapleData data2 : data) { // Loop thru each jobs
+                    if (data2 != null) {
+                        skillid = Integer.parseInt(data2.getName());
+                        skills.put(skillid, loadFromData(skillid, data2));
                     }
                 }
+
             }
         }
     }
-    
+
     private static Skill loadFromData(int id, MapleData data) {
         Skill ret = new Skill(id);
         boolean isBuff = false;
@@ -134,7 +137,7 @@ public class SkillFactory {
         } else {
             MapleData action_ = data.getChildByPath("action");
             boolean action = false;
-	    if (action_ == null) {
+            if (action_ == null) {
                 if (data.getChildByPath("prepare/action") != null) {
                     action = true;
                 } else {
@@ -145,10 +148,10 @@ public class SkillFactory {
                             break;
                     }
                 }
-	    } else {
-	    	action = true;
-	    }
-	    ret.setAction(action);
+            } else {
+                action = true;
+            }
+            ret.setAction(action);
             MapleData hit = data.getChildByPath("hit");
             MapleData ball = data.getChildByPath("ball");
             isBuff = effect != null && hit == null && ball == null;
@@ -242,7 +245,7 @@ public class SkillFactory {
                 case ILMage.SEAL:
                 case ILWizard.SLOW:
                 case ILMage.SPELL_BOOSTER:
-                case ILArchMage.HEROS_WILL:                
+                case ILArchMage.HEROS_WILL:
                 case ILArchMage.INFINITY:
                 case ILArchMage.MANA_REFLECTION:
                 case ILArchMage.MAPLE_WARRIOR:
@@ -284,7 +287,7 @@ public class SkillFactory {
                 case Bandit.DAGGER_BOOSTER:
                 case Bandit.HASTE:
                 case ChiefBandit.MESO_GUARD:
-                case ChiefBandit.PICKPOCKET:              	
+                case ChiefBandit.PICKPOCKET:
                 case Shadower.HEROS_WILL:
                 case Shadower.MAPLE_WARRIOR:
                 case Shadower.NINJA_AMBUSH:

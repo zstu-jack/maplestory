@@ -584,7 +584,7 @@ public class Server {
 
     private void loadCouponRates() {
         List<Map<String, Object>> selectList = DatabaseConnection.select("SELECT couponid, rate FROM nxcoupons");
-        selectList.forEach(map -> couponRates.put(NapMapUtils.getInt(map, "couponid"), NapMapUtils.getInt(map, "rate")));
+        selectList.forEach(map -> couponRates.put(NapMapUtils.getInteger(map, "couponid"), NapMapUtils.getInteger(map, "rate")));
     }
 
     public List<Integer> getActiveCoupons() {
@@ -627,7 +627,7 @@ public class Server {
             List<Map<String, Object>> selectList = DatabaseConnection.select(
                     "SELECT couponid FROM nxcoupons WHERE (activeday & ?) = ? AND starthour <= ? AND endhour > ?",
                     weekdayMask, weekdayMask, hourDay, hourDay);
-            selectList.forEach(map -> activeCoupons.add(NapMapUtils.getInt(map, "couponid")));
+            selectList.forEach(map -> activeCoupons.add(NapMapUtils.getInteger(map, "couponid")));
         }
     }
 
@@ -847,23 +847,26 @@ public class Server {
         //MaplePet.clearMissingPetsFromDb();    // thanks Optimist for noticing this taking too long to run
         // 加载最大的现金id
         MapleCashidGenerator.loadExistentCashIdsFromDb();
-        System.out.println("数据库\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
+        System.out.println("数据\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
 
+        // 创建线程池
         ThreadManager.getInstance().start();
+        // 创建定时任务线程池，并添加定时任务
         initializeTimelyTasks();    // aggregated method for timely tasks thanks to lxconan
 
+        timeToTake = System.currentTimeMillis();
         SkillFactory.loadAllSkills();
         System.out.println("技能\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
 
         timeToTake = System.currentTimeMillis();
-
-        CashItemFactory.getSpecialCashItems();
+        CashItemFactory.loadSpecialCashItems();
         System.out.println("物品\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
 
         timeToTake = System.currentTimeMillis();
         MapleQuest.loadAllQuest();
         System.out.println("任务\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒\r\n");
 
+        // 发送新年贺卡通知
         NewYearCardRecord.startPendingNewYearCardRequests();
 
         if (YamlConfig.config.server.USE_THREAD_TRACKER) ThreadTracker.getInstance().registerThreadTrackerTask();
@@ -910,9 +913,10 @@ public class Server {
         System.out.println("发布版本: 1.23.0617");
         online = true;
 
-        MapleSkillbookInformationProvider.getInstance();
         OpcodeConstants.generateOpcodeNames();
-        CommandsExecutor.getInstance();
+        // 不需要在这里，构造方法什么都没干，new一个对象很快
+//        MapleSkillbookInformationProvider.getInstance();
+//        CommandsExecutor.getInstance();
 
         for (Channel ch : this.getAllChannels()) {
             ch.reloadEventScriptManager();
@@ -922,7 +926,9 @@ public class Server {
     private void initializeTimelyTasks() {
         TimerManager tMan = TimerManager.getInstance();
         tMan.start();
+        // 强制更新时间，并清除已被取消的任务
         tMan.register(tMan.purge(), YamlConfig.config.server.PURGING_INTERVAL);//Purging ftw...
+        // 释放已经登录或长时间未登录的客户端
         disconnectIdlesOnLoginTask();
 
         long timeLeft = getTimeLeftForNextHour();
