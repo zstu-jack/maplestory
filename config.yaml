@@ -490,3 +490,5 @@ server:
   #Event End Timestamp
   EVENT_END_TIMESTAMP: 1428897600000
 
+  # 购买1点人气消耗的金币，为0时不能购买
+  BUYFAME_FEE: 0

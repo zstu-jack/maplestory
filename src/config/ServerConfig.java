@@ -302,4 +302,5 @@ public class ServerConfig {
     //Event End Timestamp
     public long EVENT_END_TIMESTAMP;
 
+    public int BUYFAME_FEE;
 }
