@@ -220,9 +220,9 @@ server:
   LOGIN_ATTEMPT_DURATION: 120         #Period in seconds the login attempt remains registered on the system.
 
   # 配置服务器ip
-  HOST: 103.44.236.53
+  HOST: 127.0.0.1
   # 是否为本地服务，如果是127.0.0.1就选true，其他为falsed
-  LOCALSERVER: falsed
+  LOCALSERVER: true
   # 这个配置暂时没有作用
   GMSERVER: false
 
@@ -347,7 +347,8 @@ server:
   PARTY_SEARCH_REENTRY_LIMIT: 10              #Max amount of times a party leader is allowed to persist on the Party Search before entry expiration (thus needing to manually restart the Party Search to be able to search for members).
   NAME_CHANGE_COOLDOWN: 2592000000      # (30*24*60*60*1000) Cooldown for name changes, default (GMS) is 30 days.
   WORLD_TRANSFER_COOLDOWN: 2592000000  # (30*24*60*60*1000) Cooldown for world tranfers, default is same as name change (30 days).
-  INSTANT_NAME_CHANGE: false              #Whether or not to wait for server restart to apply name changes. Does on reconnect otherwise (requires queries on every login).
+  # 是否等待服务重启才生效改名，在重新连接时执行，否则（需要在每次登录时进行查询）。
+  INSTANT_NAME_CHANGE: false
 
   #Dangling Items/Locks Configuration
   ITEM_EXPIRE_TIME: 180000    # (3 * 60 * 1000) 地上物品开始消失的时间，建议是3分钟.
