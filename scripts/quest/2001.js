@@ -13,17 +13,17 @@ function end(mode, type, selection) {
         status++;
 
 	if(status == 0) {
-		qm.sendNext("THIS is the deed to the land that my son lost! And you even brought all the necessary materials to build the house! Thank you so much ... my relatives can all move in and live in #m102000000#! As a sign of appreciation ...");
+		qm.sendNext("这就是我儿子蛋弄丢的那张地契!你还弄来了修房子用的全部材料!太谢谢你了...这下我们全族都能搬来#m102000000#居住了!那么作为感谢...");
 	}
 
 	else if(status == 1) {
 	    if(qm.getPlayer().getInventory(Packages.client.inventory.MapleInventoryType.USE).getNumFreeSlot() < 1) {
-		qm.getPlayer().dropMessage(1, "USE inventory full.");
+		qm.getPlayer().dropMessage(1, "消耗栏已满.");
 		qm.dispose();
 		return;
 	    }
 
-            var talkStr = "Okay, now choose the scroll of your liking ... The odds of winning are 10% each. \r\n\r\n#rSELECT A ITEM\r\n#b";
+            var talkStr = "好,那么选一张你喜欢的卷轴吧...成功概率都是10%. \r\n\r\n#r你要选择的是哪张呢?\r\n#b";
             stance = qm.getPlayer().getJobStyle();
             
             if(stance == Packages.client.MapleJob.WARRIOR || stance == Packages.client.MapleJob.BEGINNER) vecItem = new Array(2043002, 2043102, 2043202, 2044002, 2044102, 2044202, 2044402, 2044302);
