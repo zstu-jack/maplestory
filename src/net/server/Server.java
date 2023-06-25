@@ -954,7 +954,7 @@ public class Server {
         System.out.println("客户端端口 8484 已开启");
         System.out.println("HeavenMS-Nap 启动完毕！");
         System.out.println();
-        System.out.println("发布版本: 1.23.0302");
+        System.out.println("发布版本: 1.23.0617");
         online = true;
 
         MapleSkillbookInformationProvider.getInstance();
@@ -992,7 +992,6 @@ public class Server {
 
     public static void main(String args[]) {
         System.setProperty("wzpath", "wz");
-        Security.setProperty("crypto.policy", "unlimited");
         AutoJCE.removeCryptographyRestrictions();
         Server.getInstance().init();
     }

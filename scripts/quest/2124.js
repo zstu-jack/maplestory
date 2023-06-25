@@ -41,11 +41,11 @@ function end(mode, type, selection) {
         
         if (status == 0) {
             if(!qm.haveItem(4031619, 1)) {
-                qm.sendOk("Please bring me the box with the supplies that lies with #b#p2012019##k...");
+                qm.sendOk("请把装有补给品的盒子带给我 #b#p2012019##k...");
             }
             else {
                 qm.gainItem(4031619, -1);
-                qm.sendOk("Oh, you brought #p2012019#'s box! Thank you.");
+                qm.sendOk("厉害啊！ 你居然带来了 #p2012019#! 谢谢你.");
                 qm.forceCompleteQuest();
             }
         } else if (status == 1) {

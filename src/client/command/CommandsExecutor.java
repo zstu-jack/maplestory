@@ -200,6 +200,7 @@ public class CommandsExecutor {
         addCommand("toggleexp", ToggleExpCommand.class);
         addCommand("mylawn", MapOwnerClaimCommand.class);
         addCommand("map", MapIdCommand.class);
+        addCommand("buyfame", BuyFameCommand.class);
 
         commandsNameDesc.add(levelCommandsCursor);
     }

@@ -1,3 +1,5 @@
+-- 最后执行这个，完事
+
 #THIS SQL IS OPTIONAL, TO BE USED AFTER 'db_drops.sql'
 #THIS REQUIRES PROVIDED WZ FILES
 

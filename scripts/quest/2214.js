@@ -45,19 +45,19 @@ function end(mode, type, selection) {
         if (status == 0) {
             var hourDay = qm.getHourOfDay();
             if(!(hourDay >= 17 && hourDay < 20)) {
-                qm.sendNext("(Hmm, I'm searching the trash can but can't find the #t4031894# JM was talking about, maybe it's not time yet...)");
+                qm.sendNext("(嗯，我在垃圾桶里找，但找不到吉咪说的#t4031894#，也许还没到时间。)");
                 canComplete = false;
                 return;
             }
             
             if(!qm.canHold(4031894, 1)) {
-                qm.sendNext("(Eh, I can't hold the #t4031894# right now, I need an ETC slot available.)");
+                qm.sendNext("(呃，我现在拿不了#t4031894#，#b其他栏#k满了。)");
                 canComplete = false;
                 return;
             }
             
             canComplete = true;
-            qm.sendNext("(Ah, there is a crumbled note here... Hm, it contains details about some scheme that is about to happen, that must be what #r#p1052002##k was talking about.)");
+            qm.sendNext("(啊，这里有一张碎纸条。。。嗯，它记录了一些计划的细节，这一定是#r#p1052002##k所说的.)");
         } else if (status == 1) {
             if (canComplete) {
                 qm.forceCompleteQuest();
