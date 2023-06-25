@@ -321,8 +321,8 @@ server:
   USE_ENABLE_CUSTOM_NPC_SCRIPT: false  #允许使用自定义HeavenMS NPC脚本(代理E, Coco等)。不会禁用Abdula(它实际上对游戏很有用)或任务。
   USE_STARTER_MERGE: false            #允许任何玩家使用装备合并自定义机制(相对于高级的制造者lv3的要求)。锻造的等级限制
 
-  #Commands Configuration
-  BLOCK_GENERATE_CASH_ITEM: false     #Prevents creation of cash items with the item/drop command.
+  # GM指令相关配置
+  BLOCK_GENERATE_CASH_ITEM: false     # 是否允许添加现金物品，或者添加现金掉落
   USE_WHOLE_SERVER_RANKING: false     #Enables a ranking pool made from every character registered on the server for the "ranks" command, instead of separated by worlds.
 
   EQUIP_EXP_RATE: 1                  #装备经验倍率, 线性增长. 默认1.0 (大约100-200个同等级怪物可以让装备升级).

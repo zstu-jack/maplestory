@@ -31,7 +31,7 @@ import net.server.channel.Channel;
 
 public class ReloadEventsCommand extends Command {
     {
-        setDescription("");
+        setDescription("重新加载事件脚本");
     }
 
     @Override
@@ -40,6 +40,6 @@ public class ReloadEventsCommand extends Command {
         for (Channel ch : Server.getInstance().getAllChannels()) {
             ch.reloadEventScriptManager();
         }
-        player.dropMessage(5, "Reloaded Events");
+        player.dropMessage(5, "事件脚本已重载");
     }
 }

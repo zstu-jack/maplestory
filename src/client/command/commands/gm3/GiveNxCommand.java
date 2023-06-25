@@ -26,58 +26,44 @@ package client.command.commands.gm3;
 import client.command.Command;
 import client.MapleClient;
 import client.MapleCharacter;
+import cn.nap.utils.common.NapComUtils;
 
 public class GiveNxCommand extends Command {
     {
-        setDescription("");
+        setDescription("添加点券");
     }
 
     @Override
     public void execute(MapleClient c, String[] params) {
         MapleCharacter player = c.getPlayer();
         if (params.length < 1) {
-            player.yellowMessage("Syntax: !givenx [nx, mp, np] [<playername>] <gainnx>");
+            player.yellowMessage("输入: !givenx <点券数> <可选:1-点券;2-皇家券;4-代金券> <可选:玩家名>");
             return;
         }
 
-        String recv, typeStr = "nx";
-        int value, type = 1;
+        int type = 1;
+        String recv = c.getPlayer().getName();
+        int value = Integer.parseInt(params[0]);
         if (params.length > 1) {
-            if (params[0].length() == 2) {
-                switch (params[0]) {
-                    case "mp":  // maplePoint
-                        type = 2;
-                        break;
-                    case "np":  // nxPrepaid
-                        type = 4;
-                        break;
-                    default:
-                        type = 1;
-                }
-                typeStr = params[0];
-                
-                if (params.length > 2) {
-                    recv = params[1];
-                    value = Integer.parseInt(params[2]);
-                } else {
-                    recv = c.getPlayer().getName();
-                    value = Integer.parseInt(params[1]);
-                }
-            } else {
-                recv = params[0];
-                value = Integer.parseInt(params[1]);
-            }
-        } else {
-            recv = c.getPlayer().getName();
-            value = Integer.parseInt(params[0]);
+            type = Integer.parseInt(params[1]);
+        }
+        if (params.length > 2) {
+            recv = params[2];
+        }
+
+        String[] typeArr = new String[]{null, "点券", "皇家点券", null, "代金券"};
+        if (type > typeArr.length || NapComUtils.isEmpty(typeArr[type])) {
+            player.message("点券类型 '" + type + "' 不存在");
+            return;
         }
 
         MapleCharacter victim = c.getWorldServer().getPlayerStorage().getCharacterByName(recv);
-        if (victim != null) {
-            victim.getCashShop().gainCash(type, value);
-            player.message(typeStr.toUpperCase() + " given.");
-        } else {
-            player.message("Player '" + recv + "' could not be found.");
+        if (null == victim) {
+            player.message("玩家 '" + recv + "' 不存在");
+            return;
         }
+        victim.getCashShop().gainCash(type, value);
+        player.message(recv.toUpperCase() + " 已收到" + typeArr[type] + " " + value + " 点");
     }
+
 }

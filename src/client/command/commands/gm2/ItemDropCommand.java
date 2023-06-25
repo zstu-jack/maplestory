@@ -35,36 +35,36 @@ import server.MapleItemInformationProvider;
 
 public class ItemDropCommand extends Command {
     {
-        setDescription("");
+        setDescription("添加掉落");
     }
 
     @Override
     public void execute(MapleClient c, String[] params) {
         MapleCharacter player = c.getPlayer();
-        
+
         if (params.length < 1) {
-            player.yellowMessage("Syntax: !drop <itemid> <quantity>");
+            player.yellowMessage("输入: !drop <物品id> <数量>");
             return;
         }
 
         int itemId = Integer.parseInt(params[0]);
         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
 
-        if(ii.getName(itemId) == null) {
-            player.yellowMessage("Item id '" + params[0] + "' does not exist.");
+        if (ii.getName(itemId) == null) {
+            player.yellowMessage("物品id '" + params[0] + "' 不存在");
             return;
         }
 
         short quantity = 1;
-        if(params.length >= 2) quantity = Short.parseShort(params[1]);
+        if (params.length >= 2) quantity = Short.parseShort(params[1]);
 
         if (YamlConfig.config.server.BLOCK_GENERATE_CASH_ITEM && ii.isCash(itemId)) {
-            player.yellowMessage("You cannot create a cash item with this command.");
+            player.yellowMessage("无法创建现金类的物品");
             return;
         }
 
         if (ItemConstants.isPet(itemId)) {
-            if (params.length >= 2){   // thanks to istreety & TacoBell
+            if (params.length >= 2) {   // thanks to istreety & TacoBell
                 quantity = 1;
                 long days = Math.max(1, Integer.parseInt(params[1]));
                 long expiration = System.currentTimeMillis() + (days * 24 * 60 * 60 * 1000);
@@ -74,12 +74,12 @@ public class ItemDropCommand extends Command {
                 toDrop.setExpiration(expiration);
 
                 toDrop.setOwner("");
-                if(player.gmLevel() < 3) {
+                if (player.gmLevel() < 3) {
                     short f = toDrop.getFlag();
                     f |= ItemConstants.ACCOUNT_SHARING;
                     f |= ItemConstants.UNTRADEABLE;
                     f |= ItemConstants.SANDBOX;
-                    
+
                     toDrop.setFlag(f);
                     toDrop.setOwner("TRIAL-MODE");
                 }
@@ -88,11 +88,11 @@ public class ItemDropCommand extends Command {
 
                 return;
             } else {
-                player.yellowMessage("Pet Syntax: !drop <itemid> <expiration>");
-                return;        
+                player.yellowMessage("宠物类物品输入: !drop <宠物id> <有效天数>");
+                return;
             }
         }
-        
+
         Item toDrop;
         if (ItemConstants.getInventoryType(itemId) == MapleInventoryType.EQUIP) {
             toDrop = ii.getEquipById(itemId);
@@ -101,7 +101,7 @@ public class ItemDropCommand extends Command {
         }
 
         toDrop.setOwner(player.getName());
-        if(player.gmLevel() < 3) {
+        if (player.gmLevel() < 3) {
             short f = toDrop.getFlag();
             f |= ItemConstants.ACCOUNT_SHARING;
             f |= ItemConstants.UNTRADEABLE;
