@@ -80,7 +80,8 @@ public class ThreadManager {
     public void stop() {
         tpe.shutdown();
         try {
-            tpe.awaitTermination(5, TimeUnit.MINUTES);
+            // 正常谁会等5min
+            tpe.awaitTermination(30, TimeUnit.SECONDS);
         } catch (InterruptedException ignore) {
         }
     }

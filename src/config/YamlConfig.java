@@ -9,8 +9,9 @@ import java.util.List;
 
 
 public class YamlConfig {
+    public static final String CONFIG_FILE = "config.yaml";
 
-    public static final YamlConfig config = fromFile("config.yaml");
+    public static YamlConfig config = fromFile(CONFIG_FILE);
     
     public List<WorldConfig> worlds;
     public ServerConfig server;

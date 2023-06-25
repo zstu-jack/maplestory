@@ -23,6 +23,13 @@ package net.server;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,7 +93,6 @@ import client.MapleClient;
 import client.MapleFamily;
 import client.MapleCharacter;
 import client.SkillFactory;
-import client.command.CommandsExecutor;
 import client.inventory.Item;
 import client.inventory.ItemFactory;
 import client.inventory.manipulator.MapleCashidGenerator;
@@ -99,7 +105,6 @@ import constants.net.ServerConstants;
 import java.util.TimeZone;
 
 import server.CashShop.CashItemFactory;
-import server.MapleSkillbookInformationProvider;
 import server.ThreadManager;
 import server.TimerManager;
 import server.expeditions.MapleExpeditionBossLog;
@@ -847,24 +852,27 @@ public class Server {
         //MaplePet.clearMissingPetsFromDb();    // thanks Optimist for noticing this taking too long to run
         // 加载最大的现金id
         MapleCashidGenerator.loadExistentCashIdsFromDb();
-        System.out.println("数据\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
+        System.out.println("数据  加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
 
         // 创建线程池
         ThreadManager.getInstance().start();
         // 创建定时任务线程池，并添加定时任务
         initializeTimelyTasks();    // aggregated method for timely tasks thanks to lxconan
 
+        // 监听config.yaml配置是否发生改变
+        yamlMonitor();
+
         timeToTake = System.currentTimeMillis();
         SkillFactory.loadAllSkills();
-        System.out.println("技能\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
+        System.out.println("技能  加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
 
         timeToTake = System.currentTimeMillis();
         CashItemFactory.loadSpecialCashItems();
-        System.out.println("物品\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
+        System.out.println("物品  加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
 
         timeToTake = System.currentTimeMillis();
         MapleQuest.loadAllQuest();
-        System.out.println("任务\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒\r\n");
+        System.out.println("任务  加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒\r\n");
 
         // 发送新年贺卡通知
         NewYearCardRecord.startPendingNewYearCardRequests();
@@ -890,7 +898,7 @@ public class Server {
         if (YamlConfig.config.server.USE_FAMILY_SYSTEM) {
             timeToTake = System.currentTimeMillis();
             MapleFamily.loadAllFamilies();
-            System.out.println("家族\t加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
+            System.out.println("家族  加载耗时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
         }
 
         System.out.println();
@@ -907,10 +915,10 @@ public class Server {
             ex.printStackTrace();
         }
 
-        System.out.println("客户端端口 8484 已开启");
-        System.out.println("HeavenMS-Nap 启动完毕！");
-        System.out.println();
+        System.out.println("客户端登录端口 8484");
+        System.out.println("HeavenMS-Nap v" + ServerConstants.VERSION + " 启动完毕！");
         System.out.println("发布版本: 1.23.0617");
+        System.out.println();
         online = true;
 
         OpcodeConstants.generateOpcodeNames();
@@ -1920,5 +1928,51 @@ public class Server {
             System.gc();
             getInstance().init();//DID I DO EVERYTHING?! D:
         }
+    }
+
+    @SuppressWarnings("InfiniteLoopStatement")
+    private void yamlMonitor() {
+        WatchService watchService;
+        try {
+            watchService = FileSystems.getDefault().newWatchService();
+            Path path = Paths.get("").toAbsolutePath();
+            // 不输出，格式难看
+//            System.out.println("开启监听 " + path + File.separator + YamlConfig.CONFIG_FILE);
+            path.register(watchService, StandardWatchEventKinds.ENTRY_MODIFY);
+        } catch (IOException e) {
+            System.out.println("创建config.yaml监听事件失败，已停止监听");
+            return;
+        }
+
+        ThreadManager.getInstance().newTask(() -> {
+            while (true) {
+                WatchKey watchKey = null;
+                try {
+                    watchKey = watchService.take();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (null == watchKey) {
+                    continue;
+                }
+                try {
+                    for (WatchEvent<?> pollEvent : watchKey.pollEvents()) {
+                        if (!StandardWatchEventKinds.ENTRY_MODIFY.equals(pollEvent.kind())) {
+                            continue;
+                        }
+                        Path modifyPath = (Path) pollEvent.context();
+                        // 在reset之前，只接受一次更改
+                        if (modifyPath.toString().equals(YamlConfig.CONFIG_FILE) && pollEvent.count() == 1) {
+                            YamlConfig.config = YamlConfig.fromFile(YamlConfig.CONFIG_FILE);
+                            System.out.println("config.yaml已被更改，已重新加载配置");
+                            break;
+                        }
+                    }
+                } catch (RuntimeException e) {
+                    System.out.println("解析配置文件失败，请确认配置是否正确");
+                }
+                watchKey.reset();
+            }
+        });
     }
 }

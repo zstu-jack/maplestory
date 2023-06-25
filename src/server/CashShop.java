@@ -195,7 +195,7 @@ public class CashShop {
                 return;
             }
             selectList.forEach(map -> specialcashitems.add(new SpecialCashItem(NapMapUtils.getInteger(map, "sn"),
-                    NapMapUtils.getInteger(map, "modifier"), NapMapUtils.getByte(map, "sn"))));
+                    NapMapUtils.getInteger(map, "modifier"), NapMapUtils.getByte(map, "info"))));
         }
 
         public static CashItem getRandomCashItem() {
