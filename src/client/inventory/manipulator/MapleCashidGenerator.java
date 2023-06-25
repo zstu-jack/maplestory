@@ -52,26 +52,15 @@ public class MapleCashidGenerator {
     }
     
     public static synchronized void loadExistentCashIdsFromDb() {
-        Connection con = null;
-        try {
-            con = DatabaseConnection.getConnection();
-            
-            loadExistentCashIdsFromQuery(con, "SELECT id FROM rings");
-            loadExistentCashIdsFromQuery(con, "SELECT petid FROM pets");
-            
-            con.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
+        DatabaseConnection.getConnectionAndFree(conn -> {
             try {
-                if (con != null && !con.isClosed()) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
+                loadExistentCashIdsFromQuery(conn, "SELECT id FROM rings");
+                loadExistentCashIdsFromQuery(conn, "SELECT petid FROM pets");
+            } catch (SQLException ex) {
+                ex.printStackTrace();
             }
-        }
-        
+        });
+
         runningCashid = 0;
         do {
             runningCashid++;    // hopefully the id will never surpass the allotted amount for pets/rings?

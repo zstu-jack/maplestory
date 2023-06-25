@@ -19,7 +19,6 @@
 */
 package net.server.task;
 
-import java.sql.SQLException;
 import net.server.Server;
 import tools.FilePrinter;
 
@@ -33,8 +32,8 @@ public class CouponTask implements Runnable {
         try {
             Server.getInstance().updateActiveCoupons();
             Server.getInstance().commitActiveCoupons();
-        } catch(SQLException sqle) {
-            FilePrinter.printError(FilePrinter.EXCEPTION_CAUGHT, "Unexpected SQL error: " + sqle.getMessage());
+        } catch(Exception e) {
+            FilePrinter.printError(FilePrinter.EXCEPTION_CAUGHT, "Unexpected SQL error: " + e.getMessage());
         }
     }
 }

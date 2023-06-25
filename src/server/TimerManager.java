@@ -33,7 +33,7 @@ import javax.management.ObjectName;
 import tools.FilePrinter;
 
 public class TimerManager implements TimerManagerMBean {
-    private static TimerManager instance = new TimerManager();
+    private static final TimerManager instance = new TimerManager();
     
     public static TimerManager getInstance() {
         return instance;
@@ -64,13 +64,14 @@ public class TimerManager implements TimerManagerMBean {
                 return t;
             }
         });
-        //this is a no-no, it actually does nothing..then why the fuck are you doing it?
+        // 线程池在shutdown后不会继续执行已提交的任务
         stpe.setContinueExistingPeriodicTasksAfterShutdownPolicy(false);
+        // 任务取消后会被从任务队列中移除
         stpe.setRemoveOnCancelPolicy(true);
 		
         stpe.setKeepAliveTime(5, TimeUnit.MINUTES);
         stpe.allowCoreThreadTimeOut(true);
-		
+
         ses = stpe;
     }
 

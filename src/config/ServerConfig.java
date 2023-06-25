@@ -8,7 +8,7 @@ public class ServerConfig {
     public String DB_URL;
     public String DB_USER;
     public String DB_PASS;
-    public boolean DB_CONNECTION_POOL;
+    public int DB_MAX_CONNECT;
 
     //Login Configuration
     public int WORLDS;
