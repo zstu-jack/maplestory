@@ -421,7 +421,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
         Item itemGained = gainItem(item.getId(), (short) (item.getId() / 10000 == 200 ? 100 : 1), true, true); // For normal potions, make it give 100.
 
-        sendNext("You have obtained a #b#t" + item.getId() + "##k.");
+        sendNext("ƒ„ªÒµ√¡À #b#t" + item.getId() + "##k.");
 
         String map = c.getChannelServer().getMapFactory().getMap(maps[(getNpc() != 9100117 && getNpc() != 9100109) ? (getNpc() - 9100100) : getNpc() == 9100109 ? 8 : 9]).getMapName();
 
