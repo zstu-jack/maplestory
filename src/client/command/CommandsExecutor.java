@@ -326,7 +326,7 @@ public class CommandsExecutor {
         addCommand("warpmap", 3, WarpMapCommand.class);
         addCommand("warparea", 3, WarpAreaCommand.class);
         addCommand("gotonpc", 3, GotoNpcCommand.class);
-        addCommand("xiguai", 3, SuctionMonsterCommand.class);
+        addCommand("xiguai", 3, SuckMonsterCommand.class);
 
         commandsNameDesc.add(levelCommandsCursor);
     }

@@ -1812,12 +1812,6 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
 
         client.announce(warpPacket);
         map.removePlayer(this);
-        List<MapleMapObject> monsters = to.getMonsters();
-        if (null != monsters && monsters.size() > 0 && isSuctionMonster()) {
-            for (MapleMapObject monster : monsters) {
-                monster.setPosition(pos);
-            }
-        }
         if (client.getChannelServer().getPlayerStorage().getCharacterById(getId()) != null) {
             map = to;
             setPosition(pos);
@@ -11495,19 +11489,4 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
     public int getLanguage() {
         return getClient().getLanguage();
     }
-
-    public boolean isSuctionMonster() {
-        if (!isGM()) {
-            return false;
-        }
-        return 1 == suctionMonster;
-    }
-
-    public void changeSuctionMonster() {
-        if (!isGM()) {
-            return;
-        }
-        suctionMonster = 0 == suctionMonster ? 1 : 0;
-    }
-
 }

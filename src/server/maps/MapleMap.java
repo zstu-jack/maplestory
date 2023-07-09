@@ -99,6 +99,7 @@ import tools.FilePrinter;
 import tools.MaplePacketCreator;
 import tools.Pair;
 import tools.Randomizer;
+import ui.view.common.ViewCombine;
 
 public class MapleMap {
     
@@ -188,7 +189,8 @@ public class MapleMap {
     
     // due to the nature of loadMapFromWz (synchronized), sole function that calls 'generateMapDropRangeCache', this lock remains optional.
     private static final Lock bndLock = MonitoredReentrantLockFactory.createLock(MonitoredLockType.MAP_BOUNDS, true);
-    
+    private static final List<ViewCombine> suckCombineMsg = new ArrayList<>();
+
     public MapleMap(int mapid, int world, int channel, int returnMapId, float monsterRate) {
         this.mapid = mapid;
         this.channel = channel;
@@ -4621,4 +4623,7 @@ public class MapleMap {
         this.timeExpand = timeExpand;
     }
 
+    public List<ViewCombine> getSuckCombineMsg() {
+        return suckCombineMsg;
+    }
 }

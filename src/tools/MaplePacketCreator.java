@@ -34,6 +34,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 
 import client.BuddylistEntry;
@@ -44,6 +45,7 @@ import client.MapleClient;
 import client.MapleDisease;
 import client.MapleFamilyEntitlement;
 import client.MapleFamilyEntry;
+import client.SkillFactory;
 import client.keybind.MapleKeyBinding;
 import client.keybind.MapleQuickslotBinding;
 import client.MapleMount;
@@ -116,6 +118,7 @@ import server.movement.LifeMovementFragment;
 import tools.data.input.SeekableLittleEndianAccessor;
 import tools.data.output.LittleEndianWriter;
 import tools.data.output.MaplePacketLittleEndianWriter;
+import ui.view.common.ViewCombine;
 
 import java.util.TimeZone;
 
@@ -1485,6 +1488,10 @@ public class MaplePacketCreator {
     }
 
     private static void encodeTemporary(MaplePacketLittleEndianWriter mplew, Map<MonsterStatus, MonsterStatusEffect> stati) {
+        encodeTemporary(mplew, stati, -1);
+    }
+
+    private static void encodeTemporary(MaplePacketLittleEndianWriter mplew, Map<MonsterStatus, MonsterStatusEffect> stati, int duration) {
         int pCounter = -1, mCounter = -1;
 
         writeLongEncodeTemporaryMask(mplew, stati.keySet());    // packet structure mapped thanks to Eric
@@ -1549,13 +1556,26 @@ public class MaplePacketCreator {
         mplew.write(life.getController() == null ? 5 : 1);
         mplew.writeInt(life.getId());
 
-        if (requestController) {
+        List<ViewCombine> combineMsg = life.getMap().getSuckCombineMsg();
+        Optional<ViewCombine> currMapCombineOption = combineMsg.stream().filter(combine -> {
+            Integer mapId = combine.getSecond();
+            return mapId == life.getMap().getId();
+        }).findFirst();
+        if (currMapCombineOption.isPresent()) {
+            Skill skill = SkillFactory.getSkill(5201004);
+            MonsterStatusEffect statusEffect = new MonsterStatusEffect(Collections.singletonMap(MonsterStatus.STUN, 1), skill, null, false);
+            encodeTemporary(mplew, Collections.singletonMap(MonsterStatus.STUN, statusEffect), 86400000);
+//            mplew.skip(16);
+            Point position = currMapCombineOption.get().getThird();
+            mplew.writePos(position);
+        } else if (requestController) {
             encodeTemporary(mplew, life.getStati());    // thanks shot for noticing encode temporary buffs missing
+            mplew.writePos(life.getPosition());
         } else {
             mplew.skip(16);
+            mplew.writePos(life.getPosition());
         }
 
-        mplew.writePos(life.getPosition());
         mplew.write(life.getStance());
         mplew.writeShort(0); //Origin FH //life.getStartFh()
         mplew.writeShort(life.getFh());
@@ -1874,7 +1894,17 @@ public class MaplePacketCreator {
         mplew.writeInt(drop.getItemId()); // drop object ID
         mplew.writeInt(drop.getClientsideOwnerId()); // owner charid/partyid :)
         mplew.write(dropType); // 0 = timeout for non-owner, 1 = timeout for non-owner's party, 2 = FFA, 3 = explosive/FFA
-        mplew.writePos(dropto);
+        MapleMap map = player.getMap();
+        Optional<ViewCombine> currMapCombineOption = map.getSuckCombineMsg().stream().filter(combine -> {
+            Integer mapId = combine.getSecond();
+            return mapId == map.getId();
+        }).findFirst();
+        // 如果开启了吸怪，物品就掉落在人物的脚下
+        if (currMapCombineOption.isPresent()) {
+            mplew.writePos(player.getPosition());
+        } else {
+            mplew.writePos(dropto);
+        }
         mplew.writeInt(drop.getDropper().getObjectId()); // dropper oid, found thanks to Li Jixue
 
         if (mod != 2) {
@@ -3178,7 +3208,7 @@ public class MaplePacketCreator {
     }
 
     private static void writeLongEncodeTemporaryMask(final MaplePacketLittleEndianWriter mplew, Collection<MonsterStatus> stati) {
-        int masks[] = new int[4];
+        int[] masks = new int[4];
 
         for (MonsterStatus statup : stati) {
             int pos = statup.isFirst() ? 0 : 2;
@@ -3187,8 +3217,8 @@ public class MaplePacketCreator {
             }
         }
 
-        for (int i = 0; i < masks.length; i++) {
-            mplew.writeInt(masks[i]);
+        for (int mask : masks) {
+            mplew.writeInt(mask);
         }
     }
 

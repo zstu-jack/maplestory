@@ -28,7 +28,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+import cn.nap.utils.common.NapComUtils;
 import config.YamlConfig;
 import net.AbstractMaplePacketHandler;
 import server.MapleStatEffect;
@@ -104,6 +106,7 @@ import constants.skills.WhiteKnight;
 import constants.skills.WindArcher;
 import net.server.PlayerBuffValueHolder;
 import scripting.AbstractPlayerInteraction;
+import ui.view.common.ViewCombine;
 
 public abstract class AbstractDealDamageHandler extends AbstractMaplePacketHandler {
 
@@ -274,8 +277,20 @@ public abstract class AbstractDealDamageHandler extends AbstractMaplePacketHandl
                         distanceToDetect += 60000;
                     
                     if (distance > distanceToDetect) {
-                        AutobanFactory.DISTANCE_HACK.alert(player, "Distance Sq to monster: " + distance + " SID: " + attack.skill + " MID: " + monster.getId());
-                        monster.refreshMobPosition();
+                        // 如果不是开启吸怪的人刷新怪物的位置，如果是开启吸怪的人，保持位置
+                        List<ViewCombine> combineMsg = map.getSuckCombineMsg();
+                        Optional<ViewCombine> currMapCombineOption = Optional.empty();
+                        if (NapComUtils.isNotEmpty(combineMsg)) {
+                            currMapCombineOption = combineMsg.stream().filter(combine -> {
+                                Integer mapId = combine.getSecond();
+                                return mapId == map.getId();
+                            }).findFirst();
+                        }
+
+//                        AutobanFactory.DISTANCE_HACK.alert(player, "Distance Sq to monster: " + distance + " SID: " + attack.skill + " MID: " + monster.getId());
+                        if (!currMapCombineOption.isPresent()) {
+                            monster.refreshMobPosition();
+                        }
                     }
                     
                     int totDamageToOneMonster = 0;
