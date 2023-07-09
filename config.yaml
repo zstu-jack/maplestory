@@ -232,12 +232,12 @@ server:
   # 创建角色后，是否允许自定义键位
   USE_CUSTOM_KEYSET: false
   # 开启debug模式
-  USE_DEBUG: true
+  USE_DEBUG: false
   USE_DEBUG_SHOW_INFO_EQPEXP: false    #是否打印从客户端所有装备的经验增益信息
   # 是否打印从客户端接受到的包id
-  USE_DEBUG_SHOW_RCVD_PACKET: true
-  USE_DEBUG_SHOW_RCVD_MVLIFE: true   #是否打印从客户端所有收到的移动生命内容.
-  USE_DEBUG_SHOW_PACKET: true        #使用调试显示包
+  USE_DEBUG_SHOW_RCVD_PACKET: false
+  USE_DEBUG_SHOW_RCVD_MVLIFE: false   #是否打印从客户端所有收到的移动生命内容.
+  USE_DEBUG_SHOW_PACKET: false        #使用调试显示包
   USE_SUPPLY_RATE_COUPONS: true       #允许通过现金商店出售利率券
   USE_IP_VALIDATION: false             #启用登录时IP检查功能.
   USE_CHARACTER_ACCOUNT_CHECK: false  #在登录时启用每个帐户一个字符的检查。这可能是资源密集型的.
