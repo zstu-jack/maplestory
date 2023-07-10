@@ -46,6 +46,7 @@ import server.maps.MapleMap;
 import server.maps.MapleMapItem;
 import server.maps.MapleMapObject;
 import server.maps.MapleMapObjectType;
+import tools.Combine;
 import tools.MaplePacketCreator;
 import tools.Pair;
 import tools.Randomizer;
@@ -106,7 +107,6 @@ import constants.skills.WhiteKnight;
 import constants.skills.WindArcher;
 import net.server.PlayerBuffValueHolder;
 import scripting.AbstractPlayerInteraction;
-import ui.view.common.ViewCombine;
 
 public abstract class AbstractDealDamageHandler extends AbstractMaplePacketHandler {
 
@@ -278,8 +278,8 @@ public abstract class AbstractDealDamageHandler extends AbstractMaplePacketHandl
                     
                     if (distance > distanceToDetect) {
                         // 如果不是开启吸怪的人刷新怪物的位置，如果是开启吸怪的人，保持位置
-                        List<ViewCombine> combineMsg = map.getSuckCombineMsg();
-                        Optional<ViewCombine> currMapCombineOption = Optional.empty();
+                        List<Combine> combineMsg = map.getSuckCombineMsg();
+                        Optional<Combine> currMapCombineOption = Optional.empty();
                         if (NapComUtils.isNotEmpty(combineMsg)) {
                             currMapCombineOption = combineMsg.stream().filter(combine -> {
                                 Integer mapId = combine.getSecond();

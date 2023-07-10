@@ -118,7 +118,6 @@ import server.movement.LifeMovementFragment;
 import tools.data.input.SeekableLittleEndianAccessor;
 import tools.data.output.LittleEndianWriter;
 import tools.data.output.MaplePacketLittleEndianWriter;
-import ui.view.common.ViewCombine;
 
 import java.util.TimeZone;
 
@@ -1556,16 +1555,15 @@ public class MaplePacketCreator {
         mplew.write(life.getController() == null ? 5 : 1);
         mplew.writeInt(life.getId());
 
-        List<ViewCombine> combineMsg = life.getMap().getSuckCombineMsg();
-        Optional<ViewCombine> currMapCombineOption = combineMsg.stream().filter(combine -> {
+        List<Combine> combineMsg = life.getMap().getSuckCombineMsg();
+        Optional<Combine> currMapCombineOption = combineMsg.stream().filter(combine -> {
             Integer mapId = combine.getSecond();
             return mapId == life.getMap().getId();
         }).findFirst();
-        if (currMapCombineOption.isPresent()) {
+        if (currMapCombineOption.isPresent() && !life.isBoss()) {
             Skill skill = SkillFactory.getSkill(5201004);
             MonsterStatusEffect statusEffect = new MonsterStatusEffect(Collections.singletonMap(MonsterStatus.STUN, 1), skill, null, false);
             encodeTemporary(mplew, Collections.singletonMap(MonsterStatus.STUN, statusEffect), 86400000);
-//            mplew.skip(16);
             Point position = currMapCombineOption.get().getThird();
             mplew.writePos(position);
         } else if (requestController) {
@@ -1895,7 +1893,7 @@ public class MaplePacketCreator {
         mplew.writeInt(drop.getClientsideOwnerId()); // owner charid/partyid :)
         mplew.write(dropType); // 0 = timeout for non-owner, 1 = timeout for non-owner's party, 2 = FFA, 3 = explosive/FFA
         MapleMap map = player.getMap();
-        Optional<ViewCombine> currMapCombineOption = map.getSuckCombineMsg().stream().filter(combine -> {
+        Optional<Combine> currMapCombineOption = map.getSuckCombineMsg().stream().filter(combine -> {
             Integer mapId = combine.getSecond();
             return mapId == map.getId();
         }).findFirst();

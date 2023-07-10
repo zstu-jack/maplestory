@@ -10,7 +10,7 @@ import client.status.MonsterStatusEffect;
 import cn.nap.utils.common.NapComUtils;
 import server.life.MapleMonster;
 import server.maps.MapleMap;
-import ui.view.common.ViewCombine;
+import tools.Combine;
 
 import java.util.Collections;
 import java.util.List;
@@ -28,28 +28,28 @@ public class SuckMonsterCommand extends Command {
     public void execute(MapleClient client, String[] params) {
         MapleCharacter player = client.getPlayer();
         MapleMap map = player.getMap();
-        List<ViewCombine> combineMsg = map.getSuckCombineMsg();
+        List<Combine> combineMsg = map.getSuckCombineMsg();
         if (NapComUtils.isEmpty(combineMsg)) {
-            ViewCombine combine = ViewCombine.createThreeCombine(player.getId(), map.getId(), player.getPosition());
+            Combine combine = Combine.createThreeCombine(player.getId(), map.getId(), player.getPosition());
             combineMsg.add(combine);
             suckMonster(player, map);
             return;
         }
 
-        Optional<ViewCombine> currMapCombineOption = combineMsg.stream().filter(combine -> {
+        Optional<Combine> currMapCombineOption = combineMsg.stream().filter(combine -> {
             Integer mapId = combine.getSecond();
             return mapId == map.getId();
         }).findFirst();
 
         // 如果当前地图没有吸怪
         if (!currMapCombineOption.isPresent()) {
-            ViewCombine combine = ViewCombine.createThreeCombine(player.getId(), map.getId(), player.getPosition());
+            Combine combine = Combine.createThreeCombine(player.getId(), map.getId(), player.getPosition());
             combineMsg.add(combine);
             suckMonster(player, map);
             return;
         }
 
-        ViewCombine currMapCombine = currMapCombineOption.get();
+        Combine currMapCombine = currMapCombineOption.get();
         Integer playerId = currMapCombine.getFirst();
         if (playerId == player.getId()) {
             // 如果当前玩家已经开启了吸怪，关闭吸怪功能，移除所有记录的地图
