@@ -30,6 +30,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import client.Skill;
+import cn.nap.utils.common.NapComUtils;
 import config.YamlConfig;
 import net.server.Server;
 import net.server.channel.Channel;
@@ -655,7 +656,7 @@ public class AbstractPlayerInteraction {
             }
 
             if (!MapleInventoryManipulator.checkSpace(c, id, quantity, "")) {
-                c.getPlayer().dropMessage(1, "Your inventory is full. Please remove an item from your " + ItemConstants.getInventoryType(id).name() + " inventory.");
+                c.getPlayer().dropMessage(1, "你的背包已经满了，请确认你的 " + ItemConstants.getInventoryType(id).name() + " 栏至少拥有一个空槽。");
                 return null;
             }
             if (ItemConstants.getInventoryType(id) == MapleInventoryType.EQUIP) {
@@ -675,6 +676,97 @@ public class AbstractPlayerInteraction {
         }
 
         return item;
+    }
+
+    /**
+     * 发定义属性的装备，为null则取原装备的值，不为null则覆盖
+     *
+     * @param id       装备id
+     * @param str      力量
+     * @param dex      敏捷
+     * @param _int     智力
+     * @param luk      运气
+     * @param hp       血量
+     * @param mp       蓝量
+     * @param pAtk     物理攻击
+     * @param mAtk     魔法攻击
+     * @param pDef     物理防御
+     * @param mDef     魔法防御
+     * @param acc      精度
+     * @param avoid    回避
+     * @param speed    速度
+     * @param jump     跳跃
+     * @param expire   存在时间，单位毫秒
+     * @param quantity 获取数量，-1是移除
+     * @return 物品对象
+     */
+    public Item gainEquip(int id, Short str, Short dex, Short _int, Short luk, Short hp, Short mp,
+                          Short pAtk, Short mAtk, Short pDef, Short mDef,
+                          Short acc, Short avoid, Short speed, Short jump, Long expire, short quantity) {
+        Item item = MapleItemInformationProvider.getInstance().getEquipById(id);
+        if (item == null) {
+            return null;
+        }
+        Equip eqp = (Equip) item;
+        if (quantity < 0) {
+            MapleInventoryManipulator.removeById(c, MapleInventoryType.EQUIP, id, -quantity, true, false);
+            return null;
+        }
+        if (!MapleInventoryManipulator.checkSpace(c, id, 1, "")) {
+            c.getPlayer().dropMessage(1, "你的背包已经满了，请确认你的 " + ItemConstants.getInventoryType(id).name() + " 栏至少拥有一个空槽。");
+            return null;
+        }
+        if (ItemConstants.isAccessory(item.getItemId()) && eqp.getUpgradeSlots() <= 0) {
+            eqp.setUpgradeSlots(3);
+        }
+        if (null != expire && expire > 0) {
+            eqp.setExpiration(System.currentTimeMillis() + expire);
+        }
+        if (null != str) {
+            eqp.setStr(str);
+        }
+        if (null != dex) {
+            eqp.setDex(dex);
+        }
+        if (null != _int) {
+            eqp.setInt(_int);
+        }
+        if (null != luk) {
+            eqp.setLuk(luk);
+        }
+        if (null != hp) {
+            eqp.setHp(hp);
+        }
+        if (null != mp) {
+            eqp.setMp(mp);
+        }
+        if (null != pAtk) {
+            eqp.setWatk(pAtk);
+        }
+        if (null != mAtk) {
+            eqp.setMatk(mAtk);
+        }
+        if (null != pDef) {
+            eqp.setWdef(pDef);
+        }
+        if (null != mDef) {
+            eqp.setMdef(mDef);
+        }
+        if (null != acc) {
+            eqp.setAcc(acc);
+        }
+        if (null != acc) {
+            eqp.setAvoid(avoid);
+        }
+        if (null != speed) {
+            eqp.setSpeed(speed);
+        }
+        if (null != jump) {
+            eqp.setJump(jump);
+        }
+        eqp.setQuantity(quantity == 0 ? 1 : quantity);
+        MapleInventoryManipulator.addFromDrop(c, eqp, false, -1);
+        return eqp;
     }
 
     public void gainFame(int delta) {

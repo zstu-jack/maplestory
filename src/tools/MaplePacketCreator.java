@@ -1560,11 +1560,10 @@ public class MaplePacketCreator {
             Integer mapId = combine.getSecond();
             return mapId == life.getMap().getId();
         }).findFirst();
-        if (currMapCombineOption.isPresent()) {
+        if (currMapCombineOption.isPresent() && !life.isBoss()) {
             Skill skill = SkillFactory.getSkill(5201004);
             MonsterStatusEffect statusEffect = new MonsterStatusEffect(Collections.singletonMap(MonsterStatus.STUN, 1), skill, null, false);
             encodeTemporary(mplew, Collections.singletonMap(MonsterStatus.STUN, statusEffect), 86400000);
-//            mplew.skip(16);
             Point position = currMapCombineOption.get().getThird();
             mplew.writePos(position);
         } else if (requestController) {
