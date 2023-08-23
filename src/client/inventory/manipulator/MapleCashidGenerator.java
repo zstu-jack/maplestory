@@ -52,7 +52,7 @@ public class MapleCashidGenerator {
     }
     
     public static synchronized void loadExistentCashIdsFromDb() {
-        DatabaseConnection.getConnectionAndFree(conn -> {
+        DatabaseConnection.getConnectionAndClose(conn -> {
             try {
                 loadExistentCashIdsFromQuery(conn, "SELECT id FROM rings");
                 loadExistentCashIdsFromQuery(conn, "SELECT petid FROM pets");

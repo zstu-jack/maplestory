@@ -47,7 +47,9 @@ public class DatabaseConnection {
      * @return 一行结果对应的map
      */
     public static Map<String, Object> selectOne(String sql, Object... params) {
-        List<Map<String, Object>> selectList = NapDbSource.getInstance().select(SOURCE_MYSQL, sql, params);
+        Connection connection = getConnection();
+        List<Map<String, Object>> selectList = NapDbSource.getInstance().select(SOURCE_MYSQL, connection, sql, params);
+        closeConnection(connection);
         return NapComUtils.isEmpty(selectList) ? new HashMap<>() : selectList.get(0);
     }
 
@@ -59,7 +61,9 @@ public class DatabaseConnection {
      * @return 多行结果对应的map
      */
     public static List<Map<String, Object>> select(String sql, Object... params) {
-        List<Map<String, Object>> selectList = NapDbSource.getInstance().select(SOURCE_MYSQL, sql, params);
+        Connection connection = getConnection();
+        List<Map<String, Object>> selectList = NapDbSource.getInstance().select(SOURCE_MYSQL, connection, sql, params);
+        closeConnection(connection);
         return NapComUtils.isEmpty(selectList) ? new ArrayList<>() : selectList;
     }
 
@@ -70,7 +74,7 @@ public class DatabaseConnection {
      * @param params 可选参数
      */
     public static void insert(String sql, Object... params) {
-        NapDbSource.getInstance().update(SOURCE_MYSQL, sql, params);
+        getConnectionAndClose(connection -> NapDbSource.getInstance().update(SOURCE_MYSQL, connection, sql, params));
     }
 
     /**
@@ -80,7 +84,7 @@ public class DatabaseConnection {
      * @param params 可选参数
      */
     public static void batchInsert(String sql, Object[]... params) {
-        NapDbSource.getInstance().batch(SOURCE_MYSQL, sql, params);
+        getConnectionAndClose(connection -> NapDbSource.getInstance().batch(SOURCE_MYSQL, connection, sql, params));
     }
 
     /**
@@ -90,7 +94,7 @@ public class DatabaseConnection {
      * @param params 可选参数
      */
     public static void update(String sql, Object... params) {
-        NapDbSource.getInstance().update(SOURCE_MYSQL, sql, params);
+        getConnectionAndClose(connection -> NapDbSource.getInstance().update(SOURCE_MYSQL, connection, sql, params));
     }
 
     /**
@@ -100,7 +104,7 @@ public class DatabaseConnection {
      * @param params 可选参数
      */
     public static void delete(String sql, Object... params) {
-        NapDbSource.getInstance().update(SOURCE_MYSQL, sql, params);
+        getConnectionAndClose(connection -> NapDbSource.getInstance().update(SOURCE_MYSQL, connection, sql, params));
     }
 
     /**
@@ -110,7 +114,7 @@ public class DatabaseConnection {
      * @param params 可选参数
      */
     public static void batchDelete(String sql, Object[]... params) {
-        NapDbSource.getInstance().batch(SOURCE_MYSQL, sql, params);
+        getConnectionAndClose(connection -> NapDbSource.getInstance().batch(SOURCE_MYSQL, connection, sql, params));
     }
 
     /**
@@ -121,17 +125,17 @@ public class DatabaseConnection {
     public static Connection getConnection() {
         return NapDbSource.getInstance().getConnection(SOURCE_MYSQL);
     }
-
-    /**
-     * 自动获取连接并释放
-     *
-     * @param consumer 获取连接后执行的语句
-     */
-    public static void getConnectionAndFree(Consumer<Connection> consumer) {
-        Connection conn = getConnection();
-        consumer.accept(conn);
-        freeConnection(conn);
-    }
+//
+//    /**
+//     * 自动获取连接并释放
+//     *
+//     * @param consumer 获取连接后执行的语句
+//     */
+//    public static void getConnectionAndFree(Consumer<Connection> consumer) {
+//        Connection conn = getConnection();
+//        consumer.accept(conn);
+//        freeConnection(conn);
+//    }
 
     /**
      * 自动获取连接并关闭
@@ -144,19 +148,19 @@ public class DatabaseConnection {
         closeConnection(conn);
     }
 
-    /**
-     * 释放连接
-     *
-     * @param connections 可选释放多个连接
-     */
-    public static void freeConnection(Connection... connections) {
-        if (null == connections) {
-            return;
-        }
-        for (Connection connection : connections) {
-            NapDbSource.getInstance().freeConnection(connection);
-        }
-    }
+//    /**
+//     * 释放连接
+//     *
+//     * @param connections 可选释放多个连接
+//     */
+//    public static void freeConnection(Connection... connections) {
+//        if (null == connections) {
+//            return;
+//        }
+//        for (Connection connection : connections) {
+//            NapDbSource.getInstance().freeConnection(connection);
+//        }
+//    }
 
     /**
      * 关闭连接
@@ -164,7 +168,7 @@ public class DatabaseConnection {
      * @param connections 关闭多个或者关闭所有
      */
     public static void closeConnection(Connection... connections) {
-        if (null == connections) {
+        if (null == connections || connections.length == 0) {
             NapDbSource.getInstance().close();
             return;
         }

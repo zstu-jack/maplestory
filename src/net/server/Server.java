@@ -1559,7 +1559,7 @@ public class Server {
     }
 
     private void applyAllNameChanges() {
-        DatabaseConnection.getConnectionAndFree(conn -> {
+        DatabaseConnection.getConnectionAndClose(conn -> {
             try (PreparedStatement ps = conn.prepareStatement("SELECT * FROM namechanges WHERE completionTime IS NULL")) {
                 ResultSet rs = ps.executeQuery();
                 List<Pair<String, String>> changedNames = new LinkedList<Pair<String, String>>(); //logging only
@@ -1586,7 +1586,7 @@ public class Server {
     }
 
     private void applyAllWorldTransfers() {
-        DatabaseConnection.getConnectionAndFree(conn -> {
+        DatabaseConnection.getConnectionAndClose(conn -> {
             try (PreparedStatement ps = conn.prepareStatement("SELECT * FROM worldtransfers WHERE completionTime IS NULL")) {
                 ResultSet rs = ps.executeQuery();
                 List<Integer> removedTransfers = new LinkedList<Integer>();

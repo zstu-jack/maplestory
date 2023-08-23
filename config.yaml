@@ -173,8 +173,8 @@ server:
   DB_URL: "jdbc:mysql://127.0.0.1:3306/napms?useUnicode=true&characterEncoding=gbk"
   DB_USER: "root"
   DB_PASS: "root"
-  # 数据池最大连接数，默认10
-  DB_MAX_CONNECT: 10
+  # 数据池最大连接数，默认0不启用
+  DB_MAX_CONNECT: 0
 
   # 大区数量
   WORLDS: 1
