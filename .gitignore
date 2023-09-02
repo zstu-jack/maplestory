@@ -10,3 +10,6 @@ out
 heaven-ms-nap.iml
 src/META-INF
 packfiles/Server083-cache
+
+*.class
+sources.txt
