@@ -9,3 +9,19 @@
 - protocal
     - RecvOpcode.java        
     - SnedOpcode.java        
+- script   
+    - src/scripting
+    - 脚本调用代码： NPCConversationManager.java， AbstractPlayerInteraction.java
+    - 代码调用脚本： NPCTalkHandler.java  NPCMoreTalkHandler.java
+    - 废弃都市组队任务， 废弃都市mapid（103000000）
+        - 逻辑：9020000.js 和npc对话
+            - em = cm.getEventManager("KerningPQ");                                                                 // 获取任务脚本： KerningPQ.js （EventManeger）
+            - em.startInstance(cm.getParty(), cm.getPlayer().getMap(), 1)                                           // 确认开始任务开始占领任务（该频道没有其它队伍
+            - startInstance(int lobbyId, MapleParty party, MapleMap map, int difficulty, MapleCharacter leader)     // EventInstanceManager
+                - eim = createInstance("setup", difficulty, (lobbyId > -1) ? lobbyId : party.getLeaderId());        // KerningPQ.js setup -> 初始化计时器等, 返回EventInstanceManager
+                - eim.registerParty(party, map);        // public void registerParty(MapleCharacter chr)            // 队伍进入
+                    - registerPlayer(chr);              // registerPlayer(final MapleCharacter chr, boolean runEntryScript)
+                    - invokeScriptFunction("playerEntry", EventInstanceManager.this, chr);                          // 玩家进入,会切换地图。
+                    - player.changeMap(map, map.getPortal(0));
+        - 9020001.js : 组队任务5个地图
+            - mapid: 103000800: (stage1)
