@@ -27,16 +27,20 @@ import scripting.npc.NPCScriptManager;
 import scripting.quest.QuestScriptManager;
 import tools.data.input.SeekableLittleEndianAccessor;
 
+import tools.FilePrinter;
+import java.util.logging.*;
 /**
  *
  * @author Matze
  */
 public final class NPCMoreTalkHandler extends AbstractMaplePacketHandler {
+    public static final Logger logger = Logger.getLogger(FilePrinter.class.getName());
     @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {        
         byte lastMsg = slea.readByte(); // 00 (last msg type I think)
         byte action = slea.readByte(); // 00 = end chat, 01 == follow
         if (lastMsg == 2) {
+            logger.info("account=" + c.getAccountName() + "lastmsg=" + String.valueOf(lastMsg & 0xFF) + ", action=" + String.valueOf(action & 0xFF));
             if (action != 0) {
                 String returnText = slea.readMapleGbkString();
                 if (c.getQM() != null) {
@@ -62,6 +66,8 @@ public final class NPCMoreTalkHandler extends AbstractMaplePacketHandler {
             } else if (slea.available() > 0) {
                 selection = slea.readByte();
             }
+            logger.info("account=" + c.getAccountName() + ", lastmsg=" + String.valueOf(lastMsg & 0xFF) + ", action=" 
+                + String.valueOf(action & 0xFF) + ",select=" + String.valueOf(selection & 0xFF));
             if (c.getQM() != null) {
                 if (c.getQM().isStart()) {
                     QuestScriptManager.getInstance().start(c, action, lastMsg, selection);

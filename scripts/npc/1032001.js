@@ -95,7 +95,8 @@ function action(mode, type, selection) {
 
     if (actionx["1stJob"]) {
         if (status == 0) {
-            if (cm.getLevel() >= 8 && cm.canGetFirstJob(jobType)) {
+            if (cm.getLevel() >= 8) {
+            // if (cm.getLevel() >= 8 && cm.canGetFirstJob(jobType)) {
                 cm.sendYesNo("你看起来像绝对够资格成为我们的一员，那么，你想成为魔法师吗？");
             } else {
                 cm.sendOk("多加训练。当你达到职业基础要求时，我会告诉你成为 #r魔法师#k 的方法。");

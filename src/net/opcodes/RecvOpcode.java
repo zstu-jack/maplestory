@@ -174,7 +174,7 @@ public enum RecvOpcode {
     BEHOLDER(0xB2),
     MOVE_DRAGON(0xB5),
     CHANGE_QUICKSLOT(0xB7),//CP_QuickslotKeyMappedModified
-    MOVE_LIFE(0xBC),
+    MOVE_LIFE(0xBC),        // 好像和怪物人物交互有关
     AUTO_AGGRO(0xBD),
     FIELD_DAMAGE_MOB(0xBF),
     MOB_DAMAGE_MOB_FRIENDLY(0xC0),

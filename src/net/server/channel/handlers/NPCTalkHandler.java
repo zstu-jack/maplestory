@@ -32,8 +32,12 @@ import server.life.MaplePlayerNPC;
 import tools.FilePrinter;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import java.util.logging.*;
 
 public final class NPCTalkHandler extends AbstractMaplePacketHandler {
+
+    public static final Logger logger = Logger.getLogger(FilePrinter.class.getName());
+
     @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
         if (!c.getPlayer().isAlive()) {
@@ -53,6 +57,7 @@ public final class NPCTalkHandler extends AbstractMaplePacketHandler {
             if (YamlConfig.config.server.USE_DEBUG) {
                 c.getPlayer().dropMessage(5, "´ò¿ªµÄNPC: " + npc.getId());
             }
+            logger.info("account=" + c.getAccountName() + ", NPC id=" + npc.getId());
 
             if (npc.getId() == 9010009) {   //is duey
                 DueyProcessor.dueySendTalk(c, false);
@@ -86,6 +91,7 @@ public final class NPCTalkHandler extends AbstractMaplePacketHandler {
             MaplePlayerNPC pnpc = (MaplePlayerNPC) obj;
             NPCScriptManager nsm = NPCScriptManager.getInstance();
 
+            logger.info("account=" + c.getAccountName() + ", PNPC script id=" + pnpc.getScriptId());
             if (pnpc.getScriptId() < 9977777 && !nsm.isNpcScriptAvailable(c, "" + pnpc.getScriptId())) {
                 nsm.start(c, pnpc.getScriptId(), "rank_user", null);
             } else {
