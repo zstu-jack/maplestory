@@ -5,6 +5,7 @@ server:
 2. install mysql(mysql-5.5.40-winx64.msi)
     - // sql/ 依次执行sql文件 db_database.sql、db_drops.sql、db_shopupdate.sql
     - // D:\Program Files\MySQL\MySQL Server 5.7\bin>mysqld --defaults-file="D:\ProgramData\MySQL\MySQL Server 5.7\my.ini"
+    
 3. compile(或者用ide)
     - dir /s /b *.java > sources.txt
          （在src目录下，列出所有java文件
@@ -13,12 +14,14 @@ server:
         - javac -cp ../cores/mina-core-2.0.19.jar;../cores/HikariCP-java7-2.4.13.jar;../cores/mysql-connector-java-bin.jar;../cores/slf4j-api-1.7.21.jar;../cores/slf4j-jdk14-1.7.5.jar;../cores/slf4j-jdk14-1.7.5.jar;../cores/yamlbeans-1.13.jar;../cores/nap_tools-1.23.0807.jar @sources.txt 
         // - javac -cp ../cores/mina-core-2.0.19.jar;../cores/HikariCP-java7-2.4.13.jar;../cores/mysql-connector-java-bin.jar;../cores/slf4j-api-1.7.21.jar;../cores/slf4j-jdk14-1.7.5.jar;../cores/slf4j-jdk14-1.7.5.jar;../cores/yamlbeans-1.13.jar @sources.txt -encoding UTF-8
     - // 修改ip：HeavenMS\hackertools 修改ip(skip ip address选择否，将第一个ip(127.0.0.1)修改其它的)
+
 4. running:
     - 指定当前目录为classpath，同时加载所有jar包 （src上一级目录下，加载config.yaml文件
     - // java -cp ./cores/mina-core-2.0.19.jar;./cores/HikariCP-java7-2.4.13.jar;./cores/mysql-connector-java-bin.jar;./cores/slf4j-api-1.7.21.jar;./cores/slf4j-jdk14-1.7.5.jar;./cores/slf4j-jdk14-1.7.5.jar;./cores/yamlbeans-1.13.jar;./src    -Xmx2048m -Dwzpath=wz\    net.server.Server
     - java -cp ./cores/mina-core-2.0.19.jar;./cores/HikariCP-java7-2.4.13.jar;./cores/mysql-connector-java-bin.jar;./cores/slf4j-api-1.7.21.jar;./cores/slf4j-jdk14-1.7.5.jar;./cores/slf4j-jdk14-1.7.5.jar;./cores/yamlbeans-1.13.jar;./cores/nap_tools-1.23.0807.jar;./src    -Xmx2048m -Dwzpath=wz\    net.server.Server
+
 5. client：
-    - 兼容模式： 否则会弹error
+    - 兼容模式： 否则可能会弹error
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

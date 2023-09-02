@@ -24,7 +24,7 @@
 */
 
 var isPq = true;
-var minPlayers = 3, maxPlayers = 4;
+var minPlayers = 1, maxPlayers = 4;
 var minLevel = 21, maxLevel = 30;
 var entryMap = 103000800;
 var exitMap = 103000890;
@@ -104,7 +104,7 @@ function getEligibleParty(party) {      //selects, from the given party, the tea
 function setup(level, lobbyid) {
         var eim = em.newInstance("Kerning" + lobbyid);
         eim.setProperty("level", level);
-        
+        // eim.LogInfo("-------------" + level + " " + lobbyid);
         respawnStages(eim);
         eim.startEventTimer(eventTime * 60000);
         setEventRewards(eim);

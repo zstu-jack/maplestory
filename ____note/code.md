@@ -11,6 +11,9 @@
     - SnedOpcode.java        
 - script   
     - src/scripting
+    - src/scrips
+        - event: EventScriptManager.java 初始化，并在init的时候将EventManager放入脚本环境
+        - 脚本里就可以使用java里的EventManager了
     - 脚本调用代码： NPCConversationManager.java， AbstractPlayerInteraction.java
     - 代码调用脚本： NPCTalkHandler.java  NPCMoreTalkHandler.java
     - 废弃都市组队任务， 废弃都市mapid（103000000）

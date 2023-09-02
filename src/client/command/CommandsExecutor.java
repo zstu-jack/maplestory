@@ -187,7 +187,7 @@ public class CommandsExecutor {
         addCommand("droplimit", DropLimitCommand.class);
         addCommand("time", TimeCommand.class);
         addCommand("buyback", BuyBackCommand.class);
-        addCommand("gacha", GachaCommand.class);
+        addCommand("gacha", GachaCommand.class);            // ?
         addCommand("dispose", DisposeCommand.class);
         addCommand("equiplv", EquipLvCommand.class);
         addCommand("rates", ShowRatesCommand.class);
@@ -197,10 +197,10 @@ public class CommandsExecutor {
         addCommand("event", JoinEventCommand.class);
         addCommand("ranks", RanksCommand.class);
         addCommand("autoadd", AutoAddCommand.class);
-        addCommand("toggleexp", ToggleExpCommand.class);
+        addCommand("toggleexp", ToggleExpCommand.class);    // 切换是否获得经验
         addCommand("mylawn", MapOwnerClaimCommand.class);
-        addCommand("map", MapIdCommand.class);
-        addCommand("buyfame", BuyFameCommand.class);
+        addCommand("map", MapIdCommand.class);              // 查看地图id
+        addCommand("buyfame", BuyFameCommand.class);        // 购买人气：需要配置打开
 
         commandsNameDesc.add(levelCommandsCursor);
     }
@@ -208,13 +208,13 @@ public class CommandsExecutor {
 
     private void registerLv1Commands() {
         levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
-
-        addCommand("bosshp", 1, BossHpCommand.class);
-        addCommand("mobhp", 1, MobHpCommand.class);
-        addCommand("whatdropsfrom", 1, WhatDropsFromCommand.class);
-        addCommand("whodrops", 1, WhoDropsCommand.class);
-        addCommand("buffme", 1, BuffMeCommand.class);
-        addCommand("goto", 1, GotoCommand.class);
+        int level = 0;
+        addCommand("bosshp", level, BossHpCommand.class);   // 显示BOSS血量 
+        addCommand("mobhp", level, MobHpCommand.class);     // 显示怪物血量
+        addCommand("whatdropsfrom", level, WhatDropsFromCommand.class);
+        addCommand("whodrops", level, WhoDropsCommand.class);
+        addCommand("buffme", level, BuffMeCommand.class);
+        addCommand("goto", level, GotoCommand.class);       // 切换地图
 
         commandsNameDesc.add(levelCommandsCursor);
     }
@@ -222,41 +222,41 @@ public class CommandsExecutor {
 
     private void registerLv2Commands() {
         levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
-
-        addCommand("recharge", 2, RechargeCommand.class);
-        addCommand("whereami", 2, WhereaMiCommand.class);
-        addCommand("hide", 2, HideCommand.class);
-        addCommand("unhide", 2, UnHideCommand.class);
-        addCommand("sp", 2, SpCommand.class);
-        addCommand("ap", 2, ApCommand.class);
-        addCommand("empowerme", 2, EmpowerMeCommand.class);
-        addCommand("buffmap", 2, BuffMapCommand.class);
-        addCommand("buff", 2, BuffCommand.class);
-        addCommand("bomb", 2, BombCommand.class);
-        addCommand("dc", 2, DcCommand.class);
-        addCommand("cleardrops", 2, ClearDropsCommand.class);
-        addCommand("clearslot", 2, ClearSlotCommand.class);
-        addCommand("clearsavelocs", 2, ClearSavedLocationsCommand.class);
-        addCommand("warp", 2, WarpCommand.class);
-        addCommand(new String[]{"warphere", "summon"}, 2, SummonCommand.class);
-        addCommand(new String[]{"warpto", "reach", "follow"}, 2, ReachCommand.class);
-        addCommand("gmshop", 2, GmShopCommand.class);
-        addCommand("heal", 2, HealCommand.class);
-        addCommand("item", 2, ItemCommand.class);
-        addCommand("drop", 2, ItemDropCommand.class);
-        addCommand("level", 2, LevelCommand.class);
-        addCommand("levelpro", 2, LevelProCommand.class);
-        addCommand("setslot", 2, SetSlotCommand.class);
-        addCommand("setstat", 2, SetStatCommand.class);
-        addCommand("maxstat", 2, MaxStatCommand.class);
-        addCommand("maxskill", 2, MaxSkillCommand.class);
-        addCommand("resetskill", 2, ResetSkillCommand.class);
-        addCommand("search", 2, SearchCommand.class);
-        addCommand("jail", 2, JailCommand.class);
-        addCommand("unjail", 2, UnJailCommand.class);
-        addCommand("job", 2, JobCommand.class);
-        addCommand("unbug", 2, UnBugCommand.class);
-        addCommand("id", 2, IdCommand.class);
+        int level = 0;
+        addCommand("recharge", level, RechargeCommand.class);
+        addCommand("whereami", level, WhereaMiCommand.class);
+        addCommand("hide", level, HideCommand.class);               // 隐身
+        addCommand("unhide", level, UnHideCommand.class);
+        addCommand("sp", level, SpCommand.class);                   // 给与SP
+        addCommand("ap", level, ApCommand.class);                   // 给与AP
+        addCommand("empowerme", level, EmpowerMeCommand.class);
+        addCommand("buffmap", level, BuffMapCommand.class);
+        addCommand("buff", level, BuffCommand.class);
+        addCommand("bomb", level, BombCommand.class);
+        addCommand("dc", level, DcCommand.class);
+        addCommand("cleardrops", level, ClearDropsCommand.class);
+        addCommand("clearslot", level, ClearSlotCommand.class);
+        addCommand("clearsavelocs", level, ClearSavedLocationsCommand.class);
+        addCommand("warp", level, WarpCommand.class);
+        addCommand(new String[]{"warphere", "summon"}, level, SummonCommand.class);
+        addCommand(new String[]{"warpto", "reach", "follow"}, level, ReachCommand.class);
+        addCommand("gmshop", level, GmShopCommand.class);
+        addCommand("heal", level, HealCommand.class);
+        addCommand("item", level, ItemCommand.class);               // 添加物品
+        addCommand("drop", level, ItemDropCommand.class);
+        addCommand("level", level, LevelCommand.class);             // 设置等级
+        addCommand("levelpro", level, LevelProCommand.class);       // 升级
+        addCommand("setslot", level, SetSlotCommand.class);
+        addCommand("setstat", level, SetStatCommand.class);         // 满级
+        addCommand("maxstat", level, MaxStatCommand.class);         // 满状态
+        addCommand("maxskill", level, MaxSkillCommand.class);       // 满技能
+        addCommand("resetskill", level, ResetSkillCommand.class);
+        addCommand("search", level, SearchCommand.class);
+        addCommand("jail", level, JailCommand.class);
+        addCommand("unjail", level, UnJailCommand.class);
+        addCommand("job", level, JobCommand.class);                 // 切换职业 MapleJob.java
+        addCommand("unbug", level, UnBugCommand.class);
+        addCommand("id", level, IdCommand.class);                   // handbook/
         addCommand("gachalist", GachaListCommand.class);
         addCommand("loot", LootCommand.class);
 
@@ -265,135 +265,135 @@ public class CommandsExecutor {
 
     private void registerLv3Commands() {
         levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
-
-        addCommand("debuff", 3, DebuffCommand.class);
-        addCommand("fly", 3, FlyCommand.class);
-        addCommand("spawn", 3, SpawnCommand.class);
-        addCommand("mutemap", 3, MuteMapCommand.class);
-        addCommand("checkdmg", 3, CheckDmgCommand.class);
-        addCommand("inmap", 3, InMapCommand.class);
-        addCommand("reloadevents", 3, ReloadEventsCommand.class);
-        addCommand("reloaddrops", 3, ReloadDropsCommand.class);
-        addCommand("reloadportals", 3, ReloadPortalsCommand.class);
-        addCommand("reloadmap", 3, ReloadMapCommand.class);
-        addCommand("reloadshops", 3, ReloadShopsCommand.class);
-        addCommand("hpmp", 3, HpMpCommand.class);
-        addCommand("maxhpmp", 3, MaxHpMpCommand.class);
-        addCommand("music", 3, MusicCommand.class);
-        addCommand("monitor", 3, MonitorCommand.class);
-        addCommand("monitors", 3, MonitorsCommand.class);
-        addCommand("ignore", 3, IgnoreCommand.class);
-        addCommand("ignored", 3, IgnoredCommand.class);
-        addCommand("pos", 3, PosCommand.class);
-        addCommand("togglecoupon", 3, ToggleCouponCommand.class);
-        addCommand("togglewhitechat", 3, ChatCommand.class);
-        addCommand("fame", 3, FameCommand.class);
-        addCommand("givenx", 3, GiveNxCommand.class);
-        addCommand("givevp", 3, GiveVpCommand.class);
-        addCommand("givems", 3, GiveMesosCommand.class);
-        addCommand("giverp", 3, GiveRpCommand.class);
-        addCommand("expeds", 3, ExpedsCommand.class);
-        addCommand("kill", 3, KillCommand.class);
-        addCommand("seed", 3, SeedCommand.class);
-        addCommand("maxenergy", 3, MaxEnergyCommand.class);
-        addCommand("killall", 3, KillAllCommand.class);
-        addCommand("notice", 3, NoticeCommand.class);
-        addCommand("rip", 3, RipCommand.class);
-        addCommand("openportal", 3, OpenPortalCommand.class);
-        addCommand("closeportal", 3, ClosePortalCommand.class);
-        addCommand("pe", 3, PeCommand.class);
-        addCommand("startevent", 3, StartEventCommand.class);
-        addCommand("endevent", 3, EndEventCommand.class);
-        addCommand("startmapevent", 3, StartMapEventCommand.class);
-        addCommand("stopmapevent", 3, StopMapEventCommand.class);
-        addCommand("online2", 3, OnlineTwoCommand.class);
-        addCommand("ban", 3, BanCommand.class);
-        addCommand("unban", 3, UnBanCommand.class);
-        addCommand("healmap", 3, HealMapCommand.class);
-        addCommand("healperson", 3, HealPersonCommand.class);
-        addCommand("hurt", 3, HurtCommand.class);
-        addCommand("killmap", 3, KillMapCommand.class);
-        addCommand("night", 3, NightCommand.class);
-        addCommand("npc", 3, NpcCommand.class);
-        addCommand("face", 3, FaceCommand.class);
-        addCommand("hair", 3, HairCommand.class);
-        addCommand("startquest", 3, QuestStartCommand.class);
-        addCommand("completequest", 3, QuestCompleteCommand.class);
-        addCommand("resetquest", 3, QuestResetCommand.class);
-        addCommand("timer", 3, TimerCommand.class);
-        addCommand("timermap", 3, TimerMapCommand.class);
-        addCommand("timerall", 3, TimerAllCommand.class);
-        addCommand("warpmap", 3, WarpMapCommand.class);
-        addCommand("warparea", 3, WarpAreaCommand.class);
-        addCommand("gotonpc", 3, GotoNpcCommand.class);
-        addCommand("xiguai", 3, SuckMonsterCommand.class);
+        int level = 0;
+        addCommand("debuff", level, DebuffCommand.class);
+        addCommand("fly", level, FlyCommand.class);
+        addCommand("spawn", level, SpawnCommand.class);
+        addCommand("mutemap", level, MuteMapCommand.class);
+        addCommand("checkdmg", level, CheckDmgCommand.class);
+        addCommand("inmap", level, InMapCommand.class);
+        addCommand("reloadevents", level, ReloadEventsCommand.class);
+        addCommand("reloaddrops", level, ReloadDropsCommand.class);
+        addCommand("reloadportals", level, ReloadPortalsCommand.class);
+        addCommand("reloadmap", level, ReloadMapCommand.class);
+        addCommand("reloadshops", level, ReloadShopsCommand.class);
+        addCommand("hpmp", level, HpMpCommand.class);                   // 恢复hpmp
+        addCommand("maxhpmp", level, MaxHpMpCommand.class);             // 最大hpmp
+        addCommand("music", level, MusicCommand.class);
+        addCommand("monitor", level, MonitorCommand.class);
+        addCommand("monitors", level, MonitorsCommand.class);
+        addCommand("ignore", level, IgnoreCommand.class);
+        addCommand("ignored", level, IgnoredCommand.class);
+        addCommand("pos", level, PosCommand.class);
+        addCommand("togglecoupon", level, ToggleCouponCommand.class);
+        addCommand("togglewhitechat", level, ChatCommand.class);
+        addCommand("fame", level, FameCommand.class);
+        addCommand("givenx", level, GiveNxCommand.class);
+        addCommand("givevp", level, GiveVpCommand.class);
+        addCommand("givems", level, GiveMesosCommand.class);
+        addCommand("giverp", level, GiveRpCommand.class);
+        addCommand("expeds", level, ExpedsCommand.class);
+        addCommand("kill", level, KillCommand.class);
+        addCommand("seed", level, SeedCommand.class);
+        addCommand("maxenergy", level, MaxEnergyCommand.class);
+        addCommand("killall", level, KillAllCommand.class);
+        addCommand("notice", level, NoticeCommand.class);
+        addCommand("rip", level, RipCommand.class);
+        addCommand("openportal", level, OpenPortalCommand.class);
+        addCommand("closeportal", level, ClosePortalCommand.class);
+        addCommand("pe", level, PeCommand.class);
+        addCommand("startevent", level, StartEventCommand.class);
+        addCommand("endevent", level, EndEventCommand.class);
+        addCommand("startmapevent", level, StartMapEventCommand.class);
+        addCommand("stopmapevent", level, StopMapEventCommand.class);
+        addCommand("online2", level, OnlineTwoCommand.class);
+        addCommand("ban", level, BanCommand.class);
+        addCommand("unban", level, UnBanCommand.class);
+        addCommand("healmap", level, HealMapCommand.class);
+        addCommand("healperson", level, HealPersonCommand.class);
+        addCommand("hurt", level, HurtCommand.class);
+        addCommand("killmap", level, KillMapCommand.class);
+        addCommand("night", level, NightCommand.class);
+        addCommand("npc", level, NpcCommand.class);
+        addCommand("face", level, FaceCommand.class);
+        addCommand("hair", level, HairCommand.class);
+        addCommand("startquest", level, QuestStartCommand.class);
+        addCommand("completequest", level, QuestCompleteCommand.class);
+        addCommand("resetquest", level, QuestResetCommand.class);
+        addCommand("timer", level, TimerCommand.class);
+        addCommand("timermap", level, TimerMapCommand.class);
+        addCommand("timerall", level, TimerAllCommand.class);
+        addCommand("warpmap", level, WarpMapCommand.class);
+        addCommand("warparea", level, WarpAreaCommand.class);
+        addCommand("gotonpc", level, GotoNpcCommand.class);
+        addCommand("xiguai", level, SuckMonsterCommand.class);
 
         commandsNameDesc.add(levelCommandsCursor);
     }
 
     private void registerLv4Commands() {
         levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
-
-        addCommand("servermessage", 4, ServerMessageCommand.class);
-        addCommand("proitem", 4, ProItemCommand.class);
-        addCommand("seteqstat", 4, SetEqStatCommand.class);
-        addCommand("exprate", 4, ExpRateCommand.class);
-        addCommand("mesorate", 4, MesoRateCommand.class);
-        addCommand("droprate", 4, DropRateCommand.class);
-        addCommand("bossdroprate", 4, BossDropRateCommand.class);
-        addCommand("questrate", 4, QuestRateCommand.class);
-        addCommand("travelrate", 4, TravelRateCommand.class);
-        addCommand("fishrate", 4, FishingRateCommand.class);
-        addCommand("itemvac", 4, ItemVacCommand.class);
-        addCommand("forcevac", 4, ForceVacCommand.class);
-        addCommand("zakum", 4, ZakumCommand.class);
-        addCommand("horntail", 4, HorntailCommand.class);
-        addCommand("pinkbean", 4, PinkbeanCommand.class);
-        addCommand("pap", 4, PapCommand.class);
-        addCommand("pianus", 4, PianusCommand.class);
-        addCommand("cake", 4, CakeCommand.class);
-        addCommand("playernpc", 4, PlayerNpcCommand.class);
-        addCommand("playernpcremove", 4, PlayerNpcRemoveCommand.class);
-        addCommand("pnpc", 4, PnpcCommand.class);
-        addCommand("pnpcremove", 4, PnpcRemoveCommand.class);
-        addCommand("pmob", 4, PmobCommand.class);
-        addCommand("pmobremove", 4, PmobRemoveCommand.class);
+        int level = 0;
+        addCommand("servermessage", level, ServerMessageCommand.class);
+        addCommand("proitem", level, ProItemCommand.class);
+        addCommand("seteqstat", level, SetEqStatCommand.class);        // 修改【背包】装备属性，可以使自身属性变得非常高
+        addCommand("exprate", level, ExpRateCommand.class);
+        addCommand("mesorate", level, MesoRateCommand.class);
+        addCommand("droprate", level, DropRateCommand.class);
+        addCommand("bossdroprate", level, BossDropRateCommand.class);
+        addCommand("questrate", level, QuestRateCommand.class);
+        addCommand("travelrate", level, TravelRateCommand.class);
+        addCommand("fishrate", level, FishingRateCommand.class);
+        addCommand("itemvac", level, ItemVacCommand.class);
+        addCommand("forcevac", level, ForceVacCommand.class);
+        addCommand("zakum", level, ZakumCommand.class);                 // 扎昆
+        addCommand("horntail", level, HorntailCommand.class);
+        addCommand("pinkbean", level, PinkbeanCommand.class);
+        addCommand("pap", level, PapCommand.class);
+        addCommand("pianus", level, PianusCommand.class);
+        addCommand("cake", level, CakeCommand.class);
+        addCommand("playernpc", level, PlayerNpcCommand.class);
+        addCommand("playernpcremove", level, PlayerNpcRemoveCommand.class);
+        addCommand("pnpc", level, PnpcCommand.class);
+        addCommand("pnpcremove", level, PnpcRemoveCommand.class);
+        addCommand("pmob", level, PmobCommand.class);
+        addCommand("pmobremove", level, PmobRemoveCommand.class);
 
         commandsNameDesc.add(levelCommandsCursor);
     }
 
     private void registerLv5Commands() {
         levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
-
-        addCommand("debug", 5, DebugCommand.class);
-        addCommand("set", 5, SetCommand.class);
-        addCommand("showpackets", 5, ShowPacketsCommand.class);
-        addCommand("showmovelife", 5, ShowMoveLifeCommand.class);
-        addCommand("showsessions", 5, ShowSessionsCommand.class);
-        addCommand("iplist", 5, IpListCommand.class);
+        int level = 0;                                                                          // 一些DEBUG的命令
+        addCommand("debug", level, DebugCommand.class);                 
+        addCommand("set", level, SetCommand.class);
+        addCommand("showpackets", level, ShowPacketsCommand.class);
+        addCommand("showmovelife", level, ShowMoveLifeCommand.class);
+        addCommand("showsessions", level, ShowSessionsCommand.class);
+        addCommand("iplist", level, IpListCommand.class);
 
         commandsNameDesc.add(levelCommandsCursor);
     }
 
     private void registerLv6Commands() {
         levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
-
-        addCommand("setgmlevel", 6, SetGmLevelCommand.class);
-        addCommand("warpworld", 6, WarpWorldCommand.class);
-        addCommand("saveall", 6, SaveAllCommand.class);
-        addCommand("dcall", 6, DCAllCommand.class);
-        addCommand("mapplayers", 6, MapPlayersCommand.class);
-        addCommand("getacc", 6, GetAccCommand.class);
-        addCommand("shutdown", 6, ShutdownCommand.class);
-        addCommand("clearquestcache", 6, ClearQuestCacheCommand.class);
-        addCommand("clearquest", 6, ClearQuestCommand.class);
-        addCommand("supplyratecoupon", 6, SupplyRateCouponCommand.class);
-        addCommand("spawnallpnpcs", 6, SpawnAllPNpcsCommand.class);
-        addCommand("eraseallpnpcs", 6, EraseAllPNpcsCommand.class);
-        addCommand("addchannel", 6, ServerAddChannelCommand.class);
-        addCommand("addworld", 6, ServerAddWorldCommand.class);
-        addCommand("removechannel", 6, ServerRemoveChannelCommand.class);
-        addCommand("removeworld", 6, ServerRemoveWorldCommand.class);
+        int level = 0;
+        addCommand("setgmlevel", level, SetGmLevelCommand.class);
+        addCommand("warpworld", level, WarpWorldCommand.class);
+        addCommand("saveall", level, SaveAllCommand.class);
+        addCommand("dcall", level, DCAllCommand.class);
+        addCommand("mapplayers", level, MapPlayersCommand.class);
+        addCommand("getacc", level, GetAccCommand.class);
+        addCommand("shutdown", level, ShutdownCommand.class);
+        addCommand("clearquestcache", level, ClearQuestCacheCommand.class);
+        addCommand("clearquest", level, ClearQuestCommand.class);
+        addCommand("supplyratecoupon", level, SupplyRateCouponCommand.class);
+        addCommand("spawnallpnpcs", level, SpawnAllPNpcsCommand.class);
+        addCommand("eraseallpnpcs", level, EraseAllPNpcsCommand.class);
+        addCommand("addchannel", level, ServerAddChannelCommand.class);
+        addCommand("addworld", level, ServerAddWorldCommand.class);
+        addCommand("removechannel", level, ServerRemoveChannelCommand.class);
+        addCommand("removeworld", level, ServerRemoveWorldCommand.class);
 
         commandsNameDesc.add(levelCommandsCursor);
     }

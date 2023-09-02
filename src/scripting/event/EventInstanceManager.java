@@ -30,6 +30,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Iterator;
 import java.util.Properties;
+import java.util.logging.*;
 import javax.script.ScriptException;
 
 import config.YamlConfig;
@@ -70,7 +71,7 @@ import server.life.MapleLifeFactory;
 import server.life.MapleNPC;
 import tools.MaplePacketCreator;
 import tools.Pair;
-
+import tools.FilePrinter;
 /**
  *
  * @author Matze
@@ -122,6 +123,12 @@ public class EventInstanceManager {
         // forces deletion of items not supposed to be held outside of the event, dealt on a player's leaving moment.
         private Set<Integer> exclusiveItems = new HashSet<>();
         
+        public static final Logger logger = Logger.getLogger(FilePrinter.class.getName());
+
+        public void LogInfo(String str){
+                logger.info("eim: " + str);
+        }
+
 	public EventInstanceManager(EventManager em, String name) {
 		this.em = em;
 		this.name = name;

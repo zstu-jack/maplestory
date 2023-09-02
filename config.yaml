@@ -10,7 +10,7 @@ worlds:
     # 频道数
     channels: 5
     # 经验倍率
-    exp_rate: 10
+    exp_rate: 100
     # 金币倍率
     meso_rate: 10
     # 掉落倍率
@@ -223,6 +223,12 @@ server:
   HOST: 127.0.0.1
   # 是否为本地服务，如果是127.0.0.1就选true，其他为falsed
   LOCALSERVER: true
+
+  # 配置服务器ip
+  # HOST: 0.0.0.0
+  # # 是否为本地服务，如果是127.0.0.1就选true，其他为falsed
+  # LOCALSERVER: false
+
   # 这个配置暂时没有作用
   GMSERVER: false
 

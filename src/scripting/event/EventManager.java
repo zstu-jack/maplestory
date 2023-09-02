@@ -65,6 +65,7 @@ import net.server.audit.locks.MonitoredLockType;
 import net.server.audit.locks.MonitoredReentrantLock;
 import net.server.audit.locks.factory.MonitoredReentrantLockFactory;
 import server.ThreadManager;
+import tools.FilePrinter;
 //import jdk.nashorn.api.scripting.ScriptUtils;
 
 /**
@@ -96,6 +97,13 @@ public class EventManager {
     
     private static final int maxLobbys = 8;     // an event manager holds up to this amount of concurrent lobbys
     
+    public static final Logger logger = Logger.getLogger(FilePrinter.class.getName());
+
+    public void LogInfo(String str){
+            logger.info("em: " + str);
+    }
+
+
     public EventManager(Channel cserv, NashornScriptEngine iv, String name) {
         this.server = Server.getInstance();
         this.iv = iv;
