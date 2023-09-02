@@ -59,6 +59,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.*;
 
 import net.server.audit.LockCollector;
 import server.TimerManager;
@@ -76,6 +77,7 @@ public class MapleServerHandler extends IoHandlerAdapter {
     private Map<MapleClient, Long> idleSessions = new HashMap<>(100);
     private Map<MapleClient, Long> tempIdleSessions = new HashMap<>();
     private ScheduledFuture<?> idleManager = null;
+    public static final Logger logger = Logger.getLogger(FilePrinter.class.getName());
 
     public MapleServerHandler() {
         this.processor = PacketProcessor.getProcessor(-1, -1);
@@ -198,6 +200,7 @@ public class MapleServerHandler extends IoHandlerAdapter {
             System.out.println("接收到数据包: " + String.format("0x%02X", packetId));
         }
         final MaplePacketHandler packetHandler = processor.getHandler(packetId);
+        logger.info("recv package, account:" + client.getAccountName()+ ", packid=" + String.format("0x%02X", packetId));
         if (packetHandler != null && packetHandler.validateState(client)) {
             try {
                 MapleLogger.logRecv(client, packetId, message);

@@ -960,6 +960,7 @@ public class Server {
     public static void main(String args[]) {
         System.setProperty("wzpath", "wz");
         AutoJCE.removeCryptographyRestrictions();
+        FilePrinter.init();
         Server.getInstance().init();
     }
 

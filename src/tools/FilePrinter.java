@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.logging.*;
 
 public class FilePrinter {
 
@@ -74,6 +75,24 @@ public class FilePrinter {
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); //for file system purposes, it's nice to use yyyy-MM-dd
     private static final String FILE_PATH = "logs/" + sdf.format(Calendar.getInstance().getTime()) + "/"; // + sdf.format(Calendar.getInstance().getTime()) + "/"
     private static final String ERROR = "error/";
+
+    public static final Logger logger = Logger.getLogger(FilePrinter.class.getName());
+    static{
+        logger.info("static");
+    }
+
+    public static void init(){
+        try{
+            FileHandler fileHandler = new FileHandler("mylog.log");
+            fileHandler.setFormatter(new SimpleFormatter());
+            logger.addHandler(fileHandler);
+            logger.info("init success");
+            logger.setLevel(Level.ALL);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
 
     public static void printError(final String name, final Throwable t) {
         String stringT = getString(t);

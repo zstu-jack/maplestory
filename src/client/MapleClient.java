@@ -21,6 +21,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package client;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.io.*;
 import java.net.InetAddress;
 import java.security.MessageDigest;
@@ -43,6 +45,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Lock;
+import java.util.logging.*;
 
 import config.YamlConfig;
 import jdk.nashorn.api.scripting.NashornScriptEngine;
@@ -80,7 +83,7 @@ import net.server.audit.locks.factory.MonitoredReentrantLockFactory;
 import net.server.coordinator.login.MapleLoginBypassCoordinator;
 
 public class MapleClient {
-
+    public static final Logger logger = Logger.getLogger(FilePrinter.class.getName());
     public static final int LOGIN_NOTLOGGEDIN = 0;
     public static final int LOGIN_SERVER_TRANSITION = 1;
     public static final int LOGIN_LOGGEDIN = 2;
@@ -1483,6 +1486,10 @@ public class MapleClient {
 
     public void announce(final byte[] packet) {     // thanks GitGud for noticing an opportunity for improvement by overcoming "synchronized announce"
         announcerLock.lock();
+        ByteBuffer wrapped = ByteBuffer.wrap(packet).order(ByteOrder.LITTLE_ENDIAN);
+        // ByteBuffer wrapped = ByteBuffer.wrap(bytes); // big-endian by default
+        short packetId = wrapped.getShort(); 
+        logger.info("send package, account:" + getAccountName()+ ", packid=" + String.format("0x%02X", packetId));
         try {
             session.write(packet);
         } finally {

@@ -13,3 +13,4 @@ packfiles/Server083-cache
 
 *.class
 sources.txt
+mylog.log

@@ -24,10 +24,10 @@ package net.opcodes;
 public enum RecvOpcode {
     CUSTOM_PACKET(0x3713),//13 37 lol
     
-    LOGIN_PASSWORD(0x01),
-    GUEST_LOGIN(0x02),
-    SERVERLIST_REREQUEST(0x04),
-    CHARLIST_REQUEST(0x05),
+    LOGIN_PASSWORD(0x01),       // 登录
+    GUEST_LOGIN(0x02),          // 登录
+    SERVERLIST_REREQUEST(0x04), // 服列表
+    CHARLIST_REQUEST(0x05),     // 角色列表
     SERVERSTATUS_REQUEST(0x06),
     ACCEPT_TOS(0x07),
     SET_GENDER(0x08),
