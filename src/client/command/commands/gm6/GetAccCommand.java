@@ -29,7 +29,7 @@ import client.MapleCharacter;
 
 public class GetAccCommand extends Command {
     {
-        setDescription("");
+        setDescription("获取角色账号名");
     }
 
     @Override

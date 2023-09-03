@@ -33,6 +33,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Logger;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -139,6 +140,8 @@ public class MapleItemInformationProvider {
     protected Map<Integer, MapleData> skillUpgradeInfoCache = new HashMap<>();
     protected Map<Integer, Pair<Integer, Set<Integer>>> cashPetFoodCache = new HashMap<>();
     protected Map<Integer, QuestConsItem> questItemConsCache = new HashMap<>();
+
+    public static final Logger logger = Logger.getLogger(FilePrinter.class.getName());
 
     private MapleItemInformationProvider() {
         loadCardIdData();
@@ -546,10 +549,12 @@ public class MapleItemInformationProvider {
         Map<String, Integer> ret = new LinkedHashMap<>();
         MapleData item = getItemData(itemId);
         if (item == null) {
+            logger.warning("nullptr, " + itemId);
             return null;
         }
         MapleData info = item.getChildByPath("info");
         if (info == null) {
+            logger.warning("nullptr, " + itemId);
             return null;
         }
         for (MapleData data : info.getChildren()) {

@@ -21,3 +21,6 @@
         ```    
 - MapleStoryGM.v4.1.zip
     - 查询物品，怪物，npc等对应的id        
+- WCR2++
+    - 查询物品，怪物，npc等对应的id 并直接修改wz文件
+    - 对比wz文件

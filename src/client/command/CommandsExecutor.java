@@ -184,21 +184,21 @@ public class CommandsExecutor {
         levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
 
         addCommand(new String[]{"help", "commands"}, HelpCommand.class);
-        addCommand("droplimit", DropLimitCommand.class);
-        addCommand("time", TimeCommand.class);
-        addCommand("buyback", BuyBackCommand.class);
+        addCommand("droplimit", DropLimitCommand.class);    // 查看服务器最大掉落物数量
+        addCommand("time", TimeCommand.class);              // 服务器时间
+        addCommand("buyback", BuyBackCommand.class);        // 买活指令，死亡后可以立即买活 @buyback <info|now>
         addCommand("gacha", GachaCommand.class);            // ?
-        addCommand("dispose", DisposeCommand.class);
-        addCommand("equiplv", EquipLvCommand.class);
-        addCommand("rates", ShowRatesCommand.class);
-        addCommand("online", OnlineCommand.class);
-        addCommand("bug", ReportBugCommand.class);
-        addCommand("points", ReadPointsCommand.class);
-        addCommand("event", JoinEventCommand.class);
-        addCommand("ranks", RanksCommand.class);
-        addCommand("autoadd", AutoAddCommand.class);
+        addCommand("dispose", DisposeCommand.class);        // 解卡指令，客户端异常时可以解卡"
+        addCommand("equiplv", EquipLvCommand.class);        // 显示装备等级
+        addCommand("rates", ShowRatesCommand.class);        // 查看倍率
+        addCommand("online", OnlineCommand.class);          // 查人所在位置
+        addCommand("bug", ReportBugCommand.class);          // 上报bug
+        addCommand("points", ReadPointsCommand.class);      // 查询奖励点数和投票点数，暂时没发现有什么用"
+        addCommand("event", JoinEventCommand.class);        // 参加或离开活动
+        addCommand("ranks", RanksCommand.class);            // 查看排名
+        addCommand("autoadd", AutoAddCommand.class);        // 自动加点
         addCommand("toggleexp", ToggleExpCommand.class);    // 切换是否获得经验
-        addCommand("mylawn", MapOwnerClaimCommand.class);
+        addCommand("mylawn", MapOwnerClaimCommand.class);   // 宣称地图所有权
         addCommand("map", MapIdCommand.class);              // 查看地图id
         addCommand("buyfame", BuyFameCommand.class);        // 购买人气：需要配置打开
 
@@ -211,10 +211,10 @@ public class CommandsExecutor {
         int level = 0;
         addCommand("bosshp", level, BossHpCommand.class);   // 显示BOSS血量 
         addCommand("mobhp", level, MobHpCommand.class);     // 显示怪物血量
-        addCommand("whatdropsfrom", level, WhatDropsFromCommand.class);
-        addCommand("whodrops", level, WhoDropsCommand.class);
-        addCommand("buffme", level, BuffMeCommand.class);
-        addCommand("goto", level, GotoCommand.class);       // 切换地图
+        addCommand("whatdropsfrom", level, WhatDropsFromCommand.class);     // 这个怪物会掉落什么
+        addCommand("whodrops", level, WhoDropsCommand.class);               // 什么怪物会掉落这个
+        addCommand("buffme", level, BuffMeCommand.class);       // 轻功等buff
+        addCommand("goto", level, GotoCommand.class);           // 切换地图
 
         commandsNameDesc.add(levelCommandsCursor);
     }
@@ -223,42 +223,42 @@ public class CommandsExecutor {
     private void registerLv2Commands() {
         levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
         int level = 0;
-        addCommand("recharge", level, RechargeCommand.class);
-        addCommand("whereami", level, WhereaMiCommand.class);
-        addCommand("hide", level, HideCommand.class);               // 隐身
-        addCommand("unhide", level, UnHideCommand.class);
-        addCommand("sp", level, SpCommand.class);                   // 给与SP
-        addCommand("ap", level, ApCommand.class);                   // 给与AP
-        addCommand("empowerme", level, EmpowerMeCommand.class);
-        addCommand("buffmap", level, BuffMapCommand.class);
-        addCommand("buff", level, BuffCommand.class);
-        addCommand("bomb", level, BombCommand.class);
-        addCommand("dc", level, DcCommand.class);
-        addCommand("cleardrops", level, ClearDropsCommand.class);
-        addCommand("clearslot", level, ClearSlotCommand.class);
-        addCommand("clearsavelocs", level, ClearSavedLocationsCommand.class);
-        addCommand("warp", level, WarpCommand.class);
-        addCommand(new String[]{"warphere", "summon"}, level, SummonCommand.class);
-        addCommand(new String[]{"warpto", "reach", "follow"}, level, ReachCommand.class);
-        addCommand("gmshop", level, GmShopCommand.class);
-        addCommand("heal", level, HealCommand.class);
-        addCommand("item", level, ItemCommand.class);               // 添加物品
-        addCommand("drop", level, ItemDropCommand.class);
-        addCommand("level", level, LevelCommand.class);             // 设置等级
+        addCommand("recharge", level, RechargeCommand.class);       // ？
+        addCommand("whereami", level, WhereaMiCommand.class);       // 当前地图玩家和npc
+        addCommand("hide", level, HideCommand.class);               // ---------- 隐身
+        addCommand("unhide", level, UnHideCommand.class);           // ---------- 取消隐身
+        addCommand("sp", level, SpCommand.class);                   // ---------- 给与SP 
+        addCommand("ap", level, ApCommand.class);                   // ---------- 给与AP
+        addCommand("empowerme", level, EmpowerMeCommand.class);     // ---------- 一坨buff* 
+        addCommand("buffmap", level, BuffMapCommand.class);         // 一坨buff
+        addCommand("buff", level, BuffCommand.class);               // 增加buff
+        addCommand("bomb", level, BombCommand.class);               // 扔炸弹
+        addCommand("dc", level, DcCommand.class);                   // 断线某个玩家
+        addCommand("cleardrops", level, ClearDropsCommand.class);   // 清理掉落
+        addCommand("clearslot", level, ClearSlotCommand.class);     // 清理物品栏
+        addCommand("clearsavelocs", level, ClearSavedLocationsCommand.class);      // ？
+        addCommand("warp", level, WarpCommand.class);                              // ？
+        addCommand(new String[]{"warphere", "summon"}, level, SummonCommand.class);       // 召唤某个玩家
+        addCommand(new String[]{"warpto", "reach", "follow"}, level, ReachCommand.class); // 飞去某个玩家的地方
+        addCommand("gmshop", level, GmShopCommand.class);           // ---------- gm商店：好多东西都有  
+        addCommand("heal", level, HealCommand.class);               // ---------- 恢复  
+        addCommand("item", level, ItemCommand.class);               // ---------- 添加物品  
+        addCommand("drop", level, ItemDropCommand.class);           // 添加掉落
+        addCommand("level", level, LevelCommand.class);             // ---------- 设置等级  
         addCommand("levelpro", level, LevelProCommand.class);       // 升级
-        addCommand("setslot", level, SetSlotCommand.class);
-        addCommand("setstat", level, SetStatCommand.class);         // 满级
+        addCommand("setslot", level, SetSlotCommand.class);         // ---------- 物品栏位
+        addCommand("setstat", level, SetStatCommand.class);         // 设置状态
         addCommand("maxstat", level, MaxStatCommand.class);         // 满状态
-        addCommand("maxskill", level, MaxSkillCommand.class);       // 满技能
-        addCommand("resetskill", level, ResetSkillCommand.class);
-        addCommand("search", level, SearchCommand.class);
-        addCommand("jail", level, JailCommand.class);
-        addCommand("unjail", level, UnJailCommand.class);
-        addCommand("job", level, JobCommand.class);                 // 切换职业 MapleJob.java
-        addCommand("unbug", level, UnBugCommand.class);
+        addCommand("maxskill", level, MaxSkillCommand.class);       // ---------- 满技能
+        addCommand("resetskill", level, ResetSkillCommand.class);   // ---------- 重置技能
+        addCommand("search", level, SearchCommand.class);           // 搜索npc，mob等
+        addCommand("jail", level, JailCommand.class);               // 封号x分钟
+        addCommand("unjail", level, UnJailCommand.class);           // 解除封号
+        addCommand("job", level, JobCommand.class);                 // ---------- 切换职业 MapleJob.java
+        addCommand("unbug", level, UnBugCommand.class);             // 消除错误
         addCommand("id", level, IdCommand.class);                   // handbook/
-        addCommand("gachalist", GachaListCommand.class);
-        addCommand("loot", LootCommand.class);
+        addCommand("gachalist", GachaListCommand.class);            // 百宝箱掉落
+        addCommand("loot", LootCommand.class);                      // 掉落归属于你
 
         commandsNameDesc.add(levelCommandsCursor);
     }
@@ -266,67 +266,73 @@ public class CommandsExecutor {
     private void registerLv3Commands() {
         levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
         int level = 0;
-        addCommand("debuff", level, DebuffCommand.class);
-        addCommand("fly", level, FlyCommand.class);
-        addCommand("spawn", level, SpawnCommand.class);
-        addCommand("mutemap", level, MuteMapCommand.class);
-        addCommand("checkdmg", level, CheckDmgCommand.class);
-        addCommand("inmap", level, InMapCommand.class);
-        addCommand("reloadevents", level, ReloadEventsCommand.class);
-        addCommand("reloaddrops", level, ReloadDropsCommand.class);
-        addCommand("reloadportals", level, ReloadPortalsCommand.class);
-        addCommand("reloadmap", level, ReloadMapCommand.class);
-        addCommand("reloadshops", level, ReloadShopsCommand.class);
-        addCommand("hpmp", level, HpMpCommand.class);                   // 恢复hpmp
-        addCommand("maxhpmp", level, MaxHpMpCommand.class);             // 最大hpmp
-        addCommand("music", level, MusicCommand.class);
-        addCommand("monitor", level, MonitorCommand.class);
-        addCommand("monitors", level, MonitorsCommand.class);
+        addCommand("debuff", level, DebuffCommand.class);               // ---------- 给debuff
+        addCommand("fly", level, FlyCommand.class);                     // ---------- 飞
+        addCommand("spawn", level, SpawnCommand.class);                 // ---------- 生成怪物
+        addCommand("mutemap", level, MuteMapCommand.class);             // 禁止聊天
+        addCommand("checkdmg", level, CheckDmgCommand.class);           // 查看属性
+        addCommand("inmap", level, InMapCommand.class);                 // 玩家列表
+        addCommand("reloadevents", level, ReloadEventsCommand.class);   // 重新加载事件脚本
+        addCommand("reloaddrops", level, ReloadDropsCommand.class);     // 重新加载
+        addCommand("reloadportals", level, ReloadPortalsCommand.class); // 重新加载 
+        addCommand("reloadmap", level, ReloadMapCommand.class);         // 重新加载
+        addCommand("reloadshops", level, ReloadShopsCommand.class);     // 重新加载
+        addCommand("hpmp", level, HpMpCommand.class);                   // 设置hpmp
+        addCommand("maxhpmp", level, MaxHpMpCommand.class);             // ---------- 最大hpmp
+        addCommand("music", level, MusicCommand.class);                 // 音乐
+        addCommand("monitor", level, MonitorCommand.class);             // 监视玩家
+        addCommand("monitors", level, MonitorsCommand.class);           // 正在监视的玩家列表
         addCommand("ignore", level, IgnoreCommand.class);
         addCommand("ignored", level, IgnoredCommand.class);
         addCommand("pos", level, PosCommand.class);
         addCommand("togglecoupon", level, ToggleCouponCommand.class);
         addCommand("togglewhitechat", level, ChatCommand.class);
-        addCommand("fame", level, FameCommand.class);
-        addCommand("givenx", level, GiveNxCommand.class);
-        addCommand("givevp", level, GiveVpCommand.class);
-        addCommand("givems", level, GiveMesosCommand.class);
-        addCommand("giverp", level, GiveRpCommand.class);
-        addCommand("expeds", level, ExpedsCommand.class);
-        addCommand("kill", level, KillCommand.class);
-        addCommand("seed", level, SeedCommand.class);
-        addCommand("maxenergy", level, MaxEnergyCommand.class);
-        addCommand("killall", level, KillAllCommand.class);
+        addCommand("fame", level, FameCommand.class);                   // 给人气
+        addCommand("givenx", level, GiveNxCommand.class);               // 给点券
+        addCommand("givevp", level, GiveVpCommand.class);               // 给vp
+        addCommand("givems", level, GiveMesosCommand.class);            // 给金币
+        addCommand("giverp", level, GiveRpCommand.class);               // 给？
+        addCommand("expeds", level, ExpedsCommand.class);               // 频道的远征队
+        addCommand("kill", level, KillCommand.class);                   // 杀死某个玩家
+        addCommand("seed", level, SeedCommand.class);                   // ？
+        addCommand("maxenergy", level, MaxEnergyCommand.class);         // ？
+        addCommand("killall", level, KillAllCommand.class);             // ------------ 杀死所有怪物
+        // 提示
         addCommand("notice", level, NoticeCommand.class);
         addCommand("rip", level, RipCommand.class);
+        // 传送门
         addCommand("openportal", level, OpenPortalCommand.class);
         addCommand("closeportal", level, ClosePortalCommand.class);
-        addCommand("pe", level, PeCommand.class);
+        addCommand("pe", level, PeCommand.class);                       // ？
+        // 事件
         addCommand("startevent", level, StartEventCommand.class);
         addCommand("endevent", level, EndEventCommand.class);
         addCommand("startmapevent", level, StartMapEventCommand.class);
         addCommand("stopmapevent", level, StopMapEventCommand.class);
+
+        // 对地图其它玩家操作
         addCommand("online2", level, OnlineTwoCommand.class);
         addCommand("ban", level, BanCommand.class);
         addCommand("unban", level, UnBanCommand.class);
-        addCommand("healmap", level, HealMapCommand.class);
+        addCommand("healmap", level, HealMapCommand.class);             
         addCommand("healperson", level, HealPersonCommand.class);
         addCommand("hurt", level, HurtCommand.class);
-        addCommand("killmap", level, KillMapCommand.class);
-        addCommand("night", level, NightCommand.class);
-        addCommand("npc", level, NpcCommand.class);
-        addCommand("face", level, FaceCommand.class);
-        addCommand("hair", level, HairCommand.class);
-        addCommand("startquest", level, QuestStartCommand.class);
-        addCommand("completequest", level, QuestCompleteCommand.class);
-        addCommand("resetquest", level, QuestResetCommand.class);
+        addCommand("killmap", level, KillMapCommand.class);             // 杀死地图里的所有人
+
+        addCommand("night", level, NightCommand.class);                 // 去除光
+        addCommand("npc", level, NpcCommand.class);                     // 召唤npc
+        addCommand("face", level, FaceCommand.class);                   // 外观
+        addCommand("hair", level, HairCommand.class);                   // 外观
+        addCommand("startquest", level, QuestStartCommand.class);       // 任务开始
+        addCommand("completequest", level, QuestCompleteCommand.class); // 任务完成
+        addCommand("resetquest", level, QuestResetCommand.class);       // 任务重置
         addCommand("timer", level, TimerCommand.class);
         addCommand("timermap", level, TimerMapCommand.class);
         addCommand("timerall", level, TimerAllCommand.class);
-        addCommand("warpmap", level, WarpMapCommand.class);
-        addCommand("warparea", level, WarpAreaCommand.class);
-        addCommand("gotonpc", level, GotoNpcCommand.class);
-        addCommand("xiguai", level, SuckMonsterCommand.class);
+        addCommand("warpmap", level, WarpMapCommand.class);             // 地图上所有玩家切换
+        addCommand("warparea", level, WarpAreaCommand.class);           // 和你相隔xx内的玩家切换
+        addCommand("gotonpc", level, GotoNpcCommand.class);             // ---------- 去npc这里
+        addCommand("xiguai", level, SuckMonsterCommand.class);          // ---------- 开启或关闭吸怪
 
         commandsNameDesc.add(levelCommandsCursor);
     }
@@ -336,28 +342,28 @@ public class CommandsExecutor {
         int level = 0;
         addCommand("servermessage", level, ServerMessageCommand.class);
         addCommand("proitem", level, ProItemCommand.class);
-        addCommand("seteqstat", level, SetEqStatCommand.class);        // 修改【背包】装备属性，可以使自身属性变得非常高
-        addCommand("exprate", level, ExpRateCommand.class);
-        addCommand("mesorate", level, MesoRateCommand.class);
-        addCommand("droprate", level, DropRateCommand.class);
-        addCommand("bossdroprate", level, BossDropRateCommand.class);
-        addCommand("questrate", level, QuestRateCommand.class);
-        addCommand("travelrate", level, TravelRateCommand.class);
-        addCommand("fishrate", level, FishingRateCommand.class);
-        addCommand("itemvac", level, ItemVacCommand.class);
-        addCommand("forcevac", level, ForceVacCommand.class);
-        addCommand("zakum", level, ZakumCommand.class);                 // 扎昆
-        addCommand("horntail", level, HorntailCommand.class);
-        addCommand("pinkbean", level, PinkbeanCommand.class);
-        addCommand("pap", level, PapCommand.class);
-        addCommand("pianus", level, PianusCommand.class);
-        addCommand("cake", level, CakeCommand.class);
-        addCommand("playernpc", level, PlayerNpcCommand.class);
+        addCommand("seteqstat", level, SetEqStatCommand.class);         //  ------- 修改【背包】装备属性，可以使自身属性变得非常高 ------ 1605631
+        addCommand("exprate", level, ExpRateCommand.class);             // 经验倍率
+        addCommand("mesorate", level, MesoRateCommand.class);           // 金币倍率
+        addCommand("droprate", level, DropRateCommand.class);           // BOSS掉落倍率
+        addCommand("bossdroprate", level, BossDropRateCommand.class);   // BOSS掉落倍率
+        addCommand("questrate", level, QuestRateCommand.class);         // 任务倍率
+        addCommand("travelrate", level, TravelRateCommand.class);       // 坐船倍率
+        addCommand("fishrate", level, FishingRateCommand.class);        // 钓鱼倍率
+        addCommand("itemvac", level, ItemVacCommand.class);             // 拣取
+        addCommand("forcevac", level, ForceVacCommand.class);           // 拣取
+        addCommand("zakum", level, ZakumCommand.class);                 // *扎昆*
+        addCommand("horntail", level, HorntailCommand.class);           // *龙王*
+        addCommand("pinkbean", level, PinkbeanCommand.class);           // *品克斌*
+        addCommand("pap", level, PapCommand.class);                     // *闹钟*
+        addCommand("pianus", level, PianusCommand.class);               // *鱼王*
+        addCommand("cake", level, CakeCommand.class);                   // ---------- BOSS蛋糕： 爆枫叶物品
+        addCommand("playernpc", level, PlayerNpcCommand.class);     
         addCommand("playernpcremove", level, PlayerNpcRemoveCommand.class);
-        addCommand("pnpc", level, PnpcCommand.class);
-        addCommand("pnpcremove", level, PnpcRemoveCommand.class);
-        addCommand("pmob", level, PmobCommand.class);
-        addCommand("pmobremove", level, PmobRemoveCommand.class);
+        addCommand("pnpc", level, PnpcCommand.class);                   // ---------- 创建npc
+        addCommand("pnpcremove", level, PnpcRemoveCommand.class);       // 移除npc
+        addCommand("pmob", level, PmobCommand.class);                   // ---------- 创建怪物
+        addCommand("pmobremove", level, PmobRemoveCommand.class);       // 移除怪物
 
         commandsNameDesc.add(levelCommandsCursor);
     }
@@ -378,12 +384,12 @@ public class CommandsExecutor {
     private void registerLv6Commands() {
         levelCommandsCursor = new Pair<>(new ArrayList<>(), new ArrayList<>());
         int level = 0;
-        addCommand("setgmlevel", level, SetGmLevelCommand.class);
+        addCommand("setgmlevel", level, SetGmLevelCommand.class);       // 修改GM等级 
         addCommand("warpworld", level, WarpWorldCommand.class);
-        addCommand("saveall", level, SaveAllCommand.class);
-        addCommand("dcall", level, DCAllCommand.class);
-        addCommand("mapplayers", level, MapPlayersCommand.class);
-        addCommand("getacc", level, GetAccCommand.class);
+        addCommand("saveall", level, SaveAllCommand.class);             // 保存当前地图角色数据
+        addCommand("dcall", level, DCAllCommand.class);                 // 断开所有玩家连接
+        addCommand("mapplayers", level, MapPlayersCommand.class);       // 当前地图角色
+        addCommand("getacc", level, GetAccCommand.class);               // 获取角色账号名
         addCommand("shutdown", level, ShutdownCommand.class);
         addCommand("clearquestcache", level, ClearQuestCacheCommand.class);
         addCommand("clearquest", level, ClearQuestCommand.class);

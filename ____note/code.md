@@ -1,6 +1,8 @@
 # Code
 - log
     - FilePrinter.java
+- player data
+    - MapleCharacter loadCharFromDB    
 - session
     - MapleServerHandler.java
         - messageReceived(IoSession session, Object message)： 收包

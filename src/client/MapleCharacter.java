@@ -7099,6 +7099,7 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
 
     public static MapleCharacter loadCharFromDB(int charid, MapleClient client, boolean channelserver) throws SQLException {
         try {
+            // 加载玩家数据
             MapleCharacter ret = new MapleCharacter();
             ret.client = client;
             ret.id = charid;
