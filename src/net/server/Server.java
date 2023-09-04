@@ -909,6 +909,7 @@ public class Server {
         acceptor.getFilterChain().addLast("codec", (IoFilter) new ProtocolCodecFilter(new MapleCodecFactory()));
         acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 30);
         acceptor.setHandler(new MapleServerHandler());
+        acceptor.setReuseAddress(true);
         try {
             acceptor.bind(new InetSocketAddress(8484));
         } catch (IOException ex) {
