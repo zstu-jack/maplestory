@@ -190,8 +190,8 @@ public class CommandsExecutor {
         addCommand("gacha", GachaCommand.class);            // ?
         addCommand("dispose", DisposeCommand.class);        // 解卡指令，客户端异常时可以解卡"
         addCommand("equiplv", EquipLvCommand.class);        // 显示装备等级
-        addCommand("rates", ShowRatesCommand.class);        // 查看倍率
-        addCommand("online", OnlineCommand.class);          // 查人所在位置
+        addCommand("rates", ShowRatesCommand.class);        // ----------  查看倍率
+        addCommand("online", OnlineCommand.class);          // ------------- 查人所在位置
         addCommand("bug", ReportBugCommand.class);          // 上报bug
         addCommand("points", ReadPointsCommand.class);      // 查询奖励点数和投票点数，暂时没发现有什么用"
         addCommand("event", JoinEventCommand.class);        // 参加或离开活动
@@ -288,9 +288,9 @@ public class CommandsExecutor {
         addCommand("togglecoupon", level, ToggleCouponCommand.class);
         addCommand("togglewhitechat", level, ChatCommand.class);
         addCommand("fame", level, FameCommand.class);                   // 给人气
-        addCommand("givenx", level, GiveNxCommand.class);               // 给点券
-        addCommand("givevp", level, GiveVpCommand.class);               // 给vp
-        addCommand("givems", level, GiveMesosCommand.class);            // 给金币
+        addCommand("givenx", level, GiveNxCommand.class);               // ---------- 给点券
+        addCommand("givevp", level, GiveVpCommand.class);               // ---------- 给vp
+        addCommand("givems", level, GiveMesosCommand.class);            // ---------- 给金币
         addCommand("giverp", level, GiveRpCommand.class);               // 给？
         addCommand("expeds", level, ExpedsCommand.class);               // 频道的远征队
         addCommand("kill", level, KillCommand.class);                   // 杀死某个玩家
@@ -321,8 +321,8 @@ public class CommandsExecutor {
 
         addCommand("night", level, NightCommand.class);                 // 去除光
         addCommand("npc", level, NpcCommand.class);                     // 召唤npc
-        addCommand("face", level, FaceCommand.class);                   // 外观
-        addCommand("hair", level, HairCommand.class);                   // 外观
+        addCommand("face", level, FaceCommand.class);                   // ----------- 外观
+        addCommand("hair", level, HairCommand.class);                   // ----------- 外观
         addCommand("startquest", level, QuestStartCommand.class);       // 任务开始
         addCommand("completequest", level, QuestCompleteCommand.class); // 任务完成
         addCommand("resetquest", level, QuestResetCommand.class);       // 任务重置
@@ -342,13 +342,13 @@ public class CommandsExecutor {
         int level = 0;
         addCommand("servermessage", level, ServerMessageCommand.class);
         addCommand("proitem", level, ProItemCommand.class);
-        addCommand("seteqstat", level, SetEqStatCommand.class);         //  ------- 修改【背包】装备属性，可以使自身属性变得非常高 ------ 1605631
-        addCommand("exprate", level, ExpRateCommand.class);             // 经验倍率
-        addCommand("mesorate", level, MesoRateCommand.class);           // 金币倍率
-        addCommand("droprate", level, DropRateCommand.class);           // BOSS掉落倍率
-        addCommand("bossdroprate", level, BossDropRateCommand.class);   // BOSS掉落倍率
-        addCommand("questrate", level, QuestRateCommand.class);         // 任务倍率
-        addCommand("travelrate", level, TravelRateCommand.class);       // 坐船倍率
+        addCommand("seteqstat", level, SetEqStatCommand.class);         // --------- 1605631 修改【背包】装备属性，可以使自身属性变得非常高 ------ 
+        addCommand("exprate", level, ExpRateCommand.class);             // --------- 经验倍率
+        addCommand("mesorate", level, MesoRateCommand.class);           // --------- 金币倍率
+        addCommand("droprate", level, DropRateCommand.class);           // --------- 掉落倍率
+        addCommand("bossdroprate", level, BossDropRateCommand.class);   // --------- BOSS掉落倍率
+        addCommand("questrate", level, QuestRateCommand.class);         // --------- 任务倍率
+        addCommand("travelrate", level, TravelRateCommand.class);       // --------- 坐船倍率
         addCommand("fishrate", level, FishingRateCommand.class);        // 钓鱼倍率
         addCommand("itemvac", level, ItemVacCommand.class);             // 拣取
         addCommand("forcevac", level, ForceVacCommand.class);           // 拣取

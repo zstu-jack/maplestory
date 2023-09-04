@@ -10,9 +10,9 @@ server:
     - dir /s /b *.java > sources.txt
          （在src目录下，列出所有java文件
     - jar 包和源代码
-        - 在src目录下执行， 如果是中文需要加上  -encoding UTF-8， (javac ...... -encoding UTF-8)
+        - 在src目录下执行， 如果是中文需要加上  -encoding UTF-8， (javac ...... -encoding UTF-8 / GBK)
         - javac -cp ../cores/mina-core-2.0.19.jar;../cores/HikariCP-java7-2.4.13.jar;../cores/mysql-connector-java-bin.jar;../cores/slf4j-api-1.7.21.jar;../cores/slf4j-jdk14-1.7.5.jar;../cores/slf4j-jdk14-1.7.5.jar;../cores/yamlbeans-1.13.jar;../cores/nap_tools-1.23.0807.jar @sources.txt 
-        // - javac -cp ../cores/mina-core-2.0.19.jar;../cores/HikariCP-java7-2.4.13.jar;../cores/mysql-connector-java-bin.jar;../cores/slf4j-api-1.7.21.jar;../cores/slf4j-jdk14-1.7.5.jar;../cores/slf4j-jdk14-1.7.5.jar;../cores/yamlbeans-1.13.jar @sources.txt -encoding UTF-8
+        // - javac -cp ../cores/mina-core-2.0.19.jar;../cores/HikariCP-java7-2.4.13.jar;../cores/mysql-connector-java-bin.jar;../cores/slf4j-api-1.7.21.jar;../cores/slf4j-jdk14-1.7.5.jar;../cores/slf4j-jdk14-1.7.5.jar;../cores/yamlbeans-1.13.jar;../cores/nap_tools-1.23.0807.jar @sources.txt -encoding UTF-8
     - // 修改ip：HeavenMS\hackertools 修改ip(skip ip address选择否，将第一个ip(127.0.0.1)修改其它的)
 
 4. running:

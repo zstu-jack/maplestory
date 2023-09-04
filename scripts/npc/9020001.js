@@ -68,7 +68,14 @@ function clearStage(stage, eim, curMap) {
     eim.linkToNextStage(stage, "kpq", curMap);  //opens the portal to the next map
 }
 
+var originMinPlayers = 3;
+
 function rectangleStages(eim, property, areaCombos, areaRects) {
+    // 小于3人时返回答案正确
+    if(eim.getPlayerCount() < 3){
+        return true;
+    }
+
     var c = eim.getProperty(property);
     if(c == null) {
         c = Math.floor(Math.random() * areaCombos.length);
