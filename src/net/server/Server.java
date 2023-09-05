@@ -906,10 +906,10 @@ public class Server {
         IoBuffer.setUseDirectBuffer(false);     // join IO operations performed by lxconan
         IoBuffer.setAllocator(new SimpleBufferAllocator());
         acceptor = new NioSocketAcceptor();
+        // acceptor.setReuseAddress(true);
         acceptor.getFilterChain().addLast("codec", (IoFilter) new ProtocolCodecFilter(new MapleCodecFactory()));
         acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 30);
         acceptor.setHandler(new MapleServerHandler());
-        acceptor.setReuseAddress(true);
         try {
             acceptor.bind(new InetSocketAddress(8484));
         } catch (IOException ex) {

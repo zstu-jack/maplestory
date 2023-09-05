@@ -149,7 +149,7 @@ public final class Channel {
             acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 30);
             acceptor.getFilterChain().addLast("codec", (IoFilter) new ProtocolCodecFilter(new MapleCodecFactory()));
             acceptor.bind(new InetSocketAddress(port));
-            acceptor.setReuseAddress(true);
+            // acceptor.setReuseAddress(true);
             ((SocketSessionConfig) acceptor.getSessionConfig()).setTcpNoDelay(true);
             for (MapleExpeditionType exped : MapleExpeditionType.values()) {
             	expedType.add(exped);
