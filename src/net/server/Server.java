@@ -906,7 +906,7 @@ public class Server {
         IoBuffer.setUseDirectBuffer(false);     // join IO operations performed by lxconan
         IoBuffer.setAllocator(new SimpleBufferAllocator());
         acceptor = new NioSocketAcceptor();
-        // acceptor.setReuseAddress(true);
+        ((NioSocketAcceptor)acceptor).setReuseAddress(true);
         acceptor.getFilterChain().addLast("codec", (IoFilter) new ProtocolCodecFilter(new MapleCodecFactory()));
         acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 30);
         acceptor.setHandler(new MapleServerHandler());
@@ -1300,7 +1300,8 @@ public class Server {
     }
 
     public boolean canFly(Integer accountid) {
-        return activeFly.contains(accountid);
+        return true; // д╛хо©ирт╥иоХ
+        // return activeFly.contains(accountid);
     }
 
     public int getCharacterWorld(Integer chrid) {

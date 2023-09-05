@@ -24,29 +24,48 @@ package client;
 public enum MapleJob {
     BEGINNER(0),
 
+    // Warriors战士
     WARRIOR(100),
+    // Fighter(剑客)---Crusader(勇士)---Hero(英雄)
     FIGHTER(110), CRUSADER(111), HERO(112),
+    // Page(准骑士)---White Knight(骑士)---Paladin(圣骑士)
     PAGE(120), WHITEKNIGHT(121), PALADIN(122),
+    // Spearman(枪战士)---Dragon Knight(龙骑士)---Dark Knight(黑骑士)
     SPEARMAN(130), DRAGONKNIGHT(131), DARKKNIGHT(132),
 
+    // Magicans魔法师
     MAGICIAN(200),
+    // Fire/Poison Wizard(火毒法师)---Fire/Poison Mage(火毒巫师)---Fire/Poison Archmage(火毒魔导师)
     FP_WIZARD(210), FP_MAGE(211), FP_ARCHMAGE(212),
+    // Ice/Lightning Wizard(冰雷法师)---Ice/Lightning Mage(冰雷巫师)---Ice/Lightning Archmage(冰雷魔导师)
     IL_WIZARD(220), IL_MAGE(221), IL_ARCHMAGE(222),
+    // Cleric(牧师)---Priest(祭司)---Bishop(主教)
     CLERIC(230), PRIEST(231), BISHOP(232),
 
+    // Bowmen弓箭手
     BOWMAN(300),
+    // Hunter(猎人)---Ranger(射手)---Bowmaster(神射手)
     HUNTER(310), RANGER(311), BOWMASTER(312),
+    // Crossbowman(弩弓手)---Sniper(游侠)---Marksman(箭神)
     CROSSBOWMAN(320), SNIPER(321), MARKSMAN(322),
 
+    // Thieves飞侠(一转名Rogue)
     THIEF(400),
+    // Assassin(刺客)---Hermit(无影人)---Night Lord(隐士)
     ASSASSIN(410), HERMIT(411), NIGHTLORD(412),
+    // Bandit(侠客)---Chief Bandit(独行客)---Shadower(侠盗)
     BANDIT(420), CHIEFBANDIT(421), SHADOWER(422),
 
+    // Pirate海盗
     PIRATE(500),
+    // Brawler(拳手)--Marauder(斗士)---Buccaneer(冲锋队长)
     BRAWLER(510), MARAUDER(511), BUCCANEER(512),
+    // Gunslinger(火枪手)---Outlaw(大副)---Corsair(船长)
     GUNSLINGER(520), OUTLAW(521), CORSAIR(522),
-
+    
+    // Angelic Buster(爆莉萌天使)
     MAPLELEAF_BRIGADIER(800),
+    // GM, 超级GM
     GM(900), SUPERGM(910),
 
     NOBLESSE(1000),
@@ -56,9 +75,11 @@ public enum MapleJob {
     NIGHTWALKER1(1400), NIGHTWALKER2(1410), NIGHTWALKER3(1411), NIGHTWALKER4(1412),
     THUNDERBREAKER1(1500), THUNDERBREAKER2(1510), THUNDERBREAKER3(1511), THUNDERBREAKER4(1512),
 
+    // 战神
     LEGEND(2000), EVAN(2001),
     ARAN1(2100), ARAN2(2110), ARAN3(2111), ARAN4(2112),
 	
+    // 龙神
     EVAN1(2200), EVAN2(2210), EVAN3(2211), EVAN4(2212), EVAN5(2213), EVAN6(2214),
     EVAN7(2215), EVAN8(2216), EVAN9(2217), EVAN10(2218);
 

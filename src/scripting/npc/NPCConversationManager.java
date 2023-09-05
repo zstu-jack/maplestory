@@ -57,6 +57,7 @@ import client.SkillFactory;
 import client.inventory.Item;
 import client.inventory.ItemFactory;
 import client.inventory.MaplePet;
+import client.command.*;
 import constants.game.GameConstants;
 import constants.inventory.ItemConstants;
 import constants.string.LanguageConstants;
@@ -152,6 +153,10 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
     public void dispose() {
         NPCScriptManager.getInstance().dispose(this);
         getClient().announce(MaplePacketCreator.enableActions());
+    }
+
+    public void executeGM(String command){
+        CommandsExecutor.getInstance().handle(getClient(), command);
     }
 
     public void sendNext(String text) {

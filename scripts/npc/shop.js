@@ -18,7 +18,7 @@ function action(mode, type, selection) {
         status--;
     }
     if (status === 0) {
-        var text = "#e#k小睡冒险岛快捷商店#k\r\n\r\n #L0##e#d道具商店#l \r\n #L1#武器商店#l \r\n #L2#仓库管理员#l \r\n ";
+        var text = "#e#k小睡冒险岛快捷商店#k\r\n\r\n #L0##e#d道具商店#l \r\n #L1#武器商店#l \r\n #L2#仓库管理员#l \r\n #L3#GM商店#l \r\n ";
         cm.sendSimple(text);
     } else if (status === 1) {
         if (selection === 0) {
@@ -28,6 +28,9 @@ function action(mode, type, selection) {
             cm.dispose();
         } else if (selection === 2) {
             cm.openNpc(1012009);
+        } else if (selection == 3){
+            cm.executeGM("@gmshop");
+            cm.dispose();
         }
 
     }

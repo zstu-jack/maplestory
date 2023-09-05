@@ -93,3 +93,21 @@ put("蘑菇城", 106020000);
 
 
 # item
+
+
+# 拍卖GM
+- code: `9900001.js`
+    - EnterMTSHandler
+        - openCenterScript
+            - NPCScriptManager.getInstance().start(c, 9900001, null);
+    - cm.openNpc
+        - public void start(String filename, MapleClient c, int npc, List<MaplePartyCharacter> chrs)
+
+- npc脚本流程
+    - `cm.sendOk，cm.dispose`：完成流程
+    - `cm.sendSimple`: 选择框
+    - `cm.sendNext`: 点击下一步会进行下一个state
+
+- 获取客户端输入
+    - `cm.sendGetText`: 下一个state中需要`var text = cm.getText();`
+    - `cm.sendGetNumber`:`(text def,min,max)`

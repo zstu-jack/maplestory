@@ -145,11 +145,11 @@ public final class Channel {
             IoBuffer.setUseDirectBuffer(false);
             IoBuffer.setAllocator(new SimpleBufferAllocator());
             acceptor = new NioSocketAcceptor();
+            ((NioSocketAcceptor)acceptor).setReuseAddress(true);
             acceptor.setHandler(new MapleServerHandler(world, channel));
             acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 30);
             acceptor.getFilterChain().addLast("codec", (IoFilter) new ProtocolCodecFilter(new MapleCodecFactory()));
             acceptor.bind(new InetSocketAddress(port));
-            // acceptor.setReuseAddress(true);
             ((SocketSessionConfig) acceptor.getSessionConfig()).setTcpNoDelay(true);
             for (MapleExpeditionType exped : MapleExpeditionType.values()) {
             	expedType.add(exped);
