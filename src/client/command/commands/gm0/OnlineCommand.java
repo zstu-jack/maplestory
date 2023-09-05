@@ -49,7 +49,7 @@ public class OnlineCommand extends Command {
         String param = params[0].trim();
         for (Channel ch : channels) {
             for (MapleCharacter chr : ch.getPlayerStorage().getAllCharacters()) {
-                if (!chr.isGM() && (param.equals(chr.getName()) || param.equals(String.valueOf(chr.getId())))) {
+                if ((param.equals(chr.getName()) || param.equals(String.valueOf(chr.getId())))) {
                     player.message("ID: " + chr.getId() + "(" + chr.getName() + ")" + "，正处于地图: " + chr.getMap().getMapName());
                     break;
                 }

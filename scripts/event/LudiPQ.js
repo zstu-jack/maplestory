@@ -24,8 +24,10 @@
 */
 
 var isPq = true;
-var minPlayers = 5, maxPlayers = 6;
-var minLevel = 35, maxLevel = 50;
+var minPlayers = 1, maxPlayers = 6;
+//var minPlayers = 5, maxPlayers = 6;
+var minLevel = 1, maxLevel = 255;
+//var minLevel = 35, maxLevel = 50;
 var entryMap = 922010100;
 var exitMap = 922010000;
 var recruitMap = 221024500;
@@ -102,6 +104,7 @@ function getEligibleParty(party) {      //selects, from the given party, the tea
 }
 
 function setup(level, lobbyid) {
+        // 2040034.js(npc)->setup
         var eim = em.newInstance("Ludi" + lobbyid);
         eim.setProperty("level", level);
         
