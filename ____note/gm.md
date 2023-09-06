@@ -96,6 +96,7 @@ put("蘑菇城", 106020000);
 
 
 # 拍卖GM
+- docs/course/脚本标记符
 - code: `9900001.js`
     - EnterMTSHandler
         - openCenterScript
@@ -111,3 +112,9 @@ put("蘑菇城", 106020000);
 - 获取客户端输入
     - `cm.sendGetText`: 下一个state中需要`var text = cm.getText();`
     - `cm.sendGetNumber`:`(text def,min,max)`
+
+
+- TODO:goto常用地图，gotoboss地图， 常用装备（10-20：通用，魔法师，。。。。。）， 常用怪物
+- TODO: 喇叭
+- TODO：特效
+- TODO 技能速度

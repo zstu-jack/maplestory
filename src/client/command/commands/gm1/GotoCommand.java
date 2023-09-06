@@ -36,12 +36,13 @@ import server.maps.FieldLimit;
 import server.maps.MapleMap;
 import server.maps.MapleMapFactory;
 import server.maps.MapleMiniDungeonInfo;
-
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.*;
+import tools.FilePrinter;
 
 public class GotoCommand extends Command {
 
@@ -74,6 +75,7 @@ public class GotoCommand extends Command {
 
     public static String GOTO_TOWNS_INFO = "";
     public static String GOTO_AREAS_INFO = "";
+    public static final Logger logger = Logger.getLogger(FilePrinter.class.getName());
 
     private static void sortGotoEntries(List<Entry<String, Integer>> listEntries) {
         Collections.sort(listEntries, new Comparator<Entry<String, Integer>>() {
@@ -110,21 +112,19 @@ public class GotoCommand extends Command {
         }
 
         HashMap<String, Integer> gotomaps;
-        if (player.isGM()) {
-            gotomaps = new HashMap<>(GameConstants.GOTO_AREAS);     // distinct map registry for GM/users suggested thanks to Vcoc
-            gotomaps.putAll(GameConstants.GOTO_TOWNS);  // thanks Halcyon (UltimateMors) for pointing out duplicates on listed entries functionality
-        } else {
-            gotomaps = GameConstants.GOTO_TOWNS;
-        }
+        gotomaps = new HashMap<>(GameConstants.GOTO_AREAS);     // distinct map registry for GM/users suggested thanks to Vcoc
+        gotomaps.putAll(GameConstants.GOTO_TOWNS);  // thanks Halcyon (UltimateMors) for pointing out duplicates on listed entries functionality
 
+        Boolean intMap = Character.isDigit(params[0].toCharArray()[0]);
         if (gotomaps.containsKey(params[0])) {
+            player.dropMessage(1, "goto string map" + params[0]);
             MapleMap target = c.getChannelServer().getMapFactory().getMap(gotomaps.get(params[0]));
-
             // expedition issue with this command detected thanks to Masterrulax
             MaplePortal targetPortal = target.getRandomPlayerSpawnpoint();
             player.saveLocationOnWarp();
             player.changeMap(target, targetPortal);
-        } else if (gotomaps.containsValue(Integer.valueOf(params[0]))) {
+        } else if (intMap && gotomaps.containsValue(Integer.valueOf(params[0]))) {
+            player.dropMessage(1, "goto int map" + params[0]);
             for (Integer value : gotomaps.values()) {
                 if (value.equals(Integer.valueOf(params[0]))) {
                     MapleMap target = c.getChannelServer().getMapFactory().getMap(value);
@@ -135,13 +135,31 @@ public class GotoCommand extends Command {
                 }
             }
         } else {
-            // detailed info on goto available areas suggested thanks to Vcoc
-            String sendStr = "你输入的地图 '#r" + params[0] + "#k' 无效。 可到达的地图:\r\n\r\n#r城镇:#k" + GOTO_TOWNS_INFO;
-            if (player.isGM()) {
-                sendStr += ("\r\n#r区域:#k\r\n" + GOTO_AREAS_INFO);
+            // mapid
+            
+            if(intMap){
+                MapleMap target = c.getChannelServer().getMapFactory().getMap(Integer.valueOf(params[0]));
+                if(target != null){
+                    MaplePortal targetPortal = target.getRandomPlayerSpawnpoint();
+                    player.saveLocationOnWarp();
+                    player.changeMap(target, targetPortal);
+                    return ;
+                }
+                player.dropMessage(1, "goto map failed: id=" + params[0]);
+            }else{
+                String reqMapName = params[0];
+                Map<Integer, MapleMap> allMap = c.getChannelServer().getMapFactory().getMaps();
+                String sendStr = "输入: #b@goto <地图名/id>#k。可到达的地图:\r\n\r\n";
+                for(Map.Entry<Integer, MapleMap> entry: allMap.entrySet()) {
+                    String mapName = entry.getValue().getMapName();
+                    String streetName = entry.getValue().getStreetName();
+                    if(mapName.contains(reqMapName) || streetName.contains(reqMapName)){
+                        sendStr += "id=" + entry.getKey() + "," + streetName + ":" + mapName  + "\r\n\r\n";
+                    }
+                }
+                player.getAbstractPlayerInteraction().npcTalk(9000020, sendStr);
             }
 
-            player.getAbstractPlayerInteraction().npcTalk(9000020, sendStr);
         }
     }
 }

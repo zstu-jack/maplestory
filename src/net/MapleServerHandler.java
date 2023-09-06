@@ -65,7 +65,8 @@ import net.server.audit.LockCollector;
 import server.TimerManager;
 
 public class MapleServerHandler extends IoHandlerAdapter {
-    private final static Set<Short> ignoredDebugRecvPackets = new HashSet<>(Arrays.asList((short) 167, (short) 197, (short) 89, (short) 91, (short) 41, (short) 188, (short) 107));
+    public final static Set<Short> ignoredDebugRecvPackets = new HashSet<>(Arrays.asList((short) -1, (short)197));
+    public final static Set<Short> ignoredDebugSendPackets = new HashSet<>(Arrays.asList((short) -1, (short)260));
 
     private PacketProcessor processor;
     private int world = -1, channel = -1;
@@ -197,10 +198,10 @@ public class MapleServerHandler extends IoHandlerAdapter {
 
         if (YamlConfig.config.server.USE_DEBUG_SHOW_RCVD_PACKET && !ignoredDebugRecvPackets.contains(packetId)) {
             // 对应RecvOpcode类
-            System.out.println("接收到数据包: " + String.format("0x%02X", packetId));
+            // System.out.println("接收到" + client.getAccountName() + "数据包: " + String.format("0x%02X", packetId));
+            logger.info("从[" + client.getAccountName()  + "]接收" + String.format("0x%02X", packetId));
         }
         final MaplePacketHandler packetHandler = processor.getHandler(packetId);
-        logger.info("recv package, account:" + client.getAccountName()+ ", packid=" + String.format("0x%02X", packetId));
         if (packetHandler != null && packetHandler.validateState(client)) {
             try {
                 MapleLogger.logRecv(client, packetId, message);

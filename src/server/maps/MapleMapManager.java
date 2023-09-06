@@ -28,6 +28,8 @@ import net.server.audit.locks.MonitoredWriteLock;
 import net.server.audit.locks.factory.MonitoredReadLockFactory;
 import net.server.audit.locks.factory.MonitoredWriteLockFactory;
 import scripting.event.EventInstanceManager;
+import java.util.logging.*;
+import tools.FilePrinter;
 
 public class MapleMapManager {
 
@@ -38,6 +40,8 @@ public class MapleMapManager {
     
     private MonitoredReadLock mapsRLock;
     private MonitoredWriteLock mapsWLock;
+
+    public static final Logger logger = Logger.getLogger(FilePrinter.class.getName());
 
     public MapleMapManager(EventInstanceManager eim, int world, int channel) {
         this.world = world;

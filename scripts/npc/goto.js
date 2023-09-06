@@ -2,6 +2,46 @@ var sText;
 var typeIdx;
 var mapIdx;
 
+var jumps = Array(
+    Array("忍苦树林1", 101000100, 0),
+    Array("忍苦树林2", 101000101, 0),
+    Array("忍苦树林3", 101000102, 0),
+    Array("忍苦树林4", 101000103, 0),
+    Array("忍苦树林5", 101000104, 0),
+    Array("宠物公园",        100000202, 0),
+    Array("玩具城宠物训练场", 220000006, 0),
+    Array("三号线一号地区B1", 103000900, 0),
+    Array("三号线一号地区B2", 103000901, 0),
+    Array("三号线1号车库", 103000902, 0),
+    Array("三号线二号地区B1", 103000903, 0),
+    Array("三号线二号地区B2", 103000904, 0),
+    Array("三号线2号车库", 103000905, 0),
+    Array("三号线三号地区B1", 103000906, 0),
+    Array("三号线三号地区B2", 103000907, 0),
+    Array("三号线三号地区B3", 103000908, 0),
+    Array("三号线3号车库", 103000909, 0),
+    Array("沉睡森林1", 105040310, 0),
+    Array("沉睡森林2", 105040311, 0),
+    Array("沉睡森林3", 105040312, 0),
+    Array("沉睡森林4", 105040313, 0),
+    Array("沉睡森林5", 105040314, 0),
+    Array("沉睡森林6", 105040315, 0),
+    Array("沉睡森林7", 105040316, 0),
+    Array("玩具工厂1-1", 280020000, 0),
+    Array("玩具工厂1-2", 280020100, 0),
+    Array("玩具工厂1-3", 280020200, 0),
+    Array("玩具工厂骨干工程1", 280020300, 0),
+    Array("玩具工厂1-5", 280020400, 0),
+    Array("玩具工厂1-6", 280020500, 0),
+    Array("玩具工厂机房", 280020600, 0),
+    Array("玩具工厂2-1", 280030000, 0),
+    Array("玩具工厂2-2", 280030100, 0),
+    Array("玩具工厂骨干工程2", 280030200, 0),
+    Array("玩具工厂2-4", 280030300, 0),
+    Array("玩具工厂2-5", 280030400, 0),
+    Array("玩具工厂第四地区", 922000000, 0)
+)
+
 // 城镇
 var towns = Array(
     Array("自由市场", 910000000, 0),
@@ -91,8 +131,8 @@ function action(mode, type, selection) {
         status--;
     }
     if (status === 0) {
-        var text = "#e#k小睡冒险岛传送服务#k\r\n\r\n #L0##e#d城镇地图传送#l \r\n #L1#练级地图传送#l \r\n #L2#野外BOSS传送#l \r\n ";
-        text += "#L3#NPC传送#l";
+        var text = "#e#k小睡冒险岛传送服务#k\r\n\r\n #L0##e#d城镇地图传送#l \r\n #L1#练级地图传送#l \r\n #L2#野外BOSS传送#l \r\n";
+        text += "#L3#NPC传送#l \r\n #L4#跳跳地图传送#l \r\n #L5#模糊搜索地图传送#l";
         cm.sendSimple(text);
     } else if (status === 1) {
         typeIdx = selection;
@@ -121,10 +161,23 @@ function action(mode, type, selection) {
                 sText += "#L" + i + "#" + npcs[i][0] + "\r\n";
             }
             cm.sendSimple(sText);
-        } else {
+        }else if(selection === 4){
+            sText = "#b";
+            for (i = 0; i < jumps.length; i++) {
+                sText += "#L" + i + "#" + jumps[i][0] + "\r\n";
+            }
+            cm.sendSimple(sText);
+        }else if(selection === 5){
+            cm.sendGetText("模糊查询地图");
+        } else{
             cm.dispose();
         }
     } else if (status === 2) {
+        if(typeIdx === 5){
+            var input = cm.getText();
+            cm.executeSendFilteredMap(input);
+            return 
+        }
         mapIdx = selection;
         var cost;
         var mapId;
@@ -140,11 +193,23 @@ function action(mode, type, selection) {
         } else if (typeIdx === 3) {
             cost = npcs[mapIdx][2];
             mapId = npcs[mapIdx][1];
+        } else if (typeIdx === 4){
+            cost = jumps[mapIdx][2];
+            mapId = jumps[mapIdx][1];
         }
         if (cm.getMeso() >= cost) {
             cm.gainMeso(-cost);
             cm.message("本次传送花费: " + cost + " 金币");
             cm.warp(mapId);
+        }
+    }else if(status === 3){
+        if(typeIdx === 5){
+            if(selection == 999999){
+                cm.dispose();
+                return ;
+            }
+            cm.executeGoMapIndex(selection);
+            cm.dispose();
         }
     }
 }

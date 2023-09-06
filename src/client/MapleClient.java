@@ -62,6 +62,7 @@ import net.server.world.MapleParty;
 import net.server.world.MaplePartyCharacter;
 import net.server.world.PartyOperation;
 import net.server.world.World;
+import net.*;
 
 import org.apache.mina.core.session.IoSession;
 
@@ -1489,7 +1490,13 @@ public class MapleClient {
         ByteBuffer wrapped = ByteBuffer.wrap(packet).order(ByteOrder.LITTLE_ENDIAN);
         // ByteBuffer wrapped = ByteBuffer.wrap(bytes); // big-endian by default
         short packetId = wrapped.getShort(); 
-        logger.info("send package, account:" + getAccountName()+ ", packid=" + String.format("0x%02X", packetId));
+
+        if (YamlConfig.config.server.USE_DEBUG_SHOW_RCVD_PACKET && !MapleServerHandler.ignoredDebugSendPackets.contains(packetId)) {;
+            logger.info("·¢ËÍ¸ø[" + getAccountName() + "] " + String.format("0x%02X", packetId));
+        }
+
+
+
         try {
             session.write(packet);
         } finally {

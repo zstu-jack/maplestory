@@ -22,11 +22,11 @@ function action(mode, type, selection) {
     }
 
     if (status === 0) {
-        var text = "#e#k小睡冒险岛变强服务#k\r\n\r\n #L0##e#d我要技能点(@sp)#l \r\n #L1#我要属性值(@ap)#l \r\n #L2#我要满血满蓝#l \r\n ";
-        text += "#L3#我要设置等级(@level)#l \r\n ";
-        text += "#L4#我要牛逼装备(@seteqstat v)#l \r\n ";
-        text += "#L5#我要很多buff(@empowerme)#l \r\n ";
-        text += "#L6#我要切换职业(@job id)#l \r\n ";
+        var text = "#e#k小睡冒险岛变强服务#k\r\n\r\n #L0##e#d给技能点#l \r\n #L1#给属性值#l \r\n #L2#满HPMP#l \r\n ";
+        text += "#L3#设置等级#l \r\n ";
+        text += "#L4#牛逼装备#l \r\n ";
+        text += "#L5#给我buff#l \r\n ";
+        text += "#L6#切换职业#l \r\n ";
         cm.sendSimple(text);
     } else if (status === 1) {
         selectType = selection;

@@ -85,12 +85,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.logging.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.FileInputStream;
 import tools.FilePrinter;
-
 /**
  * @author Matze
  */
 public class NPCConversationManager extends AbstractPlayerInteraction {
+
+    public static final Logger logger = Logger.getLogger(FilePrinter.class.getName());
 
     private int npc;
     private int npcOid;
@@ -157,6 +167,71 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
     public void executeGM(String command){
         CommandsExecutor.getInstance().handle(getClient(), command);
+    }
+
+ 
+    public void executeSendFilteredMap(String userInput){
+        String sText = "#b";
+        try {
+            FileInputStream fis = new FileInputStream("maps.txt");
+            InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
+            BufferedReader reader = new BufferedReader(isr);
+            String line = reader.readLine();
+            int i = 0, cnt = 0;
+            logger.info("executeSendFilteredMap userInput=" + userInput);
+            while (line != null) {
+                // System.out.println(line);
+                String[] parts = line.split(" ", 2);
+                String mapId = parts[0]; 
+                String mapName = parts[1]; 
+                if(mapName.contains(userInput)){
+                    logger.info("executeSendFilteredMap:" + mapName);
+                    sText += "#L" + i + "#" + mapName + "\r\n";
+                    cnt = cnt + 1;
+                }
+                if(cnt > 30){
+                    sText += "#L" + 999999 + "#" + " ‰»ÎÃ´∂‡" + "\r\n"; 
+                    break ;
+                }
+                i ++;
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {            
+            System.out.println("An error occurred.");
+            logger.info("executeSendFilteredMap An error occurred");
+            e.printStackTrace();
+        }
+        sendSimple(sText);
+    }
+
+    public void executeGoMapIndex(int index){
+        logger.info("executeGoMapIndex: index=" + String.valueOf(index));
+
+        try {
+            FileInputStream fis = new FileInputStream("maps.txt");
+            InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
+            BufferedReader reader = new BufferedReader(isr);
+            String line = reader.readLine();
+            int i = 0;
+            while (line != null) {
+                // System.out.println(line);
+                String[] parts = line.split(" ", 2);
+                String mapId = parts[0]; 
+                String mapName = parts[1]; 
+                if(i == index){
+                    executeGM("@goto " + String.valueOf(mapId));
+                    break;
+                }
+                i ++;
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {            
+            System.out.println("An error occurred.");
+            logger.info("executeSendFilteredMap An error occurred");
+            e.printStackTrace();
+        }
     }
 
     public void sendNext(String text) {
