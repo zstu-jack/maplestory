@@ -42,6 +42,7 @@ public class SetSlotCommand extends Command {
         int slots = (Integer.parseInt(params[0]) / 4) * 4;
         for (int i = 1; i < 5; i++) {
             int curSlots = player.getSlots(i);
+            player.yellowMessage("i=" + String.valueOf(i) + "curSlots=" + String.valueOf(curSlots) + " newSlots=" + String.valueOf(slots));
             if (slots <= -curSlots) {
                 continue;
             }

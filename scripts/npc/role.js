@@ -89,7 +89,7 @@ function action(mode, type, selection) {
         } else if (selection === 8) {
             cm.sendGetNumber("需要多少点券", 100000, 100000, 10000000);
         } else if (selection === 9) {
-            cm.sendGetNumber("需要设置为多少栏位", 100, 100, 1000);
+            cm.sendGetNumber("需要设置为多少栏位", 96, 24, 96);
         }
 
     } else if (status === 2) {
