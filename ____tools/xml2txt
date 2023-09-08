@@ -217,6 +217,6 @@ def parseMonster():
     for key, value in level_num.items():
         print(f'monster level: {key}, num: {value}')
 
-# parseMap()
-# parseEquip()
+parseMap()
+parseEquip()
 parseMonster()
