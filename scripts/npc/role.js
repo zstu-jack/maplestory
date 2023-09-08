@@ -22,31 +22,30 @@ function action(mode, type, selection) {
     }
 
     if (status === 0) {
-        var text = "#e#k小睡冒险岛变强服务#k\r\n\r\n #L0##e#d给技能点#l \r\n #L1#给属性值#l \r\n #L2#满HPMP#l \r\n ";
-        text += "#L3#设置等级#l \r\n ";
-        text += "#L4#牛逼装备#l \r\n ";
-        text += "#L5#给我buff#l \r\n ";
-        text += "#L6#切换职业#l \r\n ";
+        var text = "#e#k小睡冒险岛变强服务#k\r\n\r\n #L0##e#d设置技能点#l \t #L1#设置属性值#l \t #L2#满HPMP#l \r\n ";
+        text += "#L3#设置等级#l  \t\t " + "#L5#给我buff#l  \t\t " + "#L4#牛逼装备#l \r\n ";
+        text += "#L6#切换职业#l  \t\t " + "#L7#给我金币#l  \t\t " + "#L8#给我点券#l \r\n ";
+        text += "#L9#设置背包#l \r\n ";
         cm.sendSimple(text);
     } else if (status === 1) {
         selectType = selection;
         if (selection === 0) {
-            cm.sendGetNumber("需要多少技能点", 100, 1, 10000);
+            cm.sendGetNumber("设为多少技能点", 100, 1, 10000);
         } else if (selection === 1) {
-            cm.sendGetNumber("需要多少属性点", 100, 1, 10000);
+            cm.sendGetNumber("设为多少属性点", 100, 1, 10000);
         } else if (selection === 2) {
             cm.executeGM("@heal");
-            cm.sendOk("OK, 满血复活");
+            cm.message("OK, 满血复活");
             cm.dispose();
         } else if (selection === 3) {
-            cm.sendGetNumber("需要升多少级", 20, 1, 255);
+            cm.sendGetNumber("设为多少级", 20, 1, 255);
         } else if (selection === 4) {
             cm.executeGM("@seteqstat 1605631");
-            cm.sendOk("OK, 背包里的装备都变得很牛逼了");
+            cm.message("OK, 背包里的装备都变得很牛逼了");
             cm.dispose();
         } else if (selection === 5) {
             cm.executeGM("@empowerme");
-            cm.sendOk("OK, 你有很多很多buff了");
+            cm.message("OK, 你有很多很多buff了");
             cm.dispose();
         }  else if (selection === 6) {
             var text = "#e#k你要变成哪个职业(@job)#k\r\n";
@@ -85,21 +84,36 @@ function action(mode, type, selection) {
             // text += "#L2214#EVAN6#l \t #L2215#EVAN7#l \t #L2216#EVAN8#l \t #L2217#EVAN9#l \r\n ";
             // text += "#L2218#EVAN10#l \r\n\r\n  ";
             cm.sendSimple(text);
-        } 
+        } else if (selection === 7) {
+            cm.sendGetNumber("需要多少金币", 500000, 500000, 50000000);
+        } else if (selection === 8) {
+            cm.sendGetNumber("需要多少点券", 100000, 100000, 10000000);
+        } else if (selection === 9) {
+            cm.sendGetNumber("需要设置为多少栏位", 100, 100, 1000);
+        }
 
     } else if (status === 2) {
         if (selectType === 0) {
             cm.executeGM("@sp " + selection);
-            cm.sendOk("OK, 技能点+" + selection);
+            cm.message("OK, 技能点=" + selection);
         } else if (selectType === 1) {
             cm.executeGM("@ap " + selection);
-            cm.sendOk("OK, 属性点+" + selection);
+            cm.message("OK, 属性点=" + selection);
         }else if (selectType === 3) {
             cm.executeGM("@level " + selection);
-            cm.sendOk("OK, 等级+" + selection);
+            cm.message("OK, 等级+" + selection);
         }else if(selectType === 6){
             cm.executeGM("@job " + selection);
-            cm.sendOk("OK, 你成功转职了，玩去吧，职业id=" + selection);
+            cm.message("OK, 你成功转职了，玩去吧，职业id=" + selection);
+        }else if (selectType === 7) {
+            cm.executeGM("@givems " + selection);
+            cm.message("OK, 金币+" + selection);
+        } else if (selectType === 8) {
+            cm.executeGM("@givenx " + selection);
+            cm.message("OK, 点券+" + selection);
+        }else if (selectType === 9) {
+            cm.executeGM("@setslot " + selection);
+            cm.message("OK, 栏位=" + selection);
         }
         cm.dispose();
     }

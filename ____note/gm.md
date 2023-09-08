@@ -108,13 +108,13 @@ put("蘑菇城", 106020000);
     - `cm.sendOk，cm.dispose`：完成流程
     - `cm.sendSimple`: 选择框
     - `cm.sendNext`: 点击下一步会进行下一个state
-
+    - `cm.message("")`: 消息框消息
 - 获取客户端输入
     - `cm.sendGetText`: 下一个state中需要`var text = cm.getText();`
     - `cm.sendGetNumber`:`(text def,min,max)`
 
 
-- TODO:goto常用地图，gotoboss地图， 常用装备（10-20：通用，魔法师，。。。。。）， 常用怪物
-- TODO: 喇叭
-- TODO：特效
-- TODO 技能速度
+- TODO: 喇叭:GM商店看下哪里发的
+    - 上线发，gm发喇叭
+- TODO：屏幕中间文件特效：?改
+- TODO：技能速度

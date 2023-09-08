@@ -6,8 +6,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.FileInputStream;
+import java.util.*;
+
 
 public class FilePrinter {
 
@@ -79,6 +90,135 @@ public class FilePrinter {
     public static final Logger logger = Logger.getLogger(FilePrinter.class.getName());
     static{
         logger.info("static");
+    }
+    public static class Equip{
+        public String name;
+        public int level;
+        public int job;
+        public Equip(String name, int level, int job) {
+            this.name = name;
+            this.level = level;
+            this.job = job;            
+        }
+        // -1 初心者
+        // 所有：0 战士：1  法师：2  弓箭手：4  盗贼：8 海盗：16
+    }
+    public static class Mob{
+        public String name;
+        public int level;
+        public int isBoss;
+        public int mobType;
+        public ArrayList<String> maps;
+        public ArrayList<String> drops;
+        public HashSet<String> actions;
+        public Mob(String name, int level, int isBoss, int mobType, String[] maps,  String[] drops, String[] actions) {
+            this.name = name;
+            this.level = level;
+            this.isBoss = isBoss;            
+            this.mobType = mobType;
+            this.maps = new ArrayList<String>(Arrays.asList(maps));;
+            this.drops = new ArrayList<String>(Arrays.asList(drops));;
+            this.actions = new HashSet<>(Arrays.asList(actions));
+        }
+    }
+
+    public static HashMap<Integer, Equip> AllEquips = new HashMap<>();
+    public static HashMap<String, Mob> AllMobs = new HashMap<>();                     // 怪物id->信息
+    public static ArrayList<String>[] AllMobsByLevel = new ArrayList[256];
+    public static HashMap<Integer, ArrayList<String>> DropItemMobs = new HashMap<>(); // 掉落的id->所有怪物
+    public static HashMap<String, Integer> ErrorMobsClient = new HashMap<>();
+    
+    static{
+        // 这几个怪物客户端显示图片有问题，不显示了，只显示名字
+        ErrorMobsClient.put("8830000", 1); // 超级大的蝙蝠怪
+        ErrorMobsClient.put("8800002", 1); // 扎昆
+        ErrorMobsClient.put("8810018",1);     // 没有图片，黑龙王的灵魂
+        ErrorMobsClient.put("8510000",1); // 鱼王太大了
+        
+        for(int i = 0; i < 256; i++)
+            AllMobsByLevel[i] = new ArrayList<String>();
+
+        logger.info("init equip start");
+
+        try {
+            FileInputStream fis = new FileInputStream("____tools/out_equips.txt");
+            InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
+            BufferedReader reader = new BufferedReader(isr);
+            String line = reader.readLine();
+            line = reader.readLine();
+            while (line != null) {
+                // System.out.println(line);
+                if(line.split(" ").length > 4){
+                    logger.info("equip incorrct,just ignore, line=" + line);
+                    line = reader.readLine();
+                    continue;
+                }
+                String[] parts = line.split(" ");
+                int itemID = Integer.parseInt(parts[0]); 
+                String itemName = parts[1]; 
+                int level = Integer.parseInt(parts[2]);
+                int job = Integer.parseInt(parts[3]);
+                Equip equip = new FilePrinter.Equip(itemName, level, job);
+                AllEquips.put(itemID, equip);
+                
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {            
+            System.out.println("init equip start An error occurred.");
+            logger.info("einit equip start An error occurred");
+            e.printStackTrace();
+        }
+        logger.info("init equip success");
+
+        // parse mob files
+        logger.info("init mob start");
+        try {
+            FileInputStream fis = new FileInputStream("____tools/out_mobs.txt");
+            InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
+            BufferedReader reader = new BufferedReader(isr);
+            String line = reader.readLine();
+            line = reader.readLine();
+            while (line != null) {
+                // System.out.println(line);
+                if(line.split(" ").length > 8){
+                    logger.info("mob incorrct,just ignore, line=" + line);
+                    line = reader.readLine();
+                    continue;
+                }
+                String[] parts = line.split(" ");
+                String mobIDStr = parts[0]; 
+                // int mobID = Integer.parseInt(parts[0]); 
+                String mobName = parts[1]; 
+                int level = Integer.parseInt(parts[2]);
+                int isBoss = Integer.parseInt(parts[3]);
+                int mobType = Integer.parseInt(parts[4]);
+                String[] mobMaps = parts[5].split(",");
+                String[] mobDrops = parts[6].split(",");
+                String[] mobActions = parts[7].split(",");
+                Mob mob = new FilePrinter.Mob(mobName, level, isBoss, mobType, mobMaps, mobDrops, mobActions);
+                AllMobs.put(mobIDStr, mob);
+                AllMobsByLevel[level].add(mobIDStr);
+                for(int i = 0; i < mobDrops.length; i ++){
+                    int dropID = Integer.valueOf(mobDrops[i]);
+                    if (!DropItemMobs.containsKey(dropID)) {
+                        DropItemMobs.put(dropID, new ArrayList<String>()); 
+                    }
+                    ArrayList<String> dropList = DropItemMobs.get(dropID);
+                    dropList.add(mobIDStr);
+                }
+                
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {            
+            System.out.println("init equip start An error occurred.");
+            logger.info("einit equip start An error occurred");
+            e.printStackTrace();
+        }
+        
+
+        logger.info("init mob success. mobsize=" + String.valueOf(AllMobs.size()));
     }
 
     public static void init(){

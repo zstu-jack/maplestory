@@ -1,23 +1,222 @@
 #!/usr/bin/python
 import xml.etree.ElementTree as ET
+import os
 
-# with open('String.Map.img.xml', 'r', encoding='utf-8') as file:
-#     tree = ET.parse(file)
+def parseMap():
+    tree = ET.parse('../wz/String.wz/Map.img.xml')
+    root = tree.getroot()
+    outfile = open('out_maps.txt', 'w', encoding='utf-8')
+    for child in root:
+        # print(child.tag, child.attrib) 
+        for child_map in child:
+            map_node = child_map.attrib
+            # print(map_node["name"])
+            for map_info_node in child_map:
+                # print(map_info_node.tag, map_info_node.attrib["name"], map_info_node.attrib["value"])
+                if map_info_node.attrib["name"] == "mapName":
+                    outfile.write(map_node["name"] +" "+ map_info_node.attrib["value"])
+                    outfile.write('\n')
+                    # print(map_node["name"], map_info_node.attrib["value"])
 
-# 1. wz����xml
-tree = ET.parse('String.Map.img.xml')
-root = tree.getroot()
+def parseEquip(): 
+    # cap: 帽子
+    # cape：披风        
+    # reqJob: 
+    #   -1 初心者
+    #    战士：1  法师：2  弓箭手：4  盗贼：8 海盗：16
+    #    可以按位与
 
-outfile = open('outfile.txt', 'w', encoding='utf-8')
-for child in root:
-    # map, victoria
-    # print(child.tag, child.attrib) 
-    for child_map in child:
-        map_node = child_map.attrib
-        # print(map_node["name"])
-        for map_info_node in child_map:
-            # print(map_info_node.tag, map_info_node.attrib["name"], map_info_node.attrib["value"])
-            if map_info_node.attrib["name"] == "mapName":
-                outfile.write(map_node["name"] +" "+ map_info_node.attrib["value"])
-                outfile.write('\n')
-                print(map_node["name"], map_info_node.attrib["value"])
+    outfile = open('out_equips.txt', 'w', encoding='utf-8')
+    outfile.write("item_id 名字 等级 职业 ")
+    outfile.write("\n")
+
+    # equip_id -> name
+    equip_name = {}   # id -> name
+    equip_name_book = ET.parse('../wz/String.wz/Eqp.img.xml')
+    equip_name_book_root = equip_name_book.getroot()
+
+    for child in equip_name_book_root:
+        print("tag = ", child.tag, ",attrib = ", child.attrib) 
+        for sub_child in child:
+            # print("sub_child = ", sub_child.tag, ",sub_child = ", sub_child.attrib) 
+            for sub_sub_child in sub_child:
+                # print("sub_sub_child = ", sub_sub_child.tag, ",sub_sub_child = ", sub_sub_child.attrib) 
+                equip_id_str = sub_sub_child.attrib["name"]
+                equip_id = int(equip_id_str)
+                for sub_sub_sub_child in sub_sub_child:
+                    # print("sub_sub_sub_child = ", sub_sub_sub_child.tag, ",sub_sub_sub_child = ", sub_sub_sub_child.attrib)
+                    if "value" not in sub_sub_sub_child.attrib:
+                        print("sub_sub_sub_child = ", sub_sub_sub_child.tag, ",sub_sub_sub_child = ", sub_sub_sub_child.attrib)
+                        continue
+                    equip_name[equip_id] = sub_sub_sub_child.attrib["value"]
+                    # print("equip_id = ", equip_id, ", equip_name = ", equip_name[equip_id]) 
+
+    dir_list = ["Cap", "Cape", "Coat", "LongCoat", "Pants", "Shield", "Shoes", "Weapon"]
+    # dir_list = ["Cap"]
+    base_dir = "../wz/Character.wz/"
+    tot = cash_tot = 0
+    level_num = {}
+    for sub_dir in dir_list:
+        iter_dir = base_dir + sub_dir + "/"
+        print("iter_dir=" + iter_dir)
+        for root, dirs, files in os.walk(iter_dir):
+            for file in files:
+                tree = ET.parse(iter_dir + file)
+                root = tree.getroot()
+                item_id_str = file.split('.')[0]
+                item_id = int(item_id_str)
+                for child in root:
+                    # print("--->" + child.tag ," = ", child.attrib) 
+                    if child.attrib["name"] != "info":
+                        continue
+                    cash = 0
+                    job = 0
+                    level = 0                        
+                    for child_map in child:
+                        # print(child_map.tag, child_map.attrib) 
+                        if child_map.attrib["name"] == "reqJob":
+                            job = child_map.attrib["value"]
+                        if child_map.attrib["name"] == "reqLevel":
+                            level = child_map.attrib["value"]
+                        if child_map.attrib["name"] == "cash":
+                            cash = child_map.attrib["value"]      
+                    if int(cash) == 1:
+                        cash_tot = cash_tot + 1
+                        continue
+                    if item_id not in equip_name:
+                        print("not in equip_name, item_id=", item_id)
+                        continue
+                    #if job != "1" and job != "2" and job != "4" and job != "8" and job != "16" and job != "0":
+                        # print("itemid:", item_id, "job:", job, "level", level, "cash", cash)
+                    # print("itemid:", item_id, "item_name", equip_name[item_id] ,"job:", job, "level", level, "cash", cash)
+                    outfile.write(str(item_id) + " " + equip_name[item_id] + " " + level + " " + job)
+                    outfile.write("\n")
+                    tot = tot + 1
+                    if int(level) // 10 in level_num:
+                        level_num[int(level) // 10] += 1
+                    else:
+                        level_num[int(level) // 10] = 1
+    print("tot_equip:", tot, "cash_tot:", cash_tot)          
+    for key, value in level_num.items():
+        print(f'level: {key}, num: {value}')  
+
+def parseMonster():
+
+    monster_map = {}    # id -> []map
+    monster_reward = {} # id -> []reward
+    monster_name = {}   # id -> name
+    # mobid -> name
+    monster_name_book = ET.parse('../wz/String.wz/Mob.img.xml')
+    monster_name_book_root = monster_name_book.getroot()
+    for child in monster_name_book_root:
+        # print("tag = ", child.tag, ",attrib = ", child.attrib) 
+        mob_id = child.attrib["name"]
+        if int(mob_id) not in monster_name:
+            monster_name[int(mob_id)] = ""
+        for sub_child in child:
+            monster_name[int(mob_id)] = sub_child.attrib["value"]
+            # print("child tag = ", sub_child.tag, ",child attrib = ", sub_child.attrib) 
+    
+    # mobid -> rewards, maps
+    monster_book = ET.parse('../wz/String.wz/MonsterBook.img.xml')
+    monster_book_root = monster_book.getroot()
+    for child in monster_book_root:
+        # print("tag = ", child.tag, ",attrib = ", child.attrib) 
+        mob_id_str = child.attrib["name"]
+        mob_id = int(mob_id_str)
+        if mob_id not in monster_map:
+            monster_map[mob_id] = []
+            monster_reward[mob_id] = []
+        for sub_child in child:
+            # print("child tag = ", sub_child.tag, ",child attrib = ", sub_child.attrib) 
+            for node in sub_child:
+                if sub_child.attrib["name"] == "map":
+                    # print(node.attrib["name"], node.attrib["value"])
+                    monster_map[mob_id].append(node.attrib["value"])
+                if sub_child.attrib["name"] == "reward":
+                    # print(node.attrib["name"], node.attrib["value"])
+                    monster_reward[mob_id].append(node.attrib["value"])
+    # print(monster_map)
+    # print(monster_reward)
+    
+
+    # parse wz/Mob.wz for monster attribute
+    base_dir = "../wz/"
+    iter_dir = base_dir + "Mob.wz/"
+    tot = boss_tot = 0
+    print("iter_dir=" + iter_dir)
+    level_num = {}
+    outfile = open('out_mobs.txt', 'w', encoding='utf-8')
+    outfile.write("id 名字 等级 是否BOSS 怪物类型 地图 掉落")
+    outfile.write("\n")
+    not_in_name = not_in_map = not_in_reward = not_in_action = 0
+    for file in os.listdir(iter_dir): # 一级目录
+        if os.path.isdir(iter_dir + file):
+            print(iter_dir + file + " is directory")
+            continue
+        tree = ET.parse(iter_dir + file)
+        root = tree.getroot()
+        mob_id_str = file.split('.')[0]
+        mob_id = int(mob_id_str)
+        monster_action = {}
+        for child in root:
+            # print("--->" + child.tag ," = ", child.attrib) 
+            if child.attrib["name"] != "info":
+                if mob_id not in monster_action:
+                    monster_action[mob_id] = []
+                # print(mob_id, child.attrib["name"])                    
+                monster_action[mob_id].append(child.attrib["name"])                    
+        for child in root:                
+            boss = "0"
+            level = "-1"              
+            mobType = "0"     
+            for child_map in child:
+                # print(child_map.tag, child_map.attrib) 
+                if child_map.attrib["name"] == "boss":
+                    boss = child_map.attrib["value"]
+                if child_map.attrib["name"] == "level":
+                    level = child_map.attrib["value"]                         
+                if child_map.attrib["name"] == "mobType":
+                    mobType = child_map.attrib["value"]                         
+            if int(level) < 0:
+                # print("------> mobid:", mob_id, "level:", level, "boss:", boss, "mobType:", mobType)
+                continue
+            # print("mobid:", mob_id, "level:", level, "boss", boss, "mobType:", mobType)   
+            if mob_id not in monster_name:
+                #print("?????? mob not have name,", mob_id)
+                not_in_name += 1
+                continue 
+            if mob_id not in monster_map:
+                # print("?????? mob not have map,", mob_id)
+                not_in_map += 1
+                continue
+            if mob_id not in monster_reward:        
+                not_in_reward += 1
+                # print("?????? mob not have reward,", mob_id)                                                    
+                continue
+            if mob_id not in monster_action:        
+                not_in_action += 1
+                print("?????? mob not have action,", mob_id)                                                    
+                continue
+
+            outfile.write(mob_id_str + " " + monster_name[mob_id] + " " + level + " " + boss + " " + mobType + " " + ','.join(monster_map[mob_id]) + " " + ','.join(monster_reward[mob_id]) + " " + ','.join(monster_action[mob_id]))
+            outfile.write('\n')
+            # if int(boss) != 0:
+            #     print("boss != 0 mobid:", mob_id, "level:", level, "boss", boss, "mobType:", mobType)                    
+            # if int(mobType) != 0:
+            #     print("mobType !=0 ,mobid:", mob_id, "name", monster_name[mob_id], "level:", level, "boss", boss, "mobType:", mobType)                    
+            tot = tot + 1
+            if int(boss) != 0:
+                boss_tot = boss_tot + 1
+            if int(level) // 10 in level_num:
+                level_num[int(level) // 10] += 1
+            else:
+                level_num[int(level) // 10] = 1                
+    print("not_in_name:", not_in_name, "not_in_map:", not_in_map, "not_in_reward:", not_in_reward, "not_in_action:", not_in_action)            
+    print("tot_monster:", tot, "boss_tot:", boss_tot)            
+    for key, value in level_num.items():
+        print(f'monster level: {key}, num: {value}')
+
+# parseMap()
+# parseEquip()
+parseMonster()

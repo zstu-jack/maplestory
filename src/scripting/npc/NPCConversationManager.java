@@ -85,16 +85,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.util.logging.*;
+import java.util.Iterator;
+
+
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.FileInputStream;
 import tools.FilePrinter;
+import java.util.ArrayList;
 /**
  * @author Matze
  */
@@ -169,11 +169,258 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
         CommandsExecutor.getInstance().handle(getClient(), command);
     }
 
+    public String GetMobAction(String chooseMobIDStr){
+        FilePrinter.Mob mob = FilePrinter.AllMobs.get(chooseMobIDStr);
+        if(mob == null){
+            logger.info("Mob no where, modId " + chooseMobIDStr);
+            return "";
+        }
+        if(mob.actions.contains("stand")){
+            return "stand";
+        }
+        Iterator<String> it = mob.actions.iterator();
+        String firstElement = it.next();
+        return firstElement;
+    }
+
+    public void executeMobMaps(String chooseMobIDStr){
+        String text = "";
+        if(FilePrinter.ErrorMobsClient.containsKey(chooseMobIDStr)){
+            text += "#e#k " + "‘#r#o"+ chooseMobIDStr +"##k’\r\n";
+        }else{
+            text = "#e#k " + "#fMob/"+chooseMobIDStr+".img/" + GetMobAction(chooseMobIDStr) + "/0#" + "‘#o"+ chooseMobIDStr +"#’\r\n\r\n";  // 怪物图片
+        }
+
+        
+        text += "#L0#给我召唤一个#l \t \r\n ";  
+        FilePrinter.Mob mob = FilePrinter.AllMobs.get(chooseMobIDStr);
+        int mobID = Integer.parseInt(chooseMobIDStr);
+        if(mob == null){
+            logger.info("Mob no where, modId" + String.valueOf(mobID));
+            dispose();;
+        }
+        int tot = 0;
+        ArrayList<String> mobMaps = mob.maps; 
+        for(int j = 0; j < mobMaps.size(); j ++){
+            int mapID = Integer.valueOf(mobMaps.get(j));
+            text += "#L" + String.valueOf(mapID) + "#传送->#m" + String.valueOf(mapID) +"##l \t \r\n "; // 地点
+            tot += 1;
+            if(tot >= 50){
+                break;
+            }
+        }
+        if(tot == 0){
+            text += "没有这个怪物的地图哦，真是奇了怪了";
+        }
+        sendSimple(text);
+    }
+
+    
+    public void executeMobChoose(String chooseStr){
+        int choose = Integer.parseInt(chooseStr);
+        // 0:boss
+
+        int levelId = choose;
+        int levelLeft = (levelId-1) * 10, levelRight = levelId * 10 - 1;
+        String text = "";
+        boolean chooseBoss = (choose >= 100 && choose <= 110);
+        boolean chooseMaxLevel = (choose >= 110);
+        int batch = 0, left = 0, right = 1000;
+        if(chooseBoss){
+            batch = choose - 100;
+            levelLeft = 0;
+            levelRight = 255;
+        }else if(chooseMaxLevel){
+            batch = choose - 110;
+            levelLeft = 100;
+            levelRight = 200;
+        }
+        if(chooseBoss || chooseMaxLevel){
+            int batchSize = 20;
+            left = (batch - 1) * batchSize;
+            right = (batch) * batchSize - 1;
+        }
+        if(chooseBoss){
+            text = "#e#kBOSS第" + String.valueOf(batch) +"批!#k\r\n";
+        }else if(chooseMaxLevel){
+            text = "#e#k怪物等级[110,200]第" + String.valueOf(batch) +"批!#k\r\n";
+        }else{
+            text = "#e#k怪物等级[" + String.valueOf(levelLeft) + "," + String.valueOf(levelRight) + "] #k\r\n";
+        }
+        int cnt = 0; 
+        logger.info("怪物等级,[" + String.valueOf(levelLeft) + "," + String.valueOf(levelRight) + "]");
+        for(int i = levelLeft; i <= levelRight; i ++){
+            for(int j = 0; j < FilePrinter.AllMobsByLevel[i].size(); j ++){
+                String mobIdStr = FilePrinter.AllMobsByLevel[i].get(j);
+                FilePrinter.Mob mob = FilePrinter.AllMobs.get(mobIdStr);
+                int mobLevel = mob.level;
+                int isBoss = mob.isBoss;
+
+                if(chooseBoss){
+                    if(isBoss == 0){
+                        continue;
+                    }
+                }else{
+                    if((mobLevel < levelLeft) || (mobLevel > levelRight)){
+                        continue;
+                    }
+                }
+                if(cnt >= left && cnt <= right){
+                    if(FilePrinter.ErrorMobsClient.containsKey(mobIdStr)){
+                        text += "#L"+ mobIdStr +"#" + "‘#r#o"+ mobIdStr +"##k’ LV(" + String.valueOf(mobLevel)+ ")";
+                    }else{
+                        text += "#L"+ mobIdStr +"#" + "#fMob/"+mobIdStr+".img/"+GetMobAction(mobIdStr)+"/0#" + "\r\n‘#o"+ mobIdStr +"#’ LV(" + String.valueOf(mobLevel)+ ")";
+                    }
+                    
+                    text += "\r\n\r\n";
+                }
+                cnt ++;
+                // if(cnt == 5){
+                //     break;
+                // }
+            }
+        }
+        logger.info("怪物等级,[" + String.valueOf(levelLeft) + "," + String.valueOf(levelRight) + "], cnt=" +  String.valueOf(cnt));
+        if(cnt == 0){
+            sendOk("没有符合条件的怪物");    
+            dispose();
+            return ;
+        }
+        logger.info("text=" + text);
+
+        sendSimple(text);
+    }
+
+    public void executeEquipDropMob(String chooseItemIDStr){
+        String text = "#e#k #i"+chooseItemIDStr+"##t" + chooseItemIDStr + "# #k\r\n\r\n";  // 物品图片
+        
+        text += "#L0##r直接送我好不好#k#l \t \r\n \r\n";  
+        int itemID = Integer.parseInt(chooseItemIDStr);
+        ArrayList<String> mobList = FilePrinter.DropItemMobs.get(itemID);
+        int tot = 0;
+        if(mobList != null){
+            for(int i = 0; i < mobList.size(); i ++){
+                String mobIDStr = mobList.get(i);
+                FilePrinter.Mob mob = FilePrinter.AllMobs.get(mobIDStr);
+                if(mob == null){
+                    logger.info("Mob no where, modId" + mobIDStr);
+                    continue;
+                }
+                int mobTot = 0;
+                ArrayList<String> mobMaps = mob.maps;
+                if(mobMaps.size() > 0){
+                    if(FilePrinter.ErrorMobsClient.containsKey(mobIDStr)){
+                        text +=  "‘#r#o"+ mobIDStr +"##k’会爆哦，传送至";
+                    }else{
+                        text +=  "#fMob/"+ mobIDStr+".img/"+GetMobAction(mobIDStr)+"/0#" + "‘#o"+ mobIDStr +"#’会爆哦，传送至";
+                    }
+                    for(int j = 0; j < mobMaps.size(); j ++){
+                        text += ("(#L" + mobMaps.get(j) + "##m" + mobMaps.get(j) +"##l)");
+                        text += "\t";
+                        mobTot ++;
+                        
+                    }
+
+                    text += "\t \r\n\r\n\r\n";
+                }
+                
+                tot += 1;
+                if(tot >= 50){
+                    break;
+                }
+            }
+        }
+        if(tot == 0){
+            text += "没有能爆这个装备的怪物哦，真是奇了怪了\r\n";
+        }
+        logger.info("text=" + text);
+        sendSimple(text);
+    }
+
+    public void executeEquipChoose(String chooseStr){
+        int choose = Integer.parseInt(chooseStr);
+        if(choose == 1){
+            String text = "#e#k~小游戏百货~#k\r\n";
+            text += "#L"+ "4080100" +"##i"+"4080100"+"##t" + "4080100" + "##l \t \r\n";
+            for(int i = 4080000; i <= 4080005; i ++){
+                String iStr = String.valueOf(i);  
+                text += "#L"+ iStr +"##i"+ iStr +"##t" + iStr + "##l \t \r\n";
+            }
+            logger.info("text=" + text);
+            sendSimple(text);
+            return ;
+        }else if(choose == 2 || choose == 3){
+            String type = choose == 2 ? "枫叶" : "雪板";
+            String text = "#e#k~" + type + "百货~#k\r\n";
+            for (HashMap.Entry<Integer, FilePrinter.Equip> entry : FilePrinter.AllEquips.entrySet()) {
+                // System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+                if(!entry.getValue().name.contains(type)){
+                    continue;
+                }
+                String itemIdStr = String.valueOf(entry.getKey());
+                text += "#L"+ itemIdStr +"##i"+itemIdStr+"##t" + itemIdStr + "##l \t ";
+                text += "\r\n";
+            }
+            logger.info("text=" + text);
+            sendSimple(text);
+            return ;
+        }
+
+        int job = choose % 100;
+        int levelId = choose / 100;
+        int levelLeft = (levelId-1) * 10, levelRight = levelId * 10 - 1;
+        if(levelId == 11){
+            levelLeft = 100;
+            levelRight = 200;
+        }
+        String jobStr = "新手";
+        if(choose == 0) ;
+        else if(job == 0) jobStr = "所有职业";
+        else if(job == 1) jobStr = "战士";
+        else if(job == 2) jobStr = "法师";
+        else if(job == 4) jobStr = "弓箭手";
+        else if(job == 8) jobStr = "盗贼";
+        else if(job == 16) jobStr = "海盗";
+        String text = "#e#k#r等级[" + String.valueOf(levelLeft) + "," + String.valueOf(levelRight) + "]#k #b职业:" + jobStr + "#k#n\r\n";
+        int cnt = 0; 
+        for (HashMap.Entry<Integer, FilePrinter.Equip> entry : FilePrinter.AllEquips.entrySet()) {
+            // System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+            int equipLevel = entry.getValue().level;
+            int equipJob = entry.getValue().job;
+            if(choose == 0){
+                // 新手装备
+                if(equipJob != -1){
+                    continue;
+                }
+            }else{
+                if((equipLevel < levelLeft) || (equipLevel > levelRight)){
+                    continue;
+                }
+                if((job & equipJob) == 0 && job != 0){
+                    continue;
+                }
+            }
+            String itemIdStr = String.valueOf(entry.getKey());
+            text += "#L"+ itemIdStr +"##i"+itemIdStr+"##t" + itemIdStr + "#(LV:"+ String.valueOf(equipLevel) +")#l \t ";
+            cnt ++;
+            if(cnt%2==0){
+                text += "\r\n";
+            }
+        }
+        logger.info("等级" + String.valueOf(levelLeft) + "," + String.valueOf(levelRight) + "], job=" + String.valueOf(job)  + " cnt=" +  String.valueOf(cnt));
+        if(cnt == 0){
+            sendOk("没有符合条件的装备");    
+            dispose();
+            return ;
+        }
+        logger.info("text=" + text);
+        sendSimple(text);
+    }
  
     public void executeSendFilteredMap(String userInput){
         String sText = "#b";
         try {
-            FileInputStream fis = new FileInputStream("maps.txt");
+            FileInputStream fis = new FileInputStream("____tools/out_maps.txt");
             InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
             BufferedReader reader = new BufferedReader(isr);
             String line = reader.readLine();
@@ -182,7 +429,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             while (line != null) {
                 // System.out.println(line);
                 String[] parts = line.split(" ", 2);
-                String mapId = parts[0]; 
+                // String mapId = parts[0]; 
                 String mapName = parts[1]; 
                 if(mapName.contains(userInput)){
                     logger.info("executeSendFilteredMap:" + mapName);
@@ -201,7 +448,10 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             System.out.println("An error occurred.");
             logger.info("executeSendFilteredMap An error occurred");
             e.printStackTrace();
+            dispose();
+            return ;
         }
+        logger.info("text=" + sText);
         sendSimple(sText);
     }
 
@@ -218,7 +468,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                 // System.out.println(line);
                 String[] parts = line.split(" ", 2);
                 String mapId = parts[0]; 
-                String mapName = parts[1]; 
+                // String mapName = parts[1]; 
                 if(i == index){
                     executeGM("@goto " + String.valueOf(mapId));
                     break;

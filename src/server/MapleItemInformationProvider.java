@@ -1695,7 +1695,7 @@ public class MapleItemInformationProvider {
             } else if (getEquipStats(equip.getItemId()).get("reqINT") > tint) {
                 continue;
             }
-            int reqPOP = getEquipStats(equip.getItemId()).get("reqPOP");
+            int reqPOP = getEquipStats(equip.getItemId()).get("reqPOP");    // ÈËÆø
             if (reqPOP > 0) {
                 if (getEquipStats(equip.getItemId()).get("reqPOP") > fame) {
                     continue;
