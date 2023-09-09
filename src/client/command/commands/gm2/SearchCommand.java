@@ -24,6 +24,7 @@
 package client.command.commands.gm2;
 
 import client.command.Command;
+import client.command.commands.gm3.GotoNpcCommand;
 import client.MapleClient;
 import client.MapleCharacter;
 import provider.MapleData;
@@ -36,7 +37,13 @@ import tools.MaplePacketCreator;
 import tools.Pair;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
+import java.util.logging.*;
+
+import tools.FilePrinter;
+import client.command.*;
 
 public class SearchCommand extends Command {
     private static MapleData npcStringData;
@@ -52,6 +59,29 @@ public class SearchCommand extends Command {
         mobStringData = dataProvider.getData("Mob.img");
         skillStringData = dataProvider.getData("Skill.img");
         mapStringData = dataProvider.getData("Map.img");
+    }
+
+    public static final Logger logger = Logger.getLogger(FilePrinter.class.getName());
+
+    public static ArrayList<FilePrinter.NPC> npcIDs(MapleClient client, String search){
+        MapleDataProvider dataProvider = MapleDataProviderFactory.getDataProvider(new File("wz/String.wz"));
+        MapleData npcStringData = dataProvider.getData("Npc.img");
+        ArrayList<FilePrinter.NPC> result = new ArrayList<FilePrinter.NPC>();
+        MapleData data = npcStringData;
+        for (MapleData searchData : data.getChildren()) {
+            String name = MapleDataTool.getString(searchData.getChildByPath("name"), "NO-NAME");
+            if (name.toLowerCase().contains(search.toLowerCase())) {
+                int npcid = Integer.parseInt(searchData.getName());
+                String map = FilePrinter.NPCMap.get(searchData.getName());
+                if(map == null){
+                    logger.info("npc not in map, id=" + searchData.getName() + " name=" + name);
+                    continue;
+                }
+                logger.info("npc in map, id=" + searchData.getName() + " name=" + name + " map_id="+map);
+                result.add(new FilePrinter.NPC(npcid, name, Integer.parseInt(map)));
+            }
+        }
+        return result;
     }
 
     @Override

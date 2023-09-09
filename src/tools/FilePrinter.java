@@ -19,6 +19,11 @@ import java.io.InputStreamReader;
 import java.io.FileInputStream;
 import java.util.*;
 
+import provider.MapleData;
+import provider.MapleDataProvider;
+import provider.MapleDataProviderFactory;
+import provider.MapleDataTool;
+import server.maps.MapleMapFactory;
 
 public class FilePrinter {
 
@@ -122,11 +127,24 @@ public class FilePrinter {
         }
     }
 
+    public static class NPC{
+        public int id;
+        public int map;
+        public String name;
+        public NPC(Integer id, String name, int map){
+            this.id = id;
+            this.name = name;
+            this.map = map;
+        }
+    }
+
     public static HashMap<Integer, Equip> AllEquips = new HashMap<>();
-    public static HashMap<String, Mob> AllMobs = new HashMap<>();                     // 怪物id->信息
+    public static HashMap<String, Mob> AllMobs = new HashMap<>();                     // 怪物id String->信息
+    public static HashMap<Integer, Mob> AllMobsById = new HashMap<>();
     public static ArrayList<String>[] AllMobsByLevel = new ArrayList[256];
     public static HashMap<Integer, ArrayList<String>> DropItemMobs = new HashMap<>(); // 掉落的id->所有怪物
     public static HashMap<String, Integer> ErrorMobsClient = new HashMap<>();
+    public static HashMap<String, String> NPCMap = new HashMap<>();
     
     static{
         // 这几个怪物客户端显示图片有问题，不显示了，只显示名字
@@ -137,6 +155,19 @@ public class FilePrinter {
         
         for(int i = 0; i < 256; i++)
             AllMobsByLevel[i] = new ArrayList<String>();
+
+        // npc init 
+        logger.info("npc map init start");
+        int npcSize = 0;
+        for (Map.Entry<String, List<String>> entry : MapleMapFactory.mapSource.getMapNpc().entrySet()) {
+            for(int i = 0; i < entry.getValue().size(); i ++){
+                String npcID = entry.getValue().get(i);
+                String mapID = entry.getKey();
+                npcSize ++;
+                NPCMap.put(npcID, mapID);
+            }
+        }
+        logger.info("npc map init end, size=" + String.valueOf(npcSize));
 
         logger.info("init equip start");
 
@@ -188,7 +219,7 @@ public class FilePrinter {
                 }
                 String[] parts = line.split(" ");
                 String mobIDStr = parts[0]; 
-                // int mobID = Integer.parseInt(parts[0]); 
+                int mobID = Integer.parseInt(parts[0]); 
                 String mobName = parts[1]; 
                 int level = Integer.parseInt(parts[2]);
                 int isBoss = Integer.parseInt(parts[3]);
@@ -198,6 +229,7 @@ public class FilePrinter {
                 String[] mobActions = parts[7].split(",");
                 Mob mob = new FilePrinter.Mob(mobName, level, isBoss, mobType, mobMaps, mobDrops, mobActions);
                 AllMobs.put(mobIDStr, mob);
+                AllMobsById.put(mobID, mob);
                 AllMobsByLevel[level].add(mobIDStr);
                 for(int i = 0; i < mobDrops.length; i ++){
                     int dropID = Integer.valueOf(mobDrops[i]);

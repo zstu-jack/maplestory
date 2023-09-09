@@ -25,7 +25,7 @@ function action(mode, type, selection) {
         var text = "#e#k小睡冒险岛变强服务#k\r\n\r\n #L0##e#d设置技能点#l \t #L1#设置属性值#l \t #L2#满HPMP#l \r\n ";
         text += "#L3#设置等级#l  \t\t " + "#L5#给我buff#l  \t\t " + "#L4#牛逼装备#l \r\n ";
         text += "#L6#切换职业#l  \t\t " + "#L7#给我金币#l  \t\t " + "#L8#给我点券#l \r\n ";
-        text += "#L9#设置背包#l \r\n ";
+        text += "#L9#设置背包#l  \t\t " + "#L10#给我人气#l \r\n";
         cm.sendSimple(text);
     } else if (status === 1) {
         selectType = selection;
@@ -90,6 +90,8 @@ function action(mode, type, selection) {
             cm.sendGetNumber("需要多少点券", 100000, 100000, 10000000);
         } else if (selection === 9) {
             cm.sendGetNumber("需要设置为多少栏位", 96, 24, 96);
+        } else if (selection === 10) {
+            cm.sendGetNumber("需要多少人气", 10, 1, 9999);
         }
 
     } else if (status === 2) {
@@ -114,6 +116,9 @@ function action(mode, type, selection) {
         }else if (selectType === 9) {
             cm.executeGM("@setslot " + selection);
             cm.message("OK, 栏位=" + selection);
+        }else if (selectType === 10) {
+            cm.executeGM("@fame " + cm.getName() + " " + selection);
+            cm.message("OK, " + cm.getName() + " 人气增加了:" + selection);
         }
         cm.dispose();
     }

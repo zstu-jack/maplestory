@@ -95,6 +95,9 @@ import java.io.InputStreamReader;
 import java.io.FileInputStream;
 import tools.FilePrinter;
 import java.util.ArrayList;
+import tools.Pair;
+import client.command.*;
+import client.command.commands.gm2.*;
 /**
  * @author Matze
  */
@@ -169,6 +172,19 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
         CommandsExecutor.getInstance().handle(getClient(), command);
     }
 
+    public String TryGetMobIdStr(String chooseMobIDStr){
+        FilePrinter.Mob mobByStr = FilePrinter.AllMobs.get(chooseMobIDStr);
+        for(int i = 0; i < 3; i ++){
+            if(mobByStr == null){
+                chooseMobIDStr = "0" + chooseMobIDStr;
+                mobByStr = FilePrinter.AllMobs.get(chooseMobIDStr);
+            }else{
+                break;
+            }
+        }
+        return chooseMobIDStr;
+    }
+
     public String GetMobAction(String chooseMobIDStr){
         FilePrinter.Mob mob = FilePrinter.AllMobs.get(chooseMobIDStr);
         if(mob == null){
@@ -183,7 +199,133 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
         return firstElement;
     }
 
+    public void executeItemSelection(String itemIdStr){
+        int itemID = Integer.parseInt(itemIdStr);
+        String text = "";
+        text += "#e#k #i"+itemIdStr+"##t" + itemIdStr + "# #k\r\n\r\n";  // 物品图片
+        text += "#L0##r给1个#k#l #L1##r给100个#k#l \t #L2##r给我200个#k#l \t #L4##r给我400个#k#l \t #L8##r给我800个#k#l \t \r\n\r\n ";  
+        ArrayList<String> mobList = FilePrinter.DropItemMobs.get(itemID);
+        int tot = 0;
+        if(mobList != null){
+            for(int i = 0; i < mobList.size(); i ++){
+                String mobIDStr = mobList.get(i);
+                FilePrinter.Mob mob = FilePrinter.AllMobs.get(mobIDStr);
+                if(mob == null){
+                    logger.info("Mob no where, modId" + mobIDStr);
+                    continue;
+                }
+                int mobTot = 0;
+                ArrayList<String> mobMaps = mob.maps;
+                if(mobMaps.size() > 0){
+                    if(FilePrinter.ErrorMobsClient.containsKey(mobIDStr)){
+                        text +=  "‘#r#o"+ mobIDStr +"##k’会爆哦，传送至";
+                    }else{
+                        text +=  "#fMob/"+ mobIDStr+".img/"+GetMobAction(mobIDStr)+"/0#" + "‘#o"+ mobIDStr +"#’会爆哦，传送至";
+                    }
+                    for(int j = 0; j < mobMaps.size(); j ++){
+                        text += ("(#L" + mobMaps.get(j) + "##m" + mobMaps.get(j) +"##l)");
+                        text += "\t";
+                        mobTot ++;
+                        
+                    }
+                    text += "\t \r\n\r\n";
+                }
+                
+                tot += 1;
+                if(tot >= 50){
+                    break;
+                }
+            }
+        }
+        if(tot == 0){
+            text += "没有能爆这个道具的怪物哦，真是奇了怪了\r\n";
+        }
+        logger.info("text=" + text);
+        sendSimple(text);
+    }
+
+    public void executeItemSearch(String itemName){
+        Iterator<Pair<Integer, String>> listIterator = MapleItemInformationProvider.getInstance().getItemDataByName(itemName).iterator();
+        int count = 0;
+        String text = "";
+        while(listIterator.hasNext()) {
+            Pair<Integer, String> data = listIterator.next();
+            int itemid = data.getLeft();
+            String itemStr = String.valueOf(itemid);
+            // text += "#L" + itemStr + "##i" + itemStr + "##t" + itemStr + "#" + "#l";
+            text += "#L" + itemStr + "##t" + itemStr + "#" + "#l";
+            text += "\r\n";
+
+            count++;
+        }
+        text = "共找到" + String.valueOf(count) +"个物品，请选择\r\n" + text;
+        logger.info("text=" + text);
+        if(count == 0){
+            sendOk("没有符合条件的物品");  
+            dispose();
+            return ;
+        }
+        sendSimple(text);
+    }
+
+    public void executeSendNPCMap(String npcName){
+        int count = 0;
+        String text = "";
+        MapleClient client = getClient();
+        
+        ArrayList<FilePrinter.NPC> npcs = SearchCommand.npcIDs(client, npcName);
+
+        for(int i = 0; i < npcs.size(); i ++){
+            count ++;
+            text += "#L" + String.valueOf(npcs.get(i).map) + "#" + "[#p" + String.valueOf(npcs.get(i).id) + "#] 在" + "[#m" + String.valueOf(npcs.get(i).map) + "#]" + "#l";
+            text += "\r\n";
+        }
+        
+        text = "共找到" + String.valueOf(count) +"个npc, 点击进行传送\r\n" + text;
+        if(count == 0){
+            sendOk("没有符合条件的npc");  
+            dispose();
+            return ;
+        }
+        logger.info("text=" + text);
+        sendSimple(text);
+
+    }
+
+    public void executeMobSearch(String mobName){
+        String text = "搜索的怪物关键字：" + mobName +"\r\n";
+        int count = 0;
+        for(int i = 0; i <= 255; i ++){
+            for(int j = 0; j < FilePrinter.AllMobsByLevel[i].size(); j ++){
+                String mobIdStr = FilePrinter.AllMobsByLevel[i].get(j);
+                FilePrinter.Mob mob = FilePrinter.AllMobs.get(mobIdStr);
+                int mobLevel = mob.level;
+                if(!mob.name.contains(mobName)){
+                    continue;
+                }
+                if(FilePrinter.ErrorMobsClient.containsKey(mobIdStr)){
+                    text += "#L"+ mobIdStr +"#" + "‘#r#o"+ mobIdStr +"##k’ LV(" + String.valueOf(mobLevel)+ ")";
+                }else{
+                    text += "#L"+ mobIdStr +"#" + "#fMob/"+mobIdStr+".img/"+GetMobAction(mobIdStr)+"/0#" + "\r\n‘#o"+ mobIdStr +"#’ LV(" + String.valueOf(mobLevel)+ ")";
+                }
+                text += "\r\n\r\n";
+                count ++;   
+            }
+        }
+        logger.info("text=" + text);
+        if(count == 0){
+            sendOk("没有符合条件的怪物");    
+            dispose();
+            return ;
+        }
+        sendSimple(text);
+    }
+
     public void executeMobMaps(String chooseMobIDStr){
+        logger.info("chooseMobIDStr=" + chooseMobIDStr);
+        chooseMobIDStr = TryGetMobIdStr(chooseMobIDStr);
+        logger.info("after correct, chooseMobIDStr=" + chooseMobIDStr);
+
         String text = "";
         if(FilePrinter.ErrorMobsClient.containsKey(chooseMobIDStr)){
             text += "#e#k " + "‘#r#o"+ chooseMobIDStr +"##k’\r\n";
@@ -191,13 +333,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             text = "#e#k " + "#fMob/"+chooseMobIDStr+".img/" + GetMobAction(chooseMobIDStr) + "/0#" + "‘#o"+ chooseMobIDStr +"#’\r\n\r\n";  // 怪物图片
         }
 
-        
         text += "#L0#给我召唤一个#l \t \r\n ";  
-        FilePrinter.Mob mob = FilePrinter.AllMobs.get(chooseMobIDStr);
         int mobID = Integer.parseInt(chooseMobIDStr);
+        FilePrinter.Mob mob = FilePrinter.AllMobsById.get(mobID);
+        
         if(mob == null){
-            logger.info("Mob no where, modId" + String.valueOf(mobID));
-            dispose();;
+            logger.info("Mob no where, modId:" + String.valueOf(mobID));
+            dispose();
+            return ;
         }
         int tot = 0;
         ArrayList<String> mobMaps = mob.maps; 
@@ -291,7 +434,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
         sendSimple(text);
     }
 
-    public void executeEquipDropMob(String chooseItemIDStr){
+    public void executeItemDropMob(String chooseItemIDStr){
         String text = "#e#k #i"+chooseItemIDStr+"##t" + chooseItemIDStr + "# #k\r\n\r\n";  // 物品图片
         
         text += "#L0##r直接送我好不好#k#l \t \r\n \r\n";  

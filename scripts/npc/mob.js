@@ -6,6 +6,7 @@ function start() {
 
 var selectType = -1;
 var selectItem = -1;
+var mobNameInput = -1;
 
 function action(mode, type, selection) {
     if (mode === -1) {
@@ -26,6 +27,8 @@ function action(mode, type, selection) {
     if (status === 0) {
         var text = "#e#k怪物等级#k\r\n\r\n"
         // 新手-1 所有 0 战士：1  法师：2  弓箭手：4  盗贼：8 海盗：16
+        text += "#L1000#输入怪物id查询 \r\n"
+        text += "#L2000#输入怪物名字模糊查询 \r\n"
         text += "#L101##e#dBOSS第一批#l \t #L102##e#dBOSS第二批#l #L103##e#dBOSS第三批#l\r\n"
         for (var index = 1; index <= 10; index++) {
             choose = index
@@ -35,7 +38,6 @@ function action(mode, type, selection) {
         }
         text += "#L111#等级：100-200第一批#l \r\n"
         text += "#L112#等级：100-200第二批#l \r\n"
-        text += "#L1000#输入怪物id查询 \r\n"
         // choose=1: [0-10)
         cm.sendSimple(text);
     } else if (status === 1) {
@@ -44,15 +46,28 @@ function action(mode, type, selection) {
             cm.sendGetText("输入怪物id.");
             return ;
         }
+        if(selection === 2000){
+            cm.sendGetText("输入怪物名字");
+            return ;
+        }
         cm.executeMobChoose(selection);
     } else if (status === 2) {
-        if(selectType === 1000){
-            var monsterIdStr = cm.getText();
-            var text = "你的怪物： \r\n"
-            text += "#L"+ monsterIdStr + "##fMob/"+ monsterIdStr + ".img/stand/0#‘#o" + monsterIdStr + "#’"
-            cm.sendOk(text);
-            cm.dispose();
-            return ;
+        if(mobNameInput === -1){
+            if(selectType === 1000){
+                var monsterIdStr = cm.getText();
+                var text = "你的怪物： \r\n"
+                text += "#L"+ monsterIdStr + "##fMob/"+ monsterIdStr + ".img/stand/0#‘#o" + monsterIdStr + "#’"
+                cm.sendOk(text);
+                cm.dispose();
+                return ;
+            }
+            if(selectType === 2000){
+                var monsterStr = cm.getText();
+                cm.executeMobSearch(monsterStr);
+                mobNameInput = 1;
+                status--;
+                return ;
+            }
         }
         selectMob = selection;
         cm.executeMobMaps(selectMob);
@@ -62,7 +77,7 @@ function action(mode, type, selection) {
             cm.message("给你召唤了一个小玩具！");
             cm.dispose();
         }else{
-            cm.message("本次传送白嫖");
+            cm.message("(mob)本次传送白嫖");
             cm.warp(selection);
         }
     }

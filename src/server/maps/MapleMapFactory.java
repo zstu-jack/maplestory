@@ -49,8 +49,8 @@ import tools.StringUtil;
 
 public class MapleMapFactory {
 
-    private static MapleData nameData;
-    private static MapleDataProvider mapSource;
+    public static MapleData nameData;
+    public static MapleDataProvider mapSource;
     
     static {
         nameData = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("wzpath") + "/String.wz")).getData("Map.img");

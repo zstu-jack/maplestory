@@ -56,7 +56,7 @@ function action(mode, type, selection) {
         cm.executeEquipChoose(selection);
     } else if (status === 2) {
         selectItem = selection;
-        cm.executeEquipDropMob(selectItem);
+        cm.executeItemDropMob(selectItem);
     } else if(status === 3){
         if(selection === 0){
             cm.executeGM("@item " + selectItem.toString() + " 1");

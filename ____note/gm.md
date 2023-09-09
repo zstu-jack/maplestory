@@ -112,9 +112,3 @@ put("蘑菇城", 106020000);
 - 获取客户端输入
     - `cm.sendGetText`: 下一个state中需要`var text = cm.getText();`
     - `cm.sendGetNumber`:`(text def,min,max)`
-
-
-- TODO: 喇叭:GM商店看下哪里发的
-    - 上线发，gm发喇叭
-- TODO：屏幕中间文件特效：?改
-- TODO：技能速度

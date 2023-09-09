@@ -34,6 +34,7 @@ import server.MapleItemInformationProvider;
 import server.MapleStatEffect;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.command.*;
 
 /**
  * @author Matze
@@ -53,7 +54,7 @@ public final class UseItemHandler extends AbstractMaplePacketHandler {
         int itemId = slea.readInt();
         Item toUse = chr.getInventory(MapleInventoryType.USE).getItem(slot);
         if (toUse != null && toUse.getQuantity() > 0 && toUse.getItemId() == itemId) {
-            if (itemId == 2050004) {
+            if (itemId == 2050004) { // 万能疗伤药
                 chr.dispelDebuffs();
                 remove(c, slot);
                 return;
@@ -71,7 +72,7 @@ public final class UseItemHandler extends AbstractMaplePacketHandler {
 		chr.dispelDebuff(MapleDisease.CURSE);
                 remove(c, slot);
                 return;
-            } else if (ItemConstants.isTownScroll(itemId)) {
+            } else if (ItemConstants.isTownScroll(itemId)) { // 回城卷
                 int banMap = chr.getMapId();
                 int banSp = chr.getMap().findClosestPlayerSpawnpoint(chr.getPosition()).getId();
                 long banTime = currentServerTime();
@@ -97,11 +98,20 @@ public final class UseItemHandler extends AbstractMaplePacketHandler {
             
             if(toUse.getItemId() != 2022153) {
                 ii.getItemEffect(toUse.getItemId()).applyTo(chr);
-            } else {
+            } else { // 生日快乐
                 MapleStatEffect mse = ii.getItemEffect(toUse.getItemId());
                 for(MapleCharacter player : chr.getMap().getCharacters()) {
                     mse.applyTo(player);
                 }
+            }
+            String command = "";
+            if(toUse.getItemId() == 2022359){
+                command = "@killall";
+            }else if(toUse.getItemId() == 2022361){
+                command = "@forcevac";
+            }
+            if(command.length() > 0){
+                CommandsExecutor.getInstance().handle(chr.getClient(), command);
             }
         }
     }

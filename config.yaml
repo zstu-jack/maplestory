@@ -252,7 +252,7 @@ server:
   USE_MAXRANGE_ECHO_OF_HERO: true        #使用英雄的最大距离回声
   USE_MTS: false                       #利用MTS
   USE_CPQ: true                       #显示嘉年华CPQ是否可用.
-  USE_AUTOHIDE_GM: true              #启用时，gm在加入时自动隐藏。
+  USE_AUTOHIDE_GM: false              #启用时，gm在加入时自动隐藏。
   # 是否开启买活系统，通过点击拍卖键
   USE_BUYBACK_SYSTEM: false
   USE_FIXED_RATIO_HPMP_UPDATE: false   #启用heavenms内置的基于当前池到最大池比率的HPMP更新.
@@ -305,7 +305,7 @@ server:
 
   #Events/PQs Configuration
   USE_OLD_GMS_STYLED_PQ_NPCS: true      #使PQ npc具有与旧GMS风格相似的行为，跳过PQ的信息，并立即尝试注册队伍。
-  USE_ENABLE_SOLO_EXPEDITIONS: false    #允许任意数量的玩家开始副本。意思是可以单人扎昆，或者多人扎昆。
+  USE_ENABLE_SOLO_EXPEDITIONS: true    #允许任意数量的玩家开始副本。意思是可以单人扎昆，或者多人扎昆。
   USE_ENABLE_DAILY_EXPEDITIONS: false  #在探险中启用每日入口限制
   USE_ENABLE_RECALL_EVENT: false        #使下线的玩家能够重新登录他们在退出之前进入的最后一个事件实例。“回收”仅在事件尚未清除或处理时有效。
 
