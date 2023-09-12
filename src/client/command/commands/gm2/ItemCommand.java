@@ -79,7 +79,7 @@ public class ItemCommand extends Command {
         short flag = 0;
         if (player.gmLevel() < 3) {
             flag |= ItemConstants.ACCOUNT_SHARING;
-            flag |= ItemConstants.UNTRADEABLE;
+            // flag |= ItemConstants.UNTRADEABLE;  // 可以交易
         }
 
         MapleInventoryManipulator.addById(c, itemId, quantity, player.getName(), -1, flag, -1);

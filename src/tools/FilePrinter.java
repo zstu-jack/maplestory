@@ -145,7 +145,8 @@ public class FilePrinter {
     public static HashMap<Integer, ArrayList<String>> DropItemMobs = new HashMap<>(); // 掉落的id->所有怪物
     public static HashMap<String, Integer> ErrorMobsClient = new HashMap<>();
     public static HashMap<String, String> NPCMap = new HashMap<>();
-    
+    public static HashMap<Integer, String> MapNames = new HashMap<>();
+
     static{
         // 这几个怪物客户端显示图片有问题，不显示了，只显示名字
         ErrorMobsClient.put("8830000", 1); // 超级大的蝙蝠怪
@@ -155,6 +156,28 @@ public class FilePrinter {
         
         for(int i = 0; i < 256; i++)
             AllMobsByLevel[i] = new ArrayList<String>();
+
+        // map id ----> map name init
+        {
+            try {
+                FileInputStream fis = new FileInputStream("____tools/out_maps.txt");
+                InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
+                BufferedReader reader = new BufferedReader(isr);
+                String line = reader.readLine();
+                while (line != null) {
+                    // System.out.println(line);
+                    String[] parts = line.split(" ", 2);
+                    String mapId = parts[0]; 
+                    MapNames.put(Integer.parseInt(mapId),parts[1]);
+                    line = reader.readLine();
+                }
+                reader.close();
+            } catch (IOException e) {            
+                System.out.println("init map name An error occurred.");
+                logger.info("init map name An error occurred");
+                e.printStackTrace();
+            }
+        }
 
         // npc init 
         logger.info("npc map init start");

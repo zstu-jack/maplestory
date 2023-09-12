@@ -253,7 +253,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             int itemid = data.getLeft();
             String itemStr = String.valueOf(itemid);
             // text += "#L" + itemStr + "##i" + itemStr + "##t" + itemStr + "#" + "#l";
-            text += "#L" + itemStr + "##t" + itemStr + "#" + "#l";
+            text += "#L" + itemStr + "##t" + itemStr + "#(" + String.valueOf(itemid) + ")#l";
             text += "\r\n";
 
             count++;
@@ -268,6 +268,29 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
         sendSimple(text);
     }
 
+    public void executeOnlinePlayers(){
+        ArrayList<MapleCharacter> players = new ArrayList<>(getClient().getWorldServer().getPlayerStorage().getAllCharacters());
+        if(players.size() == 0){
+            sendOk("没有玩家在线");  
+            dispose();
+            return ;
+        }
+        String text = "";
+        for(int i = 0; i < players.size(); i ++){
+            MapleCharacter chr = players.get(i);
+            String mapName = "神秘的地方";
+            int mapID = chr.getMap().getId();
+            if(FilePrinter.MapNames.get(mapID) != null){
+                mapName = FilePrinter.MapNames.get(mapID);
+            }
+            text += "#L" + String.valueOf(mapID) + "##r[" + chr.getName() + "]#k 在" + mapName + "#l";
+            text += "\r\n";
+        }
+        text = "共找到" + String.valueOf(players.size()) +"个玩家, 点击进行传送\r\n" + text;
+        logger.info("text=" + text);
+        sendSimple(text);
+    }
+
     public void executeSendNPCMap(String npcName){
         int count = 0;
         String text = "";
@@ -277,7 +300,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
         for(int i = 0; i < npcs.size(); i ++){
             count ++;
-            text += "#L" + String.valueOf(npcs.get(i).map) + "#" + "[#p" + String.valueOf(npcs.get(i).id) + "#] 在" + "[#m" + String.valueOf(npcs.get(i).map) + "#]" + "#l";
+            text += "#L" + String.valueOf(npcs.get(i).map) + "#" + "[#p" + String.valueOf(npcs.get(i).id) + "#(" + String.valueOf(npcs.get(i).id) + ")] 在" + "[#m" + String.valueOf(npcs.get(i).map) + "#]" + "#l";
             text += "\r\n";
         }
         
@@ -602,7 +625,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
         logger.info("executeGoMapIndex: index=" + String.valueOf(index));
 
         try {
-            FileInputStream fis = new FileInputStream("maps.txt");
+            FileInputStream fis = new FileInputStream("____tools/out_maps.txt");
             InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
             BufferedReader reader = new BufferedReader(isr);
             String line = reader.readLine();

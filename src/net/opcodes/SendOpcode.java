@@ -22,7 +22,6 @@
 package net.opcodes;
 
 public enum SendOpcode {
-
     LOGIN_STATUS(0x00),
     GUEST_ID_LOGIN(0x01),
     ACCOUNT_INFO(0x02),//I guess this was in v83 too :)

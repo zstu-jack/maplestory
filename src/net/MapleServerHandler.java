@@ -38,6 +38,8 @@ import constants.net.ServerConstants;
 
 import java.net.InetSocketAddress;
 
+import net.opcodes.RecvOpcode;
+import net.opcodes.SendOpcode;
 import net.server.Server;
 import net.server.audit.locks.MonitoredLockType;
 import net.server.audit.locks.MonitoredReentrantLock;
@@ -65,8 +67,24 @@ import net.server.audit.LockCollector;
 import server.TimerManager;
 
 public class MapleServerHandler extends IoHandlerAdapter {
-    public final static Set<Short> ignoredDebugRecvPackets = new HashSet<>(Arrays.asList((short) -1, (short)197));
-    public final static Set<Short> ignoredDebugSendPackets = new HashSet<>(Arrays.asList((short) -1, (short)260));
+    public final static Set<Short> ignoredDebugRecvPackets = new HashSet<>(Arrays.asList(
+        (short) -1,
+        (short)188, // MOVE_LIFE(0xBC)
+        (short)197,
+        (short)0x29
+    ));
+    public final static Set<Short> ignoredDebugSendPackets = new HashSet<>(Arrays.asList(
+        (short) -1, 
+        (short)239, // MOVE_MONSTER(0xEF),
+        (short)240, // MOVE_MONSTER_RESPONSE(0xF0),
+        (short)260,
+        (short)0xB9,
+        (short)0xEC, // SPAWN_MONSTER(
+        (short)0xED,  // KILL_MONSTER,
+        (short)0xEE, // SPAWN_MONSTER_CONTROL(),
+        (short)0xEF, // MOVE_MONSTER(0xEF),
+        (short)0xF0 // MOVE_MONSTER_RESPONSE
+    ));
 
     private PacketProcessor processor;
     private int world = -1, channel = -1;

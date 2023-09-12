@@ -22,6 +22,8 @@
 	3rd job advancement - Question trial.
  */
 
+// passAll = true
+
 var questionTree = [
         //Questions Related to CHARACTERS
         ["在冒险岛，从1级升到2级需要多少经验？", ["20", "15", "4", "12", "16"], 1],
@@ -114,6 +116,9 @@ function action(mode, type, selection) {
                     cm.dispose();
                 }
             } else {
+                if(!cm.getPlayer().gotPartyQuestItem("JBQ")){
+                    cm.message("没有JBQ");
+                }
                 cm.dispose();
             }
         } else if(status == 1) {
@@ -130,10 +135,12 @@ function action(mode, type, selection) {
             
             cm.sendSimple(questionHead + questionEntry + "\r\n\r\n#b" + questionOptions + "#k");
         } else if(status >= 2 && status <= 5) {
-            if(!evaluateAnswer(selection)) {
-                cm.sendNext("这道题答错了。");
-                cm.dispose();
-                return;
+            if(!passAll) {
+                if(!evaluateAnswer(selection)) {
+                    cm.sendNext("这道题答错了。");
+                    cm.dispose();
+                    return;
+                }
             }
             
             question = fetchNextQuestion();
@@ -146,11 +153,13 @@ function action(mode, type, selection) {
             
             cm.sendSimple(questionHead + questionEntry + "\r\n\r\n#b" + questionOptions + "#k");
         } else if(status == 6) {
-            if(!evaluateAnswer(selection)) {
-                cm.sendNext("这道题答错了。");
-                cm.dispose();
-                return;
-            }
+            if(!passAll) {
+                if(!evaluateAnswer(selection)) {
+                    cm.sendNext("这道题答错了。");
+                    cm.dispose();
+                    return;
+                }
+            }   
             
             cm.sendOk("好的，你答对了所有问题。你的智慧得到了证实。\r\n带着这串项链回去吧。");
             cm.gainItem(4031058, 1);

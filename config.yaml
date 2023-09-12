@@ -8,7 +8,7 @@ worlds:
     event_message: 小睡1区!
     why_am_i_recommended: 欢迎来到小睡冒险岛!
     # 频道数
-    channels: 5
+    channels: 1
     # 经验倍率
     exp_rate: 100
     # 金币倍率
@@ -176,6 +176,28 @@ server:
   # 数据池最大连接数，默认0不启用
   DB_MAX_CONNECT: 0
 
+  # -------------- 自己改过的 ------
+  # 怪物刷新间隔，默认10s
+  RESPAWN_INTERVAL: 1
+  # 配置服务器ip
+  HOST: 127.0.0.1
+  # 是否为本地服务，如果是127.0.0.1就选true，其他为falsed
+  LOCALSERVER: true
+  # 是否打印从客户端接受到的包id
+  USE_DEBUG_SHOW_RCVD_PACKET: false   
+  USE_AUTOHIDE_GM: false              #启用时，gm在加入时自动隐藏。
+
+  USE_AUTOASSIGN_STARTERS_AP: false   #新手10级或以下的AP会自动分配(他们不能选择升级某个属性)。仅当本地主机不支持10级或以下初学者的AP分配时设置为true
+  USE_AUTOASSIGN_SECONDARY_CAP: true  #防止AP自动分配在达到玩家等级上限(在自动分配处理器上定义)后在二级属性上花费.
+  USE_STARTING_AP_4: true             #使用早期gms 4/4/4的起始数据。为了克服AP不足的问题，第1次/第2次任务提升为4AP/5AP
+
+  USE_ENFORCE_JOB_LEVEL_RANGE: false  #达到等级没有专职无法获取经验
+
+  USE_ENABLE_SOLO_EXPEDITIONS: true    #允许任意数量的玩家开始副本。意思是可以单人扎昆，或者多人扎昆。
+  MAX_AP: 32767                               #Max AP allotted on the auto-assigner.
+  # ITEM_LIMIT_ON_MAP: 200              #Max number of items allowed on a map.
+  ITEM_LIMIT_ON_MAP: 2000              #Max number of items allowed on a map.
+
   # 大区数量
   WORLDS: 1
   # 最多多少大区
@@ -187,8 +209,6 @@ server:
   # 每个频道锁数量
   CHANNEL_LOCKS: 20
 
-  # 怪物刷新间隔，默认10s
-  RESPAWN_INTERVAL: 10000
   # 清除所有等待的任务间隔，避免任务一直不执行死锁、内存泄漏等，默认300s = 5min
   PURGING_INTERVAL: 300000
   # 排名刷新间隔，默认3600s = 1h
@@ -219,16 +239,6 @@ server:
   MAX_ACCOUNT_LOGIN_ATTEMPT: 15       #After N tries on an account, login on that account gets disabled for a short period.
   LOGIN_ATTEMPT_DURATION: 120         #Period in seconds the login attempt remains registered on the system.
 
-  # 配置服务器ip
-  HOST: 127.0.0.1
-  # 是否为本地服务，如果是127.0.0.1就选true，其他为falsed
-  LOCALSERVER: true
-
-  # 配置服务器ip
-  # HOST: 0.0.0.0
-  # # 是否为本地服务，如果是127.0.0.1就选true，其他为falsed
-  # LOCALSERVER: false
-
   # 这个配置暂时没有作用
   GMSERVER: false
 
@@ -240,8 +250,8 @@ server:
   # 开启debug模式
   USE_DEBUG: false
   USE_DEBUG_SHOW_INFO_EQPEXP: false    #是否打印从客户端所有装备的经验增益信息
-  # 是否打印从客户端接受到的包id
-  USE_DEBUG_SHOW_RCVD_PACKET: false
+  
+  
   USE_DEBUG_SHOW_RCVD_MVLIFE: false   #是否打印从客户端所有收到的移动生命内容.
   USE_DEBUG_SHOW_PACKET: false        #使用调试显示包
   USE_SUPPLY_RATE_COUPONS: true       #允许通过现金商店出售利率券
@@ -252,7 +262,7 @@ server:
   USE_MAXRANGE_ECHO_OF_HERO: true        #使用英雄的最大距离回声
   USE_MTS: false                       #利用MTS
   USE_CPQ: true                       #显示嘉年华CPQ是否可用.
-  USE_AUTOHIDE_GM: false              #启用时，gm在加入时自动隐藏。
+
   # 是否开启买活系统，通过点击拍卖键
   USE_BUYBACK_SYSTEM: false
   USE_FIXED_RATIO_HPMP_UPDATE: false   #启用heavenms内置的基于当前池到最大池比率的HPMP更新.
@@ -263,9 +273,6 @@ server:
   USE_ITEM_SORT: true                 #启用库存“项目排序/合并”功能
   USE_ITEM_SORT_BY_NAME: false        #项目排序基于名称而不是id.
   USE_PARTY_FOR_STARTERS: false       #10级或以下的玩家可以创建/邀请特定级别范围内的其他玩家.
-  USE_AUTOASSIGN_STARTERS_AP: false   #新手10级或以下的AP会自动分配(他们不能选择升级某个属性)。仅当本地主机不支持10级或以下初学者的AP分配时设置为true
-  USE_AUTOASSIGN_SECONDARY_CAP: true  #防止AP自动分配在达到玩家等级上限(在自动分配处理器上定义)后在二级属性上花费.
-  USE_STARTING_AP_4: true             #使用早期gms 4/4/4的起始数据。为了克服AP不足的问题，第1次/第2次任务提升为4AP/5AP
   USE_AUTOBAN: false                  #命令服务器自动检测入侵（记得这个是检测外挂的）.
   USE_AUTOBAN_LOG: true               #记录autoban相关消息。即使USE_AUTOBAN被禁用，仍然会记录日志.
   USE_AUTOSAVE: true                  #启用服务器自动保存功能(每1小时将字符保存到数据库)。
@@ -277,7 +284,6 @@ server:
   USE_ENFORCE_NOVICE_EXPRATE: true
   USE_ENFORCE_HPMP_SWAP: false        #强制玩家只在HP/MP属性内重用HP/MP属性(通过AP重置)。
   USE_ENFORCE_MOB_LEVEL_RANGE: true   #比被杀怪物低N级的玩家将不会从打败它中获得任何经验
-  USE_ENFORCE_JOB_LEVEL_RANGE: false  #达到等级没有专职无法获取经验
   USE_ENFORCE_JOB_SP_RANGE: false     #玩家SP等级的上限是他们当前的等级所能获得的总数。更换job（职业）后，丢失的SP将被找回
   USE_ENFORCE_ITEM_SUGGESTION: false  #强制密涅瓦的猫头鹰和现金商店总是显示定义的项目数组
   USE_ENFORCE_UNMERCHABLE_CASH: true  #迫使玩家不通过商家出售CASH道具，掉落的现金会消失
@@ -305,7 +311,6 @@ server:
 
   #Events/PQs Configuration
   USE_OLD_GMS_STYLED_PQ_NPCS: true      #使PQ npc具有与旧GMS风格相似的行为，跳过PQ的信息，并立即尝试注册队伍。
-  USE_ENABLE_SOLO_EXPEDITIONS: true    #允许任意数量的玩家开始副本。意思是可以单人扎昆，或者多人扎昆。
   USE_ENABLE_DAILY_EXPEDITIONS: false  #在探险中启用每日入口限制
   USE_ENABLE_RECALL_EVENT: false        #使下线的玩家能够重新登录他们在退出之前进入的最后一个事件实例。“回收”仅在事件尚未清除或处理时有效。
 
@@ -345,7 +350,6 @@ server:
   USE_DISPLAY_NUMBERS_WITH_COMMA: true          #Enforce comma on displayed strings (use this when USE_UNITPRICE_WITH_COMMA is active and you still want to display comma-separated values).
   USE_UNITPRICE_WITH_COMMA: true                #Set this accordingly with the layout of the unitPrices on Item.wz XML's, whether it's using commas or dots to represent fractions.
   MAX_MONITORED_BUFFSTATS: 5                 #Limits accounting for "dormant" buff effects, that should take place when stronger stat buffs expires.
-  MAX_AP: 32767                               #Max AP allotted on the auto-assigner.
   MAX_EVENT_LEVELS: 8                         #Event has different levels of rewarding system.
   BLOCK_NPC_RACE_CONDT: 500   # (0.5 * 1000) Time the player client must wait before reopening a conversation with an NPC.
   TOT_MOB_QUEST_REQUIREMENT: 0               #Overwrites old 999-mobs requirement for the ToT questline with new requirement value, set 0 for default.
@@ -365,7 +369,7 @@ server:
   #Map Monitor Configuration
   ITEM_EXPIRE_CHECK: 10000        # (10 * 10000) Interval between item expiring tasks on maps, which checks and makes disappear expired items.
   # 地图最大允许存在的掉落物
-  ITEM_LIMIT_ON_MAP: 200              #Max number of items allowed on a map.
+  
   MAP_VISITED_SIZE: 5                 #Max length for last mapids visited by a player. This is used to recover and update drops on these maps accordingly with player actions.
   MAP_DAMAGE_OVERTIME_INTERVAL: 5000  #Interval in milliseconds between map environment damage (e.g. El Nath and Aqua Road surrondings).
 

@@ -28,6 +28,7 @@ function action(mode, type, selection) {
         text += "#L1##e#d全屏杀怪药水(2022359)，给我100个#l \r\n"
         text += "#L2#全屏拣取药水(2022361)，给我100个#l \r\n"
         text += "#L3#超级药水(2000019)，给我100个#l \r\n"
+        text += "#L4#万能疗伤药(02050004)，给我100个#l \r\n"
         text += "#L10#输入物品名字模糊查询#l \r\n"
         cm.sendSimple(text);
     } else if (status === 1) {
@@ -42,6 +43,10 @@ function action(mode, type, selection) {
         }else if(selection == 3){
             cm.executeGM("@item 2000019 100");
             cm.message("@item 2000019 100， 超级药水100瓶到账");
+            cm.dispose();
+        }else if(selection == 4){
+            cm.executeGM("@item 02050004 100");
+            cm.message("@item 02050004 100， 万能疗伤药100瓶到账");
             cm.dispose();
         }else if(selection == 10){
             cm.sendGetText("输入道具名字");
