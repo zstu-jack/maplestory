@@ -14,7 +14,4 @@ packfiles/Server083-cache
 *.class
 sources.txt
 mylog.log*
-out_maps.txt
-out_equips.txt
-out_mobs.txt
 wz/
