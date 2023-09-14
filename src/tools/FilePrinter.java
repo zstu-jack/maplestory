@@ -25,6 +25,14 @@ import provider.MapleDataProviderFactory;
 import provider.MapleDataTool;
 import server.maps.MapleMapFactory;
 
+import client.MapleCharacter;
+import client.MapleClient;
+import client.inventory.Item;
+import client.inventory.MapleInventory;
+import client.inventory.MapleInventoryType;
+import net.server.Server;
+import server.TimerManager;
+import server.MapleItemInformationProvider;
 public class FilePrinter {
 
     public static final String 
@@ -288,6 +296,32 @@ public class FilePrinter {
         }
     }
 
+    public static void broadCastHorn(MapleClient c, String[] lineStrings){
+        final MapleCharacter player = c.getPlayer();
+        String medal = "";
+        Item medalItem = player.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -49);
+        if (medalItem != null) {
+            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
+            medal = "<" + ii.getName(medalItem.getItemId()) + "> ";
+        }
+        final int world = c.getWorld();
+        List<String> strLines = new LinkedList<>();
+        for(int i = lineStrings.length; i < 4; i ++){
+            lineStrings[i] = "";
+        }
+        for (int i = 0; i < 4; i++) {
+            strLines.add(lineStrings[i]);
+        }
+        boolean ear = true;
+        int itemid = 5390001; // À®°Èid
+        Server.getInstance().broadcastMessage(world, MaplePacketCreator.getAvatarMega(player, medal, c.getChannel(), 5390001, strLines, ear));
+        TimerManager.getInstance().schedule(new Runnable() {
+            @Override
+            public void run() {
+                Server.getInstance().broadcastMessage(world, MaplePacketCreator.byeAvatarMega());
+            }
+        }, 1000 * 10);
+    }
 
     public static void printError(final String name, final Throwable t) {
         String stringT = getString(t);

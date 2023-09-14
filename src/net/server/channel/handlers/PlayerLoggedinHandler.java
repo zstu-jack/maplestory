@@ -74,7 +74,7 @@ import org.apache.mina.core.session.IoSession;
 import server.life.MobSkill;
 import scripting.event.EventInstanceManager;
 import tools.packets.Wedding;
-
+import tools.FilePrinter;
 public final class PlayerLoggedinHandler extends AbstractMaplePacketHandler {
 
     private static Set<Integer> attemptingLoginAccounts = new HashSet<>();
@@ -432,6 +432,8 @@ public final class PlayerLoggedinHandler extends AbstractMaplePacketHandler {
                 }
                 
                 if(newcomer) player.setLoginTime(System.currentTimeMillis());
+
+                FilePrinter.broadCastHorn(c, new String[]{player.getName(), "天空一道闪电", "老子闪亮登场", ""});
             } catch(Exception e) {
                 e.printStackTrace();
             } finally {
