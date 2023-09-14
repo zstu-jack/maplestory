@@ -383,6 +383,9 @@ public class MapleItemInformationProvider {
                 ret = (short) MapleDataTool.getInt(smEntry);
             }
         }
+        if (YamlConfig.config.server.FIXED_SLOT_MAX > 0 && ItemConstants.getInventoryType(itemId).getType() != MapleInventoryType.EQUIP.getType()) {
+            ret = YamlConfig.config.server.FIXED_SLOT_MAX;
+        }
 
         slotMaxCache.put(itemId, ret);
         return (short)(ret + getExtraSlotMaxFromPlayer(c, itemId));

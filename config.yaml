@@ -186,7 +186,7 @@ server:
   # 是否打印从客户端接受到的包id
   USE_DEBUG_SHOW_RCVD_PACKET: false   
   USE_AUTOHIDE_GM: false              #启用时，gm在加入时自动隐藏。
-
+  FIXED_SLOT_MAX: 999                 #堆叠
   USE_AUTOASSIGN_STARTERS_AP: false   #新手10级或以下的AP会自动分配(他们不能选择升级某个属性)。仅当本地主机不支持10级或以下初学者的AP分配时设置为true
   USE_AUTOASSIGN_SECONDARY_CAP: true  #防止AP自动分配在达到玩家等级上限(在自动分配处理器上定义)后在二级属性上花费.
   USE_STARTING_AP_4: true             #使用早期gms 4/4/4的起始数据。为了克服AP不足的问题，第1次/第2次任务提升为4AP/5AP

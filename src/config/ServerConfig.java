@@ -1,6 +1,10 @@
 package config;
 
 public class ServerConfig {
+    
+    public short FIXED_SLOT_MAX; // ¶Ñµþ
+
+
     //Thread Tracker Configuration
     public boolean USE_THREAD_TRACKER;
 
